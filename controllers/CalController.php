@@ -38,6 +38,8 @@ class CalController extends Controller
      */
     public function actionIndex()
     {
+        $this->getuser;
+
         $searchModel = new CalSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -55,6 +57,8 @@ class CalController extends Controller
      */
     public function actionView($id)
     {
+        $this->getuser;
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -67,6 +71,8 @@ class CalController extends Controller
      */
     public function actionCreate()
     {
+        $this->getuser;
+
         $model = new Cal();
 
         if ($this->request->isPost) {
@@ -91,6 +97,8 @@ class CalController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->getuser;
+
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
@@ -111,6 +119,8 @@ class CalController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->getuser;
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -125,10 +135,40 @@ class CalController extends Controller
      */
     protected function findModel($id)
     {
+        $this->getuser;
         if (($model = Cal::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+
+
+public function getuser(){
+$usrid = Yii::$app->user->Id;
+
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['level', 'cd_cli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+//->AsArray();
+
+}
+//var_dump($ris);
+if (Yii::$app->user->isGuest || $ris['level'] == null) {
+
+$messaggio =
+    "<h1>Attenzione</h1>\n\n"
+    . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+exit($messaggio);
+
+}
+
+
+}
 }

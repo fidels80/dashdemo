@@ -137,13 +137,20 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->getPrimaryKey();
     }
-
+    public function getLvl()
+    {
+        return $this->level();
+    }
     /**
      * @inheritdoc
      */
     public function getAuthKey()
     {
         return $this->auth_key;
+    }
+ public function getCli()
+    {
+        return $this->cd_cli;
     }
 
     /**

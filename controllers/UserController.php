@@ -126,7 +126,31 @@ class UserController extends Controller
     }
 
 
+           public function getuser(){
+$usrid = Yii::$app->user->Id;
 
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['level', 'cd_cli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+//->AsArray();
+
+}
+//var_dump($ris);
+if (Yii::$app->user->isGuest || $ris['level'] == null) {
+
+$messaggio =
+    "<h1>Attenzione</h1>\n\n"
+    . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+exit($messaggio);
+
+}
+
+
+}
 
     
 }

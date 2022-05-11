@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Pippo;
+use app\models\Allfiles;
 
 /**
- * PippoSearch represents the model behind the search form of `app\models\Pippo`.
+ * AllfilesSearch represents the model behind the search form of `app\models\Allfiles`.
  */
-class PippoSearch extends Pippo
+class AllfilesSearch extends Allfiles
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class PippoSearch extends Pippo
     {
         return [
             [['id'], 'integer'],
-            [['code', 'DESK'], 'safe'],
+            [['id_padre', 'f_content', 'entita', 'nomefile', 'estensione'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class PippoSearch extends Pippo
      */
     public function search($params)
     {
-        $query = Pippo::find();
+        $query = Allfiles::find();
 
         // add conditions that should always apply here
 
@@ -61,8 +61,11 @@ class PippoSearch extends Pippo
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'code', $this->code])
-            ->andFilterWhere(['like', 'DESK', $this->DESK]);
+        $query->andFilterWhere(['like', 'id_padre', $this->id_padre])
+            ->andFilterWhere(['like', 'f_content', $this->f_content])
+            ->andFilterWhere(['like', 'entita', $this->entita])
+            ->andFilterWhere(['like', 'nomefile', $this->nomefile])
+            ->andFilterWhere(['like', 'estensione', $this->estensione]);
 
         return $dataProvider;
     }

@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use  yii\bootstrap4\Modal;
 /* @var $this yii\web\View */
 /* @var $model app\models\Doc_head */
-
+use yii\helpers\Url;
 $this->title = ' ';//$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Teste Documenti', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
@@ -42,8 +42,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Teste Documenti', 'url' => ['index
             ],
         ])*/ ?>
     </p>
-
-    <?= DetailView::widget([
+    <table id="product-files" class="table table-condensed table-bordered">
+<tr><td width="70%">
+    <?php echo DetailView::widget([
         'model' => $model,
         'attributes' => [
        //     'id',
@@ -55,23 +56,52 @@ $this->params['breadcrumbs'][] = ['label' => 'Teste Documenti', 'url' => ['index
             'sconto',
             'note',
         ],
-    ]) ?>
+    ]) ?></td><td width="30%">
 
  <?php echo '<table id="product-files" class="table table-condensed table-bordered">';
 echo '<thead>';
 echo '<tr>';
 //echo '<th>id_agenda</th>';
-echo '<th>file</th>';
+echo '<th width="70%">file</th>';
+echo '<th width="30%">';
+$tmpid=0;
+Modal::begin([
+  //'header'=>'<h4>Clienti</h4>',
+  'id' => 'cli'.$tmpid,
+  'size'=>'modal-lg', //classe bootstrap
+  ]);
+  echo "<div id='modalContent'></div>";
+  Modal::end();               
+  $this->registerJs( "
+  $('#modalcli_$tmpid').click(function (){
+  $('#cli$tmpid').modal('show')
+  .find('#modalContent')
+  .load($(this).attr('value'));
+  });"
+   );
+   $url=Url::to(['allfiles/ajupd','xid_testa' => $model->xid_testa,'tab'=>'DOTES',
+//   'mod'->$model
+]);
+   echo Html::button('Carica File',['value'=>$url,
+   'class' => 'btn btn-success','id'=>'modalcli_'.$tmpid]);
+   echo '</th>';
 echo '</tr>';
 echo '</thead>';
 echo '<tbody>';
+
+yii::error( ($model->xid_testa ));
+
 foreach ($model->filesall as $value) {
     // echo '<tr>';
-    
+
     if ($value['entita'] == 'DOTES') {
         echo '<tr>';
         echo '<td>';
-        echo $value['nomefile'];
+        
+        echo  Html::a($value['nomefile'],
+        ['allfiles/genfile','id' => $value['id'],
+        'file'=>str_replace(' ', '_',$value['nomefile']) ]);
+        
         echo '</td>';
           echo '</tr>';
     }
@@ -82,7 +112,7 @@ echo '</tr>';
 echo '</tbody>';
 echo '</table>';
 ?>
-
+</td>
 <?php 
 echo '<table id="product-parcels" class="table table-condensed table-bordered">';
         echo '<thead>';
@@ -108,6 +138,7 @@ echo '<table id="product-parcels" class="table table-condensed table-bordered">'
         //echo  '<td>';
         //echo $value['id_agenda'];
         //echo '</td>';
+       
         echo  '<td>';
         echo  $value['cd_art'];
         echo '</td>';

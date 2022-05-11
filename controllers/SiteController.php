@@ -19,6 +19,7 @@ use yii\web\Controller;
 use yii\web\UploadedFile;
 use kartik\grid\GridView;
 class SiteController extends Controller
+
 {
     /**
      * @inheritdoc
@@ -79,7 +80,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        echo 'asdasdada';
+        //echo 'asdasdada';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -152,9 +153,18 @@ class SiteController extends Controller
 
     public function actionSignup()
     {
+     
+           $user = new User();
+
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
+
+          // return (var_dump($model));
             if ($user = $model->signup()) {
+                if ($user->save()) {
+    echo 'good';
+}
+
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
                 }
@@ -235,7 +245,8 @@ class SiteController extends Controller
                    
         $items = [];
 
-        $model = User::find()->where(['username' => \Yii::$app->user->identity->username])->AsArray()->one();
+        $model = User::find()->where(['username' => \Yii::$app->user->identity->username])->
+        AsArray()->one();
         $menu = xmenu::find()->where(
 //'<=','level',$model['level']
             'level<=:level',
@@ -294,10 +305,15 @@ class SiteController extends Controller
 
             $items[]=$items2;
         }
-        yii::warning(array_values(array_filter(array_unique($items, SORT_REGULAR))));
+      //  yii::warning(array_values(array_filter(array_unique($items, SORT_REGULAR))));
         return (array_values(array_filter(array_unique($items, SORT_REGULAR))));
     }
+    public function actionContatti()
+    {
 
+        return $this->render('contatti', ['model' => $model]);
+
+    }
 
 
     public function actionGetexp()
@@ -437,4 +453,13 @@ class SiteController extends Controller
     ];
 return $defaultExportConfig;    
 }
+    public function actionReport()
+    {
+        $report = new \app\reports\MyReport;
+        $report->run();
+        return $this->render('report',array(
+            "report"=>$report
+        ));
+        
+    }
 }

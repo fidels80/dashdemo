@@ -60,7 +60,9 @@ use yii\helpers\Html;
             <a href="forgot-password.html">Reimposta Password</a>
         </p>
         <p class="mb-0">
-            <a href="register.html" class="text-center">Registrati</a>
+ <?php
+            echo Html::a('REgistrati', ['login','isnew'=>true]);
+?>
         </p>
     </div>
     <!-- /.login-card-body -->

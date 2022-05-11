@@ -1,137 +1,287 @@
 <?php
 $this->title = 'Starter Page';
 $this->params['breadcrumbs'] = [['label' => $this->title]];
+use app\models\doc_head;
+use app\models\payments;
+use practically\chartjs\Chart;
+$cf = Yii::$app->user->identity->cd_cli;
+$totdoc = doc_head::find()->where(['cd_cli' => $cf])->count();
+$totdocC = doc_head::find()->where(['confermato' => 1, 'cd_cli' => $cf])->count();
+$totsc = payments::find()->where(['cd_cli' => $cf])->count();
+$totsc_pagata = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '1'])->count();
+$dapagare = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '0'])->sum('ImportoV');
+$pagato = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '1'])->sum('ImportoV');
+
+ 
 ?>
 <div class="container-fluid">
-  <!--  <div class="row">
-        <div class="col-lg-6">
-            <?= \hail812\adminlte\widgets\Alert::widget([
-                'type' => 'success',
-                'body' => '<h3>Congratulations!</h3>',
-            ]) ?>
-            <?= \hail812\adminlte\widgets\Callout::widget([
-                'type' => 'danger',
-                'head' => 'I am a danger callout!',
-                'body' => 'There is a problem that we need to fix. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.'
-            ]) ?>
-        </div>
-    </div>
-            -->
+
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'CPU Traffic',
-                'number' => '10 <small>%</small>',
-                'icon' => 'fas fa-cog',
-            ]) ?>
+            <?=\hail812\adminlte\widgets\InfoBox::widget([
+    'text' => 'File Presenti',
+    'number' => '50 <small></small>',
+    'icon' => 'fas fa-copy',
+])?>
         </div>
-    </div>
- <!--
-    <div class="row">
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Messages',
-                'number' => '1,410',
-                'icon' => 'far fa-envelope',
-            ]) ?>
+        <div class="col-12 col-sm-6 col-md-3">
+            <?=\hail812\adminlte\widgets\InfoBox::widget([
+    'text' => 'Saldo Da Pagare',
+    'number' => round($dapagare, 2) . ' <small></small>',
+    'icon' => 'fas fa-calendar',
+])?>
         </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Bookmarks',
-                'number' => '410',
-                 'theme' => 'success',
-                'icon' => 'far fa-flag',
-            ]) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Uploads',
-                'number' => '13,648',
-                'theme' => 'gradient-warning',
-                'icon' => 'far fa-copy',
-            ]) ?>
+        <div class="col-12 col-sm-6 col-md-3">
+            <?=\hail812\adminlte\widgets\InfoBox::widget([
+    'text' => 'Saldato',
+    'number' => round($pagato, 2) . ' <small></small>',
+    'icon' => 'fas fa-calendar',
+])?>
         </div>
     </div>
 
+
     <div class="row">
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Bookmarks',
-                'number' => '41,410',
-                'icon' => 'far fa-bookmark',
-                'progress' => [
-                    'width' => '70%',
-                    'description' => '70% Increase in 30 Days'
-                ]
-            ]) ?>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <?=\hail812\adminlte\widgets\SmallBox::widget([
+    'title' => $totdoc,
+    'text' => 'Documenti Presenti in Archivio',
+    'icon' => 'far fa-copy',
+])?>
         </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?php $infoBox = \hail812\adminlte\widgets\InfoBox::begin([
-                'text' => 'Likes',
-                'number' => '41,410',
-                'theme' => 'success',
-                'icon' => 'far fa-thumbs-up',
-                'progress' => [
-                    'width' => '70%',
-                    'description' => '70% Increase in 30 Days'
-                ]
-            ]) ?>
-            <?= \hail812\adminlte\widgets\Ribbon::widget([
-                'id' => $infoBox->id.'-ribbon',
-                'text' => 'Ribbon',
-            ]) ?>
-            <?php \hail812\adminlte\widgets\InfoBox::end() ?>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+
+
+         <?php $smallBox = \hail812\adminlte\widgets\SmallBox::begin([
+    'title' => $totdocC,
+    'text' => 'Documenti Confermati',
+    'icon' => 'far fa-copy',
+    'theme' => 'success',
+])?>
+            <?=\hail812\adminlte\widgets\Ribbon::widget([
+    'id' => $smallBox->id . '-ribbon',
+    'text' => 'Confermati',
+    'theme' => 'warning',
+    'size' => 'lg',
+    'textSize' => 'lg',
+])?>
+            <?php \hail812\adminlte\widgets\SmallBox::end()?>
         </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Events',
-                'number' => '41,410',
-                'theme' => 'gradient-warning',
-                'icon' => 'far fa-calendar-alt',
-                'progress' => [
-                    'width' => '70%',
-                    'description' => '70% Increase in 30 Days'
-                ],
-                'loadingStyle' => true
-            ]) ?>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+        <?php $smallBox = \hail812\adminlte\widgets\SmallBox::begin([
+    'title' => $totdoc - $totdocC,
+    'text' => 'Documenti da Confermare',
+    'icon' => 'far fa-copy',
+    'theme' => 'Info',
+    'linkText'=>'pippo',
+    'linkUrl'=>'www.p.it' 
+])?>
+            <?=\hail812\adminlte\widgets\Ribbon::widget([
+    'id' => $smallBox->id . '-ribbon',
+    'text' => 'Non Confermati',
+    'theme' => 'warning',
+    'size' => 'lg',
+    'textSize' => 'sm',
+])?>
+            <?php \hail812\adminlte\widgets\SmallBox::end()?>
         </div>
     </div>
-            -->
+   <!-- ///////////////////////////////////////////////////-->
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\SmallBox::widget([
-                'title' => '150',
-                'text' => 'New Orders',
-                'icon' => 'fas fa-shopping-cart',
-            ]) ?>
+            <?=\hail812\adminlte\widgets\SmallBox::widget([
+    'title' => $totsc,
+    'text' => 'Totali scadenze',
+    'icon' => 'far fa-calendar',
+])?>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-         
-         
+
+
          <?php $smallBox = \hail812\adminlte\widgets\SmallBox::begin([
-                'title' => '150',
-                'text' => 'New Orders',
-                'icon' => 'fas fa-shopping-cart',
-                'theme' => 'success'
-            ]) ?>
-            <?= \hail812\adminlte\widgets\Ribbon::widget([
-                'id' => $smallBox->id.'-ribbon',
-                'text' => 'Ribbon',
-                'theme' => 'warning',
-                'size' => 'lg',
-                'textSize' => 'lg'
-            ]) ?>
-            <?php \hail812\adminlte\widgets\SmallBox::end() ?>
+    'title' => $totsc_pagata,
+    'text' => 'Scadenze Pagate',
+    'icon' => 'far fa-calendar',
+    'theme' => 'success',
+])?>
+            <?=\hail812\adminlte\widgets\Ribbon::widget([
+    'id' => $smallBox->id . '-ribbon',
+    'text' => 'Pagate',
+    'theme' => 'warning',
+    'size' => 'lg',
+    'textSize' => 'lg',
+])?>
+            <?php \hail812\adminlte\widgets\SmallBox::end()?>
         </div>
-        
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\SmallBox::widget([
-                'title' => '44',
-                'text' => 'User Registrations',
-                'icon' => 'fas fa-user-plus',
-                'theme' => 'gradient-success',
-                'loadingStyle' => true
-            ]) ?>
+        <?php $smallBox = \hail812\adminlte\widgets\SmallBox::begin([
+    'title' => $totsc - $totsc_pagata,
+    'text' => 'SCadenze da Pagare',
+    'icon' => 'far fa-calendar',
+    'theme' => 'Info',
+])?>
+            <?=\hail812\adminlte\widgets\Ribbon::widget([
+    'id' => $smallBox->id . '-ribbon',
+    'text' => 'Non Pagate',
+    'theme' => 'warning',
+    'size' => 'lg',
+    'textSize' => 'sm',
+])?>
+            <?php \hail812\adminlte\widgets\SmallBox::end()?>
         </div>
+    </div>
+    <div class="row " >
+    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+    <div class="card card-succes">
+    <div class="card-header">
+    <h3 class="card-title">Top Articoli</h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary">Articoli</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+  Marca da bollo
+    </div><div class="card-body">
+Controllo ed elaborazione testi
+</div><div class="card-body">
+TOTALE QUOTIDIANI
+</div><div class="card-body">
+	LA VERITA'
+</div><div class="card-body">
+	G.U.R.I. V Serie Speciale AA.PP.
+</div>
+
+            </div>
+            </div>
+  <!-- /.card-body -->
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+  <?php $series = [
+    [
+        'name' => 'Entity 1',
+        'data' => [
+            ['2018-10-04', 4.66],
+            ['2018-10-05', 5.0],
+        ],
+    ],
+    [
+        'name' => 'Entity 2',
+        'data' => [
+            ['2018-10-04', 3.88],
+            ['2018-10-05', 3.77],
+        ],
+    ],
+    [
+        'name' => 'Entity 3',
+        'data' => [
+            ['2018-10-04', 4.40],
+            ['2018-10-05', 5.0],
+        ],
+    ],
+    [
+        'name' => 'Entity 4',
+        'data' => [
+            ['2018-10-04', 4.5],
+            ['2018-10-05', 4.18],
+        ],
+    ],
+];
+
+echo \onmotion\apexcharts\ApexchartsWidget::widget([
+    'type' => 'bar', // default area
+    'height' => '400', // default 350
+    'width' => '500', // default 100%
+    'chartOptions' => [
+        'chart' => [
+            'toolbar' => [
+                'show' => true,
+                'autoSelected' => 'zoom',
+            ],
+        ],
+        'xaxis' => [
+            'type' => 'datetime',
+            // 'categories' => $categories,
+        ],
+        'plotOptions' => [
+            'bar' => [
+                'horizontal' => false,
+                'endingShape' => 'rounded',
+            ],
+        ],
+        'dataLabels' => [
+            'enabled' => false,
+        ],
+        'stroke' => [
+            'show' => true,
+            'colors' => ['transparent'],
+        ],
+        'legend' => [
+            'verticalAlign' => 'bottom',
+            'horizontalAlign' => 'left',
+        ],
+    ],
+    'series' => $series,
+]);
+?>
+</div>
+  <!-- /.card-footer -->
+<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+<?php
+/*
+$series= [
+    'data'=> [
+    [  'x'=> strtotime('2018-02-12'),
+      'y'=> 76
+    ],[
+      'x'=> strtotime('2018-02-12') ,
+      'y'=> 76
+    ]
+  ], 
+  'xaxis'=>[
+    'type'=> 'datetime'
+  ],
+  ];*/
+echo \onmotion\apexcharts\ApexchartsWidget::widget([
+    'type' => 'scatter', // default area
+    'height' => '400', // default 350
+    'width' => '500', // default 100%
+    'chartOptions' => [
+        'chart' => [
+            'toolbar' => [
+                'show' => true,
+                'autoSelected' => 'zoom',
+            ],
+        ],
+        'xaxis' => [
+            'type' => 'datetime',
+            // 'categories' => $categories,
+        ],
+        'plotOptions' => [
+            'bar' => [
+                'horizontal' => false,
+                'endingShape' => 'rounded',
+            ],
+        ],
+        'dataLabels' => [
+            'enabled' => false,
+        ],
+        'stroke' => [
+            'show' => true,
+            'colors' => ['transparent'],
+        ],
+        'legend' => [
+            'verticalAlign' => 'bottom',
+            'horizontalAlign' => 'left',
+        ],
+    ],
+    'series' => $series,
+]);
+?>
+
+
+</div>
     </div>
 </div>

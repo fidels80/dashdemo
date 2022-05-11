@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7df3dd2c5cc05365d7f1a7143817b6c",
+    "content-hash": "a9c967a8036d242f5ba8b2b45302a1be",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -69,6 +69,21 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bower-asset/chart-js",
+            "version": "v3.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chartjs/Chart.js.git",
+                "reference": "7b621d725d1711b99783dc5f1f53fa1261ec7f07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/7b621d725d1711b99783dc5f1f53fa1261ec7f07",
+                "reference": "7b621d725d1711b99783dc5f1f53fa1261ec7f07"
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/inputmask",
@@ -403,6 +418,75 @@
                 "source": "https://github.com/ezyang/htmlpurifier/tree/v4.14.0"
             },
             "time": "2021-12-25T01:21:49+00:00"
+        },
+        {
+            "name": "fortawesome/font-awesome",
+            "version": "5.15.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "7d3d774145ac38663f6d1effc6def0334b68ab7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/7d3d774145ac38663f6d1effc6def0334b68ab7e",
+                "reference": "7d3d774145ac38663f6d1effc6def0334b68ab7e",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-4.0",
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Travis Chase",
+                    "homepage": "http://twitter.com/supercodepoet"
+                },
+                {
+                    "name": "Dave Gandy",
+                    "homepage": "http://twitter.com/davegandy"
+                },
+                {
+                    "name": "Rob Madole",
+                    "homepage": "http://twitter.com/robmadole"
+                },
+                {
+                    "name": "Jory Raphael",
+                    "homepage": "http://twitter.com/sensibleworld"
+                },
+                {
+                    "name": "Geremia Taglialatela",
+                    "homepage": "http://twitter.com/gtagliala"
+                },
+                {
+                    "name": "Brian Talbot",
+                    "homepage": "http://twitter.com/talbs"
+                },
+                {
+                    "name": "Mike Wilkerson",
+                    "homepage": "http://twitter.com/mw77"
+                }
+            ],
+            "description": "The iconic font, CSS, and SVG framework",
+            "homepage": "https://fontawesome.com",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon",
+                "svg"
+            ],
+            "support": {
+                "docs": "http://fontawesome.com/how-to-use",
+                "email": "hello@fontawesome.com",
+                "issues": "https://github.com/FortAwesome/Font-Awesome/issues",
+                "source": "https://github.com/FortAwesome/Font-Awesome"
+            },
+            "time": "2021-08-04T19:09:22+00:00"
         },
         {
             "name": "hail812/yii2-adminlte-widgets",
@@ -1326,6 +1410,88 @@
             "time": "2021-09-07T07:35:25+00:00"
         },
         {
+            "name": "koolreport/core",
+            "version": "5.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/koolreport/core.git",
+                "reference": "1bedcdb17386728917d8aa6079f27b7066b08e20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/koolreport/core/zipball/1bedcdb17386728917d8aa6079f27b7066b08e20",
+                "reference": "1bedcdb17386728917d8aa6079f27b7066b08e20",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KoolPHP Inc",
+                    "homepage": "https://www.koolphp.net"
+                }
+            ],
+            "description": "An Open Source PHP Reporting Framework for easier and faster report delivery.",
+            "homepage": "https://www.koolreport.com",
+            "keywords": [
+                "PHP Reporting Framework",
+                "PHP Reporting Tools",
+                "charts and graphs",
+                "data processing",
+                "data visualization"
+            ],
+            "support": {
+                "issues": "https://github.com/koolreport/core/issues",
+                "source": "https://github.com/koolreport/core/tree/v5.6.1"
+            },
+            "time": "2022-05-04T09:30:43+00:00"
+        },
+        {
+            "name": "koolreport/yii2",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/koolreport/yii2.git",
+                "reference": "4398b666089f920bb39882f4a950e06702e974e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/koolreport/yii2/zipball/4398b666089f920bb39882f4a950e06702e974e2",
+                "reference": "4398b666089f920bb39882f4a950e06702e974e2",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Ease report setup within Yii2 environment",
+            "homepage": "https://www.koolreport.com",
+            "keywords": [
+                "PHP Reporting Framework",
+                "php",
+                "php reprting tools",
+                "yii reporting",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/koolreport/yii2/issues",
+                "source": "https://github.com/koolreport/yii2/tree/v1.0.0"
+            },
+            "time": "2020-01-17T10:25:04+00:00"
+        },
+        {
             "name": "kriss/yii2-calendar-schedule",
             "version": "v2.1",
             "source": {
@@ -1501,6 +1667,55 @@
                 "source": "https://github.com/paragonie/random_compat"
             },
             "time": "2020-10-15T08:29:30+00:00"
+        },
+        {
+            "name": "practically/yii2-chartjs",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Practically/yii2-chartjs.git",
+                "reference": "11d35b27200f193400e267d7bcc23f65b8097ff4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Practically/yii2-chartjs/zipball/11d35b27200f193400e267d7bcc23f65b8097ff4",
+                "reference": "11d35b27200f193400e267d7bcc23f65b8097ff4",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0"
+            },
+            "require-dev": {
+                "bower-asset/chart-js": "^2.7",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/phpunit-bridge": "^5.2",
+                "vimeo/psalm": "^4.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "practically\\chartjs\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Ade Attwood",
+                    "email": "ade@practically.io",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Neil Davies",
+                    "email": "neil@practically.io",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "Chart js wrapper for yii2 to help with rendering data charts",
+            "support": {
+                "issues": "https://github.com/Practically/yii2-chartjs/issues",
+                "source": "https://github.com/Practically/yii2-chartjs/tree/v1.1.0"
+            },
+            "time": "2021-09-09T08:34:55+00:00"
         },
         {
             "name": "select2/select2",
@@ -2032,6 +2247,80 @@
                 }
             ],
             "time": "2021-05-27T09:17:38+00:00"
+        },
+        {
+            "name": "thoulah/yii2-fontawesome-inline",
+            "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/YiiRocks/yii2-fontawesome-inline.git",
+                "reference": "c32afcf1c77cced4c2e672453b1305fa5edf0f1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/YiiRocks/yii2-fontawesome-inline/zipball/c32afcf1c77cced4c2e672453b1305fa5edf0f1b",
+                "reference": "c32afcf1c77cced4c2e672453b1305fa5edf0f1b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "fortawesome/font-awesome": "~5.1",
+                "php": ">=7.1.0",
+                "yiisoft/yii2": "~2.0",
+                "yiisoft/yii2-bootstrap4": "~2.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2.17.3",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": ">=7.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "thoulah\\fontawesome\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mr.42",
+                    "homepage": "https://mr42.me/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Inline Font Awesome Icons for Yii2 – without JavaScript",
+            "homepage": "https://yii.rocks/yii2-fontawesome-inline/",
+            "keywords": [
+                "FontAwesome",
+                "asset",
+                "awesome",
+                "bootstrap",
+                "bundle",
+                "component",
+                "extension",
+                "font",
+                "helper",
+                "icon",
+                "inline",
+                "svg",
+                "widget",
+                "yii",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/YiiRocks/yii2-fontawesome-inline/issues",
+                "source": "https://github.com/YiiRocks/yii2-fontawesome-inline/tree/master"
+            },
+            "time": "2020-12-25T17:38:08+00:00"
         },
         {
             "name": "yiisoft/yii2",

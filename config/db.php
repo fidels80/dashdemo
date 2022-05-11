@@ -8,7 +8,7 @@ return [
     'password' => 'missorif.p.26',
     'charset' => 'utf8',
     'attributes' => [
-        //\PDO::SQLSRV_ATTR_ENCODING => \PDO::SQLSRV_ENCODING_SYSTEM,
+       // 'PDO::SQLSRV_ATTR_ENCODING' => \PDO::SQLSRV_ENCODING_SYSTEM,
         'Application Name'=>'Microsoft SQL Server Management Studio',
         'AppName'=>'stocazzo'//,
     //    AppName=>'cicci'

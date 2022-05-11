@@ -36,6 +36,8 @@ class FilesController extends Controller
      */
     public function actionIndex()
     {
+        $this->getuser();
+
         $searchModel = new FilesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -53,6 +55,8 @@ class FilesController extends Controller
      */
     public function actionView($id)
     {
+        $this->getuser();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -65,6 +69,8 @@ class FilesController extends Controller
      */
     public function actionCreate()
     {
+        $this->getuser();
+
         $model = new Files();
 
         if ($model->load(Yii::$app->request->post())   ) {
@@ -95,6 +101,8 @@ class FilesController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->getuser();
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -115,6 +123,8 @@ class FilesController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->getuser();
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -129,6 +139,8 @@ class FilesController extends Controller
      */
     protected function findModel($id)
     {
+        $this->getuser();
+
         if (($model = Files::findOne($id)) !== null) {
             return $model;
         }
@@ -138,6 +150,8 @@ class FilesController extends Controller
 
 
     public function downloadFile($fullpath){
+        $this->getuser();
+
         if(!empty($fullpath)){
             header("Content-type:application/pdf"); //for pdf file
             //header('Content-Type:text/plain; charset=ISO-8859-15');
@@ -152,6 +166,7 @@ class FilesController extends Controller
 
     public function actionDownload($id,$file)
     {
+        $this->getuser();
       //  $model = Files::findOne($id);
      //   $path =  "http://fidels.synology.me/i3q/web/uploads/";//.Yii::getAlias('@web'."/uploads/") ;
       $path=Yii::getAlias('@webroot').'/uploads/';
@@ -168,5 +183,29 @@ return $tmpf;
        
         }
 
+public function getuser(){
+$usrid = Yii::$app->user->Id;
 
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['level', 'cd_cli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+//->AsArray();
+
+}
+//var_dump($ris);
+if (Yii::$app->user->isGuest || $ris['level'] == null) {
+
+$messaggio =
+    "<h1>Attenzione</h1>\n\n"
+    . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+exit($messaggio);
+
+}
+
+
+}
 }

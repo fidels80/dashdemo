@@ -28,6 +28,8 @@ public function rules(){
 
 public function afterValidate()
 {
+    $this->getuser();
+
     if (!Model::validateMultiple($this->getAllModels())) {
         $this->addError(null); // add an empty error to prevent saving
     }
@@ -36,6 +38,8 @@ public function afterValidate()
 
 public function save()
 {
+    $this->getuser();
+
     if (!$this->validate()) {
         return false;
     }
@@ -56,6 +60,8 @@ public function save()
 
 public function saveFIles()
 {
+    $this->getuser();
+
     $keep=[];
     foreach($this->_agenda_files as $file){
         $file->id_Agenda= $this->agenda->id;
@@ -78,11 +84,13 @@ public function saveFIles()
 
 
 public function  getAgenda(){
+$this->getuser();
 
     return $this->agenda;
 }
 
 public function setAgenda($agenda){
+$this->getuser();
 
 if($agenda instanceof Agenda){
     $this->_agenda=$agenda;
@@ -113,6 +121,8 @@ public function getFile($key){
 
 
 public function setFiles($files){
+    $this->getuser();
+
     unset($files['__id__']);
     $this->_agenda_files=[];
     foreach ($files as $key => $file) {
@@ -130,7 +140,8 @@ public function setFiles($files){
 
 }
 public function errorSummary($form)
-{
+{$this->getuser();
+
     $errorLists = [];
     foreach ($this->getAllModels() as $id => $model) {
         $errorList = $form->errorSummary($model, [
@@ -144,6 +155,7 @@ public function errorSummary($form)
 
 private function getAllModels()
 {
+    $this->getuser();
     $models = [
         'Agenda' => $this->agenda,
     ];
@@ -151,5 +163,30 @@ private function getAllModels()
         $models['Files.' . $id] = $this->files[$id];
     }
     return $models;
+}
+public function getuser(){
+$usrid = Yii::$app->user->Id;
+
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['level', 'cd_cli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+//->AsArray();
+
+}
+//var_dump($ris);
+if (Yii::$app->user->isGuest || $ris['level'] == null) {
+
+$messaggio =
+    "<h1>Attenzione</h1>\n\n"
+    . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+exit($messaggio);
+
+}
+
+
 }
 }

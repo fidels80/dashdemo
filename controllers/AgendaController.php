@@ -10,7 +10,7 @@ use app\models\Locazioni;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
-
+use app\models\user;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
@@ -47,6 +47,8 @@ class AgendaController extends Controller
      */
     public function actionIndex()
     {
+        $this->getuser();
+
         $searchModel = new AgendaSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -64,6 +66,9 @@ class AgendaController extends Controller
      */
     public function actionView($id)
     {
+     
+$this->getuser();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -76,6 +81,8 @@ class AgendaController extends Controller
      */
     public function old_actionCreate()
     {
+        $this->getuser();
+
        $model=new Agenda();
          if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -96,6 +103,8 @@ class AgendaController extends Controller
      */
     public function old_actionUpdate($id)
     {
+        $this->getuser();
+
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post())
@@ -117,6 +126,8 @@ class AgendaController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->getuser();
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -131,6 +142,8 @@ class AgendaController extends Controller
      */
     protected function old_findModel($id)
     {
+        $this->getuser();
+
         if (($model = Agenda::findOne(['id' => $id])) !== null) {
             return $model;
         }
@@ -142,6 +155,8 @@ class AgendaController extends Controller
 
     public function actionCreate()
     {
+        $this->getuser();
+
         $model = new FilesForm();
         $model->Agenda = new Agenda;
         $model->Agenda->loadDefaultValues();
@@ -156,6 +171,8 @@ class AgendaController extends Controller
     
     public function actionUpdate($id)
     {
+        $this->getuser();
+
         $model = new FilesForm();
         $model->Agenda = $this->findModel($id);
         $model->setAttributes(Yii::$app->request->post());
@@ -171,6 +188,8 @@ class AgendaController extends Controller
     
     protected function findModel($id)
     {
+        $this->getuser();
+
         if (($model = Agenda::findOne($id)) !== null) {
             return $model;
         }
@@ -178,7 +197,8 @@ class AgendaController extends Controller
     }
 
     public  function  actionGenfile($id,$filename=null){
-        
+        $this->getuser();
+
         $tmpfile= AgendaFiles::find()->where(['id'=>$id])->asArray()->one() ;
  //var_dump($tmpfile);
                 try {
@@ -233,6 +253,7 @@ class AgendaController extends Controller
 
     public function actionJsoncalendar($start = null, $end = null, $_ = null, $filtro = null)
     {
+$this->getuser();
 
         // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
@@ -298,7 +319,9 @@ class AgendaController extends Controller
     }
 
     public function actionSelcal($filtro = null)
-    {
+  
+    {$this->getuser();
+
         $fil = '';
         $filtro2 = explode(',', $filtro);
         return $this->render('selcal', [
@@ -306,5 +329,34 @@ class AgendaController extends Controller
         ]);
 
     }
+
+
+
+public function getuser(){
+$usrid = Yii::$app->user->Id;
+
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['level', 'cd_cli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+//->AsArray();
+
+}
+//var_dump($ris);
+if (Yii::$app->user->isGuest || $ris['level'] == null) {
+
+$messaggio =
+    "<h1>Attenzione</h1>\n\n"
+    . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+exit($messaggio);
+
+}
+
+
+}
+
 
 }

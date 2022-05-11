@@ -35,6 +35,8 @@ class Doc_headController extends Controller
      */
     public function actionIndex()
     {
+        $this->getuser();
+
         $searchModel = new Doc_headSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +54,8 @@ class Doc_headController extends Controller
      */
     public function actionView($id)
     {
+        $this->getuser();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +68,8 @@ class Doc_headController extends Controller
      */
     public function actionCreate()
     {
+        $this->getuser();
+
         $model = new Doc_head();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +90,8 @@ class Doc_headController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->getuser();
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -97,6 +105,8 @@ class Doc_headController extends Controller
 
     public function actionConferma($id)
     {
+        $this->getuser();
+
         $model = $this->findModel($id);
         $model->setAttribute('confermato',1);
         $model->save();
@@ -115,6 +125,8 @@ class Doc_headController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->getuser();
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -129,10 +141,41 @@ class Doc_headController extends Controller
      */
     protected function findModel($id)
     {
+        $this->getuser();
         if (($model = Doc_head::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+
+    
+
+public function getuser(){
+$usrid = Yii::$app->user->Id;
+
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['level', 'cd_cli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+//->AsArray();
+
+}
+//var_dump($ris);
+if (Yii::$app->user->isGuest || $ris['level'] == null) {
+
+$messaggio =
+    "<h1>Attenzione</h1>\n\n"
+    . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+exit($messaggio);
+
+}
+
+
+}
 }

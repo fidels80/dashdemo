@@ -30,7 +30,12 @@
         "kartik-v/yii2-checkbox-x": "dev-master",
         "hail812/yii2-adminlte3": "~1.1",
         "kartik-v/yii2-bootstrap4-dropdown": "@dev",
-        "kartik-v/yii2-date-range": "@dev"
+        "kartik-v/yii2-date-range": "@dev",
+        "thoulah/yii2-fontawesome-inline": "^1.1",
+        "bower-asset/chart-js": "^3.7",
+        "practically/yii2-chartjs": "^1.1",
+        "koolreport/yii2": "^1.0",
+        "koolreport/core": "^5.6"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

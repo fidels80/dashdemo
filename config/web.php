@@ -14,6 +14,8 @@ $config = [
         '@modulo'=>'/modules/'
     ],
     'components' => [
+        'fontawesome' => [
+            'class' => thoulah\fontawesome\IconComponent::class,],
         'i18n' => [
             'translations' => [
                 'kvgrid' => [
@@ -66,7 +68,7 @@ $config = [
         ],
  
         'db' => $db,
-        'db2' => [
+    /*   'db2' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'sqlsrv:Server=amd\SQLEXPRESS;Database=copernico',
             'username' => 'sa',
@@ -77,7 +79,7 @@ $config = [
             'dsn' => 'mysql:host=localhost;dbname=wh',
             'username' => 'root',
             'password' => 'missorif.p.26',
-            'charset' => 'utf8',],
+            'charset' => 'utf8',],*/
     'urlManager' => [
     'enablePrettyUrl' => false,
     'enableStrictParsing' => true,

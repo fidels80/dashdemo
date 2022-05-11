@@ -8,7 +8,7 @@ use app\models\AgendafilesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+ 
 use yii\web\UploadedFile;
 /**
  * AgendafilesController implements the CRUD actions for AgendaFiles model.
@@ -36,6 +36,7 @@ class AgendafilesController extends Controller
      */
     public function actionIndex()
     {
+        $this->getuser();
         $searchModel = new AgendafilesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -53,6 +54,8 @@ class AgendafilesController extends Controller
      */
     public function actionView($id)
     {
+        //$this->getuser();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -65,6 +68,8 @@ class AgendafilesController extends Controller
      */
     public function actionCreate()
     {
+        $this->getuser();
+
         $model = new AgendaFiles();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -77,6 +82,8 @@ class AgendafilesController extends Controller
     }
     public function actionCreateaj()
     {
+        $this->getuser();
+
 //        $model = new AgendaFiles();
 //
 //      if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -153,6 +160,8 @@ class AgendafilesController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->getuser();
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -173,6 +182,8 @@ class AgendafilesController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->getuser();
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -187,10 +198,57 @@ class AgendafilesController extends Controller
      */
     protected function findModel($id)
     {
+        $this->getuser();
+
         if (($model = AgendaFiles::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public function getuser(){
+$usrid = Yii::$app->user->Id;
+
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['level', 'cd_cli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+//->AsArray();
+
+}
+//var_dump($ris);
+if (Yii::$app->user->isGuest || $ris['level'] == null) {
+
+// throw new \yii\web\ForbiddenHttpException("403");
+$messaggio=
+"<h1>Attenzione</h1>\n\n"
+. "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+exit($messaggio);
+
+}
+
+
+}
+
+
+
+
+
 }
