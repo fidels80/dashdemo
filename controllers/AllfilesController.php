@@ -1,3 +1,4 @@
+
 <?php
 
 namespace app\controllers;
@@ -101,18 +102,9 @@ class AllfilesController extends Controller
            $model->nomefile=basename($tmpfile);
            $model->origine='S';
            $model->estensione=pathinfo($tmpfile ,PATHINFO_EXTENSION);
-            //$model->upload();
-            //$model->save();
-            //$tmf=(binary)(file_get_contents($tmpfile->TempName ));
-            //$tmf=(binary)(file_get_contents(Yii::getAlias('@webroot').'/uploads/'. 
-            //str_replace(' ', '_',$model->nomefile) ));
             $model->setAttribute('f_content','');
-
            $model->save(false); 
            $id=$model->getPrimaryKey();
-
-
-
            $connection = Yii::$app->getDb();
            $command = $connection->createCommand("
            update all_files set f_content=convert(
@@ -120,14 +112,7 @@ class AllfilesController extends Controller
             :contenuto ,1) where id=:id
            
            ",[':id'=>$id,':contenuto'=>'0x'.bin2hex($h)]);
-
-
             $command->execute();
-
-
-
-
-
            //\Yii::$app->response->format = Response::FORMAT_JSON;
            return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
         }

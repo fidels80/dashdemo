@@ -89,6 +89,12 @@ public function actionZreport()
     }
 
 
+public function actionChart()
+    {
+ 
+        return $this->render('chart');
+        
+    }
 
 
 

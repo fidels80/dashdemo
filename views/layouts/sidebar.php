@@ -15,10 +15,20 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
 
 $x=Yii::$app->runAction('site/bleft');
 //yii::warning($x);
+$usrid = Yii::$app->user->Id;
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['sidebar_color'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+}
+$usrgrid = $ris['sidebar_color'];
+yii::warning($usrid);
 ?>
 
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4 ">
+<?php echo '<aside class="main-sidebar sidebar-dark-primary bg-'.$usrgrid.' elevation-4 ">'; ?>
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="<?=$assetDir?>/img/AdminLTELogo.png" 

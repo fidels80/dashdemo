@@ -10,7 +10,38 @@ $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/admi
 $publishedRes = Yii::$app->assetManager->publish('@vendor/hail812/yii2-adminlte3/src/web/js');
 $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\hail812\adminlte3\assets\AdminLteAsset']);
 
+
 ?>
+
+<script>
+//let $dark_mode_checkbox = $('<input />', {
+      //  type: 'checkbox',
+     //   value: 1,
+     //   checked: $('body').hasClass('dark-mode'),
+    //    class: 'mr-1'
+   // }).on('click', function () {
+       function dm(){
+           console.log($(this));
+            
+       // if ($(this).is(':checked')) {
+        if ($('body').hasClass('dark-mode') ) {
+$('body').removeClass('dark-mode');
+        }else{
+        $('body').addClass('dark-mode');
+        }
+       // else {
+       //     $('body').removeClass('dark-mode');
+        //}
+   }
+    //)
+    ;
+ //   let $dark_mode_container = $('<div />', 
+ //   {class: 'mb-4'}).append($dark_mode_checkbox).append('<span>Dark Mode</span>');
+ //   $container.append($dark_mode_container);
+ 
+ 
+ 
+ </script>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links 
@@ -203,6 +234,9 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
                 <i class="fas fa-th-large"></i>
             </a>
         </li>-->
+         <li class="nav-item">
+<a class="nav-link" onclick="dm();" href="javascript:void(0);">DM</a>
+        </li>
     </ul>
 </nav>
 <!-- /.navbar -->

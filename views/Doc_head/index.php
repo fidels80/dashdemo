@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 //use app\model\Site;
 use app\models\doctype;
+use app\models\user;
 $x=Yii::$app->runAction('site/getexp');
 $icon = new \thoulah\fontawesome\Icon();
 yii::warning($x);
@@ -16,6 +17,20 @@ $listconf = ['1' => 'Confermato',
 ];
 $this->title = ' ';
 //$this->params['breadcrumbs'][] = $this->title;
+
+$usrid = Yii::$app->user->Id;
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['grid_color'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+}
+$usrgrid = $ris['grid_color'];
+
+yii::warning($usrgrid);
+
+
 ?>
 <div class="doc-head-index">
 
@@ -34,16 +49,19 @@ $this->title = ' ';
         //'cd_doc' => 'orc'],
         'autoXlFormat'=>true,
     'toggleDataContainer' => ['class' => 'btn-group mr-2 me-2'],
+    
     'export'=>[
         'showConfirmAlert'=>false,
         'target'=>GridView::TARGET_BLANK
     ],
+
         'columns' => [
          //   ['class' => 'yii\grid\SerialColumn'],
 
            // 'id',
            // 'cd_doc',
            ['label'=>'Dett.Doc',
+            'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
             'class' => 'kartik\grid\ExpandRowColumn',
             'width' => '50px',
             'value' => function ($model, $key, $index, $column) {
@@ -54,12 +72,13 @@ $this->title = ' ';
             'detail' => function ($model, $key, $index, $column) {
                 return Yii::$app->controller->renderPartial('_expand-row', ['model' => $model]);
             },
-            'headerOptions' => ['class' => 'kartik-sheet-style'] ,
+          'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
             'expandOneOnly' => true
         ],
 
             [
                 'attribute'=>'cd_doc', 
+                 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
                'label' => 'Tipo Doc.', 
                 'format'=>'text', 
                 'width'=>'150px',
@@ -86,6 +105,7 @@ $this->title = ' ';
 
             [
                 'attribute'=>'data',
+                 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
                 'label' => 'Data Doc.', 
                 'width'=>'200px',
                 'options' => [
@@ -109,17 +129,20 @@ $this->title = ' ';
                 ])
               ],
             ['attribute'=>'numdoc',
+             'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
             'label' => 'Num. Doc.', 
            // 'header' => 'Tipo Documento'
              'width'=>'150px'],
            // 'cd_cli',
             ['attribute'=>'cd_pg',
             'label' => 'Tipo Pag.', 
+             'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
             'width'=>'150px'],
                 
             
             //'confermato',
             ['attribute'=>'confermato', 
+             'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
             'format' => 'raw',
             'width'=>'50px',
             //'options' => ['width' => '10x','value'=>$model->confermato],
@@ -159,8 +182,13 @@ $this->title = ' ';
 
         
             ],
-            'note',
-            ['label' => 'Tot.Qta', 
+            
+['label'=>'Note',
+ 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
+'attribute'=>'note'],
+
+            ['label' => 'Tot.Qta',
+             'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'], 
             'vAlign' => 'middle',
             'value' => function ($model, $key, $index, $widget) { 
                // $p = compact('model', 'key', 'index');
@@ -173,6 +201,7 @@ $this->title = ' ';
                return  $t;
             },'pageSummary' => true],
             ['header' => 'TotDoc', 
+             'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
             'vAlign' => 'middle',
             'value' => function ($model, $key, $index, $widget) { 
                 $t=0;
@@ -183,13 +212,16 @@ $this->title = ' ';
             },
             'pageSummary' => true],
 
-            ['class' =>'yii\grid\ActionColumn','template'=>'{view}'],
+            ['class' =>'yii\grid\ActionColumn',
+            'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
+            'template'=>'{view}'],
+
         ],
      
-    'panel'=>[
-        'type'=>'primary',
-        'heading'=>'Teste Documenti'
-    ],
+   'panel'=>[
+            'type'=>$ris['grid_color'],
+            'heading'=>'<i class="fas  fa-piggy-bank"></i> Documenti'
+        ],
     'responsive'=>true,
     //'hover'=>true, 
     'resizableColumns'=>true,

@@ -11,6 +11,98 @@ $totsc = payments::find()->where(['cd_cli' => $cf])->count();
 $totsc_pagata = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '1'])->count();
 $dapagare = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '0'])->sum('ImportoV');
 $pagato = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '1'])->sum('ImportoV');
+$connection = Yii::$app->getDb();
+$command = $connection->createCommand("select mese,sum(tot)as tot from (
+select month(DataScadenza) as mese ,sum(importov) as tot from payments
+where cd_cli=:id_cli /*and year(DataScadenza)=2022 */and pagata=1
+group by year(DataScadenza),month(DataScadenza)
+union
+select 1 as mese,0
+union
+select 2 as mese,0
+union
+select 3 as mese,0
+union
+select 4 as mese,0
+union
+select 5 as mese,0
+union
+select 6 as mese,0
+union
+select 7 as mese,0
+union
+select 8 as mese,0
+union
+select 9 as mese,0
+union
+select 10 as mese,0
+union
+select 11 as mese,0
+union
+select 12 as mese,0
+) as t
+group by mese
+
+", [':id_cli' => $cf]);
+
+$result = $command->queryAll();
+
+$command2 = $connection->createCommand("select mese,sum(tot)as tot from (
+select month(DataScadenza) as mese ,sum(importov) as tot from payments
+where cd_cli=:id_cli /*and year(DataScadenza)=2022*/ and pagata<>1
+group by year(DataScadenza),month(DataScadenza)
+union
+select 1 as mese,0
+union
+select 2 as mese,0
+union
+select 3 as mese,0
+union
+select 4 as mese,0
+union
+select 5 as mese,0
+union
+select 6 as mese,0
+union
+select 7 as mese,0
+union
+select 8 as mese,0
+union
+select 9 as mese,0
+union
+select 10 as mese,0
+union
+select 11 as mese,0
+union
+select 12 as mese,0
+) as t
+group by mese
+
+", [':id_cli' => $cf]);
+$result2 = $command2->queryAll();
+$righe = [];
+$righe2 = [];
+foreach ($result as $value) {
+    $righe[] = $value['tot'];
+}
+foreach ($result2 as $value) {
+    $righe2[] = $value['tot'];
+}
+
+$series = [
+
+    [
+        'name' => "Pagate",
+        'data' => $righe, //[45,46,1,3,0,0,0,0,0,1,1,1]
+    ],
+    [
+        'name' => 'non Pagate',
+        'data' => $righe2,
+
+    ],
+
+]
+;
 
  
 ?>
@@ -159,7 +251,7 @@ TOTALE QUOTIDIANI
             </div>
   <!-- /.card-body -->
   <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-  <?php $series = [
+  <?php /*$series = [
     [
         'name' => 'Entity 1',
         'data' => [
@@ -189,7 +281,7 @@ TOTALE QUOTIDIANI
         ],
     ],
 ];
-
+ 
 echo \onmotion\apexcharts\ApexchartsWidget::widget([
     'type' => 'bar', // default area
     'height' => '400', // default 350
@@ -225,6 +317,45 @@ echo \onmotion\apexcharts\ApexchartsWidget::widget([
     ],
     'series' => $series,
 ]);
+
+*/echo \onmotion\apexcharts\ApexchartsWidget::widget([
+    'type' => 'line', // default area
+    'height' => '400', // default 350
+    'width' => '500', // default 100%
+    'chartOptions' => [
+        'chart' => [
+            'toolbar' => [
+                'show' => true,
+                'autoSelected' => 'zoom',
+            ],
+        ],
+        'xaxis' => [
+            //   'type' => 'datetime',
+            // 'categories' => $categories,
+            'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'oct', 'nov', 'dec'],
+
+        ],
+        'plotOptions' => [
+            'bar' => [
+                'horizontal' => false,
+                'endingShape' => 'rounded',
+            ],
+        ],
+        'dataLabels' => [
+            'enabled' => false,
+        ],
+        'stroke' => [
+            'show' => true,
+            // 'colors' => ['transparent'],
+        ],
+        'legend' => [
+            'verticalAlign' => 'bottom',
+            'horizontalAlign' => 'left',
+        ],
+    ],
+    'series' => $series,
+]);
+
 ?>
 </div>
   <!-- /.card-footer -->
@@ -245,7 +376,7 @@ $series= [
   ],
   ];*/
 echo \onmotion\apexcharts\ApexchartsWidget::widget([
-    'type' => 'scatter', // default area
+    'type' => 'bar', // default area
     'height' => '400', // default 350
     'width' => '500', // default 100%
     'chartOptions' => [
@@ -256,8 +387,10 @@ echo \onmotion\apexcharts\ApexchartsWidget::widget([
             ],
         ],
         'xaxis' => [
-            'type' => 'datetime',
+            //'type' => 'datetime',
             // 'categories' => $categories,
+            'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'oct', 'nov', 'dec'],
+
         ],
         'plotOptions' => [
             'bar' => [
@@ -279,6 +412,7 @@ echo \onmotion\apexcharts\ApexchartsWidget::widget([
     ],
     'series' => $series,
 ]);
+
 ?>
 
 

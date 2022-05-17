@@ -31,7 +31,7 @@ class Xmenu extends \yii\db\ActiveRecord
         return [
             [['id'], 'required'],
             [['id', 'level'], 'integer'],
-            [['voce', 'azione'], 'string', 'max' => 200],
+            [['voce', 'azione','icona'], 'string', 'max' => 200],
             [['url'], 'string', 'max' => 250],
             [['id'], 'unique'],
         ];

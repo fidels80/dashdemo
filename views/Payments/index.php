@@ -6,6 +6,22 @@ use yii\helpers\ArrayHelper;
 $listconf = ['1' => 'Pagata',
     '0' => 'Non pagata',
 ];
+
+//use app\model\user;
+$usrid = Yii::$app->user->Id;
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['grid_color'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+}
+$usrgrid=$ris['grid_color'];
+
+yii::warning($usrgrid);
+//$ris;
+
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PaymentsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -33,24 +49,37 @@ $this->title = '';
         'persistResize' => true,
         'resizeStorageKey'=>Yii::$app->user->id . '-' . date('m').'sc',
         'panel'=>[
-            'type'=>'primary',
-            'heading'=>'Scadenze'
+            'type'=>$usrgrid,
+            'heading'=>'<i class="fas  fa-piggy-bank"></i> Scadenze'
         ],
         'export'=>[
             'showConfirmAlert'=>false,
-            'target'=>GridView::TARGET_BLANK
-        ],
+            'target'=>GridView::TARGET_BLANK,
+           // 'fontAwesome' => true
+        ],   'exportConfig' => [
+        'html' => [],
+        'csv' => [],
+        'txt' => [],
+        'xls' => [],
+        'pdf' => [],
+        'json' => [],
+    ],
         'columns' => [
           //  ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
             //'xid_testa',
             //'cd_cli',
-            'Cd_PG',
+            ['attribute'=>'Cd_PG',
+        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
+          'label'=>'Cod.PG'
+          ],
            // 'DataScadenza',
 
             [
                 'attribute'=>'DataScadenza',
+                //	'header' => 'Profit Margin<br>(%)', 
+	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
                 'label' => 'Data Scad.', 
                 'width'=>'200px',
                 'value'=> function ($model, $key, $index, $widget) {
@@ -85,6 +114,7 @@ $this->title = '';
            // 'DataPagamento',
             [
                 'attribute'=>'DataPagamento',
+                	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
                 'label' => 'Data Pg.', 
                 'width'=>'200px',
                 'value'=> function ($model, $key, $index, $widget) {
@@ -116,6 +146,7 @@ $this->title = '';
             //'DataFattura',
             [
                 'attribute'=>'DataFattura',
+                	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
                 'label' => 'Data FT.', 
                 'width'=>'200px',
                 'value'=> function ($model, $key, $index, $widget) {
@@ -147,11 +178,19 @@ $this->title = '';
 
 
 
-            'NumFattura',
-            'Protocollo',
+       
+                        ['attribute'=>'NumFattura',
+        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
+          'label'=> 'Num. Ft'
+          ],
+                          ['attribute'=>'Protocollo',
+        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
+          'label'=> 'Protocollo'
+          ],
            // 'Pagata',
 
             ['attribute'=>'Pagata', 
+            	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
             'format' => 'raw','width'=>'50px',
             //'options' => ['width' => '10x','value'=>$model->confermato],
             'value'=> function ($model, $key, $index, $column) {
@@ -181,14 +220,29 @@ $this->title = '';
         
             ],
 
-            'NumEffetto',
-            'TotEffetti',
+     
+           
+                                  ['attribute'=>   'NumEffetto',
+        	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+          'label'=>    'NumEffetto'
+          ],
+                                ['attribute'=> 'TotEffetti',
+        	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+          'label'=>  'TotEffetti',
+          ],
+
             ['attribute'=>'ImportoV',
+            	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
             'pageSummary' => true]
             ,
-            ['attribute'=> 'IncassoV', 'pageSummary' => true],
+            ['attribute'=> 'IncassoV', 
+              	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+     
+            'pageSummary' => true],
 
-            ['class' =>'yii\grid\ActionColumn','template'=>'{view}'],
+            [  	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+     
+              'class' =>'yii\grid\ActionColumn','template'=>'{view}'],
         ],'responsive'=>true,
         //'hover'=>true, 
         'resizableColumns'=>true,

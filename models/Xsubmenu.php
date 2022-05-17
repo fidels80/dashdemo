@@ -30,7 +30,7 @@ class Xsubmenu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['azione', 'url'], 'string'],
+            [['azione', 'url','icona'], 'string'],
             [['level', 'id_menu'], 'integer'],
             [['id_menu'], 'required'],
             [['voce'], 'string', 'max' => 200],

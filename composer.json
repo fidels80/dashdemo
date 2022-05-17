@@ -35,7 +35,8 @@
         "bower-asset/chart-js": "^3.7",
         "practically/yii2-chartjs": "^1.1",
         "koolreport/yii2": "^1.0",
-        "koolreport/core": "^5.6"
+        "koolreport/core": "^5.6",
+        "kartik-v/yii2-mpdf": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -264,8 +264,6 @@ class SiteController extends Controller
 
         foreach ($menu as $value) {
             # code...
-     
-
             $xsm = Xsubmenu::find()->where(
                 //'<=','level',$model['level']
                 'level<=:level',
@@ -284,7 +282,7 @@ class SiteController extends Controller
                             'label'=>$Svalue['voce'],
                             'url'=>  Url::toRoute($Svalue['url']),
                   //          'target' => 'self_',
-                       
+                      'icon' => $Svalue['icona']
                          ) ;
                         
                     $sb[]=$items3;
@@ -297,7 +295,8 @@ class SiteController extends Controller
                     'label'=>$value['voce'],
                      'url'=>Url::toRoute($value['url']),
                 //    'target' => 'self_',
-                     'items' => $sb
+            'icon' => $value['icona'],
+                'items' => $sb
                 
                 
                 );
