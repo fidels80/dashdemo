@@ -36,7 +36,18 @@
         "practically/yii2-chartjs": "^1.1",
         "koolreport/yii2": "^1.0",
         "koolreport/core": "^5.6",
-        "kartik-v/yii2-mpdf": "dev-master"
+        "kartik-v/yii2-mpdf": "^1.0",
+        "demogorgorn/yii2-ajax-submit-button": "*",
+        "2amigos/yii2-file-upload-widget": "~1.0",
+        "hail812/yii2-adminlte-widgets": "~1.0",
+        "yiisoft/yii2-httpclient": "^2.0",
+        "kartik-v/yii2-detail-view": "dev-master",
+        "kartik-v/yii2-popover-x": "dev-master",
+        "kartik-v/yii2-icons": "@dev",
+        "kartik-v/yii2-password": "dev-master",
+        "bizley/cookiemonster": "^1.1",
+        "yiimaker/yii2-social-share": "^2.3",
+        "tomlutzenberger/yii2-smartsupp-chat": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -54,6 +65,9 @@
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
         }
     },
     "scripts": {

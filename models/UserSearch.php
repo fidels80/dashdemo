@@ -41,10 +41,13 @@ class UserSearch extends User
     public function search($params)
     {
         $cf=  Yii::$app->user->identity->id;
-        $query = User::find()
-      
-       
+        if(yii::$app->user->identity->level==100){
+        $query = User::find(); 
+
+        }  else{
+            $query = User::find()//->all();
         ->where(['id'=>$cf]);
+        }
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

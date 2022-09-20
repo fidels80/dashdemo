@@ -1,0 +1,49 @@
+<?php
+
+use yii\helpers\Html;
+//use yii\grid\GridView;
+use yii\widgets\Pjax;
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\ElemailSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+use app\models\user;
+//use app\model\Site;
+use kartik\grid\GridView;
+use yii\db\Query;
+use yii\helpers\ArrayHelper;
+$x = Yii::$app->runAction('site/getexp');
+$icon = new \thoulah\fontawesome\Icon();
+$this->title = Yii::t('app', 'ELENCO EMAIL INVIATE DAL PORTALE');
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="elemail-index">
+
+     
+
+    <p>
+       
+    </p>
+
+    <?php Pjax::begin(); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'nome',
+            'email:email',
+            'Soggetto',
+            'Corpo',
+            //'allegati',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+    <?php Pjax::end(); ?>
+
+</div>

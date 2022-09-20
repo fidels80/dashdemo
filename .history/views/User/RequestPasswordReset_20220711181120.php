@@ -1,0 +1,20 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model \app\models\ResetPasswordForm */
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
+yii::warning( $model);
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
+$this->title = 'Reset password';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="site-reset-password">
+  
+<h1>asdasdasdasdads</h1>
+</div>

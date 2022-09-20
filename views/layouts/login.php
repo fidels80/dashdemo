@@ -37,7 +37,7 @@ use yii\helpers\Html;
                 ]) ?>
             </div>
             <div class="col-4">
-                <?= Html::submitButton('Sign In', ['class' => 'btn btn-primary btn-block']) ?>
+                <?= Html::submitButton('Collegati', ['class' => 'btn btn-primary btn-block']) ?>
             </div>
         </div>
 
