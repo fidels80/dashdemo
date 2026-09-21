@@ -74,7 +74,7 @@ class Todoattivita extends \yii\db\ActiveRecord
         $model->campo = $campo;
         $model->valore_prima = is_scalar($prima) || $prima === null ? (string) $prima : json_encode($prima);
         $model->valore_dopo = is_scalar($dopo) || $dopo === null ? (string) $dopo : json_encode($dopo);
-        $model->data = date('Y-m-d H:i:s');
+        $model->data = new \yii\db\Expression('GETDATE()');
         return $model->save(false);
     }
 }

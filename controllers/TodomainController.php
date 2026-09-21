@@ -104,10 +104,10 @@ class TodomainController extends Controller
                 $model->reporter = Yii::$app->user->identity->username ?? null;
             }
             if ($model->hasAttribute('created_at') && empty($model->created_at)) {
-                $model->created_at = date('Y-m-d H:i:s');
+                $model->created_at = new \yii\db\Expression('GETDATE()');
             }
             if ($model->hasAttribute('updated_at')) {
-                $model->updated_at = date('Y-m-d H:i:s');
+                $model->updated_at = new \yii\db\Expression('GETDATE()');
             }
             if ($model->hasAttribute('posizione') && $model->posizione === null) {
                 $model->posizione = 0;
@@ -181,7 +181,7 @@ class TodomainController extends Controller
             $model->tags = implode(',', $model->tagValues);
 
             if ($model->hasAttribute('updated_at')) {
-                $model->updated_at = date('Y-m-d H:i:s');
+                $model->updated_at = new \yii\db\Expression('GETDATE()');
             }
 
             if ($model->save()) {
@@ -559,7 +559,7 @@ EOD;
             $commentModel->id_todo = $id_todo;
             $commentModel->id_commento = $id_commento;
             $commentModel->user = Yii::$app->user->identity->username;
-            $commentModel->data = date('Y-m-d H:i:s'); // Assicurati che 'data' venga impostata correttamente
+            $commentModel->data = new \yii\db\Expression('GETDATE()'); // Assicurati che 'data' venga impostata correttamente
             if ($commentModel->save()) {
                 // Successo: Ritorna la sezione dei commenti aggiornata
                 return $this->renderPartial('_comments', [
@@ -754,7 +754,7 @@ EOD;
         $before = (string) $model->stato;
         $model->stato = $stato;
         if ($model->hasAttribute('updated_at')) {
-            $model->updated_at = date('Y-m-d H:i:s');
+            $model->updated_at = new \yii\db\Expression('GETDATE()');
         }
         if (!$model->save(false)) {
             return ['success' => false, 'error' => 'Errore di salvataggio'];
@@ -845,7 +845,7 @@ EOD;
         }
 
         if ($model->hasAttribute('updated_at')) {
-            $model->updated_at = date('Y-m-d H:i:s');
+            $model->updated_at = new \yii\db\Expression('GETDATE()');
         }
         if (!$model->save(false)) {
             return ['success' => false, 'error' => 'Errore di salvataggio'];
@@ -920,7 +920,7 @@ EOD;
         $s->data_inizio = Yii::$app->request->post('data_inizio') ?: null;
         $s->data_fine = Yii::$app->request->post('data_fine') ?: null;
         $s->stato = Todosprint::STATO_PIANIFICATO;
-        $s->created_at = date('Y-m-d H:i:s');
+        $s->created_at = new \yii\db\Expression('GETDATE()');
 
         if ($s->save(false)) {
             return ['success' => true, 'id' => $s->id];
@@ -979,7 +979,7 @@ EOD;
         $old = (string) $model->sprint_id;
         $model->sprint_id = ($sprint === '' || $sprint === null) ? null : $sprint;
         if ($model->hasAttribute('updated_at')) {
-            $model->updated_at = date('Y-m-d H:i:s');
+            $model->updated_at = new \yii\db\Expression('GETDATE()');
         }
         $model->save(false);
 

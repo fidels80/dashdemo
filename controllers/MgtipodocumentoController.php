@@ -54,7 +54,7 @@ class MgtipodocumentoController extends Controller
         $model->attivo = true;
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->created_at = date('Y-m-d H:i:s');
+            $model->created_at = new \yii\db\Expression('GETDATE()');
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }

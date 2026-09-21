@@ -233,10 +233,10 @@ class MgDocumento extends \yii\db\ActiveRecord
                 $this->stato = 'bozza';
             }
             if ($insert) {
-                $this->created_at = date('Y-m-d H:i:s');
+                $this->created_at = new \yii\db\Expression('GETDATE()');
                 $this->created_by = Yii::$app->user->identity->username ?? null;
             }
-            $this->updated_at = date('Y-m-d H:i:s');
+            $this->updated_at = new \yii\db\Expression('GETDATE()');
             return true;
         }
         return false;
