@@ -70,6 +70,36 @@ class MganagraficaController extends Controller
         return $this->redirect(['index']);
     }
 
+    /**
+     * Creazione rapida di un'anagrafica (AJAX), usata dalla form documenti.
+     */
+    public function actionCreateAjax()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        if (!Yii::$app->request->isPost) {
+            return ['success' => false, 'error' => 'Richiesta non valida.'];
+        }
+
+        $model = new MgAnagrafica();
+        $model->attivo = true;
+        $model->load(Yii::$app->request->post(), '');
+
+        if ($model->save()) {
+            return [
+                'success' => true,
+                'anagrafica' => [
+                    'id' => (int) $model->id,
+                    'codice' => $model->codice,
+                    'ragione_sociale' => $model->ragione_sociale,
+                    'partita_iva' => $model->partita_iva,
+                ],
+            ];
+        }
+
+        return ['success' => false, 'errors' => $model->getErrors()];
+    }
+
     protected function findModel($id)
     {
         if (($model = MgAnagrafica::findOne($id)) !== null) {

@@ -205,7 +205,7 @@ dateClick: function(info) {
         clearTimeout(planningClickTimer);
         planningClickTimer = null;
         
-        var targetUrl = '/index.php?r=planning%2Fcreate' + (('/index.php?r=planning%2Fcreate'.indexOf('?') !== -1) ? '&' : '?') + 'data_attivita=' + info.dateStr;
+        var targetUrl = '$urlCreate' + (('$urlCreate'.indexOf('?') !== -1) ? '&' : '?') + 'data_attivita=' + info.dateStr;
         
         $('#modal-create').modal('show');
         // Ho messo l'HTML tutto su una riga qui sotto
@@ -214,7 +214,7 @@ dateClick: function(info) {
 },
 events: function(fetchInfo, successCallback, failureCallback) {
     $.ajax({
-        url: '/index.php?r=planning%2Feventsjson', 
+        url: '$urlPlanning', 
         type: 'GET', 
         dataType: 'json',
         data: { 

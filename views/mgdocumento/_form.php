@@ -45,8 +45,14 @@ $isNew = $model->isNewRecord;
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <?= $form->field($model, 'id_anagrafica')->dropDownList($anagrafiche, ['prompt' => 'Seleziona cliente/fornitore...']) ?>
+                </div>
+                <div class="col-md-1 d-flex align-items-center">
+                    <button type="button" class="btn btn-outline-success btn-sm mt-3" id="btn-nuovo-fornitore"
+                            title="Crea nuovo cliente/fornitore">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
                 <div class="col-md-4">
                     <?= $form->field($model, 'stato')->dropDownList($stati) ?>
@@ -145,6 +151,44 @@ $isNew = $model->isNewRecord;
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
                     <button type="button" class="btn btn-success" id="btn-salva-articolo"><i class="fas fa-save"></i> Crea articolo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale nuovo cliente/fornitore -->
+    <div class="modal fade" id="modal-nuovo-fornitore" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title text-white"><i class="fas fa-users"></i> Nuovo cliente/fornitore</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4"><div class="form-group"><label>Codice *</label><input type="text" id="nf-codice" class="form-control"></div></div>
+                        <div class="col-md-8"><div class="form-group"><label>Ragione sociale *</label><input type="text" id="nf-ragione" class="form-control"></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"><div class="form-group"><label>Partita IVA</label><input type="text" id="nf-piva" class="form-control"></div></div>
+                        <div class="col-md-4"><div class="form-group"><label>Città</label><input type="text" id="nf-citta" class="form-control"></div></div>
+                        <div class="col-md-4"><div class="form-group"><label>Tipo</label>
+                            <select id="nf-tipo" class="form-control">
+                                <option value="fornitore">Fornitore</option>
+                                <option value="cliente">Cliente</option>
+                                <option value="entrambi">Entrambi</option>
+                            </select>
+                        </div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><div class="form-group"><label>Telefono</label><input type="text" id="nf-telefono" class="form-control"></div></div>
+                        <div class="col-md-6"><div class="form-group"><label>Email</label><input type="text" id="nf-email" class="form-control"></div></div>
+                    </div>
+                    <div id="nf-error" class="text-danger small"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-success" id="btn-salva-fornitore"><i class="fas fa-save"></i> Crea</button>
                 </div>
             </div>
         </div>
@@ -298,6 +342,48 @@ $isNew = $model->isNewRecord;
         }, 'json').fail(function () {
             btn.prop('disabled', false);
             $('#na-error').text('Errore di rete.');
+        });
+    });
+
+    // --- NUOVO CLIENTE/FORNITORE IN LINEA ---
+    $('#btn-nuovo-fornitore').on('click', function () {
+        $('#nf-error').text('');
+        $('#nf-codice, #nf-ragione, #nf-piva, #nf-citta, #nf-telefono, #nf-email').val('');
+        $('#nf-tipo').val('fornitore');
+        $('#modal-nuovo-fornitore').modal('show');
+    });
+
+    $('#btn-salva-fornitore').on('click', function () {
+        var codice = $('#nf-codice').val().trim();
+        var ragione = $('#nf-ragione').val().trim();
+        if (!codice || !ragione) {
+            $('#nf-error').text('Codice e Ragione sociale sono obbligatori.');
+            return;
+        }
+        var data = {
+            codice: codice,
+            ragione_sociale: ragione,
+            partita_iva: $('#nf-piva').val(),
+            citta: $('#nf-citta').val(),
+            tipo: $('#nf-tipo').val(),
+            telefono: $('#nf-telefono').val(),
+            email: $('#nf-email').val(),
+            _csrf: (typeof yii !== 'undefined' ? yii.getCsrfToken() : '')
+        };
+        var btn = $(this).prop('disabled', true);
+        $.post('index.php?r=mganagrafica/create-ajax', data, function (res) {
+            btn.prop('disabled', false);
+            if (res && res.success) {
+                var a = res.anagrafica;
+                var opt = $('<option>').attr('value', a.id).text(a.ragione_sociale);
+                $('#mgdocumento-id_anagrafica').append(opt).val(String(a.id));
+                $('#modal-nuovo-fornitore').modal('hide');
+            } else {
+                $('#nf-error').text(res && res.errors ? JSON.stringify(res.errors) : (res.error || 'Errore di creazione.'));
+            }
+        }, 'json').fail(function () {
+            btn.prop('disabled', false);
+            $('#nf-error').text('Errore di rete.');
         });
     });
 

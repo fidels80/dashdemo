@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <form method="get" action="<?= Url::to(['index']) ?>" class="card card-body mb-3">
+    <?= Html::beginForm(['index'], 'get', ['class' => 'card card-body mb-3']) ?>
         <div class="row">
             <div class="col-md-3">
                 <?= Html::dropDownList('id_tipo', $filters['id_tipo'], $tipi, ['prompt' => 'Tipo documento...', 'class' => 'form-control']) ?>
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-filter"></i> Filtra</button>
             </div>
         </div>
-    </form>
+    <?= Html::endForm() ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

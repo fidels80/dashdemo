@@ -28,11 +28,11 @@ foreach ($menuItems as $it) {
     <?php endif; ?>
 
     <div class="card card-body mb-3">
-        <form method="get" action="<?= \yii\helpers\Url::to(['assegna']) ?>" class="form-inline">
+        <?= Html::beginForm(['assegna'], 'get', ['class' => 'form-inline']) ?>
             <label class="mr-2 font-weight-bold">Utente:</label>
             <?= Html::dropDownList('user_id', $user_id, $users, ['prompt' => 'Seleziona utente...', 'class' => 'form-control mr-2', 'style' => 'min-width: 320px;']) ?>
             <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Carica</button>
-        </form>
+        <?= Html::endForm() ?>
     </div>
 
     <?php if ($user !== null): ?>

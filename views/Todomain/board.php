@@ -33,7 +33,7 @@ $palette = ['#0d6efd', '#fd7e14', '#6f42c1', '#20c997', '#dc3545', '#198754', '#
         </div>
     </div>
 
-    <form method="get" action="<?= Url::to(['board']) ?>" class="card card-body mb-3">
+    <?= Html::beginForm(['board'], 'get', ['class' => 'card card-body mb-3']) ?>
         <div class="row">
             <div class="col-md-3 mb-2">
                 <input type="text" name="q" class="form-control" placeholder="Cerca (id, descrizione, tag)..."
@@ -89,7 +89,7 @@ $palette = ['#0d6efd', '#fd7e14', '#6f42c1', '#20c997', '#dc3545', '#198754', '#
                 <a href="<?= Url::to(['board']) ?>" class="text-muted small"><i class="fas fa-times"></i> Svuota filtri</a>
             </div>
         <?php endif; ?>
-    </form>
+    <?= Html::endForm() ?>
 
     <div class="jira-board" id="jira-board">
         <?php $i = 0; foreach ($stati as $stato): ?>
