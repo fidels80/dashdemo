@@ -7,6 +7,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use PragmaRX\Google2FA\Google2FA;
 
 /**
  * User model
@@ -26,7 +27,7 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
-
+    
 
     /**
      * @inheritdoc
@@ -55,13 +56,22 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
             [['grid_color','sidebar_color','gruppo'],'string'],
+            // AGGIUNTO L'EMAIL QUI SOTTO:
+            [['email'], 'email'],
+            [['email'], 'string', 'max' => 255],
             [['reports','moduli','piva','cd_cli','password_reset_token','password_hash',
-            ],'string'],
+            'az_grp'],'string'],
             [['username'],'string','max'=>30],
             [ ['file'],'file'],
-            ['lastlogin','datetime']
+            ['lastlogin','safe'],
+            [['ischief' ,'istourmanager'],'integer'],
+            [['cd_agente'],'string','max'=>3],
+            [['two_factor_secret'], 'string'],
+            [['two_factor_enabled'], 'boolean'],
+            [['two_factor_verified_at'], 'integer'],
             //,['rest',integer]
-
+ 
+   
         ];
     }
 
@@ -227,4 +237,153 @@ class User extends ActiveRecord implements IdentityInterface
            return false;
         }
      }
+
+    /**
+     * Ritorna la lista dei soli Tour Manager attivi
+     * @return array
+     */
+    /**
+     * Ritorna un array [id => username] dei soli utenti abilitati come Tour Manager
+     * @return array
+     */
+    public static function getTourManagerList()
+    {
+        return \yii\helpers\ArrayHelper::map(
+            static::find()
+                ->where([
+                    'status' => self::STATUS_ACTIVE,
+                    'istourmanager' => 1 // <--- Assicurati che sia scritto correttamente qui
+                ])
+                ->orderBy('username')
+                ->all(),
+            'id',
+            'username'
+        );
+    }
+    /**
+     * Questo evento viene lanciato SUBITO DOPO che Yii2 ha caricato i dati dal Database.
+     * Serve per convertire i valori binari sporchi di SQL Server in veri interi (1 o 0)
+     * in modo che la checkbox nel Form li legga correttamente.
+     */
+    public function afterFind()
+    {
+        parent::afterFind();
+
+        // Forza la conversione del campo ischief
+        if ($this->ischief !== null) {
+            $this->ischief = (int) $this->ischief;
+        }
+
+        // Forza la conversione del campo istourmanager
+        if ($this->istourmanager !== null) {
+            $this->istourmanager = (int) $this->istourmanager;
+        }
+
+        if ($this->hasAttribute('two_factor_enabled') && $this->two_factor_enabled !== null) {
+            $this->two_factor_enabled = (int) $this->two_factor_enabled;
+        }
+    }
+
+    /**
+     * Questo evento viene lanciato PRIMA che Yii2 salvi i dati nel Database.
+     * Assicuriamoci che i valori siano puliti (0 o 1) per il campo BIT di SQL Server.
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            $this->ischief = $this->ischief ? 1 : 0;
+            $this->istourmanager = $this->istourmanager ? 1 : 0;
+
+            if ($this->hasAttribute('two_factor_enabled')) {
+                $this->two_factor_enabled = $this->two_factor_enabled ? 1 : 0;
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    // ===== 2FA METHODS =====
+
+    /**
+     * @return Google2FA
+     */
+    public static function getGoogle2FA()
+    {
+        return new Google2FA();
+    }
+
+    /**
+     * Genera un nuovo secret per 2FA e lo salva nel DB.
+     * Restituisce il secret generato.
+     */
+    public function generateTwoFactorSecret()
+    {
+        $google2fa = self::getGoogle2FA();
+        $secret = $google2fa->generateSecretKey();
+        $this->two_factor_secret = $secret;
+        $this->save(false);
+        return $secret;
+    }
+
+    /**
+     * Verifica il codice TOTP inserito dall'utente.
+     */
+    public function verifyTwoFactorCode($code)
+    {
+        if (empty($this->two_factor_secret)) {
+            return false;
+        }
+        $google2fa = self::getGoogle2FA();
+        return $google2fa->verifyKey($this->two_factor_secret, $code, 4);
+    }
+
+    /**
+     * Genera l'URL per il QR code.
+     */
+    public function getTwoFactorQRCodeUrl()
+    {
+        $issuer = Yii::$app->name;
+        $label = $issuer . ':' . $this->email;
+        return 'otpauth://totp/' . rawurlencode($label)
+            . '?secret=' . $this->two_factor_secret
+            . '&issuer=' . rawurlencode($issuer)
+            . '&algorithm=SHA1&digits=6&period=30';
+    }
+
+    /**
+     * Attiva la 2FA per questo utente (dopo aver verificato un codice valido).
+     */
+    public function enableTwoFactor($code)
+    {
+        if ($this->verifyTwoFactorCode($code)) {
+            $this->two_factor_enabled = true;
+            $this->two_factor_verified_at = time();
+            return $this->save(false);
+        }
+        return false;
+    }
+
+    /**
+     * Disattiva la 2FA (richiede la password corrente).
+     */
+    public function disableTwoFactor()
+    {
+        $this->two_factor_enabled = false;
+        $this->two_factor_secret = null;
+        $this->two_factor_verified_at = null;
+        return $this->save(false);
+    }
+
+    /**
+     * Restituisce true se la 2FA è attiva per questo utente.
+     */
+    public function isTwoFactorEnabled()
+    {
+        if (!$this->hasAttribute('two_factor_enabled')) {
+            return false;
+        }
+        return (bool) $this->two_factor_enabled && !empty($this->two_factor_secret);
+    }
 }

@@ -1,7 +1,12 @@
 {
     "name": "yiisoft/yii2-app-basic",
     "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+    "keywords": [
+        "yii2",
+        "framework",
+        "basic",
+        "project template"
+    ],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -47,7 +52,32 @@
         "kartik-v/yii2-password": "dev-master",
         "bizley/cookiemonster": "^1.1",
         "yiimaker/yii2-social-share": "^2.3",
-        "tomlutzenberger/yii2-smartsupp-chat": "*"
+        "tomlutzenberger/yii2-smartsupp-chat": "*",
+        "yii2mod/yii2-swagger": "*",
+        "kartik-v/yii2-export": "dev-master",
+        "wbraganca/yii2-dynamicform": "*",
+        "kartik-v/yii2-widget-depdrop": "dev-master",
+        "phpoffice/phpspreadsheet": "^5.1",
+        "unclead/yii2-multiple-input": "~2.0",
+        "floor12/yii2-summernote": "^1.0",
+        "kartik-v/yii2-tabs-x": "dev-master",
+        "moment/moment": "^2.29",
+        "tecnickcom/tcpdf": "^6.7",
+        "mikehaertl/phpwkhtmltopdf": "^2.5",
+        "kartik-v/yii2-tree-manager": "dev-master",
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "firephp/firephp-core": "^0.5.3",
+        "garethp/php-ews": "^0.10.1",
+        "2amigos/yii2-ckeditor-widget": "2.1",
+        "kartik-v/yii2-dynagrid": "dev-master",
+        "kartik-v/yii2-nav-x": "dev-master",
+        "kartik-v/yii2-dialog": "^1.0",
+        "kartik-v/yii2-editable": "dev-master",
+        "kartik-v/yii2-widget-touchspin": "dev-master",
+        "guzzlehttp/guzzle": "^7.10",
+        "smalot/pdfparser": "^2.12",
+        "yiisoft/yii2-bootstrap5": "^2.0",
+        "pragmarx/google2fa": "^9.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -59,15 +89,23 @@
         "symfony/browser-kit": ">=2.7 <=4.2.4",
         "codeception/module-filesystem": "^1.0.0",
         "codeception/module-yii2": "^1.0.0",
-        "codeception/module-asserts": "^1.0.0"
+        "codeception/module-asserts": "^1.0.0",
+        "bizley/migration": "^4.4",
+        "yiisoft/yii2-apidoc": "^3.0"
     },
+    
     "config": {
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
         },
         "allow-plugins": {
-            "yiisoft/yii2-composer": true
+            "yiisoft/yii2-composer": true,
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
+        },
+        "audit": {
+            "block-insecure": false
         }
     },
     "scripts": {

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\ContactForm;
+use app\models\Elemail;
 use app\models\LoginForm;
 use app\models\ResetPasswordForm;
 use app\models\SignupForm;
@@ -17,7 +18,9 @@ use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\UploadedFile;
-use app\models\Elemail;
+use TCPDF;
+use mikehaertl\wkhtmlto\Pdf;
+use yii\web\HttpException;
 
 class SiteController extends Controller
 {
@@ -29,17 +32,17 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only'  => ['logout'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
+                        'allow'   => true,
+                        'roles'   => ['@'],
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
+            'verbs'  => [
+                'class'   => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -53,11 +56,11 @@ class SiteController extends Controller
     public function actions()
     {
         return [
-            'error' => [
+            'error'   => [
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class'           => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
@@ -80,16 +83,33 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        //echo 'asdasdada';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-      //      yii::warning(Yii::$app->request->post());
-            return $this->goBack();
+        // Se c'e' una verifica 2FA in sospeso, vai direttamente alla verifica
+        if (Yii::$app->session->has('pending_2fa_user_id')) {
+            return $this->redirect(['two-factor/verify']);
         }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post())) {
+            $result = $model->login();
+
+            if ($result === '2fa') {
+                Yii::$app->session->set('pending_2fa_user_id', $model->pendingUserId);
+                Yii::$app->session->set('pending_2fa_remember', $model->rememberMe);
+                return $this->redirect(['two-factor/verify']);
+            }
+
+            if ($result) {
+                // --- MODIFICA QUI ---
+                // Invece di return $this->goBack();
+                return $this->redirect(['planning/index']);
+            }
+        }
+
+        $model->password = '';
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -102,6 +122,17 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
+  $query2 = yii::$app->db
+    ->createCommand("
+update doc_head set is_locked=null,locked_by=null where locked_by=:usr "
+    )->bindValues([ ':usr' => Yii::$app->user->identity->username]);
+$query2->execute();
+$query2 = yii::$app->db
+    ->createCommand("
+update gac_sottoprv set is_locked=null,locked_by=null where locked_by=:usr "
+    )->bindValues([':usr' => Yii::$app->user->identity->username]);
+$query2->execute();
+
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -135,42 +166,48 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionAddAdmin()
+    public function actionResetadmin()
     {
         $model = User::find()->where(['username' => 'admin'])->one();
         //var_dump($model);
-        if (empty($model)) {
-            $user = new User();
-            $user->username = 'admin';
-            $user->email = 'marco.cardinale@ilvbc.it';
-            $user->setPassword('missori');
-            $user->generateAuthKey();
-            if ($user->save()) {
-                echo 'good';
-            }
+        // if (empty($model)) {
+        //  $user = new User();
+        // $user->username = 'admin';
+        $model->email = 'temp.mail@ilvbc.it';
+        $model->setPassword('lineaverde');
+        //$user->generateAuthKey();
+        if ($model->save(false)) {
+            die('good');
+        } else {
+            die('fail');
+
         }
+        //}
     }
 
     public function actionSignup()
     {
-
-        $user = new User();
-
         $model = new SignupForm();
+
         if ($model->load(Yii::$app->request->post())) {
 
-            // return (var_dump($model));
+            // Se la registrazione va a buon fine
             if ($user = $model->signup()) {
 
-       //         $t = Yii::$app->runAction('log/set', ['data' => $model,
-         //           'op' => $model->className() . '-->' . $this->action->id]);
+                Yii::$app->session->setFlash('success', 
+                'Registrazione completata con successo!');
 
-                if ($user->save()) {
-                 //   echo 'good';
-                }
-
+                // Logga l'utente e mandalo alla home
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
+                }
+            } else {
+                // SE FALLISCE: Recuperiamo gli errori dal modello e creiamo il Flash
+                $errors = \yii\helpers\ArrayHelper::flatten($model->getErrors());
+                if (!empty($errors)) {
+                    Yii::$app->session->setFlash('errore', "Attenzione: <br><ul><li>" . implode("</li><li>", $errors) . "</li></ul>");
+                } else {
+                    Yii::$app->session->setFlash('errore', "Errore generico durante la registrazione.");
                 }
             }
         }
@@ -265,30 +302,25 @@ var_dump ('giampaolo.schiappoli@programma2000.com');
         // ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
 
         $items = [];
-
         $model = User::find()->where(['username' => \Yii::$app->user->identity->username])->
             AsArray()->one();
-
-        $moduli = unserialize($model['moduli']);
+        $moduli  = unserialize($model['moduli']);
         $moduli2 = unserialize($model['moduli']);
-
         //   yii::error($moduli);
-        if ($model['level'] == 100) {
+        if (100 == $model['level']) {
             $adm_voicem = [];
-            $adm_menu = xmenu::find()->AsArray()->all();
+            $adm_menu   = xmenu::find()->AsArray()->all();
             foreach ($adm_menu as $value) {
                 $adm_voicem[] = ($value['voce']);
-
             }
 
             $moduli = $adm_voicem;
-       //     yii::error($adm_voicem);
+            //     yii::error($adm_voicem);
         }
 
-        if ($moduli == false) {
+        if (false == $moduli) {
             $moduli = 'HOME';
         }
-
         $menu = xmenu::find()->where(
 //'<=','level',$model['level']
             'level<=:level ', //and id<>7
@@ -300,8 +332,7 @@ var_dump ('giampaolo.schiappoli@programma2000.com');
             )
             ->andwhere(['voce' => $moduli])
             ->AsArray()->all();
-      //  yii::error($menu);
-
+       // yii::error($menu);
         foreach ($menu as $value) {
             # code...
             $xsm = Xsubmenu::find()->where(
@@ -316,64 +347,61 @@ var_dump ('giampaolo.schiappoli@programma2000.com');
                 ->andwhere(['voce' => $moduli2])
                 ->AsArray()->all();
             $sb = [];
-
+         
             if (count($xsm) > 0) {
                 foreach ($xsm as $Svalue) {
                     # code...
                     $items3 = array(
                         'label' => $Svalue['voce'],
-                        'url' => Url::toRoute($Svalue['url']),
+                        'url'   => Url::toRoute($Svalue['url']),
                         //          'target' => 'self_',
-                        'icon' => $Svalue['icona'],
+                        'icon'  => $Svalue['icona'],
                     );
-
                     $sb[] = $items3;
                 }
             }
+           // yii::warning($sb);
 
             $items2 = array(
                 'label' => $value['voce'],
-                'url' => Url::toRoute($value['url']),
+                'url'   => Url::toRoute($value['url']),
                 //    'target' => 'self_',
-                'icon' => $value['icona'],
+                'icon'  => $value['icona'],
                 'items' => $sb,
-
+                'class'=> 'menu - text'
             );
-
             $items[] = $items2;
         }
-
         $items[] = array(
             'label' => 'Utente', //. Yii::$app->user->id,
-            'url' => Url::toRoute(['/user/update', 'id' => Yii::$app->user->id]),
+            'url'   => Url::toRoute(['/user/update', 'id' => Yii::$app->user->id]),
             //    'target' => 'self_',
-            'icon' => 'user', //$value['icona'],
-            'items' => $sb,
-
+            'icon'  => 'user', //$value['icona'],
+            //'items' => $sb,
         );
-
         $items[] = array(
-    'label' => 'Ultimo Accesso',
-    'icon' => 'calendar',
-);
-
-        $items[]=array(
-'label' =>date_format(date_create($ris['lastlogin']),"d/m/Y H:i"),
-'icon'=>'sign-out'
+            'label' => 'Ultimo Accesso',
+            'icon'  => 'calendar',
         );
+        $ris = (new \yii\db\Query())
+            ->select(['cd_cli', 'email', 'username', 'piva', 'lastlogin'])
+            ->from('user')
+            ->where(['id' => Yii::$app->user->getId()])
+            ->one();
+        $items[] = array(
+            'label' => date_format(date_create($ris['lastlogin']), "d/m/Y H:i"),
+            'icon'  => 'fa-solid fa-right-from-bracket',
+        ); 
 
         if ($model['level'] >= 100) {
             $items2[] = array(
                 'label' => 'ADMIN UTENTI', //. Yii::$app->user->id,
                 'url' => Url::toRoute(['/user']),
                 //    'target' => 'self_',
-                'icon' => 'user', //$value['icona'],
+                'icon'  => 'user', //$value['icona'],
                 //  'items' => $sb,
- 
             );
-
             $sbz = [];
-
 /*$itemsz3 = array(
 'label' =>  'voce' ,
 'url' =>'',
@@ -384,101 +412,96 @@ var_dump ('giampaolo.schiappoli@programma2000.com');
             $admn = xsubmenu::find()->where('level>=:level ', //and id<>7
                 [':level' => 100]
             )->AsArray()->all();
-//var_dump($admn);
+//yii::warning($admn);
             foreach ($admn as $Avalue) {
                 $itemsz3 = array(
                     'label' => $Avalue['voce'],
-                    'url' => Url::toRoute($Avalue['url']),
+                    'url'   => Url::toRoute($Avalue['url']),
                     //          'target' => 'self_',
-                    'icon' => $Avalue['icona'],
+                    'icon'  => $Avalue['icona'],
                 );
 
                 $sbz[] = $itemsz3;
             }
 
             $items[] = array('label' => 'ADMIN panel',
-                'icon' => 'user',
+                'icon'                   => 'user',
                 //'items' => array(
                 //'label' => 'ADMIN UTENTI', //. Yii::$app->user->id,
                 //   'url' => Url::toRoute(['/user']),
                 //    'target' => 'self_',
-                'icon' => 'user', //$value['icona'],
+                'icon'                   => 'user', //$value['icona'],
                 'items' => $sbz, //array('label'=>'1'),
 
             )
             ;
 
         }
-
+      //  yii::error($items);
         //  yii::warning(array_values(array_filter(array_unique($items, SORT_REGULAR))));
         return (array_values(array_filter(array_unique($items, SORT_REGULAR))));
     }
 
-
-
-
-
-    public function actionContatti($render=null,$id=null)
+    public function actionContatti($render = null, $id = null,$periodo=null)
     {
-       
-       
+
         $model = new ContactForm();
-         if ($model->load(Yii::$app->request->post())){
+        if ($model->load(Yii::$app->request->post())) {
 
-    $model->files = UploadedFile::getInstances($model, 'files');
-$path = Yii::getAlias('@webroot') . '/uploads/mail2/';
-$t='';
-$atc=[];
-$atc2=$model->files;
-foreach ($model->files as $file) {
-    $file->saveAs(
-     // $t=$t. 
-      ( $path . $file->baseName . '.' . $file->extension));
-      //.'<br>';
-    //$model->path = $path . $model->files->baseName . '.' . $model->files->extension;
-    
-$atc[]=( $path . $file->baseName . '.' . $file->extension);
+            $model->files = UploadedFile::getInstances($model, 'files');
+            $path         = Yii::getAlias('@webroot') . '/uploads/mail2/';
+            $t            = '';
+            $atc          = [];
+            $atc2         = $model->files;
+
+            foreach ($model->files as $file) {
+                $file->saveAs(
+                    // $t=$t.
+                    ($path . $file->baseName . '.' . $file->extension));
+                //.'<br>';
+                //$model->path = $path . $model->files->baseName . '.' . $model->files->extension;
+
+                $atc[] = ($path . $file->baseName . '.' . $file->extension);
+            }
+$request = Yii::$app->request;
+if ($request->get('periodo') !== null) {
+    $model->contact(Yii::$app->params['adminEmail'], $atc, $atc2, 1);
+} else {
+    $model->contact(Yii::$app->params['adminEmail'], $atc, $atc2, 0);
 }
- 
-$model->contact(Yii::$app->params['adminEmail'],$atc,$atc2);
 
-  
-           
 //die("inviata");
-         
-$elemail= new Elemail();
-$elemail->setAttribute('nome', $model->name);
-$elemail->setAttribute('email', $model->email);
-$elemail->setAttribute('Soggetto',$model->subject);
-$elemail->setAttribute('Corpo', $model->body);
 
+            $elemail = new Elemail();
+            $elemail->setAttribute('nome', $model->name);
+            $elemail->setAttribute('email', $model->email);
+            $elemail->setAttribute('Soggetto', $model->subject);
+            $elemail->setAttribute('Corpo', $model->body);
 
-$elemail->setAttribute('allegati', implode("|", $atc));
-$elemail->save(false);
+            $elemail->setAttribute('allegati', implode("|", $atc));
+            $elemail->save(false);
 
-if (is_null($render)==false){
-return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
+            if (is_null($render) == false) {
+                return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
 
-}else{
-    Yii::$app->session->setFlash('contactFormSubmitted');
+            } else {
+                Yii::$app->session->setFlash('contactFormSubmitted');
 
-    return $this->refresh();
-}
-
-
+                return $this->refresh();
+            }
 
         }
-        
-        if (is_null($render)==false){
-return $this->renderajax('contatti', [
-    'model' => $model,
-]);
 
-        }else{
-    return $this->render('contatti', [
-        'model' => $model,
-    ]);
-}
+        if (is_null($render) == false) {
+            return $this->renderajax('contatti', [
+                'model' => $model,
+            ]);
+
+        } else {
+            return $this->render('contatti', [
+                'model' => $model,
+            ]);
+        }
 
         //return $this->render('contatti', ['model' => $model]);
 
@@ -486,93 +509,100 @@ return $this->renderajax('contatti', [
 
     public function actionGetexp()
     {
+
+        $isFa      = 'default value';
+        $isFa      = $isFa ?? 'default value';
+        $pdfHeader = '';
+        $pdfFooter = '';
+        $title     = null;
+
         $defaultExportConfig = [
-            GridView::HTML => [
-                'label' => Yii::t('kvgrid', 'HTML'),
-                'icon' => $isFa ? 'file-text' : 'floppy-saved',
-                'iconOptions' => ['class' => 'text-info'],
-                'showHeader' => true,
+            GridView::HTML  => [
+                'label'           => Yii::t('kvgrid', 'HTML'),
+                'icon'            => $isFa ? 'file-text' : 'floppy-saved',
+                'iconOptions'     => ['class' => 'text-info'],
+                'showHeader'      => true,
                 'showPageSummary' => true,
-                'showFooter' => true,
-                'showCaption' => true,
-                'filename' => Yii::t('kvgrid', 'grid-export'),
-                'alertMsg' => Yii::t('kvgrid', 'The HTML export file will be generated for download.'),
-                'options' => ['title' => Yii::t('kvgrid', 'Hyper Text Markup Language')],
-                'mime' => 'text/html',
-                'config' => [
+                'showFooter'      => true,
+                'showCaption'     => true,
+                'filename'        => Yii::t('kvgrid', 'grid-export'),
+                'alertMsg'        => Yii::t('kvgrid', 'The HTML export file will be generated for download.'),
+                'options'         => ['title' => Yii::t('kvgrid', 'Hyper Text Markup Language')],
+                'mime'            => 'text/html',
+                'config'          => [
                     'cssFile' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',
                 ],
             ],
-            GridView::CSV => [
-                'label' => Yii::t('kvgrid', 'CSV'),
-                'icon' => $isFa ? 'file-code-o' : 'floppy-open',
-                'iconOptions' => ['class' => 'text-primary'],
-                'showHeader' => true,
+            GridView::CSV   => [
+                'label'           => Yii::t('kvgrid', 'CSV'),
+                'icon'            => $isFa ? 'file-code-o' : 'floppy-open',
+                'iconOptions'     => ['class' => 'text-primary'],
+                'showHeader'      => true,
                 'showPageSummary' => true,
-                'showFooter' => true,
-                'showCaption' => true,
-                'filename' => Yii::t('kvgrid', 'grid-export'),
-                'alertMsg' => Yii::t('kvgrid', 'The CSV export file will be generated for download.'),
-                'options' => ['title' => Yii::t('kvgrid', 'Comma Separated Values')],
-                'mime' => 'application/csv',
-                'config' => [
+                'showFooter'      => true,
+                'showCaption'     => true,
+                'filename'        => Yii::t('kvgrid', 'grid-export'),
+                'alertMsg'        => Yii::t('kvgrid', 'The CSV export file will be generated for download.'),
+                'options'         => ['title' => Yii::t('kvgrid', 'Comma Separated Values')],
+                'mime'            => 'application/csv',
+                'config'          => [
                     'colDelimiter' => ",",
                     'rowDelimiter' => "\r\n",
                 ],
             ],
-            GridView::TEXT => [
-                'label' => Yii::t('kvgrid', 'Text'),
-                'icon' => $isFa ? 'file-text-o' : 'floppy-save',
-                'iconOptions' => ['class' => 'text-muted'],
-                'showHeader' => true,
+            GridView::TEXT  => [
+                'label'           => Yii::t('kvgrid', 'Text'),
+                'icon'            => $isFa ? 'file-text-o' : 'floppy-save',
+                'iconOptions'     => ['class' => 'text-muted'],
+                'showHeader'      => true,
                 'showPageSummary' => true,
-                'showFooter' => true,
-                'showCaption' => true,
-                'filename' => Yii::t('kvgrid', 'grid-export'),
-                'alertMsg' => Yii::t('kvgrid', 'The TEXT export file will be generated for download.'),
-                'options' => ['title' => Yii::t('kvgrid', 'Tab Delimited Text')],
-                'mime' => 'text/plain',
-                'config' => [
+                'showFooter'      => true,
+                'showCaption'     => true,
+                'filename'        => Yii::t('kvgrid', 'grid-export'),
+                'alertMsg'        => Yii::t('kvgrid', 'The TEXT export file will be generated for download.'),
+                'options'         => ['title' => Yii::t('kvgrid', 'Tab Delimited Text')],
+                'mime'            => 'text/plain',
+                'config'          => [
                     'colDelimiter' => "\t",
                     'rowDelimiter' => "\r\n",
                 ],
             ],
             GridView::EXCEL => [
-                'label' => Yii::t('kvgrid', 'Excel'),
-                'icon' => $isFa ? 'file-excel-o' : 'floppy-remove',
-                'iconOptions' => ['class' => 'text-success'],
-                'showHeader' => true,
+                'label'           => Yii::t('kvgrid', 'Excel'),
+                'icon'            => $isFa ? 'file-excel-o' : 'floppy-remove',
+                'iconOptions'     => ['class' => 'text-success'],
+                'showHeader'      => true,
                 'showPageSummary' => true,
-                'showFooter' => true,
-                'showCaption' => true,
-                'filename' => Yii::t('kvgrid', 'grid-export'),
-                'alertMsg' => Yii::t('kvgrid', 'The EXCEL export file will be generated for download.'),
-                'options' => ['title' => Yii::t('kvgrid', 'Microsoft Excel 95+')],
-                'mime' => 'application/vnd.ms-excel',
-                'config' => [
+                'showFooter'      => true,
+                'showCaption'     => true,
+                'filename'        => Yii::t('kvgrid', 'grid-export'),
+                'alertMsg'        => Yii::t('kvgrid', 'The EXCEL export file will be generated for download.'),
+                'options'         => ['title' => Yii::t('kvgrid', 'Microsoft Excel 95+')],
+                'mime'            => 'application/vnd.ms-excel',
+                'config'          => [
                     'worksheet' => Yii::t('kvgrid', 'ExportWorksheet'),
-                    'cssFile' => '',
+                    'cssFile'   => '',
                 ],
             ],
-            GridView::PDF => [
-                'label' => Yii::t('kvgrid', 'PDF'),
-                'icon' => $isFa ? 'file-pdf-o' : 'floppy-disk',
-                'iconOptions' => ['class' => 'text-danger'],
-                'showHeader' => true,
+            GridView::PDF   => [
+                'label'           => Yii::t('kvgrid', 'PDF'),
+                'icon'            => $isFa ? 'file-pdf-o' : 'floppy-disk',
+                'iconOptions'     => ['class' => 'text-danger'],
+                'showHeader'      => true,
                 'showPageSummary' => true,
-                'showFooter' => true,
-                'showCaption' => true,
-                'filename' => Yii::t('kvgrid', 'grid-export'),
-                'alertMsg' => Yii::t('kvgrid', 'The PDF export file will be generated for download.'),
-                'options' => ['title' => Yii::t('kvgrid', 'Portable Document Format')],
-                'mime' => 'application/pdf',
-                'config' => [
-                    'mode' => 'c',
-                    'format' => 'A4-L',
-                    'destination' => 'D',
-                    'marginTop' => 20,
-                    'marginBottom' => 20,
-                    'cssInline' => '.kv-wrap{padding:20px;}' .
+                'showFooter'      => true,
+                'showCaption'     => true,
+                'filename'        => Yii::t('kvgrid', 'grid-export'),
+                'alertMsg'        => Yii::t('kvgrid', 'The PDF export file will be generated for download.'),
+                'options'         => ['title' => Yii::t('kvgrid', 'Portable Document Format')],
+                'mime'            => 'application/pdf',
+                'config'          => [
+                    'mode'          => 'c',
+                    'format'        => 'A4-L',
+                    'destination'   => 'D',
+                    'marginTop'     => 20,
+                    'marginBottom'  => 20,
+                    'cssInline'     => '.kv-wrap{padding:20px;}' .
                     '.kv-align-center{text-align:center;}' .
                     '.kv-align-left{text-align:left;}' .
                     '.kv-align-right{text-align:right;}' .
@@ -582,7 +612,7 @@ return $this->renderajax('contatti', [
                     '.kv-page-summary{border-top:4px double #ddd;font-weight: bold;}' .
                     '.kv-table-footer{border-top:4px double #ddd;font-weight: bold;}' .
                     '.kv-table-caption{font-size:1.5em;padding:8px;border:1px solid #ddd;border-bottom:none;}',
-                    'methods' => [
+                    'methods'       => [
                         'SetHeader' => [
                             ['odd' => $pdfHeader, 'even' => $pdfHeader],
                         ],
@@ -590,32 +620,32 @@ return $this->renderajax('contatti', [
                             ['odd' => $pdfFooter, 'even' => $pdfFooter],
                         ],
                     ],
-                    'options' => [
-                        'title' => $title,
-                        'subject' => Yii::t('kvgrid', 'PDF export generated by kartik-v/yii2-grid extension'),
+                    'options'       => [
+                        'title'    => $title,
+                        'subject'  => Yii::t('kvgrid', 'PDF export generated by kartik-v/yii2-grid extension'),
                         'keywords' => Yii::t('kvgrid', 'krajee, grid, export, yii2-grid, pdf'),
                     ],
                     'contentBefore' => '',
-                    'contentAfter' => '',
+                    'contentAfter'  => '',
                 ],
             ],
-            GridView::JSON => [
-                'label' => Yii::t('kvgrid', 'JSON'),
-                'icon' => $isFa ? 'file-code-o' : 'floppy-open',
-                'iconOptions' => ['class' => 'text-warning'],
-                'showHeader' => true,
+            GridView::JSON  => [
+                'label'           => Yii::t('kvgrid', 'JSON'),
+                'icon'            => $isFa ? 'file-code-o' : 'floppy-open',
+                'iconOptions'     => ['class' => 'text-warning'],
+                'showHeader'      => true,
                 'showPageSummary' => true,
-                'showFooter' => true,
-                'showCaption' => true,
-                'filename' => Yii::t('kvgrid', 'grid-export'),
-                'alertMsg' => Yii::t('kvgrid', 'The JSON export file will be generated for download.'),
-                'options' => ['title' => Yii::t('kvgrid', 'JavaScript Object Notation')],
-                'mime' => 'application/json',
-                'config' => [
-                    'colHeads' => [],
+                'showFooter'      => true,
+                'showCaption'     => true,
+                'filename'        => Yii::t('kvgrid', 'grid-export'),
+                'alertMsg'        => Yii::t('kvgrid', 'The JSON export file will be generated for download.'),
+                'options'         => ['title' => Yii::t('kvgrid', 'JavaScript Object Notation')],
+                'mime'            => 'application/json',
+                'config'          => [
+                    'colHeads'     => [],
                     'slugColHeads' => false,
                     'jsonReplacer' => null,
-                    'indentSpace' => 4,
+                    'indentSpace'  => 4,
                 ],
             ],
         ];
@@ -640,28 +670,26 @@ return $this->renderajax('contatti', [
         //  return serialize($_POST);
 
 /*
- public $name;
-    public $email;
-    public $subject;
-    public $body;
-    public $verifyCode;
-    public $files;
-*/
-       
+public $name;
+public $email;
+public $subject;
+public $body;
+public $verifyCode;
+public $files;
+ */
+
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post())  
-) {
-      $model->files = UploadedFile::getInstance($model, 'files');
-      $path = Yii::getAlias('@webroot') . '/uploads/mail/';
+        if ($model->load(Yii::$app->request->post())
+        ) {
+            $model->files = UploadedFile::getInstance($model, 'files');
+            $path         = Yii::getAlias('@webroot') . '/uploads/mail/';
 
-$model->files->saveAs( $path . $model->files->baseName . '.' . $model->files->extension);
-$model->path =  $path . $model->files->baseName . '.' . $model->files->extension;
-        $model->contact(Yii::$app->params['adminEmail']);
+            $model->files->saveAs($path . $model->files->baseName . '.' . $model->files->extension);
+            $model->path = $path . $model->files->baseName . '.' . $model->files->extension;
+            $model->contact(Yii::$app->params['adminEmail']);
             Yii::$app->session->setFlash('contactFormSubmitted');
-            
 
-
-            return $model->files; 
+            return $model->files;
             //$this->refresh();
         }
         return $this->render('contatti', [
@@ -670,46 +698,39 @@ $model->path =  $path . $model->files->baseName . '.' . $model->files->extension
 
     }
 
-
     public function actionAssocia()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post())){
+        if ($model->load(Yii::$app->request->post())) {
 
-    $model->files = UploadedFile::getInstances($model, 'files');
-$path = Yii::getAlias('@webroot') . '/uploads/mail2/';
-$t='';
-$atc=[];
-$atc2=$model->files;
-foreach ($model->files as $file) {
-    $file->saveAs(
-     // $t=$t. 
-      ( $path . $file->baseName . '.' . $file->extension));
-      //.'<br>';
-    //$model->path = $path . $model->files->baseName . '.' . $model->files->extension;
-    
-$atc[]=( $path . $file->baseName . '.' . $file->extension);
-}
- 
-$model->contact(Yii::$app->params['adminEmail'],$atc,$atc2);
+            $model->files = UploadedFile::getInstances($model, 'files');
+            $path         = Yii::getAlias('@webroot') . '/uploads/mail2/';
+            $t            = '';
+            $atc          = [];
+            $atc2         = $model->files;
+            foreach ($model->files as $file) {
+                $file->saveAs(
+                    // $t=$t.
+                    ($path . $file->baseName . '.' . $file->extension));
+                //.'<br>';
+                //$model->path = $path . $model->files->baseName . '.' . $model->files->extension;
 
-  
+                $atc[] = ($path . $file->baseName . '.' . $file->extension);
+            }
+
+            $model->contact(Yii::$app->params['adminEmail'], $atc, $atc2);
+
             Yii::$app->session->setFlash('contactFormSubmitted');
 //die("inviata");
 
+            $elemail = new Elemail();
+            $elemail->setAttribute('nome', $model->name);
+            $elemail->setAttribute('email', $model->email);
+            $elemail->setAttribute('Soggetto', $model->subject);
+            $elemail->setAttribute('Corpo', $model->body);
 
-
-$elemail= new Elemail();
-$elemail->setAttribute('nome', $model->name);
-$elemail->setAttribute('email', $model->email);
-$elemail->setAttribute('Soggetto',$model->subject);
-$elemail->setAttribute('Corpo', $model->body);
-
-
-$elemail->setAttribute('allegati', implode("|", $atc));
-$elemail->save();
-
-
+            $elemail->setAttribute('allegati', implode("|", $atc));
+            $elemail->save();
 
             return $this->refresh();
         }
@@ -720,5 +741,197 @@ $elemail->save();
         //return $this->render('contatti', ['model' => $model]);
 
     }
+    public function actionCf($id)
+    {
+        $model = user::findOne($id);
+        if ($model->load(Yii::$app->request->post())) {
+          //  yii::error($model->cd_cli);
+            $model->save();
+            return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
 
+            //$this->refresh();
+        }
+        return $this->renderajax('cf', [
+            'id' => $id, 'model' => $model,
+        ]);
+
+    }
+
+    public function actionChat()
+    {
+        if (Yii::$app->request->isAjax && Yii::$app->request->post()) {
+            $message = Yii::$app->request->post('message');
+
+            // Esegui la logica del tuo chatbot per elaborare il messaggio e generare una risposta
+            $answer = 'La risposta del tuo chatbot qui';
+            yii::warning($message);
+            // Reindirizza l'utente alla vista "chat" con la risposta del chatbot come parametro
+            return $this->render('chat', ['answer' => $answer]);
+        } else {
+            // Se la richiesta non è una richiesta AJAX o non contiene dati POST, reindirizza l'utente alla pagina principale
+            return $this->render('chat', ['answer' => null]);
+        }
+    }
+
+
+  public function actionGeneratePdf($id)
+ {
+    // Trova il modello utilizzando l'ID passato come parametro
+    $model = User::findOne($id);
+
+    // Rendering della vista per l'ID specifico
+    $content = $this->renderPartial('/user/view', ['model' => $model]);
+
+    // Istanzia una nuova istanza di TCPDF
+    $pdf = new TCPDF();
+
+    // Imposta l'orientamento della pagina (ad esempio, 'L' per orizzontale, 'P' per verticale)
+    $pdf->AddPage('L');
+
+    // Aggiungi il contenuto alla pagina
+    $pdf->writeHTML($content);
+
+    // Salva il PDF in un file o invialo in output al browser
+    $pdf->Output($id.'file.pdf', 'I');
+}
+
+
+
+    /**
+     * Manuale utente dell'applicazione.
+     * Accessibile solo agli utenti autenticati (i guest vengono rediretti al login).
+     *
+     * @return string
+     */
+    public function actionManuale()
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['site/login']);
+        }
+        return $this->render('manuale');
+    }
+
+    /**
+     * Riceve una segnalazione di anomalia dalla dashboard e invia una mail
+     * al supporto tecnico con tutti i dati di contesto (utente, pagina, sessione, server).
+     *
+     * @return array
+     */
+    public function actionSegnalazione()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        if (!Yii::$app->request->isAjax || !Yii::$app->request->isPost) {
+            return ['success' => false, 'error' => 'Richiesta non valida.'];
+        }
+
+        $descrizione = Yii::$app->request->post('descrizione', '');
+        $pagina = Yii::$app->request->post('pagina', 'N/A');
+        $url = Yii::$app->request->post('url', Yii::$app->request->absoluteUrl);
+        $browser = Yii::$app->request->post('browser', 'N/A');
+        $recordId = Yii::$app->request->post('record_id', '');
+        $datiExtra = Yii::$app->request->post('dati_extra', '');
+
+        if (empty(trim($descrizione))) {
+            return ['success' => false, 'error' => 'La descrizione dell\'anomalia è obbligatoria.'];
+        }
+
+        $user = Yii::$app->user->identity;
+        $timestamp = date('d/m/Y H:i:s');
+
+        // Dati utente
+        $userName = 'Utente sconosciuto';
+        $userEmail = '';
+        $userUsername = '';
+        $userLevel = '';
+        $userGruppo = '';
+        $userLastLogin = '';
+        $userId = '';
+
+        if ($user) {
+            $userId = $user->id ?? '';
+            $userUsername = $user->username ?? '';
+            $userEmail = $user->email ?? '';
+            $userLevel = $user->hasAttribute('level') ? ($user->level ?? '') : '';
+            $userGruppo = $user->hasAttribute('gruppo') ? ($user->gruppo ?? '') : '';
+            $userLastLogin = $user->hasAttribute('lastlogin') ? ($user->lastlogin ?? '') : '';
+            $userName = $userUsername;
+        }
+
+        // Dati sessione e server
+        $sessionId = Yii::$app->session->id ?: 'N/A';
+        $ipServer = $_SERVER['SERVER_ADDR'] ?? 'N/A';
+        $ipClient = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? ($_SERVER['REMOTE_ADDR'] ?? 'N/A');
+        $serverSoftware = $_SERVER['SERVER_SOFTWARE'] ?? 'N/A';
+        $phpVersion = phpversion();
+        $appEnv = YII_ENV;
+        $RequestMethod = Yii::$app->request->method;
+        $isSecure = Yii::$app->request->isSecureConnection ? 'HTTPS' : 'HTTP';
+
+        $emailData = [
+            'descrizione' => $descrizione,
+            'pagina' => $pagina,
+            'url' => $url,
+            'browser' => $browser,
+            'record_id' => $recordId,
+            'dati_extra' => $datiExtra,
+            'timestamp' => $timestamp,
+            // Utente
+            'utente' => $userName,
+            'user_id' => $userId,
+            'user_username' => $userUsername,
+            'user_email' => $userEmail,
+            'user_level' => $userLevel,
+            'user_gruppo' => $userGruppo,
+            'user_lastlogin' => $userLastLogin,
+            // Sessione
+            'session_id' => $sessionId,
+            'ip_client' => $ipClient,
+            'ip_server' => $ipServer,
+            // Server
+            'server_software' => $serverSoftware,
+            'php_version' => $phpVersion,
+            'app_env' => $appEnv,
+            'request_method' => $RequestMethod,
+            'is_secure' => $isSecure,
+        ];
+
+        try {
+            $subject = '[SEGNA] ' . $pagina . ' - ' . $userName . ' - ' . date('d/m/Y H:i');
+
+            $message = Yii::$app->mailer->compose('site/_email_segnalazione', ['data' => $emailData])
+                ->setTo(['supportoclienti@programma2000.com' => 'Supporto Clienti Programma 2000'])
+                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
+                ->setSubject($subject);
+
+            $message->send();
+
+            return ['success' => true, 'message' => 'Segnalazione inviata con successo al supporto tecnico.'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'error' => 'Errore nell\'invio dell\'email: ' . $e->getMessage()];
+        }
+    }
+
+    public function actionError()
+    {
+        $exception = Yii::$app->errorHandler->exception;
+
+        if ($exception !== null) {
+            // Se è un HttpException (es. 404)
+            $code = $exception instanceof HttpException ? $exception->statusCode : 500;
+            $message = $exception->getMessage();
+
+            // Se vuoi mostrare anche la traccia dello stack in dev
+            $trace = YII_ENV_DEV ? $exception->getTraceAsString() : null;
+
+            return $this->render('error', [
+                'code' => $code,
+                'message' => $message,
+                'trace' => $trace,
+            ]);
+        }
+
+        // Nessuna eccezione, redirect a index
+        return $this->redirect(['site/index']);
+    }
 }
