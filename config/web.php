@@ -186,6 +186,16 @@ $config = [
         if (Yii::$app->user->isGuest && !in_array($route, $publicRoutes)) {
             Yii::$app->response->redirect(['site/index'])->send();
             $event->isValid = false;
+            return;
+        }
+
+        // Controllo permessi ACL (vista/crea/modifica/elimina) per gli utenti autenticati.
+        // Il livello 100 ha sempre accesso; senza configurazione l'accesso e' negato.
+        if (!Yii::$app->user->isGuest
+            && !\app\components\AccessControl::allowed($controller->id, $action->id, Yii::$app->user->identity)) {
+            Yii::$app->session->setFlash('error', 'Non sei autorizzato ad accedere a questa funzione.');
+            Yii::$app->response->redirect(['site/index'])->send();
+            $event->isValid = false;
         }
     },
 

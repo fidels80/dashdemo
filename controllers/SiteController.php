@@ -299,147 +299,34 @@ var_dump ('giampaolo.schiappoli@programma2000.com');
 
     public function actionBleft()
     {
-        // ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
+        $userId = (int) Yii::$app->user->id;
+        $identity = Yii::$app->user->identity;
+        $level = ($identity && $identity->hasAttribute('level')) ? (int) $identity->level : 0;
 
-        $items = [];
-        $model = User::find()->where(['username' => \Yii::$app->user->identity->username])->
-            AsArray()->one();
-        $moduli  = unserialize($model['moduli']);
-        $moduli2 = unserialize($model['moduli']);
-        //   yii::error($moduli);
-        if (100 == $model['level']) {
-            $adm_voicem = [];
-            $adm_menu   = xmenu::find()->AsArray()->all();
-            foreach ($adm_menu as $value) {
-                $adm_voicem[] = ($value['voce']);
-            }
+        // Menu dinamico definito in dash_menu (con sottovoci e assegnazioni per utente).
+        // Il livello 100 vede sempre tutte le voci.
+        $items = \app\models\DashMenu::buildMenuForUser($userId, $level);
 
-            $moduli = $adm_voicem;
-            //     yii::error($adm_voicem);
-        }
+        $items[] = [
+            'label' => 'Utente',
+            'url'   => Url::toRoute(['/user/update', 'id' => $userId]),
+            'icon'  => 'user',
+        ];
 
-        if (false == $moduli) {
-            $moduli = 'HOME';
-        }
-        $menu = xmenu::find()->where(
-//'<=','level',$model['level']
-            'level<=:level ', //and id<>7
-            [':level' => $model['level']]
-        )
-            ->andwhere(
-                'level<>:id',
-                [':id' => 100]
-            )
-            ->andwhere(['voce' => $moduli])
-            ->AsArray()->all();
-       // yii::error($menu);
-        foreach ($menu as $value) {
-            # code...
-            $xsm = Xsubmenu::find()->where(
-                //'<=','level',$model['level']
-                'level<=:level',
-                [':level' => $model['level']]
-            )
-                ->andwhere(
-                    'id_menu=:id',
-                    [':id' => $value['id']]
-                )
-                ->andwhere(['voce' => $moduli2])
-                ->AsArray()->all();
-            $sb = [];
-         
-            if (count($xsm) > 0) {
-                foreach ($xsm as $Svalue) {
-                    # code...
-                    $items3 = array(
-                        'label' => $Svalue['voce'],
-                        'url'   => Url::toRoute($Svalue['url']),
-                        //          'target' => 'self_',
-                        'icon'  => $Svalue['icona'],
-                    );
-                    $sb[] = $items3;
-                }
-            }
-           // yii::warning($sb);
-
-            $items2 = array(
-                'label' => $value['voce'],
-                'url'   => Url::toRoute($value['url']),
-                //    'target' => 'self_',
-                'icon'  => $value['icona'],
-                'items' => $sb,
-                'class'=> 'menu - text'
-            );
-            $items[] = $items2;
-        }
-        $items[] = array(
-            'label' => 'Utente', //. Yii::$app->user->id,
-            'url'   => Url::toRoute(['/user/update', 'id' => Yii::$app->user->id]),
-            //    'target' => 'self_',
-            'icon'  => 'user', //$value['icona'],
-            //'items' => $sb,
-        );
-        $items[] = array(
-            'label' => 'Ultimo Accesso',
-            'icon'  => 'calendar',
-        );
         $ris = (new \yii\db\Query())
-            ->select(['cd_cli', 'email', 'username', 'piva', 'lastlogin'])
+            ->select(['lastlogin'])
             ->from('user')
-            ->where(['id' => Yii::$app->user->getId()])
+            ->where(['id' => $userId])
             ->one();
-        $items[] = array(
-            'label' => date_format(date_create($ris['lastlogin']), "d/m/Y H:i"),
-            'icon'  => 'fa-solid fa-right-from-bracket',
-        ); 
 
-        if ($model['level'] >= 100) {
-            $items2[] = array(
-                'label' => 'ADMIN UTENTI', //. Yii::$app->user->id,
-                'url' => Url::toRoute(['/user']),
-                //    'target' => 'self_',
-                'icon'  => 'user', //$value['icona'],
-                //  'items' => $sb,
-            );
-            $sbz = [];
-/*$itemsz3 = array(
-'label' =>  'voce' ,
-'url' =>'',
-//          'target' => 'self_',
-'icon' => $Svalue['icona'],
-);
- */
-            $admn = xsubmenu::find()->where('level>=:level ', //and id<>7
-                [':level' => 100]
-            )->AsArray()->all();
-//yii::warning($admn);
-            foreach ($admn as $Avalue) {
-                $itemsz3 = array(
-                    'label' => $Avalue['voce'],
-                    'url'   => Url::toRoute($Avalue['url']),
-                    //          'target' => 'self_',
-                    'icon'  => $Avalue['icona'],
-                );
-
-                $sbz[] = $itemsz3;
-            }
-
-            $items[] = array('label' => 'ADMIN panel',
-                'icon'                   => 'user',
-                //'items' => array(
-                //'label' => 'ADMIN UTENTI', //. Yii::$app->user->id,
-                //   'url' => Url::toRoute(['/user']),
-                //    'target' => 'self_',
-                'icon'                   => 'user', //$value['icona'],
-                'items' => $sbz, //array('label'=>'1'),
-
-            )
-            ;
-
+        if (!empty($ris['lastlogin'])) {
+            $items[] = [
+                'label' => 'Ultimo accesso: ' . date_format(date_create($ris['lastlogin']), 'd/m/Y H:i'),
+                'icon'  => 'clock',
+            ];
         }
-      //  yii::error($items);
-        //  yii::warning(array_values(array_filter(array_unique($items, SORT_REGULAR))));
-        return (array_values(array_filter(array_unique($items, SORT_REGULAR))));
+
+        return $items;
     }
 
     public function actionContatti($render = null, $id = null,$periodo=null)
