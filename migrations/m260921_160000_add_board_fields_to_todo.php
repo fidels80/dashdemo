@@ -3,10 +3,10 @@
 use yii\db\Migration;
 
 /**
- * Aggiunge a to_do_main i campi per la gestione stile Jira:
+ * Aggiunge a to_do_main i campi per la gestione a board:
  * tipo issue, story points, sprint, posizione nella board, reporter e timestamp.
  */
-class m260921_160000_add_jira_fields_to_todo extends Migration
+class m260921_160000_add_board_fields_to_todo extends Migration
 {
     public function safeUp()
     {

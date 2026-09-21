@@ -1,7 +1,7 @@
 -- =============================================================
--- Script SQL: campi stile Jira nella tabella [to_do_main]
+-- Script SQL: campi board nella tabella [to_do_main]
 -- Compatibile con SQL Server
--- m260921_160000_add_jira_fields_to_todo
+-- m260921_160000_add_board_fields_to_todo
 -- =============================================================
 
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='to_do_main' AND COLUMN_NAME='tipo')
