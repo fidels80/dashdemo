@@ -10,6 +10,5 @@ $this->params['breadcrumbs'][] = ['label' => 'Gestione Permessi', 'url' => ['ind
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="dashpermesso-create">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', ['model' => $model]) ?>
 </div>

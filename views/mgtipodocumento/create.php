@@ -10,6 +10,5 @@ $this->params['breadcrumbs'][] = ['label' => 'Tipi documento', 'url' => ['index'
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mgtipodocumento-create">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', ['model' => $model]) ?>
 </div>

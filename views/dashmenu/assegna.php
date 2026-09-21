@@ -22,7 +22,6 @@ foreach ($menuItems as $it) {
 ?>
 <div class="dashmenu-assegna">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?php if (Yii::$app->session->hasFlash('success')): ?>
         <div class="alert alert-success"><?= Html::encode(Yii::$app->session->getFlash('success')) ?></div>

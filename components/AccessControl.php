@@ -39,8 +39,9 @@ class AccessControl
             return 'delete';
         }
 
-        if (in_array($actionId, ['create', 'copy-day', 'duplicate', 'import',
-            'sprint-create', 'add-comment', 'comment', 'addreply', 'signup'], true)) {
+        if ($actionId === 'create' || strpos($actionId, 'create') === 0
+            || in_array($actionId, ['copy-day', 'duplicate', 'import',
+                'sprint-create', 'add-comment', 'comment', 'addreply', 'signup'], true)) {
             return 'create';
         }
 

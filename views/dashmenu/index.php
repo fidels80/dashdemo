@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="dashmenu-index">
 
     <div class="d-flex justify-content-between align-items-center mb-2">
-        <h1><?= Html::encode($this->title) ?></h1>
         <div>
             <?= Html::a('<i class="fas fa-user-check"></i> Assegna agli utenti', ['assegna'], ['class' => 'btn btn-outline-primary']) ?>
             <?= Html::a('<i class="fas fa-plus"></i> Nuova voce', ['create'], ['class' => 'btn btn-success']) ?>

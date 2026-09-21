@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Anagrafica', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mganagrafica-view">
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('<i class="fas fa-pen"></i> Modifica', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

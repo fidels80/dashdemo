@@ -10,7 +10,6 @@ $this->title = 'Articoli';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mgarticolo-index">
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('<i class="fas fa-plus"></i> Nuovo articolo', ['create'], ['class' => 'btn btn-success']) ?>

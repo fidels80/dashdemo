@@ -11,6 +11,5 @@ $this->params['breadcrumbs'][] = ['label' => $model->codice, 'url' => ['view', '
 $this->params['breadcrumbs'][] = 'Modifica';
 ?>
 <div class="mganagrafica-update">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', ['model' => $model]) ?>
 </div>

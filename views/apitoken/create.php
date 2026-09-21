@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Token API', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="apitoken-create">
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin(); ?>
 

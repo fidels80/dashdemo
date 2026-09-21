@@ -11,6 +11,5 @@ $this->params['breadcrumbs'][] = ['label' => 'Gestione Menu', 'url' => ['index']
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="dashmenu-create">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', ['model' => $model, 'genitori' => $genitori]) ?>
 </div>

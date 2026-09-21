@@ -10,7 +10,6 @@ $this->title = 'Anagrafica clienti/fornitori';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mganagrafica-index">
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('<i class="fas fa-plus"></i> Nuova anagrafica', ['create'], ['class' => 'btn btn-success']) ?>

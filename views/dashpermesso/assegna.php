@@ -22,7 +22,6 @@ foreach ($permessi as $p) {
 ?>
 <div class="dashpermesso-assegna">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?php if (Yii::$app->session->hasFlash('success')): ?>
         <div class="alert alert-success"><?= Html::encode(Yii::$app->session->getFlash('success')) ?></div>

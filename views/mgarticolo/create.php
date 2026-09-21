@@ -10,6 +10,5 @@ $this->params['breadcrumbs'][] = ['label' => 'Articoli', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mgarticolo-create">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', ['model' => $model]) ?>
 </div>

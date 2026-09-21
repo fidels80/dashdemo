@@ -16,7 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mgdocumento-index">
 
     <div class="d-flex justify-content-between align-items-center mb-2">
-        <h1><?= Html::encode($this->title) ?></h1>
         <div>
             <?= Html::a('<i class="fas fa-list"></i> Tipi documento', ['mgtipodocumento/index'], ['class' => 'btn btn-outline-secondary']) ?>
             <?= Html::a('<i class="fas fa-plus"></i> Nuovo documento', ['create'], ['class' => 'btn btn-success']) ?>

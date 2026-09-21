@@ -14,7 +14,6 @@ $this->params['breadcrumbs'][] = ['label' => $model->etichetta, 'url' => ['view'
 $this->params['breadcrumbs'][] = 'Modifica';
 ?>
 <div class="mgdocumento-update">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', [
         'model' => $model,
         'tipi' => $tipi,

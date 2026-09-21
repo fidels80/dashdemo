@@ -64,9 +64,14 @@ $isNew = $model->isNewRecord;
     <div class="card mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>Righe documento</span>
-            <button type="button" class="btn btn-sm btn-primary" id="btn-add-riga">
-                <i class="fas fa-plus"></i> Aggiungi riga
-            </button>
+            <div>
+                <button type="button" class="btn btn-sm btn-outline-success" id="btn-nuovo-articolo">
+                    <i class="fas fa-box"></i> Nuovo articolo
+                </button>
+                <button type="button" class="btn btn-sm btn-primary" id="btn-add-riga">
+                    <i class="fas fa-plus"></i> Aggiungi riga
+                </button>
+            </div>
         </div>
         <div class="card-body p-0">
             <table class="table table-sm mb-0" id="righe-table">
@@ -112,6 +117,38 @@ $isNew = $model->isNewRecord;
         <?= $this->render('_riga', ['index' => '__INDEX__', 'model' => null, 'articoliModels' => $articoliModels]) ?>
         </tbody>
     </table>
+
+    <!-- Modale nuovo articolo -->
+    <div class="modal fade" id="modal-nuovo-articolo" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title text-white"><i class="fas fa-box"></i> Nuovo articolo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Codice *</label>
+                        <input type="text" id="na-codice" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrizione *</label>
+                        <input type="text" id="na-descrizione" class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"><div class="form-group"><label>U.M.</label><input type="text" id="na-um" class="form-control"></div></div>
+                        <div class="col-md-4"><div class="form-group"><label>Prezzo</label><input type="number" step="0.0001" id="na-prezzo" class="form-control" value="0"></div></div>
+                        <div class="col-md-4"><div class="form-group"><label>IVA %</label><input type="number" step="0.01" id="na-iva" class="form-control" value="0"></div></div>
+                    </div>
+                    <div id="na-error" class="text-danger small"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-success" id="btn-salva-articolo"><i class="fas fa-save"></i> Crea articolo</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -200,6 +237,68 @@ $isNew = $model->isNewRecord;
     $('#btn-proponi').on('click', proponiNumero);
     $('#mgdocumento-id_tipo, #mgdocumento-data').on('change', function () {
         if (isNew) { proponiNumero(); }
+    });
+
+    // --- NUOVO ARTICOLO IN LINEA ---
+    var lastRiga = null;
+    $(document).on('focus click', '.riga-articolo', function () {
+        lastRiga = $(this).closest('.riga-row');
+    });
+
+    function aggiungiRiga() {
+        var tpl = $('#righe-table').closest('.mgdocumento-form').find('table[style="display:none;"] tbody').html();
+        var idx = $('#righe-body .riga-row').length;
+        $('#righe-body').append(tpl.replace(/__INDEX__/g, idx));
+        ricalcolaTotale();
+        return $('#righe-body .riga-row').last();
+    }
+
+    $('#btn-nuovo-articolo').on('click', function () {
+        $('#na-error').text('');
+        $('#na-codice, #na-descrizione, #na-um').val('');
+        $('#na-prezzo, #na-iva').val(0);
+        $('#modal-nuovo-articolo').modal('show');
+    });
+
+    $('#btn-salva-articolo').on('click', function () {
+        var codice = $('#na-codice').val().trim();
+        var descrizione = $('#na-descrizione').val().trim();
+        if (!codice || !descrizione) {
+            $('#na-error').text('Codice e Descrizione sono obbligatori.');
+            return;
+        }
+        var data = {
+            codice: codice,
+            descrizione: descrizione,
+            um: $('#na-um').val(),
+            prezzo: $('#na-prezzo').val(),
+            iva: $('#na-iva').val(),
+            _csrf: (typeof yii !== 'undefined' ? yii.getCsrfToken() : '')
+        };
+        var btn = $(this).prop('disabled', true);
+        $.post('index.php?r=mgarticolo/create-ajax', data, function (res) {
+            btn.prop('disabled', false);
+            if (res && res.success) {
+                var a = res.articolo;
+                var opt = $('<option>')
+                    .attr('value', a.id)
+                    .attr('data-codice', a.codice)
+                    .attr('data-prezzo', a.prezzo)
+                    .attr('data-iva', a.iva)
+                    .attr('data-descrizione', a.descrizione)
+                    .text(a.codice + ' - ' + a.descrizione);
+                $('.riga-articolo').append(opt);
+
+                var $row = (lastRiga && $.contains(document, lastRiga[0])) ? lastRiga : aggiungiRiga();
+                $row.find('.riga-articolo').val(String(a.id)).trigger('change');
+                $('#modal-nuovo-articolo').modal('hide');
+            } else {
+                $('#na-error').text(res && res.errors ? JSON.stringify(res.errors) : (res.error || 'Errore di creazione.'));
+            }
+        }, 'json').fail(function () {
+            btn.prop('disabled', false);
+            $('#na-error').text('Errore di rete.');
+        });
     });
 
     ricalcolaTotale();

@@ -13,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mgdocumento-view">
 
     <div class="d-flex justify-content-between align-items-center mb-2">
-        <h1><?= Html::encode($this->title) ?></h1>
         <div>
             <?= Html::a('<i class="fas fa-pen"></i> Modifica', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('<i class="fas fa-trash"></i> Elimina', ['delete', 'id' => $model->id], [
