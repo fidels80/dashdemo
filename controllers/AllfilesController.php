@@ -329,8 +329,9 @@ die(var_dump($response->content));
         $this->getuser();
 
         $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+// Reindirizziamo l'utente alla pagina precedente (referrer)
+    // Se per qualche motivo il referrer fosse vuoto, lo mandiamo all'index come fallback
+    return $this->redirect(Yii::$app->request->referrer ?: ['index']);
     }
 
     /**
@@ -413,6 +414,17 @@ die(var_dump($response->content));
 
         }
 
+    }
+    public function actionDownload($id) // Deve chiamarsi actionDownload
+    {
+        $model = AllFiles::findOne($id);
+
+        if ($model !== null) {
+            $nomePerDownload = $model->nomefile . '.' . $model->estensione;
+            return Yii::$app->response->sendContentAsFile($model->f_content, $nomePerDownload);
+        }
+
+        throw new NotFoundHttpException('File non trovato.');
     }
 
 }

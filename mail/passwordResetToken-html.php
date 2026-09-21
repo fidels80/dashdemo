@@ -20,6 +20,6 @@ $resetLink = Yii::$app->urlManager
     <p><?=Html::a(Html::encode($resetLink), $resetLink)?></p>
     
 </div>
-<img src="<?php echo Url::base(true).Yii::getAlias('@web') . '/uploads/logomail.jpg' ?>
+<img src="<?php echo Url::base(true).Yii::getAlias('@web') . '/uploads/login_logo.jpg' ?>
 "
  style=width:304px;height:228px>

@@ -16,7 +16,6 @@ use Yii;
  * @property string $Tipo
  * @property string $DocumentDate
  * @property string $Descrizione
- * @property string $DescrizioneEx
  * @property string $NumeroRif
  * @property string|null $Note
  * @property string|null $EntityId
@@ -25,12 +24,12 @@ use Yii;
  * @property string|null $MasterEntityTable
  * @property string|null $MixedEntityTable
  * @property string|null $MixedEntityId
- * @property int $MixedIsMaster
+ * @property bool $MixedIsMaster
  * @property string|null $EntityDescription
- * @property int $LinkedToFS
+ * @property bool $LinkedToFS
  * @property int $LinkedToEntity
  * @property resource|null $Content
- * @property int $Ciphered
+ * @property bool $Ciphered
  * @property int $ContentSize
  * @property string $ComputerName
  * @property string|null $FilePath
@@ -38,25 +37,32 @@ use Yii;
  * @property string $FileExt
  * @property int $FileSize
  * @property string $Tag TAG per riconosce tipo record.
+ * @property bool $Use4Fepa
+ * @property bool $Use4FepaEx
+ * @property bool $Use4Peppol
  * @property int|null $Id_ARKmanager
  * @property int $ARK_State
+ * @property int|null $IdFatturaRX
+ * @property string|null $FTEInfo
+ * @property int|null $Id_VdA
+ * @property string|null $Id_PdV
+ * @property string|null $Ud_CSmart
+ * @property string|null $Attributi
+ * @property string|null $WebDesk Riferimenti invio a WebDesk
  * @property string $UserIns
  * @property string $UserUpd
  * @property string $TimeIns
  * @property string $TimeUpd
  * @property string $Ts
- * @property int $Use4Fepa
- * @property int $Use4FepaEx
- * @property int|null $IdFatturaRX
- * @property string|null $FTEInfo
- * @property int|null $Id_VdA
- * @property string|null $Id_PdV
- * @property string|null $Attributi
- * @property string|null $WebDesk Riferimenti invio a WebDesk
- * @property string|null $Ud_CSmart
- * @property int $Use4Peppol
+ * @property string|null $ExtraInfo Informazioni extra del documen
+ * @property string|null $DescrizioneEx
+ *
+ * @property Dmsdocument $dmsDocumentParent
+ * @property Dmsdocument[] $dmsdocuments
+ * @property DmsType $cdDmsType
+ * @property DmsClass2 $dmsClass1
  */
-class DmsDocument extends \yii\db\ActiveRecord
+class Dmsdocument extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -71,7 +77,7 @@ class DmsDocument extends \yii\db\ActiveRecord
      */
     public static function getDb()
     {
-        return Yii::$app->get('db2');
+        return Yii::$app->get('db5');
     }
 
     /**
@@ -80,23 +86,24 @@ class DmsDocument extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Id_DmsDocument_Parent', 'Id_DmsClass1', 'Id_DmsClass2', 'MixedIsMaster', 'LinkedToFS', 'LinkedToEntity', 'Ciphered', 'ContentSize', 'FileSize', 'Id_ARKmanager', 'ARK_State', 'Use4Fepa', 'Use4FepaEx', 'IdFatturaRX', 'Id_VdA', 'Use4Peppol'], 'integer'],
-            [['DocumentDate', 'Descrizione', 'DescrizioneEx', 'MixedIsMaster', 'LinkedToFS', 'LinkedToEntity', 'ContentSize', 'FileName', 'FileExt', 'FileSize', 'Ts', 'Use4Fepa', 'Use4FepaEx', 'Use4Peppol'], 'required'],
+            [['Id_DmsDocument_Parent', 'Id_DmsClass1', 'Id_DmsClass2', 'LinkedToEntity', 'ContentSize', 'FileSize', 'Id_ARKmanager', 'ARK_State', 'IdFatturaRX', 'Id_VdA'], 'integer'],
+            [['DocumentDate', 'Descrizione', 'MixedIsMaster', 'LinkedToFS', 'LinkedToEntity', 'ContentSize', 'FileName', 'FileExt', 'FileSize', 'Use4Fepa', 'Use4FepaEx', 'Use4Peppol', 'Ts'], 'required'],
             [['DocumentDate', 'TimeIns', 'TimeUpd', 'Ts'], 'safe'],
-            [['Note', 'EntityId', 'MasterEntityId', 'MixedEntityId', 'EntityDescription', 'Content', 'FTEInfo', 'Attributi', 'WebDesk', 'Ud_CSmart'], 'string'],
+            [['Note', 'EntityId', 'MasterEntityId', 'MixedEntityId', 'EntityDescription', 'Content', 'FTEInfo', 'Ud_CSmart', 'Attributi', 'WebDesk', 'ExtraInfo'], 'string'],
+            [['MixedIsMaster', 'LinkedToFS', 'Ciphered', 'Use4Fepa', 'Use4FepaEx', 'Use4Peppol'], 'boolean'],
             [['DmsClass3', 'NumeroRif'], 'string', 'max' => 20],
             [['Cd_DmsType'], 'string', 'max' => 2],
             [['Tipo'], 'string', 'max' => 1],
             [['Descrizione'], 'string', 'max' => 200],
-            [['DescrizioneEx'], 'string', 'max' => 219],
             [['EntityTable', 'MasterEntityTable', 'MixedEntityTable'], 'string', 'max' => 128],
             [['ComputerName', 'Id_PdV'], 'string', 'max' => 50],
             [['FilePath', 'FileName', 'FileExt'], 'string', 'max' => 260],
             [['Tag'], 'string', 'max' => 3],
             [['UserIns', 'UserUpd'], 'string', 'max' => 48],
-            [['Id_DmsDocument_Parent'], 'exist', 'skipOnError' => true, 'targetClass' => DmsDocument::className(), 'targetAttribute' => ['Id_DmsDocument_Parent' => 'Id_DmsDocument']],
-            [['Id_DmsClass1', 'Id_DmsClass2'], 'exist', 'skipOnError' => true, 'targetClass' => DmsClass2::className(), 'targetAttribute' => ['Id_DmsClass1' => 'Id_DmsClass1', 'Id_DmsClass2' => 'Id_DmsClass2']],
+            [['DescrizioneEx'], 'string', 'max' => 219],
+            [['Id_DmsDocument_Parent'], 'exist', 'skipOnError' => true, 'targetClass' => Dmsdocument::className(), 'targetAttribute' => ['Id_DmsDocument_Parent' => 'Id_DmsDocument']],
             [['Cd_DmsType'], 'exist', 'skipOnError' => true, 'targetClass' => DmsType::className(), 'targetAttribute' => ['Cd_DmsType' => 'Cd_DmsType']],
+            [['Id_DmsClass1', 'Id_DmsClass2'], 'exist', 'skipOnError' => true, 'targetClass' => DmsClass2::className(), 'targetAttribute' => ['Id_DmsClass1' => 'Id_DmsClass1', 'Id_DmsClass2' => 'Id_DmsClass2']],
         ];
     }
 
@@ -108,14 +115,13 @@ class DmsDocument extends \yii\db\ActiveRecord
         return [
             'Id_DmsDocument' => 'Id Dms Document',
             'Id_DmsDocument_Parent' => 'Id Dms Document Parent',
-            'Id_DmsClass1' => 'Id Dms Class 1',
-            'Id_DmsClass2' => 'Id Dms Class 2',
-            'DmsClass3' => 'Dms Class 3',
+            'Id_DmsClass1' => 'Id Dms Class1',
+            'Id_DmsClass2' => 'Id Dms Class2',
+            'DmsClass3' => 'Dms Class3',
             'Cd_DmsType' => 'Cd Dms Type',
             'Tipo' => 'Tipo',
             'DocumentDate' => 'Document Date',
             'Descrizione' => 'Descrizione',
-            'DescrizioneEx' => 'Descrizione Ex',
             'NumeroRif' => 'Numero Rif',
             'Note' => 'Note',
             'EntityId' => 'Entity ID',
@@ -136,24 +142,66 @@ class DmsDocument extends \yii\db\ActiveRecord
             'FileName' => 'File Name',
             'FileExt' => 'File Ext',
             'FileSize' => 'File Size',
-            'Tag' => 'TAG per riconosce tipo record.',
+            'Tag' => 'Tag',
+            'Use4Fepa' => 'Use4fepa',
+            'Use4FepaEx' => 'Use4fepa Ex',
+            'Use4Peppol' => 'Use4peppol',
             'Id_ARKmanager' => 'Id Ar Kmanager',
             'ARK_State' => 'Ark State',
+            'IdFatturaRX' => 'Id Fattura Rx',
+            'FTEInfo' => 'Fte Info',
+            'Id_VdA' => 'Id Vd A',
+            'Id_PdV' => 'Id Pd V',
+            'Ud_CSmart' => 'Ud C Smart',
+            'Attributi' => 'Attributi',
+            'WebDesk' => 'Web Desk',
             'UserIns' => 'User Ins',
             'UserUpd' => 'User Upd',
             'TimeIns' => 'Time Ins',
             'TimeUpd' => 'Time Upd',
             'Ts' => 'Ts',
-            'Use4Fepa' => 'Use 4 Fepa',
-            'Use4FepaEx' => 'Use 4 Fepa Ex',
-            'IdFatturaRX' => 'Id Fattura Rx',
-            'FTEInfo' => 'Fte Info',
-            'Id_VdA' => 'Id Vd A',
-            'Id_PdV' => 'Id Pd V',
-            'Attributi' => 'Attributi',
-            'WebDesk' => 'Riferimenti invio a WebDesk',
-            'Ud_CSmart' => 'Ud C Smart',
-            'Use4Peppol' => 'Use 4 Peppol',
+            'ExtraInfo' => 'Extra Info',
+            'DescrizioneEx' => 'Descrizione Ex',
         ];
+    }
+
+    /**
+     * Gets query for [[DmsDocumentParent]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDmsDocumentParent()
+    {
+        return $this->hasOne(Dmsdocument::className(), ['Id_DmsDocument' => 'Id_DmsDocument_Parent']);
+    }
+
+    /**
+     * Gets query for [[Dmsdocuments]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDmsdocuments()
+    {
+        return $this->hasMany(Dmsdocument::className(), ['Id_DmsDocument_Parent' => 'Id_DmsDocument']);
+    }
+
+    /**
+     * Gets query for [[CdDmsType]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCdDmsType()
+    {
+        return $this->hasOne(DmsType::className(), ['Cd_DmsType' => 'Cd_DmsType']);
+    }
+
+    /**
+     * Gets query for [[DmsClass1]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDmsClass1()
+    {
+        return $this->hasOne(DmsClass2::className(), ['Id_DmsClass1' => 'Id_DmsClass1', 'Id_DmsClass2' => 'Id_DmsClass2']);
     }
 }

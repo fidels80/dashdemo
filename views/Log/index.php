@@ -1,137 +1,98 @@
 <?php
-
 use yii\helpers\Html;
-//use yii\grid\GridView;
-use kartik\grid\GridView;
-use yii\helpers\ArrayHelper;
- //use yii\grid\GridView;
- 
-//use app\model\Site;
-use app\models\user;
+use app\assets\DataTablesAsset;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\LogSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-$usrid = Yii::$app->user->Id;
-if ($usrid !== null) {
-    $ris = (new \yii\db\Query())
-        ->select(['grid_color'])
-        ->from('user')
-        ->where(['id' => $usrid])
-        ->one();
-}
-$usrgrid = $ris['grid_color'];
-
-yii::warning($usrgrid);
+DataTablesAsset::register($this);
 $this->title = 'Logs';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="log-index">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1><?= Html::encode($this->title) ?></h1>
+    </div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="card shadow-sm p-3">
+        <table id="logs-table" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr class="bg text-white">
+                    <th>ID</th>
+                    <th>User ID</th>
+                    <th>Operazione</th>
+                    <th>Valore</th>
+                    <th>Old Valore</th>
+                    <th>Data</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php
+$this->registerCss("
+    .json-container {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        padding: 8px;
+        max-height: 150px;
+        max-width: 400px;
+        overflow: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.85rem;
+        white-space: pre; /* Mantiene l'indentazione */
+        color: #d63384; /* Colore stile codice */
+    }
+");
+?>
+<?php foreach ($dataProvider->getModels() as $model): ?>
+    <tr>
+        <td><?= $model->id ?></td>
+        <td><?= $model->userid ?></td>
+        <td><?= Html::encode($model->operazione) ?></td>
+        
+        <td>
+            <div class="json-container"><?php
+                $val = json_decode($model->valore);
+                // Se è un JSON valido lo stampiamo bello, altrimenti stampiamo il testo originale
+                echo $val ? Html::encode(json_encode($val, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) : Html::encode($model->valore);
+            ?></div>
+        </td>
 
-    <p>
-   </p>
+        <td>
+            <div class="json-container"><?php
+                $oldVal = json_decode($model->old_valore);
+                echo $oldVal ? Html::encode(json_encode($oldVal, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) : Html::encode($model->old_valore);
+            ?></div>
+        </td>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        //'filterUrl' => ['Doc_headSearch[cd_doc]',
-        //'cd_doc' => 'orc'],
-        'autoXlFormat'=>true,
-    'toggleDataContainer' => ['class' => 'btn-group mr-2 me-2'],
-    
-    'export'=>[
-        'showConfirmAlert'=>false,
-        'target'=>GridView::TARGET_BLANK
-    ],
-
-        'columns' => [
-                     [
-                'attribute'=>'id',
-                 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
-                'label' => 'id',
-                'width'=>'200px',],
-                  [
-                'attribute'=>'userid',
-                 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
-                'label' => 'userid',
-                'width'=>'200px',],
-               [
-                'attribute'=>'operazione',
-                 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
-                'label' => 'Operazione',
-                'width'=>'200px',],
-            [
-                'attribute'=>'valore',
-                 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
-                'label' => 'Valore',
-                'width'=>'200px',
-                'format'=>'raw',
-                'value'=>function ($model, $key, $index, $widget) {
-                // return json_encode($model->valore, JSON_PRETTY_PRINT);
-                //$js=json_decode($model->valore);
-                return json_encode($model->valore,JSON_PRETTY_PRINT);
-                //return   json_encode($model->valore ,JSON_PRETTY_PRINT);
-                },
-              ],
-
-[
-                'attribute'=>'old_valore',
-                 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
-                'label' => 'Oldvalore',
-                'value'=>function ($model, $key, $index, $widget) {
-                  // return json_encode($model->valore, JSON_PRETTY_PRINT);
-                  //$js=json_decode($model->valore);
-                  return json_encode($model->old_valore,JSON_PRETTY_PRINT);
-                  //return   json_encode($model->valore ,JSON_PRETTY_PRINT);
-                  },
-                'width'=>'200px',]
-
-
-    ,[
-                'attribute'=>'timeins',
-                 'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
-                'label' => 'Timeins', 
-                'width'=>'200px',
-                'options' => [
-                    'format' => 'DD-MM-YYYY',
-                    ],        
-                'filterType' => GridView::FILTER_DATE_RANGE,
-                'filterWidgetOptions' => ([       
-                  'attribute' => 'data',
-                    'language' => 'it',
-                  'presetDropdown' => true,
-                  'convertFormat' => false,
-                  'pluginOptions' => [
-                    'separator' => ' - ',
-                    'language' => 'it',
-                    'format' => 'DD-MM-YYYY',
-                    'locale' => [
-                          'format' => 'DD-MM-YYYY'
-                      ],
-                      'ranges'=> [
- 'Oggi' => ["moment().startOf('day')", "moment().add(1,'year').startOf('day')"],
- 'Ultimo anno' => ["moment().startOf('day').subtract(1,'year')", "moment().startOf('day')"],
- 'Ultimo mese' => ["moment().startOf('day').subtract(29, 'days')", "moment().endOf('day')"],
- 'Prossimi 30 gg' => ["moment().endOf('day')", "moment().endOf('day').add(30, 'days')"],
- 'Mese in Corso' => ["moment().startOf('month')", "moment().endOf('month')"],
- 'Mese Passato' => ["moment().subtract(1, 'month').startOf('month')", "moment().subtract(1, 'month').endOf('month')"],
- 'Tutto il prossimo mese' => ["moment().add(1, 'month').startOf('month')", "moment().add(1, 'month').endOf('month')"]
-]
-                  ],
-                  'pluginEvents' => [
-                    "apply.daterangepicker" => "function() { apply_filter('only_date') }",
-                  ],
-                ])
-              ],    ['class' =>'yii\grid\ActionColumn',
-            'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
-            'template'=>'{view}'],
-
-        ]
-]); ?>
-
-
+        <td><?= date('d-m-Y H:i', strtotime($model->timeins)) ?></td>
+        <td>
+            <?= Html::a('<i class="fa fa-eye"></i>', ['view', 'id' => $model->id], ['class' => 'btn btn-sm btn-info']) ?>
+        </td>
+    </tr>
+<?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<?php
+$this->registerJs("
+    $('#logs-table').DataTable({
+        dom: 'Bfrtip', // B abilita i Buttons
+        buttons: [
+            { extend: 'copy', className: 'btn btn-secondary' },
+            { extend: 'csv', className: 'btn btn-info' },
+            { extend: 'excel', className: 'btn btn-success' ,exportOptions: {
+            stripHtml: true, // Rimuove i tag HTML dei div
+            trim: true       // Rimuove spazi bianchi extra
+        }},
+            { extend: 'pdf', className: 'btn btn-danger' },
+            { extend: 'print', className: 'btn btn-dark' }
+        ],
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/it-IT.json'
+        },
+        order: [[0, 'desc']],
+        pageLength: 20
+    });
+");
+?>

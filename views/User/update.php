@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 $this->title = '';
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'] =''; 
 
 //$this->title = Yii::$app->user->id;
 //$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];

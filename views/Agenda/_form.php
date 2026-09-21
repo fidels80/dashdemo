@@ -11,10 +11,11 @@ use app\models\Agenda;
 use yii\helpers\Url;
 use  yii\bootstrap4\Modal;
 $loc=Locazioni::find()    
-  ->select(['id as id', 'descrizione as  Name'])
+  ->select(['id', 'descrizione as  Name'])
 ->asArray()
 ->all();
 $locstplt = ArrayHelper::map($loc, 'id', 'Name');
+yii::error($locstplt);
 /* @var $this yii\web\View */
 /* @var $model app\models\Agenda */
 /* @var $form yii\widgets\ActiveForm */

@@ -16,11 +16,6 @@ class ContactForm extends Model
     public $body;
     public $verifyCode;
     public $files;
-  
-    
-    
-
-
     /**
      * @return array the validation rules.
      */
@@ -36,7 +31,6 @@ class ContactForm extends Model
             ['files','file' ,'maxFiles' => 10],
         ];
     }
-
     /**
      * @return array customized attribute labels
      */
@@ -49,15 +43,13 @@ class ContactForm extends Model
             'name'=>'Nome'
         ];
     }
-
     /**
      * Sends an email to the specified email address using the information collected by this model.
      * @param string $email the target email address
      * @return bool whether the model passes validation
      */
-    public function contact($email,$atcs,$atc2)
+    public function contact($email,$atcs,$atc2,$support)
     {
-
         //die(print_r($this));
         if ($this->validate()) {
      $usrid = Yii::$app->user->Id;
@@ -69,13 +61,28 @@ if ($usrid !== null) {
         ->where(['id' => $usrid])
         ->one();
 //->AsArray();
-
 }
+$cc = (new \yii\db\Query())
+    ->select(['ccemail'])
+    ->from('ana_cli')
+    ->where(['cd_cli' => $ris['cd_cli']])
+    ->one();
+//die( var_dump(explode(';',$cc['ccemail'])));
+
+$rcc = isset($cc['ccemail']) ? explode(';',$cc['ccemail']) : '';
+
+
+/*
+$cc = (new \yii\db\Query())
+->select(['ccemail'])
+->from('ana_cli')
+->where(['cd_cli' => $ris['cd_cli']])
+->one();
+$rcc = isset($cc['ccemail']) ? $cc['ccemail'] : '';
+$rcc = isset($cc['ccemail']) ? $message->setCC($cc['ccemail']) : '';
+ */
 //var_dump($
-
  //   'supportEmail'=>//'redazione@vivenda.it',
-
-
 //die (var_dump($ris['email']));
             $message=Yii::$app->mailer->compose()
                 //->setTo(Yii::$app->params['senderEmail'])
@@ -84,19 +91,25 @@ if ($usrid !== null) {
                 ->setReplyTo([$this->email => $this->name])
                 ->setSubject($this->subject)
                 ->setTextBody($this->body);
+
+
+
+
 $path = Yii::getAlias('@webroot') . '/uploads/mail2/';
 foreach ($atc2 as $file) {
     $filename = $path. $file->baseName . '.' . $file->extension; # i'd suggest adding an absolute path here, not a relative.
     $file->saveAs($filename);
     $message->attach($filename);
 }
+$rcc = isset($cc['ccemail']) ? $message->setCC( explode(';',$cc['ccemail'])) : '';
+
+if  ($support==1) {
+  $message->setCC('amministrazione@auxcoop.it','giampaolo.filauro@auxcoop.it' );
+}
+
+
+
                  $message->send();
-
-
-
-
-
-
    $message2=Yii::$app->mailer->compose()
     ->setTo(yii::$app->params['adminEmail'])
     ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
@@ -104,28 +117,20 @@ foreach ($atc2 as $file) {
     ->setSubject($this->subject.' Inviato da '. $ris['email'])
     ->setTextBody($this->body);
    //  ->attach($this->files);
-
 foreach ($atc2 as $file) {
     $filename = $path . $file->baseName . '.' . $file->extension; # i'd suggest adding an absolute path here, not a relative.
     $file->saveAs($filename);
     $message2->attach($filename);
 }
-
-
    $message2 ->send();
-
-           
 //die(print_r($message));
-
 foreach ($atc2 as $file) {
     $filename = $path . $file->baseName . '.' . $file->extension; # i'd suggest adding an absolute path here, not a relative.
-
     unlink($filename);
 }
             return true;
         }
          die('non validato');
-
         return false;
     }
 }

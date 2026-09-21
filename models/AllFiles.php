@@ -39,6 +39,10 @@ class AllFiles extends \yii\db\ActiveRecord
             [['estensione'], 'string', 'max' => 3],
             [['origine'], 'string', 'max' => 1],
             [['nota'], 'string'],
+            [['sub_entita'], 'string', 'max' => 100],
+        [['sub_entita'], 'safe'],
+        [['data_inizio', 'data_fine'], 'safe'],
+        [['importo'], 'number']
         ];
     }
 
@@ -55,19 +59,30 @@ class AllFiles extends \yii\db\ActiveRecord
             'nomefile' => 'Nomefile',
             'estensione' => 'Estensione',
             'origne' => 'Origne',
-            'nota'=>'nota'
-        ];
+            'nota'=>'nota',
+  'sub_entita' => 'Tipologia Documento',
+  'data_inizio' => 'Inizio Validità',
+        'data_fine' => 'Scadenza',
+        'importo' => 'Importo Pagamento (€)'
+            ];
     }
-    public function upload() {
-        if ( 
-           $this->f_content->saveAs('../web/uploads/'. 
-           str_replace(' ', '_',$this->f_content->baseName) . '.' .
-              $this->f_content->extension)){
-          // echo 'datt';
-              return true;
-        } else {
-            //echo 'no';
-           return false;
+    public function upload($file)
+    {
+        $path = '../web/uploads/' . str_replace(' ', '_', $file->baseName) . '.' . $file->extension;
+        if ($file->saveAs($path)) {
+            return true;
         }
-     }
+        return false;
+    }
+    // In app\models\Planning.php
+public function behaviors()
+{
+    return [
+        \app\components\LogBehavior::class,
+    ];
+}
+    public function getSubEntitaRel()
+{
+    return $this->hasOne(SubEntitaLookup::class, ['codice' => 'sub_entita']);
+}
 }

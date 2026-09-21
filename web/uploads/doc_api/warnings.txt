@@ -1,0 +1,4091 @@
+Array
+(
+    [0] => Array
+        (
+            [line] => 28
+            [file] => controllers\AgendaController.php
+            [message] => No short description for Method 'behaviors'
+        )
+
+    [1] => Array
+        (
+            [line] => 154
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'actionCreate'
+        )
+
+    [2] => Array
+        (
+            [line] => 170
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'actionUpdate'
+        )
+
+    [3] => Array
+        (
+            [line] => 187
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'findModel'
+        )
+
+    [4] => Array
+        (
+            [line] => 197
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'actionGenfile'
+        )
+
+    [5] => Array
+        (
+            [line] => 233
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'actionJsoncalendar'
+        )
+
+    [6] => Array
+        (
+            [line] => 306
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'actionSelcal'
+        )
+
+    [7] => Array
+        (
+            [line] => 317
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [8] => Array
+        (
+            [line] => 343
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'actionFullcal'
+        )
+
+    [9] => Array
+        (
+            [line] => 351
+            [file] => controllers\AgendaController.php
+            [message] => No docblock for element 'actionVtiger'
+        )
+
+    [10] => Array
+        (
+            [line] => 83
+            [file] => controllers\AgendaFilesController.php
+            [message] => No docblock for element 'actionCreateaj'
+        )
+
+    [11] => Array
+        (
+            [line] => 223
+            [file] => controllers\AgendaFilesController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [12] => Array
+        (
+            [line] => 6
+            [file] => controllers\AgentiController.php
+            [message] => No docblock for element 'app\controllers\AgentiController'
+        )
+
+    [13] => Array
+        (
+            [line] => 8
+            [file] => controllers\AgentiController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [14] => Array
+        (
+            [line] => 99
+            [file] => controllers\AllfilesController (2).php
+            [message] => No docblock for element 'actionAjupd'
+        )
+
+    [15] => Array
+        (
+            [line] => 358
+            [file] => controllers\AllfilesController (2).php
+            [message] => No docblock for element 'actionGenfile'
+        )
+
+    [16] => Array
+        (
+            [line] => 421
+            [file] => controllers\AllfilesController (2).php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [17] => Array
+        (
+            [line] => 446
+            [file] => controllers\AllfilesController (2).php
+            [message] => No docblock for element 'actionTabsdata'
+        )
+
+    [18] => Array
+        (
+            [line] => 89
+            [file] => controllers\AllfilesController.php
+            [message] => No docblock for element 'actionAjupd'
+        )
+
+    [19] => Array
+        (
+            [line] => 354
+            [file] => controllers\AllfilesController.php
+            [message] => No docblock for element 'actionGenfile'
+        )
+
+    [20] => Array
+        (
+            [line] => 393
+            [file] => controllers\AllfilesController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [21] => Array
+        (
+            [line] => 418
+            [file] => controllers\AllfilesController.php
+            [message] => No docblock for element 'actionDownload'
+        )
+
+    [22] => Array
+        (
+            [line] => 147
+            [file] => controllers\AnacliControllerS.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [23] => Array
+        (
+            [line] => 205
+            [file] => controllers\AnacliControllerS.php
+            [message] => No docblock for element 'actionList'
+        )
+
+    [24] => Array
+        (
+            [line] => 9
+            [file] => controllers\AnalysisController.php
+            [message] => No docblock for element 'app\controllers\AnalysisController'
+        )
+
+    [25] => Array
+        (
+            [line] => 12
+            [file] => controllers\AnalysisController.php
+            [message] => No docblock for element 'actionUpload'
+        )
+
+    [26] => Array
+        (
+            [line] => 37
+            [file] => controllers\AnalysisController.php
+            [message] => No docblock for element 'zzzzactionUpload'
+        )
+
+    [27] => Array
+        (
+            [line] => 6
+            [file] => controllers\ArController.php
+            [message] => No docblock for element 'app\controllers\ArController'
+        )
+
+    [28] => Array
+        (
+            [line] => 8
+            [file] => controllers\ArController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [29] => Array
+        (
+            [line] => 16
+            [file] => controllers\ArController.php
+            [message] => No docblock for element 'actionList'
+        )
+
+    [30] => Array
+        (
+            [line] => 50
+            [file] => controllers\ArController.php
+            [message] => No docblock for element 'actionGetardet'
+        )
+
+    [31] => Array
+        (
+            [line] => 5
+            [file] => controllers\ArcaController.php
+            [message] => No docblock for element 'app\controllers\ArcaController'
+        )
+
+    [32] => Array
+        (
+            [line] => 7
+            [file] => controllers\ArcaController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [33] => Array
+        (
+            [line] => 19
+            [file] => controllers\CalController.php
+            [message] => No short description for Method 'behaviors'
+        )
+
+    [34] => Array
+        (
+            [line] => 149
+            [file] => controllers\CalController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [35] => Array
+        (
+            [line] => 11
+            [file] => controllers\ChatController.php
+            [message] => No docblock for element 'app\controllers\ChatController'
+        )
+
+    [36] => Array
+        (
+            [line] => 69
+            [file] => controllers\ChatController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [37] => Array
+        (
+            [line] => 88
+            [file] => controllers\ChatController.php
+            [message] => No docblock for element 'actionSendMessage'
+        )
+
+    [38] => Array
+        (
+            [line] => 231
+            [file] => controllers\ChatController.php
+            [message] => No docblock for element '_preageactionSendMessage'
+        )
+
+    [39] => Array
+        (
+            [line] => 422
+            [file] => controllers\ChatController.php
+            [message] => No docblock for element 'actionSendMessage1'
+        )
+
+    [40] => Array
+        (
+            [line] => 605
+            [file] => controllers\ChatController.php
+            [message] => No docblock for element 'oldactionSendMessage'
+        )
+
+    [41] => Array
+        (
+            [line] => 1202
+            [file] => controllers\ChatController.php
+            [message] => No docblock for element 'actionCheckStatus'
+        )
+
+    [42] => Array
+        (
+            [line] => 1395
+            [file] => controllers\ChatController.php
+            [message] => No docblock for element 'actionIndexmanuals'
+        )
+
+    [43] => Array
+        (
+            [line] => 11
+            [file] => controllers\ChatController_old.php
+            [message] => No docblock for element 'app\controllers\ChatController'
+        )
+
+    [44] => Array
+        (
+            [line] => 14
+            [file] => controllers\ChatController_old.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [45] => Array
+        (
+            [line] => 451
+            [file] => controllers\ChatController_old.php
+            [message] => No docblock for element '_____actionSendMessage'
+        )
+
+    [46] => Array
+        (
+            [line] => 690
+            [file] => controllers\ChatController_old.php
+            [message] => No docblock for element 'actionSendMessage__preview'
+        )
+
+    [47] => Array
+        (
+            [line] => 789
+            [file] => controllers\ChatController_old.php
+            [message] => No docblock for element 'actionSendMessage_old'
+        )
+
+    [48] => Array
+        (
+            [line] => 897
+            [file] => controllers\ChatController_old.php
+            [message] => No docblock for element 'actionCheckStatus_____'
+        )
+
+    [49] => Array
+        (
+            [line] => 915
+            [file] => controllers\ChatController_old.php
+            [message] => No docblock for element 'actionCheckStatus'
+        )
+
+    [50] => Array
+        (
+            [line] => 106
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionConferma'
+        )
+
+    [51] => Array
+        (
+            [line] => 161
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionRifiuta'
+        )
+
+    [52] => Array
+        (
+            [line] => 204
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionNrifiuta'
+        )
+
+    [53] => Array
+        (
+            [line] => 272
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionSede'
+        )
+
+    [54] => Array
+        (
+            [line] => 289
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionNannota'
+        )
+
+    [55] => Array
+        (
+            [line] => 364
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [56] => Array
+        (
+            [line] => 412
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionCreate'
+        )
+
+    [57] => Array
+        (
+            [line] => 491
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionDupd'
+        )
+
+    [58] => Array
+        (
+            [line] => 559
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionDdelete'
+        )
+
+    [59] => Array
+        (
+            [line] => 572
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'actionGetrows'
+        )
+
+    [60] => Array
+        (
+            [line] => 584
+            [file] => controllers\Doc_headController.php
+            [message] => No docblock for element 'afterFind'
+        )
+
+    [61] => Array
+        (
+            [line] => 138
+            [file] => controllers\Doc_rowsController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [62] => Array
+        (
+            [line] => 128
+            [file] => controllers\DocommessaController.php
+            [message] => No docblock for element 'actionCreateAjax'
+        )
+
+    [63] => Array
+        (
+            [line] => 139
+            [file] => controllers\ElemailController.php
+            [message] => No docblock for element 'actionAnsmail'
+        )
+
+    [64] => Array
+        (
+            [line] => 155
+            [file] => controllers\ElemailController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [65] => Array
+        (
+            [line] => 221
+            [file] => controllers\ElemailController.php
+            [message] => No docblock for element 'print_children'
+        )
+
+    [66] => Array
+        (
+            [line] => 10
+            [file] => controllers\EtichetteController.php
+            [message] => No docblock for element 'app\controllers\EtichetteController'
+        )
+
+    [67] => Array
+        (
+            [line] => 21
+            [file] => controllers\EtichetteController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [68] => Array
+        (
+            [line] => 49
+            [file] => controllers\EtichetteController.php
+            [message] => No docblock for element 'actionFetchTestate'
+        )
+
+    [69] => Array
+        (
+            [line] => 88
+            [file] => controllers\EtichetteController.php
+            [message] => No docblock for element 'actionFetchRighe'
+        )
+
+    [70] => Array
+        (
+            [line] => 115
+            [file] => controllers\EtichetteController.php
+            [message] => No docblock for element 'actionProcess'
+        )
+
+    [71] => Array
+        (
+            [line] => 9
+            [file] => controllers\ExceptionController.php
+            [message] => No docblock for element 'app\controllers\ExceptionController'
+        )
+
+    [72] => Array
+        (
+            [line] => 12
+            [file] => controllers\ExceptionController.php
+            [message] => No docblock for element '__construct'
+        )
+
+    [73] => Array
+        (
+            [line] => 17
+            [file] => controllers\ExceptionController.php
+            [message] => No docblock for element 'actionErrorHandler'
+        )
+
+    [74] => Array
+        (
+            [line] => 152
+            [file] => controllers\FilesController.php
+            [message] => No docblock for element 'downloadFile'
+        )
+
+    [75] => Array
+        (
+            [line] => 167
+            [file] => controllers\FilesController.php
+            [message] => No docblock for element 'actionDownload'
+        )
+
+    [76] => Array
+        (
+            [line] => 186
+            [file] => controllers\FilesController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [77] => Array
+        (
+            [line] => 10
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'app\model\form\FileForm'
+        )
+
+    [78] => Array
+        (
+            [line] => 16
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'rules'
+        )
+
+    [79] => Array
+        (
+            [line] => 29
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'afterValidate'
+        )
+
+    [80] => Array
+        (
+            [line] => 39
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'save'
+        )
+
+    [81] => Array
+        (
+            [line] => 61
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'saveFIles'
+        )
+
+    [82] => Array
+        (
+            [line] => 86
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'getAgenda'
+        )
+
+    [83] => Array
+        (
+            [line] => 92
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'setAgenda'
+        )
+
+    [84] => Array
+        (
+            [line] => 102
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'getFiles'
+        )
+
+    [85] => Array
+        (
+            [line] => 108
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'getFile'
+        )
+
+    [86] => Array
+        (
+            [line] => 123
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'setFiles'
+        )
+
+    [87] => Array
+        (
+            [line] => 142
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'errorSummary'
+        )
+
+    [88] => Array
+        (
+            [line] => 167
+            [file] => controllers\FilesFormController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [89] => Array
+        (
+            [line] => 176
+            [file] => controllers\FoldersController.php
+            [message] => No docblock for element 'actionAjupd'
+        )
+
+    [90] => Array
+        (
+            [line] => 153
+            [file] => controllers\GacSottoPrvController.php
+            [message] => No docblock for element 'actionTestab'
+        )
+
+    [91] => Array
+        (
+            [line] => 126
+            [file] => controllers\GacattivitaController.php
+            [message] => No docblock for element 'actionTabsdata'
+        )
+
+    [92] => Array
+        (
+            [line] => 155
+            [file] => controllers\GacmaterialiController.php
+            [message] => No docblock for element 'actionTabsdata'
+        )
+
+    [93] => Array
+        (
+            [line] => 104
+            [file] => controllers\GacspeseController.php
+            [message] => No docblock for element 'actionCreate'
+        )
+
+    [94] => Array
+        (
+            [line] => 189
+            [file] => controllers\GacspeseController.php
+            [message] => No docblock for element 'actionTabsdata'
+        )
+
+    [95] => Array
+        (
+            [line] => 8
+            [file] => controllers\IngestController.php
+            [message] => No docblock for element 'app\controllers\IngestController'
+        )
+
+    [96] => Array
+        (
+            [line] => 10
+            [file] => controllers\IngestController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [97] => Array
+        (
+            [line] => 134
+            [file] => controllers\IngestController.php
+            [message] => No docblock for element 'actionCrmIngest'
+        )
+
+    [98] => Array
+        (
+            [line] => 150
+            [file] => controllers\ItemsController-DESKTOP-2CS5H4S.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [99] => Array
+        (
+            [line] => 150
+            [file] => controllers\ItemsController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [100] => Array
+        (
+            [line] => 135
+            [file] => controllers\LocazioniController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [101] => Array
+        (
+            [line] => 128
+            [file] => controllers\LogController-DESKTOP-2CS5H4S.php
+            [message] => No docblock for element 'actionSet'
+        )
+
+    [102] => Array
+        (
+            [line] => 151
+            [file] => controllers\LogController-DESKTOP-2CS5H4S.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [103] => Array
+        (
+            [line] => 130
+            [file] => controllers\LogController.php
+            [message] => No docblock for element 'actionSet'
+        )
+
+    [104] => Array
+        (
+            [line] => 153
+            [file] => controllers\LogController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [105] => Array
+        (
+            [line] => 188
+            [file] => controllers\PaymentsController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [106] => Array
+        (
+            [line] => 148
+            [file] => controllers\PersonaleController.php
+            [message] => No docblock for element 'actionUploadFile'
+        )
+
+    [107] => Array
+        (
+            [line] => 160
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element 'xoldactionCreate'
+        )
+
+    [108] => Array
+        (
+            [line] => 218
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element 'old_actionCreate'
+        )
+
+    [109] => Array
+        (
+            [line] => 377
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element '___actionEventsjson'
+        )
+
+    [110] => Array
+        (
+            [line] => 446
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element 'old_actionEventsjson'
+        )
+
+    [111] => Array
+        (
+            [line] => 665
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element 'originalactionInlineUpdate'
+        )
+
+    [112] => Array
+        (
+            [line] => 707
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element 'old_actionDuplicate'
+        )
+
+    [113] => Array
+        (
+            [line] => 758
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element 'actionStampa'
+        )
+
+    [114] => Array
+        (
+            [line] => 822
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element 'actionDuplicate'
+        )
+
+    [115] => Array
+        (
+            [line] => 922
+            [file] => controllers\PlanningController.php
+            [message] => No docblock for element 'actionCopyDay'
+        )
+
+    [116] => Array
+        (
+            [line] => 56
+            [file] => controllers\PresenzeController.php
+            [message] => No docblock for element 'actionView'
+        )
+
+    [117] => Array
+        (
+            [line] => 84
+            [file] => controllers\RapportiniController.php
+            [message] => No docblock for element 'actionCreateaj'
+        )
+
+    [118] => Array
+        (
+            [line] => 166
+            [file] => controllers\RapportiniController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [119] => Array
+        (
+            [line] => 160
+            [file] => controllers\RelcliController-.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [120] => Array
+        (
+            [line] => 138
+            [file] => controllers\RelcliController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [121] => Array
+        (
+            [line] => 153
+            [file] => controllers\RelusrformactionController.php
+            [message] => No docblock for element 'getcontroller'
+        )
+
+    [122] => Array
+        (
+            [line] => 182
+            [file] => controllers\RelusrformactionController.php
+            [message] => No docblock for element 'actionList'
+        )
+
+    [123] => Array
+        (
+            [line] => 235
+            [file] => controllers\RelusrformactionController.php
+            [message] => No docblock for element 'actionGetursper'
+        )
+
+    [124] => Array
+        (
+            [line] => 48
+            [file] => controllers\Rep_publicazioniController.php
+            [message] => No docblock for element 'actionPub_marca'
+        )
+
+    [125] => Array
+        (
+            [line] => 62
+            [file] => controllers\Rep_publicazioniController.php
+            [message] => No docblock for element 'actionPub_data'
+        )
+
+    [126] => Array
+        (
+            [line] => 77
+            [file] => controllers\Rep_publicazioniController.php
+            [message] => No docblock for element 'actionPub_commesse'
+        )
+
+    [127] => Array
+        (
+            [line] => 178
+            [file] => controllers\Rep_publicazioniController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [128] => Array
+        (
+            [line] => 33
+            [file] => controllers\ReportsController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [129] => Array
+        (
+            [line] => 54
+            [file] => controllers\ReportsController.php
+            [message] => No docblock for element 'actionZreport'
+        )
+
+    [130] => Array
+        (
+            [line] => 66
+            [file] => controllers\ReportsController.php
+            [message] => No docblock for element 'actionTestreport'
+        )
+
+    [131] => Array
+        (
+            [line] => 85
+            [file] => controllers\ReportsController.php
+            [message] => No docblock for element 'actionChart'
+        )
+
+    [132] => Array
+        (
+            [line] => 94
+            [file] => controllers\ReportsController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [133] => Array
+        (
+            [line] => 29
+            [file] => controllers\RestController.php
+            [message] => No docblock for element '$modelClass'
+        )
+
+    [134] => Array
+        (
+            [line] => 29
+            [file] => controllers\RestController.php
+            [message] => No short description for element '$modelClass'
+        )
+
+    [135] => Array
+        (
+            [line] => 30
+            [file] => controllers\RestController.php
+            [message] => No docblock for element '$stat_hash'
+        )
+
+    [136] => Array
+        (
+            [line] => 30
+            [file] => controllers\RestController.php
+            [message] => No short description for element '$stat_hash'
+        )
+
+    [137] => Array
+        (
+            [line] => 166
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionGetactions'
+        )
+
+    [138] => Array
+        (
+            [line] => 201
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionValxml'
+        )
+
+    [139] => Array
+        (
+            [line] => 240
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [140] => Array
+        (
+            [line] => 299
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'gethash'
+        )
+
+    [141] => Array
+        (
+            [line] => 312
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionArcapostconferma'
+        )
+
+    [142] => Array
+        (
+            [line] => 333
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionArcapostannulla'
+        )
+
+    [143] => Array
+        (
+            [line] => 360
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionArcapostfile'
+        )
+
+    [144] => Array
+        (
+            [line] => 522
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionArcagetfile'
+        )
+
+    [145] => Array
+        (
+            [line] => 527
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionArcagetdocs'
+        )
+
+    [146] => Array
+        (
+            [line] => 532
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionArcagetsc'
+        )
+
+    [147] => Array
+        (
+            [line] => 537
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionArcagetart'
+        )
+
+    [148] => Array
+        (
+            [line] => 542
+            [file] => controllers\RestController.php
+            [message] => No docblock for element 'actionArcagetcli'
+        )
+
+    [149] => Array
+        (
+            [line] => 25
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'app\controllers\SiteController'
+        )
+
+    [150] => Array
+        (
+            [line] => 155
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionResetadmin'
+        )
+
+    [151] => Array
+        (
+            [line] => 174
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionSignup'
+        )
+
+    [152] => Array
+        (
+            [line] => 272
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionUploadImage'
+        )
+
+    [153] => Array
+        (
+            [line] => 286
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionBleft'
+        )
+
+    [154] => Array
+        (
+            [line] => 431
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionContatti'
+        )
+
+    [155] => Array
+        (
+            [line] => 496
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionGetexp'
+        )
+
+    [156] => Array
+        (
+            [line] => 640
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionReport'
+        )
+
+    [157] => Array
+        (
+            [line] => 651
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionSmail'
+        )
+
+    [158] => Array
+        (
+            [line] => 687
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionAssocia'
+        )
+
+    [159] => Array
+        (
+            [line] => 730
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionCf'
+        )
+
+    [160] => Array
+        (
+            [line] => 746
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionChat'
+        )
+
+    [161] => Array
+        (
+            [line] => 763
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionGeneratePdf'
+        )
+
+    [162] => Array
+        (
+            [line] => 786
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'actionError'
+        )
+
+    [163] => Array
+        (
+            [line] => 139
+            [file] => controllers\SottocommessaController.php
+            [message] => No docblock for element 'actionGac'
+        )
+
+    [164] => Array
+        (
+            [line] => 143
+            [file] => controllers\SottocommessaController.php
+            [message] => No docblock for element 'actionTabsdata'
+        )
+
+    [165] => Array
+        (
+            [line] => 10
+            [file] => controllers\StaffChatController.php
+            [message] => No docblock for element 'app\controllers\StaffChatController'
+        )
+
+    [166] => Array
+        (
+            [line] => 15
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'app\controllers\StatisticheController'
+        )
+
+    [167] => Array
+        (
+            [line] => 17
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [168] => Array
+        (
+            [line] => 132
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionDatiDettaglio'
+        )
+
+    [169] => Array
+        (
+            [line] => 233
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionDatiDettaglioaj'
+        )
+
+    [170] => Array
+        (
+            [line] => 322
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionDettaglio'
+        )
+
+    [171] => Array
+        (
+            [line] => 331
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element '___actionResetagente'
+        )
+
+    [172] => Array
+        (
+            [line] => 383
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionResetagente'
+        )
+
+    [173] => Array
+        (
+            [line] => 395
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionGenfile'
+        )
+
+    [174] => Array
+        (
+            [line] => 465
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionDownload'
+        )
+
+    [175] => Array
+        (
+            [line] => 513
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionUploadFile'
+        )
+
+    [176] => Array
+        (
+            [line] => 544
+            [file] => controllers\StatisticheController.php
+            [message] => No docblock for element 'actionCartelle'
+        )
+
+    [177] => Array
+        (
+            [line] => 8
+            [file] => controllers\TicketingestController.php
+            [message] => No docblock for element 'app\controllers\TicketingestController'
+        )
+
+    [178] => Array
+        (
+            [line] => 10
+            [file] => controllers\TicketingestController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [179] => Array
+        (
+            [line] => 207
+            [file] => controllers\TodomainController.php
+            [message] => No docblock for element 'actionSendEventEmail'
+        )
+
+    [180] => Array
+        (
+            [line] => 321
+            [file] => controllers\TodomainController.php
+            [message] => No docblock for element 'actionSendEventEmail2'
+        )
+
+    [181] => Array
+        (
+            [line] => 415
+            [file] => controllers\TodomainController.php
+            [message] => No docblock for element 'actionSendeventemailwithics'
+        )
+
+    [182] => Array
+        (
+            [line] => 499
+            [file] => controllers\TodomainController.php
+            [message] => No docblock for element 'actionAddComment'
+        )
+
+    [183] => Array
+        (
+            [line] => 514
+            [file] => controllers\TodomainController.php
+            [message] => No docblock for element 'actionAddreply'
+        )
+
+    [184] => Array
+        (
+            [line] => 541
+            [file] => controllers\TodomainController.php
+            [message] => No docblock for element 'actionCreateTag'
+        )
+
+    [185] => Array
+        (
+            [line] => 562
+            [file] => controllers\TodomainController.php
+            [message] => No docblock for element 'actionSearchTag'
+        )
+
+    [186] => Array
+        (
+            [line] => 133
+            [file] => controllers\UecanagraficaController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [187] => Array
+        (
+            [line] => 134
+            [file] => controllers\UecarticoliController.php
+            [message] => No docblock for element 'actionList'
+        )
+
+    [188] => Array
+        (
+            [line] => 167
+            [file] => controllers\UecarticoliController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [189] => Array
+        (
+            [line] => 136
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'actionCreate'
+        )
+
+    [190] => Array
+        (
+            [line] => 207
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'actionWORKCreate'
+        )
+
+    [191] => Array
+        (
+            [line] => 284
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'actionPdf'
+        )
+
+    [192] => Array
+        (
+            [line] => 333
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'actionExport'
+        )
+
+    [193] => Array
+        (
+            [line] => 355
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'actionGetta'
+        )
+
+    [194] => Array
+        (
+            [line] => 383
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'actionExportDownload'
+        )
+
+    [195] => Array
+        (
+            [line] => 396
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'exportToExcelFile'
+        )
+
+    [196] => Array
+        (
+            [line] => 432
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'actionXPdf'
+        )
+
+    [197] => Array
+        (
+            [line] => 489
+            [file] => controllers\UectestaController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [198] => Array
+        (
+            [line] => 149
+            [file] => controllers\UserController.php
+            [message] => No docblock for element 'old_actionCreate'
+        )
+
+    [199] => Array
+        (
+            [line] => 408
+            [file] => controllers\UserController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [200] => Array
+        (
+            [line] => 487
+            [file] => controllers\UserController.php
+            [message] => No docblock for element 'actionRp'
+        )
+
+    [201] => Array
+        (
+            [line] => 594
+            [file] => controllers\UserController.php
+            [message] => No docblock for element 'actionCf'
+        )
+
+    [202] => Array
+        (
+            [line] => 604
+            [file] => controllers\UserController.php
+            [message] => No docblock for element 'actionTest'
+        )
+
+    [203] => Array
+        (
+            [line] => 626
+            [file] => controllers\UserController.php
+            [message] => No docblock for element 'generatePdfFromUrl'
+        )
+
+    [204] => Array
+        (
+            [line] => 127
+            [file] => controllers\VeicoliController.php
+            [message] => No docblock for element 'xxxxxxactionUploadFile'
+        )
+
+    [205] => Array
+        (
+            [line] => 167
+            [file] => controllers\VeicoliController.php
+            [message] => No docblock for element 'actionUploadFile'
+        )
+
+    [206] => Array
+        (
+            [line] => 9
+            [file] => controllers\VtigerController.php
+            [message] => No docblock for element 'app\controllers\VtigerController'
+        )
+
+    [207] => Array
+        (
+            [line] => 11
+            [file] => controllers\VtigerController.php
+            [message] => No docblock for element 'actionSearch'
+        )
+
+    [208] => Array
+        (
+            [line] => 434
+            [file] => controllers\VtigerController.php
+            [message] => No docblock for element 'actionProgetti'
+        )
+
+    [209] => Array
+        (
+            [line] => 701
+            [file] => controllers\VtigerController.php
+            [message] => No docblock for element 'actionTicket'
+        )
+
+    [210] => Array
+        (
+            [line] => 215
+            [file] => controllers\XStrutturaController.php
+            [message] => No docblock for element 'actionXcaricacitta'
+        )
+
+    [211] => Array
+        (
+            [line] => 83
+            [file] => controllers\XVenueController.php
+            [message] => No docblock for element 'actionCreateaj'
+        )
+
+    [212] => Array
+        (
+            [line] => 170
+            [file] => controllers\XVenueController.php
+            [message] => No docblock for element 'actionXcaricacitta'
+        )
+
+    [213] => Array
+        (
+            [line] => 137
+            [file] => controllers\XmenuController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [214] => Array
+        (
+            [line] => 87
+            [file] => controllers\XpartyController.php
+            [message] => No docblock for element 'actionCreateaj'
+        )
+
+    [215] => Array
+        (
+            [line] => 93
+            [file] => controllers\XroomlistController.php
+            [message] => No docblock for element 'actionCreateaj'
+        )
+
+    [216] => Array
+        (
+            [line] => 296
+            [file] => controllers\XroomlistController.php
+            [message] => No docblock for element 'old_actionUpdate'
+        )
+
+    [217] => Array
+        (
+            [line] => 89
+            [file] => controllers\XruoliController.php
+            [message] => No docblock for element 'actionCreateaj'
+        )
+
+    [218] => Array
+        (
+            [line] => 79
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionIndex3'
+        )
+
+    [219] => Array
+        (
+            [line] => 104
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionIndex2'
+        )
+
+    [220] => Array
+        (
+            [line] => 202
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionDupd'
+        )
+
+    [221] => Array
+        (
+            [line] => 219
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionLoadmenu'
+        )
+
+    [222] => Array
+        (
+            [line] => 406
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionMasterhotel'
+        )
+
+    [223] => Array
+        (
+            [line] => 564
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'Loadtappe'
+        )
+
+    [224] => Array
+        (
+            [line] => 603
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionLoadtappa'
+        )
+
+    [225] => Array
+        (
+            [line] => 733
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'Analisiparty'
+        )
+
+    [226] => Array
+        (
+            [line] => 776
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'Analisitappe'
+        )
+
+    [227] => Array
+        (
+            [line] => 820
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'mediaprezzi'
+        )
+
+    [228] => Array
+        (
+            [line] => 909
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'roomlist'
+        )
+
+    [229] => Array
+        (
+            [line] => 944
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'listatappetool'
+        )
+
+    [230] => Array
+        (
+            [line] => 959
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'listaart'
+        )
+
+    [231] => Array
+        (
+            [line] => 980
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'recap'
+        )
+
+    [232] => Array
+        (
+            [line] => 1252
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionSavetappe'
+        )
+
+    [233] => Array
+        (
+            [line] => 1311
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionSavenominativo'
+        )
+
+    [234] => Array
+        (
+            [line] => 1356
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionExportDettaglio'
+        )
+
+    [235] => Array
+        (
+            [line] => 1437
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionLoadtappa2'
+        )
+
+    [236] => Array
+        (
+            [line] => 1543
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionXcaricacitta'
+        )
+
+    [237] => Array
+        (
+            [line] => 1561
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionXcaricatappa'
+        )
+
+    [238] => Array
+        (
+            [line] => 1584
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionLoadcitta'
+        )
+
+    [239] => Array
+        (
+            [line] => 1600
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionRanalisi'
+        )
+
+    [240] => Array
+        (
+            [line] => 1621
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionDettaglio2'
+        )
+
+    [241] => Array
+        (
+            [line] => 1648
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionRoomlist2'
+        )
+
+    [242] => Array
+        (
+            [line] => 1662
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionRoomlist1'
+        )
+
+    [243] => Array
+        (
+            [line] => 1675
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionTools_'
+        )
+
+    [244] => Array
+        (
+            [line] => 1708
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetchartdata'
+        )
+
+    [245] => Array
+        (
+            [line] => 1716
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionUploadimage'
+        )
+
+    [246] => Array
+        (
+            [line] => 1775
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionDetail'
+        )
+
+    [247] => Array
+        (
+            [line] => 1783
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionAjximage'
+        )
+
+    [248] => Array
+        (
+            [line] => 1852
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionWizardrighe'
+        )
+
+    [249] => Array
+        (
+            [line] => 1919
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionEliminarecord'
+        )
+
+    [250] => Array
+        (
+            [line] => 1964
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionWizardrighesalva'
+        )
+
+    [251] => Array
+        (
+            [line] => 2125
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'aggiornateste'
+        )
+
+    [252] => Array
+        (
+            [line] => 2204
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionWizartappe'
+        )
+
+    [253] => Array
+        (
+            [line] => 2308
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetcities'
+        )
+
+    [254] => Array
+        (
+            [line] => 2324
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetart'
+        )
+
+    [255] => Array
+        (
+            [line] => 2345
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetali'
+        )
+
+    [256] => Array
+        (
+            [line] => 2362
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetaliart'
+        )
+
+    [257] => Array
+        (
+            [line] => 2379
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetvenue'
+        )
+
+    [258] => Array
+        (
+            [line] => 2417
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetstruttura'
+        )
+
+    [259] => Array
+        (
+            [line] => 2443
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetAliquota'
+        )
+
+    [260] => Array
+        (
+            [line] => 2466
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionTornaindietro'
+        )
+
+    [261] => Array
+        (
+            [line] => 2478
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionGetimportitot'
+        )
+
+    [262] => Array
+        (
+            [line] => 3139
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionUploadFile'
+        )
+
+    [263] => Array
+        (
+            [line] => 3360
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [264] => Array
+        (
+            [line] => 3421
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionEliminatappa'
+        )
+
+    [265] => Array
+        (
+            [line] => 3454
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionEliminanominativo'
+        )
+
+    [266] => Array
+        (
+            [line] => 3489
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionWizardrighesalvaospiti'
+        )
+
+    [267] => Array
+        (
+            [line] => 3652
+            [file] => controllers\XtravelheadController copy.php
+            [message] => No docblock for element 'actionTool'
+        )
+
+    [268] => Array
+        (
+            [line] => 123
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'ori_actionIndex'
+        )
+
+    [269] => Array
+        (
+            [line] => 149
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionIndex3'
+        )
+
+    [270] => Array
+        (
+            [line] => 174
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionIndex2'
+        )
+
+    [271] => Array
+        (
+            [line] => 272
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionDupd'
+        )
+
+    [272] => Array
+        (
+            [line] => 289
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionLoadmenu'
+        )
+
+    [273] => Array
+        (
+            [line] => 476
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionMasterhotel'
+        )
+
+    [274] => Array
+        (
+            [line] => 678
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'Loadtappe'
+        )
+
+    [275] => Array
+        (
+            [line] => 718
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionLoadtappa'
+        )
+
+    [276] => Array
+        (
+            [line] => 848
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'Analisiparty'
+        )
+
+    [277] => Array
+        (
+            [line] => 891
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'Analisitappe'
+        )
+
+    [278] => Array
+        (
+            [line] => 935
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'mediaprezzi'
+        )
+
+    [279] => Array
+        (
+            [line] => 1024
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'roomlist'
+        )
+
+    [280] => Array
+        (
+            [line] => 1059
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'listatappetool'
+        )
+
+    [281] => Array
+        (
+            [line] => 1074
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'listaart'
+        )
+
+    [282] => Array
+        (
+            [line] => 1095
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'recap'
+        )
+
+    [283] => Array
+        (
+            [line] => 1390
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionSavetappe'
+        )
+
+    [284] => Array
+        (
+            [line] => 1449
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionSavenominativo'
+        )
+
+    [285] => Array
+        (
+            [line] => 1494
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionExportDettaglio'
+        )
+
+    [286] => Array
+        (
+            [line] => 1575
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionLoadtappa2'
+        )
+
+    [287] => Array
+        (
+            [line] => 1681
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionXcaricacitta'
+        )
+
+    [288] => Array
+        (
+            [line] => 1699
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionXcaricatappa'
+        )
+
+    [289] => Array
+        (
+            [line] => 1722
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionLoadcitta'
+        )
+
+    [290] => Array
+        (
+            [line] => 1738
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionRanalisi'
+        )
+
+    [291] => Array
+        (
+            [line] => 1759
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionDettaglio2'
+        )
+
+    [292] => Array
+        (
+            [line] => 1786
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionRoomlist2'
+        )
+
+    [293] => Array
+        (
+            [line] => 1800
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionRoomlist1'
+        )
+
+    [294] => Array
+        (
+            [line] => 1813
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionNOTools_'
+        )
+
+    [295] => Array
+        (
+            [line] => 1887
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetchartdata'
+        )
+
+    [296] => Array
+        (
+            [line] => 1895
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionUploadimage'
+        )
+
+    [297] => Array
+        (
+            [line] => 1954
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionDetail'
+        )
+
+    [298] => Array
+        (
+            [line] => 1962
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionAjximage'
+        )
+
+    [299] => Array
+        (
+            [line] => 2031
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionWizardrighe'
+        )
+
+    [300] => Array
+        (
+            [line] => 2105
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionEliminarecord'
+        )
+
+    [301] => Array
+        (
+            [line] => 2150
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionWizardrighesalva'
+        )
+
+    [302] => Array
+        (
+            [line] => 2311
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'aggiornateste'
+        )
+
+    [303] => Array
+        (
+            [line] => 2390
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionWizartappe'
+        )
+
+    [304] => Array
+        (
+            [line] => 2494
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetcities'
+        )
+
+    [305] => Array
+        (
+            [line] => 2510
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetart'
+        )
+
+    [306] => Array
+        (
+            [line] => 2531
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetartpg'
+        )
+
+    [307] => Array
+        (
+            [line] => 2559
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetali'
+        )
+
+    [308] => Array
+        (
+            [line] => 2576
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetaliart'
+        )
+
+    [309] => Array
+        (
+            [line] => 2593
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetvenue'
+        )
+
+    [310] => Array
+        (
+            [line] => 2631
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetstruttura'
+        )
+
+    [311] => Array
+        (
+            [line] => 2657
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetAliquota'
+        )
+
+    [312] => Array
+        (
+            [line] => 2680
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionTornaindietro'
+        )
+
+    [313] => Array
+        (
+            [line] => 2692
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionGetimportitot'
+        )
+
+    [314] => Array
+        (
+            [line] => 3353
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionUploadFile'
+        )
+
+    [315] => Array
+        (
+            [line] => 3574
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'getuser'
+        )
+
+    [316] => Array
+        (
+            [line] => 3635
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionEliminatappa'
+        )
+
+    [317] => Array
+        (
+            [line] => 3668
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionEliminanominativo'
+        )
+
+    [318] => Array
+        (
+            [line] => 3703
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionWizardrighesalvaospiti'
+        )
+
+    [319] => Array
+        (
+            [line] => 3866
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionTool'
+        )
+
+    [320] => Array
+        (
+            [line] => 4074
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionDatatable'
+        )
+
+    [321] => Array
+        (
+            [line] => 4136
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionDuplicanominativo'
+        )
+
+    [322] => Array
+        (
+            [line] => 4179
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionAjaxGetDetail'
+        )
+
+    [323] => Array
+        (
+            [line] => 4234
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'xLoadtappa2'
+        )
+
+    [324] => Array
+        (
+            [line] => 4560
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'xLoadtappa2h'
+        )
+
+    [325] => Array
+        (
+            [line] => 4821
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionCrea'
+        )
+
+    [326] => Array
+        (
+            [line] => 4889
+            [file] => controllers\XtravelheadController.php
+            [message] => No docblock for element 'actionModpre'
+        )
+
+    [327] => Array
+        (
+            [line] => 136
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'old_actionUpdate'
+        )
+
+    [328] => Array
+        (
+            [line] => 243
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionUpdateAjax'
+        )
+
+    [329] => Array
+        (
+            [line] => 383
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionUpdateAjax_old'
+        )
+
+    [330] => Array
+        (
+            [line] => 569
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionCreateAjax'
+        )
+
+    [331] => Array
+        (
+            [line] => 669
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionDuplicateAjax'
+        )
+
+    [332] => Array
+        (
+            [line] => 835
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionDeleteMultiple'
+        )
+
+    [333] => Array
+        (
+            [line] => 1135
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'old_actionPaga'
+        )
+
+    [334] => Array
+        (
+            [line] => 1184
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionPaga'
+        )
+
+    [335] => Array
+        (
+            [line] => 1268
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionProcessTour'
+        )
+
+    [336] => Array
+        (
+            [line] => 1360
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element '___actionProcessTour050326'
+        )
+
+    [337] => Array
+        (
+            [line] => 1439
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionProcessTour_240226'
+        )
+
+    [338] => Array
+        (
+            [line] => 1514
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionConfirmSave'
+        )
+
+    [339] => Array
+        (
+            [line] => 1627
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionConfirmSave_050326'
+        )
+
+    [340] => Array
+        (
+            [line] => 1758
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionConfirmSave_240226'
+        )
+
+    [341] => Array
+        (
+            [line] => 1866
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element '___actionProcessTour'
+        )
+
+    [342] => Array
+        (
+            [line] => 1942
+            [file] => controllers\XtravelrowController.php
+            [message] => No docblock for element 'actionXcaricatappa'
+        )
+
+    [343] => Array
+        (
+            [line] => 202
+            [file] => models\AR.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [344] => Array
+        (
+            [line] => 51
+            [file] => models\Agenda.php
+            [message] => No docblock for element 'getFilesall'
+        )
+
+    [345] => Array
+        (
+            [line] => 62
+            [file] => models\AgendaFiles.php
+            [message] => No docblock for element 'getAgenda'
+        )
+
+    [346] => Array
+        (
+            [line] => 67
+            [file] => models\AgendaFiles.php
+            [message] => No docblock for element 'upload'
+        )
+
+    [347] => Array
+        (
+            [line] => 92
+            [file] => models\Agente.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [348] => Array
+        (
+            [line] => 32
+            [file] => models\Agentifiles.php
+            [message] => No docblock for element 'tableName'
+        )
+
+    [349] => Array
+        (
+            [line] => 63
+            [file] => models\AiConversation.php
+            [message] => No docblock for element 'findMine'
+        )
+
+    [350] => Array
+        (
+            [line] => 69
+            [file] => models\AllFiles.php
+            [message] => No docblock for element 'upload'
+        )
+
+    [351] => Array
+        (
+            [line] => 78
+            [file] => models\AllFiles.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [352] => Array
+        (
+            [line] => 84
+            [file] => models\AllFiles.php
+            [message] => No docblock for element 'getSubEntitaRel'
+        )
+
+    [353] => Array
+        (
+            [line] => 68
+            [file] => models\AnaCli.php
+            [message] => No docblock for element 'getDestesall'
+        )
+
+    [354] => Array
+        (
+            [line] => 126
+            [file] => models\Auxar.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [355] => Array
+        (
+            [line] => 172
+            [file] => models\Cf.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [356] => Array
+        (
+            [line] => 50
+            [file] => models\Cgconto.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [357] => Array
+        (
+            [line] => 126
+            [file] => models\Cgmovr.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [358] => Array
+        (
+            [line] => 133
+            [file] => models\Cgmovt.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [359] => Array
+        (
+            [line] => 26
+            [file] => models\Colore.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [360] => Array
+        (
+            [line] => 13
+            [file] => models\ContactForm.php
+            [message] => No docblock for element '$name'
+        )
+
+    [361] => Array
+        (
+            [line] => 13
+            [file] => models\ContactForm.php
+            [message] => No short description for element '$name'
+        )
+
+    [362] => Array
+        (
+            [line] => 14
+            [file] => models\ContactForm.php
+            [message] => No docblock for element '$email'
+        )
+
+    [363] => Array
+        (
+            [line] => 14
+            [file] => models\ContactForm.php
+            [message] => No short description for element '$email'
+        )
+
+    [364] => Array
+        (
+            [line] => 15
+            [file] => models\ContactForm.php
+            [message] => No docblock for element '$subject'
+        )
+
+    [365] => Array
+        (
+            [line] => 15
+            [file] => models\ContactForm.php
+            [message] => No short description for element '$subject'
+        )
+
+    [366] => Array
+        (
+            [line] => 16
+            [file] => models\ContactForm.php
+            [message] => No docblock for element '$body'
+        )
+
+    [367] => Array
+        (
+            [line] => 16
+            [file] => models\ContactForm.php
+            [message] => No short description for element '$body'
+        )
+
+    [368] => Array
+        (
+            [line] => 17
+            [file] => models\ContactForm.php
+            [message] => No docblock for element '$verifyCode'
+        )
+
+    [369] => Array
+        (
+            [line] => 17
+            [file] => models\ContactForm.php
+            [message] => No short description for element '$verifyCode'
+        )
+
+    [370] => Array
+        (
+            [line] => 18
+            [file] => models\ContactForm.php
+            [message] => No docblock for element '$files'
+        )
+
+    [371] => Array
+        (
+            [line] => 18
+            [file] => models\ContactForm.php
+            [message] => No short description for element '$files'
+        )
+
+    [372] => Array
+        (
+            [line] => 22
+            [file] => models\ContactForm.php
+            [message] => No short description for Method 'rules'
+        )
+
+    [373] => Array
+        (
+            [line] => 37
+            [file] => models\ContactForm.php
+            [message] => No short description for Method 'attributeLabels'
+        )
+
+    [374] => Array
+        (
+            [line] => 43
+            [file] => models\DOCommessa.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [375] => Array
+        (
+            [line] => 100
+            [file] => models\DOCommessa.php
+            [message] => No docblock for element 'beforeSave'
+        )
+
+    [376] => Array
+        (
+            [line] => 36
+            [file] => models\DOCommessaStato.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [377] => Array
+        (
+            [line] => 143
+            [file] => models\DORig.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [378] => Array
+        (
+            [line] => 78
+            [file] => models\DmsDocument.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [379] => Array
+        (
+            [line] => 77
+            [file] => models\DocHead.php
+            [message] => No docblock for element 'getDocRows'
+        )
+
+    [380] => Array
+        (
+            [line] => 85
+            [file] => models\DocHead.php
+            [message] => No docblock for element 'getXrows'
+        )
+
+    [381] => Array
+        (
+            [line] => 24
+            [file] => models\Doc_head.php
+            [message] => No docblock for element '$data_solo_data'
+        )
+
+    [382] => Array
+        (
+            [line] => 24
+            [file] => models\Doc_head.php
+            [message] => No short description for element '$data_solo_data'
+        )
+
+    [383] => Array
+        (
+            [line] => 71
+            [file] => models\Doc_head.php
+            [message] => No docblock for element 'getRowsall'
+        )
+
+    [384] => Array
+        (
+            [line] => 79
+            [file] => models\Doc_head.php
+            [message] => No docblock for element 'getFilesall'
+        )
+
+    [385] => Array
+        (
+            [line] => 84
+            [file] => models\Doc_head.php
+            [message] => No docblock for element 'getDocRows'
+        )
+
+    [386] => Array
+        (
+            [line] => 94
+            [file] => models\Doc_head.php
+            [message] => No docblock for element 'getXrows'
+        )
+
+    [387] => Array
+        (
+            [line] => 106
+            [file] => models\Doc_head.php
+            [message] => No docblock for element 'afterFind'
+        )
+
+    [388] => Array
+        (
+            [line] => 112
+            [file] => models\Doc_head.php
+            [message] => No docblock for element 'beforeSave'
+        )
+
+    [389] => Array
+        (
+            [line] => 72
+            [file] => models\Doc_rows.php
+            [message] => No docblock for element 'gethaed'
+        )
+
+    [390] => Array
+        (
+            [line] => 44
+            [file] => models\Dosottocommessa.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [391] => Array
+        (
+            [line] => 149
+            [file] => models\Dosottocommessa.php
+            [message] => No docblock for element 'beforeSave'
+        )
+
+    [392] => Array
+        (
+            [line] => 162
+            [file] => models\Dotes.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [393] => Array
+        (
+            [line] => 65
+            [file] => models\Elemail.php
+            [message] => No docblock for element 'getChild'
+        )
+
+    [394] => Array
+        (
+            [line] => 46
+            [file] => models\Files.php
+            [message] => No docblock for element 'upload'
+        )
+
+    [395] => Array
+        (
+            [line] => 10
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'app\model\form\FileForm'
+        )
+
+    [396] => Array
+        (
+            [line] => 16
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'rules'
+        )
+
+    [397] => Array
+        (
+            [line] => 29
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'afterValidate'
+        )
+
+    [398] => Array
+        (
+            [line] => 37
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'save'
+        )
+
+    [399] => Array
+        (
+            [line] => 57
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'saveFIles'
+        )
+
+    [400] => Array
+        (
+            [line] => 80
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'getAgenda'
+        )
+
+    [401] => Array
+        (
+            [line] => 85
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'setAgenda'
+        )
+
+    [402] => Array
+        (
+            [line] => 94
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'getFiles'
+        )
+
+    [403] => Array
+        (
+            [line] => 100
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'getFile'
+        )
+
+    [404] => Array
+        (
+            [line] => 115
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'setFiles'
+        )
+
+    [405] => Array
+        (
+            [line] => 132
+            [file] => models\FilesForm.php
+            [message] => No docblock for element 'errorSummary'
+        )
+
+    [406] => Array
+        (
+            [line] => 10
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'app\model\form\FileForm'
+        )
+
+    [407] => Array
+        (
+            [line] => 16
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'rules'
+        )
+
+    [408] => Array
+        (
+            [line] => 29
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'afterValidate'
+        )
+
+    [409] => Array
+        (
+            [line] => 37
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'save'
+        )
+
+    [410] => Array
+        (
+            [line] => 57
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'saveFIles'
+        )
+
+    [411] => Array
+        (
+            [line] => 80
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'getAgenda'
+        )
+
+    [412] => Array
+        (
+            [line] => 85
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'setAgenda'
+        )
+
+    [413] => Array
+        (
+            [line] => 94
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'getFiles'
+        )
+
+    [414] => Array
+        (
+            [line] => 100
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'getFile'
+        )
+
+    [415] => Array
+        (
+            [line] => 115
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'setFiles'
+        )
+
+    [416] => Array
+        (
+            [line] => 132
+            [file] => models\FilesForm_1.php
+            [message] => No docblock for element 'errorSummary'
+        )
+
+    [417] => Array
+        (
+            [line] => 10
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'app\model\form\FileForm'
+        )
+
+    [418] => Array
+        (
+            [line] => 16
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'rules'
+        )
+
+    [419] => Array
+        (
+            [line] => 29
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'afterValidate'
+        )
+
+    [420] => Array
+        (
+            [line] => 37
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'save'
+        )
+
+    [421] => Array
+        (
+            [line] => 57
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'saveFIles'
+        )
+
+    [422] => Array
+        (
+            [line] => 80
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'getAgenda'
+        )
+
+    [423] => Array
+        (
+            [line] => 85
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'setAgenda'
+        )
+
+    [424] => Array
+        (
+            [line] => 94
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'getFiles'
+        )
+
+    [425] => Array
+        (
+            [line] => 100
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'getFile'
+        )
+
+    [426] => Array
+        (
+            [line] => 115
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'setFiles'
+        )
+
+    [427] => Array
+        (
+            [line] => 132
+            [file] => models\FilesForm_2.php
+            [message] => No docblock for element 'errorSummary'
+        )
+
+    [428] => Array
+        (
+            [line] => 149
+            [file] => models\Folders.php
+            [message] => No docblock for element 'getFilesall'
+        )
+
+    [429] => Array
+        (
+            [line] => 56
+            [file] => models\Listini.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [430] => Array
+        (
+            [line] => 16
+            [file] => models\LoginForm.php
+            [message] => No docblock for element '$email'
+        )
+
+    [431] => Array
+        (
+            [line] => 16
+            [file] => models\LoginForm.php
+            [message] => No short description for element '$email'
+        )
+
+    [432] => Array
+        (
+            [line] => 17
+            [file] => models\LoginForm.php
+            [message] => No docblock for element '$password'
+        )
+
+    [433] => Array
+        (
+            [line] => 17
+            [file] => models\LoginForm.php
+            [message] => No short description for element '$password'
+        )
+
+    [434] => Array
+        (
+            [line] => 18
+            [file] => models\LoginForm.php
+            [message] => No docblock for element '$rememberMe'
+        )
+
+    [435] => Array
+        (
+            [line] => 18
+            [file] => models\LoginForm.php
+            [message] => No short description for element '$rememberMe'
+        )
+
+    [436] => Array
+        (
+            [line] => 26
+            [file] => models\LoginForm.php
+            [message] => No short description for Method 'rules'
+        )
+
+    [437] => Array
+        (
+            [line] => 56
+            [file] => models\Ls.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [438] => Array
+        (
+            [line] => 47
+            [file] => models\Mansioni.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [439] => Array
+        (
+            [line] => 8
+            [file] => models\Model.php
+            [message] => No docblock for element 'app\models\Model'
+        )
+
+    [440] => Array
+        (
+            [line] => 12
+            [file] => models\PasswordResetRequestForm.php
+            [message] => No docblock for element '$email'
+        )
+
+    [441] => Array
+        (
+            [line] => 12
+            [file] => models\PasswordResetRequestForm.php
+            [message] => No short description for element '$email'
+        )
+
+    [442] => Array
+        (
+            [line] => 76
+            [file] => models\Payments.php
+            [message] => No docblock for element 'gethead'
+        )
+
+    [443] => Array
+        (
+            [line] => 123
+            [file] => models\Personale.php
+            [message] => No docblock for element 'getRuoloRel'
+        )
+
+    [444] => Array
+        (
+            [line] => 129
+            [file] => models\Personale.php
+            [message] => No docblock for element 'getRepartoRel'
+        )
+
+    [445] => Array
+        (
+            [line] => 134
+            [file] => models\Personale.php
+            [message] => No docblock for element 'getMansioneRel'
+        )
+
+    [446] => Array
+        (
+            [line] => 149
+            [file] => models\Personale.php
+            [message] => No docblock for element 'getDescrizioneReparto'
+        )
+
+    [447] => Array
+        (
+            [line] => 154
+            [file] => models\Personale.php
+            [message] => No docblock for element 'getDescrizioneMansione'
+        )
+
+    [448] => Array
+        (
+            [line] => 159
+            [file] => models\Personale.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [449] => Array
+        (
+            [line] => 167
+            [file] => models\Personale.php
+            [message] => No docblock for element 'getFiles'
+        )
+
+    [450] => Array
+        (
+            [line] => 43
+            [file] => models\Pg.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [451] => Array
+        (
+            [line] => 34
+            [file] => models\Planning.php
+            [message] => No docblock for element '$veicoli_ids'
+        )
+
+    [452] => Array
+        (
+            [line] => 34
+            [file] => models\Planning.php
+            [message] => No short description for element '$veicoli_ids'
+        )
+
+    [453] => Array
+        (
+            [line] => 36
+            [file] => models\Planning.php
+            [message] => No docblock for element 'tableName'
+        )
+
+    [454] => Array
+        (
+            [line] => 96
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getPersonali'
+        )
+
+    [455] => Array
+        (
+            [line] => 103
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getVeicoliListRel'
+        )
+
+    [456] => Array
+        (
+            [line] => 110
+            [file] => models\Planning.php
+            [message] => No docblock for element 'afterFind'
+        )
+
+    [457] => Array
+        (
+            [line] => 126
+            [file] => models\Planning.php
+            [message] => No docblock for element 'afterSave'
+        )
+
+    [458] => Array
+        (
+            [line] => 193
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getNominativiCompleti'
+        )
+
+    [459] => Array
+        (
+            [line] => 212
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getVeicoliCompleti'
+        )
+
+    [460] => Array
+        (
+            [line] => 221
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getVeicoloTarga'
+        )
+
+    [461] => Array
+        (
+            [line] => 228
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getStartIso'
+        )
+
+    [462] => Array
+        (
+            [line] => 235
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getEndIso'
+        )
+
+    [463] => Array
+        (
+            [line] => 241
+            [file] => models\Planning.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [464] => Array
+        (
+            [line] => 248
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getCliente'
+        )
+
+    [465] => Array
+        (
+            [line] => 253
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getDittaEsternaRel'
+        )
+
+    [466] => Array
+        (
+            [line] => 259
+            [file] => models\Planning.php
+            [message] => No docblock for element 'getVeicoloLabel'
+        )
+
+    [467] => Array
+        (
+            [line] => 94
+            [file] => models\Presenze.php
+            [message] => No docblock for element 'getTipologiaRel'
+        )
+
+    [468] => Array
+        (
+            [line] => 99
+            [file] => models\Presenze.php
+            [message] => No docblock for element 'getDescrizioneTipologia'
+        )
+
+    [469] => Array
+        (
+            [line] => 105
+            [file] => models\Presenze.php
+            [message] => No docblock for element 'getDescrizionePresenza'
+        )
+
+    [470] => Array
+        (
+            [line] => 110
+            [file] => models\Presenze.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [471] => Array
+        (
+            [line] => 24
+            [file] => models\Rep_publicazioni.php
+            [message] => No docblock for element '$moduli'
+        )
+
+    [472] => Array
+        (
+            [line] => 24
+            [file] => models\Rep_publicazioni.php
+            [message] => No short description for element '$moduli'
+        )
+
+    [473] => Array
+        (
+            [line] => 25
+            [file] => models\Rep_publicazioni.php
+            [message] => No docblock for element '$prezzovendita'
+        )
+
+    [474] => Array
+        (
+            [line] => 25
+            [file] => models\Rep_publicazioni.php
+            [message] => No short description for element '$prezzovendita'
+        )
+
+    [475] => Array
+        (
+            [line] => 26
+            [file] => models\Rep_publicazioni.php
+            [message] => No docblock for element '$przmedio'
+        )
+
+    [476] => Array
+        (
+            [line] => 26
+            [file] => models\Rep_publicazioni.php
+            [message] => No short description for element '$przmedio'
+        )
+
+    [477] => Array
+        (
+            [line] => 47
+            [file] => models\Reparti.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [478] => Array
+        (
+            [line] => 12
+            [file] => models\ResetPasswordForm.php
+            [message] => No docblock for element '$password'
+        )
+
+    [479] => Array
+        (
+            [line] => 12
+            [file] => models\ResetPasswordForm.php
+            [message] => No short description for element '$password'
+        )
+
+    [480] => Array
+        (
+            [line] => 49
+            [file] => models\Ruoli.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [481] => Array
+        (
+            [line] => 109
+            [file] => models\SC.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [482] => Array
+        (
+            [line] => 40
+            [file] => models\Scdistinta.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [483] => Array
+        (
+            [line] => 14
+            [file] => models\SignupForm.php
+            [message] => No docblock for element '$username'
+        )
+
+    [484] => Array
+        (
+            [line] => 14
+            [file] => models\SignupForm.php
+            [message] => No short description for element '$username'
+        )
+
+    [485] => Array
+        (
+            [line] => 15
+            [file] => models\SignupForm.php
+            [message] => No docblock for element '$email'
+        )
+
+    [486] => Array
+        (
+            [line] => 15
+            [file] => models\SignupForm.php
+            [message] => No short description for element '$email'
+        )
+
+    [487] => Array
+        (
+            [line] => 16
+            [file] => models\SignupForm.php
+            [message] => No docblock for element '$password'
+        )
+
+    [488] => Array
+        (
+            [line] => 16
+            [file] => models\SignupForm.php
+            [message] => No short description for element '$password'
+        )
+
+    [489] => Array
+        (
+            [line] => 17
+            [file] => models\SignupForm.php
+            [message] => No docblock for element '$piva'
+        )
+
+    [490] => Array
+        (
+            [line] => 17
+            [file] => models\SignupForm.php
+            [message] => No short description for element '$piva'
+        )
+
+    [491] => Array
+        (
+            [line] => 118
+            [file] => models\SignupForm.php
+            [message] => No docblock for element 'old_signup'
+        )
+
+    [492] => Array
+        (
+            [line] => 33
+            [file] => models\Sl.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [493] => Array
+        (
+            [line] => 44
+            [file] => models\Sottocommessa.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [494] => Array
+        (
+            [line] => 120
+            [file] => models\Sottocommessa.php
+            [message] => No docblock for element 'getAnagrafica'
+        )
+
+    [495] => Array
+        (
+            [line] => 155
+            [file] => models\Sottocommessa.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [496] => Array
+        (
+            [line] => 37
+            [file] => models\SubEntitaLookup.php
+            [message] => No docblock for element 'attributeLabels'
+        )
+
+    [497] => Array
+        (
+            [line] => 26
+            [file] => models\Taglia.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [498] => Array
+        (
+            [line] => 26
+            [file] => models\Tessuto.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [499] => Array
+        (
+            [line] => 47
+            [file] => models\TipoPresenze.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [500] => Array
+        (
+            [line] => 47
+            [file] => models\Tipologiapresenza.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [501] => Array
+        (
+            [line] => 55
+            [file] => models\Todocommenti.php
+            [message] => No docblock for element 'beforeSave'
+        )
+
+    [502] => Array
+        (
+            [line] => 67
+            [file] => models\Todocommenti.php
+            [message] => No docblock for element 'getParentComment'
+        )
+
+    [503] => Array
+        (
+            [line] => 72
+            [file] => models\Todocommenti.php
+            [message] => No docblock for element 'getReplies'
+        )
+
+    [504] => Array
+        (
+            [line] => 26
+            [file] => models\Todomain.php
+            [message] => No docblock for element '$tagValues'
+        )
+
+    [505] => Array
+        (
+            [line] => 26
+            [file] => models\Todomain.php
+            [message] => No short description for element '$tagValues'
+        )
+
+    [506] => Array
+        (
+            [line] => 77
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'getUserdett'
+        )
+
+    [507] => Array
+        (
+            [line] => 88
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'getGroupdett'
+        )
+
+    [508] => Array
+        (
+            [line] => 97
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'getClidett'
+        )
+
+    [509] => Array
+        (
+            [line] => 103
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'getPriodett'
+        )
+
+    [510] => Array
+        (
+            [line] => 110
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'getStatodett'
+        )
+
+    [511] => Array
+        (
+            [line] => 117
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'beforeSave'
+        )
+
+    [512] => Array
+        (
+            [line] => 125
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'afterFind'
+        )
+
+    [513] => Array
+        (
+            [line] => 130
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'getTagValues'
+        )
+
+    [514] => Array
+        (
+            [line] => 136
+            [file] => models\Todomain.php
+            [message] => No docblock for element 'setTagValues'
+        )
+
+    [515] => Array
+        (
+            [line] => 57
+            [file] => models\Uectesta.php
+            [message] => No docblock for element 'getRighe'
+        )
+
+    [516] => Array
+        (
+            [line] => 61
+            [file] => models\Uectesta.php
+            [message] => No docblock for element 'beforeSave'
+        )
+
+    [517] => Array
+        (
+            [line] => 73
+            [file] => models\Uectesta.php
+            [message] => No docblock for element 'getUecRighe'
+        )
+
+    [518] => Array
+        (
+            [line] => 4
+            [file] => models\UploadImageForm.php
+            [message] => No docblock for element 'app\models\UploadImageForm'
+        )
+
+    [519] => Array
+        (
+            [line] => 5
+            [file] => models\UploadImageForm.php
+            [message] => No docblock for element '$image'
+        )
+
+    [520] => Array
+        (
+            [line] => 5
+            [file] => models\UploadImageForm.php
+            [message] => No short description for element '$image'
+        )
+
+    [521] => Array
+        (
+            [line] => 6
+            [file] => models\UploadImageForm.php
+            [message] => No docblock for element 'rules'
+        )
+
+    [522] => Array
+        (
+            [line] => 11
+            [file] => models\UploadImageForm.php
+            [message] => No docblock for element 'upload'
+        )
+
+    [523] => Array
+        (
+            [line] => 156
+            [file] => models\User.php
+            [message] => No docblock for element 'getLvl'
+        )
+
+    [524] => Array
+        (
+            [line] => 167
+            [file] => models\User.php
+            [message] => No docblock for element 'getCli'
+        )
+
+    [525] => Array
+        (
+            [line] => 227
+            [file] => models\User.php
+            [message] => No docblock for element 'upload'
+        )
+
+    [526] => Array
+        (
+            [line] => 42
+            [file] => models\VL.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [527] => Array
+        (
+            [line] => 87
+            [file] => models\Veicoli.php
+            [message] => No docblock for element 'getFiles'
+        )
+
+    [528] => Array
+        (
+            [line] => 93
+            [file] => models\Veicoli.php
+            [message] => No docblock for element 'getStatoBadge'
+        )
+
+    [529] => Array
+        (
+            [line] => 116
+            [file] => models\Veicoli.php
+            [message] => No docblock for element 'behaviors'
+        )
+
+    [530] => Array
+        (
+            [line] => 123
+            [file] => models\Veicoli.php
+            [message] => No docblock for element 'getTipologieList'
+        )
+
+    [531] => Array
+        (
+            [line] => 29
+            [file] => models\XTappe.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [532] => Array
+        (
+            [line] => 63
+            [file] => models\XTappe.php
+            [message] => No docblock for element '___getDecodevenue'
+        )
+
+    [533] => Array
+        (
+            [line] => 75
+            [file] => models\XTappe.php
+            [message] => No docblock for element 'getDecodevenue'
+        )
+
+    [534] => Array
+        (
+            [line] => 27
+            [file] => models\Xaraltdesc.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [535] => Array
+        (
+            [line] => 26
+            [file] => models\Xparty.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [536] => Array
+        (
+            [line] => 33
+            [file] => models\Xroomlist.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [537] => Array
+        (
+            [line] => 26
+            [file] => models\Xruoli.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [538] => Array
+        (
+            [line] => 32
+            [file] => models\Xstruttura.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [539] => Array
+        (
+            [line] => 102
+            [file] => models\Xstruttura.php
+            [message] => No docblock for element 'fields'
+        )
+
+    [540] => Array
+        (
+            [line] => 430
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element '$manager_ids'
+        )
+
+    [541] => Array
+        (
+            [line] => 430
+            [file] => models\Xtravelhead.php
+            [message] => No short description for element '$manager_ids'
+        )
+
+    [542] => Array
+        (
+            [line] => 46
+            [file] => models\Xtravelhead.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [543] => Array
+        (
+            [line] => 103
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getTravelRows'
+        )
+
+    [544] => Array
+        (
+            [line] => 114
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getFilesall'
+        )
+
+    [545] => Array
+        (
+            [line] => 118
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getConcatenatedFields'
+        )
+
+    [546] => Array
+        (
+            [line] => 134
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getImponibile'
+        )
+
+    [547] => Array
+        (
+            [line] => 139
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getTax'
+        )
+
+    [548] => Array
+        (
+            [line] => 144
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getIva'
+        )
+
+    [549] => Array
+        (
+            [line] => 149
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getsomma'
+        )
+
+    [550] => Array
+        (
+            [line] => 157
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getUniqueSottocommesseAndDescriptions'
+        )
+
+    [551] => Array
+        (
+            [line] => 175
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getTravelRowsCount'
+        )
+
+    [552] => Array
+        (
+            [line] => 181
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getLatestTravelRow'
+        )
+
+    [553] => Array
+        (
+            [line] => 188
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getPagamentiPerTipohotel'
+        )
+
+    [554] => Array
+        (
+            [line] => 219
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getPagamentiPerTipoviaggi'
+        )
+
+    [555] => Array
+        (
+            [line] => 243
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getPagamentiDocumenti'
+        )
+
+    [556] => Array
+        (
+            [line] => 291
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getPagamentiDocumentihotel'
+        )
+
+    [557] => Array
+        (
+            [line] => 344
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'getPagamentiDocumentiviaggi'
+        )
+
+    [558] => Array
+        (
+            [line] => 400
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'findWithMaxRowDate'
+        )
+
+    [559] => Array
+        (
+            [line] => 431
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'afterSave'
+        )
+
+    [560] => Array
+        (
+            [line] => 472
+            [file] => models\Xtravelhead.php
+            [message] => No docblock for element 'beforeValidate'
+        )
+
+    [561] => Array
+        (
+            [line] => 107
+            [file] => models\XtravelheadSearch.php
+            [message] => No docblock for element 'ori_search'
+        )
+
+    [562] => Array
+        (
+            [line] => 80
+            [file] => models\Xtravelrow.php
+            [message] => No docblock for element '$imponibile_scorporato'
+        )
+
+    [563] => Array
+        (
+            [line] => 80
+            [file] => models\Xtravelrow.php
+            [message] => No short description for element '$imponibile_scorporato'
+        )
+
+    [564] => Array
+        (
+            [line] => 81
+            [file] => models\Xtravelrow.php
+            [message] => No docblock for element '$imposta_scorporata'
+        )
+
+    [565] => Array
+        (
+            [line] => 81
+            [file] => models\Xtravelrow.php
+            [message] => No short description for element '$imposta_scorporata'
+        )
+
+    [566] => Array
+        (
+            [line] => 76
+            [file] => models\Xtravelrow.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [567] => Array
+        (
+            [line] => 166
+            [file] => models\Xtravelrow.php
+            [message] => No docblock for element 'beforeSave'
+        )
+
+    [568] => Array
+        (
+            [line] => 38
+            [file] => models\Xvenue.php
+            [message] => No short description for Method 'getDb'
+        )
+
+    [569] => Array
+        (
+            [line] => 82
+            [file] => models\Xvenue.php
+            [message] => No docblock for element 'beforeSave'
+        )
+
+    [570] => Array
+        (
+            [line] => 10
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'app\models\form\FilesForm'
+        )
+
+    [571] => Array
+        (
+            [line] => 16
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'rules'
+        )
+
+    [572] => Array
+        (
+            [line] => 24
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'afterValidate'
+        )
+
+    [573] => Array
+        (
+            [line] => 32
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'save'
+        )
+
+    [574] => Array
+        (
+            [line] => 49
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'saveFiles'
+        )
+
+    [575] => Array
+        (
+            [line] => 68
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'getAgenda'
+        )
+
+    [576] => Array
+        (
+            [line] => 73
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'setAgenda'
+        )
+
+    [577] => Array
+        (
+            [line] => 82
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'getFiles'
+        )
+
+    [578] => Array
+        (
+            [line] => 101
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'setFiles'
+        )
+
+    [579] => Array
+        (
+            [line] => 115
+            [file] => models\form\FilesForm.php
+            [message] => No docblock for element 'errorSummary'
+        )
+
+    [580] => Array
+        (
+            [line] => 8
+            [file] => views\Reports\Myreport.php
+            [message] => No docblock for element 'app\views\reports\MyReport'
+        )
+
+    [581] => Array
+        (
+            [line] => 17
+            [file] => views\Reports\Myreport.php
+            [message] => No docblock for element 'setup'
+        )
+
+    [582] => Array
+        (
+            [line] => 5
+            [file] => views\Reports\Zreport2.php
+            [message] => No docblock for element 'app\views\reports\Zreport2'
+        )
+
+    [583] => Array
+        (
+            [line] => 14
+            [file] => views\Reports\Zreport2.php
+            [message] => No docblock for element 'setup'
+        )
+
+)

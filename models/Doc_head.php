@@ -2,6 +2,9 @@
 
 namespace app\models;
 use \yii\db\ActiveRecord;
+use yii\validators\DateValidator;
+use yii\base\InvalidConfigException;
+
 use Yii;
 
 /**
@@ -18,6 +21,7 @@ use Yii;
  */
 class Doc_head extends \yii\db\ActiveRecord
 {
+    public $data_solo_data;
     /**
      * {@inheritdoc}
      */
@@ -34,11 +38,15 @@ class Doc_head extends \yii\db\ActiveRecord
         return [
             [['id', 'note','rifiutato_nota','xnota'], 'string'],
             [['cd_doc', 'data', 'numdoc', 'cd_cli'], 'required'],
-            [['data'], 'safe'],
+            [['data']//,'date',   'format' => 'php:d/m/Y'
+            , 'safe'],
             [['confermato','rifiutato'], 'integer'], 
             [['cd_doc','dest'], 'string', 'max' => 3],
             [['numdoc', 'cd_cli', 'cd_pg', 'sconto','altcli'], 'string', 'max' => 10],
             [['id'], 'unique'],
+              [['locked_by'],'string','max'=>125],
+            ['is_locked','boolean'],
+            [['data_solo_data'], 'date', 'format' => 'php:d/m/Y'],
         ];
     }
 
@@ -61,10 +69,56 @@ class Doc_head extends \yii\db\ActiveRecord
         ];
     }
     public function getRowsall(){
-        return $this->hasMany(Doc_rows::className(),['xid_testa'=>'xid_testa'])->
+        return $this->hasMany(Doc_rows::className(),
+        [//'xid_testa'=>'xid_testa'
+        //,
+        'doc_head_id'=>'id'
+        ])->
          orderBy(['nriga' => SORT_ASC]);
     }
    public function getFilesall(){
        return $this->hasMany(allfiles::className(),['id_padre'=>'xid_testa']);
     }
+
+    
+  public function getDocRows()
+{
+    //\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    return $this->hasMany(Doc_rows::class, ['doc_head_id' => 'id']
+
+)->orderBy(['nriga'=>SORT_ASC]);
+}
+
+
+
+public function getXrows($id){
+$artdett=Doc_rows::find()
+ ->where(['doc_head_id'=>$id])
+->all();
+//\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+//$out = ['result'=>['']];
+// $out['results'] = array_values($artdett);
+return $artdett;
+
+        }
+
+
+        public function afterFind()
+{
+    parent::afterFind();
+    $this->data_solo_data = Yii::$app->formatter->asDate($this->data, 'php:d/m/Y');
+}
+
+public function beforeSave($insert)
+{
+    if (parent::beforeSave($insert)) {
+        if (!empty($this->data_solo_data)) {
+            $this->data = \DateTime::createFromFormat('d/m/Y', $this->data_solo_data)->format('Y-m-d');
+        }
+        return true;
+    }
+    return false;
+}
+
+
 }

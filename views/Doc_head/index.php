@@ -1,3 +1,9 @@
+<style>
+    .custom-detail-row-class {
+        background-color: #ffffff; /* Imposta lo sfondo bianco */
+    }
+</style>
+<script src="https://kit.fontawesome.com/a5ce0dfadd.js" crossorigin="anonymous"></script>
 <?php
 use app\models\anacli;
 use app\models\doctype;
@@ -9,12 +15,23 @@ use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap4\Modal;
 use yii\helpers\Url;
+use kartik\export\ExportMenu;
+use app\models\Todocommenti;
 
 
+
+require_once(__DIR__ . '/../../vendor/firephp/firephp-core/lib/FirePHPCore/FirePHP.class.php');
+
+//Yii::$app->language = 'it_IT';
 $x = Yii::$app->runAction('site/getexp');
 $icon = new \thoulah\fontawesome\Icon();
+$firephp = FirePHP::getInstance(true);
 //use kartik\icons\Icon;
 //Icon::map($this, Icon::EL);
+$firephp->log('Messaggio di debug');
+$firephp->warn('Avviso');
+$firephp->error('Errore');
+
 
 use yii\helpers\Html;
 
@@ -71,10 +88,19 @@ $clif= ArrayHelper::map(
                 asArray()->all()
                 , 'cd_cli', 'desk');
 //yii::error($clif);
+$ints = yii::$app->db2
+    ->createCommand('select Cd_CFDest as id ,isnull(EmailPEC,email)as 
+    desk from CFContatto where Cd_CF=:cli and 
+(email is not null or EmailPEC is not null) and (isnull(EmailPEC,email)  in (select email from web_frontier.dbo.[user]))
+                        '
+    )->bindValues([':cli' => $ris['cd_cli']]);
+$ints->execute();
+$clifdes = ArrayHelper::map($ints->queryAll(),'id','desk');
 
 
 ?>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+<script src="https://kit.fontawesome.com/a5ce0dfadd.js" crossorigin="anonymous"></script>
 <div class="doc-head-index">
 
     <h1><?=Html::encode('Documenti')?></h1>
@@ -92,115 +118,49 @@ $ris = (new \yii\db\Query())
     ->one();
 ?>
 
-<script>
-  smartsupp('name', '<?php echo $ris['username']; ?>');
-  smartsupp('email','<?php echo $ris['email']; ?>');
-  smartsupp('phone',' <?php echo $ris['piva']; ?>');
-
-</script>
 
 
  <?php echo \TomLutzenberger\Smartsupp\SmartsuppChat::widget(['useCustomOpener' => true,
     'useCustomOpenerMobile' => true,
     //'User_ID'=>'PINO'
-]); ?>
+]);
+
+$usrgrid=$usrgrid ?? 'black';
+?>
+
+
+
     <?php 
-	
-	$isFa='file-pdf-o' ;
-	echo
-	GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
-
-    //'filterUrl' => ['Doc_headSearch[cd_doc]',
-    //'cd_doc' => 'orc'],
-    'resizableColumnsOptions' => ['resizeFromBody' => true],
-    'persistResize' => true,
-    'resizeStorageKey'=>Yii::$app->user->id . '-' . date('m').'sc',
-    'toggleDataContainer' => ['class' => 'btn-group mr-2 me-2'],
-
-    'export' => [
-        'showConfirmAlert' => false,
-        'target' => GridView::TARGET_BLANK,
-        GridView::PDF => [
-            'label' => Yii::t('kvgrid', 'PDF'),
-            'icon' => $isFa ? 'file-pdf-o' : 'floppy-disk',
-            'iconOptions' => ['class' => 'text-danger'],
-            'showHeader' => true,
-            'showPageSummary' => true,
-            'showFooter' => true,
-            'showCaption' => true,
-            'filename' => Yii::t('kvgrid', 'Portal pdf export'),
-            'alertMsg' => Yii::t('kvgrid', 'The PDF export file will be generated for download.'),
-            'options' => ['title' => Yii::t('kvgrid', 'Portable Document Format')],
-            'mime' => 'application/pdf',
-            'config' => [
-                'mode' => 'c',
-                'format' => 'A4-L',
-                'destination' => 'D',
-                'marginTop' => 20,
-                'marginBottom' => 20,
-                'cssFile' => 'https: //use.fontawesome.com/releases/v5.3.1/css/all.css',
-                'cssInline' => '.kv-wrap{padding:20px;}' .
-                '.kv-align-center{text-align:center;}' .
-                '.kv-align-left{text-align:left;}' .
-                '.kv-align-right{text-align:right;}' .
-                '.kv-align-top{vertical-align:top!important;}' .
-                '.kv-align-bottom{vertical-align:bottom!important;}' .
-                '.kv-align-middle{vertical-align:middle!important;}' .
-                '.kv-page-summary{border-top:4px double #ddd;font-weight: bold;}' .
-                '.kv-table-footer{border-top:4px double #ddd;font-weight: bold;}' .
-                '.kv-table-caption{font-size:1.5em;padding:8px;border:1px solid #ddd;border-bottom:none;}',
-             /*   'methods' => [
-                    'SetHeader' => [
-                        ['odd' => $pdfHeader, 'even' => $pdfHeader],
-                    ],
-                    'SetFooter' => [
-                        ['odd' => $pdfFooter, 'even' => $pdfFooter],
-                    ],
-                ],*/
-                'options' => [
-                 //   'title' => $title,
-                    'subject' => Yii::t('kvgrid', 'PDF'),
-                    'keywords' => Yii::t('kvgrid', 'krajee, grid, export, yii2-grid, pdf'),
-                ],
-                'contentBefore' => '',
-                'contentAfter' => '',
-            ],
-        ],
-    ],
-
-    'columns' => [
-        //   ['class' => 'yii\grid\SerialColumn'],
-
-        // 'id',
-        // 'cd_doc',
+ $gridColumns= 
+[
         ['label' => 'Dett.Doc',
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
+         //   'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white' ,'style'=>'color:black;'],
             'class' => 'kartik\grid\ExpandRowColumn',
-            'width' => '50px',
+            'width' => '2%',
+            'format'=>'html',
             'value' => function ($model, $key, $index, $column) {
                 return GridView::ROW_COLLAPSED;
             },
-            'detailRowCssClass' => 'card-header bg-' . $usrgrid . ' text-black',
-            // uncomment below and comment detail if you need to render via ajax
-            // 'detailUrl' => Url::to(['/site/book-details']),
-            'detail' => function ($model, $key, $index, $column) {
-                return Yii::$app->controller->renderPartial('_expand-row',
-                    ['model' => $model]);
+             'detail' => function ($model, $key, $index, $column) {
+                return '<div class="custom-detail-row-class">' . Yii::$app->controller->renderPartial('_expand-row',
+                    ['model' => $model]). '</div>';
             },
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-black'],
-
+        //'headerOptions' => ['style'=>'' ],
+// 'contentOptrions' => ['style'=>'' ],
             'expandOneOnly' => true,
+            'hiddenFromExport'=>True,
+            'detailRowCssClass' => 'card-header bg-' . $usrgrid . ' text-black',
+         //   'detailRowOptions' => ['class' => 'custom-detail-row-class'],
+           //  'contentOptions' => ['style' => 'background-color: #ffffff; color: #ffffff;'],
         ],
 
         [
             'attribute' => 'cd_doc',
             'visible' => true,
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
+            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white','style'=>'color:black;'],
             'label' => 'Tipo Doc.',
             'format' => 'text',
-            'width' => '80px',
+            'width' => '5%',
             'value' => function ($model, $key, $index, $widget) {
                 return $model->cd_doc;
             },
@@ -217,15 +177,23 @@ $ris = (new \yii\db\Query())
 
         ],  
          ['attribute' => 'numdoc',
-        'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
-        'label' => 'Num. Doc.',
+        'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white' ,'style'=>'color:black;'],
+        'label' => 'Num.Doc.',
         // 'header' => 'Tipo Documento'
-        'width' => '150px'],
+        'width' => '5%'],
         [
             'attribute' => 'data',
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
+            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white' ,'style'=>'color:black;'],
             'label' => 'Data Doc.',
-            'width' => '225px',
+            'width' => '10%',
+           // 'language'=>'it-It',
+
+ 'exportMenuStyle' => ['numberFormat' => ['formatCode' => 'DD-MM-YYYY']],
+'value' => function ($model, $key, $index, $widget) {
+
+                return date('d/m/Y', (strtotime($model->data)));
+
+            },
             'options' => [
                 'format' => 'DD-MM-YYYY',
             ],
@@ -260,14 +228,14 @@ $ris = (new \yii\db\Query())
      
         ['attribute' => 'cd_cli',
             'label' => 'Intestatario',
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
+            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white','style'=>'color:black;'],
             'format' => 'text',
-            'width' => '300px',
+            'width' => '15%',
             'visible' => true,
             'value' => function ($model, $key, $index, $widget) {
 
                 $ris2 = anacli::find()->where(['cd_cli' => $model->cd_cli])->one();
-                return $ris2->Desk;
+                return $ris2->Desk ?? null;
             },
             'filterType' => GridView::FILTER_SELECT2,
             'filter' =>$clif
@@ -281,20 +249,66 @@ $ris = (new \yii\db\Query())
         ],
 
         //'data',
+       [
+'attribute' => 'dest',
+            'label' => 'Richiedente',
+            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white','style'=>'color:black;'],
+            'format' => 'raw',
+            'width' => '15%',
+            'visible' => true,
+            'value' => function ($model, $key, $index, $widget) {
+                        
+                        $chk= $model->dest ?? '0';
+                        if ($chk==0){
+                            return '' ;
+                        }
+                
+                $ints = yii::$app->db2
+                        ->createCommand('select top 1 dotes.cd_cf,dotes.Cd_CF,dotes.Cd_CFSede,dotes.Cd_CFDest,
+                        dotes.numerodoc,1,CFSede.Descrizione,CFSede.EMail as sdMail,
+                        CFContatto.email as cfcemail,cfcontatto.emailpec
+                        from dotes
+                        left join CFSede on CFSede.Cd_Cf=dotes.Cd_CF and CFSede.Cd_CFSede=dotes.Cd_CFSede
+                        left join CFContatto on CFContatto.Cd_CF=dotes.Cd_CF and CFContatto.Cd_CFDest=dotes.Cd_CFDest
+                        where dotes.id_dotes=:id_Dotes
+                        '  )->bindValues([':id_Dotes' => $model->xid_testa]);
+                        //$ints->execute();
+                        $intesta = $ints->queryAll() ;
+                      //  yii::warning($intesta );
+                       // return print_r($intesta);
+                        if (isset($intesta[0])){
+                        $richiedente = (new \yii\db\Query())
+                            ->select(['email'])
+                            ->from('user')
+                            ->where(['email' => $intesta[0]['sdMail']])
+                            ->orwhere(['email' => $intesta[0]['cfcemail']])
+                            ->orwhere(['email' => $intesta[0]['emailpec']])
+                            ->One();}else{
+                                    yii::error($intesta);
+                                    return null;
 
-        
-        // 'cd_cli',
-        /*  ['attribute'=>'cd_pg',
-        'label' => 'Tipo Pag.',
-        'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
-        'width'=>'150px'],*/
-
-        //'confermato',
+                            }
+                        if (isset($richiedente['email'])) {
+                            return $richiedente['email']??'';
+                        }else {
+                            return '';
+                        }
+                                    },
+            'filterType' => GridView::FILTER_SELECT2,
+            'filter' =>$clifdes           
+              
+                ,
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
+            ],
+            'filterInputOptions' => ['placeholder' => 'descrizione'],
+        ],
+       
         ['attribute' => 'confermato',
             //  'hiddenFromExport' => true,
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
+            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white','style'=>'color:black;'],
             'format' => 'raw',
-            'width' => '50px',
+            'width' => '5%',
             //'options' => ['width' => '10x','value'=>$model->confermato],
             //   'class' => '\kartik\grid\CheckboxColumn',
             'class' => '\kartik\grid\BooleanColumn',
@@ -313,15 +327,20 @@ $ris = (new \yii\db\Query())
             ],
             'filterInputOptions' => ['placeholder' => 'Confermato'],
             'encodeLabel' => false,
+            'value'=>function ($model, $key, $index, $column) {
+                    return $model->confermato ?? 0;
+
+
+            },
 
         ],
         //'rifiutato',
         ['attribute' => 'rifiutato',
-  
             //    'hiddenFromExport' => true,
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
+            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid .
+             '','style'=>'color:black;'],
             'format' => 'raw',
-            'width' => '50px',
+            'width' => '5%',
             'class' => '\kartik\grid\BooleanColumn',
             'trueLabel' => 'SI',
             'falseLabel' => 'No',
@@ -329,7 +348,6 @@ $ris = (new \yii\db\Query())
                 if ($model->rifiutato == 1) {
                     return ['style' => 'background-color:red'];
                 }
-
             },
             'filterType' => GridView::FILTER_SELECT2,
             'filter' => $listrif,
@@ -338,64 +356,109 @@ $ris = (new \yii\db\Query())
             ],
             'filterInputOptions' => ['placeholder' => 'Rifutato'],
             //'encodeLabel' => false
-        ],
+            'value'=>function ($model, $key, $index, $column) {
+                    return $model->rifiutato ?? 0;
 
+
+            },
+        ],
         ['label' => 'Note',
+        'format'=>'raw',
             'headerOptions' => 
-            ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
-            'width' => '600px',
+            ['class' => 'card-header bg-' . $usrgrid . ' text-black','style'=>'color:black;'],
+            'width' => '30%',
             'attribute' => 'note',
+            'contentOptions' => ['style' => 'width: 50%; overflow: scroll;
+            word-wrap: break-word;white-space:pre-line;overflow: hidden;'],
                 'value'=>function ($model, $key, $index, $column) {
-                    
 if (strlen($model->note)>2) {
-    return substr($model->note, 0, 60).'...';
+$t=substr($model->note, 0, 60).'...';
+$i=$model->xid_testa;
+    $htm=<<<EOF
+<script language="javascript" type="text/javascript">
+$(function(){
+    $("#clickMe-$i").click(function(){
+        console.log('$i');
+        $("#para-$i").toggleClass("myClass-$i");
+    })
+});
+</script>
+
+<style>
+p{
+     text-overflow: ellipsis;
+     display: block;
+      white-space: nowrap;
+      width:100px;
+}
+
+.myClass-$i
+{
+     overflow: hidden;
+}
+    </style>
+<div id="clickMe-$i"> $t</div>
+<p id="para-$i" class="myClass-$i">
+{$model->note}
+<p>
+EOF;
+$t2=substr($model->note, 60, strlen($model->note));
+$t2=trim($t2);
+ $htm=<<<EOF
+<div>$t<span style="display:none;
+">$t2</span></div>
+EOF;
+    return $htm; //$model->note;   // $htm;
+   //substr($model->note, 0, 60).'...';
+
+
+
 }
 else
 {
-  return $model->note;  
+  return $model->note ?? '';  
 }
                 }
         ],
-
         ['header' => 'Imponibile',
         //'contentFormats'=> ['decimal',2],
         'class'=>'\kartik\grid\DataColumn',
-             'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
+             'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-black','style'=>'color:black;'],
             'vAlign' => 'middle',
-            'width' => '50px',
+            'width' => '7%',
    'format'=>'currency',
             'value' => function ($model, $key, $index, $widget) {
              $t = 0;
                 $query =
                 (new Query())->select(['TotImponibilee'])->from('DOTotali')
                 ->where(['Id_DoTes' => $model['xid_testa']])->one(Yii::$app->db2);
-                $t = $query['TotImponibilee'];
+if (isset($query['TotImponibilee'])) {
+    $t = $query['TotImponibilee'];
+}
                 return $t ; //gettype($t);  
                 //number_format($t, 2, ',', '.');
-            
-             
             },
             'pageSummary' => true,
-
     /*'pageSummaryFormat'=>//['decimal',2]
     function ($data) {
         yii::error($data);
         return strval($data);
         //number_format($data, 2, ',', '');
     }*/
-   
     ],
         ['header' => 'Imposta',
-            'width' => '50px',
-             'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white'],
-            'vAlign' => 'middle',
+            'width' => '7%',
+             'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-black','style'=>'color:black;'],
+            //'vAlign' => 'middle',
             'format'=>'currency',
             'value' => function ($model, $key, $index, $widget) {
                 $t = 0;
                 $query =
                 (new Query())->select(['totimpostae'])->from('DOTotali')
                 ->where(['Id_DoTes' => $model['xid_testa']])->one(Yii::$app->db2);
-                $t = $query['totimpostae'];
+if (isset($query['totimpostae'])) {
+    $t = $query['totimpostae'];
+}
                 return $t;//gettype($t);  
                 //number_format($t, 2, ',', '.');
             },
@@ -408,72 +471,141 @@ else
       }*/
         ],
 
-
-
-               [
-            'hiddenFromExport' => true,
-            'vAlign' => 'middle',
-            'width' => '50px',
-            'header' => "Mail",
-            'format'=>'raw',
-            'value'=> function ($model, $key, $index, $widget) {
-                   
-                   $tmpid =$model->xid_testa;
-Modal::begin([
-    //'header'=>'<h4>Clienti</h4>',
-    'id' => 'cli' . $tmpid,
-    'size' => 'modal-lg', //classe bootstrap
-]);
-echo "<div id='modalContent'></div>";
-Modal::end();
-$this->registerJs("
-  $('#modalcli_$tmpid').click(function (){
-  $('#cli$tmpid').modal('show')
-  .find('#modalContent')
-  .load($(this).attr('value'));
-  });"
-);
-$url = Url::to(['site/contatti', 
-'id' => $model->xid_testa,
-'render'=> 'ajax'
-//   'mod'->$model
-]);
-
-                   
-                   
-                   
-                   
-                   
-                  //  return Html::a ( '<span class="fas fa-at" aria-hidden="true"></span>',
-                   //  ['site/contatti', 'id' => $model->id],['id' => 'modalcli_' . $tmpid],
-
-return   Html::button('<span class="fas fa-at" aria-hidden="true"></span>',
- ['value' => $url,
-    'class' => 'btn btn-info', 'id' => 'modalcli_' . $tmpid]);
-
-
-                 //   ['title' =>  'Copy'] );
-                },
-                  
-            'headerOptions' => ['class' => 'skip-export-pdf card-header bg-' . $usrgrid . ' text-white'],
-            ],   
+ 
                     ['class' => '\kartik\grid\ActionColumn',
             //  'hiddenFromExport' => true,
-            
-            'width' => '50px',
+
+            'width' => '4%',
             'header' => "Dett.",
-            'headerOptions' => ['class' => 'skip-export-pdf card-header bg-' . $usrgrid . ' text-white'],
-            'template' => '{view}'], 
+            'headerOptions' => ['class' => 'skip-export-pdf card-header bg-' . $usrgrid . '
+             ','style'=>'color:black;'],
+            'template' => ' {myaction}',
+              'buttons' => [
+      'myaction' => function($url, $model, $key) {
+         //here create glyphicon with URL pointing to your action where you can download file, something like 
+         return $model->id ? Html::a('<i class="fa-regular fa-eye '
+         .($model->confermato==1 ?  '':'fa-beat').'"></i>', ['doc_head/view', 'id' => 
+         $model->id]) : null;
+    }]
+        
+        ], 
 
+                      ['class' => '\kartik\grid\ActionColumn',
+                        'hiddenFromExport'=>True,
+     'headerOptions' => ['class' => 'skip-export-pdf card-header bg-' . $usrgrid . '
+             ','style'=>'color:black;'],
+             'header' => "Dupl.",
+             'template' => ' {myaction}', 
+  'buttons' => [
+      'myaction' => function($url, $model, $key) {
+         //here create glyphicon with URL pointing to your action where you can download file, something like 
+         return $model->id ? Html::a('<i class="fa-regular fa-copy '
+         .($model->confermato==1 ?  '':'fa-beat').'"></i>', ['doc_head/dupd', 'id' => 
+         $model->id]) : null;
+    }]
+],
+            ['class' => '\kartik\grid\ActionColumn',
+              'hiddenFromExport'=>True,
+     'headerOptions' => ['class' => 'skip-export-pdf card-header bg-' . $usrgrid . '
+             ','style'=>'color:black;'],
+             'header' => "Modi.",
+             'template' => ' {myaction}', 
+  'buttons' => [
+      'myaction' => function($url, $model, $key) {
+         //here create glyphicon with URL pointing to your action where you can download file, something like 
+         
+         return $model->id ? Html::a('<i class="fa-regular fa-pen-to-square '.($model->confermato==1 ?  '':'fa-beat').'"></i>', ['doc_head/dupd', 'id' => 
+         $model->id]) : null;
+    }]
+],
+    ];
+
+
+
+ $firephp = FirePHP::getInstance(true);
+
+$firephp->log($dataProvider);
+$firephp->warn($dataProvider);
+
+
+$fullExportMenu = ExportMenu::widget([
+    'dataProvider' => $dataProvider,
+    'columns' => $gridColumns,
+    'target' => ExportMenu::TARGET_BLANK,
+    'exportConfig' => [ ExportMenu::FORMAT_EXCEL_X => false,
+    ExportMenu::FORMAT_EXCEL=> ['label'=>'Excel'],
+],
+    'pjaxContainerId' => 'kv-pjax-container',
+    'showConfirmAlert' => false,
+    'exportContainer' => [
+        'class' => 'btn-group mr-2 me-2',
     ],
+    'dropdownOptions' => [
+        'label' => 'Export',
+        'class' => 'btn btn-outline-secondary btn-default',
+        'itemsBefore' => [
+            '<div class="dropdown-header">Esporta tutti i dati visibili</div>',
+        ],
+    ],
+]);
 
-    'panel' => [
+
+
+
+
+
+$usrid = Yii::$app->user->Id;
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['grid_color', 'cd_cli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+}
+$usrgrid = $ris['grid_color'];
+
+
+
+
+
+	
+	$isFa='file-pdf-o' ;
+	echo
+	GridView::widget([
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+'resizableColumnsOptions' => ['resizeFromBody' => true],
+    'toggleDataContainer' => ['class' => 'btn-group mr-2 me-2'],
+'striped' => true,
+    'condensed' => true,
+    'columns' => $gridColumns,
+'toolbar' => [
+             '{toggleData}',
+        $fullExportMenu,
+     ['content'=>   
+        Html::a('<i class="fas fa-redo"></i>', [''], [
+                    'class' => 'btn btn-outline-secondary btn-default',
+                    'title'=>Yii::t('kvgrid', 'Reset Grid'),
+                    'data-pjax' => 0, 
+                ]), ],
+       
+            ],
+     'panel' => [
         'type' => $ris['grid_color'],
-        'heading' => '<i class="fas  fa-book"></i> Documenti',
+        'heading' => '<i class="fas  fa-book"> Documenti</i>',
+        'headingOptions'=>['language'=>'it-It'],
+    /*'heading'=>'<h3 class="panel-title"><i class="fas fa-globe"></i> Countries</h3>',
+        'type'=>'success',
+        'before'=>Html::a('<i class="fas fa-plus"></i> Create Country', ['create'], ['class' => 'btn btn-success']),
+        'after'=>Html::a('<i class="fas fa-redo"></i> Reset Grid', ['index'], ['class' => 'btn btn-info']),
+        'footer'=>false
+     */ ],
+     'containerOptions' => [
+        'style' => 'background-color: #ffffff;', // Imposta lo sfondo bianco
     ],
     'responsive' => true,
     'resizableColumns' => true,
     'showPageSummary' => true,
-    'pjax' => false,
+    'pjax' => true,
 ]);?>
 </div>

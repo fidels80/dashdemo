@@ -1,0 +1,166 @@
+<style>
+    .table-wrapper {
+        max-height: 500px;
+        overflow-y: auto;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    table {
+        font-size: 0.8rem;
+        width: 100%;
+        table-layout: fixed;
+        /* Forza la larghezza fissa delle colonne */
+    }
+
+    .table th,
+    .table td {
+        overflow: hidden;
+        /* text-overflow: ellipsis;
+        white-space: nowrap;*/
+        min-width: 100px;
+        /* Imposta una larghezza minima per le celle */
+    }
+
+    .table thead th {
+        position: sticky;
+        top: 0;
+        background-color: #343a40;
+        color: #fff;
+        z-index: 1;
+    }
+
+    tfoot {
+        background-color: #e9ecef;
+        font-weight: bold;
+    }
+
+    tfoot td {
+        min-width: 100px;
+        /* Imposta una larghezza minima per le celle del footer */
+    }
+
+    /* Personalizzazione della barra di scorrimento */
+    .table-wrapper::-webkit-scrollbar {
+        width: 22px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 6px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
+</style>
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+use kartik\tabs\TabsX;
+use yii\helpers\Url;
+
+use onmotion\apexcharts\ApexchartsWidget;
+/* @var $this yii\web\View */
+/* @var $model app\models\Xtravelhead */
+
+$this->title = $model->descrizione;
+$this->params['breadcrumbs'][] = ['label' => 'Xtravelheads', 'url' => ['index']];
+//$this->params['breadcrumbs'][] = $this->title;
+\yii\web\YiiAsset::register($this);
+
+
+
+$this->registerCss('
+    .full-screen-container {
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        margin: 10px; /* Aggiungiamo margine per separare i blocchi */
+    }
+
+    @media (min-width: 768px) {
+        .full-screen-container {
+            width: calc(33.33% - 20px); /* Calcoliamo la larghezza per fare 3 colonne in una riga */
+        }
+    }
+
+    .AGE-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .AGE-info {
+        margin-bottom: 15px;
+    }
+
+    .AGE-info-label {
+        font-weight: bold;
+    }
+
+    .AGE-info-value {
+        margin-left: 10px;
+    }
+
+    .AGE-actions {
+        margin-top: 20px;
+    }
+
+    .AGE-actions .btn {
+        margin-right: 10px;
+    }
+
+    .full-width {
+        width: 100% !important;
+        max-width: none !important;
+    }
+        .chart-container {
+    width: 300px;
+    height: 200px;
+}
+    .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.custom-card {
+    width: 50%;
+min-height: 400px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .custom-card {
+        width: 100%;
+    }
+table.table-fit {
+  width: auto !important;
+  table-layout: auto !important;
+}
+table.table-fit thead th,
+table.table-fit tbody td,
+table.table-fit tfoot th,
+table.table-fit tfoot td {
+  width: auto !important;
+}
+  table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+');
+
+?>

@@ -7,18 +7,18 @@
 ];*/
 
 return [
-    'adminEmail' => 'sviluppo@ilvbc.it',
+    'adminEmail' => 'dashboard@ufficio-2000.it',
     //'caterina.iannucci@vivenda.it',
     //'caterina.iannucci@vivenda.it',
    //  'pubblicazioni@vivenda.it',
     
     //'pubblicazioni@vivenda.it',
      'senderEmail' => 
-     'sviluppo@ilvbc.it',//'caterina.iannucci@vivenda.it',
+     'dashboard@ufficio-2000.it',//'caterina.iannucci@vivenda.it',
     // 'pubblicazioni@vivenda.it',
      //'pubblicazioni@vivenda.it',
-    'senderName' => 'VIVENDA PORTAL',
-    'supportEmail'=> 'sviluppo@ilvbc.it',
+    'senderName' => 'DASHBOARD  Ufficio ',
+    'supportEmail'=> 'dashboard@ufficio-2000.it',
     //'caterina.iannucci@vivenda.it',
     //'pubblicazioni@vivenda.it',
     //'pubblicazioni@vivenda.it',

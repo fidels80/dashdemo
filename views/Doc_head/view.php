@@ -1,5 +1,5 @@
 <?php
-
+//use yii;
 use app\models\allfiles;
 use app\models\Anacli;
 use app\models\CliDest;
@@ -8,13 +8,31 @@ use yii\bootstrap4\Modal;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-$icon = new \thoulah\fontawesome\Icon();
+
+// Ottieni tutti i dati di sessione attiva
+$sessions = Yii::$app->session->getAllFlashes();
+
+// Inizializza un array per memorizzare gli ID degli utenti collegati
+$connectedUsers = [];
+
+foreach ($sessions as $key => $value) {
+    // Verifica se il dato di sessione contiene un ID utente
+    if (strpos($key, '__id') !== false) {
+        // Estrai l'ID utente dalla chiave
+        $userId = str_replace('__id', '', $key);
+        // Aggiungi l'ID utente all'array degli utenti collegati
+        $connectedUsers[] = $userId;
+    }
+}
+yii::warning($connectedUsers
+);
+//$icon = new \thoulah\fontawesome\Icon();
 
 $usrid = Yii::$app->user->Id;
 
 if ($usrid !== null) {
     $usr_ris = (new \yii\db\Query())
-        ->select(['email', 'gruppo'])
+        ->select(['email', 'gruppo','cd_cli'])
         ->from('user')
         ->where(['id' => $usrid])
         ->one();
@@ -45,7 +63,16 @@ if ($model->cd_doc == 'FTV' || $model->cd_doc == 'FTE') {
 }
 
 use yii\widgets\DetailView;
-$this->title = ' '; //$model->id;
+
+
+
+
+
+
+
+
+$this->title = '';
+
 $this->params['breadcrumbs'][] = ['label' => 'Elenco Documenti', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -57,10 +84,12 @@ $annmodel = CliDest::find()
 $listdest = ArrayHelper::map($annmodel, 'id', 'Name');
 
 ?>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 <div class="doc-head-view">
 
-    <h1><?=Html::encode($model->cd_doc . ' Num: ' . $model->numdoc . ' del ' . $model->data)?></h1>
-
+    <h1><?=Html::encode($model->cd_doc . ' Num: ' .
+     $model->numdoc . ' del ' . $model->data)?></h1>
+ 
     <p>
         <?php /*if ($model->confermato<>1 ) {
 
@@ -97,12 +126,13 @@ if ($model->confermato != 1 && $model->rifiutato != 1) {
 //   'mod'->$model
     ]);
     if ($usr_ris['gruppo'] != 'users') {
-
+  if (is_null($model->is_locked)){
         echo Html::button('Cambia Intestatario', ['value' => $url,
             'class' => 'btn btn-warning', 'id' => 'modalcli_' . $tmpid]);
            // echo'</td><td width="30%">';
-
+}
 echo '</td><td width="30%">';
+ if (is_null($model->is_locked)){
 echo Html::a(
     'Conferma',
     ['conferma', 'id' => $model->id],
@@ -112,6 +142,7 @@ echo Html::a(
             'method' => 'post',
         ]],
 );
+}
 echo '</td></tr>';
 echo '<tr height="10px"><td></td></tr>';
 
@@ -140,8 +171,10 @@ $url = Url::to(['nannota', 'id' => $model->id,
 
     if ($usr_ris['gruppo'] != 'users') {
 echo '<tr><td width="30%">';
+ if (is_null($model->is_locked)){
 echo Html::button('Aggiungi Nota', ['value' => $url,
     'class' => 'btn btn-info', 'id' => 'modalcli_' . $tmpid]);
+     }
 echo '</td> ';
 
 
@@ -167,10 +200,11 @@ echo '</td> ';
  
     if ($usr_ris['gruppo'] != 'users') {
 echo '<td width="30%">';
-
+ if (is_null($model->is_locked)){
         echo Html::button('Rifiuta', ['value' => $url,
             'class' => 'btn btn-danger', 'id' => 'modalcli_' . $tmpid]);
-echo '</td></tr></table>';
+
+}            echo '</td></tr></table>';
 
     }
 } elseif ($model->confermato == 1) {
@@ -181,6 +215,12 @@ echo '</td></tr></table>';
     echo \hail812\adminlte\widgets\Alert::widget([
         'type' => 'danger',
         'body' => '<h3>Documento Rifiutato!</h3>',
+    ]);
+}
+if ($model->is_locked==1 ) {
+    echo \hail812\adminlte\widgets\Alert::widget([
+        'type' => 'danger',
+        'body' => '<h3>Documento in modifica da  '.$model->locked_by.'!!</h3>',
     ]);
 }
 
@@ -201,8 +241,53 @@ echo '</td></tr></table>';
     'model' => $model,
     'attributes' => [
         //     'id',
+                [
+'attribute' => '',
+'label'=>'Richiedente',
+'value'=>function ($model ) {
+$ints = yii::$app->db2
+    ->createCommand('select top 1 dotes.cd_cf,dotes.Cd_CF,dotes.Cd_CFSede,dotes.Cd_CFDest,
+dotes.numerodoc,1,CFSede.Descrizione,CFSede.EMail as sdMail,
+CFContatto.email as cfcemail,cfcontatto.emailpec
+from dotes
+left join CFSede on CFSede.Cd_Cf=dotes.Cd_CF and CFSede.Cd_CFSede=dotes.Cd_CFSede
+left join CFContatto on CFContatto.Cd_CF=dotes.Cd_CF and CFContatto.Cd_CFDest=dotes.Cd_CFDest
+where dotes.id_dotes=:id_Dotes
+'
+    )->bindValues([':id_Dotes' => $model->xid_testa]);
+
+$ints->execute();
+$intesta = $ints->queryAll();
+//yii::warning($intesta );
+
+try {
+$richiedente = (new \yii\db\Query())
+    ->select(['email'])
+    ->from('user')
+    ->where(['email' => $intesta[0]['sdMail']])
+    ->orwhere(['email' => $intesta[0]['cfcemail']])
+    ->orwhere(['email' => $intesta[0]['emailpec']])
+    ->One();
+    return $richiedente['email'] ?? null ;
+    } catch (Exception $e) {
+   return  null;
+}
+}
+
+
+
+],
         'cd_doc',
-        'data',
+        
+        ['attribute'=>'data',
+      'value' => function ($model) {
+return  date('d/m/Y', (strtotime($model->data)));
+
+
+
+      }],
+
+
         'numdoc',
 
         [
@@ -246,6 +331,7 @@ echo '</td></tr></table>';
         'sconto',
         'note',
         'xnota',
+
     ],
 ]) ?></td><td width="30%">
 
@@ -339,23 +425,33 @@ echo '<th width=50px >Evaso</th>';
 
 //echo '<th>Cod. Art.</th>';
 echo '<th>Descrizione</th>';
+$usrcfid = $usr_ris['cd_cli'];
+$cfprice=Anacli::find()->select(['showprices','show_ins_nrgaz'])->where(['cd_cli'=>$usrcfid])->one();
+
 echo '<th>Data Pubblicazione</th>';
+if ($cfprice['show_ins_nrgaz']==1){
 echo '<th>Nr. Gazzetta</th>';
 echo '<th>Nr. Inserzione</th>';
-
+}
+if ($cfprice['showprices']==1){
 echo '<th>U.M.</th>';
 
 echo '<th>Qta</th>';
-echo '<th>Prezzo</th>';
+echo '<th>Prz.Unit</th>';
+
+echo '<th>Prezzo Tot </th>';
+echo '<th>Sconto</th>';
+echo '<th>Prezzo Scont.</th>';
 //echo '<th>note</th>';
 echo '<th>Al. Iva</th>';
+}
 echo '<th>File</th>';
 
 echo '</tr>';
 echo '</thead>';
 echo '<tbody>';
 
-//yii::warning(var_dump($model->getrowssall()));
+//yii::warning(($model->rowsall));
 
 foreach ($model->rowsall as $value) {
     echo '<tr>';
@@ -412,15 +508,30 @@ foreach ($model->rowsall as $value) {
     echo $value['descrizione'];
     echo '</td>';
     echo '<td>';
-    echo $value['datacons'];
-    echo '</td>';
+   // echo $value['datacons'];
+   if ($value['cd_doc']<>'FTV'){
+    if (date("d/m/Y",strtotime($value['datacons']))<>'01/01/1970'){
+        echo date("d/m/Y",strtotime($value['datacons']));
+    }
+    } 
+   echo '</td>';
+   if ($cfprice['show_ins_nrgaz']==1){
     echo '<td>';
-    echo $value['nrgazzetta'];
+    echo $value['nrgazzetta'] ?? '';
     echo '</td>';
     echo '<td>';
     echo $value['nrinserzione'];
     echo '</td>';
+   }
+   $ints = yii::$app->db2
+   ->createCommand('select * from ADB_VIVENDASRL.dbo.dorig where  id_dorig=:id_dorig
+'
+   )->bindValues([':id_dorig' =>$value['xid_riga']]);
 
+$ints->execute();
+$prz = $ints->queryAll();
+
+if ($cfprice['showprices']==1){
     echo '<td>';
     echo $value['um'];
     echo '</td>';
@@ -430,16 +541,45 @@ foreach ($model->rowsall as $value) {
     //  echo  Html::a('scarica',['agenda/genfile','id' => $value['id'],'file'=>str_replace(' ', '_',$value['nome_file']) ]);
     echo '</td>';
     echo '<td>';
-    echo number_format($value['prezzo'], 2);
+    if (isset($prz[0]['PrezzoUnitarioV'])||is_null($value['prezzo'])){
+    echo  number_format($prz[0]['PrezzoUnitarioV'], 2,',','.') .' €';
+    }else{
+    echo number_format($value['prezzo'], 2, ',', '.') . ' €';
+    }
+echo '</td>';
+    echo '<td>';
+    if (isset($prz[0]['PrezzoUnitarioV'])||is_null($value['totale'])){
+    echo number_format($value['qta']*$prz[0]['PrezzoUnitarioV'], 2,',','.') .' €';
+    }
+    else{
+    echo number_format($value['totale'], 2, ',', '.') . ' €';
+
+
+    }
+    echo '</td>';
+    echo '<td>';
+    if (isset($prz[0]['ScontoRiga'])||is_null($value['sconto'])){
+    echo $prz[0]['ScontoRiga'];
+    }else
+    {
+    echo $value['sconto'];    
+    }
+    echo '</td>';
+    echo '<td>';
+    
+    echo number_format($value['prz_tot'], 2,',','.') .' €';
+    
     echo '</td>';
     echo '<td>';
     echo $value['iva'];
     echo '</td>';
+}
     echo '<td>';
 
 //yii::warning($value->xid_riga);
 
-    $subvalue = allfiles::find()->
+if ($usr_ris['cd_cli']<>'C001443'){    
+$subvalue = allfiles::find()->
         where(['entita' => 'DORIG'])
         ->andWhere(['id_padre' => $value->xid_riga])
         ->one();
@@ -448,6 +588,28 @@ foreach ($model->rowsall as $value) {
             ['allfiles/genfile', 'id' => $subvalue['id'],
                 'file' => str_replace(' ', '_', $subvalue['nomefile'])]);
     }
+}else
+{
+
+$subvalue = allfiles::find()->
+    where(['entita' => 'DORIG'])
+    ->andWhere(['id_padre' => $value->xid_riga])
+    ->one();
+if (isset($subvalue['nomefile'])) {
+    echo Html::a(strstr($subvalue['nomefile'],'_',true).'_'.
+    str_replace(' ', '_', $value['descrizione']),
+        ['allfiles/genfile', 'id' => $subvalue['id'],
+            'file' => 
+        //    str_replace(' ', '_', $subvalue['nomefile'])
+        strstr($subvalue['nomefile'],'_',true).'_'.
+    str_replace(' ', '_', $value['descrizione'])
+        ]);
+}
+
+
+
+}
+
 
     echo '</td>';
 

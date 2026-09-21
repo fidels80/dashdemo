@@ -31,3 +31,9 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+/.history
+/vendor
+/config/*.php
+/web/assets/
+/nv_vendor/
+/web/xls_rep/

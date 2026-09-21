@@ -25,7 +25,7 @@ if ($usrid !== null) {
         ->where(['id' => $usrid])
         ->one();
 };
-     if ($ris['level']==100){ 
+     if ($ris['level']>=81){ 
     echo  Html::a('Create User', ['create'], ['class' => 'btn btn-success'])  ;
       }; 
       ?>
@@ -49,10 +49,15 @@ if ($usrid !== null) {
             //'status',
             //'created_at',
             //'updated_at',
-            //'level',
+            'level',
    
             'cd_cli',
-            ['class' => 'yii\grid\ActionColumn'],
+            'ischief',
+            'cd_agente',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update}',  
+            ],
         ],
     ]); ?>
 

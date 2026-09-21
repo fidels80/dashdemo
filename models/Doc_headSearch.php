@@ -17,7 +17,9 @@ class Doc_headSearch extends Doc_head
     public function rules()
     {
         return [
-            [['id', 'cd_doc', 'data', 'numdoc', 'cd_cli', 'cd_pg', 'sconto','confermato','rifiutato', 'note'], 'safe'],
+            [['id', 'cd_doc', 'data', 'numdoc', 'cd_cli', 'cd_pg', 'sconto',
+            'confermato','rifiutato',
+             'note','dest'], 'safe'],
         ];
     }
 
@@ -39,29 +41,31 @@ class Doc_headSearch extends Doc_head
      */
     public function search($params)
     {
-      
+
+        //var_dump( Yii::$app->user->identity->level);
+$cf=  Yii::$app->user->identity->cd_cli;
 if (Yii::$app->user->identity->level<>100) {
-    $cf=  Yii::$app->user->identity->cd_cli;
+    
+    if ($cf<>'C000065'){
     $query = Doc_head::find()
         ->where(['cd_cli'=>$cf])
+    //    ->andWhere(['<>','cd_doc','OVC'])
         ->orWhere(['altcli'=>$cf]);
-}else {
+    }else {
+$query = Doc_head::find()
+        ->where(['cd_cli'=>$cf])
+        ->andWhere(['<>','cd_doc','OVC'])
+        ->orWhere(['altcli'=>$cf]);
+    }}
+    else{
  $query = Doc_head::find();
-
 }
-
 $request = Yii::$app->request;
-
-
 $get = $request->get();
 // equivalent to: $get = $_GET;
-
 $fc = $request->get('filtra_confermato');
 $fr= $request->get('filtra_rifiutato');
-
-
-        // add conditions that should always apply here
-
+       // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'=> ['defaultOrder' => ['xid_testa' => SORT_DESC]],
@@ -101,11 +105,14 @@ if (isset($fr)) {
     $query->andFilterWhere(['like', 'id', $this->id])
             ->andFilterWhere(['like', 'cd_doc', $this->cd_doc])
             ->andFilterWhere(['like', 'numdoc', $this->numdoc])
-            ->andFilterWhere(['like', 'cd_cli', $this->cd_cli])
+            //->andFilterWhere(['cd_cli'=> $cf])
+            //->andFilterWhere(['alt_cli'=> $cf])
+            ->andFilterWhere(['or', ['cd_cli' => $cf], ['altcli' => $cf]])
             ->andFilterWhere(['like', 'cd_pg', $this->cd_pg])
             ->andFilterWhere(['like', 'sconto', $this->sconto])
             ->andFilterWhere(['confermato'=> $this->confermato])
             ->andFilterWhere(['rifiutato'=> $this->rifiutato])
+             ->andFilterWhere(['like', 'dest', $this->dest])
             ->andFilterWhere(['like', 'note', $this->note]);
             //->sort->defaultOrder = ['xid_testa' => SORT_DESC];
 /*}else{

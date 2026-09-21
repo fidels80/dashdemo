@@ -247,8 +247,9 @@ foreach($fieldz2 as $key => $value) {
    }
      // addRule(['name', 'email'], 'string', ['max' => 128])
    }
+   if ( isset($type)){
    $z=Yii::$app->controller->module->getfieldcovert($type);
-  
+   }
    if ($z[0]=='string'){
    $model2->addRule($Field, $z[0],['max'=>$z[1]]);
    

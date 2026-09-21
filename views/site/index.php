@@ -1,571 +1,153 @@
 <?php
-$this->title = 'Home Page';
+$this->title = '';
 //$this->params['breadcrumbs'] = [['label' => $this->title]];
 use app\models\doc_head;
 use app\models\payments;
-use practically\chartjs\Chart;
-use yii\helpers\Url;
 use app\models\User;
+use yii\helpers\Url;
+
 try {
-$cf =Yii::$app->user->identity->cd_cli;
+    $cf = Yii::$app->user->identity->cd_cli;
 } catch (Exception $e) {
+    $usrid = '';
+    //Yii::$app->user->identity->id;
     $ris = (new \yii\db\Query())
-    ->select(['cd_cli','email','username','piva'])
-    ->from('user')
-    ->where(['id' => $usrid])
-    ->one();
-   
-   
-    $cf=$ris['cd_cli'];
+        ->select(['cd_cli', 'email', 'username', 'piva'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+
+    $cf = '';
+    // $ris['cd_cli'];
 }
 //yii::error($cf);
-
-$altteste=
-/*
-doc_head::find()->select(['xid_testa','id'])->where(['altcli'=>$cd_cf])//->andwhere('is not',['altcli'=>null])
-->limit(5)->all();
-*/
-  (new \yii\db\Query())
-->select(['xid_testa'])
-->from('doc_head')
-->where(['=','altcli',$cf])
-->andwhere(['IS NOT', 'altcli', null])
-->all();
-
-
-//yii::warning($altteste);
-$filtro=[];
-foreach ($altteste as $value) {
-    $filtro[] = $value['xid_testa'];
-}
-//yii::warning($filtro);
-
-$totdoc = doc_head::find()->where(['cd_cli' => $cf])->count();
-$totdocC = doc_head::find()->where(['confermato' => 1, 'cd_cli' => $cf])->count();
-$totsc = payments::find()->where(['cd_cli' => $cf])->orwhere(['IN','xid_testa',$filtro])->count();
-$totsc_pagata = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '1'])->orwhere(['and',['IN','xid_testa',$filtro],['Pagata' => '1']] )->count();
-$dapagare = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '0'])->orwhere(['and',['IN','xid_testa',$filtro],['Pagata' => '0']] )->sum('ImportoV');
-$pagato = payments::find()->where(['cd_cli' => $cf, 'Pagata' => '1'])->orwhere(['and',['IN','xid_testa',$filtro],['Pagata' => '1']] )->sum('ImportoV');
-$connection = Yii::$app->getDb();
-$command = $connection->createCommand("select mese,sum(tot)as tot from (
-select month(DataScadenza) as mese ,sum(importov) as tot from payments
-where cd_cli=:id_cli /*and year(DataScadenza)=2022 */
-and pagata=1 --or (xid_testa in (select xid_testa from doc_head where altcli=:id_cli) and pagata=1) 
-               
-group by year(DataScadenza),month(DataScadenza)
-union
-select month(DataScadenza) as mese ,sum(importov) as tot from payments
-where (payments.xid_testa in (select xid_testa from doc_head where altcli='C004241') and payments.pagata=1)
-group by year(DataScadenza),month(DataScadenza)
-
-union
-select 1 as mese,0
-union
-select 2 as mese,0
-union
-select 3 as mese,0
-union
-select 4 as mese,0
-union
-select 5 as mese,0
-union
-select 6 as mese,0
-union
-select 7 as mese,0
-union
-select 8 as mese,0
-union
-select 9 as mese,0
-union
-select 10 as mese,0
-union
-select 11 as mese,0
-union
-select 12 as mese,0
-) as t
-group by mese
-
-", [':id_cli' => $cf]);
-
-$result = $command->queryAll();
-
-$command2 = $connection->createCommand("select mese,sum(tot)as tot from (
-select month(DataScadenza) as mese ,sum(importov) as tot from payments
-where (cd_cli=:id_cli /*and year(DataScadenza)=2022*/ and pagata<>1)
---or (payments.xid_testa in (select xid_testa from doc_head where altcli=:id_cli) and payments.pagata<>1)
-group by year(DataScadenza),month(DataScadenza)
-union
-select month(DataScadenza) as mese ,sum(importov) as tot from payments
-where (payments.xid_testa in (select xid_testa from doc_head where altcli='C004241') and payments.pagata<>1)
-group by year(DataScadenza),month(DataScadenza)
-
-union
-select 1 as mese,0
-union
-select 2 as mese,0
-union
-select 3 as mese,0
-union
-select 4 as mese,0
-union
-select 5 as mese,0
-union
-select 6 as mese,0
-union
-select 7 as mese,0
-union
-select 8 as mese,0
-union
-select 9 as mese,0
-union
-select 10 as mese,0
-union
-select 11 as mese,0
-union
-select 12 as mese,0
-) as t
-group by mese
-
-", [':id_cli' => $cf]);
-$result2 = $command2->queryAll();
-$righe = [];
-$righe2 = [];
-foreach ($result as $value) {
-    $righe[] = $value['tot'];
-}
-foreach ($result2 as $value) {
-    $righe2[] = $value['tot'];
-}
-
-$series = [
-
-    [
-        'name' => "Pagate",
-        'data' => $righe, //[45,46,1,3,0,0,0,0,0,1,1,1]
-    ],
-    [
-        'name' => 'non Pagate',
-        'data' => $righe2,
-
-    ],
-
-]
-;
-
- 
-?>
-<div class="container-fluid">
-<!--
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-            <?=\hail812\adminlte\widgets\InfoBox::widget([
-    'text' => 'File Presenti',
-    'number' => '50 <small></small>',
-    'icon' => 'fas fa-copy',
-])?>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-            <?=\hail812\adminlte\widgets\InfoBox::widget([
-    'text' => 'Saldo Da Pagare',
-    'number' => round($dapagare, 2) . ' <small></small>',
-    'icon' => 'fas fa-calendar',
-])?>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-            <?=\hail812\adminlte\widgets\InfoBox::widget([
-    'text' => 'Saldato',
-    'number' => round($pagato, 2) . ' <small></small>',
-    'icon' => 'fas fa-calendar',
-])?>
-        </div>
-    </div>
-
-            -->
-
-            
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <?=\hail812\adminlte\widgets\SmallBox::widget([
-    'title' => $totdoc,
-    'text' => 'Documenti Presenti in Archivio',
-    'icon' => 'far fa-copy',
-        'linkText'=>'Apri',
-    'linkUrl'=> Url::to(['doc_head/index'])
-])?>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-
-
-         <?php $smallBox = \hail812\adminlte\widgets\SmallBox::begin([
-    'title' => $totdocC,
-    'text' => 'Documenti Confermati',
-    'icon' => 'far fa-copy',
-    'theme' => 'success',
-      'linkText'=>'Apri',
-     'linkUrl'=> Url::to(['doc_head/index', 'filtra_confermato' => true]),
-])?>
-            <?=\hail812\adminlte\widgets\Ribbon::widget([
-    'id' => $smallBox->id . '-ribbon',
-    'text' => 'Confermati',
-    'theme' => 'warning',
-    'size' => 'lg',
-   
-    'textSize' => 'lg',
-])?>
-            <?php \hail812\adminlte\widgets\SmallBox::end()?>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-        <?php $smallBox = \hail812\adminlte\widgets\SmallBox::begin([
-    'title' => $totdoc - $totdocC,
-    'text' => 'Documenti da Confermare',
-    'icon' => 'far fa-copy',
-    'theme' => 'Info',
-    'linkText'=>'Apri',
-    'linkUrl'=> Url::to(['doc_head/index', 'filtra_confermato' => false])
-
-])?>
-            <?=\hail812\adminlte\widgets\Ribbon::widget([
-    'id' => $smallBox->id . '-ribbon',
-    'text' => 'Non Confermati',
-    'theme' => 'warning',
-    'size' => 'lg',
-    'textSize' => 'sm',
-])?>
-            <?php \hail812\adminlte\widgets\SmallBox::end()?>
-        </div>
-    </div>
-   <!-- ///////////////////////////////////////////////////-->
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <?=\hail812\adminlte\widgets\SmallBox::widget([
-    'title' => $totsc,
-    'text' => 'Totali scadenze',
-    'icon' => 'far fa-calendar',
-            'linkText'=>'Apri',
-    'linkUrl'=> Url::to(['payments/index'])
-])?>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-
-
-         <?php $smallBox = \hail812\adminlte\widgets\SmallBox::begin([
-    'title' => $totsc_pagata,
-    'text' => 'Scadenze Pagate',
-    'icon' => 'far fa-calendar',
-    'theme' => 'success',
-                'linkText'=>'Apri',
-    'linkUrl'=> Url::to(['payments/index', 'filtra_pagato' => true])
-])?>
-            <?=\hail812\adminlte\widgets\Ribbon::widget([
-    'id' => $smallBox->id . '-ribbon',
-    'text' => 'Pagate',
-    'theme' => 'warning',
-    'size' => 'lg',
-    'textSize' => 'lg',
-])?>
-            <?php \hail812\adminlte\widgets\SmallBox::end()?>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-        <?php $smallBox = \hail812\adminlte\widgets\SmallBox::begin([
-    'title' => $totsc - $totsc_pagata,
-    'text' => 'Scadenze da Pagare',
-    'icon' => 'far fa-calendar',
-    'theme' => 'Info',
-                    'linkText'=>'Apri',
-    'linkUrl'=> Url::to(['payments/index', 'filtra_pagato' => false])
-])?>
-            <?=\hail812\adminlte\widgets\Ribbon::widget([
-    'id' => $smallBox->id . '-ribbon',
-    'text' => 'Non Pagate',
-    'theme' => 'warning',
-    'size' => 'lg',
-    'textSize' => 'sm',
-])?>
-            <?php \hail812\adminlte\widgets\SmallBox::end()?>
-        </div>
-    </div>
-    <div class="row " >
-    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-    <div class="card card-succes">
-    <div class="card-header">
-    <table style="border-collapse: collapse; width: 100%;" border="0"><colgroup><col style="width: 50%;"><col style="width: 50%;"></colgroup>
- <tbody>
- <tr>
- <td style="width: 80%;">
-    <h3 class="card-title">Top Articoli</h3>
-    </td>
- <td style="width: 20%;">  <h3 class="card-title">Qtà con Um</h3>
- </td>
- </tr>
- </tbody>
- </table>
-   <?php 
-   $usrid = Yii::$app->user->Id;
-$ris = user::find()
-    ->select(['level', 'cd_cli', 'id'])
-    ->where(['id' => $usrid])
-    ->asArray()
-    ->one();
-$command2 = $connection->createCommand("select top 5  
-doc_rows.cd_art,doc_rows.descrizione,sum(doc_rows.qta) as t,um
- from doc_rows
-where cd_cli=:id and cd_art is not null
-and cd_art in
- (select  cd_ar from  adb_vivendasrl.dbo.ar where cd_argruppo1 is not null)
-group by cd_art,descrizione,um
-order by sum(qta) desc ")
-->bindParam(':id', $ris['cd_cli']);
-$resultart = $command2->queryAll();
-//yii::error($resultart);
-?>
-   
-   
-   
-    <div class="card-tools">
-      <!-- Buttons, labels, and many other things can be placed here! -->
-      <!-- Here is a label for example -->
-      <!-- <span class="badge badge-primary">Articoli</span>-->
-    </div>
-    <!-- /.card-tools -->
-  </div>
-  <!-- /.card-header -->
-
-  <?php 
- 
-  foreach($resultart as $value){
-  echo '<div class="card-body">'.
- '<table style="border-collapse: collapse; width: 100%;" border="0"><colgroup><col style="width: 50%;"><col style="width: 50%;"></colgroup>
- <tbody>
- <tr>
- <td style="width: 80%;">'.$value['descrizione'].'</td>
- <td style="width: 20%;">'.number_format($value['t'],0).' '.$value['um'].'</td>
- </tr>
- </tbody>
- </table>'.
- '</div>';
-  }
-   ?> 
-            </div>
-            </div>
-  <!-- /.card-body -->
-  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-    <div class="card card-succes">
-    <div class="card-header">
-    <h3 class="card-title">Documenti</h3>
-  <?php /*$series = [
-    [
-        'name' => 'Entity 1',
-        'data' => [
-            ['2018-10-04', 4.66],
-            ['2018-10-05', 5.0],
-        ],
-    ],
-    [
-        'name' => 'Entity 2',
-        'data' => [
-            ['2018-10-04', 3.88],
-            ['2018-10-05', 3.77],
-        ],
-    ],
-    [
-        'name' => 'Entity 3',
-        'data' => [
-            ['2018-10-04', 4.40],
-            ['2018-10-05', 5.0],
-        ],
-    ],
-    [
-        'name' => 'Entity 4',
-        'data' => [
-            ['2018-10-04', 4.5],
-            ['2018-10-05', 4.18],
-        ],
-    ],
-];
- 
-echo \onmotion\apexcharts\ApexchartsWidget::widget([
-    'type' => 'bar', // default area
-    'height' => '400', // default 350
-    'width' => '500', // default 100%
-    'chartOptions' => [
-        'chart' => [
-            'toolbar' => [
-                'show' => true,
-                'autoSelected' => 'zoom',
-            ],
-        ],
-        'xaxis' => [
-            'type' => 'datetime',
-            // 'categories' => $categories,
-        ],
-        'plotOptions' => [
-            'bar' => [
-                'horizontal' => false,
-                'endingShape' => 'rounded',
-            ],
-        ],
-        'dataLabels' => [
-            'enabled' => false,
-        ],
-        'stroke' => [
-            'show' => true,
-            'colors' => ['transparent'],
-        ],
-        'legend' => [
-            'verticalAlign' => 'bottom',
-            'horizontalAlign' => 'left',
-        ],
-    ],
-    'series' => $series,
-]);
-
-
-*/
-//$pie=['Confermato'=>5,'In attesa'=>2,'Rifutato'=>8];
-
-$command3 = $connection->createCommand("select count(*) as tot
- from doc_head
-where cd_cli=:id and confermato=1 ")
-    ->bindParam(':id', $ris['cd_cli']);
-$resulconf = $command3->queryAll();
-$command4 = $connection->createCommand("select count(*) as tot
- from doc_head
-where cd_cli=:id and (confermato is null or confermato=0)  ")
-    ->bindParam(':id', $ris['cd_cli']);
-$resulwait = $command4->queryAll();
-$command5 = $connection->createCommand("select count(*) as tot
- from doc_head
-where cd_cli=:id and rifiutato=1 ")
-    ->bindParam(':id', $ris['cd_cli']);
-$resulcanc = $command5->queryAll();
- 
-$command6 = $connection->createCommand("select count(*) as tot from (
-select distinct  (xid_testa)
- from doc_rows
-where cd_cli=:id and f_row is not null
-) as t")
-    ->bindParam(':id', $ris['cd_cli']);
-$resuleva = $command6->queryAll();
-
-
-
-$pie=[];
-/*$pie[]=array('Confermati'=>intval($resulconf[0]['tot']));
-$pie[]=array('In attesa'=>intval($resulwait[0]['tot']));
-$pie[]=array('Rifiutati'=>intval($resulcanc[0]['tot']));
-$pie[]=array('Evasi'=>intval($resuleva[0]['tot']));
-*/
-
-//$pie[]='pagate'=>500;
-
-$pie[]=intval($resulwait[0]['tot']);
-$pie[] = intval($resulconf[0]['tot']);
-$pie[] = intval($resuleva[0]['tot']);
-
-$pie[]=intval($resulcanc[0]['tot']);
-
-
-$conf=$resulconf[0]['tot'];
-
-//$pie=[$conf,6,7,8,9];
-//yii::warning($pie);
-
-//yii::warning($resulconf);
-//yii::warning($resulwait);
-//yii::warning($resulcanc);
-//yii::warning($resuleva);
-
-
-echo \onmotion\apexcharts\ApexchartsWidget::widget([
-    'type' => 'pie', // default area
-    //'height' => '400', // default 350
-   // 'width' => '500', // default 100%
- 
-    'chartOptions' => [
-           'labels'=>['In attesa','Confermato','Evaso','Rifiutato'],
-        'chart' => [
-            'toolbar' => [
-                'show' => true,
-                'autoSelected' => 'zoom',
-            ],
-     
-           
-        ],
-  
-    ],
-    'series' => $pie,
-    
-]);
-
-?>
-</div>
-
-            </div>
-            </div>
-
-  <!-- /.card-footer -->
-<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-        <div class="card card-succes">
-    <div class="card-header">
-    <h3 class="card-title">Scadenze</h3>
-<?php
-/*
-$series= [
-    'data'=> [
-    [  'x'=> strtotime('2018-02-12'),
-      'y'=> 76
-    ],[
-      'x'=> strtotime('2018-02-12') ,
-      'y'=> 76
-    ]
-  ], 
-  'xaxis'=>[
-    'type'=> 'datetime'
-  ],
-  ];*/
-echo \onmotion\apexcharts\ApexchartsWidget::widget([
-    'type' => 'bar', // default area
-    //'height' => '400', // default 350
-    //'width' => '500', // default 100%
-    'chartOptions' => [
-        'chart' => [
-            'toolbar' => [
-                'show' => true,
-                'autoSelected' => 'zoom',
-            ],
-        ],
-        'xaxis' => [
-            //'type' => 'datetime',
-            // 'categories' => $categories,
-            'categories' => ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set'
-            , 'Ott', 'Nov', 'Dic'],
-
-        ],
-        'plotOptions' => [
-            'bar' => [
-                'horizontal' => false,
-                'endingShape' => 'rounded',
-            ],
-        ],
-        'dataLabels' => [
-            'enabled' => false,
-        ],
-        'stroke' => [
-            'show' => true,
-            'colors' => ['transparent'],
-        ],
-        'legend' => [
-            'verticalAlign' => 'bottom',
-            'horizontalAlign' => 'left',
-        ],
-    ],
-    'series' => $series,
-]);
-
 ?>
 
-</div>
-      </div>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Cards with Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<style>
+    .card {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: none;
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-title {
+        font-weight: bold;
+    }
+
+    .card-text {
+        color: #555;
+    }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* Stile del contenitore */
+    .planorys-container {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333333;
+        max-width: 400px;
+        /* Larghezza massima opzionale */
+        padding: 20px;
+    }
+
+    /* Stile per il nome principale */
+    .planorys-brand {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    /* Stile per il sottotitolo aziendale */
+    .planorys-company {
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    /* Blocchi di testo separati */
+    .planorys-block {
+        margin-bottom: 15px;
+    }
+
+    /* Stile dei link (telefono, mail, web) */
+    .planorys-container a {
+        color: #333333;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .planorys-container a:hover {
+        color: #0056b3;
+        /* Colore al passaggio del mouse */
+        text-decoration: underline;
+    }
+
+    /* Grassetto per le etichette */
+    strong {
+        font-weight: 600;
+    }
+</style>
+
+<body class="d-flex justify-content-center">
+    <table class="table mx-auto text-center">
+        <div dir="ltr" style="font-family: Aptos, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+            <br>
+
+        </div>
+        <p dir="ltr" style="text-align: left; text-indent: 0px; text-transform: none; margin: 0cm;">
+<span style="font-family: 'Montserrat ExtraBold', sans-serif; font-size: 11pt; color: white; background-color: black; display: inline-block; padding: 10px; border-radius: 4px;">
+    <b>
+        <img decoding="async" src="https://wkiroma.it/wp-content/uploads/2024/03/logo-wki-bianco-01.svg" alt="Logo WKI" class="wp-image-895" style="width:300px; display: block;">
+    </b>
+</span>
+        </p>
+        <div class="planorys-container">
+            <div class="planorys-brand">
+                <h3><b>Presenze</b></h3></div>
+                <span class="planorys-company">è un Brand Programma 2000<br><b>di Programma 2000 srl </b></span>
+
+                <div class="planorys-block">
+                    Via Gianluca Squarcialupo 58<br>
+                    00162 Roma
+                </div>
+
+                <div class="planorys-block">
+                    <strong>Tel:</strong> <a href="tel:0644292931">06.44292931</a><br>
+
+                </div>
+                <div class="planorys-block">
+                    <a href="mailto:supporto@programma2000.com">supporto@programma2000.com</a><br>
+                    
+                </div>
             </div>
-    </div>
-</div>
+    </table>
+</body>
+
+
+</html>

@@ -1,0 +1,11 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.quickSuggestionsDelay": 5,
+    "local-history.path": "c:\\php-history\\",
+    "files.exclude": {
+        "**/.history/**": true,
+        "**/dist/**": true,
+        "**/node_modules/**": true
+    },
+    "local-history.dateLocale": "C:\\php-history\\"
+}

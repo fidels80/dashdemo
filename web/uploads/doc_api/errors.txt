@@ -1,0 +1,3885 @@
+Array
+(
+    [0] => Array
+        (
+            [file] => 
+            [message] => broken link to CFDests
+        )
+
+    [1] => Array
+        (
+            [file] => 
+            [message] => broken link to CFs
+        )
+
+    [2] => Array
+        (
+            [file] => 
+            [message] => broken link to CFs0
+        )
+
+    [3] => Array
+        (
+            [file] => 
+            [message] => broken link to CGMovTs
+        )
+
+    [4] => Array
+        (
+            [file] => 
+            [message] => broken link to CGMovTs0
+        )
+
+    [5] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCFFor
+        )
+
+    [6] => Array
+        (
+            [file] => 
+            [message] => broken link to DOTes
+        )
+
+    [7] => Array
+        (
+            [file] => 
+            [message] => broken link to DOTes0
+        )
+
+    [8] => Array
+        (
+            [file] => 
+            [message] => broken link to LSScAgenteARGruppos
+        )
+
+    [9] => Array
+        (
+            [file] => 
+            [message] => broken link to OperatoreAgentes
+        )
+
+    [10] => Array
+        (
+            [file] => 
+            [message] => broken link to Operatores
+        )
+
+    [11] => Array
+        (
+            [file] => 
+            [message] => broken link to Operatores0
+        )
+
+    [12] => Array
+        (
+            [file] => 
+            [message] => broken link to Operatores1
+        )
+
+    [13] => Array
+        (
+            [file] => 
+            [message] => broken link to OrsAgente2s
+        )
+
+    [14] => Array
+        (
+            [file] => 
+            [message] => broken link to Provvigiones
+        )
+
+    [15] => Array
+        (
+            [file] => 
+            [message] => broken link to AiMessages
+        )
+
+    [16] => Array
+        (
+            [file] => 
+            [message] => broken link to Conversation
+        )
+
+    [17] => Array
+        (
+            [file] => 
+            [message] => broken link to ARARMisuras
+        )
+
+    [18] => Array
+        (
+            [file] => 
+            [message] => broken link to ARAliases
+        )
+
+    [19] => Array
+        (
+            [file] => 
+            [message] => broken link to ARCategoria
+        )
+
+    [20] => Array
+        (
+            [file] => 
+            [message] => broken link to ARCodCFs
+        )
+
+    [21] => Array
+        (
+            [file] => 
+            [message] => broken link to ARCodves
+        )
+
+    [22] => Array
+        (
+            [file] => 
+            [message] => broken link to ARCostoDBItems
+        )
+
+    [23] => Array
+        (
+            [file] => 
+            [message] => broken link to ARCostoItems
+        )
+
+    [24] => Array
+        (
+            [file] => 
+            [message] => broken link to ARImgWebs
+        )
+
+    [25] => Array
+        (
+            [file] => 
+            [message] => broken link to ARImgs
+        )
+
+    [26] => Array
+        (
+            [file] => 
+            [message] => broken link to ARLinguas
+        )
+
+    [27] => Array
+        (
+            [file] => 
+            [message] => broken link to ARLottos
+        )
+
+    [28] => Array
+        (
+            [file] => 
+            [message] => broken link to ARMGUbicaziones
+        )
+
+    [29] => Array
+        (
+            [file] => 
+            [message] => broken link to ARMatricolas
+        )
+
+    [30] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARClasse1
+        )
+
+    [31] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARClasse10
+        )
+
+    [32] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARClasse11
+        )
+
+    [33] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARGruppo1
+        )
+
+    [34] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARGruppo10
+        )
+
+    [35] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARGruppo11
+        )
+
+    [36] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARMarca
+        )
+
+    [37] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARMisura
+        )
+
+    [38] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARMisuras
+        )
+
+    [39] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARPrdClasse
+        )
+
+    [40] => Array
+        (
+            [file] => 
+            [message] => broken link to CdARStato
+        )
+
+    [41] => Array
+        (
+            [file] => 
+            [message] => broken link to CdAliquotaA
+        )
+
+    [42] => Array
+        (
+            [file] => 
+            [message] => broken link to CdAliquotaV
+        )
+
+    [43] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCAVdaAE
+        )
+
+    [44] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCAVdaAI
+        )
+
+    [45] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCAVdaVE
+        )
+
+    [46] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCAVdaVI
+        )
+
+    [47] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCFs
+        )
+
+    [48] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCGContoAE
+        )
+
+    [49] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCGContoAI
+        )
+
+    [50] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCGContoVE
+        )
+
+    [51] => Array
+        (
+            [file] => 
+            [message] => broken link to CdCGContoVI
+        )
+
+    [52] => Array
+        (
+            [file] => 
+            [message] => broken link to CdMGEsercizios
+        )
+
+    [53] => Array
+        (
+            [file] => 
+            [message] => broken link to CdMGEsercizios0
+        )
+
+    [54] => Array
+        (
+            [file] => 
+            [message] => broken link to CdMGs
+        )
+
+    [55] => Array
+        (
+            [file] => 
+            [message] => broken link to CdNazioneOrigine
+        )
+
+    [56] => Array
+        (
+            [file] => 
+            [message] => broken link to CdNazioneOrigine0
+        )
+
+    [57] => Array
+        (
+            [file] => 
+            [message] => broken link to CdVbReparto
+        )
+
+    [58] => Array
+        (
+            [file] => 
+            [message] => broken link to DB0
+        )
+
+    [59] => Array
+        (
+            [file] => 
+            [message] => broken link to DBFases
+        )
+
+    [60] => Array
+        (
+            [file] => 
+            [message] => broken link to DBMateriales
+        )
+
+    [61] => Array
+        (
+            [file] => 
+            [message] => broken link to DBVariantes
+        )
+
+    [62] => Array
+        (
+            [file] => 
+            [message] => broken link to DODBAttivitas
+        )
+
+    [63] => Array
+        (
+            [file] => 
+            [message] => broken link to DODBMateriales
+        )
+
+    [64] => Array
+        (
+            [file] => 
+            [message] => broken link to DODBs
+        )
+
+    [65] => Array
+        (
+            [file] => 
+            [message] => broken link to DORigs
+        )
+
+    [66] => Array
+        (
+            [file] => 
+            [message] => broken link to EShopOrderItems
+        )
+
+    [67] => Array
+        (
+            [file] => 
+            [message] => broken link to LSArticolos
+        )
+
+    [68] => Array
+        (
+            [file] => 
+            [message] => broken link to LSRevisiones
+        )
+
+    [69] => Array
+        (
+            [file] => 
+            [message] => broken link to LSScARCFGruppos
+        )
+
+    [70] => Array
+        (
+            [file] => 
+            [message] => broken link to Linguas
+        )
+
+    [71] => Array
+        (
+            [file] => 
+            [message] => broken link to MGMovs
+        )
+
+    [72] => Array
+        (
+            [file] => 
+            [message] => broken link to MGOrdImps
+        )
+
+    [73] => Array
+        (
+            [file] => 
+            [message] => broken link to MPSnaps
+        )
+
+    [74] => Array
+        (
+            [file] => 
+            [message] => broken link to PRBLAttivitas
+        )
+
+    [75] => Array
+        (
+            [file] => 
+            [message] => broken link to PRBLMateriales
+        )
+
+    [76] => Array
+        (
+            [file] => 
+            [message] => broken link to PROLAttivitas
+        )
+
+    [77] => Array
+        (
+            [file] => 
+            [message] => broken link to PROLMateriales
+        )
+
+    [78] => Array
+        (
+            [file] => 
+            [message] => broken link to PROLs
+        )
+
+    [79] => Array
+        (
+            [file] => 
+            [message] => broken link to PRTRMateriales
+        )
+
+    [80] => Array
+        (
+            [file] => 
+            [message] => broken link to PRVRAttivitas
+        )
+
+    [81] => Array
+        (
+            [file] => 
+            [message] => broken link to PRVRMateriales
+        )
+
+    [82] => Array
+        (
+            [file] => 
+            [message] => broken link to VBSconRs
+        )
+
+    [83] => Array
+        (
+            [file] => 
+            [message] => broken link to XARFormatos
+        )
+
+    [84] => Array
+        (
+            [file] => 
+            [message] => broken link to XGestioneEmailAutos
+        )
+
+    [85] => Array
+        (
+            [file] => 
+            [message] => broken link to Plannings
+        )
+
+    [86] => Array
+        (
+            [file] => 
+            [message] => broken link to CdDmsType
+        )
+
+    [87] => Array
+        (
+            [file] => 
+            [message] => broken link to DmsClass1
+        )
+
+    [88] => Array
+        (
+            [file] => 
+            [message] => broken link to DmsDocumentParent
+        )
+
+    [89] => Array
+        (
+            [file] => 
+            [message] => broken link to Dmsdocuments
+        )
+
+    [90] => Array
+        (
+            [file] => 
+            [message] => broken link to DOCommessas
+        )
+
+    [91] => Array
+        (
+            [file] => 
+            [message] => broken link to DOSottoCommessas
+        )
+
+    [92] => Array
+        (
+            [file] => 
+            [message] => broken link to username
+        )
+
+    [93] => Array
+        (
+            [file] => 
+            [message] => broken link to CdVL
+        )
+
+    [94] => Array
+        (
+            [file] => 
+            [message] => broken link to DOTes1
+        )
+
+    [95] => Array
+        (
+            [file] => 
+            [message] => broken link to Dittas
+        )
+
+    [96] => Array
+        (
+            [file] => 
+            [message] => broken link to EShopOrders
+        )
+
+    [97] => Array
+        (
+            [file] => 
+            [message] => broken link to LSRevisiones0
+        )
+
+    [98] => Array
+        (
+            [file] => 
+            [message] => broken link to VBConfiguraziones
+        )
+
+    [99] => Array
+        (
+            [file] => 
+            [message] => broken link to Presenzes
+        )
+
+    [100] => Array
+        (
+            [file] => 
+            [message] => broken link to Veicolo
+        )
+
+    [101] => Array
+        (
+            [line] => 
+            [file] => 
+            [message] => Using empty link.
+        )
+
+    [102] => Array
+        (
+            [line] => 28
+            [file] => controllers\AgendaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\AgendaController.
+        )
+
+    [103] => Array
+        (
+            [line] => 21
+            [file] => controllers\AgendaFilesController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\AgendafilesController.
+        )
+
+    [104] => Array
+        (
+            [line] => 20
+            [file] => controllers\AgentifilesController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\AgentifilesController.
+        )
+
+    [105] => Array
+        (
+            [line] => 24
+            [file] => controllers\AllfilesController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\AllfilesController.
+        )
+
+    [106] => Array
+        (
+            [line] => 24
+            [file] => controllers\AnacliControllerS.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\AnacliController.
+        )
+
+    [107] => Array
+        (
+            [line] => 20
+            [file] => controllers\BlkinsController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\BlkinsController.
+        )
+
+    [108] => Array
+        (
+            [line] => 19
+            [file] => controllers\CalController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\CalController.
+        )
+
+    [109] => Array
+        (
+            [line] => 24
+            [file] => controllers\Doc_headController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\Doc_headController.
+        )
+
+    [110] => Array
+        (
+            [line] => 20
+            [file] => controllers\Doc_rowsController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\Doc_rowsController.
+        )
+
+    [111] => Array
+        (
+            [line] => 20
+            [file] => controllers\DocommessaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\DocommessaController.
+        )
+
+    [112] => Array
+        (
+            [line] => 20
+            [file] => controllers\DosottocommessaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\DosottocommessaController.
+        )
+
+    [113] => Array
+        (
+            [line] => 20
+            [file] => controllers\ElemailController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\ElemailController.
+        )
+
+    [114] => Array
+        (
+            [line] => 21
+            [file] => controllers\FilesController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\FilesController.
+        )
+
+    [115] => Array
+        (
+            [line] => 22
+            [file] => controllers\FoldersController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\FoldersController.
+        )
+
+    [116] => Array
+        (
+            [line] => 22
+            [file] => controllers\GacSottoPrvController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\GacsottoprvController.
+        )
+
+    [117] => Array
+        (
+            [line] => 21
+            [file] => controllers\GacattivitaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\GacattivitaController.
+        )
+
+    [118] => Array
+        (
+            [line] => 23
+            [file] => controllers\GacmaterialiController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\GacmaterialiController.
+        )
+
+    [119] => Array
+        (
+            [line] => 20
+            [file] => controllers\GacprvController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\GacprvController.
+        )
+
+    [120] => Array
+        (
+            [line] => 21
+            [file] => controllers\GacspeseController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\GacspeseController.
+        )
+
+    [121] => Array
+        (
+            [line] => 20
+            [file] => controllers\ItemsController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\ItemsController.
+        )
+
+    [122] => Array
+        (
+            [line] => 20
+            [file] => controllers\LocazioniController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\LocazioniController.
+        )
+
+    [123] => Array
+        (
+            [line] => 20
+            [file] => controllers\LogController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\LogController.
+        )
+
+    [124] => Array
+        (
+            [line] => 20
+            [file] => controllers\MansioniController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\MansioniController.
+        )
+
+    [125] => Array
+        (
+            [line] => 21
+            [file] => controllers\PaymentsController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\PaymentsController.
+        )
+
+    [126] => Array
+        (
+            [line] => 21
+            [file] => controllers\PlanningController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\PlanningController.
+        )
+
+    [127] => Array
+        (
+            [line] => 20
+            [file] => controllers\PlistController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\PlistController.
+        )
+
+    [128] => Array
+        (
+            [line] => 20
+            [file] => controllers\PresenzeController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\PresenzeController.
+        )
+
+    [129] => Array
+        (
+            [line] => 20
+            [file] => controllers\RapportiniController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\RapportiniController.
+        )
+
+    [130] => Array
+        (
+            [line] => 20
+            [file] => controllers\RelcliController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\RelcliController.
+        )
+
+    [131] => Array
+        (
+            [line] => 22
+            [file] => controllers\RelusrformactionController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\RelusrformactionController.
+        )
+
+    [132] => Array
+        (
+            [line] => 22
+            [file] => controllers\Rep_publicazioniController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\Rep_publicazioniController.
+        )
+
+    [133] => Array
+        (
+            [line] => 20
+            [file] => controllers\RepartiController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\RepartiController.
+        )
+
+    [134] => Array
+        (
+            [line] => 20
+            [file] => controllers\ScController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\ScController.
+        )
+
+    [135] => Array
+        (
+            [line] => 20
+            [file] => controllers\ShowController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\ShowController.
+        )
+
+    [136] => Array
+        (
+            [line] => 30
+            [file] => controllers\SiteController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\SiteController.
+        )
+
+    [137] => Array
+        (
+            [line] => 56
+            [file] => controllers\SiteController.php
+            [message] => Method actions has no parent to inherit from in app\controllers\SiteController.
+        )
+
+    [138] => Array
+        (
+            [line] => 22
+            [file] => controllers\SottocommessaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\SottocommessaController.
+        )
+
+    [139] => Array
+        (
+            [line] => 20
+            [file] => controllers\StackposttagsController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\StackposttagsController.
+        )
+
+    [140] => Array
+        (
+            [line] => 20
+            [file] => controllers\StatusController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\StatusController.
+        )
+
+    [141] => Array
+        (
+            [line] => 21
+            [file] => controllers\TestajController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\TestajController.
+        )
+
+    [142] => Array
+        (
+            [line] => 21
+            [file] => controllers\Teste2Controller.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\Teste2Controller.
+        )
+
+    [143] => Array
+        (
+            [line] => 54
+            [file] => controllers\TipoPresenzeController.php
+            [message] => Undefined parameter documented: $id in actionView().
+        )
+
+    [144] => Array
+        (
+            [line] => 86
+            [file] => controllers\TipoPresenzeController.php
+            [message] => Undefined parameter documented: $id in actionUpdate().
+        )
+
+    [145] => Array
+        (
+            [line] => 20
+            [file] => controllers\TipoPresenzeController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\TipoPresenzeController.
+        )
+
+    [146] => Array
+        (
+            [line] => 53
+            [file] => controllers\TipologiapresenzaController.php
+            [message] => Undefined parameter documented: $id in actionView().
+        )
+
+    [147] => Array
+        (
+            [line] => 85
+            [file] => controllers\TipologiapresenzaController.php
+            [message] => Undefined parameter documented: $id in actionUpdate().
+        )
+
+    [148] => Array
+        (
+            [line] => 105
+            [file] => controllers\TipologiapresenzaController.php
+            [message] => Undefined parameter documented: $id in actionDelete().
+        )
+
+    [149] => Array
+        (
+            [line] => 119
+            [file] => controllers\TipologiapresenzaController.php
+            [message] => Undefined parameter documented: $id in findModel().
+        )
+
+    [150] => Array
+        (
+            [line] => 20
+            [file] => controllers\TipologiapresenzaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\TipologiapresenzaController.
+        )
+
+    [151] => Array
+        (
+            [line] => 20
+            [file] => controllers\TodogruppiController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\TodogruppiController.
+        )
+
+    [152] => Array
+        (
+            [line] => 32
+            [file] => controllers\TodomainController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\TodomainController.
+        )
+
+    [153] => Array
+        (
+            [line] => 20
+            [file] => controllers\TodoprioritaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\TodoprioritaController.
+        )
+
+    [154] => Array
+        (
+            [line] => 20
+            [file] => controllers\TodorelgrpusrController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\TodorelgrpusrController.
+        )
+
+    [155] => Array
+        (
+            [line] => 20
+            [file] => controllers\TodostatoController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\TodostatoController.
+        )
+
+    [156] => Array
+        (
+            [line] => 20
+            [file] => controllers\UecanagraficaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\UecanagraficaController.
+        )
+
+    [157] => Array
+        (
+            [line] => 20
+            [file] => controllers\UecarticoliController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\UecarticoliController.
+        )
+
+    [158] => Array
+        (
+            [line] => 26
+            [file] => controllers\UectestaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\UectestaController.
+        )
+
+    [159] => Array
+        (
+            [line] => 29
+            [file] => controllers\UserController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\UserController.
+        )
+
+    [160] => Array
+        (
+            [line] => 20
+            [file] => controllers\UsrGrpController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\UsrgrpController.
+        )
+
+    [161] => Array
+        (
+            [line] => 20
+            [file] => controllers\VeicoliController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\VeicoliController.
+        )
+
+    [162] => Array
+        (
+            [line] => 21
+            [file] => controllers\XStrutturaController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XstrutturaController.
+        )
+
+    [163] => Array
+        (
+            [line] => 20
+            [file] => controllers\XVenueController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XvenueController.
+        )
+
+    [164] => Array
+        (
+            [line] => 20
+            [file] => controllers\XactionController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XactionController.
+        )
+
+    [165] => Array
+        (
+            [line] => 20
+            [file] => controllers\XaraltdescController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XaraltdescController.
+        )
+
+    [166] => Array
+        (
+            [line] => 20
+            [file] => controllers\XmenuController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XmenuController.
+        )
+
+    [167] => Array
+        (
+            [line] => 53
+            [file] => controllers\XpartyController.php
+            [message] => Undefined parameter documented: $id in actionView().
+        )
+
+    [168] => Array
+        (
+            [line] => 109
+            [file] => controllers\XpartyController.php
+            [message] => Undefined parameter documented: $id in actionUpdate().
+        )
+
+    [169] => Array
+        (
+            [line] => 135
+            [file] => controllers\XpartyController.php
+            [message] => Undefined parameter documented: $id in actionDelete().
+        )
+
+    [170] => Array
+        (
+            [line] => 149
+            [file] => controllers\XpartyController.php
+            [message] => Undefined parameter documented: $id in findModel().
+        )
+
+    [171] => Array
+        (
+            [line] => 20
+            [file] => controllers\XpartyController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XpartyController.
+        )
+
+    [172] => Array
+        (
+            [line] => 23
+            [file] => controllers\XroomlistController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XroomlistController.
+        )
+
+    [173] => Array
+        (
+            [line] => 53
+            [file] => controllers\XruoliController.php
+            [message] => Undefined parameter documented: $id in actionView().
+        )
+
+    [174] => Array
+        (
+            [line] => 112
+            [file] => controllers\XruoliController.php
+            [message] => Undefined parameter documented: $id in actionUpdate().
+        )
+
+    [175] => Array
+        (
+            [line] => 20
+            [file] => controllers\XruoliController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XruoliController.
+        )
+
+    [176] => Array
+        (
+            [line] => 20
+            [file] => controllers\XscadconscController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XscadconscController.
+        )
+
+    [177] => Array
+        (
+            [line] => 20
+            [file] => controllers\XsubmenuController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XsubmenuController.
+        )
+
+    [178] => Array
+        (
+            [line] => 22
+            [file] => controllers\XtappeController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XtappeController.
+        )
+
+    [179] => Array
+        (
+            [line] => 46
+            [file] => controllers\XtravelheadController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XtravelheadController.
+        )
+
+    [180] => Array
+        (
+            [line] => 22
+            [file] => controllers\XtravelrowController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\XtravelrowController.
+        )
+
+    [181] => Array
+        (
+            [line] => 194
+            [file] => models\AR.php
+            [message] => Method tableName has no parent to inherit from in app\models\AR.
+        )
+
+    [182] => Array
+        (
+            [line] => 212
+            [file] => models\AR.php
+            [message] => Method rules has no parent to inherit from in app\models\AR.
+        )
+
+    [183] => Array
+        (
+            [line] => 268
+            [file] => models\AR.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\AR.
+        )
+
+    [184] => Array
+        (
+            [line] => 20
+            [file] => models\Agenda.php
+            [message] => Method tableName has no parent to inherit from in app\models\Agenda.
+        )
+
+    [185] => Array
+        (
+            [line] => 28
+            [file] => models\Agenda.php
+            [message] => Method rules has no parent to inherit from in app\models\Agenda.
+        )
+
+    [186] => Array
+        (
+            [line] => 42
+            [file] => models\Agenda.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Agenda.
+        )
+
+    [187] => Array
+        (
+            [line] => 25
+            [file] => models\AgendaFiles.php
+            [message] => Method tableName has no parent to inherit from in app\models\AgendaFiles.
+        )
+
+    [188] => Array
+        (
+            [line] => 33
+            [file] => models\AgendaFiles.php
+            [message] => Method rules has no parent to inherit from in app\models\AgendaFiles.
+        )
+
+    [189] => Array
+        (
+            [line] => 48
+            [file] => models\AgendaFiles.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\AgendaFiles.
+        )
+
+    [190] => Array
+        (
+            [line] => 28
+            [file] => models\AgendaFilesSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\AgendafilesSearch.
+        )
+
+    [191] => Array
+        (
+            [line] => 28
+            [file] => models\AgendaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\AgendaSearch.
+        )
+
+    [192] => Array
+        (
+            [line] => 84
+            [file] => models\Agente.php
+            [message] => Method tableName has no parent to inherit from in app\models\Agente.
+        )
+
+    [193] => Array
+        (
+            [line] => 100
+            [file] => models\Agente.php
+            [message] => Method rules has no parent to inherit from in app\models\Agente.
+        )
+
+    [194] => Array
+        (
+            [line] => 123
+            [file] => models\Agente.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Agente.
+        )
+
+    [195] => Array
+        (
+            [line] => 30
+            [file] => models\Agentifiles.php
+            [message] => Property $uplfile has no parent to inherit from in app\models\Agentifiles.
+        )
+
+    [196] => Array
+        (
+            [line] => 40
+            [file] => models\Agentifiles.php
+            [message] => Method rules has no parent to inherit from in app\models\Agentifiles.
+        )
+
+    [197] => Array
+        (
+            [line] => 58
+            [file] => models\Agentifiles.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Agentifiles.
+        )
+
+    [198] => Array
+        (
+            [line] => 28
+            [file] => models\AgentifilesSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\AgentifilesSearch.
+        )
+
+    [199] => Array
+        (
+            [line] => 22
+            [file] => models\AiConversation.php
+            [message] => Method tableName has no parent to inherit from in app\models\AiConversation.
+        )
+
+    [200] => Array
+        (
+            [line] => 30
+            [file] => models\AiConversation.php
+            [message] => Method rules has no parent to inherit from in app\models\AiConversation.
+        )
+
+    [201] => Array
+        (
+            [line] => 41
+            [file] => models\AiConversation.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\AiConversation.
+        )
+
+    [202] => Array
+        (
+            [line] => 22
+            [file] => models\Aiknowledge.php
+            [message] => Method tableName has no parent to inherit from in app\models\Aiknowledge.
+        )
+
+    [203] => Array
+        (
+            [line] => 30
+            [file] => models\Aiknowledge.php
+            [message] => Method rules has no parent to inherit from in app\models\Aiknowledge.
+        )
+
+    [204] => Array
+        (
+            [line] => 43
+            [file] => models\Aiknowledge.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Aiknowledge.
+        )
+
+    [205] => Array
+        (
+            [line] => 23
+            [file] => models\Aimessage.php
+            [message] => Method tableName has no parent to inherit from in app\models\Aimessage.
+        )
+
+    [206] => Array
+        (
+            [line] => 31
+            [file] => models\Aimessage.php
+            [message] => Method rules has no parent to inherit from in app\models\Aimessage.
+        )
+
+    [207] => Array
+        (
+            [line] => 45
+            [file] => models\Aimessage.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Aimessage.
+        )
+
+    [208] => Array
+        (
+            [line] => 24
+            [file] => models\AllFiles.php
+            [message] => Method tableName has no parent to inherit from in app\models\AllFiles.
+        )
+
+    [209] => Array
+        (
+            [line] => 32
+            [file] => models\AllFiles.php
+            [message] => Method rules has no parent to inherit from in app\models\AllFiles.
+        )
+
+    [210] => Array
+        (
+            [line] => 52
+            [file] => models\AllFiles.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\AllFiles.
+        )
+
+    [211] => Array
+        (
+            [line] => 17
+            [file] => models\AllfilesSearch.php
+            [message] => Method rules has no parent to inherit from in app\models\AllfilesSearch.
+        )
+
+    [212] => Array
+        (
+            [line] => 28
+            [file] => models\AllfilesSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\AllfilesSearch.
+        )
+
+    [213] => Array
+        (
+            [line] => 24
+            [file] => models\AnaCli.php
+            [message] => Method tableName has no parent to inherit from in app\models\Anacli.
+        )
+
+    [214] => Array
+        (
+            [line] => 32
+            [file] => models\AnaCli.php
+            [message] => Method rules has no parent to inherit from in app\models\Anacli.
+        )
+
+    [215] => Array
+        (
+            [line] => 51
+            [file] => models\AnaCli.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Anacli.
+        )
+
+    [216] => Array
+        (
+            [line] => 27
+            [file] => models\AnacliSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\AnacliSearch.
+        )
+
+    [217] => Array
+        (
+            [line] => 118
+            [file] => models\Auxar.php
+            [message] => Method tableName has no parent to inherit from in app\models\Auxar.
+        )
+
+    [218] => Array
+        (
+            [line] => 134
+            [file] => models\Auxar.php
+            [message] => Method rules has no parent to inherit from in app\models\Auxar.
+        )
+
+    [219] => Array
+        (
+            [line] => 190
+            [file] => models\Auxar.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Auxar.
+        )
+
+    [220] => Array
+        (
+            [line] => 24
+            [file] => models\BlkIns.php
+            [message] => Method tableName has no parent to inherit from in app\models\BlkIns.
+        )
+
+    [221] => Array
+        (
+            [line] => 32
+            [file] => models\BlkIns.php
+            [message] => Method rules has no parent to inherit from in app\models\BlkIns.
+        )
+
+    [222] => Array
+        (
+            [line] => 45
+            [file] => models\BlkIns.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\BlkIns.
+        )
+
+    [223] => Array
+        (
+            [line] => 17
+            [file] => models\BlkinsSearch.php
+            [message] => Method rules has no parent to inherit from in app\models\BlkinsSearch.
+        )
+
+    [224] => Array
+        (
+            [line] => 28
+            [file] => models\BlkinsSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\BlkinsSearch.
+        )
+
+    [225] => Array
+        (
+            [line] => 20
+            [file] => models\Cal.php
+            [message] => Method tableName has no parent to inherit from in app\models\Cal.
+        )
+
+    [226] => Array
+        (
+            [line] => 28
+            [file] => models\Cal.php
+            [message] => Method rules has no parent to inherit from in app\models\Cal.
+        )
+
+    [227] => Array
+        (
+            [line] => 39
+            [file] => models\Cal.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Cal.
+        )
+
+    [228] => Array
+        (
+            [line] => 28
+            [file] => models\CalSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\CalSearch.
+        )
+
+    [229] => Array
+        (
+            [line] => 164
+            [file] => models\Cf.php
+            [message] => Method tableName has no parent to inherit from in app\models\Cf.
+        )
+
+    [230] => Array
+        (
+            [line] => 180
+            [file] => models\Cf.php
+            [message] => Method rules has no parent to inherit from in app\models\Cf.
+        )
+
+    [231] => Array
+        (
+            [line] => 266
+            [file] => models\Cf.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Cf.
+        )
+
+    [232] => Array
+        (
+            [line] => 42
+            [file] => models\Cgconto.php
+            [message] => Method tableName has no parent to inherit from in app\models\Cgconto.
+        )
+
+    [233] => Array
+        (
+            [line] => 58
+            [file] => models\Cgconto.php
+            [message] => Method rules has no parent to inherit from in app\models\Cgconto.
+        )
+
+    [234] => Array
+        (
+            [line] => 82
+            [file] => models\Cgconto.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Cgconto.
+        )
+
+    [235] => Array
+        (
+            [line] => 118
+            [file] => models\Cgmovr.php
+            [message] => Method tableName has no parent to inherit from in app\models\Cgmovr.
+        )
+
+    [236] => Array
+        (
+            [line] => 134
+            [file] => models\Cgmovr.php
+            [message] => Method rules has no parent to inherit from in app\models\Cgmovr.
+        )
+
+    [237] => Array
+        (
+            [line] => 185
+            [file] => models\Cgmovr.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Cgmovr.
+        )
+
+    [238] => Array
+        (
+            [line] => 125
+            [file] => models\Cgmovt.php
+            [message] => Method tableName has no parent to inherit from in app\models\Cgmovt.
+        )
+
+    [239] => Array
+        (
+            [line] => 141
+            [file] => models\Cgmovt.php
+            [message] => Method rules has no parent to inherit from in app\models\Cgmovt.
+        )
+
+    [240] => Array
+        (
+            [line] => 187
+            [file] => models\Cgmovt.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Cgmovt.
+        )
+
+    [241] => Array
+        (
+            [line] => 24
+            [file] => models\CliDest.php
+            [message] => Method tableName has no parent to inherit from in app\models\CliDest.
+        )
+
+    [242] => Array
+        (
+            [line] => 32
+            [file] => models\CliDest.php
+            [message] => Method rules has no parent to inherit from in app\models\CliDest.
+        )
+
+    [243] => Array
+        (
+            [line] => 46
+            [file] => models\CliDest.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\CliDest.
+        )
+
+    [244] => Array
+        (
+            [line] => 18
+            [file] => models\Colore.php
+            [message] => Method tableName has no parent to inherit from in app\models\Colore.
+        )
+
+    [245] => Array
+        (
+            [line] => 34
+            [file] => models\Colore.php
+            [message] => Method rules has no parent to inherit from in app\models\Colore.
+        )
+
+    [246] => Array
+        (
+            [line] => 47
+            [file] => models\Colore.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Colore.
+        )
+
+    [247] => Array
+        (
+            [line] => 35
+            [file] => models\DOCommessa.php
+            [message] => Method tableName has no parent to inherit from in app\models\Docommessa.
+        )
+
+    [248] => Array
+        (
+            [line] => 51
+            [file] => models\DOCommessa.php
+            [message] => Method rules has no parent to inherit from in app\models\Docommessa.
+        )
+
+    [249] => Array
+        (
+            [line] => 77
+            [file] => models\DOCommessa.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Docommessa.
+        )
+
+    [250] => Array
+        (
+            [line] => 28
+            [file] => models\DOCommessaStato.php
+            [message] => Method tableName has no parent to inherit from in app\models\DOCommessaStato.
+        )
+
+    [251] => Array
+        (
+            [line] => 44
+            [file] => models\DOCommessaStato.php
+            [message] => Method rules has no parent to inherit from in app\models\DOCommessaStato.
+        )
+
+    [252] => Array
+        (
+            [line] => 60
+            [file] => models\DOCommessaStato.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\DOCommessaStato.
+        )
+
+    [253] => Array
+        (
+            [line] => 135
+            [file] => models\DORig.php
+            [message] => Method tableName has no parent to inherit from in app\models\DORig.
+        )
+
+    [254] => Array
+        (
+            [line] => 151
+            [file] => models\DORig.php
+            [message] => Method rules has no parent to inherit from in app\models\DORig.
+        )
+
+    [255] => Array
+        (
+            [line] => 209
+            [file] => models\DORig.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\DORig.
+        )
+
+    [256] => Array
+        (
+            [line] => 20
+            [file] => models\DittaEsterna.php
+            [message] => Method tableName has no parent to inherit from in app\models\DittaEsterna.
+        )
+
+    [257] => Array
+        (
+            [line] => 28
+            [file] => models\DittaEsterna.php
+            [message] => Method rules has no parent to inherit from in app\models\DittaEsterna.
+        )
+
+    [258] => Array
+        (
+            [line] => 41
+            [file] => models\DittaEsterna.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\DittaEsterna.
+        )
+
+    [259] => Array
+        (
+            [line] => 70
+            [file] => models\DmsDocument.php
+            [message] => Method tableName has no parent to inherit from in app\models\Dmsdocument.
+        )
+
+    [260] => Array
+        (
+            [line] => 86
+            [file] => models\DmsDocument.php
+            [message] => Method rules has no parent to inherit from in app\models\Dmsdocument.
+        )
+
+    [261] => Array
+        (
+            [line] => 113
+            [file] => models\DmsDocument.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Dmsdocument.
+        )
+
+    [262] => Array
+        (
+            [line] => 31
+            [file] => models\DocHead.php
+            [message] => Method tableName has no parent to inherit from in app\models\DocHead.
+        )
+
+    [263] => Array
+        (
+            [line] => 39
+            [file] => models\DocHead.php
+            [message] => Method rules has no parent to inherit from in app\models\DocHead.
+        )
+
+    [264] => Array
+        (
+            [line] => 56
+            [file] => models\DocHead.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\DocHead.
+        )
+
+    [265] => Array
+        (
+            [line] => 18
+            [file] => models\DocType.php
+            [message] => Method tableName has no parent to inherit from in app\models\DocType.
+        )
+
+    [266] => Array
+        (
+            [line] => 26
+            [file] => models\DocType.php
+            [message] => Method rules has no parent to inherit from in app\models\DocType.
+        )
+
+    [267] => Array
+        (
+            [line] => 39
+            [file] => models\DocType.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\DocType.
+        )
+
+    [268] => Array
+        (
+            [line] => 28
+            [file] => models\Doc_head.php
+            [message] => Method tableName has no parent to inherit from in app\models\Doc_head.
+        )
+
+    [269] => Array
+        (
+            [line] => 36
+            [file] => models\Doc_head.php
+            [message] => Method rules has no parent to inherit from in app\models\Doc_head.
+        )
+
+    [270] => Array
+        (
+            [line] => 56
+            [file] => models\Doc_head.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Doc_head.
+        )
+
+    [271] => Array
+        (
+            [line] => 29
+            [file] => models\Doc_headSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\Doc_headSearch.
+        )
+
+    [272] => Array
+        (
+            [line] => 27
+            [file] => models\Doc_rows.php
+            [message] => Method tableName has no parent to inherit from in app\models\Doc_rows.
+        )
+
+    [273] => Array
+        (
+            [line] => 35
+            [file] => models\Doc_rows.php
+            [message] => Method rules has no parent to inherit from in app\models\Doc_rows.
+        )
+
+    [274] => Array
+        (
+            [line] => 58
+            [file] => models\Doc_rows.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Doc_rows.
+        )
+
+    [275] => Array
+        (
+            [line] => 29
+            [file] => models\Doc_rowsSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\Doc_rowsSearch.
+        )
+
+    [276] => Array
+        (
+            [line] => 28
+            [file] => models\DocommessaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\DocommessaSearch.
+        )
+
+    [277] => Array
+        (
+            [line] => 36
+            [file] => models\Dosottocommessa.php
+            [message] => Method tableName has no parent to inherit from in app\models\Dosottocommessa.
+        )
+
+    [278] => Array
+        (
+            [line] => 52
+            [file] => models\Dosottocommessa.php
+            [message] => Method rules has no parent to inherit from in app\models\Dosottocommessa.
+        )
+
+    [279] => Array
+        (
+            [line] => 85
+            [file] => models\Dosottocommessa.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Dosottocommessa.
+        )
+
+    [280] => Array
+        (
+            [line] => 28
+            [file] => models\DosottocommessaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\DosottocommessaSearch.
+        )
+
+    [281] => Array
+        (
+            [line] => 154
+            [file] => models\Dotes.php
+            [message] => Method tableName has no parent to inherit from in app\models\Dotes.
+        )
+
+    [282] => Array
+        (
+            [line] => 170
+            [file] => models\Dotes.php
+            [message] => Method rules has no parent to inherit from in app\models\Dotes.
+        )
+
+    [283] => Array
+        (
+            [line] => 234
+            [file] => models\Dotes.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Dotes.
+        )
+
+    [284] => Array
+        (
+            [line] => 27
+            [file] => models\Elemail.php
+            [message] => Method tableName has no parent to inherit from in app\models\Elemail.
+        )
+
+    [285] => Array
+        (
+            [line] => 35
+            [file] => models\Elemail.php
+            [message] => Method rules has no parent to inherit from in app\models\Elemail.
+        )
+
+    [286] => Array
+        (
+            [line] => 48
+            [file] => models\Elemail.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Elemail.
+        )
+
+    [287] => Array
+        (
+            [line] => 30
+            [file] => models\ElemailSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\ElemailSearch.
+        )
+
+    [288] => Array
+        (
+            [line] => 33
+            [file] => models\Export_jobs.php
+            [message] => Method tableName has no parent to inherit from in app\models\Export_jobs.
+        )
+
+    [289] => Array
+        (
+            [line] => 41
+            [file] => models\Export_jobs.php
+            [message] => Method rules has no parent to inherit from in app\models\Export_jobs.
+        )
+
+    [290] => Array
+        (
+            [line] => 60
+            [file] => models\Export_jobs.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Export_jobs.
+        )
+
+    [291] => Array
+        (
+            [line] => 19
+            [file] => models\Files.php
+            [message] => Method tableName has no parent to inherit from in app\models\Files.
+        )
+
+    [292] => Array
+        (
+            [line] => 27
+            [file] => models\Files.php
+            [message] => Method rules has no parent to inherit from in app\models\Files.
+        )
+
+    [293] => Array
+        (
+            [line] => 38
+            [file] => models\Files.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Files.
+        )
+
+    [294] => Array
+        (
+            [line] => 28
+            [file] => models\FilesSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\FilesSearch.
+        )
+
+    [295] => Array
+        (
+            [line] => 39
+            [file] => models\Folders.php
+            [message] => Method tableName has no parent to inherit from in app\models\Folders.
+        )
+
+    [296] => Array
+        (
+            [line] => 47
+            [file] => models\Folders.php
+            [message] => Method rules has no parent to inherit from in app\models\Folders.
+        )
+
+    [297] => Array
+        (
+            [line] => 64
+            [file] => models\Folders.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Folders.
+        )
+
+    [298] => Array
+        (
+            [line] => 28
+            [file] => models\FoldersSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\FoldersSearch.
+        )
+
+    [299] => Array
+        (
+            [line] => 18
+            [file] => models\GacRisorse.php
+            [message] => Method tableName has no parent to inherit from in app\models\GacRisorse.
+        )
+
+    [300] => Array
+        (
+            [line] => 26
+            [file] => models\GacRisorse.php
+            [message] => Method rules has no parent to inherit from in app\models\GacRisorse.
+        )
+
+    [301] => Array
+        (
+            [line] => 36
+            [file] => models\GacRisorse.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\GacRisorse.
+        )
+
+    [302] => Array
+        (
+            [line] => 33
+            [file] => models\GacSottoPrv.php
+            [message] => Method tableName has no parent to inherit from in app\models\GacSottoPrv.
+        )
+
+    [303] => Array
+        (
+            [line] => 41
+            [file] => models\GacSottoPrv.php
+            [message] => Method rules has no parent to inherit from in app\models\GacSottoPrv.
+        )
+
+    [304] => Array
+        (
+            [line] => 59
+            [file] => models\GacSottoPrv.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\GacSottoPrv.
+        )
+
+    [305] => Array
+        (
+            [line] => 17
+            [file] => models\GacSottoPrvSearch.php
+            [message] => Method rules has no parent to inherit from in app\models\GacsottoprvSearch.
+        )
+
+    [306] => Array
+        (
+            [line] => 29
+            [file] => models\GacSottoPrvSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\GacsottoprvSearch.
+        )
+
+    [307] => Array
+        (
+            [line] => 19
+            [file] => models\GacSottocommessa.php
+            [message] => Method tableName has no parent to inherit from in app\models\GacSottocommessa.
+        )
+
+    [308] => Array
+        (
+            [line] => 27
+            [file] => models\GacSottocommessa.php
+            [message] => Method rules has no parent to inherit from in app\models\GacSottocommessa.
+        )
+
+    [309] => Array
+        (
+            [line] => 39
+            [file] => models\GacSottocommessa.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\GacSottocommessa.
+        )
+
+    [310] => Array
+        (
+            [line] => 38
+            [file] => models\Gacattivita.php
+            [message] => Method tableName has no parent to inherit from in app\models\Gacattivita.
+        )
+
+    [311] => Array
+        (
+            [line] => 46
+            [file] => models\Gacattivita.php
+            [message] => Method rules has no parent to inherit from in app\models\Gacattivita.
+        )
+
+    [312] => Array
+        (
+            [line] => 64
+            [file] => models\Gacattivita.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Gacattivita.
+        )
+
+    [313] => Array
+        (
+            [line] => 29
+            [file] => models\GacattivitaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\GacattivitaSearch.
+        )
+
+    [314] => Array
+        (
+            [line] => 34
+            [file] => models\Gacmateriali.php
+            [message] => Method tableName has no parent to inherit from in app\models\Gacmateriali.
+        )
+
+    [315] => Array
+        (
+            [line] => 42
+            [file] => models\Gacmateriali.php
+            [message] => Method rules has no parent to inherit from in app\models\Gacmateriali.
+        )
+
+    [316] => Array
+        (
+            [line] => 59
+            [file] => models\Gacmateriali.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Gacmateriali.
+        )
+
+    [317] => Array
+        (
+            [line] => 29
+            [file] => models\GacmaterialiSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\GacmaterialiSearch.
+        )
+
+    [318] => Array
+        (
+            [line] => 18
+            [file] => models\Gacprv.php
+            [message] => Method tableName has no parent to inherit from in app\models\Gacprv.
+        )
+
+    [319] => Array
+        (
+            [line] => 26
+            [file] => models\Gacprv.php
+            [message] => Method rules has no parent to inherit from in app\models\Gacprv.
+        )
+
+    [320] => Array
+        (
+            [line] => 37
+            [file] => models\Gacprv.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Gacprv.
+        )
+
+    [321] => Array
+        (
+            [line] => 28
+            [file] => models\GacprvSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\GacprvSearch.
+        )
+
+    [322] => Array
+        (
+            [line] => 36
+            [file] => models\Gacspese.php
+            [message] => Method tableName has no parent to inherit from in app\models\Gacspese.
+        )
+
+    [323] => Array
+        (
+            [line] => 44
+            [file] => models\Gacspese.php
+            [message] => Method rules has no parent to inherit from in app\models\Gacspese.
+        )
+
+    [324] => Array
+        (
+            [line] => 61
+            [file] => models\Gacspese.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Gacspese.
+        )
+
+    [325] => Array
+        (
+            [line] => 29
+            [file] => models\GacspeseSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\GacspeseSearch.
+        )
+
+    [326] => Array
+        (
+            [line] => 17
+            [file] => models\Gactatt.php
+            [message] => Method tableName has no parent to inherit from in app\models\Gactatt.
+        )
+
+    [327] => Array
+        (
+            [line] => 25
+            [file] => models\Gactatt.php
+            [message] => Method rules has no parent to inherit from in app\models\Gactatt.
+        )
+
+    [328] => Array
+        (
+            [line] => 35
+            [file] => models\Gactatt.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Gactatt.
+        )
+
+    [329] => Array
+        (
+            [line] => 20
+            [file] => models\Items.php
+            [message] => Method tableName has no parent to inherit from in app\models\Items.
+        )
+
+    [330] => Array
+        (
+            [line] => 28
+            [file] => models\Items.php
+            [message] => Method rules has no parent to inherit from in app\models\Items.
+        )
+
+    [331] => Array
+        (
+            [line] => 40
+            [file] => models\Items.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Items.
+        )
+
+    [332] => Array
+        (
+            [line] => 28
+            [file] => models\ItemsSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\ItemsSearch.
+        )
+
+    [333] => Array
+        (
+            [line] => 48
+            [file] => models\Listini.php
+            [message] => Method tableName has no parent to inherit from in app\models\Listini.
+        )
+
+    [334] => Array
+        (
+            [line] => 64
+            [file] => models\Listini.php
+            [message] => Method rules has no parent to inherit from in app\models\Listini.
+        )
+
+    [335] => Array
+        (
+            [line] => 84
+            [file] => models\Listini.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Listini.
+        )
+
+    [336] => Array
+        (
+            [line] => 19
+            [file] => models\Locazioni.php
+            [message] => Method tableName has no parent to inherit from in app\models\Locazioni.
+        )
+
+    [337] => Array
+        (
+            [line] => 27
+            [file] => models\Locazioni.php
+            [message] => Method rules has no parent to inherit from in app\models\Locazioni.
+        )
+
+    [338] => Array
+        (
+            [line] => 40
+            [file] => models\Locazioni.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Locazioni.
+        )
+
+    [339] => Array
+        (
+            [line] => 27
+            [file] => models\LocazioniSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\LocazioniSearch.
+        )
+
+    [340] => Array
+        (
+            [line] => 22
+            [file] => models\Log.php
+            [message] => Method tableName has no parent to inherit from in app\models\Log.
+        )
+
+    [341] => Array
+        (
+            [line] => 30
+            [file] => models\Log.php
+            [message] => Method rules has no parent to inherit from in app\models\Log.
+        )
+
+    [342] => Array
+        (
+            [line] => 44
+            [file] => models\Log.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Log.
+        )
+
+    [343] => Array
+        (
+            [line] => 28
+            [file] => models\LogSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\LogSearch.
+        )
+
+    [344] => Array
+        (
+            [line] => 48
+            [file] => models\Ls.php
+            [message] => Method tableName has no parent to inherit from in app\models\Ls.
+        )
+
+    [345] => Array
+        (
+            [line] => 64
+            [file] => models\Ls.php
+            [message] => Method rules has no parent to inherit from in app\models\Ls.
+        )
+
+    [346] => Array
+        (
+            [line] => 84
+            [file] => models\Ls.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Ls.
+        )
+
+    [347] => Array
+        (
+            [line] => 25
+            [file] => models\Mail.php
+            [message] => Method tableName has no parent to inherit from in app\models\Mail.
+        )
+
+    [348] => Array
+        (
+            [line] => 33
+            [file] => models\Mail.php
+            [message] => Method rules has no parent to inherit from in app\models\Mail.
+        )
+
+    [349] => Array
+        (
+            [line] => 46
+            [file] => models\Mail.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Mail.
+        )
+
+    [350] => Array
+        (
+            [line] => 18
+            [file] => models\Mansioni.php
+            [message] => Method tableName has no parent to inherit from in app\models\Mansioni.
+        )
+
+    [351] => Array
+        (
+            [line] => 26
+            [file] => models\Mansioni.php
+            [message] => Method rules has no parent to inherit from in app\models\Mansioni.
+        )
+
+    [352] => Array
+        (
+            [line] => 39
+            [file] => models\Mansioni.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Mansioni.
+        )
+
+    [353] => Array
+        (
+            [line] => 27
+            [file] => models\MansioniSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\MansioniSearch.
+        )
+
+    [354] => Array
+        (
+            [line] => 18
+            [file] => models\Operatori.php
+            [message] => Method tableName has no parent to inherit from in app\models\Operatori.
+        )
+
+    [355] => Array
+        (
+            [line] => 26
+            [file] => models\Operatori.php
+            [message] => Method rules has no parent to inherit from in app\models\Operatori.
+        )
+
+    [356] => Array
+        (
+            [line] => 37
+            [file] => models\Operatori.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Operatori.
+        )
+
+    [357] => Array
+        (
+            [line] => 18
+            [file] => models\PasswordResetRequestForm.php
+            [message] => Method rules has no parent to inherit from in app\models\PasswordResetRequestForm.
+        )
+
+    [358] => Array
+        (
+            [line] => 30
+            [file] => models\Payments.php
+            [message] => Method tableName has no parent to inherit from in app\models\Payments.
+        )
+
+    [359] => Array
+        (
+            [line] => 38
+            [file] => models\Payments.php
+            [message] => Method rules has no parent to inherit from in app\models\Payments.
+        )
+
+    [360] => Array
+        (
+            [line] => 55
+            [file] => models\Payments.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Payments.
+        )
+
+    [361] => Array
+        (
+            [line] => 29
+            [file] => models\PaymentsSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\PaymentsSearch.
+        )
+
+    [362] => Array
+        (
+            [line] => 39
+            [file] => models\Personale.php
+            [message] => Method tableName has no parent to inherit from in app\models\Personale.
+        )
+
+    [363] => Array
+        (
+            [line] => 48
+            [file] => models\Personale.php
+            [message] => Method rules has no parent to inherit from in app\models\Personale.
+        )
+
+    [364] => Array
+        (
+            [line] => 71
+            [file] => models\Personale.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Personale.
+        )
+
+    [365] => Array
+        (
+            [line] => 35
+            [file] => models\Pg.php
+            [message] => Method tableName has no parent to inherit from in app\models\Pg.
+        )
+
+    [366] => Array
+        (
+            [line] => 51
+            [file] => models\Pg.php
+            [message] => Method rules has no parent to inherit from in app\models\Pg.
+        )
+
+    [367] => Array
+        (
+            [line] => 72
+            [file] => models\Pg.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Pg.
+        )
+
+    [368] => Array
+        (
+            [line] => 31
+            [file] => models\Planning.php
+            [message] => Property $personale_ids has no parent to inherit from in app\models\Planning.
+        )
+
+    [369] => Array
+        (
+            [line] => 44
+            [file] => models\Planning.php
+            [message] => Method rules has no parent to inherit from in app\models\Planning.
+        )
+
+    [370] => Array
+        (
+            [line] => 68
+            [file] => models\Planning.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Planning.
+        )
+
+    [371] => Array
+        (
+            [line] => 20
+            [file] => models\Plist.php
+            [message] => Method tableName has no parent to inherit from in app\models\Plist.
+        )
+
+    [372] => Array
+        (
+            [line] => 28
+            [file] => models\Plist.php
+            [message] => Method rules has no parent to inherit from in app\models\Plist.
+        )
+
+    [373] => Array
+        (
+            [line] => 42
+            [file] => models\Plist.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Plist.
+        )
+
+    [374] => Array
+        (
+            [line] => 28
+            [file] => models\PlistSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\PlistSearch.
+        )
+
+    [375] => Array
+        (
+            [line] => 27
+            [file] => models\Presenze.php
+            [message] => Method tableName has no parent to inherit from in app\models\Presenze.
+        )
+
+    [376] => Array
+        (
+            [line] => 35
+            [file] => models\Presenze.php
+            [message] => Method rules has no parent to inherit from in app\models\Presenze.
+        )
+
+    [377] => Array
+        (
+            [line] => 52
+            [file] => models\Presenze.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Presenze.
+        )
+
+    [378] => Array
+        (
+            [line] => 28
+            [file] => models\Rapportini.php
+            [message] => Method tableName has no parent to inherit from in app\models\Rapportini.
+        )
+
+    [379] => Array
+        (
+            [line] => 36
+            [file] => models\Rapportini.php
+            [message] => Method rules has no parent to inherit from in app\models\Rapportini.
+        )
+
+    [380] => Array
+        (
+            [line] => 55
+            [file] => models\Rapportini.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Rapportini.
+        )
+
+    [381] => Array
+        (
+            [line] => 30
+            [file] => models\RapportiniSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\RapportiniSearch.
+        )
+
+    [382] => Array
+        (
+            [line] => 19
+            [file] => models\Relcli.php
+            [message] => Method tableName has no parent to inherit from in app\models\Relcli.
+        )
+
+    [383] => Array
+        (
+            [line] => 27
+            [file] => models\Relcli.php
+            [message] => Method rules has no parent to inherit from in app\models\Relcli.
+        )
+
+    [384] => Array
+        (
+            [line] => 38
+            [file] => models\Relcli.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Relcli.
+        )
+
+    [385] => Array
+        (
+            [line] => 28
+            [file] => models\RelcliSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\RelcliSearch.
+        )
+
+    [386] => Array
+        (
+            [line] => 23
+            [file] => models\Relusrformaction.php
+            [message] => Method tableName has no parent to inherit from in app\models\Relusrformaction.
+        )
+
+    [387] => Array
+        (
+            [line] => 31
+            [file] => models\Relusrformaction.php
+            [message] => Method rules has no parent to inherit from in app\models\Relusrformaction.
+        )
+
+    [388] => Array
+        (
+            [line] => 43
+            [file] => models\Relusrformaction.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Relusrformaction.
+        )
+
+    [389] => Array
+        (
+            [line] => 29
+            [file] => models\RelusrformactionSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\RelusrformactionSearch.
+        )
+
+    [390] => Array
+        (
+            [line] => 26
+            [file] => models\RepPublicazioni.php
+            [message] => Method tableName has no parent to inherit from in app\models\RepPublicazioni.
+        )
+
+    [391] => Array
+        (
+            [line] => 34
+            [file] => models\RepPublicazioni.php
+            [message] => Method rules has no parent to inherit from in app\models\RepPublicazioni.
+        )
+
+    [392] => Array
+        (
+            [line] => 50
+            [file] => models\RepPublicazioni.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\RepPublicazioni.
+        )
+
+    [393] => Array
+        (
+            [line] => 31
+            [file] => models\Rep_publicazioni.php
+            [message] => Method tableName has no parent to inherit from in app\models\Rep_publicazioni.
+        )
+
+    [394] => Array
+        (
+            [line] => 39
+            [file] => models\Rep_publicazioni.php
+            [message] => Method rules has no parent to inherit from in app\models\Rep_publicazioni.
+        )
+
+    [395] => Array
+        (
+            [line] => 58
+            [file] => models\Rep_publicazioni.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Rep_publicazioni.
+        )
+
+    [396] => Array
+        (
+            [line] => 30
+            [file] => models\Rep_publicazioniSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\Rep_publicazioniSearch.
+        )
+
+    [397] => Array
+        (
+            [line] => 18
+            [file] => models\Reparti.php
+            [message] => Method tableName has no parent to inherit from in app\models\Reparti.
+        )
+
+    [398] => Array
+        (
+            [line] => 26
+            [file] => models\Reparti.php
+            [message] => Method rules has no parent to inherit from in app\models\Reparti.
+        )
+
+    [399] => Array
+        (
+            [line] => 39
+            [file] => models\Reparti.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Reparti.
+        )
+
+    [400] => Array
+        (
+            [line] => 27
+            [file] => models\RepartiSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\RepartiSearch.
+        )
+
+    [401] => Array
+        (
+            [line] => 58
+            [file] => models\ResetPasswordForm.php
+            [message] => Method rules has no parent to inherit from in app\models\ResetPasswordForm.
+        )
+
+    [402] => Array
+        (
+            [line] => 18
+            [file] => models\Ruoli.php
+            [message] => Method tableName has no parent to inherit from in app\models\Ruoli.
+        )
+
+    [403] => Array
+        (
+            [line] => 26
+            [file] => models\Ruoli.php
+            [message] => Method rules has no parent to inherit from in app\models\Ruoli.
+        )
+
+    [404] => Array
+        (
+            [line] => 39
+            [file] => models\Ruoli.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Ruoli.
+        )
+
+    [405] => Array
+        (
+            [line] => 101
+            [file] => models\SC.php
+            [message] => Method tableName has no parent to inherit from in app\models\Sc.
+        )
+
+    [406] => Array
+        (
+            [line] => 117
+            [file] => models\SC.php
+            [message] => Method rules has no parent to inherit from in app\models\Sc.
+        )
+
+    [407] => Array
+        (
+            [line] => 145
+            [file] => models\SC.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Sc.
+        )
+
+    [408] => Array
+        (
+            [line] => 29
+            [file] => models\ScSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\ScSearch.
+        )
+
+    [409] => Array
+        (
+            [line] => 32
+            [file] => models\Scdistinta.php
+            [message] => Method tableName has no parent to inherit from in app\models\Scdistinta.
+        )
+
+    [410] => Array
+        (
+            [line] => 48
+            [file] => models\Scdistinta.php
+            [message] => Method rules has no parent to inherit from in app\models\Scdistinta.
+        )
+
+    [411] => Array
+        (
+            [line] => 69
+            [file] => models\Scdistinta.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Scdistinta.
+        )
+
+    [412] => Array
+        (
+            [line] => 23
+            [file] => models\SignupForm.php
+            [message] => Method rules has no parent to inherit from in app\models\SignupForm.
+        )
+
+    [413] => Array
+        (
+            [line] => 25
+            [file] => models\Sl.php
+            [message] => Method tableName has no parent to inherit from in app\models\Sl.
+        )
+
+    [414] => Array
+        (
+            [line] => 41
+            [file] => models\Sl.php
+            [message] => Method rules has no parent to inherit from in app\models\Sl.
+        )
+
+    [415] => Array
+        (
+            [line] => 57
+            [file] => models\Sl.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Sl.
+        )
+
+    [416] => Array
+        (
+            [line] => 36
+            [file] => models\Sottocommessa.php
+            [message] => Method tableName has no parent to inherit from in app\models\Sottocommessa.
+        )
+
+    [417] => Array
+        (
+            [line] => 52
+            [file] => models\Sottocommessa.php
+            [message] => Method rules has no parent to inherit from in app\models\Sottocommessa.
+        )
+
+    [418] => Array
+        (
+            [line] => 28
+            [file] => models\SottocommessaSearch_1.php
+            [message] => Method scenarios has no parent to inherit from in app\models\SottocommessaSearch.
+        )
+
+    [419] => Array
+        (
+            [line] => 19
+            [file] => models\StackPostTags.php
+            [message] => Method tableName has no parent to inherit from in app\models\Stackposttags.
+        )
+
+    [420] => Array
+        (
+            [line] => 27
+            [file] => models\StackPostTags.php
+            [message] => Method rules has no parent to inherit from in app\models\Stackposttags.
+        )
+
+    [421] => Array
+        (
+            [line] => 37
+            [file] => models\StackPostTags.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Stackposttags.
+        )
+
+    [422] => Array
+        (
+            [line] => 28
+            [file] => models\StackposttagsSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\StackposttagsSearch.
+        )
+
+    [423] => Array
+        (
+            [line] => 19
+            [file] => models\Status.php
+            [message] => Method tableName has no parent to inherit from in app\models\Status.
+        )
+
+    [424] => Array
+        (
+            [line] => 27
+            [file] => models\Status.php
+            [message] => Method rules has no parent to inherit from in app\models\Status.
+        )
+
+    [425] => Array
+        (
+            [line] => 38
+            [file] => models\Status.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Status.
+        )
+
+    [426] => Array
+        (
+            [line] => 28
+            [file] => models\StatusSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\StatusSearch.
+        )
+
+    [427] => Array
+        (
+            [line] => 18
+            [file] => models\SubEntitaLookup.php
+            [message] => Method tableName has no parent to inherit from in app\models\SubEntitaLookup.
+        )
+
+    [428] => Array
+        (
+            [line] => 26
+            [file] => models\SubEntitaLookup.php
+            [message] => Method rules has no parent to inherit from in app\models\SubEntitaLookup.
+        )
+
+    [429] => Array
+        (
+            [line] => 18
+            [file] => models\Taglia.php
+            [message] => Method tableName has no parent to inherit from in app\models\Taglia.
+        )
+
+    [430] => Array
+        (
+            [line] => 34
+            [file] => models\Taglia.php
+            [message] => Method rules has no parent to inherit from in app\models\Taglia.
+        )
+
+    [431] => Array
+        (
+            [line] => 47
+            [file] => models\Taglia.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Taglia.
+        )
+
+    [432] => Array
+        (
+            [line] => 18
+            [file] => models\Tessuto.php
+            [message] => Method tableName has no parent to inherit from in app\models\Tessuto.
+        )
+
+    [433] => Array
+        (
+            [line] => 34
+            [file] => models\Tessuto.php
+            [message] => Method rules has no parent to inherit from in app\models\Tessuto.
+        )
+
+    [434] => Array
+        (
+            [line] => 47
+            [file] => models\Tessuto.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Tessuto.
+        )
+
+    [435] => Array
+        (
+            [line] => 19
+            [file] => models\Testaj.php
+            [message] => Method tableName has no parent to inherit from in app\models\Testaj.
+        )
+
+    [436] => Array
+        (
+            [line] => 27
+            [file] => models\Testaj.php
+            [message] => Method rules has no parent to inherit from in app\models\Testaj.
+        )
+
+    [437] => Array
+        (
+            [line] => 39
+            [file] => models\Testaj.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Testaj.
+        )
+
+    [438] => Array
+        (
+            [line] => 28
+            [file] => models\TestajSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\TestajSearch.
+        )
+
+    [439] => Array
+        (
+            [line] => 28
+            [file] => models\Teste2Search.php
+            [message] => Method scenarios has no parent to inherit from in app\models\Teste2Search.
+        )
+
+    [440] => Array
+        (
+            [line] => 19
+            [file] => models\Teste2_1.php
+            [message] => Method tableName has no parent to inherit from in app\models\Teste2.
+        )
+
+    [441] => Array
+        (
+            [line] => 27
+            [file] => models\Teste2_1.php
+            [message] => Method rules has no parent to inherit from in app\models\Teste2.
+        )
+
+    [442] => Array
+        (
+            [line] => 37
+            [file] => models\Teste2_1.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Teste2.
+        )
+
+    [443] => Array
+        (
+            [line] => 18
+            [file] => models\TipoPresenze.php
+            [message] => Method tableName has no parent to inherit from in app\models\TipoPresenze.
+        )
+
+    [444] => Array
+        (
+            [line] => 26
+            [file] => models\TipoPresenze.php
+            [message] => Method rules has no parent to inherit from in app\models\TipoPresenze.
+        )
+
+    [445] => Array
+        (
+            [line] => 39
+            [file] => models\TipoPresenze.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\TipoPresenze.
+        )
+
+    [446] => Array
+        (
+            [line] => 18
+            [file] => models\Tipologiapresenza.php
+            [message] => Method tableName has no parent to inherit from in app\models\Tipologiapresenza.
+        )
+
+    [447] => Array
+        (
+            [line] => 26
+            [file] => models\Tipologiapresenza.php
+            [message] => Method rules has no parent to inherit from in app\models\Tipologiapresenza.
+        )
+
+    [448] => Array
+        (
+            [line] => 39
+            [file] => models\Tipologiapresenza.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Tipologiapresenza.
+        )
+
+    [449] => Array
+        (
+            [line] => 27
+            [file] => models\TipologiapresenzaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\TipologiapresenzaSearch.
+        )
+
+    [450] => Array
+        (
+            [line] => 21
+            [file] => models\Todocommenti.php
+            [message] => Method tableName has no parent to inherit from in app\models\Todocommenti.
+        )
+
+    [451] => Array
+        (
+            [line] => 29
+            [file] => models\Todocommenti.php
+            [message] => Method rules has no parent to inherit from in app\models\Todocommenti.
+        )
+
+    [452] => Array
+        (
+            [line] => 43
+            [file] => models\Todocommenti.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Todocommenti.
+        )
+
+    [453] => Array
+        (
+            [line] => 18
+            [file] => models\Todogruppi.php
+            [message] => Method tableName has no parent to inherit from in app\models\Todogruppi.
+        )
+
+    [454] => Array
+        (
+            [line] => 26
+            [file] => models\Todogruppi.php
+            [message] => Method rules has no parent to inherit from in app\models\Todogruppi.
+        )
+
+    [455] => Array
+        (
+            [line] => 36
+            [file] => models\Todogruppi.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Todogruppi.
+        )
+
+    [456] => Array
+        (
+            [line] => 28
+            [file] => models\TodogruppiSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\TodogruppiSearch.
+        )
+
+    [457] => Array
+        (
+            [line] => 30
+            [file] => models\Todomain.php
+            [message] => Method tableName has no parent to inherit from in app\models\Todomain.
+        )
+
+    [458] => Array
+        (
+            [line] => 38
+            [file] => models\Todomain.php
+            [message] => Method rules has no parent to inherit from in app\models\Todomain.
+        )
+
+    [459] => Array
+        (
+            [line] => 58
+            [file] => models\Todomain.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Todomain.
+        )
+
+    [460] => Array
+        (
+            [line] => 27
+            [file] => models\TodomainSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\TodomainSearch.
+        )
+
+    [461] => Array
+        (
+            [line] => 18
+            [file] => models\Todopriorita.php
+            [message] => Method tableName has no parent to inherit from in app\models\Todopriorita.
+        )
+
+    [462] => Array
+        (
+            [line] => 26
+            [file] => models\Todopriorita.php
+            [message] => Method rules has no parent to inherit from in app\models\Todopriorita.
+        )
+
+    [463] => Array
+        (
+            [line] => 36
+            [file] => models\Todopriorita.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Todopriorita.
+        )
+
+    [464] => Array
+        (
+            [line] => 28
+            [file] => models\TodoprioritaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\TodoprioritaSearch.
+        )
+
+    [465] => Array
+        (
+            [line] => 19
+            [file] => models\Todorelgrpusr.php
+            [message] => Method tableName has no parent to inherit from in app\models\Todorelgrpusr.
+        )
+
+    [466] => Array
+        (
+            [line] => 27
+            [file] => models\Todorelgrpusr.php
+            [message] => Method rules has no parent to inherit from in app\models\Todorelgrpusr.
+        )
+
+    [467] => Array
+        (
+            [line] => 38
+            [file] => models\Todorelgrpusr.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Todorelgrpusr.
+        )
+
+    [468] => Array
+        (
+            [line] => 27
+            [file] => models\TodorelgrpusrSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\TodorelgrpusrSearch.
+        )
+
+    [469] => Array
+        (
+            [line] => 19
+            [file] => models\Todoreltags.php
+            [message] => Method tableName has no parent to inherit from in app\models\Todoreltags.
+        )
+
+    [470] => Array
+        (
+            [line] => 27
+            [file] => models\Todoreltags.php
+            [message] => Method rules has no parent to inherit from in app\models\Todoreltags.
+        )
+
+    [471] => Array
+        (
+            [line] => 40
+            [file] => models\Todoreltags.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Todoreltags.
+        )
+
+    [472] => Array
+        (
+            [line] => 18
+            [file] => models\Todostato.php
+            [message] => Method tableName has no parent to inherit from in app\models\Todostato.
+        )
+
+    [473] => Array
+        (
+            [line] => 26
+            [file] => models\Todostato.php
+            [message] => Method rules has no parent to inherit from in app\models\Todostato.
+        )
+
+    [474] => Array
+        (
+            [line] => 36
+            [file] => models\Todostato.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Todostato.
+        )
+
+    [475] => Array
+        (
+            [line] => 28
+            [file] => models\TodostatoSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\TodostatoSearch.
+        )
+
+    [476] => Array
+        (
+            [line] => 18
+            [file] => models\Todotag.php
+            [message] => Method tableName has no parent to inherit from in app\models\Todotag.
+        )
+
+    [477] => Array
+        (
+            [line] => 26
+            [file] => models\Todotag.php
+            [message] => Method rules has no parent to inherit from in app\models\Todotag.
+        )
+
+    [478] => Array
+        (
+            [line] => 38
+            [file] => models\Todotag.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Todotag.
+        )
+
+    [479] => Array
+        (
+            [line] => 18
+            [file] => models\UecProvincia.php
+            [message] => Method tableName has no parent to inherit from in app\models\UecProvincia.
+        )
+
+    [480] => Array
+        (
+            [line] => 26
+            [file] => models\UecProvincia.php
+            [message] => Method rules has no parent to inherit from in app\models\UecProvincia.
+        )
+
+    [481] => Array
+        (
+            [line] => 38
+            [file] => models\UecProvincia.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\UecProvincia.
+        )
+
+    [482] => Array
+        (
+            [line] => 24
+            [file] => models\Uecanagrafica.php
+            [message] => Method tableName has no parent to inherit from in app\models\Uecanagrafica.
+        )
+
+    [483] => Array
+        (
+            [line] => 32
+            [file] => models\Uecanagrafica.php
+            [message] => Method rules has no parent to inherit from in app\models\Uecanagrafica.
+        )
+
+    [484] => Array
+        (
+            [line] => 45
+            [file] => models\Uecanagrafica.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Uecanagrafica.
+        )
+
+    [485] => Array
+        (
+            [line] => 28
+            [file] => models\UecanagraficaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\UecanagraficaSearch.
+        )
+
+    [486] => Array
+        (
+            [line] => 19
+            [file] => models\Uecarticoli.php
+            [message] => Method tableName has no parent to inherit from in app\models\Uecarticoli.
+        )
+
+    [487] => Array
+        (
+            [line] => 27
+            [file] => models\Uecarticoli.php
+            [message] => Method rules has no parent to inherit from in app\models\Uecarticoli.
+        )
+
+    [488] => Array
+        (
+            [line] => 39
+            [file] => models\Uecarticoli.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Uecarticoli.
+        )
+
+    [489] => Array
+        (
+            [line] => 28
+            [file] => models\UecarticoliSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\UecarticoliSearch.
+        )
+
+    [490] => Array
+        (
+            [line] => 22
+            [file] => models\Uecrighe.php
+            [message] => Method tableName has no parent to inherit from in app\models\Uecrighe.
+        )
+
+    [491] => Array
+        (
+            [line] => 30
+            [file] => models\Uecrighe.php
+            [message] => Method rules has no parent to inherit from in app\models\Uecrighe.
+        )
+
+    [492] => Array
+        (
+            [line] => 46
+            [file] => models\Uecrighe.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Uecrighe.
+        )
+
+    [493] => Array
+        (
+            [line] => 22
+            [file] => models\Uectesta.php
+            [message] => Method tableName has no parent to inherit from in app\models\Uectesta.
+        )
+
+    [494] => Array
+        (
+            [line] => 30
+            [file] => models\Uectesta.php
+            [message] => Method rules has no parent to inherit from in app\models\Uectesta.
+        )
+
+    [495] => Array
+        (
+            [line] => 46
+            [file] => models\Uectesta.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Uectesta.
+        )
+
+    [496] => Array
+        (
+            [line] => 30
+            [file] => models\UectestaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\UectestaSearch.
+        )
+
+    [497] => Array
+        (
+            [line] => 34
+            [file] => models\User.php
+            [message] => Method tableName has no parent to inherit from in app\models\User.
+        )
+
+    [498] => Array
+        (
+            [line] => 42
+            [file] => models\User.php
+            [message] => Method behaviors has no parent to inherit from in app\models\User.
+        )
+
+    [499] => Array
+        (
+            [line] => 52
+            [file] => models\User.php
+            [message] => Method rules has no parent to inherit from in app\models\User.
+        )
+
+    [500] => Array
+        (
+            [line] => 79
+            [file] => models\User.php
+            [message] => Method findIdentity has no parent to inherit from in app\models\User.
+        )
+
+    [501] => Array
+        (
+            [line] => 87
+            [file] => models\User.php
+            [message] => Method findIdentityByAccessToken has no parent to inherit from in app\models\User.
+        )
+
+    [502] => Array
+        (
+            [line] => 152
+            [file] => models\User.php
+            [message] => Method getId has no parent to inherit from in app\models\User.
+        )
+
+    [503] => Array
+        (
+            [line] => 163
+            [file] => models\User.php
+            [message] => Method getAuthKey has no parent to inherit from in app\models\User.
+        )
+
+    [504] => Array
+        (
+            [line] => 175
+            [file] => models\User.php
+            [message] => Method validateAuthKey has no parent to inherit from in app\models\User.
+        )
+
+    [505] => Array
+        (
+            [line] => 30
+            [file] => models\UserSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\UserSearch.
+        )
+
+    [506] => Array
+        (
+            [line] => 18
+            [file] => models\UsrGrp.php
+            [message] => Method tableName has no parent to inherit from in app\models\Usrgrp.
+        )
+
+    [507] => Array
+        (
+            [line] => 26
+            [file] => models\UsrGrp.php
+            [message] => Method rules has no parent to inherit from in app\models\Usrgrp.
+        )
+
+    [508] => Array
+        (
+            [line] => 40
+            [file] => models\UsrGrp.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Usrgrp.
+        )
+
+    [509] => Array
+        (
+            [line] => 27
+            [file] => models\UsrGrpSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\UsrgrpSearch.
+        )
+
+    [510] => Array
+        (
+            [line] => 34
+            [file] => models\VL.php
+            [message] => Method tableName has no parent to inherit from in app\models\Vl.
+        )
+
+    [511] => Array
+        (
+            [line] => 50
+            [file] => models\VL.php
+            [message] => Method rules has no parent to inherit from in app\models\Vl.
+        )
+
+    [512] => Array
+        (
+            [line] => 69
+            [file] => models\VL.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Vl.
+        )
+
+    [513] => Array
+        (
+            [line] => 27
+            [file] => models\Veicoli.php
+            [message] => Method tableName has no parent to inherit from in app\models\Veicoli.
+        )
+
+    [514] => Array
+        (
+            [line] => 35
+            [file] => models\Veicoli.php
+            [message] => Method rules has no parent to inherit from in app\models\Veicoli.
+        )
+
+    [515] => Array
+        (
+            [line] => 56
+            [file] => models\Veicoli.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Veicoli.
+        )
+
+    [516] => Array
+        (
+            [line] => 27
+            [file] => models\XRuoliSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XRuoliSearch.
+        )
+
+    [517] => Array
+        (
+            [line] => 21
+            [file] => models\XTappe.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xtappe.
+        )
+
+    [518] => Array
+        (
+            [line] => 37
+            [file] => models\XTappe.php
+            [message] => Method rules has no parent to inherit from in app\models\Xtappe.
+        )
+
+    [519] => Array
+        (
+            [line] => 53
+            [file] => models\XTappe.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xtappe.
+        )
+
+    [520] => Array
+        (
+            [line] => 18
+            [file] => models\Xaction.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xaction.
+        )
+
+    [521] => Array
+        (
+            [line] => 26
+            [file] => models\Xaction.php
+            [message] => Method rules has no parent to inherit from in app\models\Xaction.
+        )
+
+    [522] => Array
+        (
+            [line] => 36
+            [file] => models\Xaction.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xaction.
+        )
+
+    [523] => Array
+        (
+            [line] => 28
+            [file] => models\XactionSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XactionSearch.
+        )
+
+    [524] => Array
+        (
+            [line] => 19
+            [file] => models\Xaraltdesc.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xaraltdesc.
+        )
+
+    [525] => Array
+        (
+            [line] => 35
+            [file] => models\Xaraltdesc.php
+            [message] => Method rules has no parent to inherit from in app\models\Xaraltdesc.
+        )
+
+    [526] => Array
+        (
+            [line] => 49
+            [file] => models\Xaraltdesc.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xaraltdesc.
+        )
+
+    [527] => Array
+        (
+            [line] => 27
+            [file] => models\XaraltdescSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XaraltdescSearch.
+        )
+
+    [528] => Array
+        (
+            [line] => 21
+            [file] => models\Xmenu.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xmenu.
+        )
+
+    [529] => Array
+        (
+            [line] => 29
+            [file] => models\Xmenu.php
+            [message] => Method rules has no parent to inherit from in app\models\Xmenu.
+        )
+
+    [530] => Array
+        (
+            [line] => 43
+            [file] => models\Xmenu.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xmenu.
+        )
+
+    [531] => Array
+        (
+            [line] => 28
+            [file] => models\XmenuSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XmenuSearch.
+        )
+
+    [532] => Array
+        (
+            [line] => 18
+            [file] => models\Xparty.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xparty.
+        )
+
+    [533] => Array
+        (
+            [line] => 34
+            [file] => models\Xparty.php
+            [message] => Method rules has no parent to inherit from in app\models\Xparty.
+        )
+
+    [534] => Array
+        (
+            [line] => 47
+            [file] => models\Xparty.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xparty.
+        )
+
+    [535] => Array
+        (
+            [line] => 27
+            [file] => models\XpartySearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XpartySearch.
+        )
+
+    [536] => Array
+        (
+            [line] => 25
+            [file] => models\Xroomlist.php
+            [message] => Method tableName has no parent to inherit from in app\models\XRoomlist.
+        )
+
+    [537] => Array
+        (
+            [line] => 41
+            [file] => models\Xroomlist.php
+            [message] => Method rules has no parent to inherit from in app\models\XRoomlist.
+        )
+
+    [538] => Array
+        (
+            [line] => 59
+            [file] => models\Xroomlist.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\XRoomlist.
+        )
+
+    [539] => Array
+        (
+            [line] => 17
+            [file] => models\XroomlistSearch.php
+            [message] => Method rules has no parent to inherit from in app\models\XroomlistSearch.
+        )
+
+    [540] => Array
+        (
+            [line] => 29
+            [file] => models\XroomlistSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XroomlistSearch.
+        )
+
+    [541] => Array
+        (
+            [line] => 18
+            [file] => models\Xruoli.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xruoli.
+        )
+
+    [542] => Array
+        (
+            [line] => 34
+            [file] => models\Xruoli.php
+            [message] => Method rules has no parent to inherit from in app\models\Xruoli.
+        )
+
+    [543] => Array
+        (
+            [line] => 47
+            [file] => models\Xruoli.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xruoli.
+        )
+
+    [544] => Array
+        (
+            [line] => 40
+            [file] => models\Xscadconsc.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xscadconsc.
+        )
+
+    [545] => Array
+        (
+            [line] => 48
+            [file] => models\Xscadconsc.php
+            [message] => Method rules has no parent to inherit from in app\models\Xscadconsc.
+        )
+
+    [546] => Array
+        (
+            [line] => 68
+            [file] => models\Xscadconsc.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xscadconsc.
+        )
+
+    [547] => Array
+        (
+            [line] => 29
+            [file] => models\XscadconscSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XscadconscSearch.
+        )
+
+    [548] => Array
+        (
+            [line] => 24
+            [file] => models\Xstruttura.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xstruttura.
+        )
+
+    [549] => Array
+        (
+            [line] => 40
+            [file] => models\Xstruttura.php
+            [message] => Method rules has no parent to inherit from in app\models\Xstruttura.
+        )
+
+    [550] => Array
+        (
+            [line] => 63
+            [file] => models\Xstruttura.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xstruttura.
+        )
+
+    [551] => Array
+        (
+            [line] => 28
+            [file] => models\XstrutturaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XstrutturaSearch.
+        )
+
+    [552] => Array
+        (
+            [line] => 22
+            [file] => models\Xsubmenu.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xsubmenu.
+        )
+
+    [553] => Array
+        (
+            [line] => 30
+            [file] => models\Xsubmenu.php
+            [message] => Method rules has no parent to inherit from in app\models\Xsubmenu.
+        )
+
+    [554] => Array
+        (
+            [line] => 43
+            [file] => models\Xsubmenu.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xsubmenu.
+        )
+
+    [555] => Array
+        (
+            [line] => 28
+            [file] => models\XsubmenuSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XsubmenuSearch.
+        )
+
+    [556] => Array
+        (
+            [line] => 29
+            [file] => models\XtappeSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XtappeSearch.
+        )
+
+    [557] => Array
+        (
+            [line] => 38
+            [file] => models\Xtravelhead.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xtravelhead.
+        )
+
+    [558] => Array
+        (
+            [line] => 54
+            [file] => models\Xtravelhead.php
+            [message] => Method rules has no parent to inherit from in app\models\Xtravelhead.
+        )
+
+    [559] => Array
+        (
+            [line] => 76
+            [file] => models\Xtravelhead.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xtravelhead.
+        )
+
+    [560] => Array
+        (
+            [line] => 28
+            [file] => models\XtravelheadSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XtravelheadSearch.
+        )
+
+    [561] => Array
+        (
+            [line] => 68
+            [file] => models\Xtravelrow.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xtravelrow.
+        )
+
+    [562] => Array
+        (
+            [line] => 85
+            [file] => models\Xtravelrow.php
+            [message] => Method rules has no parent to inherit from in app\models\Xtravelrow.
+        )
+
+    [563] => Array
+        (
+            [line] => 108
+            [file] => models\Xtravelrow.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xtravelrow.
+        )
+
+    [564] => Array
+        (
+            [line] => 29
+            [file] => models\XtravelrowSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XtravelrowSearch.
+        )
+
+    [565] => Array
+        (
+            [line] => 30
+            [file] => models\Xvenue.php
+            [message] => Method tableName has no parent to inherit from in app\models\Xvenue.
+        )
+
+    [566] => Array
+        (
+            [line] => 46
+            [file] => models\Xvenue.php
+            [message] => Method rules has no parent to inherit from in app\models\Xvenue.
+        )
+
+    [567] => Array
+        (
+            [line] => 63
+            [file] => models\Xvenue.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Xvenue.
+        )
+
+    [568] => Array
+        (
+            [line] => 27
+            [file] => models\XvenueSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\XvenueSearch.
+        )
+
+)

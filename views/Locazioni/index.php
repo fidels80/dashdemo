@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\LocazioniSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Locazionis';
+$this->title = 'Operatori';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="locazioni-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Locazioni', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Operatori', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>

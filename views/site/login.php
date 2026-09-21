@@ -1,125 +1,125 @@
 <?php
-use yii\helpers\Html;
-use yii\bootstrap4\Modal;
-use yii\helpers\Url;
-
-?>
-    <?php if (Yii::$app->session->hasFlash('inviato')): ?>
-
-        <div class="alert alert-success">
-          A Breve riceverai una mail con il link del reset.
-          Ricordati di controllare anche lo spam!
-        </div>
-
-        <p>
-              <?php      endif;?>
-    <?php if (Yii::$app->session->hasFlash('errore')): ?>
-
-        <div class="alert alert-danger">
-Non sono riuscito a inviare la mail!!
-        </div>
-
-        <p>
-              <?php      endif;?>
-
-<div class="card">
-    <div class="card-body login-card-body">
-        <p class="login-box-msg">Collegati</p>
-
-        <?php $form = \yii\bootstrap4\ActiveForm::begin(['id' => 'login-form', 
-         'action' => ['site/login']]) ?>
-
-        <?= $form->field($model,'email', [
-            'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-envelope"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->textInput(['placeholder' => 'email']//$model->getAttributeLabel('username')]
-            ) ?>
-
-        <?= $form->field($model, 'password', [
-            'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
-
-        <div class="row">
-            <div class="col-8">
-                <?= $form->field($model, 'rememberMe')->checkbox([
-                    'template' => '<div class="icheck-primary">{input}{label}</div>',
-                    'labelOptions' => [
-                        'class' => ''
-                    ],
-                    'uncheck' => null
-                ]) ?>
-            </div>
-            <div class="col-4">
-                <?php echo Html::submitButton('Collegati', ['class' => 'btn btn-primary btn-block']) ;
-             echo '<br><br>';
-            ?>
-            </div>
-        </div>
-
-        <?php \yii\bootstrap4\ActiveForm::end(); ?>
-
-<?php 
-$tmpid = 0;
-Modal::begin([
-    //'header'=>'<h4>Clienti</h4>',
-    'id' => 'cli' . $tmpid,
-    'size' => 'modal-lg', //classe bootstrap
-]);
-echo "<div id='modalContent'></div>";
-Modal::end();
-$this->registerJs("
-  $('#modalcli_$tmpid').click(function (){
-  $('#cli$tmpid').modal('show')
-  .find('#modalContent')
-  .load($(this).attr('value'));
-  });"
-);
-$url = Url::to(['user/rp']);
-//echo Html::button('Carica File', ['value' => $url,
-//    'class' => 'btn btn-success', 'id' => 'modalcli_' . $tmpid]);
-?>
-
-      <!--   <div class="social-auth-links text-center mb-3">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-primary">
-                <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-            </a>
-            <a href="#" class="btn btn-block btn-danger">
-                <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-            </a>
-        </div>
-        /.social-auth-links -->
-
-        <p class="mb-1">
-         <?php   
-        
-        echo Html::a('Reimposta Password', ['user/rp','reset'=>1]);
-
-        ?>
-        </p>
-        <p class="mb-0">
- <?php
-            echo Html::a('Registrati', ['login','isnew'=>true]);
-?>
-        </p>
-    </div>
-    <!-- /.login-card-body -->
-</div>
-
-
-<?php
 
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $form yii\bootstrap4\ActiveForm */
 /* @var $model app\models\LoginForm */
 
- 
+use yii\helpers\Html;
+use yii\bootstrap4\ActiveForm;
+use yii\helpers\Url;
+
+$this->title = 'Login';
+?>
+
+<div class="container mt-3" style="max-width: 450px;">
+    <?php if (Yii::$app->session->hasFlash('inviato')): ?>
+        <div class="alert alert-success alert-dismissible fade show shadow-sm text-center" style="border-radius: 10px;" role="alert">
+            <i class="fas fa-paper-plane mr-2"></i> A breve riceverai una mail con il link del reset.<br>Ricordati di controllare lo spam!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+
+    <?php if (Yii::$app->session->hasFlash('errore')): ?>
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm text-center" style="border-radius: 10px;" role="alert">
+            <i class="fas fa-exclamation-triangle mr-2"></i> Non sono riuscito a inviare la mail!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+
+    <?php if (Yii::$app->session->hasFlash('Login fallita')): ?>
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm text-center" style="border-radius: 10px;" role="alert">
+            <i class="fas fa-times-circle mr-2"></i> Email o Password inserite non corrispondono!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="site-login d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh; padding: 20px 0;">
+
+    <div style="margin-bottom: 30px;">
+        <img src="/uploads/login_logo.jpg" alt="Logo Ufficio 2000" style="max-width: 350px; height: auto; opacity: 0.9; object-fit: contain;">
+    </div>
+
+    <div class="card shadow-lg" style="width: 100%; max-width: 450px; border-radius: 16px; border-top: 4px solid var(--primary-color, #002c48); text-align: left;">
+
+        <div class="card-header text-center border-0 pt-4 pb-0">
+            <h3 class="font-weight-bold" style="color: var(--primary-color, #002c48);">
+                <i class="fas fa-sign-in-alt mr-2"></i><?= Html::encode($this->title) ?>
+            </h3>
+        </div>
+
+        <div class="card-body p-4">
+            <p class="login-box-msg text-muted text-center mb-4">
+                Inserisci le tue credenziali per accedere
+            </p>
+
+            <?php $form = ActiveForm::begin([
+                'id' => 'login-form',
+                'action' => ['site/login']
+            ]); ?>
+
+            <?= $form->field($model, 'email', [
+                'template' => '
+                    <div class="input-group mb-3">
+                        {input}
+                        <div class="input-group-append">
+                            <div class="input-group-text" style="border-radius: 0 20px 20px 0;">
+                                <span class="fas fa-envelope text-muted"></span>
+                            </div>
+                        </div>
+                    </div>
+                    {error}',
+            ])->textInput([
+                'placeholder' => 'Email',
+                'autofocus' => true,
+                'style' => 'border-radius: 20px 0 0 20px;'
+            ])->label(false) ?>
+
+            <?= $form->field($model, 'password', [
+                'template' => '
+                    <div class="input-group mb-4">
+                        {input}
+                        <div class="input-group-append">
+                            <div class="input-group-text" style="border-radius: 0 20px 20px 0;">
+                                <span class="fas fa-lock text-muted"></span>
+                            </div>
+                        </div>
+                    </div>
+                    {error}',
+            ])->passwordInput([
+                'placeholder' => 'Password',
+                'style' => 'border-radius: 20px 0 0 20px;'
+            ])->label(false) ?>
+
+            <div class="form-group mt-2 mb-4 text-center">
+                <?= Html::submitButton('<i class="fas fa-sign-in-alt mr-2"></i> Collegati', [
+                    'class' => 'btn btn-primary btn-block pill py-2 shadow-sm',
+                    'style' => 'background-color: var(--primary-color, #002c48); border: none; font-size: 1.1rem;'
+                ]) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+
+            <div class="d-flex flex-column text-center mt-3">
+                <div class="mb-2">
+                    <p class="text-muted mb-0" style="font-size: 0.9rem;">Hai dimenticato la password?</p>
+                    <?= Html::a('Reimposta Password', ['user/rp', 'reset' => 1], ['class' => 'font-weight-bold', 'style' => 'color: var(--primary-color, #002c48);']) ?>
+                </div>
+
+                <hr style="width: 50%;">
+
+                <div>
+                    <p class="text-muted mb-0" style="font-size: 0.9rem;">Non hai ancora un account?</p>
+                    <?= Html::a('Registrati ora', ['site/login', 'isnew' => true], ['class' => 'font-weight-bold', 'style' => 'color: var(--primary-color, #002c48);']) ?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

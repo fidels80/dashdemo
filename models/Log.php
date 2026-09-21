@@ -52,4 +52,21 @@ class Log extends \yii\db\ActiveRecord
             'timeins' => 'Timeins',
         ];
     }
+  /**
+ * Relazione con il modello User
+ */
+public function getUser()
+{
+    // Assumendo che la tabella degli utenti si chiami 'user' 
+    // e il modello sia 'app\models\User'
+    return $this->hasOne(\app\models\User::className(), ['id' => 'userid']);
+}
+
+/**
+ * Restituisce il nome completo o l'username
+ */
+public function getOperatoreNome()
+{
+    return $this->user ? ($this->user->username) : "ID: " . $this->userid;
+}
 }

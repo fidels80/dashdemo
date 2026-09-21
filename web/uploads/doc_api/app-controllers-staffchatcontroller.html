@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/897bf76a/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/69ad154b/solarized-light.css" rel="stylesheet">
+<link href="./assets/2571ffc8/style.css" rel="stylesheet">
+<script src="./assets/66e5f179/jquery.js"></script>
+<script src="./assets/897bf76a/js/bootstrap.js"></script>
+<script src="./assets/4e5c36cc/jssearch.js"></script>    <title>StaffChatController, app\controllers\StaffChatController - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w1573" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w1573-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w1573-collapse" class="collapse navbar-collapse"><ul id="w1574" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item active" href="#navigation-1568" data-toggle="collapse" data-parent="#navigation">app\controllers <b class="caret"></b></a><div id="navigation-1568" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./app-controllers-agendacontroller.html">AgendaController</a>
+<a class="list-group-item" href="./app-controllers-agendafilescontroller.html">AgendafilesController</a>
+<a class="list-group-item" href="./app-controllers-agenticontroller.html">AgentiController</a>
+<a class="list-group-item" href="./app-controllers-agentifilescontroller.html">AgentifilesController</a>
+<a class="list-group-item" href="./app-controllers-allfilescontroller.html">AllfilesController</a>
+<a class="list-group-item" href="./app-controllers-anaclicontroller.html">AnacliController</a>
+<a class="list-group-item" href="./app-controllers-analysiscontroller.html">AnalysisController</a>
+<a class="list-group-item" href="./app-controllers-arcontroller.html">ArController</a>
+<a class="list-group-item" href="./app-controllers-arcacontroller.html">ArcaController</a>
+<a class="list-group-item" href="./app-controllers-blkinscontroller.html">BlkinsController</a>
+<a class="list-group-item" href="./app-controllers-calcontroller.html">CalController</a>
+<a class="list-group-item" href="./app-controllers-chatcontroller.html">ChatController</a>
+<a class="list-group-item" href="./app-controllers-doc_headcontroller.html">Doc_headController</a>
+<a class="list-group-item" href="./app-controllers-doc_rowscontroller.html">Doc_rowsController</a>
+<a class="list-group-item" href="./app-controllers-docommessacontroller.html">DocommessaController</a>
+<a class="list-group-item" href="./app-controllers-dosottocommessacontroller.html">DosottocommessaController</a>
+<a class="list-group-item" href="./app-controllers-elemailcontroller.html">ElemailController</a>
+<a class="list-group-item" href="./app-controllers-etichettecontroller.html">EtichetteController</a>
+<a class="list-group-item" href="./app-controllers-exceptioncontroller.html">ExceptionController</a>
+<a class="list-group-item" href="./app-controllers-filescontroller.html">FilesController</a>
+<a class="list-group-item" href="./app-controllers-folderscontroller.html">FoldersController</a>
+<a class="list-group-item" href="./app-controllers-gacattivitacontroller.html">GacattivitaController</a>
+<a class="list-group-item" href="./app-controllers-gacmaterialicontroller.html">GacmaterialiController</a>
+<a class="list-group-item" href="./app-controllers-gacprvcontroller.html">GacprvController</a>
+<a class="list-group-item" href="./app-controllers-gacsottoprvcontroller.html">GacsottoprvController</a>
+<a class="list-group-item" href="./app-controllers-gacspesecontroller.html">GacspeseController</a>
+<a class="list-group-item" href="./app-controllers-ingestcontroller.html">IngestController</a>
+<a class="list-group-item" href="./app-controllers-itemscontroller.html">ItemsController</a>
+<a class="list-group-item" href="./app-controllers-locazionicontroller.html">LocazioniController</a>
+<a class="list-group-item" href="./app-controllers-logcontroller.html">LogController</a>
+<a class="list-group-item" href="./app-controllers-mansionicontroller.html">MansioniController</a>
+<a class="list-group-item" href="./app-controllers-paymentscontroller.html">PaymentsController</a>
+<a class="list-group-item" href="./app-controllers-personalecontroller.html">PersonaleController</a>
+<a class="list-group-item" href="./app-controllers-planningcontroller.html">PlanningController</a>
+<a class="list-group-item" href="./app-controllers-plistcontroller.html">PlistController</a>
+<a class="list-group-item" href="./app-controllers-presenzecontroller.html">PresenzeController</a>
+<a class="list-group-item" href="./app-controllers-rapportinicontroller.html">RapportiniController</a>
+<a class="list-group-item" href="./app-controllers-relclicontroller.html">RelcliController</a>
+<a class="list-group-item" href="./app-controllers-relusrformactioncontroller.html">RelusrformactionController</a>
+<a class="list-group-item" href="./app-controllers-rep_publicazionicontroller.html">Rep_publicazioniController</a>
+<a class="list-group-item" href="./app-controllers-reparticontroller.html">RepartiController</a>
+<a class="list-group-item" href="./app-controllers-reportcontroller.html">ReportController</a>
+<a class="list-group-item" href="./app-controllers-reportscontroller.html">ReportsController</a>
+<a class="list-group-item" href="./app-controllers-restcontroller.html">RestController</a>
+<a class="list-group-item" href="./app-controllers-sccontroller.html">ScController</a>
+<a class="list-group-item" href="./app-controllers-showcontroller.html">ShowController</a>
+<a class="list-group-item" href="./app-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./app-controllers-sottocommessacontroller.html">SottocommessaController</a>
+<a class="list-group-item" href="./app-controllers-stackposttagscontroller.html">StackposttagsController</a>
+<a class="list-group-item active" href="./app-controllers-staffchatcontroller.html">StaffChatController</a>
+<a class="list-group-item" href="./app-controllers-statistichecontroller.html">StatisticheController</a>
+<a class="list-group-item" href="./app-controllers-statuscontroller.html">StatusController</a>
+<a class="list-group-item" href="./app-controllers-testajcontroller.html">TestajController</a>
+<a class="list-group-item" href="./app-controllers-teste2controller.html">Teste2Controller</a>
+<a class="list-group-item" href="./app-controllers-ticketingestcontroller.html">TicketingestController</a>
+<a class="list-group-item" href="./app-controllers-tipopresenzecontroller.html">TipoPresenzeController</a>
+<a class="list-group-item" href="./app-controllers-tipologiapresenzacontroller.html">TipologiapresenzaController</a>
+<a class="list-group-item" href="./app-controllers-todogruppicontroller.html">TodogruppiController</a>
+<a class="list-group-item" href="./app-controllers-todomaincontroller.html">TodomainController</a>
+<a class="list-group-item" href="./app-controllers-todoprioritacontroller.html">TodoprioritaController</a>
+<a class="list-group-item" href="./app-controllers-todorelgrpusrcontroller.html">TodorelgrpusrController</a>
+<a class="list-group-item" href="./app-controllers-todostatocontroller.html">TodostatoController</a>
+<a class="list-group-item" href="./app-controllers-uecanagraficacontroller.html">UecanagraficaController</a>
+<a class="list-group-item" href="./app-controllers-uecarticolicontroller.html">UecarticoliController</a>
+<a class="list-group-item" href="./app-controllers-uectestacontroller.html">UectestaController</a>
+<a class="list-group-item" href="./app-controllers-usercontroller.html">UserController</a>
+<a class="list-group-item" href="./app-controllers-usrgrpcontroller.html">UsrgrpController</a>
+<a class="list-group-item" href="./app-controllers-veicolicontroller.html">VeicoliController</a>
+<a class="list-group-item" href="./app-controllers-vtigercontroller.html">VtigerController</a>
+<a class="list-group-item" href="./app-controllers-xactioncontroller.html">XactionController</a>
+<a class="list-group-item" href="./app-controllers-xaraltdesccontroller.html">XaraltdescController</a>
+<a class="list-group-item" href="./app-controllers-xmenucontroller.html">XmenuController</a>
+<a class="list-group-item" href="./app-controllers-xpartycontroller.html">XpartyController</a>
+<a class="list-group-item" href="./app-controllers-xroomlistcontroller.html">XroomlistController</a>
+<a class="list-group-item" href="./app-controllers-xruolicontroller.html">XruoliController</a>
+<a class="list-group-item" href="./app-controllers-xscadconsccontroller.html">XscadconscController</a>
+<a class="list-group-item" href="./app-controllers-xstrutturacontroller.html">XstrutturaController</a>
+<a class="list-group-item" href="./app-controllers-xsubmenucontroller.html">XsubmenuController</a>
+<a class="list-group-item" href="./app-controllers-xtappecontroller.html">XtappeController</a>
+<a class="list-group-item" href="./app-controllers-xtravelheadcontroller.html">XtravelheadController</a>
+<a class="list-group-item" href="./app-controllers-xtravelrowcontroller.html">XtravelrowController</a>
+<a class="list-group-item" href="./app-controllers-xvenuecontroller.html">XvenueController</a></div>
+<a class="list-group-item" href="#navigation-1569" data-toggle="collapse" data-parent="#navigation">app\model\form <b class="caret"></b></a><div id="navigation-1569" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-model-form-fileform.html">FileForm</a></div>
+<a class="list-group-item" href="#navigation-1570" data-toggle="collapse" data-parent="#navigation">app\models <b class="caret"></b></a><div id="navigation-1570" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-models-ar.html">AR</a>
+<a class="list-group-item" href="./app-models-agenda.html">Agenda</a>
+<a class="list-group-item" href="./app-models-agendafiles.html">AgendaFiles</a>
+<a class="list-group-item" href="./app-models-agendasearch.html">AgendaSearch</a>
+<a class="list-group-item" href="./app-models-agendafilessearch.html">AgendafilesSearch</a>
+<a class="list-group-item" href="./app-models-agente.html">Agente</a>
+<a class="list-group-item" href="./app-models-agentifiles.html">Agentifiles</a>
+<a class="list-group-item" href="./app-models-agentifilessearch.html">AgentifilesSearch</a>
+<a class="list-group-item" href="./app-models-aiconversation.html">AiConversation</a>
+<a class="list-group-item" href="./app-models-aiknowledge.html">Aiknowledge</a>
+<a class="list-group-item" href="./app-models-aimessage.html">Aimessage</a>
+<a class="list-group-item" href="./app-models-allfiles.html">AllFiles</a>
+<a class="list-group-item" href="./app-models-allfilessearch.html">AllfilesSearch</a>
+<a class="list-group-item" href="./app-models-anacli.html">Anacli</a>
+<a class="list-group-item" href="./app-models-anaclisearch.html">AnacliSearch</a>
+<a class="list-group-item" href="./app-models-auxar.html">Auxar</a>
+<a class="list-group-item" href="./app-models-blkins.html">BlkIns</a>
+<a class="list-group-item" href="./app-models-blkinssearch.html">BlkinsSearch</a>
+<a class="list-group-item" href="./app-models-cal.html">Cal</a>
+<a class="list-group-item" href="./app-models-calsearch.html">CalSearch</a>
+<a class="list-group-item" href="./app-models-cf.html">Cf</a>
+<a class="list-group-item" href="./app-models-cgconto.html">Cgconto</a>
+<a class="list-group-item" href="./app-models-cgmovr.html">Cgmovr</a>
+<a class="list-group-item" href="./app-models-cgmovt.html">Cgmovt</a>
+<a class="list-group-item" href="./app-models-clidest.html">CliDest</a>
+<a class="list-group-item" href="./app-models-colore.html">Colore</a>
+<a class="list-group-item" href="./app-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./app-models-docommessastato.html">DOCommessaStato</a>
+<a class="list-group-item" href="./app-models-dorig.html">DORig</a>
+<a class="list-group-item" href="./app-models-dittaesterna.html">DittaEsterna</a>
+<a class="list-group-item" href="./app-models-dmsdocument.html">Dmsdocument</a>
+<a class="list-group-item" href="./app-models-dochead.html">DocHead</a>
+<a class="list-group-item" href="./app-models-doctype.html">DocType</a>
+<a class="list-group-item" href="./app-models-doc_head.html">Doc_head</a>
+<a class="list-group-item" href="./app-models-doc_headsearch.html">Doc_headSearch</a>
+<a class="list-group-item" href="./app-models-doc_rows.html">Doc_rows</a>
+<a class="list-group-item" href="./app-models-doc_rowssearch.html">Doc_rowsSearch</a>
+<a class="list-group-item" href="./app-models-docommessa.html">Docommessa</a>
+<a class="list-group-item" href="./app-models-docommessasearch.html">DocommessaSearch</a>
+<a class="list-group-item" href="./app-models-dosottocommessa.html">Dosottocommessa</a>
+<a class="list-group-item" href="./app-models-dosottocommessasearch.html">DosottocommessaSearch</a>
+<a class="list-group-item" href="./app-models-dotes.html">Dotes</a>
+<a class="list-group-item" href="./app-models-elemail.html">Elemail</a>
+<a class="list-group-item" href="./app-models-elemailsearch.html">ElemailSearch</a>
+<a class="list-group-item" href="./app-models-export_jobs.html">Export_jobs</a>
+<a class="list-group-item" href="./app-models-files.html">Files</a>
+<a class="list-group-item" href="./app-models-filessearch.html">FilesSearch</a>
+<a class="list-group-item" href="./app-models-folders.html">Folders</a>
+<a class="list-group-item" href="./app-models-folderssearch.html">FoldersSearch</a>
+<a class="list-group-item" href="./app-models-gacrisorse.html">GacRisorse</a>
+<a class="list-group-item" href="./app-models-gacsottoprv.html">GacSottoPrv</a>
+<a class="list-group-item" href="./app-models-gacsottocommessa.html">GacSottocommessa</a>
+<a class="list-group-item" href="./app-models-gacattivita.html">Gacattivita</a>
+<a class="list-group-item" href="./app-models-gacattivitasearch.html">GacattivitaSearch</a>
+<a class="list-group-item" href="./app-models-gacmateriali.html">Gacmateriali</a>
+<a class="list-group-item" href="./app-models-gacmaterialisearch.html">GacmaterialiSearch</a>
+<a class="list-group-item" href="./app-models-gacprv.html">Gacprv</a>
+<a class="list-group-item" href="./app-models-gacprvsearch.html">GacprvSearch</a>
+<a class="list-group-item" href="./app-models-gacsottoprvsearch.html">GacsottoprvSearch</a>
+<a class="list-group-item" href="./app-models-gacspese.html">Gacspese</a>
+<a class="list-group-item" href="./app-models-gacspesesearch.html">GacspeseSearch</a>
+<a class="list-group-item" href="./app-models-gactatt.html">Gactatt</a>
+<a class="list-group-item" href="./app-models-items.html">Items</a>
+<a class="list-group-item" href="./app-models-itemssearch.html">ItemsSearch</a>
+<a class="list-group-item" href="./app-models-listini.html">Listini</a>
+<a class="list-group-item" href="./app-models-locazioni.html">Locazioni</a>
+<a class="list-group-item" href="./app-models-locazionisearch.html">LocazioniSearch</a>
+<a class="list-group-item" href="./app-models-log.html">Log</a>
+<a class="list-group-item" href="./app-models-logsearch.html">LogSearch</a>
+<a class="list-group-item" href="./app-models-loginform.html">LoginForm</a>
+<a class="list-group-item" href="./app-models-ls.html">Ls</a>
+<a class="list-group-item" href="./app-models-mail.html">Mail</a>
+<a class="list-group-item" href="./app-models-mansioni.html">Mansioni</a>
+<a class="list-group-item" href="./app-models-mansionisearch.html">MansioniSearch</a>
+<a class="list-group-item" href="./app-models-model.html">Model</a>
+<a class="list-group-item" href="./app-models-operatori.html">Operatori</a>
+<a class="list-group-item" href="./app-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./app-models-payments.html">Payments</a>
+<a class="list-group-item" href="./app-models-paymentssearch.html">PaymentsSearch</a>
+<a class="list-group-item" href="./app-models-personale.html">Personale</a>
+<a class="list-group-item" href="./app-models-pg.html">Pg</a>
+<a class="list-group-item" href="./app-models-planning.html">Planning</a>
+<a class="list-group-item" href="./app-models-plist.html">Plist</a>
+<a class="list-group-item" href="./app-models-plistsearch.html">PlistSearch</a>
+<a class="list-group-item" href="./app-models-presenze.html">Presenze</a>
+<a class="list-group-item" href="./app-models-rapportini.html">Rapportini</a>
+<a class="list-group-item" href="./app-models-rapportinisearch.html">RapportiniSearch</a>
+<a class="list-group-item" href="./app-models-relcli.html">Relcli</a>
+<a class="list-group-item" href="./app-models-relclisearch.html">RelcliSearch</a>
+<a class="list-group-item" href="./app-models-relusrformaction.html">Relusrformaction</a>
+<a class="list-group-item" href="./app-models-relusrformactionsearch.html">RelusrformactionSearch</a>
+<a class="list-group-item" href="./app-models-reppublicazioni.html">RepPublicazioni</a>
+<a class="list-group-item" href="./app-models-rep_publicazioni.html">Rep_publicazioni</a>
+<a class="list-group-item" href="./app-models-rep_publicazionisearch.html">Rep_publicazioniSearch</a>
+<a class="list-group-item" href="./app-models-reparti.html">Reparti</a>
+<a class="list-group-item" href="./app-models-repartisearch.html">RepartiSearch</a>
+<a class="list-group-item" href="./app-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./app-models-ruoli.html">Ruoli</a>
+<a class="list-group-item" href="./app-models-sc.html">Sc</a>
+<a class="list-group-item" href="./app-models-scsearch.html">ScSearch</a>
+<a class="list-group-item" href="./app-models-scdistinta.html">Scdistinta</a>
+<a class="list-group-item" href="./app-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./app-models-sl.html">Sl</a>
+<a class="list-group-item" href="./app-models-sottocommessa.html">Sottocommessa</a>
+<a class="list-group-item" href="./app-models-sottocommessasearch.html">SottocommessaSearch</a>
+<a class="list-group-item" href="./app-models-stackposttags.html">Stackposttags</a>
+<a class="list-group-item" href="./app-models-stackposttagssearch.html">StackposttagsSearch</a>
+<a class="list-group-item" href="./app-models-status.html">Status</a>
+<a class="list-group-item" href="./app-models-statussearch.html">StatusSearch</a>
+<a class="list-group-item" href="./app-models-subentitalookup.html">SubEntitaLookup</a>
+<a class="list-group-item" href="./app-models-taglia.html">Taglia</a>
+<a class="list-group-item" href="./app-models-tessuto.html">Tessuto</a>
+<a class="list-group-item" href="./app-models-testaj.html">Testaj</a>
+<a class="list-group-item" href="./app-models-testajsearch.html">TestajSearch</a>
+<a class="list-group-item" href="./app-models-teste2.html">Teste2</a>
+<a class="list-group-item" href="./app-models-teste2search.html">Teste2Search</a>
+<a class="list-group-item" href="./app-models-tipopresenze.html">TipoPresenze</a>
+<a class="list-group-item" href="./app-models-tipologiapresenza.html">Tipologiapresenza</a>
+<a class="list-group-item" href="./app-models-tipologiapresenzasearch.html">TipologiapresenzaSearch</a>
+<a class="list-group-item" href="./app-models-todocommenti.html">Todocommenti</a>
+<a class="list-group-item" href="./app-models-todogruppi.html">Todogruppi</a>
+<a class="list-group-item" href="./app-models-todogruppisearch.html">TodogruppiSearch</a>
+<a class="list-group-item" href="./app-models-todomain.html">Todomain</a>
+<a class="list-group-item" href="./app-models-todomainsearch.html">TodomainSearch</a>
+<a class="list-group-item" href="./app-models-todopriorita.html">Todopriorita</a>
+<a class="list-group-item" href="./app-models-todoprioritasearch.html">TodoprioritaSearch</a>
+<a class="list-group-item" href="./app-models-todorelgrpusr.html">Todorelgrpusr</a>
+<a class="list-group-item" href="./app-models-todorelgrpusrsearch.html">TodorelgrpusrSearch</a>
+<a class="list-group-item" href="./app-models-todoreltags.html">Todoreltags</a>
+<a class="list-group-item" href="./app-models-todostato.html">Todostato</a>
+<a class="list-group-item" href="./app-models-todostatosearch.html">TodostatoSearch</a>
+<a class="list-group-item" href="./app-models-todotag.html">Todotag</a>
+<a class="list-group-item" href="./app-models-uecprovincia.html">UecProvincia</a>
+<a class="list-group-item" href="./app-models-uecanagrafica.html">Uecanagrafica</a>
+<a class="list-group-item" href="./app-models-uecanagraficasearch.html">UecanagraficaSearch</a>
+<a class="list-group-item" href="./app-models-uecarticoli.html">Uecarticoli</a>
+<a class="list-group-item" href="./app-models-uecarticolisearch.html">UecarticoliSearch</a>
+<a class="list-group-item" href="./app-models-uecrighe.html">Uecrighe</a>
+<a class="list-group-item" href="./app-models-uectesta.html">Uectesta</a>
+<a class="list-group-item" href="./app-models-uectestasearch.html">UectestaSearch</a>
+<a class="list-group-item" href="./app-models-uploadimageform.html">UploadImageForm</a>
+<a class="list-group-item" href="./app-models-user.html">User</a>
+<a class="list-group-item" href="./app-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./app-models-usrgrp.html">Usrgrp</a>
+<a class="list-group-item" href="./app-models-usrgrpsearch.html">UsrgrpSearch</a>
+<a class="list-group-item" href="./app-models-veicoli.html">Veicoli</a>
+<a class="list-group-item" href="./app-models-vl.html">Vl</a>
+<a class="list-group-item" href="./app-models-xroomlist.html">XRoomlist</a>
+<a class="list-group-item" href="./app-models-xruolisearch.html">XRuoliSearch</a>
+<a class="list-group-item" href="./app-models-xaction.html">Xaction</a>
+<a class="list-group-item" href="./app-models-xactionsearch.html">XactionSearch</a>
+<a class="list-group-item" href="./app-models-xaraltdesc.html">Xaraltdesc</a>
+<a class="list-group-item" href="./app-models-xaraltdescsearch.html">XaraltdescSearch</a>
+<a class="list-group-item" href="./app-models-xmenu.html">Xmenu</a>
+<a class="list-group-item" href="./app-models-xmenusearch.html">XmenuSearch</a>
+<a class="list-group-item" href="./app-models-xparty.html">Xparty</a>
+<a class="list-group-item" href="./app-models-xpartysearch.html">XpartySearch</a>
+<a class="list-group-item" href="./app-models-xroomlistsearch.html">XroomlistSearch</a>
+<a class="list-group-item" href="./app-models-xruoli.html">Xruoli</a>
+<a class="list-group-item" href="./app-models-xscadconsc.html">Xscadconsc</a>
+<a class="list-group-item" href="./app-models-xscadconscsearch.html">XscadconscSearch</a>
+<a class="list-group-item" href="./app-models-xstruttura.html">Xstruttura</a>
+<a class="list-group-item" href="./app-models-xstrutturasearch.html">XstrutturaSearch</a>
+<a class="list-group-item" href="./app-models-xsubmenu.html">Xsubmenu</a>
+<a class="list-group-item" href="./app-models-xsubmenusearch.html">XsubmenuSearch</a>
+<a class="list-group-item" href="./app-models-xtappe.html">Xtappe</a>
+<a class="list-group-item" href="./app-models-xtappesearch.html">XtappeSearch</a>
+<a class="list-group-item" href="./app-models-xtravelhead.html">Xtravelhead</a>
+<a class="list-group-item" href="./app-models-xtravelheadsearch.html">XtravelheadSearch</a>
+<a class="list-group-item" href="./app-models-xtravelrow.html">Xtravelrow</a>
+<a class="list-group-item" href="./app-models-xtravelrowsearch.html">XtravelrowSearch</a>
+<a class="list-group-item" href="./app-models-xvenue.html">Xvenue</a>
+<a class="list-group-item" href="./app-models-xvenuesearch.html">XvenueSearch</a></div>
+<a class="list-group-item" href="#navigation-1571" data-toggle="collapse" data-parent="#navigation">app\models\form <b class="caret"></b></a><div id="navigation-1571" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-models-form-filesform.html">FilesForm</a></div>
+<a class="list-group-item" href="#navigation-1572" data-toggle="collapse" data-parent="#navigation">app\views\reports <b class="caret"></b></a><div id="navigation-1572" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-views-reports-myreport.html">MyReport</a>
+<a class="list-group-item" href="./app-views-reports-zreport2.html">Zreport2</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class app\controllers\StaffChatController</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="app-controllers-staffchatcontroller.html">app\controllers\StaffChatController</a> &raquo;
+yii\web\Controller</td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong></strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="____actionFetch()" class="">
+                    <td><a href="app-controllers-staffchatcontroller.html#____actionFetch()-detail">____actionFetch()</a></td>
+                    <td>RECUPERO MESSAGGI</td>
+                    <td><a href="app-controllers-staffchatcontroller.html">app\controllers\StaffChatController</a></td>
+                </tr>
+                                                <tr id="actionFetch()" class="">
+                    <td><a href="app-controllers-staffchatcontroller.html#actionFetch()-detail">actionFetch()</a></td>
+                    <td>RECUPERO MESSAGGI</td>
+                    <td><a href="app-controllers-staffchatcontroller.html">app\controllers\StaffChatController</a></td>
+                </tr>
+                                                <tr id="actionSend()" class="">
+                    <td><a href="app-controllers-staffchatcontroller.html#actionSend()-detail">actionSend()</a></td>
+                    <td>INVIO MESSAGGIO CON VALIDAZIONE PERMESSI E NOTIFICA EMAIL</td>
+                    <td><a href="app-controllers-staffchatcontroller.html">app\controllers\StaffChatController</a></td>
+                </tr>
+                                                <tr id="actionUserList()" class="">
+                    <td><a href="app-controllers-staffchatcontroller.html#actionUserList()-detail">actionUserList()</a></td>
+                    <td>LISTA UTENTI FILTRATA PER PERMESSI</td>
+                    <td><a href="app-controllers-staffchatcontroller.html">app\controllers\StaffChatController</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="____actionFetch()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-staffchatcontroller.html#____actionFetch()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                ____actionFetch()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>RECUPERO MESSAGGI</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-staffchatcontroller.html#____actionFetch()-detail">____actionFetch</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapse____actionFetch" role="button"
+           aria-expanded="false" aria-controls="collapse____actionFetch">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapse____actionFetch">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">____actionFetch</span><span class="hljs-params">()</span>
+</span>{
+    $myId = Yii::$app-&gt;user-&gt;id;
+    $contactId = Yii::$app-&gt;request-&gt;get(<span class="hljs-string">'contact_id'</span>);
+    $query = (<span class="hljs-keyword">new</span> Query())
+        -&gt;select([<span class="hljs-string">'sys_chat_messages.*'</span>, <span class="hljs-string">'[[user]].username'</span>])
+        -&gt;from(<span class="hljs-string">'sys_chat_messages'</span>)
+        -&gt;leftJoin(<span class="hljs-string">'user'</span>, <span class="hljs-string">'[[user]].id = sys_chat_messages.user_id'</span>);
+    <span class="hljs-keyword">if</span> ($contactId) {
+        $query-&gt;where([
+            <span class="hljs-string">'OR'</span>,
+            [<span class="hljs-string">'sys_chat_messages.user_id'</span> =&gt; $myId, <span class="hljs-string">'to_user_id'</span> =&gt; $contactId],
+            [<span class="hljs-string">'sys_chat_messages.user_id'</span> =&gt; $contactId, <span class="hljs-string">'to_user_id'</span> =&gt; $myId]
+        ]);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// Chat globale</span>
+        $query-&gt;where([<span class="hljs-string">'to_user_id'</span> =&gt; <span class="hljs-keyword">null</span>]);
+    }
+    $messages = $query-&gt;orderBy([<span class="hljs-string">'created_at'</span> =&gt; SORT_ASC])-&gt;limit(<span class="hljs-number">50</span>)-&gt;all();
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;renderPartialMessages($messages, $myId);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionFetch()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-staffchatcontroller.html#actionFetch()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionFetch()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>RECUPERO MESSAGGI</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-staffchatcontroller.html#actionFetch()-detail">actionFetch</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionFetch" role="button"
+           aria-expanded="false" aria-controls="collapseActionFetch">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionFetch">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php">ic <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionFetch</span><span class="hljs-params">()</span> </span>{
+    $myId = Yii::$app-&gt;user-&gt;id;
+    $contactId = Yii::$app-&gt;request-&gt;get(<span class="hljs-string">'contact_id'</span>);
+-- AGGIUNTA: IL BATTITO CARDIACO ---
+    <span class="hljs-comment">// Ogni volta che la chat cerca nuovi messaggi (ogni 5 sec), aggiorniamo l'orario di attività.</span>
+    <span class="hljs-keyword">if</span> ($myId) {
+        Yii::$app-&gt;db-&gt;createCommand()
+            -&gt;update(<span class="hljs-string">'[[user]]'</span>, [<span class="hljs-string">'last_activity'</span> =&gt; date(<span class="hljs-string">'Ymd H:i:s'</span>)], [<span class="hljs-string">'id'</span> =&gt; $myId])
+            -&gt;execute();
+   
+   <span class="hljs-keyword">if</span> ($contactId &amp;&amp; $myId) {
+        Yii::$app-&gt;db-&gt;createCommand()
+            -&gt;update(<span class="hljs-string">'sys_chat_messages'</span>, [<span class="hljs-string">'is_read'</span> =&gt; <span class="hljs-number">1</span>], [<span class="hljs-string">'to_user_id'</span> =&gt; $myId, <span class="hljs-string">'user_id'</span> =&gt; $contactId])
+            -&gt;execute();
+    }
+   
+            }
+    <span class="hljs-comment">// ------------------------------------</span>
+    $query = (<span class="hljs-keyword">new</span> Query())
+        <span class="hljs-comment">// Solo UN select, con le parentesi quadre attorno a user e file</span>
+        -&gt;select([<span class="hljs-string">'sys_chat_messages.*'</span>, <span class="hljs-string">'[[user]].username'</span>, <span class="hljs-string">'[[user]].[[file]]'</span>])
+        -&gt;from(<span class="hljs-string">'sys_chat_messages'</span>)
+        -&gt;leftJoin(<span class="hljs-string">'user'</span>, <span class="hljs-string">'[[user]].id = sys_chat_messages.user_id'</span>);
+    <span class="hljs-keyword">if</span> ($contactId) {
+        $query-&gt;where([
+            <span class="hljs-string">'OR'</span>,
+            [<span class="hljs-string">'sys_chat_messages.user_id'</span> =&gt; $myId, <span class="hljs-string">'to_user_id'</span> =&gt; $contactId],
+            [<span class="hljs-string">'sys_chat_messages.user_id'</span> =&gt; $contactId, <span class="hljs-string">'to_user_id'</span> =&gt; $myId]
+        ]);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// Chat globale</span>
+        $query-&gt;where([<span class="hljs-string">'to_user_id'</span> =&gt; <span class="hljs-keyword">null</span>]);
+    }
+    $messages = $query-&gt;orderBy([<span class="hljs-string">'created_at'</span> =&gt; SORT_ASC])-&gt;limit(<span class="hljs-number">50</span>)-&gt;all();
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;renderPartialMessages($messages, $myId); 
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionSend()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-staffchatcontroller.html#actionSend()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionSend()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>INVIO MESSAGGIO CON VALIDAZIONE PERMESSI E NOTIFICA EMAIL</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-staffchatcontroller.html#actionSend()-detail">actionSend</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionSend" role="button"
+           aria-expanded="false" aria-controls="collapseActionSend">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionSend">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionSend</span><span class="hljs-params">()</span>
+</span>{
+    Yii::$app-&gt;response-&gt;format = \yii\web\Response::FORMAT_JSON;
+    $message = Yii::$app-&gt;request-&gt;post(<span class="hljs-string">'message'</span>);
+    $toUserId = (int)Yii::$app-&gt;request-&gt;post(<span class="hljs-string">'to_user_id'</span>);
+    $me = <span class="hljs-keyword">$this</span>-&gt;getMyInfo();
+    $myLevel = (int)$me[<span class="hljs-string">'level'</span>];
+    $myCli = $me[<span class="hljs-string">'cd_cli'</span>];
+    $myUsername = Yii::$app-&gt;user-&gt;identity-&gt;username; 
+    <span class="hljs-comment">// --- CORREZIONE: Abbiamo aggiunto 'last_activity' nella select ---</span>
+    $toUser = (<span class="hljs-keyword">new</span> Query())
+        -&gt;select([<span class="hljs-string">'level'</span>, <span class="hljs-string">'cd_cli'</span>, <span class="hljs-string">'email'</span>, <span class="hljs-string">'username'</span>, <span class="hljs-string">'last_activity'</span>]) 
+        -&gt;from(<span class="hljs-string">'[[user]]'</span>)
+        -&gt;where([<span class="hljs-string">'id'</span> =&gt; $toUserId])
+        -&gt;one();
+    <span class="hljs-keyword">if</span> (!$toUser &amp;&amp; $toUserId !== <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> [<span class="hljs-string">'status'</span> =&gt; <span class="hljs-string">'error'</span>, <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Destinatario non trovato'</span>];
+    <span class="hljs-keyword">if</span> (!$message) <span class="hljs-keyword">return</span> [<span class="hljs-string">'status'</span> =&gt; <span class="hljs-string">'error'</span>, <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Messaggio vuoto'</span>];
+    $canSend = <span class="hljs-keyword">false</span>;
+    <span class="hljs-comment">// ... (il resto della logica dei permessi rimane identica) ...</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">empty</span>($toUserId)) { $canSend = <span class="hljs-keyword">true</span>; } 
+    <span class="hljs-keyword">elseif</span> ($myLevel &gt;= <span class="hljs-number">100</span>) { $canSend = <span class="hljs-keyword">true</span>; } 
+    <span class="hljs-keyword">elseif</span> ($myLevel == <span class="hljs-number">80</span>) {
+        <span class="hljs-keyword">if</span> (in_array($toUser[<span class="hljs-string">'level'</span>], [<span class="hljs-number">70</span>, <span class="hljs-number">80</span>])) { $canSend = <span class="hljs-keyword">true</span>; } 
+        <span class="hljs-keyword">else</span> {
+            $hasReceived = (<span class="hljs-keyword">new</span> Query())-&gt;from(<span class="hljs-string">'sys_chat_messages'</span>)-&gt;where([<span class="hljs-string">'user_id'</span> =&gt; $toUserId, <span class="hljs-string">'to_user_id'</span> =&gt; $me[<span class="hljs-string">'id'</span>]])-&gt;exists();
+            <span class="hljs-keyword">if</span> ($hasReceived) $canSend = <span class="hljs-keyword">true</span>;
+        }
+    } <span class="hljs-keyword">elseif</span> ($myLevel == <span class="hljs-number">70</span>) {
+        <span class="hljs-keyword">if</span> ($toUser[<span class="hljs-string">'level'</span>] == <span class="hljs-number">70</span> &amp;&amp; $toUser[<span class="hljs-string">'cd_cli'</span>] == $myCli) { $canSend = <span class="hljs-keyword">true</span>; } 
+        <span class="hljs-keyword">else</span> {
+            $hasReceived = (<span class="hljs-keyword">new</span> Query())-&gt;from(<span class="hljs-string">'sys_chat_messages'</span>)-&gt;where([<span class="hljs-string">'user_id'</span> =&gt; $toUserId, <span class="hljs-string">'to_user_id'</span> =&gt; $me[<span class="hljs-string">'id'</span>]])-&gt;exists();
+            <span class="hljs-keyword">if</span> ($hasReceived) $canSend = <span class="hljs-keyword">true</span>;
+        }
+    }
+    <span class="hljs-keyword">if</span> ($canSend) {
+        <span class="hljs-comment">// 1. Salvataggio nel DB</span>
+        Yii::$app-&gt;db-&gt;createCommand()-&gt;insert(<span class="hljs-string">'sys_chat_messages'</span>, [
+            <span class="hljs-string">'user_id'</span> =&gt; $me[<span class="hljs-string">'id'</span>],
+            <span class="hljs-string">'to_user_id'</span> =&gt; $toUserId ?: <span class="hljs-keyword">null</span>,
+            <span class="hljs-string">'message'</span> =&gt; $message,
+            <span class="hljs-string">'created_at'</span> =&gt; date(<span class="hljs-string">'Ymd H:i:s'</span>)
+        ])-&gt;execute();
+        <span class="hljs-comment">// --- 2. LOGICA INVIO EMAIL (OTTIMIZZATA) ---</span>
+        <span class="hljs-keyword">if</span> ($toUserId &amp;&amp; !<span class="hljs-keyword">empty</span>($toUser[<span class="hljs-string">'email'</span>])) {
+            
+            $isOffline = <span class="hljs-keyword">true</span>; 
+            
+            <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($toUser[<span class="hljs-string">'last_activity'</span>])) {
+                $lastActivityTime = strtotime($toUser[<span class="hljs-string">'last_activity'</span>]);
+                $currentTime = time();
+                $diffSeconds = $currentTime - $lastActivityTime;
+                <span class="hljs-comment">// DEBUG (Opzionale): puoi loggare la differenza per verificare i tempi</span>
+                <span class="hljs-comment">// Yii::error("Differenza secondi per utente $toUserId: " . $diffSeconds);</span>
+                <span class="hljs-comment">// Se l'attività è avvenuta negli ultimi 3 minuti (180 secondi), lo consideriamo online.</span>
+                <span class="hljs-comment">// Accorciamo un po' il tempo per essere più reattivi.</span>
+                <span class="hljs-keyword">if</span> ($diffSeconds &lt; <span class="hljs-number">180</span>) { 
+                    $isOffline = <span class="hljs-keyword">false</span>; 
+                }
+            }
+            <span class="hljs-keyword">if</span> ($isOffline) {
+                $testoEmail = <span class="hljs-string">"Ciao "</span> . $toUser[<span class="hljs-string">'username'</span>] . <span class="hljs-string">",\n\n"</span>
+                            . <span class="hljs-string">"Hai ricevuto un nuovo messaggio privato da "</span> . $myUsername . <span class="hljs-string">" sulla piattaforma:\n\n"</span>
+                            . <span class="hljs-string">"\""</span> . $message . <span class="hljs-string">"\"\n\n"</span>
+                            . <span class="hljs-string">"Accedi alla tua Dashboard per continuare la conversazione.\n\n"</span>
+                            . <span class="hljs-string">"Un saluto,\nIl Team di "</span> . Yii::$app-&gt;name;
+                <span class="hljs-keyword">try</span> {
+                    Yii::$app-&gt;mailer-&gt;compose()
+                        -&gt;setFrom([Yii::$app-&gt;params[<span class="hljs-string">'supportEmail'</span>] =&gt; Yii::$app-&gt;name . <span class="hljs-string">' - Chat'</span>])
+                        -&gt;setTo($toUser[<span class="hljs-string">'email'</span>])
+                        -&gt;setSubject(<span class="hljs-string">'Nuovo messaggio da '</span> . $myUsername)
+                        -&gt;setTextBody($testoEmail)
+                        -&gt;send();
+                } <span class="hljs-keyword">catch</span> (\<span class="hljs-keyword">Exception</span> $e) {
+                    Yii::error(<span class="hljs-string">"Errore invio email chat: "</span> . $e-&gt;getMessage());
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> [<span class="hljs-string">'status'</span> =&gt; <span class="hljs-string">'success'</span>];
+    }
+    <span class="hljs-keyword">return</span> [<span class="hljs-string">'status'</span> =&gt; <span class="hljs-string">'error'</span>, <span class="hljs-string">'message'</span> =&gt; <span class="hljs-string">'Permessi insufficienti.'</span>];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionUserList()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-staffchatcontroller.html#actionUserList()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionUserList()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>LISTA UTENTI FILTRATA PER PERMESSI</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-staffchatcontroller.html#actionUserList()-detail">actionUserList</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionUserList" role="button"
+           aria-expanded="false" aria-controls="collapseActionUserList">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionUserList">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php">ic <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionUserList</span><span class="hljs-params">()</span>
+</span>{
+    Yii::$app-&gt;response-&gt;format = \yii\web\Response::FORMAT_JSON;
+    $me = <span class="hljs-keyword">$this</span>-&gt;getMyInfo();
+    $myId = $me[<span class="hljs-string">'id'</span>];
+    $myLevel = (int)$me[<span class="hljs-string">'level'</span>];
+    $myCli = $me[<span class="hljs-string">'cd_cli'</span>];
+    <span class="hljs-comment">// Sottquery per contare i messaggi non letti inviati da ogni utente a ME</span>
+    $unreadSubquery = (<span class="hljs-keyword">new</span> Query())
+        -&gt;select([<span class="hljs-string">'user_id'</span>, <span class="hljs-string">'COUNT(*) AS cnt'</span>])
+        -&gt;from(<span class="hljs-string">'sys_chat_messages'</span>)
+        -&gt;where([<span class="hljs-string">'to_user_id'</span> =&gt; $myId, <span class="hljs-string">'is_read'</span> =&gt; <span class="hljs-number">0</span>])
+        -&gt;groupBy(<span class="hljs-string">'user_id'</span>);
+    <span class="hljs-comment">// Query principale sugli utenti</span>
+    $query = (<span class="hljs-keyword">new</span> Query())
+        -&gt;select([
+            <span class="hljs-string">'[[user]].id'</span>, 
+            <span class="hljs-string">'[[user]].username'</span>, 
+            <span class="hljs-string">'[[user]].[[file]]'</span>, 
+            <span class="hljs-string">'ISNULL(unread.cnt, 0) AS unread_count'</span> <span class="hljs-comment">// Per SQL Server usiamo ISNULL</span>
+        ])
+        -&gt;from(<span class="hljs-string">'[[user]]'</span>)
+        -&gt;leftJoin([<span class="hljs-string">'unread'</span> =&gt; $unreadSubquery], <span class="hljs-string">'unread.user_id = [[user]].id'</span>)
+        -&gt;where([<span class="hljs-string">'!='</span>, <span class="hljs-string">'[[user]].id'</span>, $myId]);
+    <span class="hljs-comment">// Subquery per i permessi (chi mi ha scritto)</span>
+    $whoWroteMe = (<span class="hljs-keyword">new</span> Query())
+        -&gt;select(<span class="hljs-string">'user_id'</span>)
+        -&gt;from(<span class="hljs-string">'sys_chat_messages'</span>)
+        -&gt;where([<span class="hljs-string">'to_user_id'</span> =&gt; $myId]);
+    <span class="hljs-keyword">if</span> ($myLevel == <span class="hljs-number">70</span>) {
+        $query-&gt;andWhere([
+            <span class="hljs-string">'OR'</span>,
+            [<span class="hljs-string">'AND'</span>, [<span class="hljs-string">'level'</span> =&gt; <span class="hljs-number">70</span>], [<span class="hljs-string">'cd_cli'</span> =&gt; $myCli]],
+            [<span class="hljs-string">'in'</span>, <span class="hljs-string">'[[user]].id'</span>, $whoWroteMe]
+        ]);
+    } 
+    <span class="hljs-keyword">elseif</span> ($myLevel == <span class="hljs-number">80</span>) {
+        $query-&gt;andWhere([
+            <span class="hljs-string">'OR'</span>,
+            [<span class="hljs-string">'in'</span>, <span class="hljs-string">'level'</span>, [<span class="hljs-number">70</span>, <span class="hljs-number">80</span>]],
+            [<span class="hljs-string">'in'</span>, <span class="hljs-string">'[[user]].id'</span>, $whoWroteMe]
+        ]);
+    }
+    <span class="hljs-keyword">return</span> $query-&gt;all();
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Fri, 12 Jun 2026 11:07:10 +0200</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

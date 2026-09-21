@@ -1,0 +1,1141 @@
+/* Global Styles & Body Layout */
+html, body, xaraltdesc {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins';
+  background-color: #f9f9f9;
+  color: #002c48;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-grow: 1; /* Allow content area to fill available space */
+    overflow: hidden; /* Prevent wrapper from scrolling, manage scrolling internally */
+    font-family: 'Poppins';
+}
+
+/* Header */
+.header-tourme {
+  background-color: #002c48;
+  color: #ffffff;
+  padding: 24px 16px;
+  font-size: 24px;
+  font-weight: bold;
+  flex-shrink: 0; /* Prevent header from shrinking */
+  z-index: 10; /* Ensure header stays above content */
+  position: relative; /* Needed for z-index */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 40px; /* Larghezza collassata */
+    background: linear-gradient(to bottom, #002c48, #004f7a);
+    color: #ffffff;
+    padding: 0 0 10px 0; /* Rimosso padding top, mantenuto bottom */
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+    font-family: 'Poppins';
+}
+.sidebar:not(.collapsed) {
+    width: auto; /* Larghezza espansa */
+}
+
+ /* Bottone Toggle in cima */
+#sidebar-toggle {
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    line-height: 0;
+    margin-top: 5px; /* Spazio di 5px dal top della sidebar */
+    margin-bottom: 5px; /* Spazio ridotto sotto */
+    transition: background-color 0.2s ease;
+}
+#sidebar-toggle:hover {
+     background: rgba(255, 255, 255, 0.1);
+}
+.sidebar:not(.collapsed) #sidebar-toggle {
+     margin-left: auto; /* Allineato a destra quando espanso */
+     margin-right: 10px; /* Margine destro quando espanso */
+}
+ .sidebar.collapsed #sidebar-toggle {
+     margin-left: auto; /* Centrato quando collassato */
+     margin-right: auto;
+ }
+ #sidebar-toggle i { width: 20px; height: 20px; }
+.main-sidebar{
+background: linear-gradient(to bottom, #002c48, #004f7a);
+
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+    /* Padding ridotto sotto */
+    padding: 0 15px 10px 15px;
+}
+ .sidebar.collapsed .sidebar-header .logo-text {
+    display: none;
+ }
+
+.sidebar-header .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.sidebar-header .logo-icon img {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    transition: width 0.3s ease, height 0.3s ease;
+    display: inline-block; object-fit: contain;
+}
+ .sidebar.collapsed .sidebar-header .logo-icon img {
+     width: 30px; height: 30px;
+ }
+ .sidebar:not(.collapsed) .sidebar-header .logo-icon img {
+     width: 96px; height: 96px; margin-bottom: 10px; border-radius: 8px;
+ }
+
+ .sidebar.collapsed .sidebar-header {
+     justify-content: center; padding: 0 5px 10px 5px; /* Padding sotto ridotto */
+     box-sizing: border-box;
+     border-bottom: none;
+ }
+ .sidebar:not(.collapsed) .sidebar-header {
+     padding: 0 0 10px 0; /* Padding solo sotto ridotto */
+     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+     flex-wrap: wrap;
+ }
+
+
+.sidebar-user {
+    /* Padding verticale ridotto */
+    padding: 10px 15px;
+    display: flex; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0; height: 0; overflow: hidden; white-space: nowrap;
+    transition: opacity 0.2s ease, height 0.3s ease, padding 0.3s ease;
+}
+.sidebar:not(.collapsed) .sidebar-user {
+    opacity: 1; height: auto; padding: 10px 15px; /* Padding verticale ridotto */
+}
+.sidebar-user img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; }
+.sidebar-user span {
+    font-size: 10px;
+}
+
+/* Nav tirata su */
+.sidebar nav { flex-grow: 1; margin-top: 10px; /* Margine ridotto */ }
+.sidebar ul { list-style: none; padding: 0; margin: 0; }
+.sidebar li a {
+    display: flex; align-items: center; padding: 12px 25px; color: #ffffff; text-decoration: none;
+    white-space: nowrap; overflow: hidden;
+    transition: background-color 0.2s ease, padding 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+ .sidebar.collapsed li a {
+     justify-content: center; padding: 12px 8px;
+ }
+
+.sidebar li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+ .sidebar:not(.collapsed) li a:hover {
+    transform: translateY(-3px); /* Aumentato */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Aumentato/scurito */
+ }
+
+ .sidebar li a i {
+    margin-right: 10px;
+    flex-shrink: 0; width: 24px; height: 24px; display: inline-block;
+    transition: margin 0.3s ease;
+ }
+ .sidebar.collapsed li a i { margin-right: 0; }
+
+.sidebar li a .menu-text {
+    opacity: 0; font-size: 14px; width: 0; overflow: hidden;
+    transition: opacity 0.2s ease, width 0.2s ease;
+}
+.sidebar:not(.collapsed) li a .menu-text {
+    opacity: 1; width: auto;
+    transition: opacity 0.2s ease 0.1s, width 0.2s ease 0.1s;
+}
+
+.sidebar-footer {
+    padding: 15px 25px; font-size: 12px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap; overflow: hidden; opacity: 0; height: 0;
+    transition: opacity 0.2s ease, height 0.3s ease, padding 0.3s ease;
+}
+.sidebar:not(.collapsed) .sidebar-footer {
+    opacity: 1; height: auto; padding: 15px 25px;
+}
+ .sidebar-footer i {
+     margin-right: 10px;
+     display: inline-block; width: 24px; text-align: center;
+  }
+
+/* Main Content Styles */
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto; /* Allow main content to scroll */
+    height: 100%;
+    background-color: #f9f9f9; /* Background for content area */
+}
+
+/* Card Styles */
+.card-tourme { /* Stile base per le card contenitore (usato da main, budget, summary, hotel-details, viaggi-details) */
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-tourme:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Stili per la sezione top cards (3 card affiancate) */
+.top-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne */
+    gap: 24px;
+    margin: 24px 16px 0; /* Margini */
+}
+.inner-card { /* Stile per le card interne */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Poppins';
+}
+ .inner-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+ }
+.inner-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    background-color: #eee; /* Sfondo fallback */
+}
+.inner-card .content {
+    padding: 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.inner-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #002c48;
+}
+.inner-card p {
+    font-size: 12px;
+    margin: 0 0 4px 0;
+    color: #555;
+    line-height: 1.4;
+}
+.inner-card .sub-commesse-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2px;
+    font-family: 'Poppins';
+}
+.inner-card .button-wrapper {
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+/* Stili per la sezione Main (tabella principale) */
+.main-card-section {
+    margin: 24px 16px;
+}
+.main-card-section .card-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #002c48;
+}
+.main-card-section nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-bottom: 2px;
+}
+
+/* Stili per la sezione Bottom Cards (Budget e Riepilogo) */
+.bottom-cards-wrapper {
+    display: flex;
+    gap: 24px;
+    margin: 24px 16px 24px 16px;
+    align-items: stretch;
+}
+.budget-card-container,
+.summary-container {
+    flex: 1;
+    width: auto;
+    margin: 0;
+    display: flex;
+}
+ .budget-card-container .card-tourme, /* Applica .card-tourme alle card interne */
+ .summary-container .card-tourme {
+     width: 100%;
+ }
+
+
+
+
+ 
+/* Stili specifici per Budget Card */
+.budget-card { padding: 16px; }
+.budget-card h3 { margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #002c48; font-weight: 600; }
+.budget-card table { margin-top: 0; font-size: 12px; }
+.budget-card table thead { background-color: #eef2f5; } /* Stile neutro */
+.budget-card table .totali { background-color: #f3f4f6; } /* Stile neutro */
+.budget-card table .totali td { font-weight: bold; }
+.budget-card th, .budget-card td { padding: 8px; font-size: 12px; }
+
+/* Stili specifici per Summary Card */
+.card-summary { padding: 16px; font-size: 13px; }
+.card-summary h3 { margin-top: 0; margin-bottom: 8px; font-size: 16px; font-weight: 600; }
+.card-summary table { margin-top: 8px; font-size: 12px; }
+.card-summary th, .card-summary td { padding: 8px; }
+.card-summary table thead { font-weight: normal; }
+.card-summary th { font-weight: normal; }
+.card-summary .hotel-summary thead { background-color: #dceaf2; } /* Azzurro chiaro per Hotel */
+.card-summary .viaggi-summary thead { background-color: #e8e5ea; } /* Grigio-viola chiaro per Viaggi */
+.card-summary .totali { background-color: #e3f2fd; font-size: 12px; } /* Azzurro chiaro per Hotel totali */
+.card-summary .totali td { font-weight: bold; }
+.card-summary .viaggi-summary .totali { background-color: #f1eef6; } /* Grigio-viola chiarissimo per Viaggi totali */
+
+/* Stili per Dettaglio Hotel Card */
+ .hotel-details-card {
+     margin: 0 16px 24px 16px;
+ }
+ .hotel-details-card .card-title {
+     margin-top: 0; margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #002c48; /* Blu scuro */
+ }
+ .hotel-details-card .table-wrapper { margin-bottom: 24px; }
+ .hotel-details-card .table-wrapper:last-child { margin-bottom: 0; }
+ .hotel-details-card table { font-size: 12px; margin-top: 8px; }
+ .hotel-details-card table th, .hotel-details-card table td { padding: 8px; }
+ .hotel-details-card table thead { background-color: #dceaf2; } /* Azzurro chiaro base */
+ .hotel-details-card .table-wrapper:first-child table thead { background-color: #9aabb6; } /* Scurito per prima tabella */
+ .hotel-details-card table tfoot .totali { background-color: #dceaf2; } /* Azzurro chiaro base */
+ .hotel-details-card .detailed-table-wrapper table tfoot .totali { background-color: #eef6fa; } /* Schiarito per seconda tabella */
+ .hotel-details-card table tfoot .totali td { font-weight: bold; color: #002c48; }
+ .detailed-table-wrapper { overflow-x: auto; }
+
+ /* Stili per Dettaglio Viaggi Card */
+ .viaggi-details-card {
+     margin: 0 16px 24px 16px;
+ }
+ .viaggi-details-card .card-title {
+     margin-top: 0; margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #938fa1; /* Grigio-viola */
+ }
+  .viaggi-details-card .table-wrapper { margin-bottom: 24px; }
+ .viaggi-details-card .table-wrapper:last-child { margin-bottom: 0; }
+ .viaggi-details-card table { font-size: 12px; margin-top: 8px; }
+ .viaggi-details-card table th, .viaggi-details-card table td { padding: 8px; }
+ .viaggi-details-card table thead { background-color: #e8e5ea; } /* Stile Viaggi */
+ .viaggi-details-card table tfoot .totali { background-color: #f1eef6; } /* Stile Viaggi */
+ .viaggi-details-card table tfoot .totali td { font-weight: bold; color: #002c48; }
+
+/* Stili Generali Bottoni */
+.button-base {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+   /* background-color: #002c48;*/
+        /* colore di sfondo aggiunto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(to right, #5c85b2, #002c48);
+                color: #ffffff;
+
+}
+.button-lift:hover {
+    transform: translateY(-3px); /* Effetto hover aggiornato */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Effetto hover aggiornato */
+}
+/* Bottoni specifici (es. Dettagli nelle top card) */
+.button-card-action {
+    border-radius: 8px;
+}
+/* Bottoni Navigazione Card Principale */
+.main-card-section nav button:not([style*="background-color"]) {
+    background: linear-gradient(to right, #5c85b2, #002c48); /* Nuovo gradiente */
+    color: #ffffff;
+}
+.main-card-section nav button:after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: inherit; opacity: 1; z-index: -1; transition: opacity 0.3s ease;
+}
+
+/* Stili Tabelle Generali */
+table {
+  width: 100%;
+  margin-top: 16px; /* Default margin, sovrascritto dove serve */
+  border-collapse: collapse;
+  font-size: 14px;
+font-family: 'Poppins';
+}
+th, td {
+  padding: 12px; /* Default padding, sovrascritto dove serve */
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  color: #002c48;
+  vertical-align: top; /* Allinea in alto per celle multiriga */
+text-align: center !important;
+}
+thead {
+  background-color: #eef2f5; /* Default thead background */
+}
+ th {
+   color: #002c48;
+   font-weight: 600;
+   white-space: nowrap;
+ }
+.totali { /* Stile base per righe totali */
+  font-weight: bold;
+}
+ .totali td { /* Applica bold ai td nella riga totali */
+    font-weight: bold;
+ }
+ .totali strong { /* Stile per eventuali tag strong nei totali */
+    font-weight: bold; /* Mantiene bold */
+    color: #002c48;
+ }
+.table-tothead
+{
+background-color: #eef2f5 !important;
+color: #002c48 !important;
+font-size: 13px !important;
+text-align: center !important;
+}
+.table-tothead2 {
+    background-color: #f3f4f6 !important;
+    color: #002c48 !important;
+    font-size: 13px !important;
+    text-align: center !important;
+}
+.table-totheadhotel {
+    background-color: #dceaf2 !important;
+    color: #002c48 !important;
+    font-size: 13px !important;
+    text-align: center !important;
+}
+.table-totheadhotelft {
+    background-color: #dceaf2 !important;
+    color: #002c48 !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+}
+.table-totheadviaggi {
+    background-color: #e8e5ea !important;
+    color: #002c48 !important;
+    font-size: 13px !important;
+    text-align: center !important;
+}
+.table-totheadviaggift {
+    background-color: #f1eef6 !important;
+    color: #002c48 !important;
+    font-size: 13px !important;
+    text-align: center !important;
+}
+/* Stili Pillole */
+.pill {
+  color: white;
+  padding: 6px 16px;
+  border-radius: 32px;
+  font-weight: bold;
+  display: inline-block;
+  white-space: nowrap;
+background-color: #002c48;
+    /* colore di sfondo aggiunto */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+/* Colore Pillola in Tabella Principale */
+.main-card-section .pill {
+    background-color: #002c48;
+    padding: 4px 12px; /* Padding ridotto */
+    font-size: 11px; /* Font ridotto */
+}
+.table-info{
+    background-color: #ffffff !important;
+}
+
+/* Footer */
+.footer-tourme {
+  background-color: #004f7a;
+  color: #ffffff;
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  clear: both; /* Clear floats if any were used */
+}
+.table-info,
+.table-info>td,
+.table-info>th {
+    background-color: #fdfdfd;
+}
+
+
+.my-header-class {
+    background-color: #dceaf2 !important;
+    color: #002c48 !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+}
+.my-summary-class {
+    background-color: #dceaf2 !important;
+    color: #002c48 !important;
+    font-size: 13px !important; 
+    font-weight: bold !important;
+}
+.my-summary-class2 {
+ background-color: #f1eef6 !important; 
+ color: #002c48 !important; 
+ font-size: 13px !important;
+ font-weight: bold !important;
+}
+/* Responsive adjustments */
+ @media (max-width: 992px) { /* Breakpoint per 3 card */
+     .top-cards-container {
+         grid-template-columns: 1fr 1fr; /* 2 colonne */
+     }
+     .main-card-section > table th, .main-card-section > table td { font-size: 11px; padding: 6px; }
+     .main-card-section .pill { padding: 3px 8px; font-size: 10px; }
+     .hotel-details-card table th, .hotel-details-card table td { font-size: 11px; padding: 6px; }
+     .viaggi-details-card table th, .viaggi-details-card table td { font-size: 11px; padding: 6px; }
+ }
+
+@media (max-width: 768px) {
+    /* Sidebar sempre collassata */
+  /*  .sidebar { width: 40px !important; }*/
+    .sidebar .sidebar-header .logo-text,
+    .sidebar .sidebar-header .user-info,
+    .sidebar .sidebar-user,
+    .sidebar li a .menu-text,
+    .sidebar .sidebar-footer { opacity: 0 !important; height: 0 !important; padding: 0 !important; width: 0 !important; overflow: hidden !important; }
+    .sidebar li a { justify-content: center !important; padding: 12px 8px !important; font-family: 'Poppins';}
+    .sidebar li a i { margin-right: 0 !important; }
+    .sidebar .sidebar-header { justify-content: center !important; padding: 0 5px 10px 5px !important; /* Ridotto padding sotto */}
+    .sidebar .sidebar-header .logo-icon img { margin-right: 0 !important; width: 30px !important; height: 30px !important;}
+    #sidebar-toggle { margin: 5px auto 5px auto !important; /* Margini verticali ridotti */ }
+
+
+    /* Stack top cards */
+     .top-cards-container {
+         grid-template-columns: 1fr; /* 1 colonna */
+     }
+
+    /* Stack bottom cards */
+    .bottom-cards-wrapper {
+        flex-direction: column;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    .budget-card-container, .summary-container {
+        flex: none; /* Rimuove flex grow */
+    }
+.full-screen-container {
+    width: calc(33.33% - 20px);
+    /* Calcoliamo la larghezza per fare 3 colonne in una riga */
+}
+
+    /* Altri aggiustamenti mobile */
+    .main-card-section nav { gap: 8px; }
+    .main-card-section nav button { flex-grow: 1; text-align: center; }
+    th, td { padding: 8px; font-size: 12px; } /* Reset padding/font generico */
+    .main-card-section > table th, .main-card-section > table td { padding: 8px; font-size: 12px; } /* Reset tabella principale */
+    .main-card-section .pill { padding: 4px 12px; font-size: 11px; } /* Reset pillola */
+    .header-tourme { font-size: 20px; padding: 16px; }
+    .card-tourme { padding: 16px; } /* Padding base per card */
+    .inner-card .content { padding: 16px; } /* Padding contenuto inner card */
+    .main-card-section { margin-left: 0; margin-right: 0; overflow-x: auto; } /* Scroll per tabella principale */
+    .hotel-details-card { margin-left: 0; margin-right: 0; }
+    .hotel-details-card table th, .hotel-details-card table td { font-size: 12px; padding: 8px; }
+    .viaggi-details-card { margin-left: 0; margin-right: 0; }
+    .viaggi-details-card table th, .viaggi-details-card table td { font-size: 12px; padding: 8px; }
+}
+ 
+@media screen and (width: 1024px) {
+
+    html,
+    body {
+        font-size: 95% !important;
+        /* Riduce la base del font per tutto il documento */
+    }
+
+    .card-title,
+    .table {
+        /*font-size: 95% !important;*/
+font-size:0.65rem !important;
+        /* Riduce la base del font per tutto il documento */
+    }
+
+    .table-tothead {
+        font-size: 95% !important;
+
+    }
+tbody{
+font-size: 0.65rem !important;
+}
+    .thead-dark,
+    td,
+    th,
+    .btn,
+    .panel-title,
+    .kv-panel-after {
+        font-size: inherit !important;
+        /* Eredita dalla nuova base */
+    }
+
+    .card-body {
+        padding: 0.85rem !important;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.4rem !important;
+    }
+
+    .fas {
+        font-size: smaller !important;
+    }
+
+    .form-control,
+    .select2-selection {
+        font-size: smaller !important;
+    }
+
+    /* For kartik GridView components */
+    .kv-panel-before,
+    .kv-panel-after {
+        font-size: smaller !important;
+    }
+    .table-info{
+        font-size: 80% !important;
+    }
+        .pill {
+            color: white;
+            padding: 3px 8px;
+            border-radius: 16px;
+            font-weight: bold;
+            display: inline-block;
+            white-space: nowrap;
+            background-color: #002c48;
+            /* colore di sfondo aggiunto */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+    
+        /* Colore Pillola in Tabella Principale */
+        .main-card-section .pill {
+            background-color: #002c48;
+            padding: 2px 6px;
+            /* Padding ridotto */
+            font-size: 8px;
+            /* Font ridotto */     }
+                        .table-tothead2 {
+                            background-color: #f3f4f6 !important;
+                            color: #002c48 !important;
+                            font-size: 8px !important;
+                            text-align: center !important;       }
+
+
+
+}
+
+@media screen and (width: 1080px)  {
+html,
+    body {
+        font-size: 85% !important;
+        /* Riduce la base del font per tutto il documento */
+    }
+    .card-title,
+    .table{
+            font-size: 85% !important;
+            /* Riduce la base del font per tutto il documento */
+        }
+     .table-tothead{
+font-size: 85% !important;
+
+     }
+    .thead-dark,
+    td,
+    th,
+    .btn,
+    .panel-title,
+ .kv-panel-after {
+     font-size: inherit !important;
+     /* Eredita dalla nuova base */
+ }
+
+    .card-body {
+        padding: 0.85rem !important;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.4rem !important;
+    }
+
+    .fas {
+        font-size: smaller !important;
+    }
+
+    .form-control,
+    .select2-selection {
+        font-size: smaller !important;
+    }
+
+    /* For kartik GridView components */
+    .kv-panel-before,
+    .kv-panel-after {
+        font-size: smaller !important;
+    }
+        .table-tothead {
+            background-color: #eef2f5 !important;
+            color: #002c48 !important;
+            font-size: 8px !important;
+            text-align: center !important;
+        }
+    
+        .table-tothead2 {
+            background-color: #f3f4f6 !important;
+            color: #002c48 !important;
+            font-size: 8px !important;
+            text-align: center !important;
+        }
+    
+        .table-totheadhotel {
+            background-color: #dceaf2 !important;
+            color: #002c48 !important;
+            font-size: 8px !important;
+            text-align: center !important;
+        }
+    
+        .table-totheadhotelft {
+            background-color: #dceaf2 !important;
+            color: #002c48 !important;
+            font-size: 8px !important;
+            text-align: center !important;
+            font-weight: bold !important;
+        }
+    
+        .table-totheadviaggi {
+            background-color: #e8e5ea !important;
+            color: #002c48 !important;
+            font-size: 8px !important;
+            text-align: center !important;
+        }
+    
+        .table-totheadviaggift {
+            background-color: #f1eef6 !important;
+            color: #002c48 !important;
+            font-size: 8px !important;
+            text-align: center !important;
+        }
+                div.dt-container {
+                    width: 35%;
+                    margin: 0;
+                }
+                                .pill {
+                                    color: white;
+                                    padding: 3px 8px;
+                                    border-radius: 16px;
+                                    font-weight: bold;
+                                    display: inline-block;
+                                    white-space: nowrap;
+                                    background-color: #002c48;
+                                    /* colore di sfondo aggiunto */
+                                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                }
+                
+                                .pill:hover {
+                                    transform: translateY(-2px);
+                                    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+                                }
+                
+                                /* Colore Pillola in Tabella Principale */
+                                .main-card-section .pill {
+                                    background-color: #002c48;
+                                    padding: 2px 6px;
+                                    /* Padding ridotto */
+                                    font-size: 8px;
+                                    /* Font ridotto */     }
+
+                                                                        .table-info {
+                                                                            font-size: 80% !important;                               }
+}
+@media screen and (width: 1366px) {
+
+    html,
+    body {
+        font-size: 85% !important;
+        /* Riduce la base del font per tutto il documento */
+    }
+
+    .card-title,
+    .table {
+        font-size: 85% !important;
+        /* Riduce la base del font per tutto il documento */
+    }
+
+    .table-tothead {
+        font-size: 85% !important;
+
+    }
+
+    .thead-dark,
+    td,
+    th,
+    .btn,
+    .panel-title,
+    .kv-panel-after {
+        font-size: inherit !important;
+        /* Eredita dalla nuova base */
+    }
+
+    .card-body {
+        padding: 0.85rem !important;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.4rem !important;
+    }
+
+    .fas {
+        font-size: smaller !important;
+    }
+
+    .form-control,
+    .select2-selection {
+        font-size: smaller !important;
+    }
+
+    /* For kartik GridView components */
+    .kv-panel-before,
+    .kv-panel-after {
+        font-size: smaller !important;
+    }
+
+    .table-tothead {
+        background-color: #eef2f5 !important;
+        color: #002c48 !important;
+        font-size: 10px !important;
+        text-align: center !important;
+    }
+
+    .table-tothead2 {
+        background-color: #f3f4f6 !important;
+        color: #002c48 !important;
+        font-size: 10px !important;
+        text-align: center !important;
+    }
+
+    .table-totheadhotel {
+        background-color: #dceaf2 !important;
+        color: #002c48 !important;
+        font-size: 10px !important;
+        text-align: center !important;
+    }
+
+    .table-totheadhotelft {
+        background-color: #dceaf2 !important;
+        color: #002c48 !important;
+        font-size: 10px !important;
+        text-align: center !important;
+        font-weight: bold !important;
+    }
+
+    .table-totheadviaggi {
+        background-color: #e8e5ea !important;
+        color: #002c48 !important;
+        font-size: 10px !important;
+        text-align: center !important;
+    }
+
+    .table-totheadviaggift {
+        background-color: #f1eef6 !important;
+        color: #002c48 !important;
+        font-size: 10px !important;
+        text-align: center !important;
+    }
+        div.dt-container {
+            width: 45%;
+            margin: 0;
+        }
+                .pill {
+                    color: white;
+                    padding: 3px 8px;
+                    border-radius: 16px;
+                    font-weight: bold;
+                    display: inline-block;
+                    white-space: nowrap;
+                    background-color: #002c48;
+                    /* colore di sfondo aggiunto */
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+        
+                .pill:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+                }
+        
+                /* Colore Pillola in Tabella Principale */
+                .main-card-section .pill {
+                    background-color: #002c48;
+                    padding: 2px 6px;
+                    /* Padding ridotto */
+                    font-size: 8px;
+                    /* Font ridotto */
+                }
+
+                                .table-info {
+                                    font-size: 80% !important;           }             
+}
+@media screen and (min-width: 1440px) and (max-width:1919) {
+
+html,
+    body {
+        font-size: 90% !important;
+        /* Riduce la base del font per tutto il documento */
+    }
+
+    .card-title,
+    .table {
+        font-size: 90% !important;
+        /* Riduce la base del font per tutto il documento */
+    }
+
+    .table-tothead {
+        font-size: 90% !important;
+
+    }
+    .thead-dark,
+    td,
+    th,
+    .btn,
+    .panel-title,
+    .panel-heading {
+        font-size: calc(100% - 2px) !important;
+    }
+
+    .card-body {
+        padding: 0.75rem !important;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.3rem !important;
+    }
+
+    .fas {
+        font-size: smaller !important;
+    }
+
+    .form-control,
+    .select2-selection {
+        font-size: smaller !important;
+    }
+
+    /* For kartik GridView components */
+    .kv-panel-before,
+    .kv-panel-after {
+        font-size: smaller !important;
+    }
+        div.dt-container {
+            width: 53% !important;
+            margin: 0;
+        }
+}
+
+
+@media screen and (min-width: 1920px) {
+
+    .card-title,
+    .table,
+    .thead-dark,
+    td,
+    th,
+    .btn,
+    .panel-title,
+    .panel-heading {
+        font-size: calc(100% - 2px) !important;
+    }
+
+    .card-body {
+        padding: 0.85rem !important;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.2rem !important;
+    }
+
+    .fas {
+        font-size: smaller !important;
+    }
+
+    .form-control,
+    .select2-selection {
+        font-size: smaller !important;
+    }
+
+    /* For kartik GridView components */
+    .kv-panel-before,
+    .kv-panel-after {
+        font-size: smaller !important;
+    }
+        div.dt-container {
+        width: 70% !important;
+        margin: 0;
+    }
+
+}
+
+        .scrollable-table-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+                .scrollable-table-container thead th {
+                    position: sticky;
+                    top: 0;
+                    background-color: white;
+                    /* o il colore che preferisci */
+                    z-index: 2;
+                }
+
+                                .scroll-container {
+                                    max-height: 180px;
+                                    overflow-y: scroll;
+                                    /* Fissa e sempre visibile */
+                                    scrollbar-width: thin;
+                                    /* Solo Firefox */
+                                    scrollbar-color: #888 #f1f1f1;
+                                    /* Solo Firefox */
+                                }
+                
+                                /* Chrome, Edge, Safari */
+                                .scroll-container::-webkit-scrollbar {
+                                    width: 10px;
+                                }
+                
+                                .scroll-container::-webkit-scrollbar-track {
+                                    background: #f1f1f1;
+                                }
+                
+                                .scroll-container::-webkit-scrollbar-thumb {
+                                    background-color: #888;
+                                    border-radius: 10px;
+                                    border: 2px solid #f1f1f1;
+                                }
+                
+                                .scroll-container::-webkit-scrollbar-thumb:hover {
+                                    background: #555;
+                                }
+                            
+                                .nuova-tappa {
+                                    background-color: #d4edda; /* verde chiaro */
+                                    transition: background-color 1s ease;
+                                }
+ .content-header{
+    background-color: #f9f9f9;
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: bold;
+    color: #002c48;
+    display: flex;
+    align-items: left;
+    width: 0px;
+ }
+
+
+ @media screen and (width: 1080px) {
+     div.dt-container {
+         width: 35% !important;
+         margin: 0;
+     }
+ }
+
+ 
+ @media screen and (width: 1720px) {
+     div.dt-container {
+         width: 57% !important;
+         margin: 0;
+     }
+ }
+
+ @media screen and (width: 1024px) {
+     div.dt-container {
+         width: 35% !important;
+         margin: 0;
+     }
+ }
+
+ @media screen and (width: 812px) {
+     div.dt-container {
+         width: 28% !important;
+         margin: 0;
+     }
+ }
+
+ @media screen and (width: 1366px) {
+     div.dt-container {
+         width: 45% !important;
+         margin: 0;
+     }
+     
+ }
+  @media screen and (width: 1536px) {
+      div.dt-container {
+          width: 45% !important;
+          margin: 0;
+      }
+
+  }
+
+
+  

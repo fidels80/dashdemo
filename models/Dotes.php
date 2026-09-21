@@ -11,10 +11,13 @@ use Yii;
  * @property string $Cd_Do
  * @property string $TipoDocumento Tipologia di documento. ('F', 
  * @property int $DoBitMask
- * @property string $Cd_CF Codice cliente / fornitore. U
+ * @property string $Cd_CF Codice cliente / fornitore.
+ U
  * @property string|null $Cd_CF_Fatt Cliente / Fornitore cui fattua
  * @property string $Cd_CF_Fatt_R
- * @property string $CliFor  C = Documento Cliente F = D
+ * @property string $CliFor 
+ C = Documento Cliente
+ F = D
  * @property string|null $Cd_Aliquota_E
  * @property string|null $Cd_CFDest
  * @property string|null $Cd_CFSede
@@ -31,7 +34,8 @@ use Yii;
  * @property int $ModificabilePdf
  * @property string|null $NumeroDoc Numero documento formato da 6 
  * @property int $NumeroDocI
- * @property string $DataDoc Data documento. Se non specif
+ * @property string $DataDoc Data documento.
+ Se non specif
  * @property string|null $Cd_MGEsercizio Codice esercizio di magazzino.
  * @property string|null $EsAnno
  * @property string|null $Iban
@@ -40,37 +44,53 @@ use Yii;
  * @property string|null $Cd_CGConto_Banca
  * @property string|null $NumeroDocRif Numero del documento del Clien
  * @property string|null $DataDocRif Data documento del Cliente/For
- * @property string|null $DataConsegna Data Consegna. Attenzione: no
- * @property string|null $Cd_VL Codice Valuta ABL Default: CF
+ * @property string|null $DataConsegna Data Consegna.
+ Attenzione: no
+ * @property string|null $Cd_VL Codice Valuta
+ ABL Default: CF
  * @property int $Decimali Numero di decimali della valut
  * @property int $DecimaliPrzUn Numero di decimali della valut
- * @property float $Cambio Valore del cambio. Si noti ch
+ * @property float $Cambio Valore del cambio.
+ Si noti ch
  * @property string|null $Cd_MGCausale
  * @property int $MagPFlag
  * @property int $MagAFlag
  * @property string|null $Cd_LS_1
  * @property string|null $Cd_LS_2
  * @property string|null $Cd_LS_C
- * @property string|null $Cd_PG Codice di pagamento. ABL Defa
+ * @property string|null $Cd_PG Codice di pagamento.
+ ABL Defa
  * @property string|null $DataPag
- * @property string|null $Cd_Agente_1 Codice agente 1. ABL Default:
- * @property string|null $Cd_Agente_2 Codice agente 2. ABL Default:
- * @property string|null $Cd_CFZona Codice Zona. ABL Default: CF.
+ * @property string|null $Cd_Agente_1 Codice agente 1.
+ ABL Default:
+ * @property string|null $Cd_Agente_2 Codice agente 2.
+ ABL Default:
+ * @property string|null $Cd_CFZona Codice Zona.
+ ABL Default: CF.
  * @property string|null $Cd_DoSottoCommessa Codice Commessa.
  * @property string $ScontoCassa Sconto Cassa espresso come str
  * @property string|null $NoteXML
- * @property string|null $Cd_DoTrasporto Causale trasporto. Default da
- * @property string|null $Cd_DoSped Codice spedizione. Default da
- * @property string|null $Cd_DoPorto Codice porto. Default da DO.
- * @property string|null $Cd_DoAspBene Aspetto esteriore dei beni. D
- * @property string|null $Cd_DoVettore_1 Codice primo vettore. ABL: De
- * @property string|null $Cd_DoVettore_2 Codice secondo vettore. ABL: 
+ * @property string|null $Cd_DoTrasporto Causale trasporto.
+ Default da
+ * @property string|null $Cd_DoSped Codice spedizione.
+ Default da
+ * @property string|null $Cd_DoPorto Codice porto.
+ Default da DO.
+ * @property string|null $Cd_DoAspBene Aspetto esteriore dei beni.
+ D
+ * @property string|null $Cd_DoVettore_1 Codice primo vettore.
+ ABL: De
+ * @property string|null $Cd_DoVettore_2 Codice secondo vettore.
+ ABL: 
  * @property string|null $Vettore1DataOra Data ritiro primo vettore.
  * @property string|null $Vettore2DataOra Data ritiro secondo vettore.
  * @property string|null $TrasportoDataora
- * @property string|null $Cd_DoCaricatore Codice caricatore. ABL: Defau
- * @property string|null $Cd_DoCommittente Codice committente. ABL: Defa
- * @property string|null $Cd_DoProprietarioMerce Codice prorietario merce. ABL
+ * @property string|null $Cd_DoCaricatore Codice caricatore.
+ ABL: Defau
+ * @property string|null $Cd_DoCommittente Codice committente.
+ ABL: Defa
+ * @property string|null $Cd_DoProprietarioMerce Codice prorietario merce.
+ ABL
  * @property int $Colli Numero colli.
  * @property float $PesoLordo Peso Lordo.
  * @property float $PesoNetto Peso Netto.
@@ -189,7 +209,6 @@ class Dotes extends \yii\db\ActiveRecord
             [['Cd_LS_C'], 'exist', 'skipOnError' => true, 'targetClass' => LS::className(), 'targetAttribute' => ['Cd_LS_C' => 'Cd_LS']],
             [['Cd_Aliquota_E'], 'exist', 'skipOnError' => true, 'targetClass' => Aliquota::className(), 'targetAttribute' => ['Cd_Aliquota_E' => 'Cd_Aliquota']],
             [['Cd_DoAspBene'], 'exist', 'skipOnError' => true, 'targetClass' => DOAspBene::className(), 'targetAttribute' => ['Cd_DoAspBene' => 'Cd_DOAspBene']],
-            [['Cd_Do'], 'exist', 'skipOnError' => true, 'targetClass' => DO::className(), 'targetAttribute' => ['Cd_Do' => 'Cd_Do']],
             [['Cd_DoPorto'], 'exist', 'skipOnError' => true, 'targetClass' => DOPorto::className(), 'targetAttribute' => ['Cd_DoPorto' => 'Cd_DOPorto']],
             [['Cd_DoSottoCommessa'], 'exist', 'skipOnError' => true, 'targetClass' => DOSottoCommessa::className(), 'targetAttribute' => ['Cd_DoSottoCommessa' => 'Cd_DOSottoCommessa']],
             [['Cd_DoSped'], 'exist', 'skipOnError' => true, 'targetClass' => DOSped::className(), 'targetAttribute' => ['Cd_DoSped' => 'Cd_DOSped']],
@@ -283,7 +302,8 @@ Default da',
             'Cd_DoSped' => 'Codice spedizione.
 Default da',
             'Cd_DoPorto' => 'Codice porto.
-Default da DO.',
+Default da DO.
+',
             'Cd_DoAspBene' => 'Aspetto esteriore dei beni.
 D',
             'Cd_DoVettore_1' => 'Codice primo vettore.

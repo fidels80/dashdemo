@@ -104,7 +104,7 @@ $this->title = '';
     <h1><?php // Html::encode('Scadenze') ?></h1>
 
     <p>
-        <?php 
+        <?php  $isFa='';
         //Html::a('Create Payments', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
@@ -185,7 +185,7 @@ $this->title = '';
             //'xid_testa',
             //'cd_cli',
             ['attribute'=>'Cd_PG',
-        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
+        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white','style'=>'color:black;'],
           'label'=>'Cod.PG'
           ],
            // 'DataScadenza',
@@ -193,7 +193,7 @@ $this->title = '';
             [
                 'attribute'=>'DataScadenza',
                 //	'header' => 'Profit Margin<br>(%)', 
-	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white','style'=>'color:black;'],
                 'label' => 'Data Scad.', 
                 'width'=>'200px',
                 'value'=> function ($model, $key, $index, $widget) {
@@ -237,7 +237,7 @@ $this->title = '';
            // 'DataPagamento',
             [
                 'attribute'=>'DataPagamento',
-                	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+                	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white','style'=>'color:black;'],
                 'label' => 'Data Pg.', 
                 'width'=>'200px',
                 'value'=> function ($model, $key, $index, $widget) {
@@ -280,7 +280,7 @@ $this->title = '';
             //'DataFattura',
             [
                 'attribute'=>'DataFattura',
-                	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+                	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white','style'=>'color:black;'],
                 'label' => 'Data FT.', 
                 'width'=>'200px',
                 'value'=> function ($model, $key, $index, $widget) {
@@ -323,17 +323,17 @@ $this->title = '';
 
        
                         ['attribute'=>'NumFattura',
-        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
+        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white','style'=>'color:black;'],
           'label'=> 'Num. Ft'
           ],
                           ['attribute'=>'Protocollo',
-        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white'],
+        	'headerOptions' => ['class' => 'card-header bg-'.$usrgrid.' text-white','style'=>'color:black;'],
           'label'=> 'Protocollo'
           ],
            // 'Pagata',
 
             ['attribute'=>'Pagata', 
-            	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+            	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white','style'=>'color:black;'],
             'width'=>'50px',
            
              'class' => '\kartik\grid\BooleanColumn',
@@ -359,18 +359,18 @@ $this->title = '';
      
            
                                   ['attribute'=>   'NumEffetto',
-        	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white'],
+        	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-white','style'=>'color:black;'],
           'label'=>    'NumEffetto'
           ],
                                 ['attribute'=> 'TotEffetti',
-        	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-black'],
+        	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-black','style'=>'color:black;'],
           'label'=>  'TotEffetti',
           ],
 
             ['attribute'=>'ImportoV',
             'class'=>'\kartik\grid\DataColumn',
             'format'=>'currency',
-            'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-black'],
+            'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-black','style'=>'color:black;'],
             'pageSummary' => true,
             
        /*     'pageSummaryFormat'=> 
@@ -385,7 +385,7 @@ $this->title = '';
             'class'=>'\kartik\grid\DataColumn',
           'format'=>'currency',
           'vAlign' => 'middle',
-   	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-black'],
+   	'headerOptions' => ['class' =>  'card-header bg-'.$usrgrid.' text-black','style'=>'color:black;'],
      'value'=>function ($model, $key, $index, $widget){
        $t = 0;
 
@@ -451,3 +451,7 @@ $this->title = '';
 
 
 </div>
+
+
+
+

@@ -54,6 +54,11 @@ class ElemailController extends Controller
     public function actionView($id)
     {
         $this->getuser();
+         $model = $this->findModel($id);
+      //   $model->setAttribute('letto',true);
+         $model->setAttribute("letto", 1);
+
+         $model->save();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -69,7 +74,7 @@ class ElemailController extends Controller
         $model = new Elemail();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+           // return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -131,70 +136,152 @@ class ElemailController extends Controller
     }
 
 
+public function actionAnsmail($id){
+$this->getuser();
+$model = new Elemail();
+
+if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    return $this->redirect(['index',['cascade'=>true,]]);
+}
+
+    return $this->render('create', [
+            'model' => $model, 'id'=>$id,
+        ]);
+    }
+
+
+
 
     public function getuser(){
-        $usrid = Yii::$app->user->Id;
-        
-        if ($usrid !== null) {
-            $ris = (new \yii\db\Query())
-                ->select(['level', 'cd_cli','moduli'])
-                ->from('user')
-                ->where(['id' => $usrid])
-                ->one();
-        //->AsArray();
-        $nmod = (str_replace('app\controllers', '', str_replace('Controller', '', __CLASS__)));
-        $nmod = (str_replace('\\', '', $nmod));
-        //yii::error('---------{'.$nmod.'}----');
-        
-        $nmod=strtoupper($nmod);
-        //yii::error($nmod);
-        
-        $mn=(new \yii\db\Query())
-                ->select(['voce', 'url','Nmodulo'])
-                ->from('xmenu')
-                ->where(['upper(Nmodulo)' => strtoupper($nmod)])
-                ->one();
-        }
-        
-         $arrmod=unserialize($ris['moduli']);
-        $go=0;
-        if ($ris['level'] <>100) {
-            foreach ($arrmod as  $value) {
-             //   yii::error('---------{'.strtoupper($value).'}----{'.strtoupper($mn['voce']).'}----{');
-                if (strtoupper($value)==strtoupper($mn['voce'])) {
-                 $go=1;
-                   }
+   $usrid = Yii::$app->user->Id;
+
+if ($usrid !== null) {
+    $ris = (new \yii\db\Query())
+        ->select(['level', 'cd_cli', 'moduli'])
+        ->from('user')
+        ->where(['id' => $usrid])
+        ->one();
+//->AsArray();
+    $nmod = (str_replace('app\controllers', '', str_replace('Controller', '', __CLASS__)));
+    $nmod = (str_replace('\\', '', $nmod));
+//yii::error('---------{'.$nmod.'}----');
+
+    $nmod = strtoupper($nmod);
+//yii::error($nmod);
+
+    $mn = (new \yii\db\Query())
+        ->select(['voce', 'url', 'Nmodulo'])
+        ->from('xmenu')
+        ->where(['upper(Nmodulo)' => strtoupper($nmod)])
+        ->one();
+}
+
+$arrmod = unserialize($ris['moduli']);
+$go = 0;
+if ($ris['level'] != 100) {
+    if (is_array($arrmod)) {
+        foreach ($arrmod as $value) {
+            //   yii::error('---------{'.strtoupper($value).'}----{'.strtoupper($mn['voce']).'}----{');
+            if (strtoupper($value) == strtoupper($mn['voce'])) {
+                $go = 1;
             }
-        }else{
-            $go=1;
         }
-        //var_dump($ris);
-        if (Yii::$app->user->isGuest || $ris['level'] == null) {
-        
-        $messaggio =
-            "<h1>Attenzione</h1>\n\n"
-            . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
-        
-        exit($messaggio);
-        
-        }
-        
-        if($go==0){
-        
-        $messaggio =
-            "<h1>Attenzione</h1>\n\n"
-            . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
-        
-        exit($messaggio);
-        
-        
-        
-        }
+    }
+
+} else {
+    $go = 1;
+}
+//var_dump($ris);
+if (Yii::$app->user->isGuest || $ris['level'] == null) {
+
+    $messaggio =
+        "<h1>Attenzione</h1>\n\n"
+        . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+    exit($messaggio);
+
+}
+
+if ($go == 0) {
+
+    $messaggio =
+        "<h1>Attenzione</h1>\n\n"
+        . "<p><strong>NON SEI AUTORIZZATO AD ACCEDERE!!!.</strong></p>\n";
+
+    exit($messaggio);
+
+}
+
         
         
         }
 
 
+
+function print_children($id)
+{
+    $children = elemail::find()->where(['id_padre' => $id])->all();
+    //query("SELECT * FROM `table` WHERE `parentId` = " . (int) $id);
+    if (!empty($children)) {
+        echo '<ul>';
+        foreach ($children as $child) {
+      echo '<li>';
+
+            echo '<table id="product-parcels" class="table table-condensed table-bordered" >';
+echo '<thead>';
+echo '<tr>';
+echo '<th width=10% >Data</th>';
+echo '<th width=15% >email</th>';
+echo '<th width=15% >Soggetto</th>';
+echo '<th width=20% >Corpo</th>';
+echo '<th width=20% >id</th>';
+echo '<th width=20% >id_padre</th>';
+echo '</tr>';
+echo '</thead>';
+echo '<tbody>';
+
+            
+            /* 'Data' .$child['data'] .
+             ' Email '. $child['email'].
+            ' Soggetto: '.$child['Soggetto'].
+            ' Messaggio '.$child['Corpo'];
+          */
+
+echo '<td>';
+echo $child['data'];
+echo '</td>';
+echo '<td>';
+echo $child['email'];
+echo '</td>';
+echo '<td>';
+echo $child['Soggetto'];
+echo '</td>';
+echo '<td>';
+echo $child['Corpo'];
+echo '</td>';
+echo '<td>';
+echo $child['id'];
+echo '</td>';
+
+echo '<td>';
+echo $child['id_padre'];
+echo '</td>';
+echo '<tr id="product-new-parcel-block" style="display: none;">';
+echo '</tr>';
+echo '</tbody>';
+echo '</table>';
+
+          
+          
+            $this->print_children($child['id']);
+            echo '</li>';
+        }
+        echo '</ul>';
+    }
+ 
+   // echo  "<H3>hello world</h3>";
+
+}
 
 
 }

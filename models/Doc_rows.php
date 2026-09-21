@@ -16,6 +16,8 @@ use Yii;
  * @property float|null $prezzo
  * @property string|null $sconto
  * @property string|null $note
+ *  @property float|null $totale
+ *  @property float|null $iva
  */
 class Doc_rows extends \yii\db\ActiveRecord
 {
@@ -35,9 +37,10 @@ class Doc_rows extends \yii\db\ActiveRecord
         return [
             [['id', 'doc_head_id', 'note'], 'string'],
             [['doc_head_id'], 'required'],
-            [['qta', 'prezzo'], 'number'],
+            [['qta', 'prezzo','totale','nriga','prz_unit','prz_tot'], 'number'],
             [['cd_art'], 'string', 'max' => 50],
             [['cd_doc'], 'string', 'max' => 3],
+            [['iva'], 'string', 'max' => 3 ],
             [['numdoc', 'cd_cli', 'nrgazzetta','nrinserzione'], 'string', 'max' => 10],
             [['data','datacons'], 'safe'],
             [['descrizione'], 'string', 'max' => 200],
@@ -45,6 +48,7 @@ class Doc_rows extends \yii\db\ActiveRecord
             [['sconto'], 'string', 'max' => 10],
             [['id'], 'unique'],
             [['f_row','nriga'],'integer'],
+            ['iva','trim']
         ];
     }
 

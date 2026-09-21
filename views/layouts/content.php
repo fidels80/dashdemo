@@ -21,12 +21,13 @@ use yii\bootstrap4\Breadcrumbs;
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <?php
-                    echo Breadcrumbs::widget([
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    /*echo Breadcrumbs::widget([
+                        'links' => isset($this->params['breadcrumbs']) 
+                        ? $this->params['breadcrumbs'] : [],
                         'options' => [
                             'class' => 'breadcrumb float-sm-right'
                         ]
-                    ]);
+                    ])*/;
                     ?>
                 </div><!-- /.col -->
             </div><!-- /.row -->

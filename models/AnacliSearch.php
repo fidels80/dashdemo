@@ -5,7 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Anacli;
-
+use app\models\User;
 /**
  * AnacliSearch represents the model behind the search form of `app\models\Anacli`.
  */
@@ -54,7 +54,8 @@ class AnacliSearch extends Anacli
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $subQuery = user::find()->select('cd_cli')->distinct();
+        $query->where(['in','cd_cli',$subQuery]);
         // grid filtering conditions
         $query->andFilterWhere(['like', 'cd_cli', $this->cd_cli])
             ->andFilterWhere(['like', 'Desk', $this->Desk])

@@ -18,7 +18,9 @@ class UserSearch extends User
     {
         return [
             [['id', 'created_at', 'updated_at', 'level'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'status'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token',
+             'email', 'status'], 'safe'],
+             [['ischief', 'cd_agente'], 'safe'],
         ];
     }
 
@@ -40,9 +42,9 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        $cf=  Yii::$app->user->identity->id;
-        if(yii::$app->user->identity->level==100){
-        $query = User::find(); 
+        $cf=  Yii::$app->user->identity->id ?? null;
+        if(yii::$app->user->identity->level>=81){
+        $query = User::find()->where(['<=', 'level', 81]); 
 
         }  else{
             $query = User::find()//->all();
@@ -75,7 +77,10 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])
             ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'status', $this->status]);
+            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like',            'ischief', $this->ischief])
+             ->andFilterWhere(['like',  'cd_agente', $this->cd_agente]);
+
 
         return $dataProvider;
     }

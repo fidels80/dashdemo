@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9825ae7b/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/36da475c/solarized-light.css" rel="stylesheet">
+<link href="./assets/985a85c7/style.css" rel="stylesheet">
+<script src="./assets/3886a169/jquery.js"></script>
+<script src="./assets/9825ae7b/js/bootstrap.js"></script>
+<script src="./assets/9e7db211/jssearch.js"></script>    <title>StatisticheController, app\controllers\StatisticheController - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w1186" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w1186-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w1186-collapse" class="collapse navbar-collapse"><ul id="w1187" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item active" href="#navigation-1182" data-toggle="collapse" data-parent="#navigation">app\controllers <b class="caret"></b></a><div id="navigation-1182" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./app-controllers-agendacontroller.html">AgendaController</a>
+<a class="list-group-item" href="./app-controllers-agendafilescontroller.html">AgendafilesController</a>
+<a class="list-group-item" href="./app-controllers-agenticontroller.html">AgentiController</a>
+<a class="list-group-item" href="./app-controllers-agentifilescontroller.html">AgentifilesController</a>
+<a class="list-group-item" href="./app-controllers-allfilescontroller.html">AllfilesController</a>
+<a class="list-group-item" href="./app-controllers-anaclicontroller.html">AnacliController</a>
+<a class="list-group-item" href="./app-controllers-arcontroller.html">ArController</a>
+<a class="list-group-item" href="./app-controllers-arcacontroller.html">ArcaController</a>
+<a class="list-group-item" href="./app-controllers-blkinscontroller.html">BlkinsController</a>
+<a class="list-group-item" href="./app-controllers-calcontroller.html">CalController</a>
+<a class="list-group-item" href="./app-controllers-doc_headcontroller.html">Doc_headController</a>
+<a class="list-group-item" href="./app-controllers-doc_rowscontroller.html">Doc_rowsController</a>
+<a class="list-group-item" href="./app-controllers-docommessacontroller.html">DocommessaController</a>
+<a class="list-group-item" href="./app-controllers-dosottocommessacontroller.html">DosottocommessaController</a>
+<a class="list-group-item" href="./app-controllers-elemailcontroller.html">ElemailController</a>
+<a class="list-group-item" href="./app-controllers-exceptioncontroller.html">ExceptionController</a>
+<a class="list-group-item" href="./app-controllers-filescontroller.html">FilesController</a>
+<a class="list-group-item" href="./app-controllers-folderscontroller.html">FoldersController</a>
+<a class="list-group-item" href="./app-controllers-gacattivitacontroller.html">GacattivitaController</a>
+<a class="list-group-item" href="./app-controllers-gacmaterialicontroller.html">GacmaterialiController</a>
+<a class="list-group-item" href="./app-controllers-gacprvcontroller.html">GacprvController</a>
+<a class="list-group-item" href="./app-controllers-gacsottoprvcontroller.html">GacsottoprvController</a>
+<a class="list-group-item" href="./app-controllers-gacspesecontroller.html">GacspeseController</a>
+<a class="list-group-item" href="./app-controllers-itemscontroller.html">ItemsController</a>
+<a class="list-group-item" href="./app-controllers-locazionicontroller.html">LocazioniController</a>
+<a class="list-group-item" href="./app-controllers-logcontroller.html">LogController</a>
+<a class="list-group-item" href="./app-controllers-paymentscontroller.html">PaymentsController</a>
+<a class="list-group-item" href="./app-controllers-plistcontroller.html">PlistController</a>
+<a class="list-group-item" href="./app-controllers-rapportinicontroller.html">RapportiniController</a>
+<a class="list-group-item" href="./app-controllers-relclicontroller.html">RelcliController</a>
+<a class="list-group-item" href="./app-controllers-relusrformactioncontroller.html">RelusrformactionController</a>
+<a class="list-group-item" href="./app-controllers-rep_publicazionicontroller.html">Rep_publicazioniController</a>
+<a class="list-group-item" href="./app-controllers-reportscontroller.html">ReportsController</a>
+<a class="list-group-item" href="./app-controllers-restcontroller.html">RestController</a>
+<a class="list-group-item" href="./app-controllers-sccontroller.html">ScController</a>
+<a class="list-group-item" href="./app-controllers-showcontroller.html">ShowController</a>
+<a class="list-group-item" href="./app-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./app-controllers-sottocommessacontroller.html">SottocommessaController</a>
+<a class="list-group-item" href="./app-controllers-stackposttagscontroller.html">StackposttagsController</a>
+<a class="list-group-item active" href="./app-controllers-statistichecontroller.html">StatisticheController</a>
+<a class="list-group-item" href="./app-controllers-statuscontroller.html">StatusController</a>
+<a class="list-group-item" href="./app-controllers-testajcontroller.html">TestajController</a>
+<a class="list-group-item" href="./app-controllers-teste2controller.html">Teste2Controller</a>
+<a class="list-group-item" href="./app-controllers-todogruppicontroller.html">TodogruppiController</a>
+<a class="list-group-item" href="./app-controllers-todomaincontroller.html">TodomainController</a>
+<a class="list-group-item" href="./app-controllers-todoprioritacontroller.html">TodoprioritaController</a>
+<a class="list-group-item" href="./app-controllers-todorelgrpusrcontroller.html">TodorelgrpusrController</a>
+<a class="list-group-item" href="./app-controllers-todostatocontroller.html">TodostatoController</a>
+<a class="list-group-item" href="./app-controllers-uecanagraficacontroller.html">UecanagraficaController</a>
+<a class="list-group-item" href="./app-controllers-uecarticolicontroller.html">UecarticoliController</a>
+<a class="list-group-item" href="./app-controllers-uectestacontroller.html">UectestaController</a>
+<a class="list-group-item" href="./app-controllers-usercontroller.html">UserController</a>
+<a class="list-group-item" href="./app-controllers-usrgrpcontroller.html">UsrgrpController</a>
+<a class="list-group-item" href="./app-controllers-vtigercontroller.html">VtigerController</a>
+<a class="list-group-item" href="./app-controllers-xactioncontroller.html">XactionController</a>
+<a class="list-group-item" href="./app-controllers-xaraltdesccontroller.html">XaraltdescController</a>
+<a class="list-group-item" href="./app-controllers-xmenucontroller.html">XmenuController</a>
+<a class="list-group-item" href="./app-controllers-xpartycontroller.html">XpartyController</a>
+<a class="list-group-item" href="./app-controllers-xroomlistcontroller.html">XroomlistController</a>
+<a class="list-group-item" href="./app-controllers-xruolicontroller.html">XruoliController</a>
+<a class="list-group-item" href="./app-controllers-xscadconsccontroller.html">XscadconscController</a>
+<a class="list-group-item" href="./app-controllers-xstrutturacontroller.html">XstrutturaController</a>
+<a class="list-group-item" href="./app-controllers-xsubmenucontroller.html">XsubmenuController</a>
+<a class="list-group-item" href="./app-controllers-xtappecontroller.html">XtappeController</a>
+<a class="list-group-item" href="./app-controllers-xtravelheadcontroller.html">XtravelheadController</a>
+<a class="list-group-item" href="./app-controllers-xtravelrowcontroller.html">XtravelrowController</a>
+<a class="list-group-item" href="./app-controllers-xvenuecontroller.html">XvenueController</a></div>
+<a class="list-group-item" href="#navigation-1183" data-toggle="collapse" data-parent="#navigation">app\model\form <b class="caret"></b></a><div id="navigation-1183" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-model-form-fileform.html">FileForm</a></div>
+<a class="list-group-item" href="#navigation-1184" data-toggle="collapse" data-parent="#navigation">app\models <b class="caret"></b></a><div id="navigation-1184" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-models-ar.html">AR</a>
+<a class="list-group-item" href="./app-models-agenda.html">Agenda</a>
+<a class="list-group-item" href="./app-models-agendafiles.html">AgendaFiles</a>
+<a class="list-group-item" href="./app-models-agendasearch.html">AgendaSearch</a>
+<a class="list-group-item" href="./app-models-agendafilessearch.html">AgendafilesSearch</a>
+<a class="list-group-item" href="./app-models-agente.html">Agente</a>
+<a class="list-group-item" href="./app-models-agentifiles.html">Agentifiles</a>
+<a class="list-group-item" href="./app-models-agentifilessearch.html">AgentifilesSearch</a>
+<a class="list-group-item" href="./app-models-allfiles.html">AllFiles</a>
+<a class="list-group-item" href="./app-models-allfilessearch.html">AllfilesSearch</a>
+<a class="list-group-item" href="./app-models-anacli.html">Anacli</a>
+<a class="list-group-item" href="./app-models-anaclisearch.html">AnacliSearch</a>
+<a class="list-group-item" href="./app-models-auxar.html">Auxar</a>
+<a class="list-group-item" href="./app-models-blkins.html">BlkIns</a>
+<a class="list-group-item" href="./app-models-blkinssearch.html">BlkinsSearch</a>
+<a class="list-group-item" href="./app-models-cal.html">Cal</a>
+<a class="list-group-item" href="./app-models-calsearch.html">CalSearch</a>
+<a class="list-group-item" href="./app-models-cf.html">Cf</a>
+<a class="list-group-item" href="./app-models-cgconto.html">Cgconto</a>
+<a class="list-group-item" href="./app-models-cgmovr.html">Cgmovr</a>
+<a class="list-group-item" href="./app-models-cgmovt.html">Cgmovt</a>
+<a class="list-group-item" href="./app-models-clidest.html">CliDest</a>
+<a class="list-group-item" href="./app-models-colore.html">Colore</a>
+<a class="list-group-item" href="./app-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./app-models-docommessastato.html">DOCommessaStato</a>
+<a class="list-group-item" href="./app-models-dorig.html">DORig</a>
+<a class="list-group-item" href="./app-models-dmsdocument.html">Dmsdocument</a>
+<a class="list-group-item" href="./app-models-dochead.html">DocHead</a>
+<a class="list-group-item" href="./app-models-doctype.html">DocType</a>
+<a class="list-group-item" href="./app-models-doc_head.html">Doc_head</a>
+<a class="list-group-item" href="./app-models-doc_headsearch.html">Doc_headSearch</a>
+<a class="list-group-item" href="./app-models-doc_rows.html">Doc_rows</a>
+<a class="list-group-item" href="./app-models-doc_rowssearch.html">Doc_rowsSearch</a>
+<a class="list-group-item" href="./app-models-docommessa.html">Docommessa</a>
+<a class="list-group-item" href="./app-models-docommessasearch.html">DocommessaSearch</a>
+<a class="list-group-item" href="./app-models-dosottocommessa.html">Dosottocommessa</a>
+<a class="list-group-item" href="./app-models-dosottocommessasearch.html">DosottocommessaSearch</a>
+<a class="list-group-item" href="./app-models-dotes.html">Dotes</a>
+<a class="list-group-item" href="./app-models-elemail.html">Elemail</a>
+<a class="list-group-item" href="./app-models-elemailsearch.html">ElemailSearch</a>
+<a class="list-group-item" href="./app-models-export_jobs.html">Export_jobs</a>
+<a class="list-group-item" href="./app-models-files.html">Files</a>
+<a class="list-group-item" href="./app-models-filessearch.html">FilesSearch</a>
+<a class="list-group-item" href="./app-models-folders.html">Folders</a>
+<a class="list-group-item" href="./app-models-folderssearch.html">FoldersSearch</a>
+<a class="list-group-item" href="./app-models-gacrisorse.html">GacRisorse</a>
+<a class="list-group-item" href="./app-models-gacsottoprv.html">GacSottoPrv</a>
+<a class="list-group-item" href="./app-models-gacsottocommessa.html">GacSottocommessa</a>
+<a class="list-group-item" href="./app-models-gacattivita.html">Gacattivita</a>
+<a class="list-group-item" href="./app-models-gacattivitasearch.html">GacattivitaSearch</a>
+<a class="list-group-item" href="./app-models-gacmateriali.html">Gacmateriali</a>
+<a class="list-group-item" href="./app-models-gacmaterialisearch.html">GacmaterialiSearch</a>
+<a class="list-group-item" href="./app-models-gacprv.html">Gacprv</a>
+<a class="list-group-item" href="./app-models-gacprvsearch.html">GacprvSearch</a>
+<a class="list-group-item" href="./app-models-gacsottoprvsearch.html">GacsottoprvSearch</a>
+<a class="list-group-item" href="./app-models-gacspese.html">Gacspese</a>
+<a class="list-group-item" href="./app-models-gacspesesearch.html">GacspeseSearch</a>
+<a class="list-group-item" href="./app-models-gactatt.html">Gactatt</a>
+<a class="list-group-item" href="./app-models-items.html">Items</a>
+<a class="list-group-item" href="./app-models-itemssearch.html">ItemsSearch</a>
+<a class="list-group-item" href="./app-models-listini.html">Listini</a>
+<a class="list-group-item" href="./app-models-locazioni.html">Locazioni</a>
+<a class="list-group-item" href="./app-models-locazionisearch.html">LocazioniSearch</a>
+<a class="list-group-item" href="./app-models-log.html">Log</a>
+<a class="list-group-item" href="./app-models-logsearch.html">LogSearch</a>
+<a class="list-group-item" href="./app-models-loginform.html">LoginForm</a>
+<a class="list-group-item" href="./app-models-ls.html">Ls</a>
+<a class="list-group-item" href="./app-models-mail.html">Mail</a>
+<a class="list-group-item" href="./app-models-model.html">Model</a>
+<a class="list-group-item" href="./app-models-operatori.html">Operatori</a>
+<a class="list-group-item" href="./app-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./app-models-payments.html">Payments</a>
+<a class="list-group-item" href="./app-models-paymentssearch.html">PaymentsSearch</a>
+<a class="list-group-item" href="./app-models-pg.html">Pg</a>
+<a class="list-group-item" href="./app-models-plist.html">Plist</a>
+<a class="list-group-item" href="./app-models-plistsearch.html">PlistSearch</a>
+<a class="list-group-item" href="./app-models-rapportini.html">Rapportini</a>
+<a class="list-group-item" href="./app-models-rapportinisearch.html">RapportiniSearch</a>
+<a class="list-group-item" href="./app-models-relcli.html">Relcli</a>
+<a class="list-group-item" href="./app-models-relclisearch.html">RelcliSearch</a>
+<a class="list-group-item" href="./app-models-relusrformaction.html">Relusrformaction</a>
+<a class="list-group-item" href="./app-models-relusrformactionsearch.html">RelusrformactionSearch</a>
+<a class="list-group-item" href="./app-models-reppublicazioni.html">RepPublicazioni</a>
+<a class="list-group-item" href="./app-models-rep_publicazioni.html">Rep_publicazioni</a>
+<a class="list-group-item" href="./app-models-rep_publicazionisearch.html">Rep_publicazioniSearch</a>
+<a class="list-group-item" href="./app-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./app-models-sc.html">Sc</a>
+<a class="list-group-item" href="./app-models-scsearch.html">ScSearch</a>
+<a class="list-group-item" href="./app-models-scdistinta.html">Scdistinta</a>
+<a class="list-group-item" href="./app-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./app-models-sl.html">Sl</a>
+<a class="list-group-item" href="./app-models-sottocommessa.html">Sottocommessa</a>
+<a class="list-group-item" href="./app-models-sottocommessasearch.html">SottocommessaSearch</a>
+<a class="list-group-item" href="./app-models-stackposttags.html">Stackposttags</a>
+<a class="list-group-item" href="./app-models-stackposttagssearch.html">StackposttagsSearch</a>
+<a class="list-group-item" href="./app-models-status.html">Status</a>
+<a class="list-group-item" href="./app-models-statussearch.html">StatusSearch</a>
+<a class="list-group-item" href="./app-models-taglia.html">Taglia</a>
+<a class="list-group-item" href="./app-models-tessuto.html">Tessuto</a>
+<a class="list-group-item" href="./app-models-testaj.html">Testaj</a>
+<a class="list-group-item" href="./app-models-testajsearch.html">TestajSearch</a>
+<a class="list-group-item" href="./app-models-teste2.html">Teste2</a>
+<a class="list-group-item" href="./app-models-teste2search.html">Teste2Search</a>
+<a class="list-group-item" href="./app-models-todocommenti.html">Todocommenti</a>
+<a class="list-group-item" href="./app-models-todogruppi.html">Todogruppi</a>
+<a class="list-group-item" href="./app-models-todogruppisearch.html">TodogruppiSearch</a>
+<a class="list-group-item" href="./app-models-todomain.html">Todomain</a>
+<a class="list-group-item" href="./app-models-todomainsearch.html">TodomainSearch</a>
+<a class="list-group-item" href="./app-models-todopriorita.html">Todopriorita</a>
+<a class="list-group-item" href="./app-models-todoprioritasearch.html">TodoprioritaSearch</a>
+<a class="list-group-item" href="./app-models-todorelgrpusr.html">Todorelgrpusr</a>
+<a class="list-group-item" href="./app-models-todorelgrpusrsearch.html">TodorelgrpusrSearch</a>
+<a class="list-group-item" href="./app-models-todoreltags.html">Todoreltags</a>
+<a class="list-group-item" href="./app-models-todostato.html">Todostato</a>
+<a class="list-group-item" href="./app-models-todostatosearch.html">TodostatoSearch</a>
+<a class="list-group-item" href="./app-models-todotag.html">Todotag</a>
+<a class="list-group-item" href="./app-models-uecprovincia.html">UecProvincia</a>
+<a class="list-group-item" href="./app-models-uecanagrafica.html">Uecanagrafica</a>
+<a class="list-group-item" href="./app-models-uecanagraficasearch.html">UecanagraficaSearch</a>
+<a class="list-group-item" href="./app-models-uecarticoli.html">Uecarticoli</a>
+<a class="list-group-item" href="./app-models-uecarticolisearch.html">UecarticoliSearch</a>
+<a class="list-group-item" href="./app-models-uecrighe.html">Uecrighe</a>
+<a class="list-group-item" href="./app-models-uectesta.html">Uectesta</a>
+<a class="list-group-item" href="./app-models-uectestasearch.html">UectestaSearch</a>
+<a class="list-group-item" href="./app-models-uploadimageform.html">UploadImageForm</a>
+<a class="list-group-item" href="./app-models-user.html">User</a>
+<a class="list-group-item" href="./app-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./app-models-usrgrp.html">Usrgrp</a>
+<a class="list-group-item" href="./app-models-usrgrpsearch.html">UsrgrpSearch</a>
+<a class="list-group-item" href="./app-models-vl.html">Vl</a>
+<a class="list-group-item" href="./app-models-xroomlist.html">XRoomlist</a>
+<a class="list-group-item" href="./app-models-xruolisearch.html">XRuoliSearch</a>
+<a class="list-group-item" href="./app-models-xaction.html">Xaction</a>
+<a class="list-group-item" href="./app-models-xactionsearch.html">XactionSearch</a>
+<a class="list-group-item" href="./app-models-xaraltdesc.html">Xaraltdesc</a>
+<a class="list-group-item" href="./app-models-xaraltdescsearch.html">XaraltdescSearch</a>
+<a class="list-group-item" href="./app-models-xmenu.html">Xmenu</a>
+<a class="list-group-item" href="./app-models-xmenusearch.html">XmenuSearch</a>
+<a class="list-group-item" href="./app-models-xparty.html">Xparty</a>
+<a class="list-group-item" href="./app-models-xpartysearch.html">XpartySearch</a>
+<a class="list-group-item" href="./app-models-xroomlistsearch.html">XroomlistSearch</a>
+<a class="list-group-item" href="./app-models-xruoli.html">Xruoli</a>
+<a class="list-group-item" href="./app-models-xscadconsc.html">Xscadconsc</a>
+<a class="list-group-item" href="./app-models-xscadconscsearch.html">XscadconscSearch</a>
+<a class="list-group-item" href="./app-models-xstruttura.html">Xstruttura</a>
+<a class="list-group-item" href="./app-models-xstrutturasearch.html">XstrutturaSearch</a>
+<a class="list-group-item" href="./app-models-xsubmenu.html">Xsubmenu</a>
+<a class="list-group-item" href="./app-models-xsubmenusearch.html">XsubmenuSearch</a>
+<a class="list-group-item" href="./app-models-xtappe.html">Xtappe</a>
+<a class="list-group-item" href="./app-models-xtappesearch.html">XtappeSearch</a>
+<a class="list-group-item" href="./app-models-xtravelhead.html">Xtravelhead</a>
+<a class="list-group-item" href="./app-models-xtravelheadsearch.html">XtravelheadSearch</a>
+<a class="list-group-item" href="./app-models-xtravelrow.html">Xtravelrow</a>
+<a class="list-group-item" href="./app-models-xtravelrowsearch.html">XtravelrowSearch</a>
+<a class="list-group-item" href="./app-models-xvenue.html">Xvenue</a>
+<a class="list-group-item" href="./app-models-xvenuesearch.html">XvenueSearch</a></div>
+<a class="list-group-item" href="#navigation-1185" data-toggle="collapse" data-parent="#navigation">app\models\form <b class="caret"></b></a><div id="navigation-1185" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-models-form-filesform.html">FilesForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class app\controllers\StatisticheController</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a> &raquo;
+yii\web\Controller</td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong></strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="___actionResetagente()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#___actionResetagente()-detail">___actionResetagente()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionCartelle()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionCartelle()-detail">actionCartelle()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionDatiDettaglio()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionDatiDettaglio()-detail">actionDatiDettaglio()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionDatiDettaglioaj()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionDatiDettaglioaj()-detail">actionDatiDettaglioaj()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionDettaglio()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionDettaglio()-detail">actionDettaglio()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionDownload()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionDownload()-detail">actionDownload()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionGenfile()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionGenfile()-detail">actionGenfile()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionIndex()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionIndex()-detail">actionIndex()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionResetagente()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionResetagente()-detail">actionResetagente()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                                                <tr id="actionUploadFile()" class="">
+                    <td><a href="app-controllers-statistichecontroller.html#actionUploadFile()-detail">actionUploadFile()</a></td>
+                    <td></td>
+                    <td><a href="app-controllers-statistichecontroller.html">app\controllers\StatisticheController</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="___actionResetagente()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#___actionResetagente()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                ___actionResetagente()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#___actionResetagente()-detail">___actionResetagente</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapse___actionResetagente" role="button"
+           aria-expanded="false" aria-controls="collapse___actionResetagente">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapse___actionResetagente">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">___actionResetagente</span><span class="hljs-params">()</span>
+$<span class="hljs-title">session</span> = <span class="hljs-title">Yii</span>::$<span class="hljs-title">app</span>-&gt;<span class="hljs-title">session</span></span>;
+_agente= yii::$app-&gt;user-&gt;identity-&gt;cd_agente;
+    $session-&gt;remove(<span class="hljs-string">'cd_agente_filtrato'</span>);
+     $session-&gt;set(<span class="hljs-string">'cd_agente_filtrato'</span>, $cd_agente); <span class="hljs-comment">// salvo in sessione</span>
+ows = Yii::$app-&gt;db5-&gt;createCommand(<span class="hljs-string">"
+        SELECT 
+            FORMAT(DataDoc, 'yyyy-MM') AS mese,
+            SUM(TotDocumentoE) AS TotDocumentoE,
+            SUM(TotProvvigione_1E) AS TotProvvigione_1E,
+            Count(x_ore) AS x_ore,
+            sum(TotImponibileE) as TotImponibileE
+        FROM (
+            SELECT 
+                dotes.DataDoc,
+                NULL AS TotDocumentoE,
+                NULL AS TotProvvigione_1E,
+                dorig.x_ore,
+                 0 as TotImponibileE
+            FROM dotes 
+            LEFT JOIN dorig ON dorig.Id_DoTes = dotes.Id_DoTes
+            WHERE dotes.Cd_Do = 'PRV'
+             AND dotes.Cd_Agente_1 = '$cd_agente'
+            UNION ALL
+            
+            SELECT 
+                dotes.DataDoc,
+                DOTotali.TotDocumentoE,
+                DOTotali.TotProvvigione_1E,
+                NULL AS x_ore,
+                   DOTotali.TotImponibileE
+            FROM dotes
+            LEFT JOIN DOTotali ON DOTotali.Id_DoTes = dotes.Id_DoTes
+            WHERE dotes.Cd_Do = 'FTV'
+             AND dotes.Cd_Agente_1 = '$cd_agente'
+        ) AS unione
+        GROUP BY FORMAT(DataDoc, 'yyyy-MM')
+        ORDER BY FORMAT(DataDoc, 'yyyy-MM') asc
+    "</span>)
+             
+    -&gt;queryAll();
+   
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'index'</span>, [<span class="hljs-string">'rows'</span> =&gt; $rows]);
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionCartelle()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionCartelle()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionCartelle()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionCartelle()-detail">actionCartelle</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionCartelle" role="button"
+           aria-expanded="false" aria-controls="collapseActionCartelle">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionCartelle">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php">ic <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionCartelle</span><span class="hljs-params">()</span>
+<span class="hljs-title">Yii</span>::$<span class="hljs-title">app</span>-&gt;<span class="hljs-title">response</span>-&gt;<span class="hljs-title">format</span> = \<span class="hljs-title">yii</span>\<span class="hljs-title">web</span>\<span class="hljs-title">Response</span>::<span class="hljs-title">FORMAT_JSON</span></span>;
+$out = [];
+$cartelle = [
+    <span class="hljs-string">'Retribuzioni'</span> =&gt; [
+        <span class="hljs-string">'C1'</span> =&gt; [],
+        <span class="hljs-string">'Buste paga'</span> =&gt; [],
+        <span class="hljs-string">'Cud'</span> =&gt; []
+    ],
+    <span class="hljs-string">'Documenti Personali'</span> =&gt; [
+        <span class="hljs-string">'Carta Identità'</span> =&gt; [],
+        <span class="hljs-string">'Passaporto'</span> =&gt; [],
+        <span class="hljs-string">'Tessera Sanitaria'</span> =&gt; []
+    ],
+    <span class="hljs-string">'Documentazione'</span> =&gt; [
+        <span class="hljs-string">'Contratti'</span> =&gt; [],
+        <span class="hljs-string">'Attestati'</span> =&gt; [],
+        <span class="hljs-string">'Dpi'</span> =&gt; [],
+        <span class="hljs-string">'Visite Mediche'</span> =&gt; []
+    ],
+    <span class="hljs-string">'C1'</span> =&gt; [
+        <span class="hljs-string">'2025'</span>=&gt;[],<span class="hljs-string">'2026'</span>=&gt;[],<span class="hljs-string">'2027'</span>=&gt;[],<span class="hljs-string">'2028'</span>=&gt;[],<span class="hljs-string">'2029'</span>=&gt;[],<span class="hljs-string">'2030'</span>=&gt;[],
+        <span class="hljs-string">'2031'</span>=&gt;[],<span class="hljs-string">'2032'</span>=&gt;[],<span class="hljs-string">'2033'</span>=&gt;[],<span class="hljs-string">'2034'</span>=&gt;[],<span class="hljs-string">'2035'</span>=&gt;[]
+    ],
+    <span class="hljs-string">'Buste paga'</span> =&gt; [
+            <span class="hljs-string">'2025'</span>=&gt;[],<span class="hljs-string">'2026'</span>=&gt;[],<span class="hljs-string">'2027'</span>=&gt;[],<span class="hljs-string">'2028'</span>=&gt;[],<span class="hljs-string">'2029'</span>=&gt;[],<span class="hljs-string">'2030'</span>=&gt;[],
+        <span class="hljs-string">'2031'</span>=&gt;[],<span class="hljs-string">'2032'</span>=&gt;[],<span class="hljs-string">'2033'</span>=&gt;[],<span class="hljs-string">'2034'</span>=&gt;[],<span class="hljs-string">'2035'</span>=&gt;[]     ],
+    <span class="hljs-string">'Cud'</span> =&gt; [
+                 <span class="hljs-string">'2025'</span>=&gt;[],<span class="hljs-string">'2026'</span>=&gt;[],<span class="hljs-string">'2027'</span>=&gt;[],<span class="hljs-string">'2028'</span>=&gt;[],<span class="hljs-string">'2029'</span>=&gt;[],<span class="hljs-string">'2030'</span>=&gt;[],
+        <span class="hljs-string">'2031'</span>=&gt;[],<span class="hljs-string">'2032'</span>=&gt;[],<span class="hljs-string">'2033'</span>=&gt;[],<span class="hljs-string">'2034'</span>=&gt;[],<span class="hljs-string">'2035'</span>=&gt;[]     ],
+];
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">'depdrop_parents'</span>])) {
+    $parents = $_POST[<span class="hljs-string">'depdrop_parents'</span>];
+    <span class="hljs-keyword">if</span> ($parents != <span class="hljs-keyword">null</span>) {
+        $padre = $parents[<span class="hljs-number">0</span>];       <span class="hljs-comment">// livello 1 (es. "Retribuzioni")</span>
+        $figlio = $parents[<span class="hljs-number">1</span>] ?? <span class="hljs-keyword">null</span>; <span class="hljs-comment">// livello 2 (es. "C1")</span>
+        <span class="hljs-comment">// Se siamo al primo livello</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($cartelle[$padre])) {
+            <span class="hljs-comment">// Se è stato scelto anche un secondo livello (es. "C1")</span>
+            <span class="hljs-keyword">if</span> ($figlio &amp;&amp; <span class="hljs-keyword">isset</span>($cartelle[$padre][$figlio])) {
+                <span class="hljs-comment">// Mostra gli anni</span>
+                <span class="hljs-keyword">foreach</span> ($cartelle[$padre][$figlio] <span class="hljs-keyword">as</span> $anno) {
+                    $out[] = [<span class="hljs-string">'id'</span> =&gt; $anno, <span class="hljs-string">'name'</span> =&gt; $anno];
+                }
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">// Mostra le sotto-cartelle (chiavi)</span>
+                <span class="hljs-keyword">foreach</span> ($cartelle[$padre] <span class="hljs-keyword">as</span> $sotto =&gt; $anni) {
+                    $out[] = [<span class="hljs-string">'id'</span> =&gt; $sotto, <span class="hljs-string">'name'</span> =&gt; $sotto];
+                }
+            }
+            <span class="hljs-keyword">return</span> [<span class="hljs-string">'output'</span> =&gt; $out, <span class="hljs-string">'selected'</span> =&gt; <span class="hljs-string">''</span>];
+        }
+    }
+}
+<span class="hljs-keyword">return</span> [<span class="hljs-string">'output'</span> =&gt; <span class="hljs-string">''</span>, <span class="hljs-string">'selected'</span> =&gt; <span class="hljs-string">''</span>];
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionDatiDettaglio()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionDatiDettaglio()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionDatiDettaglio()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionDatiDettaglio()-detail">actionDatiDettaglio</a></strong> ( <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <span style="color: #0000BB">$mese</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$mese</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.mixed">mixed</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionDatiDettaglio" role="button"
+           aria-expanded="false" aria-controls="collapseActionDatiDettaglio">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionDatiDettaglio">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionDatiDettaglio</span><span class="hljs-params">($mese)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        $session = Yii::$app-&gt;session;
+        $cd_agente = Yii::$app-&gt;user-&gt;identity-&gt;cd_agente ?? <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">if</span> ($session-&gt;isActive &amp;&amp; $session-&gt;has(<span class="hljs-string">'cd_agente_filtrato'</span>)) {
+            $cd_agente = $session-&gt;get(<span class="hljs-string">'cd_agente_filtrato'</span>);
+        }
+        $dataInizio = $mese . <span class="hljs-string">'-01'</span>;
+        $dataFine   = date(<span class="hljs-string">'Y-m-t'</span>, strtotime($dataInizio));
+        $anno  = date(<span class="hljs-string">'Y'</span>, strtotime($mese . <span class="hljs-string">'-01'</span>));
+        $meseNum = date(<span class="hljs-string">'m'</span>, strtotime($mese . <span class="hljs-string">'-01'</span>));
+        <span class="hljs-comment">// --- PRV ---</span>
+        $sqlPrv = <span class="hljs-string">"
+          SELECT 
+            dotes.Cd_Do,
+            dotes.Cd_Agente_1,
+            dotes.DataDoc,
+            DOTes.NumeroDoc,
+            DORig.Cd_AR,
+            DORig.Descrizione,
+            dorig.x_ore,
+            dorig.x_cd_cf,
+            dorig.x_citta,
+            dorig.x_data,
+            dorig.noteriga,
+            dorig.cd_dosottocommessa,
+            dosottocommessa.descrizione AS desc_sottocommessa,
+            cf.Descrizione as descli
+        FROM dotes 
+        LEFT JOIN dorig ON dorig.Id_DoTes = dotes.Id_DoTes
+        left join dosottocommessa on dosottocommessa.cd_dosottocommessa
+        =dorig.cd_dosottocommessa
+        left join cf on cf.Cd_CF=coalesce(dorig.x_cd_cf,dorig.cd_cf)
+        WHERE dotes.Cd_Do = 'PRV'
+          AND YEAR(dorig.x_data) = :anno
+          AND MONTH(dorig.x_data) = :mese
+    "</span>;
+        <span class="hljs-comment">// Se l'utente è un agente, aggiungiamo il filtro</span>
+        $params = [<span class="hljs-string">':anno'</span> =&gt; $anno, <span class="hljs-string">':mese'</span> =&gt; $meseNum];
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($cd_agente)) {
+            $sqlPrv .= <span class="hljs-string">" AND dotes.Cd_Agente_1 = :cd_agente"</span>;
+            $params[<span class="hljs-string">':cd_agente'</span>] = $cd_agente;
+        }
+        $prv = Yii::$app-&gt;db5-&gt;createCommand($sqlPrv, $params)-&gt;queryAll();
+        <span class="hljs-comment">// --- FTV ---</span>
+        $sqlFtv = <span class="hljs-string">"
+        SELECT 
+            dotes.DataDoc,
+            dotes.NumeroDoc,
+            dotes.Cd_CF AS cliente,
+            dotes.Cd_Agente_1 AS agente,
+            DOTotali.TotDocumentoE AS TotDocumentoE,
+            DOTotali.TotProvvigione_1E AS TotProvvigione_1E,
+            Liquidata,
+            DataLiquidazione,
+              dototali.TotImponibileE AS TotImponibileE,
+              'https://example.com/pdf/FAT-123.pdf' AS pdf_url,
+              dotes.Id_DoTes AS id_dotes
+        FROM dotes
+        LEFT JOIN DOTotali ON DOTotali.Id_DoTes = dotes.Id_DoTes
+        LEFT JOIN sc ON sc.Id_DOTes = dotes.Id_DoTes
+        LEFT JOIN Provvigione ON sc.Id_SC = Provvigione.Id_SC
+        WHERE dotes.Cd_Do = 'FTV'
+          AND YEAR(dotes.DataDoc) = :anno
+          AND MONTH(dotes.DataDoc) = :mese
+          AND Cd_Agente_1 IS NOT NULL
+    "</span>;
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($cd_agente)) {
+            $sqlFtv .= <span class="hljs-string">" AND dotes.Cd_Agente_1 = :cd_agente"</span>;
+        }
+        $sqlFtv .= <span class="hljs-string">" ORDER BY DataDoc ASC"</span>;
+        $ftv = Yii::$app-&gt;db5-&gt;createCommand($sqlFtv, $params)-&gt;queryAll();
+ach ($ftv <span class="hljs-keyword">as</span> &amp;$r) {
+$r[<span class="hljs-string">'pdf_url'</span>] = Url::to([<span class="hljs-string">'statistiche/genfile'</span>, <span class="hljs-string">'id'</span> =&gt; $r[<span class="hljs-string">'id_dotes'</span>]], <span class="hljs-keyword">true</span>);
+        <span class="hljs-keyword">return</span> [
+            <span class="hljs-string">'prv'</span> =&gt; $prv,
+            <span class="hljs-string">'ftv'</span> =&gt; $ftv,
+        ];
+    } <span class="hljs-keyword">catch</span> (\<span class="hljs-keyword">Exception</span> $e) {
+        Yii::error($e-&gt;getMessage(), <span class="hljs-keyword">__METHOD__</span>);
+        <span class="hljs-keyword">return</span> [
+            <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">false</span>,
+            <span class="hljs-string">'error'</span> =&gt; $e-&gt;getMessage(),
+        ];
+    }
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionDatiDettaglioaj()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionDatiDettaglioaj()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionDatiDettaglioaj()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionDatiDettaglioaj()-detail">actionDatiDettaglioaj</a></strong> ( <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <span style="color: #0000BB">$mese</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$mese</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.mixed">mixed</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionDatiDettaglioaj" role="button"
+           aria-expanded="false" aria-controls="collapseActionDatiDettaglioaj">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionDatiDettaglioaj">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionDatiDettaglioaj</span><span class="hljs-params">($mese)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        Yii::$app-&gt;response-&gt;format = Response::FORMAT_JSON;
+        $cd_agente = Yii::$app-&gt;user-&gt;identity-&gt;cd_agente ?? <span class="hljs-keyword">null</span>;
+        $dataInizio = $mese . <span class="hljs-string">'-01'</span>;
+        $dataFine   = date(<span class="hljs-string">'Y-m-t'</span>, strtotime($dataInizio));
+        $anno  = date(<span class="hljs-string">'Y'</span>, strtotime($mese . <span class="hljs-string">'-01'</span>));
+        $meseNum = date(<span class="hljs-string">'m'</span>, strtotime($mese . <span class="hljs-string">'-01'</span>));
+        <span class="hljs-comment">// === PRV ===</span>
+        $sqlPrv = <span class="hljs-string">"
+       SELECT 
+            dotes.Cd_Do,
+            dotes.Cd_Agente_1,
+            dotes.DataDoc,
+            DOTes.NumeroDoc,
+            DORig.Cd_AR,
+            DORig.Descrizione,
+            dorig.x_ore,
+            dorig.x_cd_cf,
+            dorig.x_citta,
+            dorig.x_data,
+            dorig.noteriga,
+            dorig.cd_dosottocommessa,
+            dosottocommessa.descrizione AS desc_sottocommessa,
+            cf.Descrizione as descli
+        FROM dotes 
+        LEFT JOIN dorig ON dorig.Id_DoTes = dotes.Id_DoTes
+        left join dosottocommessa on dosottocommessa.cd_dosottocommessa
+        =dorig.cd_dosottocommessa
+        left join cf on cf.Cd_CF=coalesce(dorig.x_cd_cf,dorig.cd_cf)
+        WHERE dotes.Cd_Do = 'PRV'
+          AND YEAR(dorig.x_data) = :anno
+          AND MONTH(dorig.x_data) = :mese
+    "</span>;
+        $params = [
+            <span class="hljs-string">':anno'</span> =&gt; $anno,
+            <span class="hljs-string">':mese'</span> =&gt; $meseNum,
+        ];
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($cd_agente)) {
+            $sqlPrv .= <span class="hljs-string">" AND dotes.Cd_Agente_1 = :cd_agente"</span>;
+            $params[<span class="hljs-string">':cd_agente'</span>] = $cd_agente;
+        }
+        $prv = Yii::$app-&gt;db5-&gt;createCommand($sqlPrv, $params)-&gt;queryAll();
+        <span class="hljs-comment">// === FTV ===</span>
+        $sqlFtv = <span class="hljs-string">"
+        SELECT 
+            dotes.DataDoc,
+            dotes.NumeroDoc,
+            dotes.Cd_CF AS cliente,
+            dotes.Cd_Agente_1 AS agente,
+            DOTotali.TotDocumentoE AS TotDocumentoE,
+            DOTotali.TotProvvigione_1E AS TotProvvigione_1E,
+            dotes.TotImponibileE AS TotImponibileE,
+        FROM dotes
+        LEFT JOIN DOTotali ON DOTotali.Id_DoTes = dotes.Id_DoTes
+        WHERE dotes.Cd_Do = 'FTV'
+          AND YEAR(dotes.DataDoc) = :anno
+          AND MONTH(dotes.DataDoc) = :mese
+    "</span>;
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($cd_agente)) {
+            $sqlFtv .= <span class="hljs-string">" AND dotes.Cd_Agente_1 = :cd_agente"</span>;
+        }
+        $ftv = Yii::$app-&gt;db5-&gt;createCommand($sqlFtv, $params)-&gt;queryAll();
+        <span class="hljs-keyword">return</span> [
+            <span class="hljs-string">'prv'</span> =&gt; $prv,
+            <span class="hljs-string">'ftv'</span> =&gt; $ftv,
+        ];
+    } <span class="hljs-keyword">catch</span> (\<span class="hljs-keyword">Exception</span> $e) {
+        Yii::error($e-&gt;getMessage(), <span class="hljs-keyword">__METHOD__</span>);
+        <span class="hljs-keyword">return</span> [
+            <span class="hljs-string">'success'</span> =&gt; <span class="hljs-keyword">false</span>,
+            <span class="hljs-string">'error'</span> =&gt; $e-&gt;getMessage(),
+        ];
+    }
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionDettaglio()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionDettaglio()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionDettaglio()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionDettaglio()-detail">actionDettaglio</a></strong> ( <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <span style="color: #0000BB">$mese</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$mese</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.mixed">mixed</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionDettaglio" role="button"
+           aria-expanded="false" aria-controls="collapseActionDettaglio">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionDettaglio">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionDettaglio</span><span class="hljs-params">($mese)</span>
+</span>{
+    $dati = <span class="hljs-keyword">$this</span>-&gt;actionDatiDettaglio($mese);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'dettaglio'</span>, [<span class="hljs-string">'mese'</span> =&gt; $mese, <span class="hljs-string">'dati'</span> =&gt; $dati]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionDownload()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionDownload()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionDownload()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionDownload()-detail">actionDownload</a></strong> ( <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <span style="color: #0000BB">$id</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.mixed">mixed</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionDownload" role="button"
+           aria-expanded="false" aria-controls="collapseActionDownload">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionDownload">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionDownload</span><span class="hljs-params">($id)</span>
+$<span class="hljs-title">model</span> =<span class="hljs-title">Agentifiles</span>::<span class="hljs-title">findOne</span><span class="hljs-params">($id)</span></span>;
+    <span class="hljs-comment">// Scegli quale campo contiene il file binario</span>
+    $content = $model-&gt;f_content;
+<span class="hljs-keyword">if</span> (!$content) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \yii\web\NotFoundHttpException(<span class="hljs-string">'Il file non è disponibile.'</span>);
+}
+<span class="hljs-comment">// Nome file con estensione</span>
+$filename = $model-&gt;nome_file;
+<span class="hljs-keyword">if</span> (stripos($filename, <span class="hljs-string">'.'</span> . $model-&gt;estenzione) === <span class="hljs-keyword">false</span>) {
+    $filename .= <span class="hljs-string">'.'</span> . $model-&gt;estenzione;
+}
+<span class="hljs-comment">// Restituisce il file per il download</span>
+<span class="hljs-keyword">return</span> Yii::$app-&gt;response-&gt;sendContentAsFile(
+    $content,
+    $filename,
+    [
+        <span class="hljs-string">'mimeType'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;getMimeType($model-&gt;estenzione),
+        <span class="hljs-string">'inline'</span> =&gt; <span class="hljs-keyword">false</span>, <span class="hljs-comment">// true se vuoi aprirlo nel browser</span>
+    ]
+);
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionGenfile()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionGenfile()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionGenfile()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionGenfile()-detail">actionGenfile</a></strong> ( <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <span style="color: #0000BB">$id</span>, <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.mixed">mixed</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$filename</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.mixed">mixed</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionGenfile" role="button"
+           aria-expanded="false" aria-controls="collapseActionGenfile">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionGenfile">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionGenfile</span><span class="hljs-params">($id, $filename = null)</span>
+</span>{
+   <span class="hljs-comment">// $this-&gt;getuser();</span>
+    $tmpfile =Dmsdocument::find()
+    -&gt;where([<span class="hljs-string">'EntityId'</span> =&gt; $id])
+    -&gt;andWhere([<span class="hljs-string">'EntityTable'</span>=&gt;<span class="hljs-string">'DOTES'</span>])
+    -&gt;andWhere([<span class="hljs-string">'DmsClass3'</span>=&gt;<span class="hljs-string">'FTV'</span>])
+    -&gt;andWhere([<span class="hljs-string">'FileExt'</span>=&gt;<span class="hljs-string">'PDF'</span>])
+    -&gt;asArray()-&gt;one();
+    <span class="hljs-comment">//AllFiles::find()-&gt;where(['id' =&gt; $id])-&gt;asArray()-&gt;one();</span>
+= (int)$id; <span class="hljs-comment">// sicurezza base, anche se è già un numero</span>
+ = <span class="hljs-string">"
+SELECT TOP 1 *
+FROM ADB_AUXCOOP.dbo.DmsDocument
+WHERE EntityId = :id
+  AND EntityTable = 'DOTES'
+  AND DmsClass3 = 'FTV'
+  AND FileExt = 'PDF'
+file = Yii::$app-&gt;db5
+-&gt;createCommand($sql, [':id' =&gt; $id])
+-&gt;queryOne();
+   //var_dump($tmpfile);
+   Yii::warning(['queryResult' =&gt; $tmpfile, 'id' =&gt; $id], 'debug.genfile');
+   if (!$tmpfile) {
+    throw new \yii\web\NotFoundHttpException("</span>Documento non trovato per ID $id<span class="hljs-string">");
+}
+    try {
+        $path = Yii::getAlias('@webroot') . '/uploads/';
+        $file = str_replace(' ', '_', $tmpfile['FileName']);
+        $file2 = $path . $tmpfile['EntityId'] . '_' . $file;
+        //yii::warning
+        //         var_dump($tmpfile['nome_file']);
+        if (!is_null($tmpfile['FileName'])) {
+            $tmf = fopen($file2, 'w');
+            fwrite($tmf, (
+                $tmpfile['Content']));
+            fclose($tmf);
+            $tmpf =
+            Yii::$app-&gt;response-&gt;SendFile(
+                $file2,
+                $file,
+                 ['mimeType' =&gt; 'application/pdf',
+            'inline' =&gt; true,]
+                // file_get_contents($file2, FILE_USE_INCLUDE_PATH)
+                // 'application/pdf'
+            )-&gt;send();
+            register_shutdown_function(function() use ($file2) {
+        @unlink($file2);
+    });
+        }
+    } catch (Exception $e) {
+        echo 'Caught exception: ', $e-&gt;getMessage(), "</span>\n<span class="hljs-string">";
+    }
+    ob_clean();
+    //unlink($file2);
+    // return $tmpf;//    file_get_contents( $file2 );
+    //return 'stocazzo';
+}
+</span></code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionIndex()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionIndex()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionIndex()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionIndex()-detail">actionIndex</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionIndex" role="button"
+           aria-expanded="false" aria-controls="collapseActionIndex">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionIndex">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionIndex</span><span class="hljs-params">()</span>
+</span>{
+$request = Yii::$app-&gt;request;
+$cd_agente = Yii::$app-&gt;user-&gt;identity-&gt;cd_agente ?? <span class="hljs-keyword">null</span>;
+$lvl = Yii::$app-&gt;user-&gt;identity-&gt;level; <span class="hljs-comment">// livello utente</span>
+uest = Yii::$app-&gt;request;
+sion = Yii::$app-&gt;session;
+eggi il parametro dal dropdown
+nteSelezionato = $request-&gt;get(<span class="hljs-string">'agente'</span>);
+pri la sessione se non è già aperta
+!$session-&gt;isActive) {
+$session-&gt;open();
+<span class="hljs-comment">// Se lvl80 e c'è un agente selezionato, lo usiamo temporaneamente</span>
+<span class="hljs-keyword">if</span> ($lvl == <span class="hljs-number">80</span> &amp;&amp; $request-&gt;get(<span class="hljs-string">'agente'</span>)) {
+    $cd_agente = $request-&gt;get(<span class="hljs-string">'agente'</span>);
+     $session-&gt;set(<span class="hljs-string">'cd_agente_filtrato'</span>, $cd_agente); <span class="hljs-comment">// salvo in sessione</span>
+   <span class="hljs-comment">//die("Filtro agente applicato: " . $cd_agente  );</span>
+}<span class="hljs-keyword">else</span>{
+_agente = Yii::$app-&gt;user-&gt;identity-&gt;cd_agente ;
+}
+    <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">empty</span>($cd_agente) &amp;&amp; $lvl == <span class="hljs-number">80</span>){
+    $rows = Yii::$app-&gt;db5-&gt;createCommand(<span class="hljs-string">"
+        SELECT 
+            FORMAT(DataDoc, 'yyyy-MM') AS mese,
+            SUM(TotDocumentoE) AS TotDocumentoE,
+            SUM(TotProvvigione_1E) AS TotProvvigione_1E,
+            Count(x_ore) AS x_ore,
+            Sum(TotImponibileE) as TotImponibileE
+        FROM (
+            SELECT 
+                dotes.DataDoc,
+                NULL AS TotDocumentoE,
+                NULL AS TotProvvigione_1E,
+                dorig.x_ore,
+                  0 as TotImponibileE
+            FROM dotes 
+            LEFT JOIN dorig ON dorig.Id_DoTes = dotes.Id_DoTes
+            WHERE dotes.Cd_Do = 'PRV'
+            and year(dotes.datadoc)&gt;=2024
+            UNION ALL
+            
+            SELECT 
+                dotes.DataDoc,
+                DOTotali.TotDocumentoE,
+                DOTotali.TotProvvigione_1E,
+                NULL AS x_ore,
+                  DOTotali.TotImponibileE
+            FROM dotes
+            LEFT JOIN DOTotali ON DOTotali.Id_DoTes = dotes.Id_DoTes
+            WHERE dotes.Cd_Do = 'FTV'
+                  and year(dotes.datadoc)&gt;=2024
+        ) AS unione
+        GROUP BY FORMAT(DataDoc, 'yyyy-MM')
+        ORDER BY FORMAT(DataDoc, 'yyyy-MM') DESC
+    "</span>)-&gt;queryAll();
+    }
+    <span class="hljs-keyword">else</span>{
+       <span class="hljs-comment">// $cd_agente = Yii::$app-&gt;user-&gt;identity-&gt;cd_agente;</span>
+        $rows = Yii::$app-&gt;db5-&gt;createCommand(<span class="hljs-string">"
+        SELECT 
+            FORMAT(DataDoc, 'yyyy-MM') AS mese,
+            SUM(TotDocumentoE) AS TotDocumentoE,
+            SUM(TotProvvigione_1E) AS TotProvvigione_1E,
+            Count(x_ore) AS x_ore,
+            sum(TotImponibileE) as TotImponibileE
+        FROM (
+            SELECT 
+                dotes.DataDoc,
+                NULL AS TotDocumentoE,
+                NULL AS TotProvvigione_1E,
+                dorig.x_ore,
+                 0 as TotImponibileE
+            FROM dotes 
+            LEFT JOIN dorig ON dorig.Id_DoTes = dotes.Id_DoTes
+            WHERE dotes.Cd_Do = 'PRV'
+             AND dotes.Cd_Agente_1 = '$cd_agente'
+                     and year(dotes.datadoc)&gt;=2024
+            UNION ALL
+            
+            SELECT 
+                dotes.DataDoc,
+                DOTotali.TotDocumentoE,
+                DOTotali.TotProvvigione_1E,
+                NULL AS x_ore,
+                   DOTotali.TotImponibileE
+            FROM dotes
+            LEFT JOIN DOTotali ON DOTotali.Id_DoTes = dotes.Id_DoTes
+            WHERE dotes.Cd_Do = 'FTV'
+             AND dotes.Cd_Agente_1 = '$cd_agente'
+                     and year(dotes.datadoc)&gt;=2024
+        ) AS unione
+        GROUP BY FORMAT(DataDoc, 'yyyy-MM')
+        ORDER BY FORMAT(DataDoc, 'yyyy-MM') asc
+    "</span>)
+             
+    -&gt;queryAll();
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'index'</span>, [<span class="hljs-string">'rows'</span> =&gt; $rows]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionResetagente()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionResetagente()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionResetagente()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionResetagente()-detail">actionResetagente</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionResetagente" role="button"
+           aria-expanded="false" aria-controls="collapseActionResetagente">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionResetagente">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php">ic <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionResetagente</span><span class="hljs-params">()</span>
+$<span class="hljs-title">session</span> = <span class="hljs-title">Yii</span>::$<span class="hljs-title">app</span>-&gt;<span class="hljs-title">session</span></span>;
+$cd_agente = Yii::$app-&gt;user-&gt;identity-&gt;cd_agente;
+$session-&gt;remove(<span class="hljs-string">'cd_agente_filtrato'</span>);
+$session-&gt;set(<span class="hljs-string">'cd_agente_filtrato'</span>, $cd_agente);
+<span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;redirect([<span class="hljs-string">'statistiche/index'</span>]);
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionUploadFile()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="app-controllers-statistichecontroller.html#actionUploadFile()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionUploadFile()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.mixed">mixed</a></span> <strong><a href="app-controllers-statistichecontroller.html#actionUploadFile()-detail">actionUploadFile</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionUploadFile" role="button"
+           aria-expanded="false" aria-controls="collapseActionUploadFile">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionUploadFile">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php">ic <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionUploadFile</span><span class="hljs-params">()</span>
+$<span class="hljs-title">model</span> = <span class="hljs-title">new</span> <span class="hljs-title">Agentifiles</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">// Imposto automaticamente il codice agente loggato</span>
+$model-&gt;cd_agente = Yii::$app-&gt;user-&gt;identity-&gt;cd_agente ?? <span class="hljs-keyword">null</span>;
+<span class="hljs-keyword">if</span> ($model-&gt;load(Yii::$app-&gt;request-&gt;post())) {
+    $file = \yii\web\UploadedFile::getInstance($model, <span class="hljs-string">'uplfile'</span>);
+    <span class="hljs-keyword">if</span> ($file) {
+        $model-&gt;nome_file = $file-&gt;baseName;
+        $model-&gt;estenzione = $file-&gt;extension;
+        $model-&gt;f_content = file_get_contents($file-&gt;tempName);
+        $model-&gt;cartella = $model-&gt;cartella ?? <span class="hljs-string">'Root'</span>;
+        $model-&gt;cartella_padre = $model-&gt;cartella_padre ?? <span class="hljs-keyword">null</span>;
+
+    }
+    <span class="hljs-keyword">if</span> ($model-&gt;save(<span class="hljs-keyword">false</span>)) {
+        Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'success'</span>, <span class="hljs-string">'File caricato con successo.'</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;redirect([<span class="hljs-string">'statistiche/index'</span>]);
+    } <span class="hljs-keyword">else</span> {
+        Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'error'</span>, <span class="hljs-string">'Errore durante il salvataggio.'</span>);
+    }
+}
+<span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;renderAjax(<span class="hljs-string">'upload-file'</span>, [
+    <span class="hljs-string">'model'</span> =&gt; $model,
+]);
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Fri, 06 Feb 2026 11:18:23 +0100</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

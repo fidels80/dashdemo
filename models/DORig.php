@@ -15,11 +15,14 @@ use Yii;
  * @property string|null $Cd_MGEsercizio Codice esercizio di magazzino.
  * @property string|null $Cd_DO
  * @property string|null $TipoDocumento Tipo documento
- * @property string|null $Cd_CF Codice Cliente/Fornitore 
+ * @property string|null $Cd_CF Codice Cliente/Fornitore
+ 
  * @property string|null $Cd_LS_C Codice listino per i component
- * @property string|null $Cd_VL Codice Valuta. 
+ * @property string|null $Cd_VL Codice Valuta.
+ 
  * @property float $Cambio Valore del cambio.
- * @property int $Decimali Decimali della valuta 
+ * @property int $Decimali Decimali della valuta
+ 
  * @property int $DecimaliPrzUn Decimali per i prezzi unitari
  * @property int $Riga Numero progressivo della riga.
  * @property string|null $Cd_MGCausale
@@ -28,32 +31,42 @@ use Yii;
  * @property string|null $Cd_MGUbicazione_P
  * @property string|null $Cd_MG_A Codice del Magazzino di Arrivo
  * @property string|null $Cd_MGUbicazione_A
- * @property string|null $Cd_AR Codice Articolo NULL se riga 
+ * @property string|null $Cd_AR Codice Articolo
+ NULL se riga 
  * @property int|null $Id_DoDB
  * @property string|null $Descrizione Descrizione della riga di docu
- * @property string|null $Cd_ARMisura Codice unità di misura. Obbli
+ * @property string|null $Cd_ARMisura Codice unità di misura.
+ Obbli
  * @property string|null $Cd_CGConto
- * @property string|null $Cd_Aliquota Codice aliquota IVA. Obbligat
+ * @property string|null $Cd_Aliquota Codice aliquota IVA.
+ Obbligat
  * @property string|null $Cd_Aliquota_E Eventuale codice di esenzione 
  * @property string|null $Cd_Aliquota_R Codice aliquota effettivo util
  * @property string|null $Cd_DOSottoCommessa Codice della Commessa
  * @property string|null $Cd_ARLotto Codice del lotto
- * @property string $TipoRigaRif Tipo Riga descrittiva : ''  =
- * @property float $Qta Quantità movimentata. Espress
+ * @property string $TipoRigaRif Tipo Riga descrittiva :
+ ''  =
+ * @property float $Qta Quantità movimentata.
+ Espress
  * @property float $FattoreToUM1 Fattore di conversione all'uni
- * @property float|null $QtaEvadibile Quantità Evadibile Espressa i
+ * @property float|null $QtaEvadibile Quantità Evadibile
+ Espressa i
  * @property int|null $Id_DORig_Evade Id della riga che viene evasa 
  * @property float $QtaEvasa Quantità da evadere su un altr
- * @property float $PrezzoUnitarioV Prezzo unitario in Valuta. Vi
- * @property string $ScontoRiga Sconto della riga Viene gesti
+ * @property float $PrezzoUnitarioV Prezzo unitario in Valuta.
+ Vi
+ * @property string $ScontoRiga Sconto della riga
+ Viene gesti
  * @property float $PrezzoAddizionaleV Prezzo addizionale che va ad i
  * @property float $PrezzoTotaleV Valore (Prezzo/Costo) totale d
  * @property int $PrezzoTotaleMovFree Flag per determinare se il val
  * @property float $PrezzoTotaleMovE Prezzo totale di riga per la v
- * @property int $Omaggio Tipo di omaggio sulla riga:  
+ * @property int $Omaggio Tipo di omaggio sulla riga:
+  
  * @property string $ProvvigioneRiga_1 Percentuale composta di provvi
  * @property string $ProvvigioneRiga_2 Percentuale composta di provvi
- * @property string|null $DataConsegna Data di Consegna ABL Default:
+ * @property string|null $DataConsegna Data di Consegna
+ ABL Default:
  * @property string|null $DataConsegna_R
  * @property string|null $NoteRiga Note sulla riga del documento.
  * @property int $Evasa Vale 1 (true) quando la riga è
@@ -168,7 +181,6 @@ class DORig extends \yii\db\ActiveRecord
             [['Cd_Aliquota_R'], 'exist', 'skipOnError' => true, 'targetClass' => Aliquota::className(), 'targetAttribute' => ['Cd_Aliquota_R' => 'Cd_Aliquota']],
             [['Cd_AR', 'Cd_ARLotto'], 'exist', 'skipOnError' => true, 'targetClass' => ARLotto::className(), 'targetAttribute' => ['Cd_AR' => 'Cd_AR', 'Cd_ARLotto' => 'Cd_ARLotto']],
             [['Cd_AR'], 'exist', 'skipOnError' => true, 'targetClass' => AR::className(), 'targetAttribute' => ['Cd_AR' => 'Cd_AR']],
-            [['Cd_DO'], 'exist', 'skipOnError' => true, 'targetClass' => DO::className(), 'targetAttribute' => ['Cd_DO' => 'Cd_Do']],
             [['RR_Cd_CGConto'], 'exist', 'skipOnError' => true, 'targetClass' => CGConto::className(), 'targetAttribute' => ['RR_Cd_CGConto' => 'Cd_CGConto']],
             [['Cd_CGConto'], 'exist', 'skipOnError' => true, 'targetClass' => CGConto::className(), 'targetAttribute' => ['Cd_CGConto' => 'Cd_CGConto']],
             [['Cd_ReverseCharge'], 'exist', 'skipOnError' => true, 'targetClass' => ReverseCharge::className(), 'targetAttribute' => ['Cd_ReverseCharge' => 'Cd_ReverseCharge']],
@@ -213,7 +225,8 @@ class DORig extends \yii\db\ActiveRecord
             'Cambio' => 'Valore del cambio.',
             'Decimali' => 'Decimali della valuta
 ',
-            'DecimaliPrzUn' => 'Decimali per i prezzi unitari',
+            'DecimaliPrzUn' => 'Decimali per i prezzi unitari
+',
             'Riga' => 'Numero progressivo della riga.',
             'Cd_MGCausale' => 'Cd Mg Causale',
             'TipoPC' => 'Tipo Pc',

@@ -34,12 +34,13 @@ class Anacli extends \yii\db\ActiveRecord
         return [
             [['cd_cli', 'Desk'], 'required'],
             [['cd_cli'], 'string', 'max' => 7],
-            [['Desk', 'address'], 'string', 'max' => 80],
+            [['Desk', 'address','ccemail'], 'string', 'max' => 80],
             [['localita'], 'string', 'max' => 60],
             [['cap'], 'string', 'max' => 10],
             [['cd_nazione'], 'string', 'max' => 2],
             [['PartitaIva'], 'string', 'max' => 17],
             [['CodiceFiscale'], 'string', 'max' => 16],
+            [['showprices','show_ins_nrgaz'], 'integer'],
             [['cd_cli'], 'unique'],
         ];
     }
@@ -58,6 +59,9 @@ class Anacli extends \yii\db\ActiveRecord
             'cd_nazione' => 'Cd Nazione',
             'PartitaIva' => 'Partita Iva',
             'CodiceFiscale' => 'Codice Fiscale',
+            'ccemail'=>'Email CC',
+            'showprices'=>'Mostra prezzi',
+            'show_ins_nrgaz'=>'MOstra Inserzione e nr gazzetta'
         ];
     }
 
