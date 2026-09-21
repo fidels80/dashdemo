@@ -212,6 +212,26 @@ $this->registerCss("
                 ]) ?>
             </div>
         </div>
+        <div class="row g-3 mt-1 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label small fw-bold">Periodo - Da</label>
+                <input type="date" id="filtro-data-da" class="form-control form-control-sm"
+                       value="<?= Html::encode($dataDa ?? '') ?>" onkeydown="return false;" onpaste="return false;">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label small fw-bold">Periodo - A</label>
+                <input type="date" id="filtro-data-a" class="form-control form-control-sm"
+                       value="<?= Html::encode($dataA ?? '') ?>" onkeydown="return false;" onpaste="return false;">
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-sm btn-primary" id="btn-applica-periodo">
+                    <i class="fa fa-search"></i> Applica periodo
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-azzera-periodo">
+                    Azzera
+                </button>
+            </div>
+        </div>
         <div class="mt-3 text-end">
             <button class="btn btn-sm btn-outline-danger" type="button" id="btn-reset-filtri">
                 <i class="fa-solid fa-trash-can"></i> Svuota Filtri
@@ -774,6 +794,20 @@ $(document).on('click', '#btn-export-pdf', function () {
     var qs = $.param(params);
     var url = 'index.php?r=planning/export-pdf' + (qs ? '&' + qs : '');
     window.open(url, '_blank');
+});
+
+// --- PERIODO (intervallo date server-side) ---
+$(document).on('click', '#btn-applica-periodo', function () {
+    var da = $('#filtro-data-da').val();
+    var a = $('#filtro-data-a').val();
+    var params = [];
+    if (da) { params.push('data_da=' + encodeURIComponent(da)); }
+    if (a) { params.push('data_a=' + encodeURIComponent(a)); }
+    window.location.href = 'index.php?r=planning/list' + (params.length ? '&' + params.join('&') : '');
+});
+
+$(document).on('click', '#btn-azzera-periodo', function () {
+    window.location.href = 'index.php?r=planning/list';
 });
 JS
 );

@@ -510,10 +510,21 @@ public function actionEventsjson($start = null, $end = null)
      */
   public function actionList()
 {
-    $models = Planning::find()
+    $dataDa = Yii::$app->request->get('data_da');
+    $dataA = Yii::$app->request->get('data_a');
+
+    $query = Planning::find()
         ->with(['personali', 'veicoliListRel', 'veicolo', 'cliente', 'dittaEsternaRel', 'sottocommessa'])
-        ->orderBy(['data_attivita' => SORT_DESC,'Giro' => SORT_ASC ])
-        ->all();
+        ->orderBy(['data_attivita' => SORT_DESC,'Giro' => SORT_ASC ]);
+
+    if (!empty($dataDa)) {
+        $query->andWhere(['>=', 'data_attivita', $dataDa]);
+    }
+    if (!empty($dataA)) {
+        $query->andWhere(['<=', 'data_attivita', $dataA]);
+    }
+
+    $models = $query->all();
 
     // Carichiamo le liste per le select
     $veicoliList = ArrayHelper::map(\app\models\Veicoli::find()->all(), 'id', function($m) {
@@ -537,6 +548,8 @@ public function actionEventsjson($start = null, $end = null)
         'personaleList' => $personaleList,
         'clientiList' => $clientiList,
         'ditteList' => $ditteList,
+        'dataDa' => $dataDa,
+        'dataA' => $dataA,
     ]);
 }
     // Assicurati di avere questo in alto nel file: use app\models\Presenze;
