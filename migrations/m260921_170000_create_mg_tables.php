@@ -28,7 +28,7 @@ class m260921_170000_create_mg_tables extends Migration
                 'telefono' => $this->string(50)->null(),
                 'email' => $this->string(100)->null(),
                 'tipo' => $this->string(20)->null(),
-                'attivo' => $this->boolean()->defaultValue(true),
+                'attivo' => $this->boolean()->defaultValue(1),
             ]);
             $this->createIndex('idx-mg_anagrafica-codice', '{{%mg_anagrafica}}', 'codice', true);
         }
@@ -41,7 +41,7 @@ class m260921_170000_create_mg_tables extends Migration
                 'um' => $this->string(10)->null(),
                 'prezzo' => $this->decimal(18, 4)->defaultValue(0),
                 'iva' => $this->decimal(9, 2)->defaultValue(0),
-                'attivo' => $this->boolean()->defaultValue(true),
+                'attivo' => $this->boolean()->defaultValue(1),
             ]);
             $this->createIndex('idx-mg_articolo-codice', '{{%mg_articolo}}', 'codice', true);
         }
@@ -53,21 +53,28 @@ class m260921_170000_create_mg_tables extends Migration
                 'descrizione' => $this->string(200)->notNull(),
                 'anno' => $this->integer()->notNull()->defaultValue(0),
                 'contatore' => $this->integer()->notNull()->defaultValue(0),
-                'usa_progressivo' => $this->boolean()->defaultValue(true),
-                'congruita' => $this->boolean()->defaultValue(false),
-                'attivo' => $this->boolean()->defaultValue(true),
+                'usa_progressivo' => $this->boolean()->defaultValue(1),
+                'congruita' => $this->boolean()->defaultValue(0),
+                'attivo' => $this->boolean()->defaultValue(1),
                 'created_at' => $this->dateTime()->null(),
             ]);
             $this->createIndex('idx-mg_tipo_documento-codice', '{{%mg_tipo_documento}}', 'codice', true);
+        }
 
-            $anno = (int) date('Y');
-            $this->batchInsert('{{%mg_tipo_documento}}',
-                ['codice', 'descrizione', 'anno', 'contatore', 'usa_progressivo', 'congruita', 'attivo', 'created_at'], [
-                    ['ORD', 'Ordine cliente', $anno, 0, 1, 1, 1, date('Y-m-d H:i:s')],
-                    ['PRE', 'Preventivo', $anno, 0, 1, 1, 1, date('Y-m-d H:i:s')],
-                    ['DDT', 'Documento di trasporto', $anno, 0, 1, 1, 1, date('Y-m-d H:i:s')],
-                    ['FTT', 'Fattura', $anno, 0, 1, 1, 1, date('Y-m-d H:i:s')],
-                ]);
+        // Seed dei tipi documento (idempotente: solo se la tabella è vuota)
+        if ($this->checkTableExist('mg_tipo_documento')) {
+            $count = (new \yii\db\Query())->from('{{%mg_tipo_documento}}')->count();
+            if ((int) $count === 0) {
+                $anno = (int) date('Y');
+                $now = new \yii\db\Expression('GETDATE()');
+                $this->batchInsert('{{%mg_tipo_documento}}',
+                    ['codice', 'descrizione', 'anno', 'contatore', 'usa_progressivo', 'congruita', 'attivo', 'created_at'], [
+                        ['ORD', 'Ordine cliente', $anno, 0, 1, 1, 1, $now],
+                        ['PRE', 'Preventivo', $anno, 0, 1, 1, 1, $now],
+                        ['DDT', 'Documento di trasporto', $anno, 0, 1, 1, 1, $now],
+                        ['FTT', 'Fattura', $anno, 0, 1, 1, 1, $now],
+                    ]);
+            }
         }
 
         if (!$this->checkTableExist('mg_documento')) {
