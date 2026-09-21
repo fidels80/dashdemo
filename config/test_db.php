@@ -1,6 +1,5 @@
 <?php
-$db = require __DIR__ . '/db.php';
-// test database! Important not to run tests on production or development databases
-//$db['dsn'] = 'mysql:host=localhost;dbname=yii2basic_test';
 
-return $db;
+// Database di test: usa le stesse connessioni definite in config/db.php
+// Attenzione: non eseguire i test su database di produzione/sviluppo.
+return require __DIR__ . '/db.php';
