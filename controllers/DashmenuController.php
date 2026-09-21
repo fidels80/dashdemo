@@ -36,7 +36,7 @@ class DashmenuController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => DashMenu::find()
                 ->orderBy(['genitore_id' => SORT_ASC, 'ordine' => SORT_ASC, 'label' => SORT_ASC]),
-            'pagination' => ['pageSize' => 100],
+            'pagination' => false,
         ]);
 
         return $this->render('index', [

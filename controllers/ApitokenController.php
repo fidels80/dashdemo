@@ -30,7 +30,7 @@ class ApitokenController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => ApiToken::find()->orderBy(['id' => SORT_DESC]),
-            'pagination' => ['pageSize' => 50],
+            'pagination' => false,
         ]);
 
         return $this->render('index', ['dataProvider' => $dataProvider]);

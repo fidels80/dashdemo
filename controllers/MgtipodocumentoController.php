@@ -30,7 +30,7 @@ class MgtipodocumentoController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => MgTipoDocumento::find()->orderBy(['codice' => SORT_ASC]),
-            'pagination' => ['pageSize' => 50],
+            'pagination' => false,
         ]);
 
         return $this->render('index', [

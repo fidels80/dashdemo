@@ -30,7 +30,7 @@ class MganagraficaController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => MgAnagrafica::find()->orderBy(['ragione_sociale' => SORT_ASC]),
-            'pagination' => ['pageSize' => 50],
+            'pagination' => false,
         ]);
 
         return $this->render('index', ['dataProvider' => $dataProvider]);

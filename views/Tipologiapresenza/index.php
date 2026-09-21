@@ -106,7 +106,7 @@ $(document).ready(function() {
             { extend: 'print', className: 'btn btn-primary', text: '<i class="fa-solid fa-print"></i> Stampa' }
         ],
         "pageLength": 25,
-        "scrollX": true,
+        "scrollX": false, "responsive": true, "autoWidth": false,
         "columnDefs": [
             { "width": "150px", "targets": 0 }, // Larghezza codice
             { "width": "120px", "targets": 2 }  // Azioni

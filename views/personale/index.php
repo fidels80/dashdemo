@@ -8,6 +8,7 @@ $this->title = '';
 // 1. Registrazione CSS
 $this->registerCssFile('https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css');
 $this->registerCssFile('https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css');
+$this->registerCssFile('https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css');
 $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
 
 // 2. Registrazione JS (con dipendenze corrette)
@@ -17,6 +18,8 @@ $this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/dataTables.bu
 $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 $this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 $this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
+$this->registerJsFile('https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
+$this->registerJsFile('https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 // 3. CSS Custom per pulizia e bottoni
@@ -152,8 +155,9 @@ $(document).ready(function() {
         ],
         "paging": true,
         "pageLength": 25,
-        "scrollX": true, 
-        "responsive": false, 
+        "scrollX": false, 
+        "responsive": true, 
+        "autoWidth": false,
         "ordering": true,
         "order": [[ 0, "asc" ]]
     });

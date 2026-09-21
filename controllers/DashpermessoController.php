@@ -35,7 +35,7 @@ class DashpermessoController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => DashPermesso::find()->orderBy(['gruppo' => SORT_ASC, 'ordine' => SORT_ASC]),
-            'pagination' => ['pageSize' => 100],
+            'pagination' => false,
         ]);
 
         return $this->render('index', ['dataProvider' => $dataProvider]);

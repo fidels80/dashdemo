@@ -119,7 +119,7 @@ $(document).ready(function() {
             { extend: 'print', className: 'btn btn-primary', text: '<i class="fa-solid fa-print"></i> Stampa' }
         ],
         "pageLength": 25,
-        "scrollX": true,
+        "scrollX": false, "responsive": true, "autoWidth": false,
         "columnDefs": [
            { "width": "350px", "targets": 1 }, // Larghezza dipendente
             { "width": "80px", "targets": 6 },  // STRETTA: Costo Totale

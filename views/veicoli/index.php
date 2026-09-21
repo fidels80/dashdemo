@@ -166,8 +166,8 @@ $(document).ready(function() {
         ],
         "paging": true,
         "pageLength": 25,
-        "scrollX": true, 
-        "responsive": false, 
+        "scrollX": false, 
+        "responsive": true, 
         "ordering": true,
         "order": [[ 0, "asc" ]]
     });

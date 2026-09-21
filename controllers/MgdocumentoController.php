@@ -62,7 +62,7 @@ class MgdocumentoController extends Controller
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query->orderBy(['anno' => SORT_DESC, 'numero' => SORT_DESC]),
-            'pagination' => ['pageSize' => 50],
+            'pagination' => false,
         ]);
 
         return $this->render('index', [

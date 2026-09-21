@@ -17,6 +17,7 @@ class DataTablesAsset extends AssetBundle
         'https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
         'https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css',
+        'https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css',
         // --- SELECT2 ---
         'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
         'https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css',
@@ -35,6 +36,8 @@ class DataTablesAsset extends AssetBundle
         'https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js',
         'https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js',
         'https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js',
+        'https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js',
+        'https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js',
    // --- FULLCALENDAR 6 ---
         'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js',
         'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales/it.global.min.js',

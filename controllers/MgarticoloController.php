@@ -30,7 +30,7 @@ class MgarticoloController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => MgArticolo::find()->orderBy(['descrizione' => SORT_ASC]),
-            'pagination' => ['pageSize' => 50],
+            'pagination' => false,
         ]);
 
         return $this->render('index', ['dataProvider' => $dataProvider]);

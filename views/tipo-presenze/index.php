@@ -8,6 +8,7 @@ $this->title = ''; // Lasciamo vuoto per evitare il doppio titolo
 // 1. Registrazione CSS (Includiamo FontAwesome per le icone nei bottoni)
 $this->registerCssFile('https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css');
 $this->registerCssFile('https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css');
+$this->registerCssFile('https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css');
 $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
 
 // 2. Registrazione JS
@@ -19,6 +20,8 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfm
 $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 $this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 $this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
+$this->registerJsFile('https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
+$this->registerJsFile('https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 
 // 3. CSS Custom per uniformare lo stile (Header chiaro, bottoni e allineamento)
 $this->registerCss("
@@ -116,7 +119,7 @@ $(document).ready(function() {
             { extend: 'print', className: 'btn btn-primary', text: '<i class="fa-solid fa-print"></i> Stampa' }
         ],
         "pageLength": 25,
-        "scrollX": true,
+        "scrollX": false, "responsive": true, "autoWidth": false,
         "columnDefs": [
             { "width": "150px", "targets": 0 }, // Larghezza codice
             { "width": "120px", "targets": 2 }  // Azioni
