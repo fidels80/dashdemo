@@ -308,6 +308,11 @@ $config = [
 
         $route = $controller->id . '/' . $action->id;
 
+        // Le rotte API sono autenticate tramite Bearer token, non dalla sessione
+        if (strpos($route, 'api/') === 0) {
+            return;
+        }
+
         if (Yii::$app->user->isGuest && !in_array($route, $publicRoutes)) {
             Yii::$app->response->redirect(['site/index'])->send();
             $event->isValid = false;

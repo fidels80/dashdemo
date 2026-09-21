@@ -115,6 +115,8 @@ $totaleNotifiche = $praticheRecenti + $nuoviMessaggi;
                 <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/mgtipodocumento/index']) ?>"><i class="fas fa-tags mr-2"></i> Tipi documento</a>
                 <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/mganagrafica/index']) ?>"><i class="fas fa-users mr-2"></i> Anagrafica</a>
                 <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/mgarticolo/index']) ?>"><i class="fas fa-boxes mr-2"></i> Articoli</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/apitoken/index']) ?>"><i class="fas fa-key mr-2"></i> Token API</a>
             </div>
         </li>
 
