@@ -106,6 +106,18 @@ $totaleNotifiche = $praticheRecenti + $nuoviMessaggi;
             </div>
         </li>
 
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#" title="Microgestionale documentale">
+                <i class="fas fa-file-invoice"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/mgdocumento/index']) ?>"><i class="fas fa-file-invoice mr-2"></i> Documenti</a>
+                <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/mgtipodocumento/index']) ?>"><i class="fas fa-tags mr-2"></i> Tipi documento</a>
+                <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/mganagrafica/index']) ?>"><i class="fas fa-users mr-2"></i> Anagrafica</a>
+                <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/mgarticolo/index']) ?>"><i class="fas fa-boxes mr-2"></i> Articoli</a>
+            </div>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="javascript:void(0);" id="btn-segnalazione-global" title="Segnala Anomalia">
                 <i class="fas fa-bug"></i>
