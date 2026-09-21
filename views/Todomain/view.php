@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'cd_cli' => [
                         'attribute' => 'cd_cli',
-                        'value' => fn ($model) => $model->clidett->Desk ?? 'N/A',
+                        'value' => fn ($model) => $model->clidett->ragione_sociale ?? 'N/A',
                     ],
                     'priorita' => [
                         'attribute' => 'priorita',

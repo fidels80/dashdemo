@@ -172,12 +172,10 @@ $isNew = $model->isNewRecord;
                     <div class="row">
                         <div class="col-md-4"><div class="form-group"><label>Partita IVA</label><input type="text" id="nf-piva" class="form-control"></div></div>
                         <div class="col-md-4"><div class="form-group"><label>Città</label><input type="text" id="nf-citta" class="form-control"></div></div>
-                        <div class="col-md-4"><div class="form-group"><label>Tipo</label>
-                            <select id="nf-tipo" class="form-control">
-                                <option value="fornitore">Fornitore</option>
-                                <option value="cliente">Cliente</option>
-                                <option value="entrambi">Entrambi</option>
-                            </select>
+                        <div class="col-md-4"><div class="form-group"><label>Ruoli</label>
+                            <div class="form-check"><input type="checkbox" class="form-check-input" id="nf-cliente"><label class="form-check-label" for="nf-cliente">Cliente</label></div>
+                            <div class="form-check"><input type="checkbox" class="form-check-input" id="nf-fornitore" checked><label class="form-check-label" for="nf-fornitore">Fornitore</label></div>
+                            <div class="form-check"><input type="checkbox" class="form-check-input" id="nf-agente"><label class="form-check-label" for="nf-agente">Agente</label></div>
                         </div></div>
                     </div>
                     <div class="row">
@@ -349,7 +347,8 @@ $isNew = $model->isNewRecord;
     $('#btn-nuovo-fornitore').on('click', function () {
         $('#nf-error').text('');
         $('#nf-codice, #nf-ragione, #nf-piva, #nf-citta, #nf-telefono, #nf-email').val('');
-        $('#nf-tipo').val('fornitore');
+        $('#nf-cliente, #nf-agente').prop('checked', false);
+        $('#nf-fornitore').prop('checked', true);
         $('#modal-nuovo-fornitore').modal('show');
     });
 
@@ -365,7 +364,9 @@ $isNew = $model->isNewRecord;
             ragione_sociale: ragione,
             partita_iva: $('#nf-piva').val(),
             citta: $('#nf-citta').val(),
-            tipo: $('#nf-tipo').val(),
+            is_cliente: $('#nf-cliente').is(':checked') ? 1 : 0,
+            is_fornitore: $('#nf-fornitore').is(':checked') ? 1 : 0,
+            is_agente: $('#nf-agente').is(':checked') ? 1 : 0,
             telefono: $('#nf-telefono').val(),
             email: $('#nf-email').val(),
             _csrf: (typeof yii !== 'undefined' ? yii.getCsrfToken() : '')

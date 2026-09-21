@@ -49,11 +49,8 @@ $us = user::find()
     ->all();
 $xuser = ArrayHelper::map($us, 'id', 'Name');
 
-$cli = anacli::find()
-    ->select(['cd_cli as id', 'Desk as Name'])
-    ->asArray()
-    ->all();
-$clifor = ArrayHelper::map($cli, 'id', 'Name');
+// Clienti presi dall'anagrafica del microgestionale (mg_anagrafica)
+$clifor = \app\models\MgAnagrafica::mapClienti();
 
 $xpriorita = todopriorita::find()
     ->select(['id', 'priorita as Name'])

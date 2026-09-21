@@ -34,7 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'provincia',
             'telefono',
             'email',
-            'tipo',
+            ['attribute' => 'is_cliente', 'format' => 'boolean'],
+            ['attribute' => 'is_fornitore', 'format' => 'boolean'],
+            ['attribute' => 'is_agente', 'format' => 'boolean'],
             ['attribute' => 'attivo', 'format' => 'boolean'],
         ],
     ]) ?>

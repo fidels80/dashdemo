@@ -18,7 +18,7 @@ class MgAnagrafica extends \yii\db\ActiveRecord
     {
         return [
             [['codice', 'ragione_sociale'], 'required'],
-            [['attivo'], 'boolean'],
+            [['attivo', 'is_cliente', 'is_fornitore', 'is_agente'], 'boolean'],
             [['codice'], 'string', 'max' => 20],
             [['ragione_sociale'], 'string', 'max' => 200],
             [['partita_iva', 'codice_fiscale'], 'string', 'max' => 20],
@@ -49,6 +49,9 @@ class MgAnagrafica extends \yii\db\ActiveRecord
             'email' => 'Email',
             'tipo' => 'Tipo',
             'attivo' => 'Attivo',
+            'is_cliente' => 'Cliente',
+            'is_fornitore' => 'Fornitore',
+            'is_agente' => 'Agente',
         ];
     }
 
@@ -59,5 +62,35 @@ class MgAnagrafica extends \yii\db\ActiveRecord
             'id',
             'ragione_sociale'
         );
+    }
+
+    /**
+     * Clienti (codice => ragione sociale) per le tendine che salvano il codice.
+     */
+    public static function mapClienti()
+    {
+        return \yii\helpers\ArrayHelper::map(
+            self::find()->where(['is_cliente' => 1])->orderBy(['ragione_sociale' => SORT_ASC])->all(),
+            'codice',
+            'ragione_sociale'
+        );
+    }
+
+    /**
+     * Etichetta dei ruoli attivi (Cliente, Fornitore, Agente).
+     */
+    public function getTipiLabel()
+    {
+        $tipi = [];
+        if ($this->is_cliente) {
+            $tipi[] = 'Cliente';
+        }
+        if ($this->is_fornitore) {
+            $tipi[] = 'Fornitore';
+        }
+        if ($this->is_agente) {
+            $tipi[] = 'Agente';
+        }
+        return implode(', ', $tipi);
     }
 }

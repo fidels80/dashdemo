@@ -187,14 +187,11 @@ $usrgrid = $ris['grid_color'];
                 'format' => 'text',
                 'width' => '15%',
                 'value' => function ($model, $key, $index, $widget) {
-                    $ris2 = Anacli::find()->where(['cd_cli' => $model->cd_cli])->one();
-                    return $ris2->Desk ?? null;
+                    $ris2 = \app\models\MgAnagrafica::find()->where(['codice' => $model->cd_cli])->one();
+                    return $ris2->ragione_sociale ?? null;
                 },
                 'filterType' => GridView::FILTER_SELECT2,
-                'filter' => ArrayHelper::map(Anacli::find()
-                ->select(['cd_cli as id', 'Desk as desk'])
-                //->where(['' => $eldoc])
-                ->orderBy('id')->asArray()->all(), 'id', 'desk'),
+                'filter' => \app\models\MgAnagrafica::mapClienti(),
 
                 'filterWidgetOptions' => [
                     'pluginOptions' => ['allowClear' => true],

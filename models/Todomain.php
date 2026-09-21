@@ -131,9 +131,8 @@ class Todomain extends \yii\db\ActiveRecord
 
     public function getClidett()
     {
-        //       $grpdett= Todogruppi::find()->where(['id'=>'group'])->one();
-        //       return $grpdett;
-        return $this->hasOne(Anacli::class, ['cd_cli' => 'cd_cli']);
+        // Il cliente viene preso dall'anagrafica del microgestionale (mg_anagrafica)
+        return $this->hasOne(MgAnagrafica::className(), ['codice' => 'cd_cli']);
     }
     public function getPriodett()
     {

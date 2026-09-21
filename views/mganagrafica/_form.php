@@ -13,7 +13,11 @@ use yii\bootstrap4\ActiveForm;
     <div class="row">
         <div class="col-md-3"><?= $form->field($model, 'codice')->textInput(['maxlength' => true]) ?></div>
         <div class="col-md-6"><?= $form->field($model, 'ragione_sociale')->textInput(['maxlength' => true]) ?></div>
-        <div class="col-md-3"><?= $form->field($model, 'tipo')->dropDownList(['cliente' => 'Cliente', 'fornitore' => 'Fornitore', 'entrambi' => 'Entrambi'], ['prompt' => '...']) ?></div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'is_cliente')->checkbox() ?>
+            <?= $form->field($model, 'is_fornitore')->checkbox() ?>
+            <?= $form->field($model, 'is_agente')->checkbox() ?>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-3"><?= $form->field($model, 'partita_iva')->textInput(['maxlength' => true]) ?></div>

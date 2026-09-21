@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Città</th>
             <th>Telefono</th>
             <th>Email</th>
-            <th>Tipo</th>
+            <th>Ruoli</th>
             <th>Attivo</th>
             <th class="no-export">Azioni</th>
         </tr>
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= Html::encode($m->citta) ?></td>
                 <td><?= Html::encode($m->telefono) ?></td>
                 <td><?= Html::encode($m->email) ?></td>
-                <td><?= Html::encode($m->tipo) ?></td>
+                <td><?= Html::encode($m->tipiLabel) ?></td>
                 <td><?= $m->attivo ? 'Sì' : 'No' ?></td>
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>
