@@ -40,4 +40,13 @@ class Todopriorita extends \yii\db\ActiveRecord
             'priorita' => 'Priorita',
         ];
     }
+
+    public static function map()
+    {
+        return \yii\helpers\ArrayHelper::map(
+            self::find()->orderBy(['id' => SORT_ASC])->all(),
+            'id',
+            'priorita'
+        );
+    }
 }

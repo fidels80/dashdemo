@@ -11,14 +11,13 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use app\components\AccessControl;
 
 /**
  * Gestione del menu laterale dinamico (voci, sottovoci e assegnazione agli utenti).
  */
 class DashmenuController extends Controller
 {
-    /** Utente supervisore (livello 100) sempre protetto. */
-    const SUPER_EMAIL = 'cardinale.marco@gmail.com';
 
     public function behaviors()
     {
@@ -122,7 +121,7 @@ class DashmenuController extends Controller
             throw new NotFoundHttpException('Utente non trovato.');
         }
 
-        $isSuper = ((int) $user->level >= 100) || ($user->email === self::SUPER_EMAIL);
+        $isSuper = AccessControl::isSuper($user);
 
         if (Yii::$app->request->isPost && !$isSuper) {
             $checked = Yii::$app->request->post('menu', []);

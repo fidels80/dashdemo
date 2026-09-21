@@ -23,6 +23,7 @@ use app\models\Todoreltags;
 use app\models\User;
 use app\models\Todostato;
 use app\models\Todopriorita;
+use app\models\Todogruppi;
 use app\models\Todotipo;
 use app\models\Todosprint;
 use app\models\Todoattivita;

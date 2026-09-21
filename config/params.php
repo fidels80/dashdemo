@@ -39,4 +39,11 @@ return [
         'bsVersion' => '4.x', 
         'smartsupp' => 'de3e18ac23d0b2ca7ac25aaf8ea058bfb6d85025',
      //   'icon-framework' => \kartik\icons\Icon::FAS,
+
+    // Utenti con accesso completo (bypass ACL e visibilita' totale del menu).
+    // Non sono modificabili dalla gestione permessi.
+    'superEmails' => [
+        'cardinale.marco@gmail.com',
+        'marco.cardinale@ilvbc.it',
+    ],
     ];

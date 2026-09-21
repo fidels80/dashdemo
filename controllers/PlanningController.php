@@ -510,12 +510,15 @@ public function actionEventsjson($start = null, $end = null)
      */
   public function actionList()
 {
-    $dataDa = Yii::$app->request->get('data_da');
-    $dataA = Yii::$app->request->get('data_a');
+    // Default: mostra le attività di oggi (evita di caricare l'intero storico).
+    $dataDa = Yii::$app->request->get('data_da', date('Y-m-d'));
+    $dataA = Yii::$app->request->get('data_a', date('Y-m-d'));
+
+    $relations = ['personali', 'veicoliListRel', 'veicolo', 'cliente', 'dittaEsternaRel', 'sottocommessa'];
 
     $query = Planning::find()
-        ->with(['personali', 'veicoliListRel', 'veicolo', 'cliente', 'dittaEsternaRel', 'sottocommessa'])
-        ->orderBy(['data_attivita' => SORT_DESC,'Giro' => SORT_ASC ]);
+        ->with($relations)
+        ->orderBy(['data_attivita' => SORT_DESC, 'Giro' => SORT_ASC]);
 
     if (!empty($dataDa)) {
         $query->andWhere(['>=', 'data_attivita', $dataDa]);
@@ -525,6 +528,16 @@ public function actionEventsjson($start = null, $end = null)
     }
 
     $models = $query->all();
+
+    // Se è il caricamento di default (oggi) e non ci sono attività, mostra le ultime 20
+    $isDefaultLoad = ($dataDa === date('Y-m-d') && $dataA === date('Y-m-d'));
+    if ($isDefaultLoad && empty($models)) {
+        $models = Planning::find()
+            ->with($relations)
+            ->orderBy(['data_attivita' => SORT_DESC, 'Giro' => SORT_ASC])
+            ->limit(20)
+            ->all();
+    }
 
     // Carichiamo le liste per le select
     $veicoliList = ArrayHelper::map(\app\models\Veicoli::find()->all(), 'id', function($m) {

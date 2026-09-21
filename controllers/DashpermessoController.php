@@ -11,13 +11,13 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use app\components\AccessControl;
 
 /**
  * Gestione permessi per form/funzione (ACL) assegnati per utente.
  */
 class DashpermessoController extends Controller
 {
-    const SUPER_EMAIL = 'cardinale.marco@gmail.com';
 
     public function behaviors()
     {
@@ -103,7 +103,7 @@ class DashpermessoController extends Controller
             throw new NotFoundHttpException('Utente non trovato.');
         }
 
-        $isSuper = ((int) $user->level >= 100) || ($user->email === self::SUPER_EMAIL);
+        $isSuper = AccessControl::isSuper($user);
 
         if (Yii::$app->request->isPost && !$isSuper) {
             $post = Yii::$app->request->post('perm', []);

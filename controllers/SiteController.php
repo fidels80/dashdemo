@@ -305,7 +305,8 @@ var_dump ('giampaolo.schiappoli@programma2000.com');
 
         // Menu dinamico definito in dash_menu (con sottovoci e assegnazioni per utente).
         // Il livello 100 vede sempre tutte le voci.
-        $items = \app\models\DashMenu::buildMenuForUser($userId, $level);
+        $email = ($identity && !empty($identity->email)) ? $identity->email : null;
+        $items = \app\models\DashMenu::buildMenuForUser($userId, $level, $email);
 
         $items[] = [
             'label' => 'Utente',

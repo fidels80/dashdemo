@@ -64,6 +64,22 @@ class AccessControl
     }
 
     /**
+     * Utenti con accesso completo: livello 100 oppure email in params['superEmails'].
+     */
+    public static function isSuper($user)
+    {
+        if (!$user) {
+            return false;
+        }
+        $level = $user->hasAttribute('level') ? (int) $user->level : 0;
+        if ($level >= 100) {
+            return true;
+        }
+        $emails = \Yii::$app->params['superEmails'] ?? [];
+        return !empty($user->email) && in_array(strtolower($user->email), array_map('strtolower', $emails), true);
+    }
+
+    /**
      * Verifica se l'utente puo' eseguire l'azione sul controller indicato.
      *
      * @param string $controllerId
@@ -83,9 +99,8 @@ class AccessControl
             return false;
         }
 
-        // Livello 100: accesso completo
-        $level = $user->hasAttribute('level') ? (int) $user->level : 0;
-        if ($level >= 100) {
+        // Supervisore (livello 100 o email in superEmails): accesso completo
+        if (self::isSuper($user)) {
             return true;
         }
 

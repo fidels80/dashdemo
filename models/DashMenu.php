@@ -90,7 +90,7 @@ class DashMenu extends \yii\db\ActiveRecord
     /**
      * Costruisce l'array di voci per il widget Menu, filtrato per utente/livello.
      */
-    public static function buildMenuForUser($userId, $level)
+    public static function buildMenuForUser($userId, $level, $email = null)
     {
         $items = self::find()
             ->where(['attivo' => 1])
@@ -98,8 +98,10 @@ class DashMenu extends \yii\db\ActiveRecord
             ->orderBy(['ordine' => SORT_ASC, 'label' => SORT_ASC])
             ->all();
 
-        // Il livello 100 (supervisore) vede sempre tutto
-        $isSuper = ((int) $level >= 100);
+        // Il livello 100 o le email in params['superEmails'] vedono sempre tutto
+        $superEmails = Yii::$app->params['superEmails'] ?? [];
+        $isSuper = ((int) $level >= 100)
+            || (!empty($email) && in_array(strtolower($email), array_map('strtolower', $superEmails), true));
 
         $assigned = DashMenuUtente::find()
             ->select('menu_id')
