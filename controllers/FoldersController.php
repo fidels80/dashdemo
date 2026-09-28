@@ -89,7 +89,7 @@ class FoldersController extends Controller
             $model->f_content = $content;
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Il record è stato salvato con successo.');
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect([ 'index' ]);
             } else {
                 Yii::$app->session->setFlash('error', 'Si è verificato un errore durante il salvataggio.');
             }
@@ -130,7 +130,7 @@ class FoldersController extends Controller
         }
  $model->save();
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render(

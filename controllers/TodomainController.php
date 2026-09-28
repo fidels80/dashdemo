@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Todomain;
-use app\models\TodomainSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -54,11 +54,12 @@ class TodomainController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TodomainSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Todomain::find()->orderBy(['descrizione' => SORT_ASC]),
+            'pagination' => false,
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -128,7 +129,7 @@ class TodomainController extends Controller
 
                 Todoattivita::log($model->id, 'task', null, $model->descrizione, 'creazione');
 
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect([ 'index' ]);
             }
         }
 
@@ -204,7 +205,7 @@ class TodomainController extends Controller
                     }
                 }
 
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect([ 'index' ]);
             }
         }
 

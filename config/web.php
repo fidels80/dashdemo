@@ -107,25 +107,25 @@ $config = [
         ],
 
         'mailer' => [
-            'class' => \yii\swiftmailer\Mailer::class,
+            'class' => \app\components\Mailer::class,
             // Se impostato a true, Yii2 salva l'email come file invece di inviarla.
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'ufficio2000-it01i.mail.protection.outlook.com',
-                'port' => 25,
-                'encryption' => 'tls',
-                // Microsoft riconosce il server dall'IP: nessuna credenziale.
-                'username' => null,
-                'password' => null,
+                'host' => 'smtp.office365.com',
+                'port' => 587,
+                'username' => 'marco.cardinale@ilvbc.it',
+                'password' => 'rkrwyckbpdsbbtdr',
+                'encryption' => 'TLS',
                 'streamOptions' => [
                     'ssl' => [
-                        'allow_self_signed' => true,
                         'verify_peer' => false,
-                        'verify_peer_name' => false,
+                        'allow_self_signed' => true,
                     ],
                 ],
             ],
+            // Ogni email riceve sempre una copia in CCN al supporto.
+            'alwaysBcc' => 'supporto@programma2000.com',
         ],
 
         'log' => [

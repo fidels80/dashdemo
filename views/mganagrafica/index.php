@@ -29,6 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Telefono</th>
             <th>Email</th>
             <th>Ruoli</th>
+            <th>Metodo pagamento</th>
+            <th>Aliquota IVA</th>
+            <th>Provv. %</th>
             <th>Attivo</th>
             <th class="no-export">Azioni</th>
         </tr>
@@ -44,6 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= Html::encode($m->telefono) ?></td>
                 <td><?= Html::encode($m->email) ?></td>
                 <td><?= Html::encode($m->tipiLabel) ?></td>
+                <td><?= Html::encode($m->metodoPagamento->descrizione ?? '') ?></td>
+                <td><?= $m->aliquotaIva ? Html::encode($m->aliquotaIva->descrizione) : '' ?></td>
+                <td class="text-end"><?= number_format((float) $m->perc_provvigione, 2, ',', '.') ?></td>
                 <td><?= $m->attivo ? 'Sì' : 'No' ?></td>
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>

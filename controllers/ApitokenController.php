@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\ApiToken;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -71,6 +72,19 @@ class ApitokenController extends Controller
         $this->findModel($id)->delete();
         Yii::$app->session->setFlash('success', 'Token revocato.');
         return $this->redirect(['index']);
+    }
+
+    public function actionTest()
+    {
+        return $this->render('test', [
+            'endpoints' => [
+                'index' => Url::to(['/api/index'], true),
+                'export' => Url::to(['/api/export'], true),
+                'view' => Url::to(['/api/view'], true),
+                'import' => Url::to(['/api/import'], true),
+                'delete' => Url::to(['/api/delete'], true),
+            ],
+        ]);
     }
 
     protected function findModel($id)

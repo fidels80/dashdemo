@@ -810,7 +810,7 @@ public function actionStampa($data = null)
         ',
         'options' => ['title' => 'Procedure Giornaliere'],
         'methods' => [ 
-            'SetHeader' => ['Ufficio 2000||Stampato il: ' . date('d/m/Y H:i')], 
+            'SetHeader' => ['DashDemo||Stampato il: ' . date('d/m/Y H:i')], 
             'SetFooter' => ['Pagina {PAGENO}'],
         ]
     ]);

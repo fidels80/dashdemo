@@ -1,0 +1,25 @@
+#!/bin/sh
+# Hook git post-commit: aggiorna automaticamente il changelog applicativo
+# (tabella dash_changelog) con il commit appena creato.
+#
+# Non blocca mai il commit: eventuali errori vengono ignorati silenziosamente.
+# Attivazione (una sola volta):
+#   git config core.hooksPath .githooks
+
+# Trova l'eseguibile PHP
+if command -v php >/dev/null 2>&1; then
+    PHP=php
+elif [ -x "/c/xampp/php/php.exe" ]; then
+    PHP="/c/xampp/php/php.exe"
+elif [ -x "/c/php/php.exe" ]; then
+    PHP="/c/php/php.exe"
+else
+    exit 0
+fi
+
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+[ -n "$ROOT" ] || exit 0
+
+( cd "$ROOT" && "$PHP" yii changelog/git 1 ) >/dev/null 2>&1 || true
+
+exit 0

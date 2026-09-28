@@ -27,10 +27,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'codice',
             'descrizione',
+            [
+                'attribute' => 'destinazione',
+                'value' => function ($model) {
+                    return $model->destinazioneLabel;
+                },
+            ],
             'anno',
             'contatore',
             ['attribute' => 'usa_progressivo', 'format' => 'boolean'],
             ['attribute' => 'congruita', 'format' => 'boolean', 'label' => 'Congruità numeri'],
+            ['attribute' => 'crea_scadenze', 'format' => 'boolean', 'label' => 'Crea scadenze'],
+            ['attribute' => 'mostra_varianti', 'format' => 'boolean', 'label' => 'Mostra taglia/colore'],
             ['attribute' => 'attivo', 'format' => 'boolean'],
             'created_at',
         ],

@@ -27,29 +27,29 @@ $config = [
         ],
 
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+            'class' => 'app\components\Mailer',
             'useFileTransport' => false,
             'fileTransportPath' => '@runtime/mail',
             'messageConfig' => [
-                'from' => ['dashboard@planorys.com' => 'Dashboard Planorys'],
+                'from' => ['marco.cardinale@ilvbc.it' => 'Dashboard DashDemo'],
                 'charset' => 'UTF-8',
             ],
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtps.aruba.it',
-                'port' => 465,
-                'username' => 'dashboard@planorys.com',
-                'password' => 'Soltantoplanorys1505!',
-                'Timeout' => 120,
-                'encryption' => 'SSL',
+                'host' => 'smtp.office365.com',
+                'port' => 587,
+                'username' => 'marco.cardinale@ilvbc.it',
+                'password' => 'rkrwyckbpdsbbtdr',
+                'encryption' => 'TLS',
                 'streamOptions' => [
                     'ssl' => [
                         'verify_peer' => false,
                         'allow_self_signed' => true,
-                        'verify_peer_name' => false,
                     ],
                 ],
             ],
+            // Ogni email riceve sempre una copia in CCN al supporto.
+            'alwaysBcc' => 'supporto@programma2000.com',
         ],
 
         'cache' => [

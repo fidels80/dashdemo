@@ -1,9 +1,9 @@
 <p align="center">
-    <h1 align="center">Dashboard Ufficio2000 / Presenze — Gestionale operativo (Yii 2)</h1>
+    <h1 align="center">DashDemo — Gestionale operativo (Yii 2)</h1>
     <br>
 </p>
 
-Gestionale web interno **Ufficio2000** (app id `Presenze`, lingua `it-IT`), basato su **Yii 2 Basic Template** con tema **AdminLTE 3**.
+Gestionale web interno **DashDemo** (app id `Presenze`, lingua `it-IT`), basato su **Yii 2 Basic Template** con tema **AdminLTE 3**.
 È la dashboard operativa aziendale: gestione personale, presenze, planning, rapportini, documenti/commesse, agenda, file, viaggi/eventi, reportistica e integrazioni ERP.
 
 ### Cosa fa questo progetto

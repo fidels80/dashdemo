@@ -69,7 +69,7 @@ class GacsottoprvController extends Controller
         $model = new Gacsottoprv();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_sub_prv]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -91,7 +91,7 @@ public function actionUpdate($id)
     // Verifica se il record è bloccato da un altro utente
     if ($model->is_locked && $model->locked_by != Yii::$app->user->identity->username) {
        // throw new \yii\web\ForbiddenHttpException('Il record è attualmente bloccato da un altro utente.');
-    return $this->redirect(['view', 'id' => $model->id_sub_prv]);
+    return $this->redirect([ 'index' ]);
 
     }
 
@@ -101,7 +101,7 @@ public function actionUpdate($id)
         $model->locked_by = null;
         $model->save();
 
-        return $this->redirect(['view', 'id' => $model->id_sub_prv]);
+        return $this->redirect([ 'index' ]);
     }
 
     // Impostazione dello stato di blocco prima dell'aggiornamento

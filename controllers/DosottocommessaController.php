@@ -69,7 +69,7 @@ class DosottocommessaController extends Controller
         $model = new Dosottocommessa();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Cd_DOSottoCommessa]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -93,7 +93,7 @@ class DosottocommessaController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Cd_DOSottoCommessa]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

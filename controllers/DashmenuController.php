@@ -12,6 +12,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use app\components\AccessControl;
+use app\components\Icone;
 
 /**
  * Gestione del menu laterale dinamico (voci, sottovoci e assegnazione agli utenti).
@@ -62,6 +63,7 @@ class DashmenuController extends Controller
         return $this->render('create', [
             'model' => $model,
             'genitori' => $this->getGenitoriList(),
+            'icone' => Icone::fontAwesome(),
         ]);
     }
 
@@ -76,6 +78,7 @@ class DashmenuController extends Controller
         return $this->render('update', [
             'model' => $model,
             'genitori' => $this->getGenitoriList($model->id),
+            'icone' => Icone::fontAwesome(),
         ]);
     }
 

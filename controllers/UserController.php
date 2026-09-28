@@ -128,7 +128,7 @@ class UserController extends Controller
                     Yii::$app->session->setFlash('warning', "Utente creato, ma errore invio mail.");
                 }
 
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect([ 'index' ]);
             } else {
                 // Gestione errori
                 $errors = \yii\helpers\ArrayHelper::flatten($model->getErrors());
@@ -349,6 +349,10 @@ class UserController extends Controller
                 }
 
                 Yii::$app->session->setFlash('success', "Utente aggiornato con successo!");
+
+                if ($model->id == Yii::$app->user->id) {
+                    return $this->redirect(['update', 'id' => $model->id]);
+                }
 
                 return $this->redirect(['index']);
             } else {

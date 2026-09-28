@@ -37,6 +37,26 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute' => 'is_cliente', 'format' => 'boolean'],
             ['attribute' => 'is_fornitore', 'format' => 'boolean'],
             ['attribute' => 'is_agente', 'format' => 'boolean'],
+            [
+                'attribute' => 'perc_provvigione',
+                'value' => function ($model) {
+                    return number_format((float) $model->perc_provvigione, 2, ',', '.') . ' %';
+                },
+            ],
+            [
+                'attribute' => 'id_metodo_pagamento',
+                'value' => function ($model) {
+                    return $model->metodoPagamento->descrizione ?? '';
+                },
+            ],
+            [
+                'attribute' => 'id_aliquota_iva',
+                'value' => function ($model) {
+                    return $model->aliquotaIva
+                        ? $model->aliquotaIva->descrizione . ' (' . number_format((float) $model->aliquotaIva->percentuale, 2, ',', '.') . '%)'
+                        : '';
+                },
+            ],
             ['attribute' => 'attivo', 'format' => 'boolean'],
         ],
     ]) ?>

@@ -23,10 +23,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>ID</th>
             <th>Codice</th>
             <th>Descrizione</th>
+            <th>Destinazione</th>
             <th>Anno</th>
             <th>Contatore</th>
             <th>Numerazione auto</th>
             <th>Congruità numeri</th>
+            <th>Crea scadenze</th>
+            <th>Taglia/colore</th>
             <th>Attivo</th>
             <th class="no-export">Azioni</th>
         </tr>
@@ -37,10 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= (int) $m->id ?></td>
                 <td><?= Html::encode($m->codice) ?></td>
                 <td><?= Html::encode($m->descrizione) ?></td>
+                <td><?= Html::encode($m->destinazioneLabel) ?></td>
                 <td><?= (int) $m->anno ?></td>
                 <td><?= (int) $m->contatore ?></td>
                 <td><?= $m->usa_progressivo ? 'Sì' : 'No' ?></td>
                 <td><?= $m->congruita ? 'Sì' : 'No' ?></td>
+                <td><?= $m->crea_scadenze ? 'Sì' : 'No' ?></td>
+                <td><?= $m->mostra_varianti ? 'Sì' : 'No' ?></td>
                 <td><?= $m->attivo ? 'Sì' : 'No' ?></td>
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>

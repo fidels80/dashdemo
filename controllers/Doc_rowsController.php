@@ -73,7 +73,7 @@ class Doc_rowsController extends Controller
         $model = new Doc_rows();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -95,7 +95,7 @@ class Doc_rowsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

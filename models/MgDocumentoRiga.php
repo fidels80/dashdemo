@@ -18,9 +18,11 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
     {
         return [
             [['id_documento'], 'required'],
-            [['id_documento', 'id_articolo', 'ordine'], 'integer'],
-            [['qta', 'prezzo', 'sconto', 'iva', 'totale'], 'number'],
+            [['id_documento', 'id_articolo', 'id_unita_misura', 'ordine'], 'integer'],
+            [['qta', 'prezzo', 'sconto', 'iva', 'totale', 'fattore'], 'number'],
             [['codice_articolo'], 'string', 'max' => 25],
+            [['um'], 'string', 'max' => 10],
+            [['taglia', 'colore', 'tessuto'], 'string', 'max' => 50],
             [['descrizione'], 'string', 'max' => 500],
         ];
     }
@@ -33,6 +35,12 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
             'id_articolo' => 'Articolo',
             'codice_articolo' => 'Codice',
             'descrizione' => 'Descrizione',
+            'id_unita_misura' => 'Unità di misura',
+            'um' => 'U.M.',
+            'taglia' => 'Taglia',
+            'colore' => 'Colore',
+            'tessuto' => 'Tessuto',
+            'fattore' => 'Fattore conversione',
             'qta' => 'Q.tà',
             'prezzo' => 'Prezzo',
             'sconto' => 'Sconto %',
@@ -52,6 +60,11 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
         return $this->hasOne(MgArticolo::className(), ['id' => 'id_articolo']);
     }
 
+    public function getUnitaMisura()
+    {
+        return $this->hasOne(MgUnitaMisura::className(), ['id' => 'id_unita_misura']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -59,6 +72,9 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
             $prezzo = (float) $this->prezzo;
             $sconto = (float) $this->sconto;
             $this->totale = round($qta * $prezzo * (1 - $sconto / 100), 2);
+            if ($this->fattore === '' || $this->fattore === null) {
+                $this->fattore = 1;
+            }
             return true;
         }
         return false;

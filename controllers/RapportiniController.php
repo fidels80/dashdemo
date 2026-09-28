@@ -73,7 +73,7 @@ class RapportiniController extends Controller
         $model = new Rapportini();
 
         if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -117,7 +117,7 @@ return $this->render('index', [
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
-use kartik\grid\GridView;
 use onmotion\apexcharts\ApexchartsWidget;
 use yii\web\View;
 
@@ -75,8 +74,8 @@ $this->registerCss('
 }
 
 .custom-card {
-    width: 33%;
-    height: 350px;
+    width: 100%;
+    height: auto;
     margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #ddd;
@@ -85,7 +84,7 @@ $this->registerCss('
 }
 .custom-card2 {
     width: 100%;
-    height: 800px;
+    height: auto;
     margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #ddd;
@@ -141,9 +140,8 @@ $this->registerJs('
     window.addEventListener("resize", adjustChartSize);
 ');
 
-$listatc = [];
-//yii::error($dataProvider);
-//yii::error($listac);
+$_listapVal = Yii::$app->request->get('listap');
+$_listapVal = is_array($_listapVal) ? $_listapVal : (($_listapVal !== null && $_listapVal !== '') ? [$_listapVal] : []);
 
 ?>
 
@@ -170,88 +168,86 @@ echo (Yii::$app->request->get('listac') != null) ? 'Stai vedendo i dati per il c
 
 
 
-<div class="d-flex flex-wrap justify-content-center align-items-start full-width">
-    <?php $form = ActiveForm::begin([
-        'method' => 'get',
-        'options' => ['class' => 'form-inline row g-3'], // Aggiungi la classe g-3 per spaziatura tra le colonne
-    ]); ?>
+<div class="container-fluid">
+    <?= $this->render('_nav', ['active' => 'progetti']) ?>
 
-    <div class="form-row">
-        <!-- Giorno Da -->
-        <table class="table">
-            <td>
-                <?= Html::label('Day From', 'dayFrom', ['class' => 'form-label']) ?>
-                <?= Html::input('date', 'dayFrom', $dayFrom, ['class' => 'form-control']) ?>
-            </td>
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="panel-title m-0" style="font-size: 1.1rem;">
+                <i class="fas fa-diagram-project mr-2"></i> Filtri Progetti
+            </h3>
+        </div>
+        <div class="card-body">
+            <?php $form = ActiveForm::begin([
+                'method' => 'get',
+                'options' => ['class' => 'form-inline'],
+            ]); ?>
 
-            <!-- Giorno A -->
-            <td>
-                <?= Html::label('Day To', 'dayTo', ['class' => 'form-label']) ?>
-                <?= Html::input('date', 'dayTo', $dayTo, ['class' => 'form-control']) ?>
-            </td>
-            <td> <?= Html::label('Utente', 'utente', ['class' => 'form-label']) ?>
-                <?= Select2::widget([
-                    'name' => 'utente',
-                    'value' => $utente,
-                    'data' => array_combine($users, $users),
-                    'options' => ['placeholder' => 'Select user', 'class' => 'form-control select2'],
-                    'pluginOptions' => ['allowClear' => true],
-                ]) ?></td>
+            <div class="row">
+                <!-- Giorno Da -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <?= Html::label('Dal', 'dayFrom', ['class' => 'form-label']) ?>
+                    <?= Html::input('date', 'dayFrom', $dayFrom, ['class' => 'form-control']) ?>
+                </div>
 
-            <!-- Utente -->
-            <td width=200px;>
-                <?= Html::label('Clienti', 'Clisenti', ['class' => 'form-label']) ?>
-                <?= Select2::widget([
-                    'name' => 'listac',
-                    'value' => $listatc,
+                <!-- Giorno A -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <?= Html::label('Al', 'dayTo', ['class' => 'form-label']) ?>
+                    <?= Html::input('date', 'dayTo', $dayTo, ['class' => 'form-control']) ?>
+                </div>
 
-                    'data' => array_combine($listac, $listac),
-                    'options' => ['placeholder' => 'Select user', 'class' => 'form-control select2',],
-                    'pluginOptions' => ['allowClear' => true],
-                ]) ?>
-            </td>
-            <td width=400px;>
-                <?= Html::label('Progetti', 'Progetti', ['class' => 'form-label']) ?>
-                <?= Select2::widget([
-                    'name' => 'listap',
-                    'value' => $listatc,
-                    'data' => array_combine($listap, $listap),
-                    'options' => [
-                        'placeholder' => 'Seleziona Progetto',
-                        'class' => 'form-control select2',
-                        'value' => '',
-                        'multiple' => true
-                    ],
-                    'pluginOptions' => ['allowClear' => true],
-                ]) ?>
-            </td>
+                <!-- Utente -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <?= Html::label('Utente', 'utente', ['class' => 'form-label']) ?>
+                    <?= Select2::widget([
+                        'name' => 'utente',
+                        'value' => $utente,
+                        'data' => array_combine($users, $users),
+                        'options' => ['placeholder' => 'Seleziona utente', 'class' => 'form-control select2'],
+                        'pluginOptions' => ['allowClear' => true, 'width' => '100%'],
+                    ]) ?>
+                </div>
 
-            <!-- Bottone di ricerca -->
-            <td>
-                <?= Html::submitButton('Search', ['class' => 'btn btn-primary btn-block']) ?>
-            </td>
+                <!-- Cliente -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <?= Html::label('Clienti', 'listac', ['class' => 'form-label']) ?>
+                    <?= Select2::widget([
+                        'name' => 'listac',
+                        'value' => Yii::$app->request->get('listac'),
+                        'data' => array_combine($listac, $listac),
+                        'options' => ['placeholder' => 'Seleziona cliente', 'class' => 'form-control select2'],
+                        'pluginOptions' => ['allowClear' => true, 'width' => '100%'],
+                    ]) ?>
+                </div>
 
-            <!-- Bottone di reset -->
-            <td>
-                <button type="button" class="btn btn-secondary btn-block" id="resetFilters">Reset</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary btn-block" id="aprivtiger">Apri Vtiger</button>
-            </td>
-            <td>
-                <?php echo Html::a('Apri Operatori', ['vtiger/search'], [
-                    'class' => 'btn btn-primary', // puoi personalizzare la classe per lo stile
-                ]); ?>
-            </td>
-            <td>
-                <?php echo Html::a('Esegui Ticket', ['vtiger/ticket'], [
-                    'class' => 'btn btn-primary', // puoi personalizzare la classe per lo stile
-                ]); ?>
-            </td>
-        </table>
+                <!-- Progetti -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <?= Html::label('Progetti', 'listap', ['class' => 'form-label']) ?>
+                    <?= Select2::widget([
+                        'name' => 'listap',
+                        'value' => $_listapVal,
+                        'data' => array_combine($listap, $listap),
+                        'options' => [
+                            'placeholder' => 'Seleziona Progetto',
+                            'class' => 'form-control select2',
+                            'multiple' => true
+                        ],
+                        'pluginOptions' => ['allowClear' => true, 'width' => '100%'],
+                    ]) ?>
+                </div>
+
+                <!-- Bottone di ricerca -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 d-flex align-items-end">
+                    <?= Html::submitButton('<i class="fas fa-search mr-1"></i> Cerca', ['class' => 'btn btn-primary btn-block']) ?>
+                    <button type="button" class="btn btn-secondary btn-block ml-2" id="resetFilters">
+                        <i class="fas fa-undo mr-1"></i> Reset
+                    </button>
+                </div>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
 </div>
 <script>
     document.getElementById('resetFilters').addEventListener('click', function() {
@@ -262,9 +258,6 @@ echo (Yii::$app->request->get('listac') != null) ? 'Stai vedendo i dati per il c
 
         // Reset Select2 widgets
         $('.select2').val(null).trigger('change');
-    });
-    document.getElementById('aprivtiger').addEventListener('click', function() {
-        window.open('http://crm.ilvbc.it:8090/index.php', '_blank').focus();
     });
 </script>
 
@@ -281,9 +274,6 @@ echo (Yii::$app->request->get('listac') != null) ? 'Stai vedendo i dati per il c
 
 // Rimuovi il riferimento
 unset($item);
-//yii::warning($tsql);
-yii::warning($resultstotali);
-//yii::error($tracking);
 
 
 $cdCfs = [];
@@ -308,8 +298,6 @@ foreach ($resultstotali as $result) {
 }
 $cdCfs = array_unique($cdCfs);
 $totalequotdiano = array_unique($totalequotdiano);
-yii::warning($resultstotalitra);
-
 $totaletrasferta = [];
 foreach ($resultstotalitra as $result) {
     $cdCfs[] = $result['projectname']; // 
@@ -320,11 +308,12 @@ foreach ($resultstotalitra as $result) {
 ?>
 
 
-<div class="d-flex flex-wrap justify-content-center align-items-start">
-    <div class="custom-card card">
-        <div class="card-body">
-            <h5 class="card-title">
-                Andamento Progetto</h5>
+<div class="row">
+    <div class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="custom-card card h-100">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Andamento Progetto</h5>
 
             <?php
             $tmptot = round(array_sum($totalequotdiano), 2);
@@ -397,12 +386,14 @@ foreach ($resultstotalitra as $result) {
 
                 ]
             ]) ?>
+            </div>
         </div>
     </div>
-    <div class="custom-card card">
-        <div class="card-body">
-            <h5 class="card-title">
-                Rapporto Ore/attività</h5>
+    <div class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="custom-card card h-100">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Rapporto Ore/attività</h5>
 
             <?= ApexchartsWidget::widget([
                 'type' => 'pie',
@@ -418,10 +409,12 @@ foreach ($resultstotalitra as $result) {
                 ],
                 'series' => [array_sum($totaleLavorato), array_sum($totalequotdiano)],
             ]) ?>
+            </div>
         </div>
     </div>
-    <div class="custom-card card">
-        <div class="card-body">
+    <div class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="custom-card card h-100">
+            <div class="card-body">
 
             <?php
             //yii::warning($dataArray = $dataProvider->getModels());
@@ -494,8 +487,9 @@ foreach ($resultstotalitra as $result) {
                 'series' => $series1
             ]) ?>
 
+            </div>
+            <p class="card-text"><small class="text-muted"></small></p>
         </div>
-        <p class="card-text"><small class="text-muted"></small></p>
     </div>
 </div>
 
@@ -531,73 +525,74 @@ $series2 = array_values($filteredDataOp);
 
 ?>
 
-<div class="d-flex flex-wrap justify-content-center align-items-start">
-    <!--<div class="full-screen-container">-->
+<div class="row">
+    <div class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="custom-card card h-100">
+            <div class="card-body">
+                <h5 class="card-title"> Attivita per operatore</h5>
 
-    <div class=" custom-card card">
-        <div class="card-body">
-            <h5 class="card-title"> Attivita per operatore</h5>
-
-            <?= ApexchartsWidget::widget([
-                'type' => 'pie',
-                'height' => '270px',
-                'width' => '100%',
-                'chartOptions' => [
-                    'chart' => [
-                        'toolbar' => [
-                            'show' => true
+                <?= ApexchartsWidget::widget([
+                    'type' => 'pie',
+                    'height' => '270px',
+                    'width' => '100%',
+                    'chartOptions' => [
+                        'chart' => [
+                            'toolbar' => [
+                                'show' => true
+                            ],
                         ],
+                        'labels' => $labels2,
                     ],
-                    'labels' => $labels2,
-                ],
-                'series' => $series2,
-            ]) ?>
+                    'series' => $series2,
+                ]) ?>
 
+            </div>
         </div>
     </div>
 
-    <div class="custom-card card">
-        <div class="card-body">
-            <h5 class="card-title"> Stato X Attività</h5>
-            <?php
-            $resultstato = [];
-            foreach ($dataArray as $result) {
-                $value = $result['STATUS'];
-                //var_dump($result);
-                if (!isset($resultstato[$value])) {
-                    $resultstato[$value] = 0;
+    <div class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="custom-card card h-100">
+            <div class="card-body">
+                <h5 class="card-title"> Stato X Attività</h5>
+                <?php
+                $resultstato = [];
+                foreach ($dataArray as $result) {
+                    $value = $result['STATUS'];
+                    if (!isset($resultstato[$value])) {
+                        $resultstato[$value] = 0;
+                    }
+                    $resultstato[$value]++;
                 }
-                $resultstato[$value]++;
-            }
-            $labelsstato = array_keys($resultstato);
-            $seriesstato = array_values($resultstato);
+                $labelsstato = array_keys($resultstato);
+                $seriesstato = array_values($resultstato);
 
-
-            ?>
-            <?= ApexchartsWidget::widget([
-                'type' => 'pie',
-                'height' => '270px',
-                'width' => '100%',
-                'chartOptions' => [
-                    'chart' => [
-                        'toolbar' => [
-                            'show' => true
+                ?>
+                <?= ApexchartsWidget::widget([
+                    'type' => 'pie',
+                    'height' => '270px',
+                    'width' => '100%',
+                    'chartOptions' => [
+                        'chart' => [
+                            'toolbar' => [
+                                'show' => true
+                            ],
                         ],
+                        'labels' => $labelsstato,
                     ],
-                    'labels' => $labelsstato,
-                ],
-                'series' => $seriesstato,
-            ]) ?>
+                    'series' => $seriesstato,
+                ]) ?>
+            </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <div class="custom-card card">
-        <div id="chart01"></div>
-        <?php
+    <div class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="custom-card card h-100">
+            <div class="card-body">
+                <div id="chart01"></div>
+                <?php
 
-        $categories = [];
-        $monteoreSeries = [];
-        $totaleoreSeries = [];
+                $categories = [];
+                $monteoreSeries = [];
+                $totaleoreSeries = [];
 
         foreach ($resultstotali as $item) {
             if ($item['tipo'] <> 'TP') {
@@ -689,11 +684,17 @@ $series2 = array_values($filteredDataOp);
             
             
             ", View::POS_READY); ?>
+            </div>
+        </div>
     </div>
-    <div class="custom-card2 card">
-        <div class="card-body">
-            <h5 class="card-title">
-                Timeline del progetto</h5>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="custom-card2 card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Timeline del progetto</h5>
             <?php //yii::warning($Timelineprogetti);
 
             // Definizione dell'array PHP
@@ -784,7 +785,6 @@ $series2 = array_values($filteredDataOp);
 
 
             ?>
-            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
             <style>
                 #chart {
                     width: 100%;
@@ -842,6 +842,7 @@ $series2 = array_values($filteredDataOp);
         chart.render();
     ", View::POS_READY); ?>
 
+            </div>
         </div>
     </div>
 </div>
@@ -1032,103 +1033,6 @@ EOF;
 
 
 <?php
-//yii::error($dataProvider);
-GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel' => null, // O il tuo SearchModel se ne hai uno
-    'pjax' => true,        // Consigliato per non ricaricare tutta la pagina
-    'export' => [
-        'fontAwesome' => true,
-        'showConfirmAlert' => false,
-        'target' => GridView::TARGET_BLANK,
-    ],
-    'columns' => [
-        "soggetto",
-        "dataevento",
-        "AREA",
-        "TIPOEVENTO",
-        "orainizioevento",
-        "orafineevento",
-        "oredelta",
-        "codicesoggetto",
-        "codicestatoevento",
-        "oggetto",
-        "noteevento",
-        "codiceprogetto",
-        "Custom1",
-        "custom2",
-        "custom3",
-        "custom4",
-        "custom5",
-        "STATUS",
-        "descrizioneprogetto",
-        "utentecreatore",
-        "utente_destinatario",
-        "dataprevistachiusura",
-        "pid",
-        "tid",
-        "tipo",
-        "xtipologia",
-        "monteore",
-        "projectid",
-        "projectname",
-        "project_no",
-        "startdate",
-        "targetenddate",
-        "actualenddate",
-        "targetbudget",
-        "projecturl",
-        "projectstatus",
-        "projectpriority",
-        "projecttype",
-        "progress",
-        "linktoaccountscontacts",
-        "tags",
-        "isconvertedfrompotential",
-        "potentialid",
-    ],
-    'toolbar' => [
-        '{export}',
-        '{toggleData}',
-    ],
-    'exportConfig' => [
-        GridView::CSV => ['label' => 'Esporta CSV'],
-        GridView::EXCEL => ['label' => 'Esporta Excel'],
-    ],
-    'panel' => [
-        'type' => GridView::TYPE_PRIMARY,
-        'heading' => '<h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Risultati</h3>',
-    ],
-]);
-?>
-
-
-<?php
-
-// CSS per DataTables e Bottoni
-$this->registerCssFile('https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css');
-$this->registerCssFile('https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css');
-
-// JS necessari
-$this->registerJsFile('https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-
-// Librerie per Export (Excel, PDF, CSV)
-$this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-// Assicurati che in cima alla vista ci siano questi con 'depends'
-$this->registerJsFile('https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-
-//yii::warning($resultstotali);
-?>
-
-
-
-<?php
 // Disabilita la paginazione del dataProvider per passare tutti i dati a DataTables
 $dataProvider->pagination = false;
 $models = $dataProvider->getModels();
@@ -1181,72 +1085,48 @@ $colonne = [
 ];
 ?>
 
-<div class="custom-card2 card" style="padding: 20px; background: white;">
-    <h3 class="panel-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-list-alt"></i> Risultati Esportabili</h3>
-
-    <div class="table-responsive">
-        <table id="datatable-export" class="table table-striped table-bordered nowrap" style="width:100%">
-            <thead>
-                <tr>
-                    <?php foreach ($colonne as $col): ?>
-                        <th><?= strtoupper(str_replace('_', ' ', $col)) ?></th>
-                    <?php endforeach; ?>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($models as $row): ?>
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-primary text-white">
+        <h3 class="panel-title m-0" style="font-size: 1.1rem;">
+            <i class="fas fa-list-alt mr-2"></i> Risultati Progetti
+        </h3>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table id="table-progetti-final" class="table table-hover table-striped mb-0" style="width:100%">
+                <thead>
                     <tr>
                         <?php foreach ($colonne as $col): ?>
-                            <td><?= \yii\helpers\Html::encode($row[$col] ?? '') ?></td>
+                            <th><?= strtoupper(str_replace('_', ' ', $col)) ?></th>
                         <?php endforeach; ?>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($models as $row): ?>
+                        <tr>
+                            <?php foreach ($colonne as $col): ?>
+                                <?php
+                                $val = (string)($row[$col] ?? '');
+                                $valLen = mb_strlen($val);
+                                ?>
+                                <td>
+                                    <?php if ($valLen > 80): ?>
+                                        <span class="d-none"><?= \yii\helpers\Html::encode($val) ?></span>
+                                        <?= \yii\helpers\Html::encode(mb_strimwidth($val, 0, 80, '…')) ?>
+                                    <?php else: ?>
+                                        <?= \yii\helpers\Html::encode($val) ?>
+                                    <?php endif; ?>
+                                </td>
+                            <?php endforeach; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
 <?php
-$js = <<<JS
-$(document).ready(function() {
-    // Distruggi eventuali istanze precedenti per evitare duplicati
-    if ($.fn.DataTable.isDataTable('#datatable-export')) {
-        $('#datatable-export').DataTable().destroy();
-    }
-
-    var table = $('#datatable-export').DataTable({
-        "dom": '<"row"<"col-md-6"B><"col-md-6"f>>rt<"row"<"col-md-6"i><"col-md-6"p>>',
-        "buttons": [
-            { 
-                extend: 'copy', 
-                className: 'btn btn-secondary', 
-                text: 'Copia Dati'
-            },
-            { 
-                extend: 'excel', 
-                className: 'btn btn-success', 
-                text: 'Scarica Excel' 
-            },
-            { 
-                extend: 'csv', 
-                className: 'btn btn-info', 
-                text: 'Scarica CSV' 
-            },
-            { 
-                extend: 'print', 
-                className: 'btn btn-primary', 
-                text: 'Stampa Tabella' 
-            }
-        ],
-        "language": { "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/it-IT.json" },
-        "paging": true,
-        "pageLength": 25,
-        "scrollX": true, // Fondamentale per le tue 40+ colonne
-        "searching": true,
-        "ordering": true,
-        "info": true
-    });
-});
-JS;
-$this->registerJs($js);
+// DataTables centralizzato via componente del progetto (stile uniforme con le altre viste)
+\app\components\DataTables::render('table-progetti-final', 0, 'asc', 25);
 ?>

@@ -264,7 +264,7 @@ $model = $this->findModel($id);
         }
 
         if ($model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
     }
 
@@ -842,7 +842,7 @@ public function actionStampa($data = null)
         ',
         'options' => ['title' => 'Procedure Giornaliere'],
         'methods' => [ 
-            'SetHeader' => ['Ufficio 2000||Stampato il: ' . date('d/m/Y H:i')], 
+            'SetHeader' => ['DashDemo||Stampato il: ' . date('d/m/Y H:i')], 
             'SetFooter' => ['Pagina {PAGENO}'],
         ]
     ]);
@@ -1347,7 +1347,7 @@ public function actionCopyDay()
             ',
             'options' => ['title' => 'Esportazione Planning Attività'],
             'methods' => [
-                'SetHeader' => ['Ufficio 2000 - ' . $filterDesc . '||Generato il: ' . date('d/m/Y H:i')],
+                'SetHeader' => ['DashDemo - ' . $filterDesc . '||Generato il: ' . date('d/m/Y H:i')],
                 'SetFooter' => ['Pagina {PAGENO} di {nbpg}'],
             ]
         ]);

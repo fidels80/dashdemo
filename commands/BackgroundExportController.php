@@ -572,7 +572,7 @@ class BackgroundExportController extends Controller
             $this->logOperation($logFile, "Tento invio email a $email");
 
             $sent = Yii::$app->mailer->compose()
-                ->setFrom(['dashboard@planorys.com' => 'Dashboard Planorys'])
+                ->setFrom(['marco.cardinale@ilvbc.it' => 'Dashboard DashDemo'])
                 ->setTo($email)
                 ->setSubject($subject)
                 ->setTextBody($body)
@@ -629,10 +629,9 @@ Sistema Export XTravel
             );
 
             Yii::$app->mailer->compose()
-                ->setFrom(['dashboard@planorys.com' 
-                => 'Dashboard Planorys'])
+                ->setFrom(['marco.cardinale@ilvbc.it' => 'Dashboard DashDemo'])
                 ->setTo($email)
-                ->setBcc('dashboard@planorys.com')
+                ->setBcc('supporto@programma2000.com')
                 ->setSubject($subject)
                 ->setTextBody($body)
                 ->send();

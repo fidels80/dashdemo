@@ -3,10 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
-use kartik\grid\GridView;
 use onmotion\apexcharts\ApexchartsWidget;
-//yii::error($t);
-//yii::error($ticketstat_res);
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ArrayDataProvider */
@@ -212,89 +209,77 @@ $this->registerJs('
     }
     
 </style>
-<div class="d-flex flex-wrap justify-content-center align-items-start full-width">
-    <?php $form = ActiveForm::begin([
-        'method' => 'get',
-        'options' => ['class' => 'form-inline row g-3'], // Aggiungi la classe g-3 per spaziatura tra le colonne
-    ]); ?>
+<div class="container-fluid">
+    <?= $this->render('_nav', ['active' => 'search']) ?>
 
-    <div class="form-row">
-        <!-- Giorno Da -->
-        <table class="table">
-            <td>
-                <?= Html::label('Day From', 'dayFrom', ['class' => 'form-label']) ?>
-                <?= Html::input('date', 'dayFrom', $dayFrom, ['class' => 'form-control']) ?>
-            </td>
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="panel-title m-0" style="font-size: 1.1rem;">
+                <i class="fas fa-filter mr-2"></i> Filtri di ricerca
+            </h3>
+        </div>
+        <div class="card-body">
+            <?php $form = ActiveForm::begin([
+                'method' => 'get',
+                'options' => ['class' => 'form-inline'],
+            ]); ?>
 
-            <!-- Giorno A -->
-            <td>
-                <?= Html::label('Day To', 'dayTo', ['class' => 'form-label']) ?>
-                <?= Html::input('date', 'dayTo', $dayTo, ['class' => 'form-control']) ?>
-            </td>
+            <div class="form-row">
+                <!-- Giorno Da -->
+                <table class="table">
+                    <td>
+                        <?= Html::label('Day From', 'dayFrom', ['class' => 'form-label']) ?>
+                        <?= Html::input('date', 'dayFrom', $dayFrom, ['class' => 'form-control']) ?>
+                    </td>
 
-            <!-- Utente -->
-            <td>
-                <?= Html::label('Utente', 'utente', ['class' => 'form-label']) ?>
-                <?= Select2::widget([
-                    'name' => 'utente',
-                    'value' => $utente,
-                    'data' => array_combine($users, $users),
-                    'options' => ['placeholder' => 'Select user', 'class' => 'form-control select2'],
-                    'pluginOptions' => ['allowClear' => true],
-                ]) ?>
-            </td>
+                    <!-- Giorno A -->
+                    <td>
+                        <?= Html::label('Day To', 'dayTo', ['class' => 'form-label']) ?>
+                        <?= Html::input('date', 'dayTo', $dayTo, ['class' => 'form-control']) ?>
+                    </td>
 
+                    <!-- Utente -->
+                    <td>
+                        <?= Html::label('Utente', 'utente', ['class' => 'form-label']) ?>
+                        <?= Select2::widget([
+                            'name' => 'utente',
+                            'value' => $utente,
+                            'data' => array_combine($users, $users),
+                            'options' => ['placeholder' => 'Select user', 'class' => 'form-control select2'],
+                            'pluginOptions' => ['allowClear' => true],
+                        ]) ?>
+                    </td>
 
-            <td>
-                <?php if (Yii::$app->user->identity->level  >= 80): ?>
+                    <td>
+                        <?php if (Yii::$app->user->identity->level  >= 80): ?>
 
-                    <?= Html::label('Gruppi', 'groupusers', ['class' => 'form-label']) ?>
-                    <?= Select2::widget([
-                        'name' => 'groupusers',
-                        //'value' => $groupusers,
-                        'data' => array_combine($groupusers, $groupusers),
-                        'options' => ['placeholder' => 'Seleziona Gruppo', 'class' => 'form-control select2'],
-                        'pluginOptions' => ['allowClear' => true],
-                    ]) ?>
-                <?php endif; ?>
-            </td>
+                            <?= Html::label('Gruppi', 'groupusers', ['class' => 'form-label']) ?>
+                            <?= Select2::widget([
+                                'name' => 'groupusers',
+                                'data' => array_combine($groupusers, $groupusers),
+                                'options' => ['placeholder' => 'Seleziona Gruppo', 'class' => 'form-control select2'],
+                                'pluginOptions' => ['allowClear' => true],
+                            ]) ?>
+                        <?php endif; ?>
+                    </td>
 
+                    <!-- Bottone di ricerca -->
+                    <td>
+                        <?= Html::submitButton('<i class="fas fa-search mr-1"></i> Cerca', ['class' => 'btn btn-primary btn-block']) ?>
+                    </td>
 
+                    <!-- Bottone di reset -->
+                    <td>
+                        <button type="button" class="btn btn-secondary btn-block" id="resetFilters">
+                            <i class="fas fa-undo mr-1"></i> Reset
+                        </button>
+                    </td>
+                </table>
+            </div>
 
-
-
-            <!-- Bottone di ricerca -->
-            <td>
-                <?= Html::submitButton('Search', ['class' => 'btn btn-primary btn-block']) ?>
-            </td>
-
-            <!-- Bottone di reset -->
-            <td>
-                <button type="button" class="btn btn-secondary btn-block" id="resetFilters">Reset</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary btn-block" id="aprivtiger">Apri Vtiger</button>
-            </td>
-            <td>
-                <?php echo Html::a('Esegui Progetti', ['vtiger/progetti'], [
-                    'class' => 'btn btn-primary', // puoi personalizzare la classe per lo stile
-                ]); ?>
-            </td>
-            <td>
-                <?php echo Html::a('Esegui gantt', ['vtiger/ganttprogetti'], [
-                    'class' => 'btn btn-primary', // puoi personalizzare la classe per lo stile
-                ]); ?>
-            </td>
-
-            <td>
-                <?php echo Html::a('Esegui Ticket', ['vtiger/ticket'], [
-                    'class' => 'btn btn-primary', // puoi personalizzare la classe per lo stile
-                ]); ?>
-            </td>
-        </table>
+            <?php ActiveForm::end(); ?>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
 </div>
 
 
@@ -309,9 +294,6 @@ $this->registerJs('
 
         // Reset Select2 widgets
         $('.select2').val(null).trigger('change');
-    });
-    document.getElementById('aprivtiger').addEventListener('click', function() {
-        window.open('http://crm.ilvbc.it:8090/index.php', '_blank').focus();
     });
 </script>
 
@@ -661,8 +643,6 @@ $this->registerJs('
                 }
 
 
-
-                //   yii::error(json_encode(array_values(array_unique(array_column($ticketstat_res, 'productname')))));
                 ?>
             </table>
 
@@ -764,84 +744,6 @@ $this->registerJs('
 </div>
 
 <?php
-// Asset per DataTables (se non già caricati nel layout)
-$this->registerCssFile('https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css');
-$this->registerCssFile('https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css');
-$this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
-
-// 2. Registrazione JS
-$this->registerJsFile('https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerJsFile('https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-$this->registerCssFile('https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css');
-$this->registerJsFile('https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
-// 3. CSS Custom per uniformare lo stile (Header chiaro, bottoni e allineamento)
-$this->registerCss("
-    .dataTables_filter { text-align: left !important; float: left !important; }
-    .dataTables_filter label { display: flex; align-items: center; gap: 10px; }
-    .dt-buttons { float: right !important; margin-bottom: 15px; }
-    /* Rimuoviamo il look scuro dell'header per farlo uguale all'anagrafica */
-    #presenze-table thead tr { background-color: #f8f9fa !important; color: #212529 !important; }
-    #presenze-table th { border-bottom: 1px solid #dee2e6 !important; }
-    .btn-xs { padding: 4px 10px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px; font-weight: 600; min-width: 90px; justify-content: center; }
-    .btn-xs i { font-size: 0.9rem; }
-    .td-azioni { min-width: 150px !important; }
-    .costo-cella { font-weight: bold; color: #198754; text-align: right !important; }
-.col-costo { width: 100px !important; min-width: 100px !important; max-width: 100px !important; white-space: nowrap; }
-
-");
-
-?>
-<?php
-$js = <<<JS
-$(document).ready(function() {
-    $('#table-results-final').DataTable({
-        "pageLength": 25,
-        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tutti"]],
-        "order": [[1, "desc"]], // Ordina per Data decrescente
-        
-        // Ho aggiunto 'l' prima di 'f' per mostrare il selettore di quantità
-        "dom": '<"row px-3 py-2"<"col-md-3"l><"col-md-4"f><"col-md-5 text-end"B>>rt<"row px-3 py-2"<"col-md-6"i><"col-md-6"p>>',
-        
-        "language": {
-            "search": "Cerca:",
-            "lengthMenu": "Mostra _MENU_ record",
-            "info": "Visualizzati da _START_ a _END_ di _TOTAL_ record",
-            "infoEmpty": "Nessun record disponibile",
-            "infoFiltered": "(filtrati da _MAX_ record totali)",
-            "paginate": {
-                "first": "Inizio",
-                "last": "Fine",
-                "next": "Successivo",
-                "previous": "Precedente"
-            },
-            "buttons": {
-                "copyTitle": "Copiato",
-                "copySuccess": {
-                    "_": "%d righe copiate",
-                    "1": "1 riga copiata"
-                }
-            }
-        },
-        "buttons": [
-            { extend: 'copy', className: 'btn btn-secondary btn-sm', text: '<i class="fa-solid fa-copy">Copia</i>' },
-            { extend: 'excel', className: 'btn btn-success btn-sm', text: '<i class="fa-solid fa-file-excel">Excel</i>' },
-            { 
-                extend: 'pdfHtml5', 
-                className: 'btn btn-danger btn-sm', 
-                text: '<i class="fa-solid fa-file-pdf">Pdf</i>',
-                orientation: 'landscape',
-                pageSize: 'A4'
-            },
-            { extend: 'print', className: 'btn btn-primary btn-sm', text: '<i class="fa-solid fa-print">Stampa</i>' }
-        ],
-    });
-});
-JS;
-$this->registerJs($js);
+// DataTables centralizzato via componente del progetto
+\app\components\DataTables::render('table-results-final', 1, 'desc');
 ?>

@@ -67,7 +67,7 @@ class ScController extends Controller
         $model = new Sc();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Id_SC]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class ScController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Id_SC]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

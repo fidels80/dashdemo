@@ -6,8 +6,27 @@ use Yii;
 use yii\web\Controller;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+
 class VtigerController extends Controller
+
 {
+
+
+    public function beforeAction($action)
+    {
+        // Controlla se l'utente è guest (non loggato)
+        if (Yii::$app->user->isGuest) {
+            // Redirige su site/index
+            return $this->redirect(['site/index'])->send();
+            // send() invia subito la risposta
+        }
+
+        return parent::beforeAction($action);
+    }
     public function actionSearch()
     {
         // Recupera i parametri di ricerca dalla richiesta GET
@@ -31,7 +50,7 @@ class VtigerController extends Controller
             $whereClauses[] = "DATE(orainizioevento) <= '" . $dateTo->format('Y-m-d') . "'";
         }
         
-        if($gruppi !== null and strlen($gruppi)<>0 and  $utente == null){
+if($gruppi !== null and strlen($gruppi)<>0 and  $utente == null){
 //$utente=null;
 $sql="
 SELECT g.groupid, g.groupname ,concat(u.first_name,' ',u.last_name) AS user_name
@@ -39,10 +58,10 @@ FROM vtiger_groups g
 JOIN vtiger_users2group ug ON g.groupid = ug.groupid
 JOIN vtiger_users u ON ug.userid = u.id
 WHERE u.status = 'Active'
-and g.groupname='$gruppi';
+and g.groupname=:gruppi;
 ";
  $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql);
+        $command = $connection->createCommand($sql, [':gruppi' => $gruppi]);
 
 $idgruppo = $command->queryAll();
 
@@ -52,11 +71,11 @@ FROM vtiger_groups g
 JOIN vtiger_users2group ug ON g.groupid = ug.groupid
 JOIN vtiger_users u ON ug.userid = u.id
 WHERE u.status = 'Active'
-and g.groupname='$gruppi'
+and g.groupname=:gruppi
 GROUP BY g.groupname ;
 ";
  //$connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql);
+        $command = $connection->createCommand($sql, [':gruppi' => $gruppi]);
 $countgruppo = $command->queryAll();
 // Usa array_column per ottenere la colonna 'conta'
 $contag = array_column($countgruppo, 'conta');
@@ -130,25 +149,48 @@ $contaGruppo = !empty($contag) ? $contag[0] : 1;
         if (!empty($whereClauses)) {
             $where = 'WHERE ' . implode(' AND ', $whereClauses);
         }
-
+        if ($where<> "WHERE (utente_destinatario LIKE :utente)"){
+        
         $sql = "
             SELECT * FROM 
             xestrazione
             $where
               order by DATE(orainizioevento) ASC
         ";
-        $xtsql=$sql;
-       // Yii::debug("SQL Query: $sql");
-       // Yii::debug("Params: " . json_encode($params));
+            // Esegui la query con cache (30s)
+            $connection = Yii::$app->db6;
+            $cacheKey = 'vtiger_search_main_' . md5($sql . '|' . serialize($params));
+            $results = Yii::$app->cache->get($cacheKey);
+            if ($results === false) {
+                $command = $connection->createCommand($sql, $params);
+                $results = $command->queryAll();
+                Yii::$app->cache->set($cacheKey, $results, 30);
+            }
+        }
+        else{
 
-        // Esegui la query
-       $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql, $params);
-        $results = $command->queryAll();
+            $sql = "
+            SELECT  * FROM 
+            xestrazione
+              order by DATE(orainizioevento) ASC
+              limit 1000 
+        ";
+            // Esegui la query con cache (30s)
+            $connection = Yii::$app->db6;
+            $cacheKey = 'vtiger_search_main_' . md5($sql);
+            $results = Yii::$app->cache->get($cacheKey);
+            if ($results === false) {
+                $command = $connection->createCommand($sql );
+                $results = $command->queryAll();
+                Yii::$app->cache->set($cacheKey, $results, 30);
+            }
+        }
 
+
+        
         $dataProvider = new ArrayDataProvider([
             'allModels' => $results,
-            
+            'pagination' => false
         ]);
 
 
@@ -156,22 +198,13 @@ $contaGruppo = !empty($contag) ? $contag[0] : 1;
 
 
 
+// Nota: la query $ticketstat (SELECT * con 3 LEFT JOIN) è stata rimossa:
+        // $ticketstat_res non è mai usato dalle viste.
 
-        $ticketstat="
-          SELECT MONTH(xestrazione.orainizioevento) AS mese,week(xestrazione.orainizioevento) AS   settimana,
-			 WEEK(xestrazione.orainizioevento,5) - WEEK(DATE_SUB(xestrazione.orainizioevento, 
-INTERVAL DAYOFMONTH(xestrazione.orainizioevento) - 1 DAY),5) + 1
-AS settimana_mese		 ,
-xestrazione.*,tcustom.*,vt.*,vp.*  
-from xestrazione
-LEFT JOIN vt.vtiger_ticketcf AS tcustom ON tcustom.ticketid=xestrazione.tid
-LEFT JOIN  vt.vtiger_troubletickets vt ON vt.ticketid=xestrazione.tid
-LEFT JOIN vt.vtiger_products AS vp ON vp.productid=vt.product_id
-             
-         $where AND tipo IN ('T','TA','TP')
-              order by DATE(orainizioevento) ASC";
-      $command = $connection->createCommand($ticketstat, $params);
-        $ticketstat_res = $command->queryAll();
+
+
+
+
         
 
         // Conta i valori distinti della colonna custom1
@@ -204,7 +237,13 @@ LEFT JOIN vt.vtiger_products AS vp ON vp.productid=vt.product_id
         $series2 = array_values($custom2Count);
 
         $codicesoggettoCount = [];
+
         foreach ($results as $result) {
+            if (isset($result['xtipologia']) && $result['xtipologia'] === "Licenze D'uso") {
+               // yii::error("tipologia: ".$result['xtipologia']);
+        continue; // salta questo record
+    }
+
             $value = $result['soggetto'];
             //var_dump($result);
             if (!isset($codicesoggetto[$value])) {
@@ -246,8 +285,7 @@ if (isset($codicesoggetto)) {
         $series4 = isset($tipo) ?  array_values($tipo) : 0;
 
 
-
-
+if ($where<> "WHERE (utente_destinatario LIKE :utente)"){
         $sql = "
             SELECT DATE(orainizioevento) AS giorno, 
                    round(SUM(oredelta),2) AS totale_lavorato
@@ -257,11 +295,34 @@ if (isset($codicesoggetto)) {
             ORDER BY DATE(orainizioevento)
         ";
 
-        // Esegui la query
-     //   $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql, $params);
-        $resultsd = $command->queryAll();
+        // Esegui la query con cache (30s)
+        $cacheKey = 'vtiger_search_daily_' . md5($sql . '|' . serialize($params));
+        $resultsd = Yii::$app->cache->get($cacheKey);
+        if ($resultsd === false) {
+            $command = $connection->createCommand($sql, $params);
+            $resultsd = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultsd, 30);
+        }
+}else{
+            $sql = "
+            SELECT DATE(orainizioevento) AS giorno, 
+                   round(SUM(oredelta),2) AS totale_lavorato
+            FROM xestrazione
+         
+            GROUP BY DATE(orainizioevento)
+            ORDER BY DATE(orainizioevento)
+            limit 100
+        ";
 
+        // Esegui la query con cache (30s)
+        $cacheKey = 'vtiger_search_daily_' . md5($sql);
+        $resultsd = Yii::$app->cache->get($cacheKey);
+        if ($resultsd === false) {
+            $command = $connection->createCommand($sql );
+            $resultsd = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultsd, 30);
+        }
+}
         // Preparazione dei dati per il grafico
         $cdCfs = [];
         $totaleLavorato = [];
@@ -314,7 +375,7 @@ if (isset($codicesoggetto)) {
 
 
 
-
+        if ($where <> "WHERE (utente_destinatario LIKE :utente)") {
         $sql = "
             SELECT tipo, DATE(orainizioevento) AS day
             FROM xestrazione
@@ -322,10 +383,35 @@ if (isset($codicesoggetto)) {
              order by DATE(orainizioevento) ASC
         ";
 
-        // Esegui la query
-       // $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql, $params);
-        $results = $command->queryAll();
+        // Esegui la query con cache (30s)
+        $cacheKey = 'vtiger_search_series_' . md5($sql . '|' . serialize($params));
+        $results = Yii::$app->cache->get($cacheKey);
+        if ($results === false) {
+            $command = $connection->createCommand($sql, $params);
+            $results = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $results, 30);
+        }
+
+        }else{
+            $sql = "
+            SELECT tipo, DATE(orainizioevento) AS day
+            FROM xestrazione
+            
+             order by DATE(orainizioevento) ASC
+        limit 1000
+             ";
+
+        // Esegui la query con cache (30s)
+        $cacheKey = 'vtiger_search_series_' . md5($sql);
+        $results = Yii::$app->cache->get($cacheKey);
+        if ($results === false) {
+            $command = $connection->createCommand($sql);
+            $results = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $results, 30);
+        }
+
+        }
+
 
         // Organizza i dati per la visualizzazione
         $data = [];
@@ -362,8 +448,13 @@ if (isset($codicesoggetto)) {
 SELECT * FROM xestrazione  $where   
 ltrim(Rtrim(STATUS)) NOT IN('Closed','archived','delivered','Completed') AND tipo='T'  ORDER BY dataevento ASC LIMIT 5";
         $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql,$params);
-        $resultstk = $command->queryAll();
+        $cacheKey = 'vtiger_search_opentk_' . md5($sql . '|' . serialize($params));
+        $resultstk = Yii::$app->cache->get($cacheKey);
+        if ($resultstk === false) {
+            $command = $connection->createCommand($sql, $params);
+            $resultstk = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultstk, 30);
+        }
 
 
 $sql= "
@@ -371,22 +462,32 @@ $sql= "
  ORDER BY oredelta DESC LIMIT 5;
 
 ";
-       // $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql, $params);
-        $resultBIGTK = $command->queryAll();
+        $cacheKey = 'vtiger_search_bigtk_' . md5($sql . '|' . serialize($params));
+        $resultBIGTK = Yii::$app->cache->get($cacheKey);
+        if ($resultBIGTK === false) {
+            $command = $connection->createCommand($sql, $params);
+            $resultBIGTK = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultBIGTK, 30);
+        }
 
 
         // Crea il provider dei dati
   
 
         // Ottieni gli utenti per i filtri (modifica questa query se necessario)
+      if (Yii::$app->user->identity->level ??0  >= 80){
         $users = $connection->
-        //createCommand("SELECT DISTINCT utente_destinatario 
-        //FROM xestrazione")
-        createcommand("SELECT CONCAT(first_name,' ',last_name)AS utente_destinatario 
+         createcommand("SELECT CONCAT(first_name,' ',last_name)AS utente_destinatario 
         FROM vt.vtiger_users")
         ->queryColumn();
-
+      }
+        else{
+            $users = $connection->
+            createcommand("SELECT CONCAT(first_name,' ',last_name)AS utente_destinatario 
+             FROM vt.vtiger_users where email1=:email",
+             [':email' => Yii::$app->user->identity->email ?? ''])
+             ->queryColumn();
+        }
     $groupusers = $connection->createCommand("SELECT DISTINCT groupname FROM vtiger_groups")
             ->queryColumn();
 
@@ -424,9 +525,6 @@ $sql= "
             'groupusers'=>$groupusers,
             'idgruppo'=>$idgruppo??'' ,
             'countgruppo'=>$countgruppo??0,
-            'xtsql'=>$xtsql,
-            'ticketstat_res'=> $ticketstat_res 
-            
         ]);
     }
 
@@ -508,6 +606,12 @@ $dayFrom = Yii::$app->request->get('dayFrom');
         else {$where=' 1=1 ';
         }
 
+        // Senza filtri (apertura pagina di default) limitiamo le query dei grafici a 100 record
+        // per non appesantire il rendering; con i filtri la ricerca resta completa.
+        $hasFilters = !empty($whereClauses);
+        $limitChart = $hasFilters ? '' : ' LIMIT 100';
+        $limitMain = $hasFilters ? ' LIMIT 1000' : ' LIMIT 100';
+
 
 
 
@@ -521,6 +625,7 @@ $dayFrom = Yii::$app->request->get('dayFrom');
             WHERE 
            $where
               order by DATE(orainizioevento) ASC
+              $limitMain
         ";
 
 
@@ -528,37 +633,66 @@ $dayFrom = Yii::$app->request->get('dayFrom');
      //   Yii::debug("SQL Query: $sql");
      //   Yii::debug("Params: " . json_encode($params));
 
-        // Esegui la query
+        // Esegui la query con cache (30s)
         $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql,$params);
-        //var_dump($sql );
-        //var_dump($params);
-        // $params);
-        $results1 = $command->queryAll();
+        $cacheKey = 'vtiger_progetti_results1_' . md5($sql . '|' . serialize($params));
+        $results1 = Yii::$app->cache->get($cacheKey);
+        if ($results1 === false) {
+            $command = $connection->createCommand($sql, $params);
+            $results1 = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $results1, 30);
+        }
         
 
         $dataProvider = new ArrayDataProvider([
             'allModels' => $results1,
+            'pagination'=>false
 
         ]);
 
-$tsql="SELECT DISTINCT pid,SUM(oredelta) as totaleore,monteore,p.projectname,a.accountname,tipo
+$tsql="SELECT DISTINCT pid,SUM(oredelta) as totaleore,monteore,
+p.projectname,a.accountname,tipo
  FROM x_vistaprog  
 
   LEFT JOIN vtiger_project AS p ON x_vistaprog.pid=p.projectid
   LEFT JOIN vtiger_account AS a ON p.linktoaccountscontacts= a.accountid
  where
  $where
-
- GROUP BY pid,tipo";
+and xtipologia<>'Trasferta'
+  GROUP BY pid,tipo$limitChart";
   $connection = Yii::$app->db6;
 
+        $cacheKey = 'vtiger_progetti_totali_' . md5($tsql . '|' . serialize($params));
+        $resultstotali = Yii::$app->cache->get($cacheKey);
+        if ($resultstotali === false) {
+            $command = $connection->createCommand($tsql, $params);
+            $resultstotali = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultstotali, 30);
+        }
 
-   //Yii::debug("SQL Query: $sql");
-    //    Yii::debug("Params: " . json_encode($params));
-        $command = $connection->createCommand($tsql,$params);
-        // $params);
-        $resultstotali = $command->queryAll();
+$tsql="SELECT DISTINCT pid,SUM(oredelta) as totaleore,monteore,
+p.projectname,a.accountname,tipo
+ FROM x_vistaprog  
+
+  LEFT JOIN vtiger_project AS p ON x_vistaprog.pid=p.projectid
+  LEFT JOIN vtiger_account AS a ON p.linktoaccountscontacts= a.accountid
+ where
+ $where
+and xtipologia='Trasferta' and tipo='AP'
+  GROUP BY pid,tipo$limitChart";
+  $connection = Yii::$app->db6;
+
+        $cacheKey = 'vtiger_progetti_trasf_' . md5($tsql . '|' . serialize($params));
+        $resultstotalitra = Yii::$app->cache->get($cacheKey);
+        if ($resultstotalitra === false) {
+            $command = $connection->createCommand($tsql, $params);
+            $resultstotalitra = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultstotalitra, 30);
+        }
+
+
+
+
 $t=$command;
 
 
@@ -575,36 +709,50 @@ $sql="SELECT  codiceprogetto,oggetto,orainizioevento,
     END AS orafineevento,
  oredelta,pid FROM x_vistaprog 
  where 
- $where  and tipo='AP'";
+ $where  and tipo='AP'$limitChart";
   $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql,$params);
-        // $params);
-        $Timelineprogetti = $command->queryAll();
-
-
-
+        $cacheKey = 'vtiger_progetti_timeline_' . md5($sql . '|' . serialize($params));
+        $Timelineprogetti = Yii::$app->cache->get($cacheKey);
+        if ($Timelineprogetti === false) {
+            $command = $connection->createCommand($sql, $params);
+            $Timelineprogetti = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $Timelineprogetti, 30);
+        }
 
 
  $connection = Yii::$app->db6;
-     $listap = $connection->createCommand("SELECT DISTINCT codiceprogetto 
-     FROM x_vistaprog where codiceprogetto not like '%ticket%'")
-    ->queryColumn();
+     $cacheKey = 'vtiger_progetti_listap';
+     $listap = Yii::$app->cache->get($cacheKey);
+     if ($listap === false) {
+         $listap = $connection->createCommand("SELECT DISTINCT codiceprogetto 
+         FROM x_vistaprog where codiceprogetto not like '%ticket%'")
+        ->queryColumn();
+         Yii::$app->cache->set($cacheKey, $listap, 300);
+     }
 
 
-$listac= $connection->createCommand("SELECT DISTINCT soggetto FROM x_vistaprog")
-            ->queryColumn();
+$cacheKey = 'vtiger_progetti_listac';
+$listac = Yii::$app->cache->get($cacheKey);
+if ($listac === false) {
+    $listac = $connection->createCommand("SELECT DISTINCT soggetto FROM x_vistaprog")
+                ->queryColumn();
+    Yii::$app->cache->set($cacheKey, $listac, 300);
+}
 
 
 
 
 
 
-        $users = $connection->
-            //createCommand("SELECT DISTINCT utente_destinatario 
-            //FROM xestrazione")
-            createcommand("SELECT CONCAT(first_name,' ',last_name)AS utente_destinatario 
-        FROM vt.vtiger_users")
-            ->queryColumn();
+        $cacheKey = 'vtiger_users_list';
+        $users = Yii::$app->cache->get($cacheKey);
+        if ($users === false) {
+            $users = $connection->
+                createcommand("SELECT CONCAT(first_name,' ',last_name)AS utente_destinatario 
+            FROM vt.vtiger_users")
+                ->queryColumn();
+            Yii::$app->cache->set($cacheKey, $users, 300);
+        }
 
 
 $mainfiltro= "SELECT distinct pid,codiceprogetto  FROM 
@@ -612,21 +760,28 @@ $mainfiltro= "SELECT distinct pid,codiceprogetto  FROM
             where 
           $where
               order by DATE(pid) ASC
-           
+           $limitChart
             ";
         $connection = Yii::$app->db6;
-        $command = $connection->createCommand($mainfiltro, $params);
-        //var_dump($sql );
-        //var_dump($params);
-        // $params);
-        $resultsfiltro = $command->queryAll();
+        $cacheKey = 'vtiger_progetti_filtro_' . md5($mainfiltro . '|' . serialize($params));
+        $resultsfiltro = Yii::$app->cache->get($cacheKey);
+        if ($resultsfiltro === false) {
+            $command = $connection->createCommand($mainfiltro, $params);
+            $resultsfiltro = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultsfiltro, 30);
+        }
         // Estrai la colonna `pid` dai risultati di $resultsfiltro
         $pids = array_column($resultsfiltro, 'pid');
 
+        // Filtra solo i pid numerici e rimuovi eventuali valori vuoti
+        $pids = array_values(array_filter($pids, function ($v) {
+            return is_numeric($v);
+        }));
+
         // Assicurati che ci siano valori prima di proseguire
         if (!empty($pids)) {
-            // Converti l'array in una lista separata da virgole, usando parametri per la sicurezza
-            $placeholders = implode(',',  $pids);
+            // Converti l'array in una lista separata da virgole, cast a intero per sicurezza
+            $placeholders = implode(',', array_map('intval', $pids));
 //var_dump($placeholders);
             // Query principale con il filtro sui pid
             $query = "SELECT DISTINCT pid AS id,
@@ -646,7 +801,7 @@ $mainfiltro= "SELECT distinct pid,codiceprogetto  FROM
         (SELECT vtiger_project.progress FROM vtiger_project
          WHERE vtiger_project.projectid = xestrazione.pid) AS progress
         FROM xestrazione
-        WHERE pid IN ($placeholders) AND codiceprogetto NOT LIKE 'Ticket%' limit 1000 ";
+        WHERE pid IN ($placeholders) AND codiceprogetto NOT LIKE 'Ticket%' $limitMain ";
 
             $query2 = "SELECT DISTINCT pid AS id, tid,
         oggetto, soggetto,
@@ -660,14 +815,25 @@ $mainfiltro= "SELECT distinct pid,codiceprogetto  FROM
          WHERE vtiger_projecttask.projecttaskid = tid) AS progress
         FROM xestrazione
         WHERE pid IN ($placeholders) AND codiceprogetto NOT LIKE 'Ticket%'
-        ORDER BY COALESCE(orainizioevento, NOW()) ASC limit 1000 ";
+        ORDER BY COALESCE(orainizioevento, NOW()) ASC $limitMain ";
 
             // Esegui le query usando i valori di $pids
             $dbName = 'db6';
             $db = Yii::$app->$dbName;
 
-            $resultsQuery1 = $db->createCommand($query)->queryAll();
-            $resultsQuery2 =   $db->createCommand($query2)->queryAll();
+            $cacheKey = 'vtiger_progetti_q1_' . md5($query);
+            $resultsQuery1 = Yii::$app->cache->get($cacheKey);
+            if ($resultsQuery1 === false) {
+                $resultsQuery1 = $db->createCommand($query)->queryAll();
+                Yii::$app->cache->set($cacheKey, $resultsQuery1, 30);
+            }
+
+            $cacheKey = 'vtiger_progetti_q2_' . md5($query2);
+            $resultsQuery2 = Yii::$app->cache->get($cacheKey);
+            if ($resultsQuery2 === false) {
+                $resultsQuery2 = $db->createCommand($query2)->queryAll();
+                Yii::$app->cache->set($cacheKey, $resultsQuery2, 30);
+            }
         } else {
             // Gestione del caso in cui $resultsfiltro sia vuoto
             $resultsQuery1 = [];
@@ -682,6 +848,7 @@ $mainfiltro= "SELECT distinct pid,codiceprogetto  FROM
             'dayTo'=>$dayTo,
             'listac'=>$listac,
             'resultstotali'=>$resultstotali,
+            'resultstotalitra'=>$resultstotalitra,
              'results1'=>   $results1 ,
              'Timelineprogetti'=>$Timelineprogetti,
              'tsql'=>$tsql,             
@@ -720,15 +887,14 @@ $dayFrom = Yii::$app->request->get('dayFrom');
     if (!empty($listac)) {
     // Gestione dei pattern per listac come array
     if (is_array($listac)) {
-        // Creazione del placeholder per i parametri IN
-        $placeholders = [];
+        // LIKE 'OR' per ogni cliente selezionato (più tollerante del confronto esatto)
+        $likeClauses = [];
         foreach ($listac as $key => $value) {
             $paramName = ":listac$key";
-            $placeholders[] = $paramName;
-            $params[$paramName] = $value;
+            $likeClauses[] = "soggetto LIKE $paramName";
+            $params[$paramName] = "%$value%";
         }
-        // Aggiungi la condizione IN con i placeholder
-        $whereClauses[] = 'soggetto IN (' . implode(', ', $placeholders) . ')';
+        $whereClauses[] = '(' . implode(' OR ', $likeClauses) . ')';
     } else {
         // Se listac non è un array, usa LIKE
         $whereClauses[] = 'soggetto LIKE :listac';
@@ -745,31 +911,28 @@ $dayFrom = Yii::$app->request->get('dayFrom');
 
             $whereClauses[] = '(' . implode(' OR ', $listapPatterns) . ')';
         }
-
-        $where = '';
+$where = '';
         if (!empty($whereClauses)) {
             $where =   implode(' AND ', $whereClauses);
         }
         else {$where=' 1=1 ';
         }
 
+        // Senza filtri mostriamo al massimo 100 risultati per non appesantire la pagina;
+        // appena si filtra la ricerca torna completa (nessun limite).
+        $hasFilters = !empty($whereClauses);
+        $limitMain = $hasFilters ? '' : ' LIMIT 100';
 
-
-
-
-   
 
 
  $sql = "
           SELECT *  
 from xestrazione
-LEFT JOIN vt.vtiger_ticketcf AS tcustom ON tcustom.ticketid=xestrazione.tid
 LEFT JOIN  vt.vtiger_troubletickets vt ON vt.ticketid=xestrazione.tid
-LEFT JOIN vt.vtiger_products AS vp ON vp.productid=vt.product_id
             WHERE 
            $where
               order by DATE(orainizioevento) ASC
-             
+              $limitMain
         ";
 
 
@@ -777,16 +940,20 @@ LEFT JOIN vt.vtiger_products AS vp ON vp.productid=vt.product_id
      //   Yii::debug("SQL Query: $sql");
      //   Yii::debug("Params: " . json_encode($params));
 
-        // Esegui la query
+        // Esegui la query con cache (30s)
         $connection = Yii::$app->db6;
-        $command = $connection->createCommand($sql,$params);
-        // $params);
-        $results1 = $command->queryAll();
+        $cacheKey = 'vtiger_ticket_main_' . md5($sql . '|' . serialize($params));
+        $results1 = Yii::$app->cache->get($cacheKey);
+        if ($results1 === false) {
+            $command = $connection->createCommand($sql, $params);
+            $results1 = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $results1, 30);
+        }
         
 
         $dataProvider = new ArrayDataProvider([
             'allModels' => $results1,
-
+            'pagination' => false
         ]);
 
 
@@ -807,18 +974,26 @@ $sql2 = "select
         ";
 
      
-        $command = $connection->createCommand($sql2,$params);
-        // $params);
-        $resultstipoass = $command->queryAll();
+        $cacheKey = 'vtiger_ticket_tipoass_' . md5($sql2 . '|' . serialize($params));
+        $resultstipoass = Yii::$app->cache->get($cacheKey);
+        if ($resultstipoass === false) {
+            $command = $connection->createCommand($sql2, $params);
+            $resultstipoass = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultstipoass, 30);
+        }
 
       $sqllistaeventi=" SELECT  cf_909 FROM vtiger_cf_909 WHERE cf_909 IN (
 SELECT DISTINCT(cf_909) FROM vt.vtiger_ticketcf)
 UNION 
 SELECT 'non impostato' " ;
   
-      $command = $connection->createCommand($sqllistaeventi);
-      $listaeventi = $command->queryAll();
-      $listaeventi=array_column($listaeventi, 'cf_909');
+      $listaeventi = Yii::$app->cache->get('vtiger_ticket_listaeventi');
+      if ($listaeventi === false) {
+          $command = $connection->createCommand($sqllistaeventi);
+          $listaeventi = $command->queryAll();
+          $listaeventi = array_column($listaeventi, 'cf_909');
+          Yii::$app->cache->set('vtiger_ticket_listaeventi', $listaeventi, 300);
+      }
         
 $prod="SELECT vp.productname AS name , sum(oredelta)AS data  FROM xestrazione 
 LEFT JOIN  vt.vtiger_troubletickets vt ON vt.ticketid=xestrazione.tid
@@ -830,9 +1005,13 @@ AND  product_id  <>0
 GROUP BY vp.productname";
        
   
-        $command = $connection->createCommand($prod,$params);
-        // $params);
-        $resultsprod = $command->queryAll();
+        $cacheKey = 'vtiger_ticket_prod_' . md5($prod . '|' . serialize($params));
+        $resultsprod = Yii::$app->cache->get($cacheKey);
+        if ($resultsprod === false) {
+            $command = $connection->createCommand($prod, $params);
+            $resultsprod = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultsprod, 30);
+        }
 
 
 $comprod="SELECT custom2 AS name, COUNT(*)  AS data FROM xestrazione
@@ -840,18 +1019,26 @@ where $where  and  tipo IN ('T','TP','TA')
 GROUP BY custom2";
 
  
-        $command = $connection->createCommand($comprod,$params);
-        // $params);
-        $resultscomprod = $command->queryAll();
+        $cacheKey = 'vtiger_ticket_comprod_' . md5($comprod . '|' . serialize($params));
+        $resultscomprod = Yii::$app->cache->get($cacheKey);
+        if ($resultscomprod === false) {
+            $command = $connection->createCommand($comprod, $params);
+            $resultscomprod = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultscomprod, 30);
+        }
 
 $stato="SELECT case when isnull(codicestatoevento) and tipo='TA' then 'ATTIVITA' ELSE 
 codicestatoevento END  AS name , COUNT(* ) AS data    FROM xestrazione
 where $where  and  tipo IN ('T','TP')  
 GROUP BY codicestatoevento";
  
-        $command = $connection->createCommand($stato,$params);
-        // $params);
-        $resultsstato = $command->queryAll();
+        $cacheKey = 'vtiger_ticket_stato_' . md5($stato . '|' . serialize($params));
+        $resultsstato = Yii::$app->cache->get($cacheKey);
+        if ($resultsstato === false) {
+            $command = $connection->createCommand($stato, $params);
+            $resultsstato = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultsstato, 30);
+        }
 
 
 
@@ -861,9 +1048,13 @@ where $where  and  tipo IN ('T','TP','TA')
  GROUP BY soggetto
 ";
  
-        $command = $connection->createCommand($cf,$params);
-        // $params);
-        $resultscf = $command->queryAll();
+        $cacheKey = 'vtiger_ticket_cf_' . md5($cf . '|' . serialize($params));
+        $resultscf = Yii::$app->cache->get($cacheKey);
+        if ($resultscf === false) {
+            $command = $connection->createCommand($cf, $params);
+            $resultscf = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultscf, 30);
+        }
 
 
 $utenti="SELECT utente_destinatario AS name, COUNT(*) AS data    FROM xestrazione
@@ -872,16 +1063,21 @@ WHERE $where and  tipo IN ('T','TP','TA')
 ";
 
  
-        $command = $connection->createCommand($utenti,$params);
-        // $params);
-        $resultsutenti = $command->queryAll();
+        $cacheKey = 'vtiger_ticket_utenti_' . md5($utenti . '|' . serialize($params));
+        $resultsutenti = Yii::$app->cache->get($cacheKey);
+        if ($resultsutenti === false) {
+            $command = $connection->createCommand($utenti, $params);
+            $resultsutenti = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultsutenti, 30);
+        }
 
-
-
-
-$listacq= $connection->createCommand("SELECT accountname AS id ,
+$listacq = Yii::$app->cache->get('vtiger_ticket_listac');
+if ($listacq === false) {
+    $listacq= $connection->createCommand("SELECT accountname AS id ,
 accountname AS desk FROM vt.vtiger_account")
            ->queryAll();
+    Yii::$app->cache->set('vtiger_ticket_listac', $listacq, 300);
+}
 
          $listac=   ArrayHelper::map($listacq,'id','desk');
 
@@ -891,9 +1087,13 @@ WHERE  $where  and  tipo IN ('T','TP','TA')
  GROUP BY utente_destinatario
 ";
  
-        $command = $connection->createCommand($utentiore,$params);
-        // $params);
-        $resultsutentiore = $command->queryAll();
+        $cacheKey = 'vtiger_ticket_utentiore_' . md5($utentiore . '|' . serialize($params));
+        $resultsutentiore = Yii::$app->cache->get($cacheKey);
+        if ($resultsutentiore === false) {
+            $command = $connection->createCommand($utentiore, $params);
+            $resultsutentiore = $command->queryAll();
+            Yii::$app->cache->set($cacheKey, $resultsutentiore, 30);
+        }
 
 
 
@@ -926,4 +1126,262 @@ WHERE  $where  and  tipo IN ('T','TP','TA')
         ]);    }
 
 
-}
+    public function actionClientiAjax()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $q = trim((string) Yii::$app->request->get('q', ''));
+
+        $connection = Yii::$app->db6;
+        $sql = "SELECT accountname AS id, accountname AS text FROM vt.vtiger_account";
+        if ($q !== '') {
+            $sql .= " WHERE accountname LIKE :q LIMIT 100";
+            $rows = $connection->createCommand($sql)
+                ->bindValue(':q', '%' . $q . '%')
+                ->queryAll();
+        } else {
+            $rows = $connection->createCommand($sql . ' LIMIT 100')->queryAll();
+        }
+
+        return ['results' => $rows, 'pagination' => ['more' => false]];
+    }
+
+
+    public function actionGanttprogetti()
+    {
+        $request = Yii::$app->request;
+
+        // Recupero parametri (assicurati che i nomi corrispondano al form)
+        $dayFrom = $request->get('dayFrom');
+        $dayTo = $request->get('dayTo');
+        $listac = $request->get('listac');
+        $assegnato_a = $request->get('assegnato_a');
+        $stato = $request->get('stato');
+
+        $params = [];
+        $whereClauses = ["ent.deleted = 0"];
+
+        // Applica filtri
+        if (!empty($dayFrom)) {
+            $whereClauses[] = "p.startdate >= :df";
+            $params[':df'] = $dayFrom;
+        }
+        if (!empty($dayTo)) {
+            $whereClauses[] = "p.startdate <= :dt";
+            $params[':dt'] = $dayTo;
+        }
+        if (!empty($listac)) {
+            $whereClauses[] = "acc.accountname LIKE :listac";
+            $params[':listac'] = "%$listac%";
+        }
+        if (!empty($assegnato_a)) {
+            $whereClauses[] = "CONCAT(u.first_name, ' ', u.last_name) LIKE :owner";
+            $params[':owner'] = "%$assegnato_a%";
+        }
+        if (!empty($stato)) {
+            $whereClauses[] = "p.projectstatus LIKE :stato";
+            $params[':stato'] = "%$stato%";
+        }
+
+        $whereSQL = implode(' AND ', $whereClauses);
+
+        $sql = "
+        SELECT 
+            p.projectid, p.projectname as nome_progetto, p.project_no, p.startdate AS data_inizio, 
+            p.targetenddate AS data_fine_obiettivo, p.projectstatus AS stato, 
+            acc.accountname AS azienda, p.progress AS progresso,
+            pcf.cf_901 AS monte_ore, pcf.cf_963 AS residuo,
+            CONCAT(u.first_name, ' ', u.last_name) AS assegnato_a
+        FROM vtiger_project p
+        INNER JOIN vtiger_crmentity ent ON p.projectid = ent.crmid
+        INNER JOIN vtiger_users u ON ent.smownerid = u.id
+        LEFT JOIN vtiger_projectcf pcf ON p.projectid = pcf.projectid
+        LEFT JOIN vtiger_account acc ON p.linktoaccountscontacts = acc.accountid
+        WHERE $whereSQL
+        ORDER BY acc.accountname ASC, p.startdate ASC
+    ";
+
+        $cacheKey = 'vtiger_gantt_progetti_' . md5($sql . '|' . serialize($params));
+        $progetti = Yii::$app->cache->get($cacheKey);
+        if ($progetti === false) {
+            $progetti = Yii::$app->db6->createCommand($sql, $params)->queryAll();
+            Yii::$app->cache->set($cacheKey, $progetti, 30);
+        }
+
+        // Genera mesi
+        $d1 = !empty($dayFrom) ? new \DateTime($dayFrom) : new \DateTime(date('Y-01-01'));
+        $d2 = !empty($dayTo) ? new \DateTime($dayTo) : new \DateTime(date('Y-12-31'));
+        $period = new \DatePeriod($d1->modify('first day of this month'), new \DateInterval('P1M'), $d2->modify('last day of this month')->modify('+1 day'));
+
+        return $this->render('gantt_progetti', [
+            'progetti' => $progetti,
+            'period' => $period,
+            'filters' => $request->get()
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function actionExportgantt()
+    {
+        $request = Yii::$app->request;
+
+        // 1. Recupero parametri (stessi nomi usati nella form e in actionGanttProgetti)
+        $dayFrom = $request->get('dayFrom');
+        $dayTo = $request->get('dayTo');
+        $listac = $request->get('listac');
+        $assegnato_a = $request->get('assegnato_a');
+        $prodotto = $request->get('prodotto');
+        $azienda_interna = $request->get('azienda_interna');
+        $stato = $request->get('stato');
+
+        $params = [];
+        $whereClauses = ["ent.deleted = 0"];
+
+        // 2. Ricostruzione logica filtri
+        if (!empty($dayFrom)) {
+            $whereClauses[] = "p.startdate >= :df";
+            $params[':df'] = $dayFrom;
+        }
+        if (!empty($dayTo)) {
+            $whereClauses[] = "p.startdate <= :dt";
+            $params[':dt'] = $dayTo;
+        }
+        if (!empty($listac)) {
+            $whereClauses[] = "acc.accountname LIKE :listac";
+            $params[':listac'] = "%$listac%";
+        }
+        if (!empty($assegnato_a)) {
+            $whereClauses[] = "CONCAT(u.first_name, ' ', u.last_name) LIKE :owner";
+            $params[':owner'] = "%$assegnato_a%";
+        }
+        if (!empty($prodotto)) {
+            $whereClauses[] = "pcf.cf_869 LIKE :prod";
+            $params[':prod'] = "%$prodotto%";
+        }
+        if (!empty($azienda_interna)) {
+            $whereClauses[] = "pcf.cf_867 LIKE :azi_int";
+            $params[':azi_int'] = "%$azienda_interna%";
+        }
+        if (!empty($stato)) {
+            $whereClauses[] = "p.projectstatus LIKE :stato";
+            $params[':stato'] = "%$stato%";
+        }
+
+        $whereSQL = implode(' AND ', $whereClauses);
+
+        // 3. Query dati
+        $sql = "
+        SELECT 
+            acc.accountname AS azienda,
+            p.projectname AS nome_progetto,
+            p.project_no AS n_progetto,
+            CONCAT(u.first_name, ' ', u.last_name) AS assegnato_a,
+            p.projectstatus AS stato,
+            p.startdate AS data_inizio,
+            p.targetenddate AS data_fine_obiettivo,
+            pcf.cf_901 AS monte_ore,
+            pcf.cf_963 AS residuo,
+            p.progress AS progresso,
+            pcf.cf_869 AS prodotto,
+            pcf.cf_867 AS azienda_interna
+        FROM vtiger_project p
+        INNER JOIN vtiger_crmentity ent ON p.projectid = ent.crmid
+        INNER JOIN vtiger_users u ON ent.smownerid = u.id
+        LEFT JOIN vtiger_projectcf pcf ON p.projectid = pcf.projectid
+        LEFT JOIN vtiger_account acc ON p.linktoaccountscontacts = acc.accountid
+        WHERE $whereSQL
+        ORDER BY acc.accountname ASC, p.startdate ASC
+    ";
+
+        $progetti = Yii::$app->db6->createCommand($sql, $params)->queryAll();
+
+        // 4. Creazione File Excel
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setTitle('Report Progetti Gantt');
+
+        // Intestazioni (Stile Bold e Sfondo Grigio)
+        $headers = [
+            'AZIENDA',
+            'PROGETTO',
+            'N. PROJ',
+            'ASSEGNATO',
+            'STATO',
+            'INIZIO',
+            'FINE OBIETTIVO',
+            'MONTE ORE',
+            'RESIDUO',
+            '% PROG',
+            'PRODOTTO',
+            'AZIENDA INT.'
+        ];
+
+        $sheet->fromArray($headers, NULL, 'A1');
+        $headerRange = 'A1:L1';
+        $sheet->getStyle($headerRange)->getFont()->setBold(true);
+        $sheet->getStyle($headerRange)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB('E0E0E0');
+
+        // Inserimento Dati
+        $rowIdx = 2;
+        foreach ($progetti as $p) {
+            $sheet->setCellValue('A' . $rowIdx, $p['azienda']);
+            $sheet->setCellValue('B' . $rowIdx, $p['nome_progetto']);
+            $sheet->setCellValue('C' . $rowIdx, $p['n_progetto']);
+            $sheet->setCellValue('D' . $rowIdx, $p['assegnato_a']);
+            $sheet->setCellValue('E' . $rowIdx, $p['stato']);
+            $sheet->setCellValue('F' . $rowIdx, $p['data_inizio']);
+            $sheet->setCellValue('G' . $rowIdx, $p['data_fine_obiettivo']);
+            $sheet->setCellValue('H' . $rowIdx, $p['monte_ore']);
+            $sheet->setCellValue('I' . $rowIdx, $p['residuo']);
+            $sheet->setCellValue('J' . $rowIdx, $p['progresso'] . '%');
+            $sheet->setCellValue('K' . $rowIdx, $p['prodotto']);
+            $sheet->setCellValue('L' . $rowIdx, $p['azienda_interna']);
+
+            // Coloriamo il residuo in rosso se negativo
+            if ($p['residuo'] < 0) {
+                $sheet->getStyle('I' . $rowIdx)->getFont()->getColor()->setARGB('FF0000');
+            }
+
+            $rowIdx++;
+        }
+
+        // Auto-size delle colonne
+        foreach (range('A', 'L') as $columnID) {
+            $sheet->getColumnDimension($columnID)->setAutoSize(true);
+        }
+
+        // Invio al browser per il download
+        $filename = 'Export_Progetti_' . date('Ymd_His') . '.xlsx';
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
+    }
+
+
+
+
+
+
+
+
+        }

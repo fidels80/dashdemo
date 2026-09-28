@@ -79,7 +79,7 @@ class PresenzeController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Presenza registrata con successo.');
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -98,7 +98,7 @@ class PresenzeController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

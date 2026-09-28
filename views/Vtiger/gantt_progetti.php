@@ -80,6 +80,8 @@ $f = $filters;
 </style>
 
 <div class="gantt-container">
+    <?= $this->render('_nav', ['active' => 'ganttprogetti']) ?>
+
     <div class="card p-3 mb-3 shadow-sm border-0 bg-light">
         <form method="get" action="index.php">
             <input type="hidden" name="r" value="vtiger/ganttprogetti">

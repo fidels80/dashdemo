@@ -77,7 +77,7 @@ class ItemsController extends Controller
     'op' => $model->className() . '-->' . $this->action->id]);
 
             $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -102,7 +102,7 @@ class ItemsController extends Controller
             $t = Yii::$app->runAction('log/set', ['data' => $model,
     'op' => $model->className() . '-->' . $this->action->id]);
 $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

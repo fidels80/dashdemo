@@ -114,7 +114,7 @@ class XruoliController extends Controller
         $model = $this->findModel($cd_ruolo);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'cd_ruolo' => $model->cd_ruolo]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

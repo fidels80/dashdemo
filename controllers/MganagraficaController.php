@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use app\models\MgAnagrafica;
+use app\models\MgMetodoPagamento;
+use app\models\MgAliquotaIva;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -29,7 +31,7 @@ class MganagraficaController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => MgAnagrafica::find()->orderBy(['ragione_sociale' => SORT_ASC]),
+            'query' => MgAnagrafica::find()->with(['metodoPagamento', 'aliquotaIva'])->orderBy(['ragione_sociale' => SORT_ASC]),
             'pagination' => false,
         ]);
 
@@ -47,10 +49,14 @@ class MganagraficaController extends Controller
         $model->attivo = true;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
-        return $this->render('create', ['model' => $model]);
+        return $this->render('create', [
+            'model' => $model,
+            'metodi' => MgMetodoPagamento::mapAttivi(),
+            'aliquote' => MgAliquotaIva::mapAttivi(),
+        ]);
     }
 
     public function actionUpdate($id)
@@ -58,10 +64,14 @@ class MganagraficaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
-        return $this->render('update', ['model' => $model]);
+        return $this->render('update', [
+            'model' => $model,
+            'metodi' => MgMetodoPagamento::mapAttivi(),
+            'aliquote' => MgAliquotaIva::mapAttivi(),
+        ]);
     }
 
     public function actionDelete($id)
@@ -93,6 +103,8 @@ class MganagraficaController extends Controller
                     'codice' => $model->codice,
                     'ragione_sociale' => $model->ragione_sociale,
                     'partita_iva' => $model->partita_iva,
+                    'id_aliquota_iva' => $model->id_aliquota_iva ? (int) $model->id_aliquota_iva : null,
+                    'iva_perc' => $model->aliquotaIva ? (float) $model->aliquotaIva->percentuale : null,
                 ],
             ];
         }

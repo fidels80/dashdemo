@@ -19,6 +19,8 @@ class MgAnagrafica extends \yii\db\ActiveRecord
         return [
             [['codice', 'ragione_sociale'], 'required'],
             [['attivo', 'is_cliente', 'is_fornitore', 'is_agente'], 'boolean'],
+            [['id_metodo_pagamento', 'id_aliquota_iva'], 'integer'],
+            [['perc_provvigione'], 'number', 'min' => 0, 'max' => 100],
             [['codice'], 'string', 'max' => 20],
             [['ragione_sociale'], 'string', 'max' => 200],
             [['partita_iva', 'codice_fiscale'], 'string', 'max' => 20],
@@ -52,6 +54,9 @@ class MgAnagrafica extends \yii\db\ActiveRecord
             'is_cliente' => 'Cliente',
             'is_fornitore' => 'Fornitore',
             'is_agente' => 'Agente',
+            'perc_provvigione' => '% provvigione',
+            'id_metodo_pagamento' => 'Metodo di pagamento',
+            'id_aliquota_iva' => 'Aliquota IVA',
         ];
     }
 
@@ -74,6 +79,52 @@ class MgAnagrafica extends \yii\db\ActiveRecord
             'codice',
             'ragione_sociale'
         );
+    }
+
+    /**
+     * Anagrafiche filtrate per destinazione del documento ('cliente'|'fornitore').
+     * Usata dalla form documento per mostrare solo gli intestatari coerenti.
+     */
+    public static function mapForDestinazione($destinazione)
+    {
+        $query = self::find();
+        if ($destinazione === MgTipoDocumento::DEST_FORNITORE) {
+            $query->where(['is_fornitore' => 1]);
+        } else {
+            $query->where(['is_cliente' => 1]);
+        }
+        return \yii\helpers\ArrayHelper::map(
+            $query->orderBy(['ragione_sociale' => SORT_ASC])->all(),
+            'id',
+            'ragione_sociale'
+        );
+    }
+
+    public function getMetodoPagamento()
+    {
+        return $this->hasOne(MgMetodoPagamento::className(), ['id' => 'id_metodo_pagamento']);
+    }
+
+    public function getAliquotaIva()
+    {
+        return $this->hasOne(MgAliquotaIva::className(), ['id' => 'id_aliquota_iva']);
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->id_metodo_pagamento === '') {
+                $this->id_metodo_pagamento = null;
+            }
+            if ($this->id_aliquota_iva === '') {
+                $this->id_aliquota_iva = null;
+            }
+            if ($this->perc_provvigione === '' || $this->perc_provvigione === null) {
+                $this->perc_provvigione = 0;
+            }
+            return true;
+        }
+        return false;
     }
 
     /**

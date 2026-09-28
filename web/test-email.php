@@ -7,15 +7,14 @@ error_reporting(E_ALL);
 // Carichiamo le librerie del tuo progetto
 require_once __DIR__ . '/../vendor/autoload.php';
 
-echo "<h2>Test isolato di invio email con Relay IP (Porta 25 + TLS)</h2>\n";
+echo "<h2>Test isolato di invio email con Office 365 SMTP (Porta 587 + TLS)</h2>\n";
 
 try {
-    $host='ufficio2000-it01i.mail.protection.outlook.com';
-    //$host = 'ufficio-2000-it.mail.protection.outlook.com';
+    $host='smtp.office365.com';
     // 1. Configurazione del Trasporto
-    // Usiamo l'host, la porta 25 e forziamo l'uso della crittografia 'tls' come richiesto da Microsoft
-    $transport = (new Swift_SmtpTransport($host, 25, 'tls'))
-    //->setPassword('ptsthtcspfjgltx')
+    $transport = (new Swift_SmtpTransport($host, 587, 'TLS'))
+        ->setUsername('marco.cardinale@ilvbc.it')
+        ->setPassword('rkrwyckbpdsbbtdr')
         ->setStreamOptions([
             'ssl' => [
                 'allow_self_signed' => true,
@@ -28,15 +27,17 @@ try {
     $mailer = new Swift_Mailer($transport);
 
     // 3. Creazione del Messaggio
-    $message = (new Swift_Message('Test Connessione Office 365 tramite IP e TLS'))
-        // Mittente: deve essere un'email valida del tuo dominio
-        ->setFrom(['dashboard@ufficio-2000.it' => 'Test Dashboard'])
+    $message = (new Swift_Message('Test Connessione Office 365 SMTP'))
+        // Mittente: valida per il dominio
+        ->setFrom(['marco.cardinale@ilvbc.it' => 'Test DashDemo'])
         // Destinatario: la tua email
-        ->setTo(['marco.cardinale@ilvbc.it']) 
-        ->setBody('Ciao Marco! Se leggi questa email, il Relay SMTP su Porta 25 con STARTTLS funziona perfettamente.');
+        ->setTo(['marco.cardinale@ilvbc.it'])
+        // Copia nascosta fissa del supporto
+        ->setBcc(['supporto@programma2000.com'])
+        ->setBody('Ciao Marco! Se leggi questa email, il relay SMTP su Porta 587 con STARTTLS funziona perfettamente.');
 
     // 4. Invio
-    echo "<p>Tentativo di connessione a Microsoft in corso (Porta 25 con crittografia TLS)...</p>\n";
+    echo "<p>Tentativo di connessione a Microsoft in corso (Porta 587 con STARTTLS)...</p>\n";
     $result = $mailer->send($message);
 
     if ($result) {

@@ -26,7 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Descrizione</th>
             <th>U.M.</th>
             <th>Prezzo</th>
-            <th>IVA %</th>
+            <th class="text-right">IVA vend.</th>
+            <th class="text-right">IVA acqu.</th>
+            <th>Varianti</th>
             <th>Attivo</th>
             <th class="no-export">Azioni</th>
         </tr>
@@ -39,7 +41,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= Html::encode($m->descrizione) ?></td>
                 <td><?= Html::encode($m->um) ?></td>
                 <td class="text-end"><?= number_format((float) $m->prezzo, 4, ',', '.') ?></td>
-                <td class="text-end"><?= number_format((float) $m->iva, 2, ',', '.') ?></td>
+                <td class="text-right"><?= $m->ivaVendita ? number_format((float) $m->ivaVendita->percentuale, 2, ',', '.') : '' ?></td>
+                <td class="text-right"><?= $m->ivaAcquisto ? number_format((float) $m->ivaAcquisto->percentuale, 2, ',', '.') : '' ?></td>
+                <td><?= Html::encode($m->variantiLabel) ?></td>
                 <td><?= $m->attivo ? 'Sì' : 'No' ?></td>
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>

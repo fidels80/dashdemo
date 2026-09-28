@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
         <div class="mb-2">
             <?= Html::a('<i class="fas fa-plus"></i> Nuovo token', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-flask"></i> Prova servizi REST', ['test'], ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
 

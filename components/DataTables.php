@@ -38,7 +38,9 @@ class DataTables
                 .dataTables_wrapper .dataTables_filter { text-align: left; width: 100%; }
                 .dataTables_wrapper .dataTables_filter input { width: 100%; max-width: none; }
             }
-            table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before { background-color: #0d6efd; }
+            table.dataTable { width: 100% !important; }
+            table.dataTable th, table.dataTable td { white-space: nowrap; }
+            table.dataTable th, table.dataTable td { padding: .4rem .5rem; }
         ");
 
         $js = <<<JS
@@ -73,15 +75,53 @@ $(document).ready(function () {
         ],
         pageLength: {$pageLength},
         order: [[{$orderCol}, '{$orderDir}']],
-        responsive: true,
+        responsive: false,
         scrollX: false,
         autoWidth: false,
         columnDefs: [{ targets: 'no-export', orderable: false, searchable: false }]
         {$extra}
     });
+    shrinkToFit(tbl);
 });
 JS;
 
+        Yii::$app->view->registerJs("
+            // Rimpicciolisce il font delle celle finché tutte le colonne entrano
+            // nella pagina senza scroll orizzontale. I testi restano sempre in orizzontale.
+            // La dimensione viene applicata come regola CSS (non inline): in questo modo
+            // vale anche per le righe ricreate da DataTables al cambio pagina.
+            window.shrinkToFit = function (table) {
+                if (!table || !table.length) return;
+                var el = table[0];
+                var id = el.id;
+                var wrap = table.closest('.dataTables_wrapper')[0];
+                if (!wrap) wrap = el.parentElement;
+                var targetW = wrap.clientWidth || el.clientWidth;
+                var styleTag = document.getElementById('shrink-' + id);
+                if (!styleTag) {
+                    styleTag = document.createElement('style');
+                    styleTag.id = 'shrink-' + id;
+                    document.head.appendChild(styleTag);
+                }
+                var applySize = function (px) {
+                    styleTag.textContent = '#' + id + ' th, #' + id + ' td { font-size: ' + px + 'px !important; }';
+                };
+                var fix = function () {
+                    var cur = 14;
+                    while (cur > 7 && el.scrollWidth > targetW) {
+                        applySize(cur);
+                        cur = cur - 0.5;
+                    }
+                    applySize(cur);
+                    if (el.scrollWidth > targetW) {
+                        applySize(7);
+                    }
+                };
+                fix();
+                table.on('draw.dt', fix);
+                $(window).on('resize', fix);
+            };
+        ");
         Yii::$app->view->registerJs($js);
     }
 }

@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= (int) $m->id ?></td>
                 <td><?= $m->genitore_id ? '— ' : '' ?><?= Html::encode($m->label) ?></td>
                 <td><?= Html::encode($m->codice) ?></td>
-                <td><?= Html::encode($m->icona) ?></td>
+                <td><?= $m->icona ? '<i class="fas fa-' . Html::encode($m->icona) . '"></i> ' . Html::encode($m->icona) : '' ?></td>
                 <td><?= Html::encode($m->url) ?></td>
                 <td><?= Html::encode($m->genitore->label ?? '(radice)') ?></td>
                 <td><?= (int) $m->livello_min ?></td>

@@ -68,7 +68,7 @@ class TipoPresenzeController extends Controller
         $model = new TipoPresenze();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'codice' => $model->codice]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -88,7 +88,7 @@ class TipoPresenzeController extends Controller
         $model = $this->findModel($codice);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'codice' => $model->codice]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

@@ -25,7 +25,6 @@ $tipo = $model->tipo ? \app\models\Todotipo::getById($model->tipo) : null;
                 <strong><?= Html::encode($tipo->tipo) ?></strong>
             </span>
         <?php endif; ?>
-        <span class="text-muted">#<?= Html::encode($model->id) ?></span>
     </div>
 
     <h4><?= Html::encode($model->descrizione) ?></h4>

@@ -15,7 +15,6 @@ class DataTablesAsset extends AssetBundle
     public $css = [
         'https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css',
         'https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
         'https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css',
         'https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css',
         // --- SELECT2 ---
@@ -55,6 +54,7 @@ class DataTablesAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap5\BootstrapAsset',
+        'app\assets\FontAwesomeAsset',
     ];
     // Forza il caricamento di alcuni script nell'HEAD se necessario (come FullCalendar)
     public $jsOptions = [

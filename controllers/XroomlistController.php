@@ -447,10 +447,9 @@ class XroomlistController extends Controller
             $body .= "Data/Ora: " . date('Y-m-d H:i:s') . "\n\n";
             $body .= "Saluti,\nSistema modifica  XTravel";
             Yii::$app->mailer->compose()
-                ->setFrom(['dashboard@planorys.com'
-                => 'Dashboard Planorys'])
+                ->setFrom(['marco.cardinale@ilvbc.it' => 'Dashboard DashDemo'])
                 ->setTo($email)
-                ->setBcc('dashboard@planorys.com')
+                ->setBcc('supporto@programma2000.com')
                 ->setSubject($subject)
                 ->setTextBody($body)
                 ->send();

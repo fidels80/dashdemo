@@ -52,11 +52,12 @@ class MgtipodocumentoController extends Controller
         $model->usa_progressivo = true;
         $model->congruita = true;
         $model->attivo = true;
+        $model->destinazione = MgTipoDocumento::DEST_CLIENTE;
 
         if ($model->load(Yii::$app->request->post())) {
             $model->created_at = new \yii\db\Expression('GETDATE()');
             if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect([ 'index' ]);
             }
         }
 
@@ -68,7 +69,7 @@ class MgtipodocumentoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', ['model' => $model]);

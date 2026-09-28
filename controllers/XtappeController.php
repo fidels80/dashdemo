@@ -69,7 +69,7 @@ class XtappeController extends Controller
         $model = new Xtappe();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_tappa]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -232,10 +232,9 @@ class XtappeController extends Controller
             $body .= "Data/Ora: " . date('Y-m-d H:i:s') . "\n\n";
             $body .= "Saluti,\nSistema modifica  XTravel";
             Yii::$app->mailer->compose()
-                ->setFrom(['dashboard@planorys.com'
-                => 'Dashboard Planorys'])
+                ->setFrom(['marco.cardinale@ilvbc.it' => 'Dashboard DashDemo'])
                 ->setTo($email)
-                ->setBcc('dashboard@planorys.com')
+                ->setBcc('supporto@programma2000.com')
                 ->setSubject($subject)
                 ->setTextBody($body)
                 ->send();

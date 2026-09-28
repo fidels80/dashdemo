@@ -6,7 +6,7 @@
 <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
     <tr>
         <td style="background-color:#dc3545; color:#fff; padding:12px 16px; font-size:16px; font-weight:bold;">
-            &#9888; Segnalazione Anomalia - Dashboard Ufficio 2000
+            &#9888; Segnalazione Anomalia - Dashboard DashDemo
         </td>
     </tr>
 </table>
@@ -144,7 +144,7 @@
 <table style="width:100%; border-collapse:collapse;">
     <tr>
         <td style="padding:8px 12px; background-color:#f8f9fa; font-size:11px; color:#6c757d; border:1px solid #dee2e6;">
-            Email generata automaticamente dalla Dashboard Ufficio 2000.
+            Email generata automaticamente dalla Dashboard DashDemo.
         </td>
     </tr>
 </table>

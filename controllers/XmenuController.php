@@ -73,7 +73,7 @@ class XmenuController extends Controller
         $model = new Xmenu();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
@@ -94,7 +94,7 @@ class XmenuController extends Controller
         $this->getuser();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('update', [

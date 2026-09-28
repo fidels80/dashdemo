@@ -25,9 +25,9 @@ use yii\helpers\Url;
         <p>Benvenuto nella tua piattaforma di governance <?= Html::encode($user->username) ?>,</p>
 
         <p>la tua utenza su Presenze è stata attivata accedi con le tue credenziali al link sottostante per cominciare!!</p>
-        <p>https://u2000.ilvbc.it:4433</p>
+        <p><a href="<?= Url::base(true) ?>/contatti"><?php echo Url::base(true)  ?></a></p>
 
-       
+
         <p>Grazie e Buon Lavoro.</p>
 
         <?php echo Url::base(true);

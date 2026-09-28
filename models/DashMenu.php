@@ -92,16 +92,21 @@ class DashMenu extends \yii\db\ActiveRecord
      */
     public static function buildMenuForUser($userId, $level, $email = null)
     {
-        $items = self::find()
-            ->where(['attivo' => 1])
-            ->andWhere(['<=', 'livello_min', (int) $level])
-            ->orderBy(['ordine' => SORT_ASC, 'label' => SORT_ASC])
-            ->all();
-
         // Il livello 100 o le email in params['superEmails'] vedono sempre tutto
         $superEmails = Yii::$app->params['superEmails'] ?? [];
         $isSuper = ((int) $level >= 100)
             || (!empty($email) && in_array(strtolower($email), array_map('strtolower', $superEmails), true));
+
+        $query = self::find()
+            ->where(['attivo' => 1])
+            ->orderBy(['ordine' => SORT_ASC, 'label' => SORT_ASC]);
+
+        // I supervisori non subiscono il filtro sul livello minimo (vedono sempre tutto).
+        if (!$isSuper) {
+            $query->andWhere(['<=', 'livello_min', (int) $level]);
+        }
+
+        $items = $query->all();
 
         $assigned = DashMenuUtente::find()
             ->select('menu_id')

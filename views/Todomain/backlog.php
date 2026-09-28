@@ -24,7 +24,6 @@ $renderRow = function ($issue) use ($sprintsMap) {
         <div class="backlog-type" style="color:<?= Html::encode($tipo ? ($tipo->colore ?: '#6c757d') : '#6c757d') ?>">
             <i class="fas <?= Html::encode($tipo ? ($tipo->icona ?: 'fa-tasks') : 'fa-tasks') ?>"></i>
         </div>
-        <div class="backlog-key">#<?= Html::encode($issue->id) ?></div>
         <div class="backlog-title text-truncate">
             <a href="javascript:void(0);" class="backlog-open" data-url="<?= Url::to(['todomain/issue', 'id' => $issue->id]) ?>">
                 <?= Html::encode($issue->descrizione) ?>

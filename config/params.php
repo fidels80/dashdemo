@@ -7,21 +7,12 @@
 ];*/
 
 return [
-    'adminEmail' => 'dashboard@ufficio-2000.it',
-    //'caterina.iannucci@vivenda.it',
-    //'caterina.iannucci@vivenda.it',
-   //  'pubblicazioni@vivenda.it',
-    
-    //'pubblicazioni@vivenda.it',
-     'senderEmail' => 
-     'dashboard@ufficio-2000.it',//'caterina.iannucci@vivenda.it',
+    'adminEmail' => 'supporto@programma2000.com',
+     'senderEmail' =>
+     'marco.cardinale@ilvbc.it',
     // 'pubblicazioni@vivenda.it',
-     //'pubblicazioni@vivenda.it',
-    'senderName' => 'DASHBOARD  Ufficio ',
-    'supportEmail'=> 'dashboard@ufficio-2000.it',
-    //'caterina.iannucci@vivenda.it',
-    //'pubblicazioni@vivenda.it',
-    //'pubblicazioni@vivenda.it',
+    'senderName' => 'DASHBOARD DashDemo',
+    'supportEmail'=> 'marco.cardinale@ilvbc.it',
     'hail812/yii2-adminlte3' => [
         'pluginMap' => [
             'sweetalert2' => [

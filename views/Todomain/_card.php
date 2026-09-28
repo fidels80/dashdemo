@@ -22,7 +22,6 @@ $scaduta = $model->data_scadenza && strtotime($model->data_scadenza) < strtotime
                 <i class="fas <?= Html::encode($tipo->icona ?: 'fa-tasks') ?>"></i>
             </span>
         <?php endif; ?>
-        <span class="jira-key">#<?= Html::encode($model->id) ?></span>
         <?php if ($prio): ?>
             <span class="jira-prio" title="Priorità: <?= Html::encode($prio->priorita) ?>">
                 <?= Html::encode($prio->priorita) ?>

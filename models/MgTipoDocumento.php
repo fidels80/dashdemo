@@ -15,10 +15,16 @@ use Yii;
  * @property bool $usa_progressivo
  * @property bool $congruita
  * @property bool $attivo
+ * @property string $destinazione
+ * @property bool $crea_scadenze
+ * @property bool $mostra_varianti
  * @property string|null $created_at
  */
 class MgTipoDocumento extends \yii\db\ActiveRecord
 {
+    const DEST_CLIENTE = 'cliente';
+    const DEST_FORNITORE = 'fornitore';
+
     public static function tableName()
     {
         return 'mg_tipo_documento';
@@ -30,9 +36,13 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             [['codice', 'descrizione'], 'required'],
             [['anno', 'contatore'], 'integer'],
             [['usa_progressivo', 'congruita', 'attivo'], 'boolean'],
+            [['crea_scadenze'], 'boolean'],
+            [['mostra_varianti'], 'boolean'],
             [['created_at'], 'safe'],
             [['codice'], 'string', 'max' => 20],
             [['descrizione'], 'string', 'max' => 200],
+            [['destinazione'], 'string', 'max' => 20],
+            [['destinazione'], 'in', 'range' => array_keys(self::opzioniDestinazione())],
             [['codice'], 'unique'],
         ];
     }
@@ -48,8 +58,25 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             'usa_progressivo' => 'Numerazione automatica',
             'congruita' => 'Proposta congruità numeri',
             'attivo' => 'Attivo',
+            'destinazione' => 'Destinazione',
+            'crea_scadenze' => 'Crea scadenze',
+            'mostra_varianti' => 'Mostra taglia/colore',
             'created_at' => 'Creato il',
         ];
+    }
+
+    public static function opzioniDestinazione()
+    {
+        return [
+            self::DEST_CLIENTE => 'Cliente',
+            self::DEST_FORNITORE => 'Fornitore',
+        ];
+    }
+
+    public function getDestinazioneLabel()
+    {
+        $opzioni = self::opzioniDestinazione();
+        return $opzioni[$this->destinazione] ?? $this->destinazione;
     }
 
     public static function map()
@@ -73,6 +100,19 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
     public function getDocumenti()
     {
         return $this->hasMany(MgDocumento::className(), ['id_tipo' => 'id']);
+    }
+
+    /**
+     * Mappa id_tipo => mostra_varianti (0/1) per la form documento.
+     */
+    public static function mapMostraVarianti()
+    {
+        $rows = self::find()->select(['id', 'mostra_varianti'])->all();
+        $map = [];
+        foreach ($rows as $t) {
+            $map[(int) $t->id] = (int) $t->mostra_varianti;
+        }
+        return $map;
     }
 
     /**

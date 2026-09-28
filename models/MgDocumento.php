@@ -18,6 +18,7 @@ use Yii;
  * @property string|null $descrizione
  * @property string|null $stato
  * @property float|null $totale
+ * @property int|null $id_metodo_pagamento
  * @property string|null $note
  * @property string|null $created_by
  * @property string|null $created_at
@@ -34,7 +35,7 @@ class MgDocumento extends \yii\db\ActiveRecord
     {
         return [
             [['id_tipo', 'anno', 'numero', 'data'], 'required'],
-            [['id_tipo', 'anno', 'numero', 'id_anagrafica'], 'integer'],
+            [['id_tipo', 'anno', 'numero', 'id_anagrafica', 'id_metodo_pagamento'], 'integer'],
             [['data', 'created_at', 'updated_at'], 'safe'],
             [['totale'], 'number'],
             [['codice_tipo'], 'string', 'max' => 20],
@@ -61,6 +62,7 @@ class MgDocumento extends \yii\db\ActiveRecord
             'descrizione' => 'Descrizione',
             'stato' => 'Stato',
             'totale' => 'Totale',
+            'id_metodo_pagamento' => 'Metodo di pagamento',
             'note' => 'Note',
             'created_by' => 'Creato da',
             'created_at' => 'Creato il',
@@ -82,6 +84,68 @@ class MgDocumento extends \yii\db\ActiveRecord
     {
         return $this->hasMany(MgDocumentoRiga::className(), ['id_documento' => 'id'])
             ->orderBy(['ordine' => SORT_ASC, 'id' => SORT_ASC]);
+    }
+
+    public function getMetodoPagamento()
+    {
+        return $this->hasOne(MgMetodoPagamento::className(), ['id' => 'id_metodo_pagamento']);
+    }
+
+    public function getScadenze()
+    {
+        return $this->hasMany(MgScadenza::className(), ['id_documento' => 'id'])
+            ->orderBy(['progressivo' => SORT_ASC]);
+    }
+
+    /**
+     * Rigenera le scadenze del documento in base al metodo di pagamento.
+     * Il flag "crea scadenze" è definito sul tipo documento; se spento o
+     * manca il metodo, elimina le scadenze esistenti.
+     *
+     * @return int numero di scadenze generate
+     */
+    public function generaScadenze()
+    {
+        MgScadenza::deleteAll(['id_documento' => $this->id]);
+
+        $tipo = $this->tipo;
+        if (!$tipo || !$tipo->crea_scadenze || !$this->id_metodo_pagamento) {
+            return 0;
+        }
+
+        $metodo = MgMetodoPagamento::findOne($this->id_metodo_pagamento);
+        if (!$metodo) {
+            return 0;
+        }
+
+        $totale = (float) $this->totale;
+        $create = 0;
+        foreach ($metodo->calcolaScadenze($this->data) as $r) {
+            $scadenza = new MgScadenza();
+            $scadenza->id_documento = $this->id;
+            $scadenza->id_metodo_pagamento = $metodo->id;
+            $scadenza->progressivo = $r['progressivo'];
+            $scadenza->data_scadenza = $r['data'];
+            $scadenza->percentuale = $r['percentuale'];
+            $scadenza->importo = round($totale * $r['percentuale'] / 100, 2);
+            $scadenza->stato = 'aperta';
+            $scadenza->created_at = new \yii\db\Expression('GETDATE()');
+            if ($scadenza->save(false)) {
+                $create++;
+            }
+        }
+        return $create;
+    }
+
+    /**
+     * True se almeno una scadenza del documento risulta pagata (stato != 'aperta').
+     */
+    public function hasScadenzePagate()
+    {
+        return MgScadenza::find()
+            ->where(['id_documento' => $this->id])
+            ->andWhere(['not', ['stato' => 'aperta']])
+            ->exists();
     }
 
     /**
@@ -221,6 +285,12 @@ class MgDocumento extends \yii\db\ActiveRecord
             }
             if ($this->suffisso === null) {
                 $this->suffisso = '';
+            }
+            if ($this->id_anagrafica === '') {
+                $this->id_anagrafica = null;
+            }
+            if ($this->id_metodo_pagamento === '') {
+                $this->id_metodo_pagamento = null;
             }
             // Codice tipo denormalizzato
             if ($this->id_tipo) {

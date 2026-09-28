@@ -69,7 +69,7 @@ class XtravelrowController extends Controller
         $model = new Xtravelrow();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->tr_id]);
+            return $this->redirect([ 'index' ]);
         }
 
         return $this->render('create', [
