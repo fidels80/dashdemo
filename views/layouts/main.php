@@ -77,6 +77,9 @@ $this->registerAssetBundle(yii\bootstrap4\BootstrapPluginAsset::class);
                     document.body.classList.add('dark-mode');
                 }
             } catch (e) { }
+            
+            // Imposta il menu laterale collassato di default
+            $('.main-sidebar').addClass('collapsed');
         })();
     </script>
 

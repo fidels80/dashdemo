@@ -108,6 +108,7 @@ JS
         <a class="manual-l2" href="#password">Password dimenticata</a>
         <a class="manual-l2" href="#logout">Logout</a>
         <a class="manual-l1" href="#navigazione">3. Navigazione e menu</a>
+        <a class="manual-l2" href="#tema">Tema grafico e modalit&agrave; scura</a>
         <a class="manual-l2" href="#livelli">Livelli e moduli</a>
         <a class="manual-l1" href="#planning">4. Planning (pianificazione)</a>
         <a class="manual-l2" href="#planning-calendario">Calendario attivit&agrave;</a>
@@ -116,24 +117,29 @@ JS
         <a class="manual-l2" href="#planning-varia">Varia veicoli</a>
         <a class="manual-l2" href="#planning-copia">Copia giornata</a>
         <a class="manual-l2" href="#planning-pdf">Stampe PDF</a>
-        <a class="manual-l1" href="#presenze">5. Presenze e HR</a>
-        <a class="manual-l1" href="#anagrafiche">6. Anagrafiche</a>
+        <a class="manual-l1" href="#todo">5. ToDo (gestione task)</a>
+        <a class="manual-l2" href="#todo-lista">La lista dei task</a>
+        <a class="manual-l2" href="#todo-board">La Board Kanban</a>
+        <a class="manual-l2" href="#todo-backlog">Backlog e Sprint</a>
+        <a class="manual-l2" href="#todo-nuovo">Creare o modificare un task</a>
+        <a class="manual-l1" href="#presenze">6. Presenze e HR</a>
+        <a class="manual-l1" href="#anagrafiche">7. Anagrafiche</a>
         <a class="manual-l2" href="#anag-personale">Personale</a>
         <a class="manual-l2" href="#anag-veicoli">Veicoli</a>
         <a class="manual-l2" href="#anag-squadre">Squadre</a>
         <a class="manual-l2" href="#anag-ditte">Ditte esterne</a>
         <a class="manual-l2" href="#anag-altre">Altre anagrafiche</a>
-        <a class="manual-l1" href="#reports">7. Report</a>
+        <a class="manual-l1" href="#reports">8. Report</a>
         <a class="manual-l2" href="#report-centro">Centro reportistica</a>
         <a class="manual-l2" href="#report-presenze">Report Presenze e Costi</a>
         <a class="manual-l2" href="#report-flotta">Report Attivit&agrave; Flotta</a>
         <a class="manual-l2" href="#report-consuntivo">Consuntivo Ditta Esterna</a>
         <a class="manual-l2" href="#report-squadra">Rapporto per Squadra</a>
-        <a class="manual-l1" href="#amministrazione">8. Amministrazione</a>
+        <a class="manual-l1" href="#amministrazione">9. Amministrazione</a>
         <a class="manual-l2" href="#admin-utenti">Gestione utenti</a>
         <a class="manual-l2" href="#admin-menu">Menu e permessi</a>
-        <a class="manual-l1" href="#segnalazione">9. Segnalare un problema</a>
-        <a class="manual-l1" href="#glossario">10. Glossario</a>
+        <a class="manual-l1" href="#segnalazione">10. Segnalare un problema</a>
+        <a class="manual-l1" href="#glossario">11. Glossario</a>
       </div>
     </nav>
 
@@ -150,7 +156,7 @@ JS
         <div class="manual-card">
           <h2>1. Introduzione</h2>
           <p>
-            <strong>Ufficio 2000</strong> &egrave; il gestionale operativo usato da <em>Programma 2000 srl</em> per gestire le
+            <strong>DashDemo</strong> &egrave; il gestionale operativo usato da <em>Programma 2000 srl</em> per gestire le
             attivit&agrave; di un'azienda di servizi sul territorio. Serve a pianificare il lavoro delle squadre,
             registrare presenze e ore, gestire veicoli, ditte esterne, commesse, documenti, anagrafiche e a produrre report.
           </p>
@@ -219,11 +225,18 @@ JS
           <h2>3. Navigazione e menu</h2>
           <p>Dopo l'accesso, l'applicazione si presenta con questa struttura:</p>
           <ul>
-            <li><strong>Barra in alto</strong>: icone utili (segnala problema, schermo intero, modalit&agrave; scura, chat, uscita).</li>
-            <li><strong>Menu laterale a sinistra</strong>: le voci dell'applicazione, organizzate per area.</li>
+            <li><strong>Barra in alto</strong>: icone utili (notifiche, segnala problema, manuale, 2FA, tema chiaro/scuro, chat, uscita).</li>
+            <li><strong>Menu laterale a sinistra</strong>: le voci dell'applicazione, organizzate per area. Il menu è <strong>collassato di default</strong> (aperto solo la voce attiva); espandi tutto cliccando sul pulsante <span class="manual-btn manual-btn-gray">Espandi</span> in alto al menu.</li>
             <li><strong>Area centrale</strong>: il contenuto della pagina che stai usando.</li>
             <li><strong>In fondo al menu compaiono anche</strong>: la voce <span class="manual-btn manual-btn-gray">Utente</span> (il tuo profilo) e l'indicazione dell'<strong>ultimo accesso</strong> (data e ora).</li>
           </ul>
+
+          <h3 id="tema">Tema grafico e modalit&agrave; scura</h3>
+          <p>L'applicazione ha una veste grafica moderna in <strong>stile Apple</strong>: sfondi chiari, schede con angoli arrotondati, ombre leggere e pulsanti blu. Il nuovo aspetto vale su tutte le pagine, comprese quella di accesso, registrazione e recupero password (dove anche il logo &egrave; stato corretto e ridimensionato).</p>
+          <p>In alto a destra trovi l'icona della <strong>luna</strong>: premila per passare alla <strong>modalit&agrave; scura</strong> (sfondo scuro e testo chiaro), comoda in ambienti poco illuminati. L'icona diventa un <strong>sole</strong>: premila di nuovo per tornare al tema chiaro.</p>
+          <div class="manual-tip">
+            <strong>Suggerimento:</strong> la scelta del tema viene <strong>ricordata dal browser</strong>: alla prossima apertura ritrovi lo stesso aspetto, anche nella pagina di accesso. Non devi reimpostarla a ogni sessione.
+          </div>
 
           <h3 id="livelli">Livelli e moduli (perch&eacute; vedi certe voci e non altre)</h3>
           <p>Il menu &egrave; <strong>dinamico e personalizzato</strong> per ogni utente. Le voci mostrate dipendono da due cose:</p>
@@ -332,13 +345,79 @@ JS
         </div>
       </section>
 
+      <!-- 5 TODO -->
+      <section id="todo">
+        <div class="manual-card">
+          <h2>5. ToDo (gestione dei task)</h2>
+          <p>L'area <strong>ToDo</strong> serve a gestire le attivit&agrave; di lavoro: creare task, assegnarli, seguirne lo stato con una <strong>Board Kanban</strong> in stile Jira e organizzarli in <strong>Sprint</strong>. Ogni task pu&ograve; avere una descrizione, un assegnatario, una priorit&agrave;, un tipo, dei tag, una scadenza e dei commenti.</p>
+          <p>Dal menu <strong>ToDo</strong> trovi tre pagine: <span class="manual-btn">Lista</span>, <span class="manual-btn">Board</span> e <span class="manual-btn">Backlog</span>.</p>
+
+          <h3 id="todo-lista">5.1 La lista dei task</h3>
+          <p>La pagina <strong>Lista</strong> mostra tutti i task in una tabella con una riga per task. Le colonne sono:</p>
+          <table>
+            <tr><th>Colonna</th><th>Cosa mostra</th></tr>
+            <tr><td><strong>Stato</strong></td><td>La fase del task (es. Aperto, In attesa, Chiuso).</td></tr>
+            <tr><td><strong>Priorit&agrave;</strong></td><td>Il livello di priorit&agrave; assegnato.</td></tr>
+            <tr><td><strong>Progresso</strong></td><td>La percentuale di avanzamento (0&ndash;100%).</td></tr>
+            <tr><td><strong>Cliente</strong></td><td>Il cliente collegato al task, se presente.</td></tr>
+            <tr><td><strong>Descrizione</strong></td><td>Il testo del task.</td></tr>
+            <tr><td><strong>Data inizio / fine / scadenza</strong></td><td>Le date del task (giorno/mese/anno).</td></tr>
+          </table>
+          <ul>
+            <li>In alto trovi i pulsanti <span class="manual-btn">Nuovo Task</span>, <span class="manual-btn">Board</span> e <span class="manual-btn">Backlog</span>.</li>
+            <li>Sopra la tabella c'&egrave; il campo <strong>Cerca</strong> per filtrare le righe per qualsiasi parola (descrizione, stato, cliente...).</li>
+            <li>Puoi <strong>esportare</strong> i dati con i pulsanti <strong>Copia</strong>, <strong>Excel</strong>, <strong>PDF</strong>, <strong>CSV</strong> e <strong>Stampa</strong>.</li>
+            <li>Nella colonna <strong>Azioni</strong> hai i pulsanti <span class="manual-btn manual-btn-gray">Vedi</span> (apre la scheda del task), <span class="manual-btn manual-btn-gray">Modifica</span> ed <span class="manual-btn manual-btn-red">Elimina</span>.</li>
+          </ul>
+
+          <h3 id="todo-board">5.2 La Board Kanban</h3>
+          <p>La <strong>Board</strong> &egrave; una bacheca divisa in colonne, una per ogni <strong>stato</strong> del task. Ogni task &egrave; una <strong>card</strong> che mostra il tipo, la priorit&agrave;, il <strong>titolo</strong>, i tag, gli story point, la scadenza e l'assegnatario.</p>
+          <ul>
+            <li><strong>Sposta le card</strong> trascinandole da una colonna all'altra: lo stato del task si aggiorna da solo.</li>
+            <li><strong>Clicca su una card</strong> per aprire il dettaglio in una finestra: da l&igrave; puoi modificare rapidamente stato, assegnatario, priorit&agrave;, tipo, sprint, story point, progresso e scadenza, leggere e scrivere <strong>commenti</strong> e vedere la <strong>cronologia</strong> delle modifiche.</li>
+            <li>In cima alla board ci sono i <strong>filtri</strong>: testo, assegnatario, sprint, tipo e priorit&agrave;. Il collegamento <em>Svuota filtri</em> li azzera tutti.</li>
+            <li>In fondo a ogni colonna il pulsante <span class="manual-btn">Aggiungi</span> crea un nuovo task gi&agrave; impostato su quello stato.</li>
+          </ul>
+
+          <h3 id="todo-backlog">5.3 Backlog e Sprint</h3>
+          <p>Nel <strong>Backlog</strong> i task sono organizzati per <strong>Sprint</strong> (periodi di lavoro). Ogni sprint ha un nome, un periodo e uno stato (<em>pianificato</em>, <em>attivo</em>, <em>chiuso</em>).</p>
+          <ul>
+            <li><span class="manual-btn">Crea Sprint</span> aggiunge un nuovo sprint: scegli il nome nella finestra che si apre.</li>
+            <li><span class="manual-btn">Avvia</span> d&agrave; il via allo sprint attivo; <span class="manual-btn">Chiudi</span> ne termina uno attivo.</li>
+            <li>Ogni riga di task ha un menu a tendina per <strong>assegnarlo a uno sprint</strong> oppure lasciarlo nel <em>Backlog</em> (nessuno sprint).</li>
+            <li>Cliccando sul <strong>titolo</strong> di un task si apre il dettaglio con modifica rapida, commenti e cronologia.</li>
+          </ul>
+          <p>Per ogni sprint (e sul backlog) il sistema mostra il numero di task e il totale degli <strong>story point</strong>.</p>
+
+          <h3 id="todo-nuovo">5.4 Creare o modificare un task</h3>
+          <p>Premi <span class="manual-btn">Nuovo Task</span> (o <span class="manual-btn manual-btn-gray">Modifica</span> su un task esistente). La scheda &egrave; composta dai campi seguenti:</p>
+          <table>
+            <tr><th>Campo</th><th>Cosa significa</th></tr>
+            <tr><td><strong>Assegnatario</strong></td><td>L'utente a cui &egrave; assegnato il task.</td></tr>
+            <tr><td><strong>Gruppo</strong></td><td>Il gruppo di lavoro a cui appartiene (facoltativo).</td></tr>
+            <tr><td><strong>Cliente</strong></td><td>Il cliente collegato, scelto dall'anagrafica (facoltativo).</td></tr>
+            <tr><td><strong>Priorit&agrave;</strong></td><td>Il livello di priorit&agrave; (bassa, normale, alta...).</td></tr>
+            <tr><td><strong>Tipo</strong></td><td>La tipologia del task (es. Attivit&agrave;, Bug, Richiesta).</td></tr>
+            <tr><td><strong>Story points</strong></td><td>La dimensione/stima del lavoro (numero).</td></tr>
+            <tr><td><strong>Sprint</strong></td><td>Lo sprint in cui inserire il task (vuoto = backlog).</td></tr>
+            <tr><td><strong>Progresso</strong></td><td>La percentuale di avanzamento (0&ndash;100%).</td></tr>
+            <tr><td><strong>Task padre</strong></td><td>Il task a cui questo &egrave; collegato (sotto-task), scelto tramite la finestra <em>Seleziona Todo</em>.</td></tr>
+            <tr><td><strong>Descrizione</strong></td><td>Il testo del task.</td></tr>
+            <tr><td><strong>Tag</strong></td><td>Etichette libere per classificare il task (si creano scrivendole, da 3 caratteri).</td></tr>
+            <tr><td><strong>Data inizio / fine / scadenza</strong></td><td>Le date del task (giorno/mese/anno, ora e minuti).</td></tr>
+            <tr><td><strong>Stato</strong></td><td>La fase del task (es. Aperto, In attesa, Chiuso, Annullato).</td></tr>
+          </table>
+          <p>Premi <span class="manual-btn manual-btn-green">Salva</span> per confermare. Ogni modifica viene registrata nella <strong>cronologia</strong> del task.</p>
+        </div>
+      </section>
+
       <!-- 5 PRESENZE -->
       <section id="presenze">
         <div class="manual-card">
-          <h2>5. Presenze e HR</h2>
+          <h2>6. Presenze e HR</h2>
           <p>Qui si registrano le <strong>presenze</strong> del personale: chi ha lavorato, quando, quante ore, e se c'&egrave; stata un'assenza (ferie, malattia, permesso, ritardo).</p>
 
-          <h3>5.1 Registro presenze</h3>
+          <h3>6.1 Registro presenze</h3>
           <p>Nella pagina <strong>&laquo;Registro Presenze e Costi&raquo;</strong> trovi l'elenco di tutte le presenze con:</p>
           <ul>
             <li>Data, dipendente, orario ingresso/uscita, ore lavorate, tipo di presenza e costo totale.</li>
@@ -346,7 +425,7 @@ JS
             <li>Esportazione in Excel, PDF, CSV o stampa.</li>
           </ul>
 
-          <h3>5.2 Registrare una presenza</h3>
+          <h3>6.2 Registrare una presenza</h3>
           <p>Premi <span class="manual-btn">Registra Presenza</span> e compila i campi:</p>
           <table>
             <tr><th>Campo</th><th>Cosa significa</th></tr>
@@ -368,7 +447,7 @@ JS
             il sistema lo gestisce da solo e calcola le ore corrette.
           </div>
 
-          <h3>5.3 Calendario presenze</h3>
+          <h3>6.3 Calendario presenze</h3>
           <p>Dalla scheda <strong>Calendario Presenze</strong> del cruscotto vedi le presenze sul calendario con i colori:</p>
           <ul>
             <li><span class="manual-btn manual-btn-green">Lavoro</span> &mdash; verde.</li>
@@ -382,7 +461,7 @@ JS
       <!-- 6 ANAGRAFICHE -->
       <section id="anagrafiche">
         <div class="manual-card">
-          <h2>6. Anagrafiche</h2>
+          <h2>7. Anagrafiche</h2>
           <p>Sono gli <strong>archivi di base</strong> usati in tutta l'applicazione. Gestirli bene rende tutto il resto pi&ugrave; semplice.</p>
 
           <h3 id="anag-personale">Personale</h3>
@@ -452,12 +531,12 @@ JS
       <!-- 7 REPORTS -->
       <section id="reports">
         <div class="manual-card">
-          <h2>7. Report e statistiche</h2>
+          <h2>8. Report e statistiche</h2>
 
           <h3 id="report-centro">Centro reportistica</h3>
           <p>La pagina <strong>&laquo;Centro Reportistica&raquo;</strong> raccoglie i report principali. Scegli la card e premi <span class="manual-btn">Vai al Report</span>. Ogni report ha una barra di <strong>filtri</strong> in cima: imposta i criteri che ti servono e premi <span class="manual-btn">Genera</span> per costruire la tabella. <span class="manual-btn manual-btn-gray">Reset</span> azzera tutti i filtri. Ogni tabella pu&ograve; essere <strong>esportata</strong> (Copia, Excel, PDF, CSV) o <strong>stampata</strong> con i pulsanti in alto.</p>
 
-          <h3 id="report-presenze">7.1 Report Presenze e Costi</h3>
+          <h3 id="report-presenze">8.1 Report Presenze e Costi</h3>
           <p><strong>A cosa serve:</strong> analizza ore lavorate, assenze, ferie e i costi del personale in un periodo. &Egrave; il report di riferimento per capire quanto sta costando il lavoro.</p>
           <p><strong>Filtri disponibili:</strong></p>
           <ul>
@@ -468,7 +547,7 @@ JS
           <p><strong>Indicatori in alto:</strong> <em>Totale Ore Lavorate</em> (in ore) e <em>Costo Stimato Totale</em> (in euro).</p>
           <p><strong>Colonne della tabella:</strong> Data · Dipendente · Orario Ingresso/Uscita · Ore lavorate · Causale (con colore) · Costo (&#0144;).</p>
 
-          <h3 id="report-flotta">7.2 Report Attivit&agrave; Flotta</h3>
+          <h3 id="report-flotta">8.2 Report Attivit&agrave; Flotta</h3>
           <p><strong>A cosa serve:</strong> mostra come vengono usati i veicoli nelle attivit&agrave; pianificate, con chi li guida (dipendenti o ditte esterne) e dove.</p>
           <p><strong>Filtri disponibili:</strong></p>
           <ul>
@@ -481,7 +560,7 @@ JS
           <p><strong>Indicatori in alto:</strong> <em>Totale Attivit&agrave;</em> (interventi), <em>Dipendenti Coinvolti</em> (persone) e <em>Veicoli Impiegati</em> (mezzi).</p>
           <p><strong>Colonne della tabella:</strong> Data · Giro · Orario · Dipendenti · Ditta Esterna · Veicolo/i (targa e modello) · Indirizzo · Note.</p>
 
-          <h3 id="report-consuntivo">7.3 Consuntivo Ore per Ditta Esterna</h3>
+          <h3 id="report-consuntivo">8.3 Consuntivo Ore per Ditta Esterna</h3>
           <p><strong>A cosa serve:</strong> riepiloga giorni, ore e costi di ogni ditta esterna in appalto. Utile per il controllo dei costi esterni.</p>
           <p><strong>Filtri disponibili:</strong></p>
           <ul>
@@ -492,7 +571,7 @@ JS
           <p><strong>Prima tabella &laquo;Riepilogo per Ditta Esterna&raquo;:</strong> una riga per ditta con numero dipendenti, giornate, ore totali e costo totale.</p>
           <p><strong>Seconda tabella &laquo;Dettaglio Attivit&agrave;&raquo;:</strong> Data · Giro · Dipendente · Cliente · Indirizzo · Note attivit&agrave;.</p>
 
-          <h3 id="report-squadra">7.4 Rapporto Attivit&agrave; per Squadra</h3>
+          <h3 id="report-squadra">8.4 Rapporto Attivit&agrave; per Squadra</h3>
           <p><strong>A cosa serve:</strong> raggruppa le attivit&agrave; per squadra, cos&igrave; vedi a colpo d'occhio il lavoro di ogni squadra nel periodo.</p>
           <p><strong>Filtri disponibili:</strong></p>
           <ul>
@@ -510,7 +589,7 @@ JS
       <!-- 8 AMMINISTRAZIONE -->
       <section id="amministrazione">
         <div class="manual-card">
-          <h2>8. Amministrazione</h2>
+          <h2>9. Amministrazione</h2>
           <p>Riservata agli <strong>amministratori</strong> (livello 100 e, in parte, 80/81). Da qui si configura il sistema.</p>
           <p>Gli amministratori vedono una voce <strong>ADMIN panel</strong> nel menu con gli strumenti seguenti.</p>
 
@@ -557,7 +636,7 @@ JS
       <!-- 9 SEGNALAZIONE -->
       <section id="segnalazione">
         <div class="manual-card">
-          <h2>9. Segnalare un problema</h2>
+          <h2>10. Segnalare un problema</h2>
           <p>Se trovi un errore o un comportamento strano, usa il pulsante <strong>Segnala Anomalia</strong>: l'icona a forma di <strong>insetto (bug)</strong> in alto a destra nella barra di navigazione.</p>
           <ol>
             <li>Clicca l'icona <strong>bug</strong>.</li>
@@ -572,7 +651,7 @@ JS
       <!-- 10 GLOSSARIO -->
       <section id="glossario">
         <div class="manual-card">
-          <h2>10. Glossario</h2>
+          <h2>11. Glossario</h2>
           <table>
             <tr><th>Termine</th><th>Significato</th></tr>
             <tr><td><strong>Planning</strong></td><td>La pianificazione giornaliera delle attivit&agrave; delle squadre.</td></tr>
@@ -583,6 +662,7 @@ JS
             <tr><td><strong>Livello (level)</strong></td><td>Il grado di permesso dell'utente (100 = amministratore).</td></tr>
             <tr><td><strong>Moduli</strong></td><td>Le aree dell'applicazione abilitate per un utente.</td></tr>
             <tr><td><strong>Segnala Anomalia</strong></td><td>Il pulsante (icona bug) per inviare al supporto la descrizione di un problema.</td></tr>
+            <tr><td><strong>Modalit&agrave; scura</strong></td><td>Aspetto con sfondo scuro attivabile con l'icona luna/sole in alto a destra; la scelta viene ricordata dal browser.</td></tr>
           </table>
         </div>
       </section>

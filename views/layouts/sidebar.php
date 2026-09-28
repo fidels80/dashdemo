@@ -49,7 +49,7 @@ $customColorClass = "sidebar-custom-bg"; // La classe creata nel CSS sopra
     <span class="brand-text font-weight-light">DashDemo</span>
 </a>
 
-<div class="sidebar layout-navbar-fixed ">
+<div class="sidebar layout-navbar-fixed">
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
 
