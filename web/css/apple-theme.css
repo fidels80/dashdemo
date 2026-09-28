@@ -1028,3 +1028,55 @@ body.apple-theme .register-box .card {
 body.apple-theme .login-box-msg {
     color: var(--ap-text-secondary);
 }
+
+body.dark-mode .manual {
+    --m-primary: #0a84ff;
+    --m-primary-light: #409cff;
+    --m-bg: transparent;
+    --m-card: #1c1c1e;
+    --m-text: #f5f5f7;
+    --m-muted: #a1a1a6;
+    --m-border: rgba(255, 255, 255, .12);
+    --m-ok: #30d158;
+    --m-warn: #ff9f0a;
+    --m-info: #0a84ff;
+}
+
+body.dark-mode .manual-toc a:hover {
+    background: var(--ap-hover);
+}
+
+body.dark-mode .manual-note {
+    background: rgba(10, 132, 255, .15);
+}
+
+body.dark-mode .manual-tip {
+    background: rgba(48, 209, 88, .15);
+}
+
+body.dark-mode .manual-warn {
+    background: rgba(255, 159, 10, .15);
+}
+
+body.dark-mode .manual-card h4 {
+    color: var(--ap-text);
+}
+
+body.dark-mode .manual-card th {
+    background: rgba(255, 255, 255, .06);
+    color: var(--ap-blue);
+}
+
+body.dark-mode .manual-card tr:nth-child(even) td {
+    background: rgba(255, 255, 255, .02);
+}
+
+body.dark-mode .manual code {
+    background: rgba(255, 255, 255, .1);
+}
+
+body.dark-mode .manual-toc .manual-search {
+    background-color: var(--ap-field);
+    border-color: var(--ap-border);
+    color: var(--ap-text);
+}
