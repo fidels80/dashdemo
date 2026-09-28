@@ -64,7 +64,7 @@ $this->registerJs($js);
 <div class="site-signup" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px 0;">
 
     <div style="margin-bottom: 30px;">
-        <img src="/uploads/login_logo.png" alt="Logo Planorys" style="max-width: 350px; height: auto; opacity: 0.9; object-fit: contain;">
+        <img src="<?= Yii::getAlias('@web') ?>/images/logo.png" alt="Logo DashDemo" style="max-width: 160px; width: 100%; height: auto; opacity: 0.95; object-fit: contain;">
     </div>
 
     <div style="width: 100%; max-width: 450px;">

@@ -4,7 +4,6 @@ use yii\helpers\Html;
 
 \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
 \hail812\adminlte3\assets\AdminLteAsset::register($this);
-$this->registerCssFile('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
 
 $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
 
@@ -45,14 +44,26 @@ $totaleNotifiche = $praticheRecenti + $nuoviMessaggi;
 ?>
 
 <script>
-    // Funzione per il Dark Mode
     function dm() {
-        if ($('body').hasClass('dark-mode')) {
-            $('body').removeClass('dark-mode');
-        } else {
-            $('body').addClass('dark-mode');
-        }
+        var isDark = !$('body').hasClass('dark-mode');
+        $('body').toggleClass('dark-mode', isDark);
+        try {
+            localStorage.setItem('dashdemo-theme', isDark ? 'dark' : 'light');
+        } catch (e) { }
+        aggiornaIconaTema(isDark);
     }
+
+    function aggiornaIconaTema(isDark) {
+        $('#dm-icon').toggleClass('far fa-moon', !isDark).toggleClass('fas fa-sun', isDark);
+    }
+
+    $(function () {
+        aggiornaIconaTema($('body').hasClass('dark-mode'));
+        $(document).on('click', '#dm-toggle', function (e) {
+            e.preventDefault();
+            dm();
+        });
+    });
 </script>
 
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -117,6 +128,7 @@ $totaleNotifiche = $praticheRecenti + $nuoviMessaggi;
                 <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/mgarticolo/index']) ?>"><i class="fas fa-boxes mr-2"></i> Articoli</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/apitoken/index']) ?>"><i class="fas fa-key mr-2"></i> Token API</a>
+                <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['/apitoken/test']) ?>"><i class="fas fa-flask mr-2"></i> Prova API</a>
             </div>
         </li>
 
@@ -139,15 +151,13 @@ $totaleNotifiche = $praticheRecenti + $nuoviMessaggi;
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-widget="fullscreen" href="#" role="button" title="Schermo intero">
-                <i class="fas fa-expand-arrows-alt"></i>
+            <a class="nav-link" href="javascript:void(0);" id="dm-toggle" title="Tema chiaro/scuro" role="button">
+                <i class="far fa-moon" id="dm-icon"></i>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" onclick="dm();" href="javascript:void(0);" title="Attiva/Disattiva Dark Mode">
-                <i class="fas fa-moon"></i>
-            </a>
+            <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link', 'title' => 'Logout']) ?>
         </li>
 <?php /*
         <li class="nav-item">
@@ -156,9 +166,6 @@ $totaleNotifiche = $praticheRecenti + $nuoviMessaggi;
             </a>
         </li>
 */ ?>
-        <li class="nav-item">
-            <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link', 'title' => 'Logout']) ?>
-        </li>
 
     </ul>
 </nav>

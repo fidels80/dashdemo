@@ -31,9 +31,10 @@ if ($usrid !== null) {
 
 
 \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
+\app\assets\FontAwesomeAsset::register($this);
 \hail812\adminlte3\assets\AdminLteAsset::register($this);
 \hail812\adminlte3\assets\PluginAsset::register($this)->add(['sweetalert2']);
-$this->registerCssFile('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
+$this->registerCssFile(Yii::getAlias('@web/css/apple-theme.css'), ['depends' => [\hail812\adminlte3\assets\AdminLteAsset::class]]);
 //$this->registerJsFile('https://code.jquery.com/jquery-3.6.0.min.js', ['position' => \yii\web\View::POS_HEAD]);
 
 $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
@@ -66,25 +67,18 @@ $this->registerAssetBundle(yii\bootstrap4\BootstrapPluginAsset::class);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stile per applicare il font Poppins a tutta l'applicazione -->
-    <style>
-        body,
-        html {
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        * {
-            font-family: inherit;
-        }
-    </style>
-
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini apple-theme">
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('dashdemo-theme') === 'dark') {
+                    document.body.classList.add('dark-mode');
+                }
+            } catch (e) { }
+        })();
+    </script>
 
 
     <?php
@@ -96,6 +90,32 @@ $this->registerAssetBundle(yii\bootstrap4\BootstrapPluginAsset::class);
 
     ?>
     <?php $this->beginBody() ?>
+
+    <!-- Loading overlay: copre la pagina durante il caricamento per evitare click ripetuti -->
+    <div id="app-loader" style="position: fixed; inset: 0; z-index: 99999; background: #f4f6f9; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <i class="fas fa-circle-notch fa-spin" style="color: #007bff; font-size: 3.5rem;"></i>
+        <p class="mt-3 mb-0 text-muted" style="font-size: 1rem;">Caricamento...</p>
+    </div>
+    <script>
+        (function () {
+            function hideLoader() {
+                var el = document.getElementById('app-loader');
+                if (el) {
+                    el.style.transition = 'opacity .3s ease';
+                    el.style.opacity = '0';
+                    setTimeout(function () { el.remove(); }, 350);
+                }
+            }
+            if (document.readyState === 'complete') {
+                hideLoader();
+            } else {
+                window.addEventListener('load', hideLoader);
+                // Fallback: se la pagina impiega troppo, togli comunque dopo 5s
+                setTimeout(hideLoader, 5000);
+            }
+        })();
+    </script>
+
     <?php if (Yii::$app->user->isGuest && Yii::$app->session->has('pending_2fa_user_id')): ?>
         <div class="wrapper">
             <?= $content ?>
@@ -194,6 +214,39 @@ $this->registerAssetBundle(yii\bootstrap4\BootstrapPluginAsset::class);
         ],
         'mode' => 'bottom'
     ]);
+    ?>
+
+    <?php
+    $confirmSaveJs = <<<JS
+(function () {
+    if (typeof Swal === 'undefined') { return; }
+    $(document).on('click',
+        'form[method="post"] button.btn-success:not([type="button"]):not([data-no-confirm]), ' +
+        'form[method="post"] input[type="submit"].btn-success:not([data-no-confirm])',
+        function (e) {
+            var \$btn = $(this);
+            var \$form = \$btn.closest('form');
+            if (\$form.data('swal-confirmed')) { return; }
+            e.preventDefault();
+            Swal.fire({
+                title: 'Confermi il salvataggio?',
+                text: 'I dati verranno salvati.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Sì, salva',
+                cancelButtonText: 'Annulla',
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    \$form.data('swal-confirmed', true);
+                    \$btn.trigger('click');
+                }
+            });
+        });
+})();
+JS;
+    $this->registerJs($confirmSaveJs);
     ?>
     <?php $this->endBody() ?>
 </body>

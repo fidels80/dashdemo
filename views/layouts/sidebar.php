@@ -9,7 +9,6 @@ use yii\helpers\Html;
 //$x=new  site->Bleft();
 \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
 \hail812\adminlte3\assets\AdminLteAsset::register($this);
-$this->registerCssFile('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
 
 $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
 
@@ -46,9 +45,8 @@ $customColorClass = "sidebar-custom-bg"; // La classe creata nel CSS sopra
  
 <!-- Brand Logo -->
 <a href="<?= Url::home() ?>" class="brand-link">
-    <img src="<?php echo Yii::getAlias('@web') . '/uploads/logo_ufficio2000.png' ?>"
-        alt="Demo" class=" img-circle elevation-3" width="50" height="50" style="opacity: .8">
-    <span class="brand-text font-weight-light">Ufficio2000</span>
+    <i class="fas fa-chart-line elevation-3 img-circle" style="width:50px;height:50px;line-height:50px;text-align:center;font-size:24px;opacity:.8"></i>
+    <span class="brand-text font-weight-light">DashDemo</span>
 </a>
 
 <div class="sidebar layout-navbar-fixed ">

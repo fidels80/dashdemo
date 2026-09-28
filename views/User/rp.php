@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-request-password-reset" style="min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
 
     <div style="margin-bottom: 30px;">
-        <img src="/uploads/login_logo.png" alt="Logo Planorys" style="max-width: 350px; height: auto; opacity: 0.9;">
+        <img src="<?= Yii::getAlias('@web') ?>/images/logo.png" alt="Logo DashDemo" style="max-width: 160px; width: 100%; height: auto; opacity: 0.95;">
     </div>
 
     <div class="card shadow-lg" style="width: 100%; max-width: 450px; border-radius: 16px; border-top: 4px solid var(--primary-color, #002c48); text-align: left;">
