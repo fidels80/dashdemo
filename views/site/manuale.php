@@ -108,6 +108,7 @@ JS
         <a class="manual-l2" href="#password">Password dimenticata</a>
         <a class="manual-l2" href="#logout">Logout</a>
         <a class="manual-l1" href="#navigazione">3. Navigazione e menu</a>
+        <a class="manual-l2" href="#menu-laterale">Il menu laterale e il logo</a>
         <a class="manual-l2" href="#tema">Tema grafico e modalit&agrave; scura</a>
         <a class="manual-l2" href="#livelli">Livelli e moduli</a>
         <a class="manual-l1" href="#planning">4. Planning (pianificazione)</a>
@@ -117,6 +118,7 @@ JS
         <a class="manual-l2" href="#planning-varia">Varia veicoli</a>
         <a class="manual-l2" href="#planning-copia">Copia giornata</a>
         <a class="manual-l2" href="#planning-pdf">Stampe PDF</a>
+        <a class="manual-l2" href="#planning-dati">Caricare il planning in blocco</a>
         <a class="manual-l1" href="#todo">5. ToDo (gestione task)</a>
         <a class="manual-l2" href="#todo-lista">La lista dei task</a>
         <a class="manual-l2" href="#todo-board">La Board Kanban</a>
@@ -226,10 +228,21 @@ JS
           <p>Dopo l'accesso, l'applicazione si presenta con questa struttura:</p>
           <ul>
             <li><strong>Barra in alto</strong>: icone utili (notifiche, segnala problema, manuale, 2FA, tema chiaro/scuro, chat, uscita).</li>
-            <li><strong>Menu laterale a sinistra</strong>: le voci dell'applicazione, organizzate per area. Il menu è <strong>collassato di default</strong> (aperto solo la voce attiva); espandi tutto cliccando sul pulsante <span class="manual-btn manual-btn-gray">Espandi</span> in alto al menu.</li>
+            <li><strong>Menu laterale a sinistra</strong>: il logo dell'applicazione con la scritta <strong>DashBoard</strong> e, sotto, le voci dell'applicazione organizzate per area. Il menu parte <strong>chiuso</strong>, con le aree ripiegate.</li>
             <li><strong>Area centrale</strong>: il contenuto della pagina che stai usando.</li>
             <li><strong>In fondo al menu compaiono anche</strong>: la voce <span class="manual-btn manual-btn-gray">Utente</span> (il tuo profilo) e l'indicazione dell'<strong>ultimo accesso</strong> (data e ora).</li>
           </ul>
+
+          <h3 id="menu-laterale">Il menu laterale e il logo</h3>
+          <p>In alto nel menu laterale trovi il <strong>logo dell'applicazione</strong> con la scritta <strong>DashBoard</strong>: cliccandolo torni alla pagina iniziale.</p>
+          <p>Sotto il logo ci sono le voci, raggruppate per area. Il menu <strong>parte chiuso</strong>: le aree sono ripiegate e i sotto-menu restano chiusi finch&eacute; non li apri con un clic sulla voce.</p>
+          <ul>
+            <li>A ogni caricamento di pagina, e anche quando passi da una sezione all'altra, <strong>i sotto-menu si richiudono</strong>: non restano mai espansi mentre navighi nell'applicazione.</li>
+            <li>L'icona a <strong>tre righe</strong> in alto a sinistra nella barra di navigazione nasconde o mostra l'intero menu laterale, per guadagnare spazio quando le tabelle sono larghe. La scelta viene ricordata dal browser.</li>
+          </ul>
+          <div class="manual-tip">
+            <strong>Suggerimento:</strong> apri solo l'area che ti serve e richiudila con un secondo clic sulla stessa voce: il menu si chiude e la pagina resta leggibile.
+          </div>
 
           <h3 id="tema">Tema grafico e modalit&agrave; scura</h3>
           <p>L'applicazione ha una veste grafica moderna in <strong>stile Apple</strong>: sfondi chiari, schede con angoli arrotondati, ombre leggere e pulsanti blu. Il nuovo aspetto vale su tutte le pagine, comprese quella di accesso, registrazione e recupero password (dove anche il logo &egrave; stato corretto e ridimensionato).</p>
@@ -342,6 +355,46 @@ JS
 
           <h3 id="planning-pdf">4.6 Stampe PDF</h3>
           <p>Il pulsante <span class="manual-btn">Stampa</span> genera il PDF <strong>&laquo;Procedure Giornaliere&raquo;</strong> del giorno scelto, raggruppato per squadra (veicolo + personale). Il PDF &egrave; ordinato e leggibile, con intestazioni e numero di pagina, e si apre in una nuova scheda pronto da stampare o salvare.</p>
+
+          <h3 id="planning-dati">4.7 Caricare il planning in blocco (comando da riga di comando)</h3>
+          <p><strong>A cosa serve:</strong> se devi riempire molti mesi di planning in poco tempo (per preparare un periodo, una demo o un ambiente di prova), puoi farlo con un <strong>comando da riga di comando</strong>, senza creare le attivit&agrave; una alla volta. Il comando genera attivit&agrave; <strong>di prova</strong>, simili a quelle reali.</p>
+          <p>Il comando si esegue dalla cartella dell'applicazione su un server locale XAMPP, scrivendo <code>php yii</code> seguito dal nome del comando. Serve un accesso al database: se non hai i permessi, chiedi all'amministratore di eseguirlo al posto tuo.</p>
+          <h4>Caricare le attivit&agrave;</h4>
+          <p>Il comando di uso pi&ugrave; frequente (riempire da settembre a dicembre, 5&ndash;8 attivit&agrave; al giorno):</p>
+          <p><code>php yii planning-dati/seed --da=2026-09-01 --a=2026-12-31 --min=5 --max=8</code></p>
+          <p>Le opzioni disponibili:</p>
+          <table>
+            <tr><th>Opzione</th><th>Cosa significa</th></tr>
+            <tr><td><code>--da=AAAA-MM-GG</code></td><td>Primo giorno da riempire (data iniziale).</td></tr>
+            <tr><td><code>--a=AAAA-MM-GG</code></td><td>Ultimo giorno da riempire (data finale).</td></tr>
+            <tr><td><code>--min=N</code></td><td>Numero <strong>minimo</strong> di attivit&agrave; per ogni giorno lavorativo (predefinito 5).</td></tr>
+            <tr><td><code>--max=N</code></td><td>Numero <strong>massimo</strong> di attivit&agrave; per ogni giorno lavorativo (predefinito 8).</td></tr>
+            <tr><td><code>--dry=1</code></td><td><strong>Anteprima:</strong> mostra quante attivit&agrave; verrebbero create <em>senza scrivere nulla</em>. Togli <code>--dry=1</code> per salvare davvero.</td></tr>
+            <tr><td><code>--pulisci=1</code></td><td>Cancella prima le attivit&agrave; gi&agrave; presenti nel periodo, poi ricarica da capo.</td></tr>
+            <tr><td><code>--seed=N</code></td><td>Numero casuale fisso: due esecuzioni con lo stesso <code>--seed</code> producono gli stessi dati.</td></tr>
+          </table>
+          <p><strong>Cosa viene generato</strong>, cos&igrave; ti aspetti il risultato:</p>
+          <ul>
+            <li>Attivit&agrave; solo nei <strong>giorni lavorativi</strong> (luned&igrave;-venerd&igrave;), con le <strong>festivit&agrave; escluse</strong>.</li>
+            <li>Clienti e indirizzi ripresi dal planning gi&agrave; esistente e dalle anagrafiche clienti, con <strong>descrizioni ricorrenti</strong> di intervento (<em>FACCHINAGGIO</em>, <em>MONTAGGIO PORTE</em>, <em>TRASLOCHI</em>, <em>ARRIVO / RITIRO MATERIALE</em>, ecc.), giro di esecuzione, ditta esterna e stato di avanzamento.</li>
+            <li>Dipendenti e mezzi assegnati <strong>senza sovrapposizioni</strong>: nessun dipendente o nessun mezzo risulta impegnato in due attivit&agrave; contemporaneamente.</li>
+            <li><strong>Presenze</strong> di 8 ore per i dipendenti assegnati, registrate esattamente come quando compili la form a mano.</li>
+            <li>Ripartizione dei mezzi come nei dati reali: 55% delle attivit&agrave; senza mezzo, 40% con un mezzo, 5% con due; inoltre in circa un giorno su tre (30%) viene aggiunto il giro <strong>MAGAZZINO</strong> alle 06:00.</li>
+          </ul>
+          <div class="manual-note">
+            <strong>Esempio reale:</strong> con i valori dell'esempio qui sopra sono state caricate <strong>573 attivit&agrave;</strong> da settembre a dicembre 2026, con <strong>873 presenze</strong> da 8 ore.
+          </div>
+          <h4>Cancellare le attivit&agrave; caricate</h4>
+          <p>Per rimuovere tutto ci&ograve; che hai generato in un periodo:</p>
+          <p><code>php yii planning-dati/pulisci --da=2026-09-01 --a=2026-12-31 --dry=1</code></p>
+          <p>Con <code>--dry=1</code> vedi solo l'anteprima (quante attivit&agrave; e quanti legami con dipendenti e mezzi verrebbero cancellati). Togli <code>--dry=1</code> per eseguire davvero la cancellazione: vengono rimossi le attivit&agrave;, i legami con dipendenti e veicoli, le presenze generate automaticamente e i log del periodo.</p>
+          <div class="manual-warn">
+            <strong>Attenzione:</strong> <code>planning-dati/pulisci</code> cancella <strong>tutte</strong> le attivit&agrave; del periodo indicato, anche quelle inserite a mano.
+            Usa intervalli di date precisi e controlla sempre l'anteprima con <code>--dry=1</code> prima di procedere.
+          </div>
+          <div class="manual-tip">
+            <strong>Suggerimento:</strong> prova sempre prima con <code>--dry=1</code>; usa <code>--pulisci=1</code> se devi ricaricare un periodo gi&agrave; popolato; alla fine controlla il riepilogo a console (attivit&agrave; pianificate e presenze previste) per verificare il risultato.
+          </div>
         </div>
       </section>
 
@@ -534,7 +587,17 @@ JS
           <h2>8. Report e statistiche</h2>
 
           <h3 id="report-centro">Centro reportistica</h3>
-          <p>La pagina <strong>&laquo;Centro Reportistica&raquo;</strong> raccoglie i report principali. Scegli la card e premi <span class="manual-btn">Vai al Report</span>. Ogni report ha una barra di <strong>filtri</strong> in cima: imposta i criteri che ti servono e premi <span class="manual-btn">Genera</span> per costruire la tabella. <span class="manual-btn manual-btn-gray">Reset</span> azzera tutti i filtri. Ogni tabella pu&ograve; essere <strong>esportata</strong> (Copia, Excel, PDF, CSV) o <strong>stampata</strong> con i pulsanti in alto.</p>
+          <p>La pagina <strong>&laquo;Centro Reportistica&raquo;</strong> raccoglie i report principali: dal menu laterale apri la voce <strong>Report</strong>, poi scegli la scheda che ti interessa e premi <span class="manual-btn">Vai al Report</span>. Ogni report ha una barra di <strong>filtri</strong> in cima: imposta i criteri che ti servono e premi <span class="manual-btn">Genera</span> per costruire la tabella. <span class="manual-btn manual-btn-gray">Reset</span> azzera tutti i filtri. Ogni tabella pu&ograve; essere <strong>esportata</strong> (Copia, Excel, PDF, CSV) o <strong>stampata</strong> con i pulsanti in alto.</p>
+          <p>Le schede a disposizione sono:</p>
+          <ul>
+            <li><strong>Report Presenze e Costi</strong> &mdash; ore lavorate, assenze e costi del personale (vedi 8.1).</li>
+            <li><strong>Report Attivit&agrave; Flotta</strong> &mdash; come vengono usati i mezzi e le persone (vedi 8.2).</li>
+            <li><strong>Consuntivo Ore per Ditta Esterna</strong> &mdash; giornate, ore e costi per ogni ditta in appalto (vedi 8.3).</li>
+            <li><strong>Rapporto Attivit&agrave; per Squadra</strong> &mdash; attivit&agrave; raggruppate per squadra (vedi 8.4).</li>
+          </ul>
+          <div class="manual-note">
+            <strong>Novit&agrave;:</strong> le ultime due schede (<em>Consuntivo Ore per Ditta Esterna</em> e <em>Rapporto Attivit&agrave; per Squadra</em>) sono nuove. Si aprono esattamente come le altre: scegli la card e premi <span class="manual-btn">Vai al Report</span>; in cima a destra trovi sempre il pulsante per <strong>tornare alla dashboard dei report</strong>.
+          </div>
 
           <h3 id="report-presenze">8.1 Report Presenze e Costi</h3>
           <p><strong>A cosa serve:</strong> analizza ore lavorate, assenze, ferie e i costi del personale in un periodo. &Egrave; il report di riferimento per capire quanto sta costando il lavoro.</p>
@@ -546,6 +609,9 @@ JS
           </ul>
           <p><strong>Indicatori in alto:</strong> <em>Totale Ore Lavorate</em> (in ore) e <em>Costo Stimato Totale</em> (in euro).</p>
           <p><strong>Colonne della tabella:</strong> Data · Dipendente · Orario Ingresso/Uscita · Ore lavorate · Causale (con colore) · Costo (&#0144;).</p>
+          <div class="manual-note">
+            <strong>Barra dei filti come negli altri report.</strong> I campi a scelta multipla (<em>Dipendente</em>, <em>Causale</em>) hanno la stessa altezza dei campi <em>Dal</em> / <em>Al</em> e i pulsanti <span class="manual-btn">Genera</span> e <span class="manual-btn manual-btn-gray">Reset</span> risultano sulla stessa riga, allineati con gli altri campi. Tutti i filtri stanno in una sola riga e l'icona e il colore della barra corrispondono al titolo della pagina: il blocco si presenta quindi identico, per stile, a quello degli altri report.
+          </div>
 
           <h3 id="report-flotta">8.2 Report Attivit&agrave; Flotta</h3>
           <p><strong>A cosa serve:</strong> mostra come vengono usati i veicoli nelle attivit&agrave; pianificate, con chi li guida (dipendenti o ditte esterne) e dove.</p>
@@ -559,9 +625,14 @@ JS
           </ul>
           <p><strong>Indicatori in alto:</strong> <em>Totale Attivit&agrave;</em> (interventi), <em>Dipendenti Coinvolti</em> (persone) e <em>Veicoli Impiegati</em> (mezzi).</p>
           <p><strong>Colonne della tabella:</strong> Data · Giro · Orario · Dipendenti · Ditta Esterna · Veicolo/i (targa e modello) · Indirizzo · Note.</p>
+          <div class="manual-note">
+            <strong>Ogni dipendente e ogni mezzo compare una volta sola.</strong> Nella colonna <em>Dipendenti</em> e nella cella <em>Veicolo/i</em> ogni nome e ogni targa compaiono una volta unica, anche quando l'attivit&agrave; ha pi&ugrave; persone o pi&ugrave; mezzi assegnati.
+            Lo stesso vale per i contatori <em>Dipendenti Coinvolti</em> e <em>Veicoli Impiegati</em> in alto: contano le persone e i mezzi distinti del periodo filtrato, senza doppioni.
+          </div>
 
           <h3 id="report-consuntivo">8.3 Consuntivo Ore per Ditta Esterna</h3>
           <p><strong>A cosa serve:</strong> riepiloga giorni, ore e costi di ogni ditta esterna in appalto. Utile per il controllo dei costi esterni.</p>
+          <p><strong>Come si arriva:</strong> menu <strong>Report</strong> &rarr; scheda <em>Consuntivo Ore per Ditta Esterna</em> &rarr; <span class="manual-btn">Vai al Report</span>.</p>
           <p><strong>Filtri disponibili:</strong></p>
           <ul>
             <li><strong>Ditta Esterna</strong> &mdash; una o pi&ugrave; ditte (<em>&laquo;Tutte le ditte...&raquo;</em>).</li>
@@ -570,9 +641,13 @@ JS
           <p><strong>Indicatori in alto:</strong> <em>Ditte</em> (numero), <em>Totale Ore</em>, <em>Dipendenti</em> (persone) e <em>Costo Totale</em> (euro).</p>
           <p><strong>Prima tabella &laquo;Riepilogo per Ditta Esterna&raquo;:</strong> una riga per ditta con numero dipendenti, giornate, ore totali e costo totale.</p>
           <p><strong>Seconda tabella &laquo;Dettaglio Attivit&agrave;&raquo;:</strong> Data · Giro · Dipendente · Cliente · Indirizzo · Note attivit&agrave;.</p>
+          <div class="manual-note">
+            Il costo &egrave; calcolato usando la <strong>tariffa oraria del dipendente</strong>. I totali in alto valgono per tutto il periodo filtrato; per tornare ai report premi in alto a destra <span class="manual-btn manual-btn-gray">Torna alla Dashboard Report</span>.
+          </div>
 
           <h3 id="report-squadra">8.4 Rapporto Attivit&agrave; per Squadra</h3>
           <p><strong>A cosa serve:</strong> raggruppa le attivit&agrave; per squadra, cos&igrave; vedi a colpo d'occhio il lavoro di ogni squadra nel periodo.</p>
+          <p><strong>Come si arriva:</strong> menu <strong>Report</strong> &rarr; scheda <em>Rapporto Attivit&agrave; per Squadra</em> &rarr; <span class="manual-btn">Vai al Report</span>.</p>
           <p><strong>Filtri disponibili:</strong></p>
           <ul>
             <li><strong>Dal / Al</strong> &mdash; periodo.</li>
@@ -581,7 +656,7 @@ JS
             <li><strong>Ditta Esterna</strong> &mdash; una o pi&ugrave; ditte (<em>&laquo;Tutte...&raquo;</em>).</li>
           </ul>
           <p><strong>Indicatori in alto:</strong> <em>Squadre</em>, <em>Attivit&agrave;</em> e <em>Clienti</em> coinvolti.</p>
-          <p><strong>Come si legge:</strong> le attivit&agrave; sono raggruppate per squadra in pannelli <strong>espandibili/collassabili</strong> (pulsanti <span class="manual-btn manual-btn-gray">Espandi Tutti</span> / <span class="manual-btn manual-btn-gray">Comprimi Tutti</span>). C'&egrave; anche un campo di <strong>ricerca rapida</strong> (indirizzo, cliente, targa, nominativo) e il pulsante <span class="manual-btn manual-btn-gray">Stampa</span>.</p>
+          <p><strong>Come si legge:</strong> le attivit&agrave; sono raggruppate per squadra in pannelli <strong>espandibili/collassabili</strong> (pulsanti <span class="manual-btn manual-btn-gray">Espandi Tutti</span> / <span class="manual-btn manual-btn-gray">Comprimi Tutti</span>). Ogni pannello si apre e si chiude con un clic sulla sua intestazione, che mostra i <strong>dipendenti della squadra</strong>, i <strong>mezzi assegnati</strong> (targhe) e il numero di attivit&agrave;. C'&egrave; anche un campo di <strong>ricerca rapida</strong> (indirizzo, cliente, targa, nominativo) e il pulsante <span class="manual-btn manual-btn-gray">Stampa</span>.</p>
           <p><strong>Colonne della tabella:</strong> Giro · Data · Orario · Cliente · Indirizzo · Note · Stato (con colore).</p>
         </div>
       </section>
