@@ -5,11 +5,18 @@ use yii\widgets\ActiveForm;
 
 $this->title = 'Report Presenze e Costi';
 
+$this->registerCss("
+    .select2-report + .select2-container .select2-selection { min-height: 31px !important; padding: 2px 6px !important; font-size: 0.85rem !important; }
+    .select2-report + .select2-container .select2-selection__rendered { line-height: 27px !important; }
+    .select2-report + .select2-container .select2-selection__arrow { height: 29px !important; }
+    .select2-container { font-size: 0.85rem !important; }
+");
+
 // Librerie DataTables (già conosciute)
 // CSS
 $this->registerCssFile('https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css');
 $this->registerCssFile('https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css');
-\app\assets\FontAwesomeAsset::register($this);
+$this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
 $this->registerCssFile('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
 $this->registerCssFile('https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css');
 
@@ -35,11 +42,10 @@ $totaleOre = array_sum(array_column($dati, 'ore_lavorate'));
 <div class="report-presenze">
 <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="m-0 text-dark">
-            <i class="fa fa-truck text-success"></i> <?= Html::encode($this->title) ?>
+            <i class="fa fa-user-clock text-primary"></i> <?= Html::encode($this->title) ?>
         </h2>
         <?= Html::a('<i class="fa fa-arrow-left"></i> Torna alla Dashboard Report', ['report/index'], ['class' => 'btn btn-secondary']) ?>
     </div>
-    <div class="card shadow-sm mb-4 border-success">
     <div class="card shadow-sm mb-4 border-primary">
         <div class="card-header bg-primary text-white">
             <h5 class="m-0"><i class="fa fa-filter"></i> Filtri Report</h5>
@@ -48,33 +54,33 @@ $totaleOre = array_sum(array_column($dati, 'ore_lavorate'));
             <?= Html::beginForm(['report/presenze'], 'get', ['id' => 'form-report']) ?>
             
             <div class="row align-items-end">
-                <div class="col-md-2 mb-3">
+                <div class="col-md-1 mb-3">
                     <label class="form-label fw-bold">Dal</label>
-                    <?= Html::textInput('dal', $dal, ['type' => 'date', 'class' => 'form-control']) ?>
+                    <?= Html::textInput('dal', $dal, ['type' => 'date', 'class' => 'form-control form-control-sm']) ?>
+                </div>
+                <div class="col-md-1 mb-3">
+                    <label class="form-label fw-bold">Al</label>
+                    <?= Html::textInput('al', $al, ['type' => 'date', 'class' => 'form-control form-control-sm']) ?>
                 </div>
                 <div class="col-md-2 mb-3">
-                    <label class="form-label fw-bold">Al</label>
-                    <?= Html::textInput('al', $al, ['type' => 'date', 'class' => 'form-control']) ?>
-                </div>
-                <div class="col-md-3 mb-3">
                     <label class="form-label fw-bold">Dipendente</label>
                     <?= Html::dropDownList('personale_id[]', $dipendente_id, $listaDipendenti, [
-                        'class' => 'form-control select2-report', 
+                        'class' => 'form-control form-control-sm select2-report', 
                         'multiple' => true, 
-                        'data-placeholder' => 'Tutti i dipendenti...'
+                        'data-placeholder' => 'Tutti...'
                     ]) ?>
                 </div>
-                <div class="col-md-3 mb-3">
+                <div class="col-md-2 mb-3">
                     <label class="form-label fw-bold">Causale</label>
                     <?= Html::dropDownList('causale[]', $causale, $listaCausali, [
-                        'class' => 'form-control select2-report', 
+                        'class' => 'form-control form-control-sm select2-report', 
                         'multiple' => true, 
-                        'data-placeholder' => 'Tutte le causali...'
+                        'data-placeholder' => 'Tutte...'
                     ]) ?>
                 </div>
-                <div class="col-md-2 mb-3 d-grid gap-2">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Genera</button>
-                    <?= Html::a('Reset', ['report/presenze'], ['class' => 'btn btn-outline-secondary']) ?>
+                <div class="col-md-1 mb-3 d-flex gap-2 align-items-end">
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Genera</button>
+                    <?= Html::a('Reset', ['report/presenze'], ['class' => 'btn btn-outline-secondary btn-sm']) ?>
                 </div>
             </div>
             <?= Html::endForm() ?>
