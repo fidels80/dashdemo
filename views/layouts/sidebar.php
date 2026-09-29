@@ -45,8 +45,8 @@ $customColorClass = "sidebar-custom-bg"; // La classe creata nel CSS sopra
  
 <!-- Brand Logo -->
 <a href="<?= Url::home() ?>" class="brand-link">
-    <i class="fas fa-chart-line elevation-3 img-circle" style="width:50px;height:50px;line-height:50px;text-align:center;font-size:24px;opacity:.8"></i>
-    <span class="brand-text font-weight-light">DashDemo</span>
+    <img src="<?= Yii::getAlias('@web') ?>/images/logo.png" alt="Logo DashDemo" class="brand-image elevation-3" style="width:50px;height:50px;max-width:50px;object-fit:contain;border-radius:50%;opacity:.9;margin-left:4px;margin-right:4px;">
+    <span class="brand-text font-weight-light">DashBoard</span>
 </a>
 
 <div class="sidebar layout-navbar-fixed">
@@ -80,7 +80,8 @@ $customColorClass = "sidebar-custom-bg"; // La classe creata nel CSS sopra
         <?php
         yii::warning($x);
         echo \hail812\adminlte\widgets\Menu::widget([
-            'items' => $x
+            'items' => $x,
+            'treeTemplate' => "\n<ul class='nav nav-treeview' style='display:none'>\n{items}\n</ul>\n",
 
         ]);
         ?>

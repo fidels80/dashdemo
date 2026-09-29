@@ -77,9 +77,6 @@ $this->registerAssetBundle(yii\bootstrap4\BootstrapPluginAsset::class);
                     document.body.classList.add('dark-mode');
                 }
             } catch (e) { }
-            
-            // Imposta il menu laterale collassato di default
-            $('.main-sidebar').addClass('collapsed');
         })();
     </script>
 
@@ -250,6 +247,43 @@ $this->registerAssetBundle(yii\bootstrap4\BootstrapPluginAsset::class);
 })();
 JS;
     $this->registerJs($confirmSaveJs);
+
+    $collapseSidebarJs = <<<JS
+(function () {
+    function closeMenus() {
+        var \$sidebar = document.querySelector('.main-sidebar');
+        if (!\$sidebar) { return; }
+
+        \$sidebar.querySelectorAll('.nav-sidebar .nav-item').forEach(function (item) {
+            item.classList.remove('menu-open', 'menu-is-opening');
+        });
+        \$sidebar.querySelectorAll('.nav-sidebar .nav-link[aria-expanded="true"]').forEach(function (link) {
+            link.setAttribute('aria-expanded', 'false');
+        });
+        \$sidebar.querySelectorAll('.nav-sidebar .nav-treeview').forEach(function (menu) {
+            menu.style.display = 'none';
+        });
+    }
+
+    function schedule() {
+        closeMenus();
+        window.setTimeout(closeMenus, 50);
+        window.setTimeout(closeMenus, 300);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', schedule);
+    } else {
+        schedule();
+    }
+    window.addEventListener('load', schedule);
+
+    if (window.jQuery && jQuery(document).on) {
+        jQuery(document).on('pjax:end pjax:success', function () { window.setTimeout(schedule, 0); });
+    }
+})();
+JS;
+    $this->registerJs($collapseSidebarJs, \yii\web\View::POS_READY);
     ?>
     <?php $this->endBody() ?>
 </body>
