@@ -37,14 +37,14 @@ class Rapportini extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'note'], 'string'],
-            [['cd_cli','altcli', 'commessa', 'qta', 'data', 'ora_in', 'ora_out', 'userid'], 'required'],
+            [['cd_cli','altcli',  'qta', 'data', 'ora_in', 'ora_out', 'userid'], 'required'],
             [['qta'], 'number'],
-            [['data', 'ora_in', 'ora_out'], 'safe'],
-            [['userid'], 'integer'],
-            [['cd_cli'], 'string', 'max' => 7],
-            [['commessa'], 'string', 'max' => 50],
-            [['cd_art'], 'string', 'max' => 80],
-            [['des_art'], 'string', 'max' => 250],
+            [['data', 'ora_in', 'ora_out', 'pausa_in', 'pausa_out'], 'safe'],
+            [['userid', 'numero'], 'integer'],
+            [['cd_cli', 'altcli'], 'string', 'max' => 20],
+            [['commessa'], 'string', 'max' => 100],
+            [['cd_art'], 'string', 'max' => 160],
+            [['des_art'], 'string', 'max' => 500],
             [['id'], 'unique'],
         ];
     }
@@ -56,17 +56,17 @@ class Rapportini extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'cd_cli' => Yii::t('app', 'cd_cli'),
-            'commessa' => Yii::t('app', 'Commessa'),
-            'qta' => Yii::t('app', 'Qta'),
-            'data' => Yii::t('app', 'Data'),
-            'ora_in' => Yii::t('app', 'Ora In'),
-            'ora_out' => Yii::t('app', 'Ora Out'),
-            'numero' => Yii::t('app', 'Numero'),
-            'userid' => Yii::t('app', 'Userid'),
-            'note' => Yii::t('app', 'Note'),
-            'cd_art' => Yii::t('app', 'Cd Art'),
-            'des_art' => Yii::t('app', 'Des Art'),
+            'cd_cli' => 'Cliente',
+            'commessa' => 'Sottocommessa',
+            'qta' => 'Qta',
+            'data' => 'Data',
+            'ora_in' => 'Ora In',
+            'ora_out' => 'Ora Out',
+            'numero' => 'Numero',
+            'userid' => 'Userid',
+            'note' => 'Note',
+            'cd_art' => 'Articolo',
+            'des_art' => 'Des Articolo',
         ];
     }
 }

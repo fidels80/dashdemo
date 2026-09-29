@@ -1,21 +1,13 @@
 <?php
 
 use yii\helpers\Html;
-
-use yii\widgets\Pjax;
-
-use app\models\user;
-//use app\model\Site;
-use kartik\grid\GridView;
-use yii\db\Query;
-use yii\helpers\ArrayHelper;
+use yii\helpers\Formatter;
 use yii\bootstrap4\Modal;
 use yii\helpers\Url;
-use kartik\export\ExportMenu;
-use app\models\anacli;
-use app\models\dosottocommessa;
-
-
+use yii\web\View;
+use app\components\DataTables;
+use app\models\MgAnagrafica;
+use app\models\MgSottocommessa;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RapportiniSearch */
@@ -23,259 +15,115 @@ use app\models\dosottocommessa;
 
 $this->title = 'Rapportini';
 $this->params['breadcrumbs'][] = $this->title;
-$usrid = Yii::$app->user->Id;
-if ($usrid !== null) {
-    $ris = (new \yii\db\Query())
-        ->select(['grid_color', 'cd_cli'])
-        ->from('user')
-        ->where(['id' => $usrid])
-        ->one();
+
+// Gli script del form (ActiveForm) servono anche al contenuto caricato via AJAX nella modale.
+yii\widgets\ActiveFormAsset::register($this);
+
+$models = $dataProvider->getModels();
+
+$codiciCli = [];
+$codiciCommessa = [];
+foreach ($models as $m) {
+    if ($m->cd_cli !== null && $m->cd_cli !== '') {
+        $codiciCli[$m->cd_cli] = $m->cd_cli;
+    }
+    if ($m->commessa !== null && $m->commessa !== '') {
+        $codiciCommessa[$m->commessa] = $m->commessa;
+    }
 }
-$usrgrid = $ris['grid_color'];
 
-//yii::warning($usrgrid);
-$eldoc = (new yii\db\Query())
-    ->select(['cd_doc'])
-
-    ->from('doc_head')
-    ->where(['cd_cli' => $ris['cd_cli']])
-    ->orwhere(['altcli' => $ris['cd_cli']])
-    ->distinct()
-    ->all();
-
-$elecli = (new yii\db\Query())
-    ->select(['cd_cli'])
-    ->distinct()
-    ->from('doc_head')
-    ->where(['altcli' => $ris['cd_cli']])
-    ->andWhere(['not', ['altcli' => null]])
-    ->distinct()
-    ->all();
-$elecli[]['cd_cli'] = $ris['cd_cli'];
-//yii::error($elecli);
-//yii::error($eldoc);
-$clif = ArrayHelper::map(
-    anacli::find()
-        ->select(['cd_cli', '(cd_cli+\' \'+Desk) as desk'])
-        ->where(['IN', 'cd_cli', $elecli])
-        ->orderBy('cd_cli')->
-        asArray()->all()
-    , 'cd_cli', 'desk');
-
-$sottoc= ArrayHelper::map(
-dosottocommessa::find()
-->select(['Cd_DOSottoCommessa as id','(Cd_DOSottoCommessa+\' \'+Descrizione) Descrizione'])
-->orderBy('cd_DoSottoCommessa')->asArray()->all(),'id','Descrizione'
-
-);
-
-$tmpid = 3;
-
-Modal::begin([
-    //'header'=>'<h4>Clienti</h4>',
-    'id' => 'cli' . $tmpid,
-    'size' => 'modal-lg', //classe bootstrap
-    'options' => [    'tabindex' => false],
-]);
-echo "<div id='modalContent'></div>";
-Modal::end();
-$this->registerJs("
-  $('#modalcli_$tmpid').click(function (){
-  $('#cli$tmpid').modal('show')
-  .find('#modalContent')
-  .load($(this).attr('value'));
-  });"
-);
-$url = Url::to(['createaj', 
-//   'mod'->$model
-]);
-
-
-
-    //if ($usr_ris['gruppo'] != 'users') {
-
-    //}
-
-$gridColumns= 
-[
-['attribute'=>'commessa',
- 'label' => 'Commessa',
-            'headerOptions' => ['class' => 'card-header bg-' .
-             $usrgrid . ' text-white','style'=>'color:black;'],
-            'format' => 'text',
-            'width' => '15%',
-            'visible' => true,
-           /*  'value' =>function ($model, $key, $index, $widget) {
-             $ris2 = Dosottocommessa::find()
-             ->where(['Cd_DOSottoCommessa' => $model->commessa])->one();
-             return $ris2->Desk ?? null;
-            },*/
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' =>$sottoc     ,
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'descrizione'],
-],
-  ['attribute' => 'cd_cli',
-            'label' => 'Intestatario',
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white','style'=>'color:black;'],
-            'format' => 'text',
-            'width' => '15%',
-            'visible' => true,
-            'value' => function ($model, $key, $index, $widget) {
-               $ris2 = anacli::find()->where(['cd_cli' => $model->cd_cli])->one();
-                return $ris2->Desk ?? null;
-            },
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' =>$clif ,
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'descrizione'],
-        ],
-        
-['attribute'=>'data',
-            'headerOptions' => ['class' => 'card-header bg-' . $usrgrid . ' text-white' ,'style'=>'color:black;'],
-            'label' => 'Data Doc.',
-            'width' => '10%',
-           // 'language'=>'it-It',
-
- 'exportMenuStyle' => ['numberFormat' => ['formatCode' => 'DD-MM-YYYY']],
-'value' => function ($model, $key, $index, $widget) {
-
-                return date('d/m/Y', (strtotime($model->data)));
-
-            },
-            'options' => [
-                'format' => 'DD-MM-YYYY',
-            ],
-            'filterType' => GridView::FILTER_DATE_RANGE,
-            'filterWidgetOptions' => ([
-                'attribute' => 'data',
-                'language' => 'it',
-                'presetDropdown' => true,
-                'convertFormat' => false,
-                'pluginOptions' => [
-                    'separator' => ' - ',
-                    'language' => 'it',
-                    'format' => 'DD-MM-YYYY',
-                    'locale' => [
-                        'format' => 'DD-MM-YYYY',
-                    ],
-                    'ranges' => [
-                        'Oggi' => ["moment().startOf('day')", "moment().add(1,'year').startOf('day')"],
-                        'Ultimo anno' => ["moment().startOf('day').subtract(1,'year')", "moment().startOf('day')"],
-                        'Ultimo mese' => ["moment().startOf('day').subtract(29, 'days')", "moment().endOf('day')"],
-                        'Prossimi 30 gg' => ["moment().endOf('day')", "moment().endOf('day').add(30, 'days')"],
-                        'Mese in Corso' => ["moment().startOf('month')", "moment().endOf('month')"],
-                        'Mese Passato' => ["moment().subtract(1, 'month').startOf('month')", "moment().subtract(1, 'month').endOf('month')"],
-                        'Tutto il prossimo mese' => ["moment().add(1, 'month').startOf('month')", "moment().add(1, 'month').endOf('month')"],
-                    ],
-                ],
-                'pluginEvents' => [
-                    "apply.daterangepicker" => "function() { apply_filter('only_date') }",
-                ],
-            ]),
-
-
-
-],
-
-['attribute'=>'numero'],
-['attribute'=>'ora_in'],
-
-['attribute'=>'ora_out'],
-
-['attribute'=>'note'],     
-               ['class' => '\kartik\grid\ActionColumn',
-            //  'hiddenFromExport' => true,
-            'width' => '4%',
-            'header' => "Dett.",
-            'headerOptions' => ['class' => 'skip-export-pdf card-header bg-' . $usrgrid . '
-             ','style'=>'color:black;'],
-            'template' => '{view}'], 
-
-
-
-
-
-
-];
-$fullExportMenu = ExportMenu::widget([
-    'dataProvider' => $dataProvider,
-    'columns' => $gridColumns,
-    'target' => ExportMenu::TARGET_BLANK,
-    'exportConfig' => [ExportMenu::FORMAT_EXCEL_X => false,
-        ExportMenu::FORMAT_EXCEL => ['label' => 'Excel'],
-    ],
-    'pjaxContainerId' => 'kv-pjax-container',
-    'showConfirmAlert' => false,
-    'exportContainer' => [
-        'class' => 'btn-group mr-2 me-2',
-    ],
-    'dropdownOptions' => [
-        'label' => 'Export',
-        'class' => 'btn btn-outline-secondary btn-default',
-        'itemsBefore' => [
-            '<div class="dropdown-header">Esporta tutti i dati visibili</div>',
-        ],
-    ],
-]);
-
+$clienti = MgAnagrafica::find()
+    ->select(['codice', 'ragione_sociale'])
+    ->where(['codice' => array_values($codiciCli)])
+    ->indexBy('codice')
+    ->column();
+$commesse = MgSottocommessa::find()
+    ->select(['codice', 'descrizione'])
+    ->where(['codice' => array_values($codiciCommessa)])
+    ->indexBy('codice')
+    ->column();
 ?>
-<div class="rapportini-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-<?php echo '<tr><td width="30%">';
-echo Html::button('Inserisci Rapportino', ['value' => $url,
-    'class' => 'btn btn-info', 'id' => 'modalcli_' . $tmpid]);
-echo '</td> ';
-?>
-    <p>
-        </p>
+<?php Modal::begin([
+    'id' => 'rapportini-modal',
+    'size' => 'modal-lg',
+    'options' => ['tabindex' => false],
+]); ?>
+<?php Modal::end(); ?>
 
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+<div class="rapportini-index card p-3 shadow-sm">
 
-    <?php $isFa = 'file-pdf-o';
-echo
-GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
-    'resizableColumnsOptions' => ['resizeFromBody' => true],
-    'toggleDataContainer' => ['class' => 'btn-group mr-2 me-2'],
-    'striped' => true,
-    'condensed' => true,
-    'columns' => $gridColumns,
-    'toolbar' => [
-        '{toggleData}',
-        $fullExportMenu,
-        ['content' =>
-            Html::a('<i class="fas fa-redo"></i>', [''], [
-                'class' => 'btn btn-outline-secondary btn-default',
-                'title' => Yii::t('kvgrid', 'Reset Grid'),
-                'data-pjax' => 0,
-            ])],
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+        <div class="mb-2">
+            <?= Html::button('<i class="fas fa-plus"></i> Inserisci rapportino', [
+                'id' => 'btn-inserisci-rapportino',
+                'class' => 'btn btn-success',
+                'data-url' => Url::to(['createaj']),
+            ]) ?>
+        </div>
+    </div>
 
-    ],
-    'panel' => [
-        'type' => $ris['grid_color'],
-        'heading' => '<i class="fas  fa-book">Rapportini</i>',
-        'headingOptions' => ['language' => 'it-It'],
-        /*'heading'=>'<h3 class="panel-title"><i class="fas fa-globe"></i> Countries</h3>',
-    'type'=>'success',
-    'before'=>Html::a('<i class="fas fa-plus"></i> Create Country', ['create'], ['class' => 'btn btn-success']),
-    'after'=>Html::a('<i class="fas fa-redo"></i> Reset Grid', ['index'], ['class' => 'btn btn-info']),
-    'footer'=>false
-     */],
-    'responsive' => true,
-    'resizableColumns' => true,
-    'showPageSummary' => true,
-    'pjax' => true,
-]);
- ?>
+    <table id="rapportini-table" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Data</th>
+                <th>Cliente</th>
+                <th>Sottocommessa</th>
+                <th>Articolo</th>
+                <th>Qta</th>
+                <th>Ora in</th>
+                <th>Ora out</th>
+                <th>Note</th>
+                <th class="no-export">Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($models as $m): ?>
+                <tr>
+                    <td><?= (int) $m->numero ?></td>
+                    <td><?= Html::encode(Yii::$app->formatter->asDate($m->data, 'php:d/m/Y')) ?></td>
 
-    <?php Pjax::end(); ?>
-
+                    <td><?= Html::encode($clienti[$m->cd_cli] ?? $m->cd_cli) ?></td>
+                    <td><?= Html::encode($commesse[$m->commessa] ?? $m->commessa) ?></td>
+                    <td><?= Html::encode(trim(($m->cd_art ?? '') . ' ' . ($m->des_art ?? ''))) ?></td>
+                    <td><?= Html::encode($m->qta) ?></td>
+                    <td><?= $m->ora_in ? Html::encode(Yii::$app->formatter->asTime((string) $m->ora_in, 'php:H:i')) : '' ?></td>
+                    <td><?= $m->ora_out ? Html::encode(Yii::$app->formatter->asTime((string) $m->ora_out, 'php:H:i')) : '' ?></td>
+                    <td><?= Html::encode(mb_strimwidth((string) $m->note, 0, 60, '…', 'UTF-8')) ?></td>
+                    <td class="text-center text-nowrap no-export">
+                        <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
+
+<?php $this->registerJs(
+    <<<'JS'
+(function () {
+    var $modal = $('#rapportini-modal');
+    var $body = $modal.find('.modal-body');
+
+    window.rapportiniModale = {
+        apri: function (url) {
+            $body.html('<div class="text-center py-4"><i class="fas fa-circle-notch fa-spin fa-2x"></i></div>');
+            $modal.modal('show');
+            $.get(url)
+                .done(function (html) { $body.html(html); })
+                .fail(function () {
+                    $body.html('<div class="alert alert-danger mb-0">Impossibile caricare il form di inserimento.</div>');
+                });
+        }
+    };
+
+    $(document).on('click', '#btn-inserisci-rapportino', function () {
+        window.rapportiniModale.apri($(this).data('url'));
+    });
+})();
+JS,
+    View::POS_READY
+); ?>
+
+<?php DataTables::render('rapportini-table', 1, 'desc'); ?>

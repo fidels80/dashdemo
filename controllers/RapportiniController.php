@@ -7,6 +7,7 @@ use app\models\Rapportini;
 use app\models\RapportiniSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 use yii\filters\VerbFilter;
 
 /**
@@ -39,6 +40,7 @@ class RapportiniController extends Controller
 
         $searchModel = new RapportiniSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->setPagination(false);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -71,9 +73,13 @@ class RapportiniController extends Controller
         $this->getuser();
 
         $model = new Rapportini();
+        $model->userid = Yii::$app->user->id;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
-            return $this->redirect([ 'index' ]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->userid = Yii::$app->user->id;
+            if ($model->save()) {
+                return $this->redirect([ 'index' ]);
+            }
         }
 
         return $this->render('create', [
@@ -81,26 +87,46 @@ class RapportiniController extends Controller
         ]);
     }
 
+    /**
+     * Form di inserimento aperto in modale dalla lista.
+     * Invia JSON alle richieste AJAX (chiusura modale + ricaricamento della lista),
+     * altrimenti reindirizza all'elenco.
+     */
     public function actionCreateaj()
     {
         $this->getuser();
 
         $model = new Rapportini();
+        $model->userid = Yii::$app->user->id;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
-            $searchModel = new RapportiniSearch();
-$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $isAjax = Yii::$app->request->isAjax;
 
-return $this->render('index', [
-    'searchModel' => $searchModel,
-    'dataProvider' => $dataProvider,
-]);
+        if ($model->load(Yii::$app->request->post())) {
+            // Il rapportino resta sempre riconducibile all'utente collegato.
+            $model->userid = Yii::$app->user->id;
 
+            if ($model->save()) {
+                if ($isAjax) {
+                    Yii::$app->response->format = Response::FORMAT_JSON;
+                    return ['success' => true, 'id' => (string) $model->id];
+                }
+                return $this->redirect(['index']);
+            }
+            if ($isAjax) {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                $errors = [];
+                foreach ($model->getErrors() as $attribute => $messages) {
+                    $errors[] = implode(' ', $messages);
+                }
+                return ['success' => false, 'errors' => $errors];
+            }
         }
 
-        return $this->renderAjax('createaj', [
-            'model' => $model,
-        ]);
+        if ($isAjax) {
+            return $this->renderAjax('createaj', ['model' => $model]);
+        }
+
+        return $this->render('create', ['model' => $model]);
     }
 
     /**

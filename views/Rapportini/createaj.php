@@ -1,127 +1,169 @@
 <?php
-use yii\helpers\ArrayHelper;
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use kartik\select2\Select2;
-use app\models\Ar;
-use app\models\Dosottocommessa;
-use app\models\anacli;
-use kartik\date\DatePicker;
+use yii\bootstrap4\ActiveForm;
+use kartik\select2\Select2; // <-- Aggiunto il widget Select2
+use app\models\MgAnagrafica;
+use app\models\MgArticolo;
+use app\models\MgSottocommessa;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Rapportini */
 
+$clienti = MgAnagrafica::find()
+    ->select(['codice', 'ragione_sociale'])
+    ->orderBy(['ragione_sociale' => SORT_ASC])
+    ->all();
 
+$commesse = MgSottocommessa::find()
+    ->select(['codice', 'descrizione'])
+    ->orderBy(['codice' => SORT_ASC])
+    ->all();
 
-$sottoc = ArrayHelper::map(
-    dosottocommessa::find()
-        ->select(['Cd_DOSottoCommessa as id', '(Cd_DOSottoCommessa+\'-\'+Descrizione) as Descrizione'])
-        ->orderBy('cd_DoSottoCommessa')->asArray()->all(), 'id', 'Descrizione'
+$articoli = MgArticolo::find()
+    ->select(['codice', 'descrizione'])
+    ->orderBy(['codice' => SORT_ASC])
+    ->all();
 
-);
-$art=ArrayHelper::map(
-Ar::find()
-->select(['Cd_AR','(Cd_AR+\'-\'+Descrizione) as Descrizione'])
-  ->orderBy('Cd_AR')->asArray()->all(), 'Cd_AR', 'Descrizione'
-
-);
-$clif=ArrayHelper::map(
-Anacli::find()
-->select(['cd_cli','(cd_cli+\'-\'+Desk) as desk'])
-  ->orderBy('cd_cli')->asArray()->all(), 'cd_cli', 'desk'
-
-);
-
-
-
+Yii::warning('articoli', $articoli);
 ?>
+
 <div class="rapportini-create">
 
-    <h1> Inserisci Rapportino</h1>
+    <h5>Inserisci rapportino</h5>
 
-    
-<div class="rapportini-form">
- <?php   $form = ActiveForm::begin([ 'enableClientValidation' => true,'options' => [
-        'validateOnSubmit' => true,
-        'class' => 'form'
-    ]]); 
+    <?php $form = ActiveForm::begin([
+        'id' => 'rapportini-form',
+        'action' => ['rapportini/createaj'],
+        'enableClientValidation' => true,
+        'enableAjaxValidation' => false,
+        'options' => ['validateOnSubmit' => true],
+    ]); ?>
 
+    <!-- Clienti (Principale e Alternativo) -->
+    <div class="form-row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'cd_cli')->widget(Select2::classname(), [
+                'data' => \yii\helpers\ArrayHelper::map($clienti, 'codice', function ($a) {
+                    return $a->codice . ' - ' . $a->ragione_sociale;
+                }),
+                'options' => ['placeholder' => 'Seleziona cliente...'],
+                'pluginOptions' => ['allowClear' => true],
+            ])->label('Cliente') ?>
+        </div>
 
-     
-     ?>
-      <?= $form->field($model, 'userid')->textInput(['readonly' => true,
-       'value' =>Yii::$app->user->identity->id])   ?>
-    <div class="row">
-    <div class="col">
-  <?php echo $form->field($model, 'cd_cli')
-  
-   ->widget(Select2::classname(), [
-    'data' => $clif,
-    'options' => ['placeholder' => 'Seleziona Cliente'],
-    'pluginOptions' => [
-        'allowClear' => true,
-       'dropdownParent' => '#cli3'
-    ],
-])    ->label('Cliente') 
-  ?></div> <div class="col">
-
-    <?php  echo $form->field($model, 'commessa')
-    //textInput(['maxlength' => true])
-     ->widget(Select2::classname(), [
-    'data' => $sottoc,
-    'options' => ['placeholder' => 'Seleziona Commessa'],
-    'pluginOptions' => [
-        'allowClear' => true,
-         'dropdownParent' => '#cli3'
-    ],
-])    ->label('Commessa') 
-     ?>
-      </div></div>
-
- <div class="row">
-    <div class="col">
-         <?= $form->field($model, 'data')->widget(DatePicker::classname(), [
-    'options' => ['placeholder' => 'Inserisci Data Intervento'],
-    'pluginOptions' => [
-        'autoclose' => true,
-    ],
-]);
- ?>
-</div>
-<div class="col">
- <?= $form->field($model, 'ora_in')->textInput(['type'=>'time']) ?>
-</div>
-    <div class="col">
-    <?= $form->field($model, 'ora_out')->textInput(['type'=>'time']) ?>
-</div>
-</div>
-<div class="row">
-    <div class="col">
- <?php echo 
- $form->field($model, 'cd_art')
- //textInput(['maxlength' => true]) 
-  ->widget(Select2::classname(), [
-    'data' => $art,
-    'options' => ['placeholder' => 'Seleziona Articolo'],
-    'pluginOptions' => [
-        'allowClear' => true,
-         'dropdownParent' => '#cli3'
-    ],
-])    ->label('Articolo') 
- ?></div>
- <div class="col">
- <?= $form->field($model, 'qta')->textInput() ?>
-</div></div>
-     <?= $form->field($model, 'note')->textarea(['rows' => 6,'required'=>false])
-    ->label('Nota') ?>
- 
-    <div class="form-group">
-        <?php echo  Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'altcli')->widget(Select2::classname(), [
+                'data' => \yii\helpers\ArrayHelper::map($clienti, 'codice', function ($a) {
+                    return $a->codice . ' - ' . $a->ragione_sociale;
+                }),
+                'options' => ['placeholder' => 'Seleziona cliente alternativo...'],
+                'pluginOptions' => ['allowClear' => true],
+            ])->label('Cliente Alternativo') ?>
+        </div>
     </div>
-</tbody></table>
+
+    <!-- Sottocommessa -->
+    <div class="form-row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'commessa')->widget(Select2::classname(), [
+                'data' => \yii\helpers\ArrayHelper::map($commesse, 'codice', function ($c) {
+                    return $c->codice . ' - ' . $c->descrizione;
+                }),
+                'options' => ['placeholder' => 'Seleziona sottocommessa...'],
+                'pluginOptions' => ['allowClear' => true],
+            ])->label('Sottocommessa') ?>
+        </div>
+    </div>
+
+    <!-- Data Intervento -->
+    <div class="form-row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'data')->input('date')->label('Data intervento') ?>
+        </div>
+    </div>
+
+    <!-- Ora Inizio e Ora Fine -->
+    <div class="form-row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'ora_in')->input('time')->label('Ora inizio') ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'ora_out')->input('time')->label('Ora fine') ?>
+        </div>
+    </div>
+
+    <!-- Quantità -->
+    <div class="form-row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'qta')->input('number', ['step' => 'any'])->label('Quantità') ?>
+        </div>
+    </div>
+
+    <!-- Articolo -->
+    <div class="form-row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'cd_art')->widget(Select2::classname(), [
+                'data' => \yii\helpers\ArrayHelper::map($articoli, 'codice', function ($a) {
+                    return $a->codice . ' - ' . $a->descrizione;
+                }),
+                'options' => ['placeholder' => 'Seleziona articolo...'],
+                'pluginOptions' => ['allowClear' => true],
+            ])->label('Articolo') ?>
+        </div>
+    </div>
+
+    <?= $form->field($model, 'note')->textarea(['rows' => 4])->label('Note') ?>
+
+    <div id="rapportini-errori"></div>
+
+    <div class="form-group mb-0">
+        <?= Html::submitButton('<i class="fas fa-save"></i> Salva', [
+            'class' => 'btn btn-success',
+            'data-no-confirm' => 1,
+        ]) ?>
+        <?= Html::button('Annulla', [
+            'class' => 'btn btn-secondary',
+            'data-dismiss' => 'modal',
+        ]) ?>
+    </div>
+
     <?php ActiveForm::end(); ?>
 
 </div>
 
-</div>
+<script>
+    (function() {
+        var $form = $('#rapportini-form');
+        if (!$form.length) {
+            return;
+        }
+
+        // Salvataggio via AJAX (il codice per i filtri manuali è stato rimosso perché ci pensa Select2)
+        $form.on('submit', function(e) {
+            e.preventDefault();
+            $('#rapportini-errori').html('');
+            $.post($form.attr('action'), $form.serialize())
+                .done(function(res) {
+                    if (res && res.success) {
+                        $('#rapportini-modal').modal('hide');
+                        window.location.reload();
+                        return;
+                    }
+                    var msgs = (res && res.errors) ? res.errors : ['Salvataggio non riuscito.'];
+                    $('#rapportini-errori').html(
+                        $('<div class="alert alert-danger">').append(
+                            $('<ul class="mb-0 pl-3">').append(
+                                $.map(msgs, function(m) {
+                                    return $('<li>').text(m);
+                                })
+                            )
+                        )
+                    );
+                })
+                .fail(function() {
+                    $('#rapportini-errori').html('<div class="alert alert-danger mb-0">Errore durante il salvataggio.</div>');
+                });
+        });
+    })();
+</script>

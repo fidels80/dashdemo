@@ -1,46 +1,55 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Formatter;
 use yii\widgets\DetailView;
+use app\models\MgAnagrafica;
+use app\models\MgSottocommessa;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Rapportini */
 
-$this->title = str_replace('00:00:00.000','',$model->numero.' del ' . $model->data);
-$this->params['breadcrumbs'][] = ['label' => 'Rapportinis', 'url' => ['index']];
+$numero = (int) $model->numero;
+$data = Formatter::asDate($model->data, 'dd/MM/yyyy');
+
+$this->title = 'Rapportino n. ' . $numero . ' del ' . $data;
+$this->params['breadcrumbs'][] = ['label' => 'Rapportini', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+
+$cliente = $model->cd_cli ? MgAnagrafica::findOne(['codice' => $model->cd_cli]) : null;
+$sottocommessa = $model->commessa ? MgSottocommessa::findOne(['codice' => $model->commessa]) : null;
 ?>
 <div class="rapportini-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?php /*Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) */?>
+        <?= Html::a('<i class="fas fa-arrow-left"></i> Torna alla lista', ['index'], ['class' => 'btn btn-secondary']) ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'cd_cli',
-            'commessa',
-            'qta',
+            'numero',
             'data',
+            [
+                'attribute' => 'cd_cli',
+                'label' => 'Cliente',
+                'value' => $cliente
+                    ? $cliente->codice . ' - ' . $cliente->ragione_sociale
+                    : $model->cd_cli,
+            ],
+            [
+                'attribute' => 'commessa',
+                'label' => 'Sottocommessa',
+                'value' => $sottocommessa
+                    ? $sottocommessa->codice . ' - ' . $sottocommessa->descrizione
+                    : $model->commessa,
+            ],
+            'qta',
             'ora_in',
             'ora_out',
-            'numero',
-            'userid',
-            'note',
             'cd_art',
-           // 'des_art',
+            'des_art',
+            'note',
         ],
     ]) ?>
 
