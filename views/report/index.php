@@ -10,6 +10,8 @@ $this->registerCss("
     .report-icon { font-size: 3rem; opacity: 0.8; }
     .card-presenze { border-top-color: #0d6efd; }
     .card-mezzi { border-top-color: #198754; }
+    .card-consuntivo { border-top-color: #ffc107; }
+    .card-squadre { border-top-color: #6f42c1; }
 ");
 ?>
 
@@ -37,7 +39,7 @@ $this->registerCss("
         </div>
 
         <div class="col-md-4 mb-4">
-<a href="<?= Url::to(['report/planning']) ?>" class="text-decoration-none text-dark">
+            <a href="<?= Url::to(['report/planning']) ?>" class="text-decoration-none text-dark">
                 <div class="card shadow-sm h-100 report-card card-mezzi bg-light">
                     <div class="card-body p-4 text-center">
                         <i class="fa fa-truck text-success report-icon mb-3"></i>
@@ -46,6 +48,36 @@ $this->registerCss("
                             Statistiche di utilizzo dei veicoli, incroci con i conducenti e dettaglio delle pianificazioni.
                         </p>
                         <span class="btn btn-outline-success mt-2"><i class="fa fa-arrow-right"></i> Vai al Report</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="<?= Url::to(['report/consuntivo-ditta']) ?>" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 report-card card-consuntivo bg-light">
+                    <div class="card-body p-4 text-center">
+                        <i class="fa fa-building text-warning report-icon mb-3"></i>
+                        <h4 class="card-title fw-bold">Consuntivo Ore per Ditta Esterna</h4>
+                        <p class="card-text text-muted">
+                            Riepilogo ore lavorate, giornate e dipendenti impiegati per ogni ditta esterna con calcolo costi.
+                        </p>
+                        <span class="btn btn-outline-warning mt-2"><i class="fa fa-arrow-right"></i> Vai al Report</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="<?= Url::to(['report/rapporto-attivita']) ?>" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 report-card card-squadre bg-light">
+                    <div class="card-body p-4 text-center">
+                        <i class="fa fa-people-carry report-icon mb-3" style="color:#6f42c1 !important;"></i>
+                        <h4 class="card-title fw-bold">Rapporto Attività per Squadra</h4>
+                        <p class="card-text text-muted">
+                            Vista raggruppata delle attività per squadra, navigabile con espansione e collasso dei gruppi.
+                        </p>
+                        <span class="btn btn-outline-purple mt-2" style="color:#6f42c1; border-color:#6f42c1;"><i class="fa fa-arrow-right"></i> Vai al Report</span>
                     </div>
                 </div>
             </a>
