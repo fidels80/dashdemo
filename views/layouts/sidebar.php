@@ -78,7 +78,6 @@ $customColorClass = "sidebar-custom-bg"; // La classe creata nel CSS sopra
 
     <nav class="mt-2">
         <?php
-        yii::warning($x);
         echo \hail812\adminlte\widgets\Menu::widget([
             'items' => $x,
             'treeTemplate' => "\n<ul class='nav nav-treeview' style='display:none'>\n{items}\n</ul>\n",

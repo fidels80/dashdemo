@@ -33,7 +33,7 @@ class MgcommessaController extends Controller
             'query' => MgCommessa::find()
                 ->with('sottocommesse')
                 ->joinWith('anagrafica')
-                ->orderBy(['MgCommessa.codice' => SORT_ASC]),
+                ->orderBy(['mg_commessa.codice' => SORT_ASC]),
             'pagination' => false,
         ]);
 
