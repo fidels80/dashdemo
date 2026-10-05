@@ -74,3 +74,9 @@ L'hook `post-commit` (`.githooks/post-commit`, attivato con
   (`livello_min = 100`, `per_tutti = 0`) sia nel controller
   (`AccessControl::isSuper`).
 - Non committare/pushare senza richiesta esplicita.
+- **Non cancellare mai dati** (righe in database, file, branch locali o remoti,
+  tag, commit) se non richiesto esplicitamente dall'utente. Vale per qualsiasi
+  operazione distruttiva: `DELETE`/`TRUNCATE`/`DROP`, `rm`/`Remove-Item`,
+  `git branch -d`, `git push --delete`, `git reset --hard`, `git clean`,
+  sovrascritture di migrazioni, ecc. Se un'operazione distruttiva sembra
+  necessaria ma non è stata chiesta, fermarsi e chiedere conferma.

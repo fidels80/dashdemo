@@ -18,6 +18,10 @@ use Yii;
  * @property string $destinazione
  * @property bool $crea_scadenze
  * @property bool $mostra_varianti
+ * @property bool $preleva_rapportini
+ * @property bool $crea_articoli
+ * @property bool $crea_anagrafiche
+ * @property bool $mostra_matrice
  * @property string|null $created_at
  */
 class MgTipoDocumento extends \yii\db\ActiveRecord
@@ -38,6 +42,7 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             [['usa_progressivo', 'congruita', 'attivo'], 'boolean'],
             [['crea_scadenze'], 'boolean'],
             [['mostra_varianti'], 'boolean'],
+            [['preleva_rapportini', 'crea_articoli', 'crea_anagrafiche', 'mostra_matrice'], 'boolean'],
             [['created_at'], 'safe'],
             [['codice'], 'string', 'max' => 20],
             [['descrizione'], 'string', 'max' => 200],
@@ -61,6 +66,10 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             'destinazione' => 'Destinazione',
             'crea_scadenze' => 'Crea scadenze',
             'mostra_varianti' => 'Mostra taglia/colore',
+            'preleva_rapportini' => 'Preleva rapportini',
+            'crea_articoli' => 'Crea articoli',
+            'crea_anagrafiche' => 'Crea anagrafiche',
+            'mostra_matrice' => 'Matrice taglie',
             'created_at' => 'Creato il',
         ];
     }
@@ -107,10 +116,18 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
      */
     public static function mapMostraVarianti()
     {
-        $rows = self::find()->select(['id', 'mostra_varianti'])->all();
+        return self::mapFlag('mostra_varianti');
+    }
+
+    /**
+     * Mappa id_tipo => valore (0/1) di un flag booleano del tipo documento.
+     */
+    public static function mapFlag($campo)
+    {
+        $rows = self::find()->select(['id', $campo])->all();
         $map = [];
         foreach ($rows as $t) {
-            $map[(int) $t->id] = (int) $t->mostra_varianti;
+            $map[(int) $t->id] = (int) $t->$campo;
         }
         return $map;
     }

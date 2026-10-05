@@ -41,10 +41,25 @@ use app\models\MgTipoDocumento;
             <?= $form->field($model, 'crea_scadenze')->checkbox() ?>
         </div>
         <div class="col-md-2">
+            <?= $form->field($model, 'attivo')->checkbox() ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
             <?= $form->field($model, 'mostra_varianti')->checkbox() ?>
         </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'preleva_rapportini')->checkbox() ?>
+        </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'attivo')->checkbox() ?>
+            <?= $form->field($model, 'crea_articoli')->checkbox() ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'crea_anagrafiche')->checkbox() ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'mostra_matrice')->checkbox() ?>
         </div>
     </div>
 
@@ -58,6 +73,18 @@ use app\models\MgTipoDocumento;
         <br>
         <strong>Mostra taglia/colore:</strong> se attivo, nelle righe dei documenti di questo tipo vengono mostrate le
         colonne Taglia e Colore (compilate dall'articolo selezionato).
+        <br>
+        <strong>Preleva rapportini:</strong> se attivo, nella form documento è disponibile il pulsante per prelevare
+        ed evadere i rapportini (solo per documenti in bozza).
+        <br>
+        <strong>Crea articoli:</strong> se attivo, nella form documento è disponibile la creazione rapida di un nuovo
+        articolo.
+        <br>
+        <strong>Crea anagrafiche:</strong> se attivo, nella form documento è disponibile la creazione rapida di un
+        nuovo cliente/fornitore.
+        <br>
+        <strong>Matrice taglie:</strong> se attivo, nella form documento è disponibile il pulsante per generare le
+        righe dalla matrice taglie del modello.
         <br>
         <strong>Proposta congruità numeri:</strong> se attiva, non è possibile creare un documento con numero più alto
         per una data precedente (es. il 101 non può essere datato prima del 100). Il contatore indica l'ultimo numero usato.

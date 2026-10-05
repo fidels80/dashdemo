@@ -1,13 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\Formatter;
 use yii\bootstrap4\Modal;
-use yii\helpers\Url;
 use yii\web\View;
 use app\components\DataTables;
 use app\models\MgAnagrafica;
 use app\models\MgSottocommessa;
+use app\models\Rapportini;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RapportiniSearch */
@@ -16,8 +15,10 @@ use app\models\MgSottocommessa;
 $this->title = 'Rapportini';
 $this->params['breadcrumbs'][] = $this->title;
 
-// Gli script del form (ActiveForm) servono anche al contenuto caricato via AJAX nella modale.
-yii\widgets\ActiveFormAsset::register($this);
+// Registrato per primo: gli asset DataTables (che includono una Select2 da CDN)
+// devono precedere quelli di kartik Select2 usati nella modale, altrimenti
+// quest'ultima sovrascrive il tema krajee-bs4.
+DataTables::render('rapportini-table', 1, 'desc');
 
 $models = $dataProvider->getModels();
 
@@ -44,13 +45,6 @@ $commesse = MgSottocommessa::find()
     ->column();
 ?>
 
-<?php Modal::begin([
-    'id' => 'rapportini-modal',
-    'size' => 'modal-lg',
-    'options' => ['tabindex' => false],
-]); ?>
-<?php Modal::end(); ?>
-
 <div class="rapportini-index card p-3 shadow-sm">
 
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -58,7 +52,8 @@ $commesse = MgSottocommessa::find()
             <?= Html::button('<i class="fas fa-plus"></i> Inserisci rapportino', [
                 'id' => 'btn-inserisci-rapportino',
                 'class' => 'btn btn-success',
-                'data-url' => Url::to(['createaj']),
+                'data-toggle' => 'modal',
+                'data-target' => '#rapportini-modal',
             ]) ?>
         </div>
     </div>
@@ -100,30 +95,13 @@ $commesse = MgSottocommessa::find()
     </table>
 </div>
 
-<?php $this->registerJs(
-    <<<'JS'
-(function () {
-    var $modal = $('#rapportini-modal');
-    var $body = $modal.find('.modal-body');
-
-    window.rapportiniModale = {
-        apri: function (url) {
-            $body.html('<div class="text-center py-4"><i class="fas fa-circle-notch fa-spin fa-2x"></i></div>');
-            $modal.modal('show');
-            $.get(url)
-                .done(function (html) { $body.html(html); })
-                .fail(function () {
-                    $body.html('<div class="alert alert-danger mb-0">Impossibile caricare il form di inserimento.</div>');
-                });
-        }
-    };
-
-    $(document).on('click', '#btn-inserisci-rapportino', function () {
-        window.rapportiniModale.apri($(this).data('url'));
-    });
-})();
-JS,
-    View::POS_READY
-); ?>
-
-<?php DataTables::render('rapportini-table', 1, 'desc'); ?>
+<?php
+Modal::begin([
+    'id' => 'rapportini-modal',
+    'title' => 'Inserisci rapportino',
+    'size' => 'modal-lg',
+    'options' => ['tabindex' => false],
+]);
+echo $this->render('createaj', ['model' => new Rapportini()]);
+Modal::end();
+?>

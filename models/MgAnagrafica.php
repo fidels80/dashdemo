@@ -110,6 +110,11 @@ class MgAnagrafica extends \yii\db\ActiveRecord
         return $this->hasOne(MgAliquotaIva::className(), ['id' => 'id_aliquota_iva']);
     }
 
+    public function getContatti()
+    {
+        return $this->hasMany(MgAnagraficaContatto::className(), ['id_anagrafica' => 'id']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {

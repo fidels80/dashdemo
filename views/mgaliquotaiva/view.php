@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\MgAliquotaIva */
@@ -9,25 +8,40 @@ use yii\widgets\DetailView;
 $this->title = $model->codice . ' - ' . $model->descrizione;
 $this->params['breadcrumbs'][] = ['label' => 'Aliquote IVA', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$campo = function ($label, $valore, $col = 'col-md-3') {
+    echo '<div class="' . $col . ' mb-3">'
+        . '<label class="text-muted small mb-0 d-block">' . Html::encode($label) . '</label>'
+        . '<div class="font-weight-bold">' . ($valore === '' || $valore === null ? '<span class="text-muted">—</span>' : Html::encode($valore)) . '</div>'
+        . '</div>';
+};
 ?>
 <div class="mgaliquotaiva-view">
 
-    <p>
-        <?= Html::a('<i class="fas fa-pen"></i> Modifica', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('<i class="fas fa-trash"></i> Elimina', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => ['confirm' => 'Eliminare questa aliquota IVA?', 'method' => 'post'],
-        ]) ?>
-    </p>
+    <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+        <div>
+            <?= Html::a('<i class="fas fa-pen"></i> Modifica', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('<i class="fas fa-trash"></i> Elimina', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => ['confirm' => 'Eliminare questa aliquota IVA?', 'method' => 'post'],
+            ]) ?>
+        </div>
+    </div>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'codice',
-            'descrizione',
-            ['attribute' => 'percentuale', 'value' => number_format((float) $model->percentuale, 2, ',', '.') . ' %'],
-            ['attribute' => 'attivo', 'format' => 'boolean'],
-        ],
-    ]) ?>
+    <div class="card mb-3">
+        <div class="card-header">Dati aliquota IVA</div>
+        <div class="card-body">
+            <div class="row">
+                <?php
+                $campo('ID', $model->id, 'col-md-2');
+                $campo('Codice', $model->codice, 'col-md-3');
+                $campo('Percentuale', number_format((float) $model->percentuale, 2, ',', '.') . ' %', 'col-md-3');
+                $campo('Attivo', $model->attivo ? 'Sì' : 'No', 'col-md-2');
+                ?>
+            </div>
+            <div class="row">
+                <?php $campo('Descrizione', $model->descrizione, 'col-md-12'); ?>
+            </div>
+        </div>
+    </div>
 </div>

@@ -9,6 +9,7 @@ use app\models\MgAliquotaIva;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 use yii\filters\VerbFilter;
 
 /**
@@ -31,7 +32,7 @@ class MganagraficaController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => MgAnagrafica::find()->with(['metodoPagamento', 'aliquotaIva'])->orderBy(['ragione_sociale' => SORT_ASC]),
+            'query' => MgAnagrafica::find()->with(['metodoPagamento', 'aliquotaIva', 'contatti'])->orderBy(['ragione_sociale' => SORT_ASC]),
             'pagination' => false,
         ]);
 
@@ -85,7 +86,7 @@ class MganagraficaController extends Controller
      */
     public function actionCreateAjax()
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
         if (!Yii::$app->request->isPost) {
             return ['success' => false, 'error' => 'Richiesta non valida.'];

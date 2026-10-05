@@ -69,6 +69,8 @@ $this->registerCss(<<<'CSS'
   .manual-btn-green { background: var(--m-ok); }
   .manual-btn-red { background: #c0392b; }
   .manual code { background: #eef1f4; padding: 1px 6px; border-radius: 4px; font-size: 13px; font-family: Consolas, monospace; }
+  .manual pre { background: #23272e; color: #e8ecef; padding: 12px 16px; border-radius: 6px; overflow-x: auto; margin: 12px 0; font-size: 13px; font-family: Consolas, monospace; }
+  .manual pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
   @media (max-width: 900px) {
     .manual-wrap { flex-direction: column; }
     .manual-toc { width: 100%; min-width: 0; height: auto; max-height: 300px; position: static; }
@@ -140,8 +142,11 @@ JS
         <a class="manual-l1" href="#amministrazione">9. Amministrazione</a>
         <a class="manual-l2" href="#admin-utenti">Gestione utenti</a>
         <a class="manual-l2" href="#admin-menu">Menu e permessi</a>
-        <a class="manual-l1" href="#segnalazione">10. Segnalare un problema</a>
-        <a class="manual-l1" href="#glossario">11. Glossario</a>
+        <a class="manual-l1" href="#api">10. API e integrazioni</a>
+        <a class="manual-l2" href="#api-token">Token e permessi</a>
+        <a class="manual-l2" href="#api-nuova-tabella">Aggiungere una tabella nuova</a>
+        <a class="manual-l1" href="#segnalazione">11. Segnalare un problema</a>
+        <a class="manual-l1" href="#glossario">12. Glossario</a>
       </div>
     </nav>
 
@@ -708,10 +713,86 @@ JS
         </div>
       </section>
 
-      <!-- 9 SEGNALAZIONE -->
+      <!-- 10 API -->
+      <section id="api">
+        <div class="manual-card">
+          <h2>10. API e integrazioni</h2>
+          <p>Il gestionale espone un <strong>servizio REST</strong> che permette ad altri programmi (per esempio un'app per il magazzino, un gestionale esterno o un sito web) di leggere e scrivere i dati. Ogni accesso avviene tramite un <strong>token</strong>, e ogni token ha dei permessi definiti <strong>per singola entit&agrave;</strong>.</p>
+
+          <h3 id="api-token">10.1 Token e permessi</h3>
+          <p>Nella pagina <strong>Token API</strong> crei un token e scegli, per ciascuna entit&agrave;, quali operazioni sono consentite:</p>
+          <table>
+            <tr><th>Operazione</th><th>Consente</th></tr>
+            <tr><td><strong>Lettura</strong></td><td>Esportare e consultare i record (GET).</td></tr>
+            <tr><td><strong>Inserimento</strong></td><td>Creare record nuovi (POST).</td></tr>
+            <tr><td><strong>Modifica</strong></td><td>Aggiornare record gi&agrave; esistenti (POST).</td></tr>
+            <tr><td><strong>Cancellazione</strong></td><td>Eliminare record (POST).</td></tr>
+          </table>
+          <ul>
+            <li>I pulsanti in alto servono come <strong>scelta rapida</strong>: <span class="manual-btn">Solo lettura</span>, <span class="manual-btn">Solo inserimento</span>, <span class="manual-btn">Tutto</span>, <span class="manual-btn">Nessuna</span>.</li>
+            <li>Le operazioni sono <strong>indipendenti</strong>: un token pu&ograve; poter solo inserire senza poter modificare, oppure leggere senza poter scrivere.</li>
+            <li>Se modifichi i permessi di un token esistente, <strong>il token resta valido</strong>: non viene rigenerato e i programmi che lo usano continuano a funzionare.</li>
+            <li>Il pulsante <strong>Prova</strong> accanto al token apre una console per provare gli endpoint senza scrivere codice.</li>
+          </ul>
+          <div class="manual-note">
+            Il token viene mostrato <strong>una sola volta</strong>, subito dopo la creazione. Se lo perdi devi revocarlo e crearne uno nuovo.
+          </div>
+
+          <h3 id="api-nuova-tabella">10.2 Aggiungere una tabella nuova al servizio REST</h3>
+          <p><strong>Non devi aggiungere regole a mano.</strong> Se domani viene creata una tabella nuova (per esempio <code>mg_movimentimg</code> per i movimenti di magazzino), per esporla al servizio REST bastano due passaggi.</p>
+
+          <h4>1. Creare il model</h4>
+          <p>Deve esistere un file in <code>models/</code> che dichiara la classe come <code>ActiveRecord</code> e indica la tabella:</p>
+<pre><code>namespace app\models;
+
+class MgMovimentoMagazzino extends \yii\db\ActiveRecord
+{
+    public static function tableName()
+    {
+        return 'mg_movimentimg';
+    }
+}</code></pre>
+
+          <h4>2. Lanciare il comando di sincronizzazione</h4>
+          <p>Dalla cartella dell'applicazione, prima in anteprima e poi per davvero:</p>
+          <p><code>php yii api/sync --dry=1</code> &nbsp;&rarr;&nbsp; mostra cosa verrebbe registrato <em>senza scrivere nulla</em></p>
+          <p><code>php yii api/sync</code> &nbsp;&rarr;&nbsp; esegue le registrazioni</p>
+          <p>Il comando fa due cose:</p>
+          <ol>
+            <li><strong>registra l'entit&agrave;</strong> tra quelle offerte dal servizio REST;</li>
+            <li><strong>deriva i vincoli di integrit&agrave;</strong> leggendo le chiavi esterne realmente presenti nel database.</li>
+          </ol>
+          <p>Da questo momento l'entit&agrave; compare da sola nelle caselle di spunta della pagina <strong>Token API</strong>. Nessun token esistente la vede finch&eacute; non gliela assegni esplicitamente.</p>
+
+          <h4>Le regole si creano da sole</h4>
+          <p>Non serve inserire nulla a mano. Per ogni chiave esterna che collega la tabella nuova a un'altra entit&agrave;, il comando crea una regola:</p>
+          <table>
+            <tr><th>Tipo di chiave esterna</th><th>Regola generata</th><th>Comportamento</th></tr>
+            <tr><td>Cancellazione a cascata (<code>ON DELETE CASCADE</code>)</td><td><strong>figlio</strong>, con cascata consentita</td><td>Blocca la cancellazione del padre. I figli vengono rimossi <strong>solo</strong> se il programma client lo chiede esplicitamente e il token ha il permesso di cancellazione anche sull'entit&agrave; figlia.</td></tr>
+            <tr><td>Qualsiasi altro vincolo</td><td><strong>riferimento</strong></td><td>Blocca la cancellazione del padre, ma <strong>non</strong> viene mai rimosso in automatico.</td></tr>
+          </table>
+          <p>Esempio: se <code>mg_movimentimg</code> ha un legame con <code>mg_articolo</code>, viene creato da solo un riferimento <em>articoli &rarr; mg_movimentimg.id_articolo</em>. Cancellare un articolo che ha gi&agrave; movimenti verr&agrave; quindi rifiutato, e i movimenti resteranno al loro posto.</p>
+          <div class="manual-tip">
+            Se la tabella nuova <strong>non ha chiavi esterne</strong> verso altre tabelle <code>mg_*</code>, non verr&agrave; creata nessuna regola: &egrave; il comportamento corretto, non un errore.
+          </div>
+
+          <h4>Due cose che il comando non fa</h4>
+          <p><strong>1. Il nome che ricava dal nome della tabella spesso &egrave; sgradevole.</strong> Da <code>mg_movimentimg</code> ricava il codice <code>movimentimg</code> e la descrizione <em>Movimentimg</em>. Per un nome pi&ugrave; leggibile hai due strade:</p>
+          <ul>
+            <li>cambiare <strong>codice</strong> e <strong>descrizione</strong> della riga dell'entit&agrave;;</li>
+            <li>lasciare il codice e compilare il campo <strong>alias</strong> (per esempio <code>movimenti-magazzino,movimenti</code>): i programmi potranno usare quel nome al posto del codice.</li>
+          </ul>
+          <p><strong>2. Non decide se la tabella pu&ograve; essere cancellata.</strong> Per dati storici, come i movimenti di magazzino, conviene impostare l'entit&agrave; come <strong>non cancellabile</strong> (come gi&agrave; fatto per le scadenze). Il token potr&agrave; comunque inserire e leggere, ma la cancellazione verr&agrave; rifiutata.</p>
+          <div class="manual-warn">
+            <strong>Attenzione:</strong> le regole vengono create solo se <strong>entrambe</strong> le tabelle (quella figlia e quella padre) iniziano con <code>mg_</code>. Se la tabella nuova fa riferimento a una tabella di un altro tipo (per esempio <code>rapportini</code> o le tabelle storiche <code>doc_*</code>), quel legame <strong>non</strong> viene registrato: i controlli di integrit&agrave; riguardano solo le tabelle <code>mg_*</code>. Se ti servisse anche quel controllo, la regola si inserisce a mano.
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 SEGNALAZIONE -->
       <section id="segnalazione">
         <div class="manual-card">
-          <h2>10. Segnalare un problema</h2>
+          <h2>11. Segnalare un problema</h2>
           <p>Se trovi un errore o un comportamento strano, usa il pulsante <strong>Segnala Anomalia</strong>: l'icona a forma di <strong>insetto (bug)</strong> in alto a destra nella barra di navigazione.</p>
           <ol>
             <li>Clicca l'icona <strong>bug</strong>.</li>
@@ -723,10 +804,10 @@ JS
         </div>
       </section>
 
-      <!-- 10 GLOSSARIO -->
+      <!-- 12 GLOSSARIO -->
       <section id="glossario">
         <div class="manual-card">
-          <h2>11. Glossario</h2>
+          <h2>12. Glossario</h2>
           <table>
             <tr><th>Termine</th><th>Significato</th></tr>
             <tr><td><strong>Planning</strong></td><td>La pianificazione giornaliera delle attivit&agrave; delle squadre.</td></tr>

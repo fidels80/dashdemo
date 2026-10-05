@@ -13,6 +13,8 @@ use app\models\MgScadenza;
 use app\models\MgAliquotaIva;
 use app\models\MgAttributoArticolo;
 use app\models\MgUnitaMisura;
+use app\models\MgSottocommessa;
+use app\models\Rapportini;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -116,6 +118,10 @@ class MgdocumentoController extends Controller
             'aliquote' => MgAliquotaIva::mapAttivi(),
             'unita' => MgUnitaMisura::mapAttivi(),
             'tipiMostraVarianti' => MgTipoDocumento::mapMostraVarianti(),
+            'tipiPrelevaRapportini' => MgTipoDocumento::mapFlag('preleva_rapportini'),
+            'tipiCreaArticoli' => MgTipoDocumento::mapFlag('crea_articoli'),
+            'tipiCreaAnagrafiche' => MgTipoDocumento::mapFlag('crea_anagrafiche'),
+            'tipiMostraMatrice' => MgTipoDocumento::mapFlag('mostra_matrice'),
             'modelliMatrice' => $this->modelliConArticoli(),
             'righe' => [],
         ]);
@@ -151,6 +157,10 @@ class MgdocumentoController extends Controller
             'aliquote' => MgAliquotaIva::mapAttivi(),
             'unita' => MgUnitaMisura::mapAttivi(),
             'tipiMostraVarianti' => MgTipoDocumento::mapMostraVarianti(),
+            'tipiPrelevaRapportini' => MgTipoDocumento::mapFlag('preleva_rapportini'),
+            'tipiCreaArticoli' => MgTipoDocumento::mapFlag('crea_articoli'),
+            'tipiCreaAnagrafiche' => MgTipoDocumento::mapFlag('crea_anagrafiche'),
+            'tipiMostraMatrice' => MgTipoDocumento::mapFlag('mostra_matrice'),
             'modelliMatrice' => $this->modelliConArticoli(),
             'righe' => $model->righe,
         ]);
@@ -167,7 +177,17 @@ class MgdocumentoController extends Controller
         }
 
         // Il numero torna libero: eliminando la testata le righe/scadenze seguono (CASCADE).
+        $rapportini = MgDocumentoRiga::find()
+            ->select('id_rapportino')
+            ->where(['id_documento' => $model->id])
+            ->andWhere(['not', ['id_rapportino' => null]])
+            ->column();
+
         $model->delete();
+
+        if (!empty($rapportini)) {
+            Rapportini::updateAll(['evaso' => 0], ['id' => array_values($rapportini)]);
+        }
 
         return $this->redirect(['index']);
     }
@@ -265,16 +285,24 @@ class MgdocumentoController extends Controller
      */
     private function saveRighe($model, $righe)
     {
+        $precedenti = MgDocumentoRiga::find()
+            ->select('id_rapportino')
+            ->where(['id_documento' => $model->id])
+            ->andWhere(['not', ['id_rapportino' => null]])
+            ->column();
+
         MgDocumentoRiga::deleteAll(['id_documento' => $model->id]);
 
         $ord = 0;
+        $nuovi = [];
         foreach ((array) $righe as $r) {
-            if (empty($r['descrizione']) && empty($r['id_articolo'])) {
+            if (empty($r['descrizione']) && empty($r['id_articolo']) && empty($r['id_rapportino'])) {
                 continue;
             }
             $riga = new MgDocumentoRiga();
             $riga->id_documento = $model->id;
             $riga->id_articolo = !empty($r['id_articolo']) ? $r['id_articolo'] : null;
+            $riga->id_rapportino = !empty($r['id_rapportino']) ? $r['id_rapportino'] : null;
             $riga->codice_articolo = $r['codice_articolo'] ?? null;
             $riga->descrizione = $r['descrizione'] ?? null;
             $riga->id_unita_misura = !empty($r['id_unita_misura']) ? $r['id_unita_misura'] : null;
@@ -289,9 +317,181 @@ class MgdocumentoController extends Controller
             $riga->iva = ($r['iva'] ?? '') === '' ? 0 : $r['iva'];
             $riga->ordine = $ord++;
             $riga->save(false);
+            if ($riga->id_rapportino) {
+                $nuovi[] = (string) $riga->id_rapportino;
+            }
         }
 
         $model->calcolaTotale();
+        $this->allineaEvasione($precedenti, $nuovi);
+    }
+
+    /**
+     * Allinea il flag "evaso" dei rapportini: evaso se collegato a una riga
+     * del documento, libero se la riga è stata rimossa.
+     */
+    private function allineaEvasione($precedenti, $nuovi)
+    {
+        $precedenti = array_values(array_filter(array_map('strval', (array) $precedenti)));
+        $nuovi = array_values(array_unique(array_filter(array_map('strval', (array) $nuovi))));
+
+        if (!empty($nuovi)) {
+            Rapportini::updateAll(['evaso' => 1], ['id' => $nuovi]);
+        }
+
+        $nuoviNorm = array_map('strtolower', $nuovi);
+        $daLiberare = [];
+        foreach ($precedenti as $p) {
+            if (!in_array(strtolower($p), $nuoviNorm, true)) {
+                $daLiberare[] = $p;
+            }
+        }
+        if (!empty($daLiberare)) {
+            Rapportini::updateAll(['evaso' => 0], ['id' => $daLiberare]);
+        }
+    }
+
+    /**
+     * Elenco dei rapportini prelevabili (non evasi) in formato JSON (AJAX).
+     * Esclude quelli già collegati al documento in modifica.
+     */
+    public function actionRapportiniDisponibili($id_documento = null, $q = null)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $query = Rapportini::find()->where(['not', ['evaso' => 1]]);
+
+        if (!empty($id_documento)) {
+            $gia = MgDocumentoRiga::find()
+                ->select('id_rapportino')
+                ->where(['id_documento' => $id_documento])
+                ->andWhere(['not', ['id_rapportino' => null]])
+                ->column();
+            if (!empty($gia)) {
+                $query->andWhere(['not in', 'id', $gia]);
+            }
+        }
+
+        $q = trim((string) $q);
+        if ($q !== '') {
+            $query->andWhere(['or',
+                ['like', 'cd_cli', $q],
+                ['like', 'commessa', $q],
+                ['like', 'cd_art', $q],
+                ['like', 'des_art', $q],
+                ['like', 'note', $q],
+            ]);
+        }
+
+        $rows = $query->orderBy(['data' => SORT_DESC, 'numero' => SORT_DESC])->all();
+
+        $codiciCli = [];
+        $codiciComm = [];
+        $codiciArt = [];
+        foreach ($rows as $r) {
+            if ($r->cd_cli !== null && $r->cd_cli !== '') {
+                $codiciCli[$r->cd_cli] = $r->cd_cli;
+            }
+            if ($r->commessa !== null && $r->commessa !== '') {
+                $codiciComm[$r->commessa] = $r->commessa;
+            }
+            if ($r->cd_art !== null && $r->cd_art !== '') {
+                $codiciArt[$r->cd_art] = $r->cd_art;
+            }
+        }
+
+        $clienti = [];
+        if (!empty($codiciCli)) {
+            $clienti = MgAnagrafica::find()
+                ->select(['codice', 'ragione_sociale'])
+                ->where(['codice' => array_values($codiciCli)])
+                ->indexBy('codice')
+                ->column();
+        }
+
+        $commesse = [];
+        if (!empty($codiciComm)) {
+            $commesse = MgSottocommessa::find()
+                ->select(['codice', 'descrizione'])
+                ->where(['codice' => array_values($codiciComm)])
+                ->indexBy('codice')
+                ->column();
+        }
+
+        $artMap = [];
+        if (!empty($codiciArt)) {
+            foreach (MgArticolo::find()->where(['codice' => array_values($codiciArt)])->all() as $a) {
+                $artMap[$a->codice] = $a;
+            }
+        }
+
+        $out = [];
+        foreach ($rows as $r) {
+            $a = ($r->cd_art !== null && $r->cd_art !== '' && isset($artMap[$r->cd_art])) ? $artMap[$r->cd_art] : null;
+            $out[] = [
+                'id' => (string) $r->id,
+                'numero' => (int) $r->numero,
+                'data' => $r->data ? date('d/m/Y', strtotime((string) $r->data)) : '',
+                'cd_cli' => $r->cd_cli,
+                'cliente' => $clienti[$r->cd_cli] ?? $r->cd_cli,
+                'commessa' => $r->commessa,
+                'commessa_desc' => $commesse[$r->commessa] ?? $r->commessa,
+                'cd_art' => $r->cd_art,
+                'des_art' => $r->des_art,
+                'qta' => (float) $r->qta,
+                'ora_in' => $this->soloOra($r->ora_in),
+                'ora_out' => $this->soloOra($r->ora_out),
+                'note' => (string) $r->note,
+                'id_articolo' => $a ? (int) $a->id : null,
+                'prezzo' => $a ? (float) $a->prezzo : 0,
+                'iva' => $a ? (float) $a->iva : 0,
+                'um' => $a && $a->um ? $a->um : '',
+            ];
+        }
+
+        return ['success' => true, 'rapportini' => $out];
+    }
+
+    /**
+     * Dettaglio di un rapportino in HTML per la modale (AJAX).
+     */
+    public function actionRapportino($id)
+    {
+        $model = Rapportini::findOne($id);
+        if ($model === null) {
+            throw new NotFoundHttpException('Rapportino non trovato.');
+        }
+
+        return $this->renderAjax('_rapportino_dettaglio', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Versione stampabile del rapportino, aperta in una nuova scheda.
+     */
+    public function actionRapportinoStampa($id)
+    {
+        $model = Rapportini::findOne($id);
+        if ($model === null) {
+            throw new NotFoundHttpException('Rapportino non trovato.');
+        }
+
+        $this->layout = false;
+        return $this->render('rapportino_stampa', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Estrae "HH:MM" da un valore TIME di SQL Server.
+     */
+    private function soloOra($valore)
+    {
+        if ($valore === null || $valore === '') {
+            return '';
+        }
+        return substr((string) $valore, 0, 5);
     }
 
     /**

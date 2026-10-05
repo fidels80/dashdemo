@@ -24,8 +24,6 @@ $articoli = MgArticolo::find()
     ->select(['codice', 'descrizione'])
     ->orderBy(['codice' => SORT_ASC])
     ->all();
-
-Yii::warning('articoli', $articoli);
 ?>
 
 <div class="rapportini-create">
@@ -48,7 +46,7 @@ Yii::warning('articoli', $articoli);
                     return $a->codice . ' - ' . $a->ragione_sociale;
                 }),
                 'options' => ['placeholder' => 'Seleziona cliente...'],
-                'pluginOptions' => ['allowClear' => true],
+                'pluginOptions' => ['allowClear' => true, 'dropdownParent' => '#rapportini-modal'],
             ])->label('Cliente') ?>
         </div>
 
@@ -58,7 +56,7 @@ Yii::warning('articoli', $articoli);
                     return $a->codice . ' - ' . $a->ragione_sociale;
                 }),
                 'options' => ['placeholder' => 'Seleziona cliente alternativo...'],
-                'pluginOptions' => ['allowClear' => true],
+                'pluginOptions' => ['allowClear' => true, 'dropdownParent' => '#rapportini-modal'],
             ])->label('Cliente Alternativo') ?>
         </div>
     </div>
@@ -71,7 +69,7 @@ Yii::warning('articoli', $articoli);
                     return $c->codice . ' - ' . $c->descrizione;
                 }),
                 'options' => ['placeholder' => 'Seleziona sottocommessa...'],
-                'pluginOptions' => ['allowClear' => true],
+                'pluginOptions' => ['allowClear' => true, 'dropdownParent' => '#rapportini-modal'],
             ])->label('Sottocommessa') ?>
         </div>
     </div>
@@ -108,7 +106,7 @@ Yii::warning('articoli', $articoli);
                     return $a->codice . ' - ' . $a->descrizione;
                 }),
                 'options' => ['placeholder' => 'Seleziona articolo...'],
-                'pluginOptions' => ['allowClear' => true],
+                'pluginOptions' => ['allowClear' => true, 'dropdownParent' => '#rapportini-modal'],
             ])->label('Articolo') ?>
         </div>
     </div>

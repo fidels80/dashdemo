@@ -60,6 +60,7 @@ $unitaJson = function ($articolo) {
         <input type="hidden" name="righe[<?= $index ?>][um]" class="riga-um-codice" value="<?= Html::encode($val('um')) ?>">
         <input type="hidden" name="righe[<?= $index ?>][fattore]" class="riga-fattore" value="<?= Html::encode($val('fattore') !== '' && $val('fattore') !== null ? $val('fattore') : 1) ?>">
         <input type="hidden" class="riga-prezzo-base" value="<?= Html::encode($prezzo) ?>">
+        <input type="hidden" name="righe[<?= $index ?>][id_rapportino]" class="riga-id-rap" value="<?= Html::encode($val('id_rapportino')) ?>">
     </td>
     <td><input type="number" step="any" name="righe[<?= $index ?>][qta]" class="form-control form-control-sm riga-qta text-right" value="<?= Html::encode($val('qta')) ?>"></td>
     <td><input type="number" step="any" name="righe[<?= $index ?>][prezzo]" class="form-control form-control-sm riga-prezzo text-right" value="<?= Html::encode($val('prezzo')) ?>"></td>
@@ -67,6 +68,7 @@ $unitaJson = function ($articolo) {
     <td><input type="number" step="any" name="righe[<?= $index ?>][iva]" class="form-control form-control-sm riga-iva text-right" value="<?= Html::encode($val('iva')) ?>"></td>
     <td><input type="text" class="form-control form-control-sm riga-totale text-right" value="<?= number_format($totale, 2, ',', '.') ?>" readonly></td>
     <td class="text-center text-nowrap">
+        <button type="button" class="btn btn-sm btn-outline-info riga-rap-dettaglio" data-id-rap="<?= Html::encode($val('id_rapportino')) ?>" title="Dettaglio rapportino" style="<?= $val('id_rapportino') ? '' : 'display:none;' ?>"><i class="fas fa-file-alt"></i></button>
         <button type="button" class="btn btn-sm btn-outline-primary riga-duplica" title="Duplica riga"><i class="fas fa-copy"></i></button>
         <button type="button" class="btn btn-sm btn-danger riga-remove" title="Rimuovi riga"><i class="fas fa-times"></i></button>
     </td>
