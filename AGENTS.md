@@ -37,6 +37,14 @@ verificare che la copia locale corrisponda all'ultima committata su GitHub.
   Il remote `origin` punta a `fidels80/dashviv`, che è un progetto **diverso**:
   non usarlo mai per fetch, pull o push.
 - **Branch locale `master`**, che fa tracking di `dashdemo/main` (nomi diversi).
+  Il branch canonico su GitHub è **`main`**: `master` esiste solo in locale.
+
+Attenzione alla trappola dei nomi: **`git push dashdemo master` e
+`git pull dashdemo master` sono sbagliati**, perché `master` viene risolto sul
+remote, dove non deve esistere. Il push finirebbe su `refs/heads/master`
+creando un branch fantasma e `main` resterebbe indietro. Usare sempre
+`HEAD:main` (o il `git push`/`git pull` senza argomenti, che seguono già
+l'upstream configurato).
 
 Il controllo si esegue con (già verificato funzionante in questo progetto):
 
@@ -53,8 +61,12 @@ Interpretazione:
 | Esito | Significato | Cosa fare |
 | --- | --- | --- |
 | entrambi i contatori `0` | allineato | basta dirlo e proseguire |
-| `HEAD..dashdemo/main` > 0 | **su GitHub ci sono commit che qui non ci sono** | avvisare l'utente e proporre `git pull dashdemo main`; non fare il pull senza conferma |
-| `dashdemo/main..HEAD` > 0 | **ci sono commit locali non pushati** | avvisare l'utente e proporre `git push dashdemo master` |
+| `HEAD..dashdemo/main` > 0 | **su GitHub ci sono commit che qui non ci sono** | avvisare l'utente e proporre `git pull --ff-only dashdemo main`; non fare il pull senza conferma |
+| `dashdemo/main..HEAD` > 0 | **ci sono commit locali non pushati** | avvisare l'utente e proporre `git push dashdemo HEAD:main` |
+
+Dopo un push o un pull conviene riverificare con `git rev-parse dashdemo/main`:
+un `git push dashdemo master` sbagliato termina comunque con exit code 0 e non
+segnala nulla, quindi il confronto tra i due SHA è l'unico controllo affidabile.
 
 Comunicare il risultato in una riga sola all'inizio della sessione, per esempio
 `Allineato con GitHub: 88a8f16`. Non fermare il lavoro se le copie divergono:
