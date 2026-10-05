@@ -11,6 +11,8 @@ DataTables.
 - Migrazioni: `php yii migrate` (per ogni migrazione `.php` esiste il gemello
   `.sql` da eseguire manualmente su SQL Server, quando serve).
 - Lint di un file PHP: `php -l <file>`.
+- Controllo allineamento con GitHub (a inizio sessione): vedi
+  «Regola obbligatoria: allineamento con GitHub a inizio sessione».
 
 ## Struttura
 
@@ -25,6 +27,38 @@ DataTables.
 - `views/site/manuale.php` — manuale utente ufficiale.
 - Menu laterale dinamico: tabella `dash_menu` (con `livello_min`, `per_tutti`,
   `genitore_id`).
+
+## Regola obbligatoria: allineamento con GitHub a inizio sessione
+
+**Prima di qualsiasi altra cosa**, appena aperta la sessione, l'agente deve
+verificare che la copia locale corrisponda all'ultima committata su GitHub.
+
+- **Remote giusto: `dashdemo`** (`https://github.com/fidels80/dashdemo.git`).
+  Il remote `origin` punta a `fidels80/dashviv`, che è un progetto **diverso**:
+  non usarlo mai per fetch, pull o push.
+- **Branch locale `master`**, che fa tracking di `dashdemo/main` (nomi diversi).
+
+Il controllo si esegue con (già verificato funzionante in questo progetto):
+
+```
+git fetch dashdemo --prune
+git rev-parse HEAD
+git rev-parse dashdemo/main
+git rev-list --count dashdemo/main..HEAD
+git rev-list --count HEAD..dashdemo/main
+```
+
+Interpretazione:
+
+| Esito | Significato | Cosa fare |
+| --- | --- | --- |
+| entrambi i contatori `0` | allineato | basta dirlo e proseguire |
+| `HEAD..dashdemo/main` > 0 | **su GitHub ci sono commit che qui non ci sono** | avvisare l'utente e proporre `git pull dashdemo main`; non fare il pull senza conferma |
+| `dashdemo/main..HEAD` > 0 | **ci sono commit locali non pushati** | avvisare l'utente e proporre `git push dashdemo master` |
+
+Comunicare il risultato in una riga sola all'inizio della sessione, per esempio
+`Allineato con GitHub: 88a8f16`. Non fermare il lavoro se le copie divergono:
+segnalare e chiedere, poi continuare con il resto della richiesta.
 
 ## Regola obbligatoria: documentazione dopo il commit
 
