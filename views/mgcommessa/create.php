@@ -8,6 +8,6 @@ $this->title = 'Nuova commessa';
 $this->params['breadcrumbs'][] = ['label' => 'Commesse', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="mgcommessa-create card p-3 shadow-sm">
+<div class="mgcommessa-create">
     <?= $this->render('_form', ['model' => $model, 'anagrafiche' => $anagrafiche]) ?>
 </div>

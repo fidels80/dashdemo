@@ -24,6 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Codice</th>
             <th>Descrizione</th>
             <th>Destinazione</th>
+            <th>Magazzino partenza</th>
+            <th>Magazzino arrivo</th>
+            <th>Movimento</th>
             <th>Anno</th>
             <th>Contatore</th>
             <th>Numerazione auto</th>
@@ -41,6 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= Html::encode($m->codice) ?></td>
                 <td><?= Html::encode($m->descrizione) ?></td>
                 <td><?= Html::encode($m->destinazioneLabel) ?></td>
+                <td><?= Html::encode($m->magazzinoPartenzaLabel) ?></td>
+                <td><?= Html::encode($m->magazzinoArrivoLabel) ?></td>
+                <td><?= Html::encode($m->segnoMovimentoLabel) ?></td>
                 <td><?= (int) $m->anno ?></td>
                 <td><?= (int) $m->contatore ?></td>
                 <td><?= $m->usa_progressivo ? 'Sì' : 'No' ?></td>

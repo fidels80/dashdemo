@@ -1,21 +1,15 @@
 <?php
 
-use yii\helpers\Html;
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Rapportini */
 
-$this->title = 'Update Rapportini: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Rapportinis', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$data = $model->data ? date('d/m/Y', strtotime((string) $model->data)) : '';
+
+$this->title = 'Modifica rapportino n. ' . (int) $model->numero . ($data ? ' del ' . $data : '');
+$this->params['breadcrumbs'][] = ['label' => 'Rapportini', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Rapportino n. ' . (int) $model->numero, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Modifica';
 ?>
-<div class="rapportini-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+<div class="rapportini-update card p-3 shadow-sm">
+    <?= $this->render('_form', ['model' => $model]) ?>
 </div>

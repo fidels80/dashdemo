@@ -19,6 +19,7 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
         return [
             [['id_documento'], 'required'],
             [['id_documento', 'id_articolo', 'id_unita_misura', 'ordine'], 'integer'],
+            [['id_rapportino'], 'safe'],
             [['qta', 'prezzo', 'sconto', 'iva', 'totale', 'fattore'], 'number'],
             [['codice_articolo'], 'string', 'max' => 25],
             [['um'], 'string', 'max' => 10],
@@ -33,6 +34,7 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_documento' => 'Documento',
             'id_articolo' => 'Articolo',
+            'id_rapportino' => 'Rapportino',
             'codice_articolo' => 'Codice',
             'descrizione' => 'Descrizione',
             'id_unita_misura' => 'Unità di misura',
@@ -63,6 +65,11 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
     public function getUnitaMisura()
     {
         return $this->hasOne(MgUnitaMisura::className(), ['id' => 'id_unita_misura']);
+    }
+
+    public function getRapportino()
+    {
+        return $this->hasOne(Rapportini::className(), ['id' => 'id_rapportino']);
     }
 
     public function beforeSave($insert)

@@ -149,6 +149,15 @@ class MgDocumento extends \yii\db\ActiveRecord
     }
 
     /**
+     * True se si possono prelevare/evadere rapportini: documento in bozza
+     * e senza scadenze già pagate.
+     */
+    public function puoPrelevare()
+    {
+        return in_array($this->stato, [null, '', 'bozza'], true) && !$this->hasScadenzePagate();
+    }
+
+    /**
      * Etichetta completa del documento: CODICE ANNO/NUMERO[/suffisso].
      */
     public function getEtichetta()

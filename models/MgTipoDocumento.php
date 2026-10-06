@@ -18,16 +18,49 @@ use Yii;
  * @property string $destinazione
  * @property bool $crea_scadenze
  * @property bool $mostra_varianti
+ * @property bool $preleva_rapportini
+ * @property bool $crea_articoli
+ * @property bool $crea_anagrafiche
+ * @property bool $mostra_matrice
+ * @property int|null $id_magazzino_partenza
+ * @property int|null $id_magazzino_arrivo
+ * @property string $segno_movimento
+ * @property string $varia_impegnato
+ * @property string $varia_ordinato
  * @property string|null $created_at
+ *
+ * @property MgMagazzino|null $magazzinoPartenza
+ * @property MgMagazzino|null $magazzinoArrivo
  */
 class MgTipoDocumento extends \yii\db\ActiveRecord
 {
     const DEST_CLIENTE = 'cliente';
     const DEST_FORNITORE = 'fornitore';
 
+    const MOV_CARICO = 'carico';
+    const MOV_SCARICO = 'scarico';
+    const MOV_NESSUNO = 'nessuno';
+
+    const VARIA_AUMENTA = 'aumenta';
+    const VARIA_DIMINUISCI = 'diminuisci';
+
     public static function tableName()
     {
         return 'mg_tipo_documento';
+    }
+
+    public function init()
+    {
+        parent::init();
+        if ($this->segno_movimento === null) {
+            $this->segno_movimento = self::MOV_NESSUNO;
+        }
+        if ($this->varia_impegnato === null) {
+            $this->varia_impegnato = self::MOV_NESSUNO;
+        }
+        if ($this->varia_ordinato === null) {
+            $this->varia_ordinato = self::MOV_NESSUNO;
+        }
     }
 
     public function rules()
@@ -38,11 +71,24 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             [['usa_progressivo', 'congruita', 'attivo'], 'boolean'],
             [['crea_scadenze'], 'boolean'],
             [['mostra_varianti'], 'boolean'],
+            [['preleva_rapportini', 'crea_articoli', 'crea_anagrafiche', 'mostra_matrice'], 'boolean'],
+            [['id_magazzino_partenza', 'id_magazzino_arrivo'], 'integer'],
+            [['id_magazzino_partenza'], 'exist',
+                'targetClass' => MgMagazzino::className(),
+                'targetAttribute' => ['id_magazzino_partenza' => 'id'],
+                'skipOnEmpty' => true],
+            [['id_magazzino_arrivo'], 'exist',
+                'targetClass' => MgMagazzino::className(),
+                'targetAttribute' => ['id_magazzino_arrivo' => 'id'],
+                'skipOnEmpty' => true],
             [['created_at'], 'safe'],
             [['codice'], 'string', 'max' => 20],
             [['descrizione'], 'string', 'max' => 200],
             [['destinazione'], 'string', 'max' => 20],
             [['destinazione'], 'in', 'range' => array_keys(self::opzioniDestinazione())],
+            [['segno_movimento', 'varia_impegnato', 'varia_ordinato'], 'string', 'max' => 10],
+            [['segno_movimento'], 'in', 'range' => array_keys(self::opzioniSegnoMovimento())],
+            [['varia_impegnato', 'varia_ordinato'], 'in', 'range' => array_keys(self::opzioniVariazione())],
             [['codice'], 'unique'],
         ];
     }
@@ -61,6 +107,15 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             'destinazione' => 'Destinazione',
             'crea_scadenze' => 'Crea scadenze',
             'mostra_varianti' => 'Mostra taglia/colore',
+            'preleva_rapportini' => 'Preleva rapportini',
+            'crea_articoli' => 'Crea articoli',
+            'crea_anagrafiche' => 'Crea anagrafiche',
+            'mostra_matrice' => 'Matrice taglie',
+            'id_magazzino_partenza' => 'Magazzino partenza',
+            'id_magazzino_arrivo' => 'Magazzino arrivo',
+            'segno_movimento' => 'Segno movimento',
+            'varia_impegnato' => 'Varia impegnato',
+            'varia_ordinato' => 'Varia ordinato',
             'created_at' => 'Creato il',
         ];
     }
@@ -71,6 +126,62 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             self::DEST_CLIENTE => 'Cliente',
             self::DEST_FORNITORE => 'Fornitore',
         ];
+    }
+
+    public static function opzioniSegnoMovimento()
+    {
+        return [
+            self::MOV_CARICO => 'Carico (+)',
+            self::MOV_SCARICO => 'Scarico (-)',
+            self::MOV_NESSUNO => 'Nessun movimento',
+        ];
+    }
+
+    public static function opzioniVariazione()
+    {
+        return [
+            self::VARIA_AUMENTA => 'Aumenta (+)',
+            self::VARIA_DIMINUISCI => 'Diminuisci (-)',
+            self::MOV_NESSUNO => 'Nessuna variazione',
+        ];
+    }
+
+    public function getSegnoMovimentoLabel()
+    {
+        $opzioni = self::opzioniSegnoMovimento();
+        return $opzioni[$this->segno_movimento] ?? $this->segno_movimento;
+    }
+
+    public function getVariaImpegnatoLabel()
+    {
+        $opzioni = self::opzioniVariazione();
+        return $opzioni[$this->varia_impegnato] ?? $this->varia_impegnato;
+    }
+
+    public function getVariaOrdinatoLabel()
+    {
+        $opzioni = self::opzioniVariazione();
+        return $opzioni[$this->varia_ordinato] ?? $this->varia_ordinato;
+    }
+
+    public function getMagazzinoPartenza()
+    {
+        return $this->hasOne(MgMagazzino::className(), ['id' => 'id_magazzino_partenza']);
+    }
+
+    public function getMagazzinoArrivo()
+    {
+        return $this->hasOne(MgMagazzino::className(), ['id' => 'id_magazzino_arrivo']);
+    }
+
+    public function getMagazzinoPartenzaLabel()
+    {
+        return $this->magazzinoPartenza ? $this->magazzinoPartenza->etichetta : null;
+    }
+
+    public function getMagazzinoArrivoLabel()
+    {
+        return $this->magazzinoArrivo ? $this->magazzinoArrivo->etichetta : null;
     }
 
     public function getDestinazioneLabel()
@@ -107,10 +218,18 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
      */
     public static function mapMostraVarianti()
     {
-        $rows = self::find()->select(['id', 'mostra_varianti'])->all();
+        return self::mapFlag('mostra_varianti');
+    }
+
+    /**
+     * Mappa id_tipo => valore (0/1) di un flag booleano del tipo documento.
+     */
+    public static function mapFlag($campo)
+    {
+        $rows = self::find()->select(['id', $campo])->all();
         $map = [];
         foreach ($rows as $t) {
-            $map[(int) $t->id] = (int) $t->mostra_varianti;
+            $map[(int) $t->id] = (int) $t->$campo;
         }
         return $map;
     }

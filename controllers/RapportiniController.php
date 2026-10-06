@@ -64,6 +64,24 @@ class RapportiniController extends Controller
     }
 
     /**
+     * Versione stampabile del rapportino, aperta in una nuova scheda.
+     * @param string $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionStampa($id)
+    {
+        $this->getuser();
+
+        $model = $this->findModel($id);
+
+        $this->layout = false;
+        return $this->render('@app/views/mgdocumento/rapportino_stampa', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * Creates a new Rapportini model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -77,6 +95,7 @@ class RapportiniController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->userid = Yii::$app->user->id;
+            $this->preparaPerSalvataggio($model);
             if ($model->save()) {
                 return $this->redirect([ 'index' ]);
             }
@@ -104,6 +123,7 @@ class RapportiniController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             // Il rapportino resta sempre riconducibile all'utente collegato.
             $model->userid = Yii::$app->user->id;
+            $this->preparaPerSalvataggio($model);
 
             if ($model->save()) {
                 if ($isAjax) {
@@ -130,6 +150,38 @@ class RapportiniController extends Controller
     }
 
     /**
+     * Normalizza i valori provenienti dalla form prima del salvataggio.
+     *
+     * SQL Server (lingua italiana, DATEFORMAT dmy) non interpreta "YYYY-MM-DD":
+     * la data va inviata nel formato ISO 8601 con la "T".
+     */
+    protected function preparaPerSalvataggio(Rapportini $model)
+    {
+        if ($model->data !== null && $model->data !== '') {
+            $ts = strtotime((string) $model->data);
+            if ($ts !== false) {
+                $model->data = date('Y-m-d\TH:i:s', $ts);
+            }
+        }
+        $this->completaDescrizioneArticolo($model);
+    }
+
+    /**
+     * Recupera dall'anagrafica articoli la descrizione del codice selezionato.
+     */
+    protected function completaDescrizioneArticolo(Rapportini $model)
+    {
+        if ($model->cd_art === null || $model->cd_art === '') {
+            $model->des_art = null;
+            return;
+        }
+        $articolo = \app\models\MgArticolo::findOne(['codice' => $model->cd_art]);
+        if ($articolo !== null) {
+            $model->des_art = $articolo->descrizione;
+        }
+    }
+
+    /**
      * Updates an existing Rapportini model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
@@ -142,8 +194,11 @@ class RapportiniController extends Controller
 
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect([ 'index' ]);
+        if ($model->load(Yii::$app->request->post())) {
+            $this->preparaPerSalvataggio($model);
+            if ($model->save()) {
+                return $this->redirect([ 'index' ]);
+            }
         }
 
         return $this->render('update', [
@@ -162,7 +217,15 @@ class RapportiniController extends Controller
     {
         $this->getuser();
 
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+
+        if ((int) $model->evaso === 1) {
+            Yii::$app->session->setFlash('error',
+                'Il rapportino è evaso in un documento e non può essere eliminato.');
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        $model->delete();
 
         return $this->redirect(['index']);
     }

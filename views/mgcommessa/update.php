@@ -9,6 +9,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Commesse', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->codice, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Modifica';
 ?>
-<div class="mgcommessa-update card p-3 shadow-sm">
+<div class="mgcommessa-update">
     <?= $this->render('_form', ['model' => $model, 'anagrafiche' => $anagrafiche]) ?>
 </div>

@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\MgArticolo */
@@ -9,57 +8,76 @@ use yii\widgets\DetailView;
 $this->title = $model->codice . ' - ' . $model->descrizione;
 $this->params['breadcrumbs'][] = ['label' => 'Articoli', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$campo = function ($label, $valore, $col = 'col-md-3') {
+    echo '<div class="' . $col . ' mb-3">'
+        . '<label class="text-muted small mb-0 d-block">' . Html::encode($label) . '</label>'
+        . '<div class="font-weight-bold">' . ($valore === '' || $valore === null ? '<span class="text-muted">—</span>' : Html::encode($valore)) . '</div>'
+        . '</div>';
+};
 ?>
 <div class="mgarticolo-view">
 
-    <p>
-        <?= Html::a('<i class="fas fa-pen"></i> Modifica', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('<i class="fas fa-trash"></i> Elimina', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => ['confirm' => 'Eliminare questo articolo?', 'method' => 'post'],
-        ]) ?>
-    </p>
+    <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+        <div>
+            <?= Html::a('<i class="fas fa-pen"></i> Modifica', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('<i class="fas fa-trash"></i> Elimina', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => ['confirm' => 'Eliminare questo articolo?', 'method' => 'post'],
+            ]) ?>
+        </div>
+    </div>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'guid',
-            'codice',
-            'descrizione',
-            'um',
-            ['attribute' => 'prezzo', 'value' => number_format((float) $model->prezzo, 4, ',', '.')],
-            [
-                'attribute' => 'id_iva_vendita',
-                'label' => 'IVA vendita',
-                'value' => function ($model) {
-                    return $model->ivaVendita
-                        ? $model->ivaVendita->descrizione . ' (' . number_format((float) $model->ivaVendita->percentuale, 2, ',', '.') . '%)'
-                        : '';
-                },
-            ],
-            [
-                'attribute' => 'id_iva_acquisto',
-                'label' => 'IVA acquisto',
-                'value' => function ($model) {
-                    return $model->ivaAcquisto
-                        ? $model->ivaAcquisto->descrizione . ' (' . number_format((float) $model->ivaAcquisto->percentuale, 2, ',', '.') . '%)'
-                        : '';
-                },
-            ],
-            ['attribute' => 'id_marca', 'label' => 'Marca', 'value' => function ($model) { return $model->marca ? $model->marca->etichetta : ''; }],
-            ['attribute' => 'id_modello', 'label' => 'Modello', 'value' => function ($model) { return $model->modello ? $model->modello->etichetta : ''; }],
-            ['attribute' => 'id_tessuto', 'label' => 'Tessuto', 'value' => function ($model) { return $model->tessuto ? $model->tessuto->etichetta : ''; }],
-            ['attribute' => 'id_taglia', 'label' => 'Taglia', 'value' => function ($model) { return $model->taglia ? $model->taglia->etichetta : ''; }],
-            ['attribute' => 'id_colore', 'label' => 'Colore', 'value' => function ($model) { return $model->colore ? $model->colore->etichetta : ''; }],
-            ['attribute' => 'attivo', 'format' => 'boolean'],
-        ],
-    ]) ?>
+    <div class="card mb-3">
+        <div class="card-header">Dati articolo</div>
+        <div class="card-body">
+            <div class="row">
+                <?php
+                $campo('ID', $model->id, 'col-md-2');
+                $campo('Codice', $model->codice, 'col-md-3');
+                $campo('U.M.', $model->um, 'col-md-2');
+                $campo('Attivo', $model->attivo ? 'Sì' : 'No', 'col-md-2');
+                ?>
+            </div>
+            <div class="row">
+                <?php $campo('Descrizione', $model->descrizione, 'col-md-12'); ?>
+            </div>
+            <div class="row">
+                <?php
+                $campo('Prezzo', number_format((float) $model->prezzo, 4, ',', '.'), 'col-md-3');
+                $campo('IVA vendita', $model->ivaVendita
+                    ? $model->ivaVendita->descrizione . ' (' . number_format((float) $model->ivaVendita->percentuale, 2, ',', '.') . '%)'
+                    : '', 'col-md-4');
+                $campo('IVA acquisto', $model->ivaAcquisto
+                    ? $model->ivaAcquisto->descrizione . ' (' . number_format((float) $model->ivaAcquisto->percentuale, 2, ',', '.') . '%)'
+                    : '', 'col-md-4');
+                ?>
+            </div>
+            <div class="row">
+                <?php $campo('GUID', $model->guid, 'col-md-6'); ?>
+            </div>
+        </div>
+    </div>
 
-    <div class="card mt-3">
+    <div class="card mb-3">
+        <div class="card-header">Varianti</div>
+        <div class="card-body">
+            <div class="row">
+                <?php
+                $campo('Marca', $model->marca ? $model->marca->etichetta : '', 'col-md-3');
+                $campo('Modello', $model->modello ? $model->modello->etichetta : '', 'col-md-3');
+                $campo('Tessuto', $model->tessuto ? $model->tessuto->etichetta : '', 'col-md-2');
+                $campo('Taglia', $model->taglia ? $model->taglia->etichetta : '', 'col-md-2');
+                $campo('Colore', $model->colore ? $model->colore->etichetta : '', 'col-md-2');
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
         <div class="card-header">Unità di misura</div>
         <div class="card-body p-0">
-            <table class="table table-sm mb-0">
+            <table class="table table-sm table-striped mb-0">
                 <thead>
                 <tr>
                     <th>Unità</th>

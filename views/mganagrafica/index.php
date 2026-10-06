@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
         <div class="mb-2">
             <?= Html::a('<i class="fas fa-plus"></i> Nuova anagrafica', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-address-card"></i> Contatti', ['mgcontatto/index'], ['class' => 'btn btn-outline-secondary']) ?>
             <?= Html::a('<i class="fas fa-list"></i> Documenti', ['mgdocumento/index'], ['class' => 'btn btn-outline-secondary']) ?>
         </div>
     </div>
@@ -28,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Città</th>
             <th>Telefono</th>
             <th>Email</th>
+            <th class="text-center">Contatti</th>
             <th>Ruoli</th>
             <th>Metodo pagamento</th>
             <th>Aliquota IVA</th>
@@ -46,10 +48,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= Html::encode($m->citta) ?></td>
                 <td><?= Html::encode($m->telefono) ?></td>
                 <td><?= Html::encode($m->email) ?></td>
+                <td class="text-center"><?= count($m->contatti) ?></td>
                 <td><?= Html::encode($m->tipiLabel) ?></td>
                 <td><?= Html::encode($m->metodoPagamento->descrizione ?? '') ?></td>
                 <td><?= $m->aliquotaIva ? Html::encode($m->aliquotaIva->descrizione) : '' ?></td>
-                <td class="text-end"><?= number_format((float) $m->perc_provvigione, 2, ',', '.') ?></td>
+                <td class="text-right"><?= number_format((float) $m->perc_provvigione, 2, ',', '.') ?></td>
                 <td><?= $m->attivo ? 'Sì' : 'No' ?></td>
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>

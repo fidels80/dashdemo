@@ -17,6 +17,10 @@ use app\models\MgArticolo;
 /* @var $aliquote array */
 /* @var $unita array */
 /* @var $tipiMostraVarianti array */
+/* @var $tipiPrelevaRapportini array */
+/* @var $tipiCreaArticoli array */
+/* @var $tipiCreaAnagrafiche array */
+/* @var $tipiMostraMatrice array */
 /* @var $modelliMatrice array */
 /* @var $righe app\models\MgDocumentoRiga[] */
 
@@ -38,6 +42,10 @@ foreach ((array) $tipi as $tid => $tlabel) {
         'data-crea-scadenze' => isset($tipiCreaScadenze[$tid]) ? (int) $tipiCreaScadenze[$tid] : 0,
         'data-destinazione' => isset($tipiDestinazione[$tid]) ? $tipiDestinazione[$tid] : 'cliente',
         'data-mostra-varianti' => isset($tipiMostraVarianti[$tid]) ? (int) $tipiMostraVarianti[$tid] : 0,
+        'data-preleva-rapportini' => isset($tipiPrelevaRapportini[$tid]) ? (int) $tipiPrelevaRapportini[$tid] : 0,
+        'data-crea-articoli' => isset($tipiCreaArticoli[$tid]) ? (int) $tipiCreaArticoli[$tid] : 0,
+        'data-crea-anagrafiche' => isset($tipiCreaAnagrafiche[$tid]) ? (int) $tipiCreaAnagrafiche[$tid] : 0,
+        'data-mostra-matrice' => isset($tipiMostraMatrice[$tid]) ? (int) $tipiMostraMatrice[$tid] : 0,
     ];
 }
 
@@ -52,6 +60,8 @@ foreach ((array) $unita as $uid => $ulabel) {
 }
 
 $mostraVarianti = !empty($model->id_tipo) && !empty($tipiMostraVarianti[$model->id_tipo]);
+$puoPrelevare = $model->puoPrelevare();
+$idDocumento = $model->isNewRecord ? null : (int) $model->id;
 ?>
 <div class="mgdocumento-form">
 
@@ -129,6 +139,11 @@ $mostraVarianti = !empty($model->id_tipo) && !empty($tipiMostraVarianti[$model->
                 <button type="button" class="btn btn-sm btn-outline-info" id="btn-matrice-taglie">
                     <i class="fas fa-table"></i> Matrice taglie
                 </button>
+                <?php if ($puoPrelevare): ?>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-preleva-rapportini">
+                        <i class="fas fa-clipboard-check"></i> Preleva rapportini
+                    </button>
+                <?php endif; ?>
                 <button type="button" class="btn btn-sm btn-outline-success" id="btn-nuovo-articolo">
                     <i class="fas fa-box"></i> Nuovo articolo
                 </button>
@@ -302,6 +317,56 @@ $mostraVarianti = !empty($model->id_tipo) && !empty($tipiMostraVarianti[$model->
         </div>
     </div>
 
+    <!-- Modale preleva rapportini -->
+    <div class="modal fade" id="modal-preleva-rapportini" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <h5 class="modal-title text-white"><i class="fas fa-clipboard-check"></i> Preleva rapportini</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center flex-wrap mb-2">
+                        <div class="input-group input-group-sm" style="max-width:340px;">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input type="text" id="rap-search" class="form-control" placeholder="Cerca per numero, cliente, commessa, articolo...">
+                        </div>
+                        <span class="ml-2 text-muted small" id="rap-search-info"></span>
+                    </div>
+                    <div class="table-responsive" style="max-height:55vh;overflow:auto;">
+                        <table class="table table-sm table-bordered mb-0">
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="width:36px;">
+                                    <input type="checkbox" id="rap-check-all" title="Seleziona tutti">
+                                </th>
+                                <th style="width:70px;">N.</th>
+                                <th style="width:90px;">Data</th>
+                                <th>Cliente</th>
+                                <th>Sottocommessa</th>
+                                <th>Articolo</th>
+                                <th class="text-right" style="width:70px;">Q.tà</th>
+                                <th style="width:110px;">Ore</th>
+                            </tr>
+                            </thead>
+                            <tbody id="rap-list-body">
+                            <tr><td colspan="8" class="text-muted">Caricamento...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="rap-error" class="text-danger small mt-2"></div>
+                </div>
+                <div class="modal-footer">
+                    <span class="mr-auto text-muted small" id="rap-info">Seleziona i rapportini da prelevare</span>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-secondary" id="btn-rap-genera"><i class="fas fa-plus"></i> Genera righe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modale nuovo cliente/fornitore -->
     <div class="modal fade" id="modal-nuovo-fornitore" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -342,11 +407,14 @@ $mostraVarianti = !empty($model->id_tipo) && !empty($tipiMostraVarianti[$model->
             </div>
         </div>
     </div>
+
+    <?= $this->render('_rapportino_modal') ?>
 </div>
 
 <script>
 (function () {
     var isNew = <?= $isNew ? 'true' : 'false' ?>;
+    var puoPrelevare = <?= $puoPrelevare ? 'true' : 'false' ?>;
     var proponiUrl = '<?= \yii\helpers\Url::to(['mgdocumento/proponi-numero']) ?>';
 
     function formatTotale(v) {
@@ -389,6 +457,21 @@ $mostraVarianti = !empty($model->id_tipo) && !empty($tipiMostraVarianti[$model->
         var mostra = String(v) === '1';
         $('.col-varianti').toggle(mostra);
         $('#righe-totale-label').attr('colspan', mostra ? 11 : 8);
+    }
+
+    // --- VISIBILITA' PULSANTI IN BASE AL TIPO DOCUMENTO ---
+    function tipoFlag(nome) {
+        var v = $('#mgdocumento-id_tipo option:selected').attr('data-' + nome);
+        return String(v) === '1';
+    }
+
+    function aggiornaPulsantiTipo() {
+        $('#btn-nuovo-articolo').toggle(tipoFlag('crea-articoli'));
+        $('#btn-nuovo-fornitore').toggle(tipoFlag('crea-anagrafiche'));
+        $('#btn-matrice-taglie').toggle(tipoFlag('mostra-matrice'));
+        if (puoPrelevare) {
+            $('#btn-preleva-rapportini').toggle(tipoFlag('preleva-rapportini'));
+        }
     }
 
     // --- RICERCA RIGHE ---
@@ -603,6 +686,8 @@ $mostraVarianti = !empty($model->id_tipo) && !empty($tipiMostraVarianti[$model->
 
     $(document).on('click', '.riga-duplica', function () {
         var $clone = $(this).closest('.riga-row').clone();
+        $clone.find('.riga-id-rap').val('');
+        $clone.find('.riga-rap-dettaglio').attr('data-id-rap', '').hide();
         $('#righe-body').append($clone);
         aggiornaIndici();
         filtraRighe();
@@ -718,6 +803,7 @@ $mostraVarianti = !empty($model->id_tipo) && !empty($tipiMostraVarianti[$model->
         loadAnagrafiche();
         applicaAliquoteRighe();
         aggiornaColonneVarianti();
+        aggiornaPulsantiTipo();
         aggiornaScadenze();
     });
 
@@ -1018,7 +1104,126 @@ $mostraVarianti = !empty($model->id_tipo) && !empty($tipiMostraVarianti[$model->
         });
     });
 
+    // --- PRELIEVO RAPPORTINI ---
+    var rapDisponibiliUrl = '<?= Url::to(['mgdocumento/rapportini-disponibili']) ?>';
+    var idDocumento = <?= $idDocumento === null ? 'null' : (int) $idDocumento ?>;
+
+    function aggiornaInfoRapportini() {
+        var n = $('#rap-list-body .rap-check:checked').length;
+        $('#rap-info').text(n > 0 ? (n + ' rapportini selezionati') : 'Seleziona i rapportini da prelevare');
+    }
+
+    function filtraRapportini() {
+        var q = ($('#rap-search').val() || '').toLowerCase().trim();
+        var vis = 0, tot = 0;
+        $('#rap-list-body tr').each(function () {
+            var $r = $(this);
+            if (!$r.data('rap')) { return; }
+            tot++;
+            var ok = (q === '' || $r.text().toLowerCase().indexOf(q) !== -1);
+            $r.toggle(ok);
+            if (ok) { vis++; }
+        });
+        $('#rap-search-info').text(q === '' ? '' : (vis + ' di ' + tot));
+    }
+
+    function renderRapportini(list) {
+        var $b = $('#rap-list-body').empty();
+        if (!list.length) {
+            $b.append('<tr><td colspan="8" class="text-muted">Nessun rapportino disponibile.</td></tr>');
+            $('#rap-info').text('Nessun rapportino da prelevare');
+            return;
+        }
+        $.each(list, function (i, rap) {
+            var $tr = $('<tr>').data('rap', rap);
+            $tr.append($('<td class="text-center">').append($('<input type="checkbox" class="rap-check">').val(rap.id)));
+            $tr.append($('<td>').text(rap.numero));
+            $tr.append($('<td>').text(rap.data));
+            $tr.append($('<td>').text(rap.cliente || ''));
+            $tr.append($('<td>').text(rap.commessa_desc || ''));
+            $tr.append($('<td>').text(((rap.cd_art || '') + ' ' + (rap.des_art || '')).trim()));
+            $tr.append($('<td class="text-right">').text(rap.qta));
+            $tr.append($('<td>').text((rap.ora_in || '') + (rap.ora_out ? ' - ' + rap.ora_out : '')));
+            $b.append($tr);
+        });
+        filtraRapportini();
+        aggiornaInfoRapportini();
+    }
+
+    function caricaRapportini() {
+        $('#rap-error').text('');
+        $('#rap-list-body').html('<tr><td colspan="8" class="text-muted">Caricamento...</td></tr>');
+        $.getJSON(rapDisponibiliUrl, { id_documento: idDocumento, q: $('#rap-search').val() || '' }, function (res) {
+            if (!res || !res.success) {
+                $('#rap-list-body').html('<tr><td colspan="8" class="text-danger">Errore di caricamento.</td></tr>');
+                return;
+            }
+            renderRapportini(res.rapportini);
+        }).fail(function () {
+            $('#rap-list-body').html('<tr><td colspan="8" class="text-danger">Errore di rete.</td></tr>');
+        });
+    }
+
+    function applicaRapportinoARiga($row, rap) {
+        var $sel = $row.find('.riga-articolo');
+        if (rap.id_articolo) {
+            $sel.val(String(rap.id_articolo));
+            if ($sel.val()) {
+                applicaArticoloARiga($row);
+            }
+        }
+        $row.find('.riga-codice').val(rap.cd_art || '');
+        $row.find('.riga-desc').val(rap.des_art || '');
+        $row.find('.riga-qta').val(rap.qta || 0);
+        if (!rap.id_articolo || !$sel.val()) {
+            $row.find('.riga-prezzo-base').val(rap.prezzo || 0);
+            $row.find('.riga-prezzo').val(rap.prezzo || 0);
+            $row.find('.riga-iva').val(rap.iva || 0);
+            if (rap.um) { $row.find('.riga-um-codice').val(rap.um); }
+        }
+        $row.find('.riga-id-rap').val(rap.id);
+        $row.find('.riga-rap-dettaglio').attr('data-id-rap', rap.id).show();
+        ricalcolaRiga($row);
+    }
+
+    $('#btn-preleva-rapportini').on('click', function () {
+        $('#rap-search').val('');
+        $('#rap-check-all').prop('checked', false);
+        $('#modal-preleva-rapportini').modal('show');
+        caricaRapportini();
+    });
+
+    $('#rap-search').on('input', filtraRapportini);
+    $('#rap-check-all').on('change', function () {
+        var c = $(this).is(':checked');
+        $('#rap-list-body .rap-check').filter(':visible').prop('checked', c);
+        aggiornaInfoRapportini();
+    });
+    $(document).on('change', '.rap-check', aggiornaInfoRapportini);
+
+    $('#btn-rap-genera').on('click', function () {
+        var creati = 0;
+        sopprimiScadenze = true;
+        $('#rap-list-body .rap-check:checked').each(function () {
+            var rap = $(this).closest('tr').data('rap');
+            if (!rap) { return; }
+            var $row = aggiungiRiga(true);
+            applicaRapportinoARiga($row, rap);
+            creati++;
+        });
+        sopprimiScadenze = false;
+        if (creati > 0) {
+            aggiornaIndici();
+            filtraRighe();
+            ricalcolaTotale();
+            $('#modal-preleva-rapportini').modal('hide');
+        } else {
+            $('#rap-error').text('Seleziona almeno un rapportino.');
+        }
+    });
+
     aggiornaColonneVarianti();
+    aggiornaPulsantiTipo();
     initRigheUm();
     filtraRighe();
     ricalcolaTotale();

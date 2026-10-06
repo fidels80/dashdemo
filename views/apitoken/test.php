@@ -1,22 +1,31 @@
 <?php
 
 use yii\web\View;
+use app\models\DashApiEntita;
 
 /* @var $this yii\web\View */
 /* @var $endpoints array */
+/* @var $entita app\models\DashApiEntita[] */
 
 $this->title = 'Prova servizi REST';
 $this->params['breadcrumbs'][] = ['label' => 'Token API', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$samples = [
+$entita = isset($entita) ? $entita : DashApiEntita::attive();
+$codici = [];
+foreach ($entita as $e) {
+    $codici[] = $e->codice;
+}
+
+// Esempi di import per le entità principali del microgestionale.
+$esempi = [
     'tipi-documento' => [
         'entity' => 'tipi-documento',
         'records' => [['codice' => 'API-TEST', 'descrizione' => 'Tipo di prova API']],
     ],
-    'anagrafica' => [
-        'entity' => 'anagrafica',
-        'records' => [['codice' => 'API-TEST', 'ragione_sociale' => 'Soggetto di prova API', 'is_cliente' => 1, 'attivo' => 1]],
+    'anagrafiche' => [
+        'entity' => 'anagrafiche',
+        'records' => [['codice' => 'API-TEST', 'ragione_sociale' => 'Soggetto di prova API', 'attivo' => 1]],
     ],
     'articoli' => [
         'entity' => 'articoli',
@@ -31,6 +40,13 @@ $samples = [
         'records' => [['id_documento' => 0, 'ordine' => 1, 'descrizione' => 'Riga di prova API', 'qta' => 1, 'prezzo' => 1, 'iva' => 22]],
     ],
 ];
+
+$samples = [];
+foreach ($esempi as $key => $payload) {
+    if (in_array($key, $codici, true)) {
+        $samples[$key] = $payload;
+    }
+}
 
 $config = [
     'endpoints' => $endpoints,
@@ -98,18 +114,18 @@ $this->registerJs('var ApiTestConfig = ' . json_encode($config, JSON_UNESCAPED_S
                     <div class="form-group">
                         <label>Parametri query</label>
                         <input type="text" id="req-params" class="form-control" spellcheck="false"
-                               placeholder="entity=documenti&id=1&with_righe=1">
+                               placeholder="entity=documenti&id=1&with=righe,scadenze">
                     </div>
                     <div class="form-group" id="req-body-group">
                         <div class="d-flex justify-content-between align-items-center mb-1">
                             <label class="mb-0">Body JSON (POST)</label>
                             <select id="sample-select" class="form-control form-control-sm" style="width:auto">
                                 <option value="">Carica esempio…</option>
-                                <option value="tipi-documento">tipi-documento</option>
-                                <option value="anagrafica">anagrafica</option>
-                                <option value="articoli">articoli</option>
-                                <option value="documenti">documenti</option>
-                                <option value="righe">righe</option>
+                                <?php foreach (array_keys($samples) as $chiave): ?>
+                                    <option value="<?= \yii\helpers\Html::encode($chiave) ?>">
+                                        <?= \yii\helpers\Html::encode($chiave) ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <textarea id="req-body" class="form-control" rows="7" spellcheck="false"
@@ -171,22 +187,33 @@ $this->registerJs('var ApiTestConfig = ' . json_encode($config, JSON_UNESCAPED_S
                         </thead>
                         <tbody>
                         <tr><td><code>api/index</code></td><td>GET</td><td>—</td></tr>
-                        <tr><td><code>api/export</code></td><td>GET</td><td><code>entity</code>, <code>filters</code> (JSON), <code>with_righe</code></td></tr>
-                        <tr><td><code>api/view</code></td><td>GET</td><td><code>entity</code>, <code>id</code></td></tr>
+                        <tr><td><code>api/export</code></td><td>GET</td><td><code>entity</code>, <code>filters</code> (JSON), <code>with</code>, <code>limit</code>/<code>offset</code></td></tr>
+                        <tr><td><code>api/view</code></td><td>GET</td><td><code>entity</code>, <code>id</code>, <code>with</code></td></tr>
                         <tr><td><code>api/import</code></td><td>POST</td><td>body: <code>entity</code>, <code>records[]</code></td></tr>
-                        <tr><td><code>api/delete</code></td><td>POST</td><td>body: <code>entity</code>, <code>ids[]</code></td></tr>
+                        <tr><td><code>api/delete</code></td><td>POST</td><td>body: <code>entity</code>, <code>ids[]</code>, <code>cascade</code></td></tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="col-md-5">
                     <p class="mb-1">
                         <strong>Entità:</strong>
-                        <code>tipi-documento</code>, <code>anagrafica</code>, <code>articoli</code>,
-                        <code>documenti</code>, <code>righe</code>
+                        <?php if (empty($codici)): ?>
+                            <span class="text-muted">nessuna concessa a questo token</span>
+                        <?php else: ?>
+                            <?php foreach ($codici as $i => $c): ?>
+                                <?= $i > 0 ? ', ' : '' ?><code><?= \yii\helpers\Html::encode($c) ?></code>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </p>
                     <p class="mb-1"><strong>Filtri export:</strong> <code>filters={"anno":2026}</code></p>
-                    <p class="mb-1"><strong>Documenti:</strong> <code>with_righe=1</code> include le righe</p>
-                    <p class="mb-0"><strong>Errori:</strong> 401 token mancante/non valido, 404 record non trovato</p>
+                    <p class="mb-1"><strong>Allegare figli:</strong> <code>with=righe,scadenze</code></p>
+                    <p class="mb-1"><strong>Paginazione:</strong> <code>limit=50&amp;offset=0</code></p>
+                    <p class="mb-1"><strong>Cascata:</strong> <code>"cascade": true</code> rimuove le righe figlie</p>
+                    <p class="mb-0">
+                        <strong>Errori:</strong> 401 token mancante/non valido, 403 permesso negato,
+                        404 entità o record inesistente, 409 cancellazione bloccata da un vincolo,
+                        422 record non validi
+                    </p>
                 </div>
             </div>
         </div>
@@ -198,7 +225,7 @@ $this->registerJs(<<<'JS'
     var LS_KEY = 'dashdemo_api_token';
     var DEFAULTS = {
         index: { method: 'GET', params: '', body: '' },
-        export: { method: 'GET', params: 'entity=documenti&with_righe=1', body: '' },
+        export: { method: 'GET', params: 'entity=documenti&with=righe', body: '' },
         view: { method: 'GET', params: 'entity=documenti&id=1', body: '' },
         import: { method: 'POST', params: '', body: '' },
         delete: { method: 'POST', params: '', body: '{\n  "entity": "righe",\n  "ids": []\n}' }

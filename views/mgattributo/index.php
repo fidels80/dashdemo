@@ -8,7 +8,11 @@ use app\components\DataTables;
 /* @var $tipi array */
 /* @var $tipoSelezionato string|null */
 
-$this->title = 'Attributi articolo';
+$titolo = 'Attributi articolo';
+if ($tipoSelezionato !== null && $tipoSelezionato !== '' && isset($tipi[$tipoSelezionato])) {
+    $titolo = $tipi[$tipoSelezionato];
+}
+$this->title = $titolo;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mgattributo-index card p-3 shadow-sm">

@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= Html::encode($m->codice) ?></td>
                 <td><?= Html::encode($m->descrizione) ?></td>
                 <td><?= Html::encode($m->um) ?></td>
-                <td class="text-end"><?= number_format((float) $m->prezzo, 4, ',', '.') ?></td>
+                <td class="text-right"><?= number_format((float) $m->prezzo, 4, ',', '.') ?></td>
                 <td class="text-right"><?= $m->ivaVendita ? number_format((float) $m->ivaVendita->percentuale, 2, ',', '.') : '' ?></td>
                 <td class="text-right"><?= $m->ivaAcquisto ? number_format((float) $m->ivaAcquisto->percentuale, 2, ',', '.') : '' ?></td>
                 <td><?= Html::encode($m->variantiLabel) ?></td>

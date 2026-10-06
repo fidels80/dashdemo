@@ -33,6 +33,15 @@ $this->params['breadcrumbs'][] = $this->title;
         <code>curl -H "Authorization: Bearer &lt;token&gt;" "<?= Url::to(['/api/export', 'entity' => 'documenti'], true) ?>"</code>
     </div>
 
+    <div class="alert alert-light border">
+        <i class="fas fa-shield-alt"></i>
+        Ogni token può fare solo quello che è spuntato nella schermata di creazione:
+        entità per entità si sceglie fra <strong>lettura</strong>, <strong>inserimento</strong>,
+        <strong>modifica</strong> e <strong>cancellazione</strong>. Le cancellazioni rispettano
+        i vincoli del microgestionale: non si può eliminare una testata con righe o scadenze,
+        né un articolo citato in un documento, se non autorizzando esplicitamente la cascata sulle righe.
+    </div>
+
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
         <div class="mb-2">
             <?= Html::a('<i class="fas fa-plus"></i> Nuovo token', ['create'], ['class' => 'btn btn-success']) ?>
@@ -43,13 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <table id="apitoken-table" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Descrizione</th>
-            <th>Utente</th>
-            <th>Permessi</th>
-            <th>Creato il</th>
-            <th>Scadenza</th>
-            <th>Ultimo utilizzo</th>
+            <th>ID</th><th>Descrizione</th><th>Utente</th><th>Permessi</th>
+            <th>Creato il</th><th>Scadenza</th><th>Ultimo utilizzo</th>
             <th class="no-export">Azioni</th>
         </tr>
         </thead>
@@ -59,11 +63,32 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= (int) $m->id ?></td>
                 <td><?= Html::encode($m->descrizione) ?></td>
                 <td><?= Html::encode($m->user->username ?? '') ?></td>
-                <td><?= Html::encode($m->scopes) ?></td>
+                <td style="max-width:22rem; white-space:normal;">
+                    <?php $leggibili = $m->getPermessiLeggibili(); ?>
+                    <?php if ($leggibili === 'pieno accesso (tutte le entità, tutte le operazioni)'): ?>
+                        <span class="badge badge-danger">pieno accesso</span>
+                    <?php elseif ($leggibili === 'nessun accesso'): ?>
+                        <span class="badge badge-secondary">nessun accesso</span>
+                    <?php else: ?>
+                        <small><?= Html::encode($leggibili) ?></small>
+                    <?php endif; ?>
+                </td>
                 <td><?= $m->created_at ? date('d/m/Y H:i', $m->created_at) : '' ?></td>
-                <td><?= $m->expires_at ? date('d/m/Y', $m->expires_at) : 'mai' ?></td>
+                <td>
+                    <?php if (!$m->expires_at): ?>
+                        <span class="text-muted">mai</span>
+                    <?php elseif ($m->isScaduto()): ?>
+                        <span class="badge badge-secondary">scaduto il <?= date('d/m/Y', $m->expires_at) ?></span>
+                    <?php else: ?>
+                        <?= date('d/m/Y', $m->expires_at) ?>
+                    <?php endif; ?>
+                </td>
                 <td><?= $m->last_used_at ? date('d/m/Y H:i', $m->last_used_at) : '' ?></td>
                 <td class="text-center text-nowrap no-export">
+                    <?= Html::a('<i class="fas fa-user-shield"></i>', ['update', 'id' => $m->id], [
+                        'class' => 'btn btn-sm btn-info',
+                        'title' => 'Modifica i permessi',
+                    ]) ?>
                     <?= Html::a('<i class="fas fa-trash"></i>', ['delete', 'id' => $m->id], [
                         'class' => 'btn btn-sm btn-danger',
                         'title' => 'Revoca',

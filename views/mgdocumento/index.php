@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= Html::encode($m->anagrafica->ragione_sociale ?? '') ?></td>
                 <td><?= Html::encode($m->descrizione) ?></td>
                 <td><?= Html::encode($m->stato) ?></td>
-                <td class="text-end"><?= number_format((float) $m->totale, 2, ',', '.') ?></td>
+                <td class="text-right"><?= number_format((float) $m->totale, 2, ',', '.') ?></td>
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>
                     <?= Html::a('<i class="fas fa-pen"></i>', ['update', 'id' => $m->id], ['class' => 'btn btn-sm btn-warning', 'title' => 'Modifica']) ?>

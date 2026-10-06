@@ -8,6 +8,7 @@ use yii\helpers\Html;
 /* @var $unita array */
 /* @var $marche array */
 /* @var $modelli array */
+/* @var $tessuti array */
 /* @var $taglie array */
 /* @var $colori array */
 /* @var $unitaArticolo app\models\MgArticoloUm[] */
@@ -23,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'unita' => $unita,
         'marche' => $marche,
         'modelli' => $modelli,
+        'tessuti' => $tessuti,
         'taglie' => $taglie,
         'colori' => $colori,
         'unitaArticolo' => $unitaArticolo,

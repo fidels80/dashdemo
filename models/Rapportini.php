@@ -37,10 +37,10 @@ class Rapportini extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'note'], 'string'],
-            [['cd_cli','altcli',  'qta', 'data', 'ora_in', 'ora_out', 'userid'], 'required'],
+            [['cd_cli', 'commessa', 'qta', 'data', 'ora_in', 'ora_out', 'userid'], 'required'],
             [['qta'], 'number'],
             [['data', 'ora_in', 'ora_out', 'pausa_in', 'pausa_out'], 'safe'],
-            [['userid', 'numero'], 'integer'],
+            [['userid', 'numero', 'evaso'], 'integer'],
             [['cd_cli', 'altcli'], 'string', 'max' => 20],
             [['commessa'], 'string', 'max' => 100],
             [['cd_art'], 'string', 'max' => 160],
@@ -67,6 +67,26 @@ class Rapportini extends \yii\db\ActiveRecord
             'note' => 'Note',
             'cd_art' => 'Articolo',
             'des_art' => 'Des Articolo',
+            'evaso' => 'Evaso',
         ];
+    }
+
+    /**
+     * Rapportini non ancora prelevati in un documento.
+     */
+    public static function scopeNonEvasi()
+    {
+        return static::find()->where(['not', ['evaso' => 1]]);
+    }
+
+    /**
+     * Impedisce l'eliminazione di un rapportino già evaso in un documento.
+     */
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+        return (int) $this->evaso !== 1;
     }
 }

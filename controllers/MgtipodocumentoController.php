@@ -29,7 +29,9 @@ class MgtipodocumentoController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => MgTipoDocumento::find()->orderBy(['codice' => SORT_ASC]),
+            'query' => MgTipoDocumento::find()
+                ->with('magazzinoPartenza', 'magazzinoArrivo')
+                ->orderBy(['codice' => SORT_ASC]),
             'pagination' => false,
         ]);
 

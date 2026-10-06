@@ -140,7 +140,7 @@ class DashMenu extends \yii\db\ActiveRecord
             ];
 
             if (!empty($it->url)) {
-                $node['url'] = ['/' . ltrim($it->url, '/')];
+                $node['url'] = self::urlMenu($it->url);
             } else {
                 $node['url'] = '#';
             }
@@ -154,5 +154,21 @@ class DashMenu extends \yii\db\ActiveRecord
         }
 
         return $result;
+    }
+
+    /**
+     * Converte la stringa url del menu in array route + parametri,
+     * così le query string (es. mgattributo/index?tipo=taglia) funzionano.
+     */
+    private static function urlMenu($url)
+    {
+        $raw = $url;
+        $params = [];
+        $pos = strpos($raw, '?');
+        if ($pos !== false) {
+            parse_str(substr($raw, $pos + 1), $params);
+            $raw = substr($raw, 0, $pos);
+        }
+        return array_merge(['/' . ltrim($raw, '/')], $params);
     }
 }

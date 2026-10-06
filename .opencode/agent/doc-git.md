@@ -43,3 +43,7 @@ mantieni allineati la documentazione ufficiale e il changelog applicativo.
 - Scrivi in italiano, con tono chiaro, rivolto all'utente finale.
 - Segui le convenzioni del progetto descritte in `AGENTS.md`.
 - Se non capisci una modifica, leggi i file coinvolti prima di documentarla.
+- **Non cancellare mai dati** (righe in database, file, branch, tag, commit) se
+  non richiesto esplicitamente: nessuna `DELETE`/`TRUNCATE`/`DROP`,
+  `rm`/`Remove-Item`, `git branch -d`, `git push --delete`, `git reset --hard`,
+  `git clean`. Se serve un'operazione distruttiva, fermarsi e chiedere conferma.
