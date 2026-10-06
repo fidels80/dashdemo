@@ -41,7 +41,7 @@ $this->title = '';
 
 
 
-    $yiiPath = 'C:\xampp\htdocs\dashdemo\yii';
+    $yiiPath = 'E:\xampp82\htdocs\i3qtv\aivora\mg\yii';
     $jdataid = $job['data_id'];
     $jumail =           $job['username'];
     // Costruisco il comando diretto

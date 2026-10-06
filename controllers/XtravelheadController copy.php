@@ -2634,7 +2634,7 @@ private function createExportJob($jobId, $dataId, $username, $userEmail, $record
 private function buildBackgroundCommand($jobId, $id, $username, $userEmail,$tipoexp)
 {
     $yiiPath = Yii::getAlias('@app') . '/yii';
-    $phpPath = 'C:\xampp\php\php.exe';
+    $phpPath = 'E:\xampp82\php\php.exe';
         // PHP_BINARY;
 
 

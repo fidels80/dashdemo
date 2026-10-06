@@ -41,7 +41,7 @@ $this->title = '';
     // --- CORREZIONE FONDAMENTALE ---
     // Avvia il comando in background SOLO se esiste un job appena creato (progress = 0)
     if (!empty($jobs)) {
-        $yiiPath = 'C:\xampp\htdocs\dashdemo\yii';
+        $yiiPath = 'E:\xampp82\htdocs\i3qtv\aivora\mg\yii';
         $jdataid = $job['data_id'];
         $jumail  = $job['username'];
         $userEmail = $job['user_email'];

@@ -1,7 +1,7 @@
 # AGENTS.md — Dashboard Planorys (dashdemo)
 
 Applicazione **Yii2 (PHP)** su **SQL Server**, servita da XAMPP
-(`C:\xampp\htdocs\dashdemo`). Interfaccia in italiano con AdminLTE/Bootstrap 4 e
+(`E:\xampp82\htdocs\i3qtv\aivora\mg`). Interfaccia in italiano con AdminLTE/Bootstrap 4 e
 DataTables.
 
 ## Comandi utili

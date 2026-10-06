@@ -1,3 +1,3 @@
 @echo off
-cd /d C:\xampp\htdocs\dashdemo
+cd /d E:\xampp82\htdocs\i3qtv\aivora\mg
 php yii background-export/cleanup-old-files
