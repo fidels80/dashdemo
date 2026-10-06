@@ -50,9 +50,17 @@ $renderUnitaRiga = function ($index, $umRiga) use ($unita) {
 <div class="mgarticolo-form">
     <?php $form = ActiveForm::begin(['id' => 'mgarticolo-form']); ?>
 
-    <div class="card mb-3">
-        <div class="card-header">Dati articolo</div>
-        <div class="card-body">
+    <ul class="nav nav-tabs mb-3" id="articoloTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="tab-dati-link" data-toggle="tab" href="#tab-dati" role="tab">Dati articolo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab-um-link" data-toggle="tab" href="#tab-um" role="tab">Unità di misura</a>
+        </li>
+    </ul>
+
+    <div class="tab-content border border-top-0 p-3 bg-white shadow-sm mb-3" id="articoloTabsContent">
+        <div class="tab-pane fade show active" id="tab-dati" role="tabpanel">
             <div class="row">
                 <div class="col-md-3"><?= $form->field($model, 'codice')->textInput(['maxlength' => true]) ?></div>
                 <div class="col-md-6"><?= $form->field($model, 'descrizione')->textInput(['maxlength' => true]) ?></div>
@@ -65,17 +73,8 @@ $renderUnitaRiga = function ($index, $umRiga) use ($unita) {
                 <div class="col-md-1"><?= $form->field($model, 'attivo')->checkbox() ?></div>
             </div>
 
-            <div class="alert alert-info mb-0">
-                <i class="fas fa-info-circle"></i>
-                <strong>U.M. predefinita:</strong> campo sincronizzato con l'unità predefinita scelta nella scheda
-                <em>Unità di misura</em>; per cambiarla selezionala lì.
-            </div>
-        </div>
-    </div>
-
-    <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-tags"></i> Varianti</div>
-        <div class="card-body">
+            <hr>
+            <h6 class="text-muted mb-3">Varianti</h6>
             <div class="row">
                 <div class="col-md-3">
                     <?= $form->field($model, 'id_marca')->dropDownList($marche, ['prompt' => 'Nessuna...']) ?>
@@ -101,20 +100,11 @@ $renderUnitaRiga = function ($index, $umRiga) use ($unita) {
             <?php if (!$model->isNewRecord && !empty($model->guid)): ?>
                 <div class="text-muted small">GUID: <code><?= Html::encode($model->guid) ?></code></div>
             <?php endif; ?>
-
-            <div class="alert alert-info mb-0">
-                <i class="fas fa-info-circle"></i>
-                <strong>Varianti:</strong> marche, modelli, tessuti, taglie e colori con cui articoli il prodotto;
-                compariranno nelle tendine della form articolo. Con i pulsanti <em>+ Nuova ...</em> crei un nuovo
-                attributo senza uscire dalla pagina.
-            </div>
         </div>
-    </div>
 
-    <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-ruler"></i> Unità di misura</div>
-        <div class="card-body">
-            <div class="d-flex justify-content-end align-items-center mb-2">
+        <div class="tab-pane fade" id="tab-um" role="tabpanel">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="text-muted small">Il fattore indica quante unità base sono contenute nell'unità (es. Pallet = 100 pezzi).</div>
                 <div>
                     <button type="button" class="btn btn-sm btn-outline-success" id="btn-nuova-um"><i class="fas fa-ruler"></i> Nuova unità</button>
                     <button type="button" class="btn btn-sm btn-primary" id="btn-add-um"><i class="fas fa-plus"></i> Aggiungi unità</button>
@@ -137,13 +127,6 @@ $renderUnitaRiga = function ($index, $umRiga) use ($unita) {
                 <?php endif; ?>
                 </tbody>
             </table>
-
-            <div class="alert alert-info mb-0">
-                <i class="fas fa-info-circle"></i>
-                <strong>Fattore conversione:</strong> quante unità base sono contenute nell'unità (es. Pallet = 100 pezzi).
-                <br>
-                <strong>Predefinita:</strong> l'unità scelta verrà usata come U.M. principale dell'articolo.
-            </div>
         </div>
     </div>
 

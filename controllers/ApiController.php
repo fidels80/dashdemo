@@ -67,12 +67,14 @@ class ApiController extends Controller
 
         $plain = $this->getBearerToken();
         if (empty($plain)) {
-            return $this->fallito(401, 'Token Bearer mancante.');
+            Yii::$app->response->data = $this->fallito(401, 'Token Bearer mancante.');
+            return false;
         }
 
         $this->apiToken = ApiToken::findValid($plain);
         if (!$this->apiToken) {
-            return $this->fallito(401, 'Token non valido o scaduto.');
+            Yii::$app->response->data = $this->fallito(401, 'Token non valido o scaduto.');
+            return false;
         }
         $this->apiToken->markUsed();
 
@@ -332,6 +334,12 @@ class ApiController extends Controller
         $entita = $this->risolviEntita();
         if (!$entita instanceof DashApiEntita) {
             return $entita;
+        }
+
+        $puoScrivere = ApiAccess::can($entita->codice, ApiAccess::OP_INSERT, $this->apiToken)
+            || ApiAccess::can($entita->codice, ApiAccess::OP_UPDATE, $this->apiToken);
+        if (!$puoScrivere) {
+            return $this->negato($entita, ApiAccess::OP_UPDATE);
         }
 
         $records = Yii::$app->request->post('records', []);

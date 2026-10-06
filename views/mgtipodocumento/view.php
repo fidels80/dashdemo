@@ -79,6 +79,25 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
     </div>
 
     <div class="card mb-3">
+        <div class="card-header">Movimento di magazzino</div>
+        <div class="card-body">
+            <div class="row">
+                <?php
+                $campo('Magazzino partenza', $model->magazzinoPartenzaLabel, 'col-md-4');
+                $campo('Magazzino arrivo', $model->magazzinoArrivoLabel, 'col-md-4');
+                $campo('Segno movimento', $model->segnoMovimentoLabel, 'col-md-4');
+                ?>
+            </div>
+            <div class="row">
+                <?php
+                $campo('Varia impegnato', $model->variaImpegnatoLabel, 'col-md-4');
+                $campo('Varia ordinato', $model->variaOrdinatoLabel, 'col-md-4');
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
         <div class="card-header">Info</div>
         <div class="card-body">
             <div class="row">

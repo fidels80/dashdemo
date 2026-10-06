@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\MgMagazzino;
 use app\models\MgTipoDocumento;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -10,9 +11,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CRUD per l'anagrafica dei tipi documento.
+ * CRUD dell'anagrafica dei magazzini (codice, descrizione, anagrafica).
  */
-class MgtipodocumentoController extends Controller
+class MgmagazzinoController extends Controller
 {
     public function behaviors()
     {
@@ -29,38 +30,25 @@ class MgtipodocumentoController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => MgTipoDocumento::find()
-                ->with('magazzinoPartenza', 'magazzinoArrivo')
-                ->orderBy(['codice' => SORT_ASC]),
+            'query' => MgMagazzino::find()->with('anagrafica')->orderBy(['codice' => SORT_ASC]),
             'pagination' => false,
         ]);
 
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
     public function actionCreate()
     {
-        $model = new MgTipoDocumento();
-        $model->anno = (int) date('Y');
-        $model->usa_progressivo = true;
-        $model->congruita = true;
+        $model = new MgMagazzino();
         $model->attivo = true;
-        $model->destinazione = MgTipoDocumento::DEST_CLIENTE;
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->created_at = new \yii\db\Expression('GETDATE()');
-            if ($model->save()) {
-                return $this->redirect([ 'index' ]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', ['model' => $model]);
@@ -71,7 +59,7 @@ class MgtipodocumentoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect([ 'index' ]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', ['model' => $model]);
@@ -79,17 +67,24 @@ class MgtipodocumentoController extends Controller
 
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
 
+        if (MgTipoDocumento::find()->where(['id_magazzino_partenza' => $id])->exists()
+            || MgTipoDocumento::find()->where(['id_magazzino_arrivo' => $id])->exists()) {
+            Yii::$app->session->setFlash('error',
+                'Impossibile eliminare il magazzino: è utilizzato da uno o più tipi documento.');
+            return $this->redirect(['view', 'id' => $id]);
+        }
+
+        $model->delete();
         return $this->redirect(['index']);
     }
 
     protected function findModel($id)
     {
-        if (($model = MgTipoDocumento::findOne($id)) !== null) {
+        if (($model = MgMagazzino::findOne($id)) !== null) {
             return $model;
         }
-
-        throw new NotFoundHttpException('Tipo documento non trovato.');
+        throw new NotFoundHttpException('Magazzino non trovato.');
     }
 }

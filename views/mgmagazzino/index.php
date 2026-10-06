@@ -6,33 +6,25 @@ use app\components\DataTables;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tipi documento';
+$this->title = 'Magazzini';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="mgtipodocumento-index card p-3 shadow-sm">
+<div class="mgmagazzino-index card p-3 shadow-sm">
 
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
         <div class="mb-2">
-            <?= Html::a('<i class="fas fa-plus"></i> Nuovo tipo documento', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-plus"></i> Nuovo magazzino', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-file-alt"></i> Tipi documento', ['mgtipodocumento/index'], ['class' => 'btn btn-outline-secondary']) ?>
         </div>
     </div>
 
-    <table id="mgtipodocumento-table" class="table table-striped table-bordered" style="width:100%">
+    <table id="mgmagazzino-table" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
             <th>ID</th>
             <th>Codice</th>
             <th>Descrizione</th>
-            <th>Destinazione</th>
-            <th>Magazzino partenza</th>
-            <th>Magazzino arrivo</th>
-            <th>Movimento</th>
-            <th>Anno</th>
-            <th>Contatore</th>
-            <th>Numerazione auto</th>
-            <th>Congruità numeri</th>
-            <th>Crea scadenze</th>
-            <th>Taglia/colore</th>
+            <th>Anagrafica</th>
             <th>Attivo</th>
             <th class="no-export">Azioni</th>
         </tr>
@@ -43,16 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= (int) $m->id ?></td>
                 <td><?= Html::encode($m->codice) ?></td>
                 <td><?= Html::encode($m->descrizione) ?></td>
-                <td><?= Html::encode($m->destinazioneLabel) ?></td>
-                <td><?= Html::encode($m->magazzinoPartenzaLabel) ?></td>
-                <td><?= Html::encode($m->magazzinoArrivoLabel) ?></td>
-                <td><?= Html::encode($m->segnoMovimentoLabel) ?></td>
-                <td><?= (int) $m->anno ?></td>
-                <td><?= (int) $m->contatore ?></td>
-                <td><?= $m->usa_progressivo ? 'Sì' : 'No' ?></td>
-                <td><?= $m->congruita ? 'Sì' : 'No' ?></td>
-                <td><?= $m->crea_scadenze ? 'Sì' : 'No' ?></td>
-                <td><?= $m->mostra_varianti ? 'Sì' : 'No' ?></td>
+                <td><?= Html::encode($m->anagraficaLabel) ?></td>
                 <td><?= $m->attivo ? 'Sì' : 'No' ?></td>
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>
@@ -60,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::a('<i class="fas fa-trash"></i>', ['delete', 'id' => $m->id], [
                         'class' => 'btn btn-sm btn-danger',
                         'title' => 'Elimina',
-                        'data' => ['confirm' => 'Eliminare questo tipo documento?', 'method' => 'post'],
+                        'data' => ['confirm' => 'Eliminare questo magazzino?', 'method' => 'post'],
                     ]) ?>
                 </td>
             </tr>
@@ -68,4 +51,4 @@ $this->params['breadcrumbs'][] = $this->title;
         </tbody>
     </table>
 </div>
-<?php DataTables::render('mgtipodocumento-table', 1, 'asc'); ?>
+<?php DataTables::render('mgmagazzino-table', 1, 'asc'); ?>
