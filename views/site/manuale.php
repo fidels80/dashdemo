@@ -155,7 +155,10 @@ JS
         <a class="manual-l2" href="#micro-movimenti">Movimenti di magazzino</a>
         <a class="manual-l2" href="#micro-ricrea">Allineare i movimenti (comando console)</a>
         <a class="manual-l2" href="#micro-cancellazione">Commesse, sottocommesse e magazzini protetti</a>
-        <a class="manual-l1" href="#glossario">13. Glossario</a>
+        <a class="manual-l1" href="#dashboard">13. Dashboard (cruscotto)</a>
+        <a class="manual-l2" href="#dashboard-sezioni">Le sezioni del cruscotto</a>
+        <a class="manual-l2" href="#dashboard-permessi">Sezioni e permessi</a>
+        <a class="manual-l1" href="#glossario">14. Glossario</a>
       </div>
     </nav>
 
@@ -185,6 +188,7 @@ JS
           <h3 id="cosa-fa">Cosa fa l'applicazione</h3>
           <p>In sintesi, l'applicazione permette di:</p>
           <ul>
+            <li><strong>Vedere il riepilogo del giorno</strong> (Dashboard): scadenze, ordini, giacenze, planning, presenze, to-do e Vtiger in un unico cruscotto, mostrato subito dopo l'accesso.</li>
             <li><strong>Pianificare le attivit&agrave; giornaliere</strong> (Planning): assegnare personale, veicoli, orari, giri e commesse, con controllo dei conflitti e colori di stato.</li>
             <li><strong>Registrare presenze e costi</strong> (HR): ore lavorate, ferie, permessi, malattie, ritardi e costi orari.</li>
             <li><strong>Gestire anagrafiche</strong>: clienti, agenti, personale, squadre, mansioni, reparti, articoli, pagamenti, etichette, archivio file.</li>
@@ -213,7 +217,7 @@ JS
             <li>Completa la verifica di sicurezza (captcha), se presente.</li>
             <li>Premi il pulsante di <strong>Accesso</strong>.</li>
           </ol>
-          <p>Dopo un accesso corretto vieni reindirizzato automaticamente al <strong>Cruscotto Operativo</strong> (Planning &amp; Presenze), che &egrave; la pagina principale di lavoro.</p>
+          <p>Dopo un accesso corretto (e, se attiva, dopo la verifica in due fattori) vieni reindirizzato automaticamente alla <strong>Dashboard</strong>, il cruscotto di riepilogo con i numeri del giorno (vedi sezione 13), che &egrave; la pagina di ingresso dell'applicazione. Da l&igrave; raggiungi con un clic le pagine complete di ogni area.</p>
 
           <div class="manual-tip">
             <strong>Suggerimento:</strong> se commetti errori nelle credenziali, il sistema ti avvisa. Controlla che la password non abbia blocchi maiuscolo accidentali (Caps Lock).
@@ -249,7 +253,7 @@ JS
 
           <h3 id="menu-laterale">Il menu laterale e il logo</h3>
           <p>In alto nel menu laterale trovi il <strong>logo dell'applicazione</strong> con la scritta <strong>DashBoard</strong>: cliccandolo torni alla pagina iniziale.</p>
-          <p>Sotto il logo ci sono le voci, raggruppate per area. Il menu <strong>parte chiuso</strong>: le aree sono ripiegate e i sotto-menu restano chiusi finch&eacute; non li apri con un clic sulla voce.</p>
+          <p>Sotto il logo ci sono le voci, raggruppate per area. La prima voce &egrave; <strong>Dashboard</strong> (icona tachometer): &egrave; sempre presente, per tutti gli utenti, e riporta al cruscotto di riepilogo. Il menu <strong>parte chiuso</strong>: le aree sono ripiegate e i sotto-menu restano chiusi finch&eacute; non li apri con un clic sulla voce.</p>
           <ul>
             <li>A ogni caricamento di pagina, e anche quando passi da una sezione all'altra, <strong>i sotto-menu si richiudono</strong>: non restano mai espansi mentre navighi nell'applicazione.</li>
             <li>L'icona a <strong>tre righe</strong> in alto a sinistra nella barra di navigazione nasconde o mostra l'intero menu laterale, per guadagnare spazio quando le tabelle sono larghe. La scelta viene ricordata dal browser.</li>
@@ -904,10 +908,79 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
         </div>
       </section>
 
+      <!-- 13 DASHBOARD -->
+      <section id="dashboard">
+        <div class="manual-card">
+          <h2>13. Dashboard (cruscotto di riepilogo)</h2>
+          <p>La <strong>Dashboard</strong> &egrave; la pagina che vedi <strong>appena fai l'accesso</strong> (e, se attiva, anche dopo la verifica in due fattori): un cruscotto che riunisce i numeri pi&ugrave; importanti del giorno, cos&igrave; parti gi&agrave; informato prima di aprire le singole pagine. &Egrave; anche la <strong>prima voce del menu laterale</strong> (icona tachometer), sempre presente e visibile a tutti gli utenti autenticati: cliccandola torni al cruscotto in qualsiasi momento.</p>
+          <p>In alto a destra trovi la data del giorno e, quando ne hai il permesso, i pulsanti rapidi <span class="manual-btn">Planning</span> e <span class="manual-btn">Documenti</span> per passare direttamente alle pagine complete.</p>
+
+          <h3 id="dashboard-sezioni">13.1 Le sezioni del cruscotto</h3>
+          <p>Ogni sezione &egrave; una <strong>scheda</strong> con i numeri principali in alto (KPI) e l'elenco delle voci pi&ugrave; urgenti sotto. La Dashboard &egrave; in <strong>sola lettura</strong>: in fondo a ogni scheda un link porta alla pagina completa, dove si fanno le operazioni.</p>
+          <table>
+            <tr><th>Sezione</th><th>Cosa mostra</th><th>Dove porta il link</th></tr>
+            <tr>
+              <td><strong>Scadenze da pagare</strong></td>
+              <td>Le scadenze aperte: quante sono gi&agrave; scadute e quante cadono nei <strong>prossimi 30 giorni</strong>, con gli importi; sotto, le <strong>6 scadenze prossime</strong> con data, documento, cliente/fornitore e importo.</td>
+              <td>Documenti</td>
+            </tr>
+            <tr>
+              <td><strong>Ordini aperti</strong></td>
+              <td>Gli ordini non chiusi (documenti i cui tipo varia la quantit&agrave; ordinata), divisi tra <strong>cliente</strong> e <strong>fornitore</strong> con numero e valore complessivo; le quantit&agrave; ancora <strong>da evadere</strong>, <strong>impegnate</strong> e verso il fornitore; gli <strong>ultimi 6 ordini</strong> aperti.</td>
+              <td>Documenti</td>
+            </tr>
+            <tr>
+              <td><strong>Giacenze sotto zero</strong></td>
+              <td>Quanti articoli hanno <strong>giacenza negativa</strong> (calcolata dai movimenti di magazzino) su quelli movimentati e a catalogo; sotto, i <strong>6 articoli</strong> pi&ugrave; in rosso con codice, descrizione e giacenza.</td>
+              <td>Articoli</td>
+            </tr>
+            <tr>
+              <td><strong>Planning &amp; presenze di oggi</strong></td>
+              <td>Le <strong>attivit&agrave; di oggi</strong> e quelle dei <strong>prossimi 7 giorni</strong>, le <strong>presenze di oggi</strong> con persone e ore lavorate, e l'elenco delle attivit&agrave; della giornata con orario, descrizione, persona, targa e stato.</td>
+              <td>Calendario Planning</td>
+            </tr>
+            <tr>
+              <td><strong>ToDo</strong></td>
+              <td>Quanti task ci sono in <strong>ogni stato</strong> (aperti, in attesa...), il conteggio dei <strong>scaduti</strong> e i <strong>5 task pi&ugrave; urgenti</strong> con scadenza e priorit&agrave;.</td>
+              <td>Board ToDo</td>
+            </tr>
+            <tr>
+              <td><strong>Vtiger</strong></td>
+              <td>I dati del CRM: <strong>ticket non chiusi</strong>, <strong>progetti in corso</strong> e <strong>utenti attivi</strong>. Se il database di Vtiger non &egrave; raggiungibile, la scheda lo segnala al posto dei numeri.</td>
+              <td>Ticket &middot; Progetti</td>
+            </tr>
+          </table>
+          <div class="manual-note">
+            La Dashboard <strong>non modifica nulla</strong>: serve a orientarsi. Le operazioni si fanno sempre dalla pagina completa a cui arrivi cliccando il link in fondo alla scheda (o i pulsanti rapidi in alto).
+          </div>
+
+          <h3 id="dashboard-permessi">13.2 Quale sezione vedi (permessi)</h3>
+          <p>Le sezioni della Dashboard seguono gli <strong>stessi permessi delle pagine</strong> a cui rimandano: <strong>se non puoi aprire quella pagina, la scheda non compare</strong> e i relativi dati non vengono nemmeno calcolati. In pratica:</p>
+          <table>
+            <tr><th>Sezione</th><th>Permesso richiesto (pagina)</th></tr>
+            <tr><td>Scadenze da pagare e Ordini aperti</td><td><strong>Documenti</strong> (area Microgestionale)</td></tr>
+            <tr><td>Giacenze sotto zero</td><td><strong>Articoli</strong> (area Prodotti)</td></tr>
+            <tr><td>Attivit&agrave; di planning</td><td><strong>Planning</strong></td></tr>
+            <tr><td>Presenze di oggi</td><td><strong>Presenze</strong></td></tr>
+            <tr><td>ToDo</td><td><strong>Board ToDo</strong></td></tr>
+            <tr><td>Vtiger</td><td><strong>Ticket Vtiger</strong></td></tr>
+          </table>
+          <p>Il blocco <em>Planning &amp; presenze</em> &egrave; indipendente: se hai il permesso sulle presenze ma non sul planning (o viceversa) vedi solo la parte che ti spetta; senza il calendario la card mostra solo le presenze del giorno.</p>
+          <div class="manual-warn">
+            Se non hai il permesso su nessuna sezione, la Dashboard mostra il messaggio
+            <em>&laquo;Nessuna sezione disponibile per il tuo livello di accesso.&raquo;</em>
+            e ti suggerisce di contattare l'amministratore. La pagina stessa resta sempre apribile: &egrave; il primo passo di ogni accesso.
+          </div>
+          <div class="manual-tip">
+            <strong>Suggerimento:</strong> usa la Dashboard come lista da controllare ogni mattina: scadenze in rosso, ordini ancora da evadere, giacenze negative e task scaduti sono le cose da sistemare per prime. Poi apri la pagina completa con un clic.
+          </div>
+        </div>
+      </section>
+
       <!-- 13 GLOSSARIO -->
       <section id="glossario">
         <div class="manual-card">
-          <h2>13. Glossario</h2>
+          <h2>14. Glossario</h2>
           <table>
             <tr><th>Termine</th><th>Significato</th></tr>
             <tr><td><strong>Planning</strong></td><td>La pianificazione giornaliera delle attivit&agrave; delle squadre.</td></tr>
