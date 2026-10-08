@@ -9,7 +9,9 @@ use app\assets\DataTablesAsset;
  * Helper per inizializzare DataTables in modo uniforme:
  * - ricerca, paginazione, ordinamento
  * - esportazione (Copia, Excel, PDF, CSV, Stampa)
- * - layout responsive (nessuno scroll orizzontale, ok su mobile/tablet)
+ * - adattamento automatico al numero di colonne: il font (e il padding, in em)
+ *   si riduce finché la tabella entra nel contenitore; se anche alla dimensione
+ *   minima non entra, il wrapper scorre in orizzontale restando dentro la card
  *
  * Uso nella vista:
  *   \app\components\DataTables::render('mia-tabella');
@@ -28,7 +30,9 @@ class DataTables
 
         // Evita che i pulsanti/tabella escano dal contenitore e sistema il responsive
         Yii::$app->view->registerCss("
-            #{$id}_wrapper, .dataTables_wrapper { width: 100% !important; }
+            #{$id}_wrapper, .dataTables_wrapper { width: 100% !important; max-width: 100%; }
+            .dataTables_wrapper { overflow-x: auto; overflow-y: hidden; }
+            .dataTables_wrapper > .row { margin-left: 0; margin-right: 0; }
             .dataTables_wrapper .dt-buttons { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; }
             .dataTables_wrapper .dt-buttons .btn { margin: 0; }
             .dataTables_wrapper .dataTables_filter { text-align: left; }
@@ -40,7 +44,7 @@ class DataTables
             }
             table.dataTable { width: 100% !important; }
             table.dataTable th, table.dataTable td { white-space: nowrap; }
-            table.dataTable th, table.dataTable td { padding: .4rem .5rem; }
+            table.dataTable th, table.dataTable td { padding: .45em .55em; }
         ");
 
         $js = <<<JS
@@ -86,17 +90,23 @@ $(document).ready(function () {
 JS;
 
         Yii::$app->view->registerJs("
-            // Rimpicciolisce il font delle celle finché tutte le colonne entrano
-            // nella pagina senza scroll orizzontale. I testi restano sempre in orizzontale.
-            // La dimensione viene applicata come regola CSS (non inline): in questo modo
-            // vale anche per le righe ricreate da DataTables al cambio pagina.
+            // Rimpicciolisce il font delle celle (e, tramite padding in em, anche lo
+            // spazio attorno) finché tutte le colonne entrano nel contenitore.
+            // I testi restano sempre in orizzontale e la dimensione viene applicata
+            // come regola CSS (non inline): vale anche per le righe ricreate da
+            // DataTables al cambio pagina. Se anche al minimo la tabella non entra,
+            // il CSS overflow-x del wrapper la fa scorrere senza uscire dalla card.
             window.shrinkToFit = function (table) {
                 if (!table || !table.length) return;
                 var el = table[0];
                 var id = el.id;
+                if (!id) {
+                    id = 'dt-fit-' + (window.__dtFitSeq = (window.__dtFitSeq || 0) + 1);
+                    el.id = id;
+                }
                 var wrap = table.closest('.dataTables_wrapper')[0];
                 if (!wrap) wrap = el.parentElement;
-                var targetW = wrap.clientWidth || el.clientWidth;
+                if (!wrap) return;
                 var styleTag = document.getElementById('shrink-' + id);
                 if (!styleTag) {
                     styleTag = document.createElement('style');
@@ -107,19 +117,29 @@ JS;
                     styleTag.textContent = '#' + id + ' th, #' + id + ' td { font-size: ' + px + 'px !important; }';
                 };
                 var fix = function () {
+                    var targetW = wrap.clientWidth;
+                    if (!targetW) return;
+                    applySize(14);
                     var cur = 14;
                     while (cur > 7 && el.scrollWidth > targetW) {
-                        applySize(cur);
                         cur = cur - 0.5;
-                    }
-                    applySize(cur);
-                    if (el.scrollWidth > targetW) {
-                        applySize(7);
+                        applySize(cur);
                     }
                 };
                 fix();
+                if (el.__dtFitFix) {
+                    table.off('draw.dt', el.__dtFitFix);
+                    $(window).off('resize.dtfit-' + id);
+                }
+                el.__dtFitFix = fix;
                 table.on('draw.dt', fix);
-                $(window).on('resize', fix);
+                if (window.ResizeObserver) {
+                    if (wrap.__dtFitRo) wrap.__dtFitRo.disconnect();
+                    wrap.__dtFitRo = new ResizeObserver(fix);
+                    wrap.__dtFitRo.observe(wrap);
+                } else {
+                    $(window).on('resize.dtfit-' + id, fix);
+                }
             };
         ");
         Yii::$app->view->registerJs($js);
