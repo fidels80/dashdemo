@@ -103,9 +103,7 @@ class SiteController extends Controller
             }
 
             if ($result) {
-                // --- MODIFICA QUI ---
-                // Invece di return $this->goBack();
-                return $this->redirect(['planning/index']);
+                return $this->redirect(['dashboard/index']);
             }
         }
 

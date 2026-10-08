@@ -19,6 +19,7 @@ class AccessControl
     /** Rotte sempre consentite (oltre a quelle pubbliche). */
     public static $exemptPrefixes = [
         'site/',
+        'dashboard/',
         'two-factor/',
         'user/update',
         'user/view',

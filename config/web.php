@@ -45,6 +45,12 @@ $config = [
                     . $event->action->controller->id);
             });
         },
+        // Homepage: cruscotto di riepilogo mostrato dopo il login.
+        // Calcolata come stringa per gli href (Url::home() non converte gli array).
+        function ($app) {
+            $app->homeUrl = \yii\helpers\Url::to(['/dashboard/index']);
+            return null;
+        },
     ],
 
     'aliases' => [

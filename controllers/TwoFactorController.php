@@ -43,13 +43,13 @@ class TwoFactorController extends Controller
         }
 
         if (!Yii::$app->user->isGuest) {
-            return $this->redirect(['planning/index']);
+            return $this->redirect(['dashboard/index']);
         }
 
         $model = new TwoFactorForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->verify()) {
-            return $this->redirect(['planning/index']);
+            return $this->redirect(['dashboard/index']);
         }
 
         return $this->render('verify', [
