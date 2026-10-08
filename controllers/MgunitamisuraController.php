@@ -43,10 +43,14 @@ class MgunitamisuraController extends Controller
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgUnitaMisura();
         $model->attivo = true;
+
+        if ($from !== null && ($source = MgUnitaMisura::findOne((int) $from)) !== null) {
+            $model = \app\components\Duplicate::copy($source);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);

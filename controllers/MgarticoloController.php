@@ -47,10 +47,14 @@ class MgarticoloController extends Controller
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgArticolo();
         $model->attivo = true;
+
+        if ($from !== null && ($source = MgArticolo::findOne((int) $from)) !== null) {
+            $model = \app\components\Duplicate::copy($source);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $this->saveUnita($model, Yii::$app->request->post('unita', []));

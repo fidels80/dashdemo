@@ -53,12 +53,19 @@ class MgattributoController extends Controller
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
-    public function actionCreate($tipo = null)
+    public function actionCreate($tipo = null, $from = null)
     {
         $model = new MgAttributoArticolo();
         $model->attivo = true;
         if ($tipo && array_key_exists($tipo, MgAttributoArticolo::opzioniTipo())) {
             $model->tipo = $tipo;
+        }
+
+        if ($from !== null && ($source = MgAttributoArticolo::findOne((int) $from)) !== null) {
+            $model = \app\components\Duplicate::copy($source);
+            if ($tipo && array_key_exists($tipo, MgAttributoArticolo::opzioniTipo())) {
+                $model->tipo = $tipo;
+            }
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

@@ -47,7 +47,7 @@ class MgtipodocumentoController extends Controller
         ]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgTipoDocumento();
         $model->anno = (int) date('Y');
@@ -55,6 +55,10 @@ class MgtipodocumentoController extends Controller
         $model->congruita = true;
         $model->attivo = true;
         $model->destinazione = MgTipoDocumento::DEST_CLIENTE;
+
+        if ($from !== null && ($source = MgTipoDocumento::findOne((int) $from)) !== null) {
+            $model = \app\components\Duplicate::copy($source);
+        }
 
         if ($model->load(Yii::$app->request->post())) {
             $model->created_at = new \yii\db\Expression('GETDATE()');

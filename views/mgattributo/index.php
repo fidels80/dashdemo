@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>
                     <?= Html::a('<i class="fas fa-pen"></i>', ['update', 'id' => $m->id], ['class' => 'btn btn-sm btn-warning', 'title' => 'Modifica']) ?>
+                    <?= Html::a('<i class="fas fa-copy"></i>', ['create', 'from' => $m->id, 'tipo' => $m->tipo], ['class' => 'btn btn-sm btn-secondary', 'title' => 'Duplica']) ?>
                     <?= Html::a('<i class="fas fa-trash"></i>', ['delete', 'id' => $m->id], [
                         'class' => 'btn btn-sm btn-danger',
                         'title' => 'Elimina',

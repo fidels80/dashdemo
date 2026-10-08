@@ -45,11 +45,19 @@ class MgmetodopagamentoController extends Controller
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgMetodoPagamento();
         $model->attivo = true;
         $model->partenza = MgMetodoPagamento::PARTENZA_EMISSIONE;
+
+        $source = null;
+        if ($from !== null) {
+            $source = MgMetodoPagamento::findOne((int) $from);
+            if ($source !== null) {
+                $model = \app\components\Duplicate::copy($source);
+            }
+        }
 
         $ratePost = Yii::$app->request->post('rate', []);
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -68,7 +76,7 @@ class MgmetodopagamentoController extends Controller
         return $this->render('create', [
             'model' => $model,
             'tipi' => MgTipoPagamento::mapAttivi(),
-            'rate' => [],
+            'rate' => $source !== null && !Yii::$app->request->isPost ? $source->rate : [],
         ]);
     }
 

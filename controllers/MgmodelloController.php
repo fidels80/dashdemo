@@ -99,11 +99,20 @@ class MgmodelloController extends Controller
         ]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgAttributoArticolo();
         $model->tipo = MgAttributoArticolo::TIPO_MODELLO;
         $model->attivo = true;
+
+        $source = null;
+        if ($from !== null) {
+            $source = MgAttributoArticolo::findOne((int) $from);
+            if ($source !== null) {
+                $model = \app\components\Duplicate::copy($source);
+                $model->tipo = MgAttributoArticolo::TIPO_MODELLO;
+            }
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             MgModelloTessuto::sincronizza($model->id, Yii::$app->request->post('tessuti', []));
@@ -113,7 +122,9 @@ class MgmodelloController extends Controller
         return $this->render('create', [
             'model' => $model,
             'tessuti' => MgAttributoArticolo::mapByTipo(MgAttributoArticolo::TIPO_TESSUTO),
-            'tessutiSelezionati' => [],
+            'tessutiSelezionati' => $source !== null && !Yii::$app->request->isPost
+                ? array_map('intval', MgModelloTessuto::idTessutiPerModello($source->id))
+                : [],
         ]);
     }
 
