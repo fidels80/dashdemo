@@ -147,7 +147,15 @@ JS
         <a class="manual-l2" href="#api-token">Token e permessi</a>
         <a class="manual-l2" href="#api-nuova-tabella">Aggiungere una tabella nuova</a>
         <a class="manual-l1" href="#segnalazione">11. Segnalare un problema</a>
-        <a class="manual-l1" href="#glossario">12. Glossario</a>
+        <a class="manual-l1" href="#microgestionale">12. Microgestionale: documenti e magazzino</a>
+        <a class="manual-l2" href="#micro-duplica">Duplicare una voce da un elenco</a>
+        <a class="manual-l2" href="#micro-documenti">Documenti: testata, sottocommessa e righe</a>
+        <a class="manual-l2" href="#micro-magazzini">Magazzini di partenza e di arrivo</a>
+        <a class="manual-l2" href="#micro-duplica-documento">Duplicare un documento</a>
+        <a class="manual-l2" href="#micro-movimenti">Movimenti di magazzino</a>
+        <a class="manual-l2" href="#micro-ricrea">Allineare i movimenti (comando console)</a>
+        <a class="manual-l2" href="#micro-cancellazione">Commesse, sottocommesse e magazzini protetti</a>
+        <a class="manual-l1" href="#glossario">13. Glossario</a>
       </div>
     </nav>
 
@@ -812,10 +820,94 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
         </div>
       </section>
 
-      <!-- 12 GLOSSARIO -->
+      <!-- 12 MICROGESTIONALE -->
+      <section id="microgestionale">
+        <div class="manual-card">
+          <h2>12. Microgestionale: documenti e magazzino</h2>
+          <p>L'area <strong>Microgestionale</strong> del menu raccoglie le anagrafiche di base, i documenti e i prodotti. In questa sezione trovi le novit&agrave; di uso quotidiano: il pulsante <strong>Duplica</strong>, la <strong>sottocommessa</strong> e i <strong>magazzini</strong> nelle righe dei documenti e i <strong>movimenti di magazzino</strong> generati automaticamente.</p>
+
+          <h3 id="micro-duplica">12.1 Duplicare una voce da un elenco (pulsante Duplica)</h3>
+          <p>In molte tabelle del Microgestionale, nella colonna delle azioni a destra della riga, accanto a <span class="manual-btn manual-btn-gray">Vedi</span> e <span class="manual-btn manual-btn-gray">Modifica</span> trovi anche il pulsante <span class="manual-btn manual-btn-gray">Duplica</span> (icona con due fogli sovrapposti).</p>
+          <ol>
+            <li>Clicca <strong>Duplica</strong> sulla riga della voce che vuoi copiare.</li>
+            <li>Si apre la form di <strong>creazione</strong> gi&agrave; compilata con i dati della voce di partenza.</li>
+            <li>Controlla e modifica ci&ograve; che serve, in particolare il <strong>codice</strong> (o comunque il campo univoco), poi premi <span class="manual-btn manual-btn-green">Salva</span>.</li>
+          </ol>
+          <p>Il sistema <strong>non copia</strong>: la chiave interna, i campi con vincolo di unicit&agrave; (come il codice) e le date di creazione/modifica. Tutto il resto &egrave; precompilato.</p>
+          <p>Il pulsante &egrave; disponibile in: <strong>Anagrafica</strong>, <strong>Tipi contatto</strong>, <strong>Commesse</strong>, <strong>Sottocommesse</strong> (area Anagrafiche); <strong>Documenti</strong>, <strong>Tipi documento</strong>, <strong>Metodi pagamento</strong>, <strong>Tipi pagamento</strong>, <strong>Aliquote IVA</strong> (area Documentale); <strong>Articoli</strong>, <strong>Attributi articolo</strong>, <strong>Unit&agrave; di misura</strong>, <strong>Modelli</strong>, <strong>Magazzini</strong> (area Prodotti).</p>
+          <div class="manual-tip">
+            <strong>Suggerimento:</strong> la duplicazione copia anche i dati collegati: dai <em>Metodi di pagamento</em> vengono proposte anche le rate, dai <em>Modelli</em> anche i tessuti selezionati. Sui <em>Documenti</em> vengono copiate anche le righe (vedi 12.4).
+          </div>
+
+          <h3 id="micro-documenti">12.2 Documenti: testata, sottocommessa e righe</h3>
+          <p>Nella pagina <strong>Documenti</strong> crei e modifichi le testate con le relative righe. Oltre ai campi gi&agrave; noti (tipo, data, anno, numero, suffisso, cliente/fornitore, stato, metodo di pagamento, descrizione, note), la testata ha ora il campo <strong>Sottocommessa</strong>.</p>
+          <ul>
+            <li><strong>Tipo documento bloccato:</strong> appena selezioni il tipo in creazione, il campo si blocca: il tipo non &egrave; pi&ugrave; modificabile (nemmeno in modifica). Se sbagli tipo, crea un nuovo documento.</li>
+            <li><strong>Sottocommessa di testata:</strong> scegli la sottocommessa di riferimento del documento (facoltativa, &laquo;Nessuna sottocommessa&raquo; per lasciarla vuota).</li>
+            <li><strong>Sottocommessa di riga:</strong> la sottocommessa scelta in testata viene <strong>proposta automaticamente</strong> alle nuove righe; puoi comunque cambiarla <strong>riga per riga</strong> con la colonna <em>Sottocommessa</em>. Nel campo di ricerca sopra la tabella delle righe puoi filtrare anche per sottocommessa.</li>
+          </ul>
+          <div class="manual-note">
+            <strong>Nota:</strong> le sottocommesse proposte sono elencate con il codice della commessa padre, nel formato <em>commessa / sottocommessa</em>.
+          </div>
+
+          <h3 id="micro-magazzini">12.3 Magazzini di partenza e di arrivo sulle righe</h3>
+          <p>Se sul <strong>tipo documento</strong> &egrave; configurato un <strong>magazzino di partenza</strong> e/o di <strong>arrivo</strong>, nelle righe del documento compaiono le colonne <em>Mag. partenza</em> e <em>Mag. arrivo</em> (una, l'altra o entrambe, secondo la configurazione).</p>
+          <ul>
+            <li>I magazzini sono <strong>proposti dal tipo documento</strong> quando aggiungi una riga.</li>
+            <li>Puoi <strong>variarli per singola riga</strong>, scegliendoli tra i magazzini attivi.</li>
+          </ul>
+          <div class="manual-note">
+            Se non vedi le colonne, il tipo documento selezionato non prevede magazzini: non &egrave; un errore. Le colonne compaiono anche nella scheda del documento (<span class="manual-btn manual-btn-gray">Vedi</span>).
+          </div>
+
+          <h3 id="micro-duplica-documento">12.4 Duplicare un documento</h3>
+          <p>Dall'elenco <strong>Documenti</strong> premi <span class="manual-btn manual-btn-gray">Duplica</span> sulla riga del documento da copiare: si apre la creazione con <strong>testata e righe gi&agrave; compilate</strong>.</p>
+          <ul>
+            <li>Viene proposto un <strong>nuovo numero</strong> e il totale riparte da zero: controlla data, numero e cliente/fornitore prima di salvare.</li>
+            <li>Le righe vengono copiate <strong>senza i collegamenti ai rapportini</strong>: i rapportini restano collegati al documento originale.</li>
+          </ul>
+
+          <h3 id="micro-movimenti">12.5 Movimenti di magazzino generati dai documenti</h3>
+          <p>A ogni <strong>salvataggio o modifica</strong> di un documento il sistema <strong>rigenera i movimenti di magazzino</strong> delle sue righe, in base alla configurazione del tipo documento. Per ogni riga vengono registrati: codice articolo, quantit&agrave;, unit&agrave; di misura, fattore di conversione (dall'unit&agrave; di misura dell'articolo; 1 se non disponibile), magazzini di partenza e arrivo e le quantit&agrave; calcolate:</p>
+          <ul>
+            <li><strong>quantit&agrave; movimento</strong> = quantit&agrave; &times; segno movimento del tipo documento (carico = +, scarico = &minus;, nessuno = 0);</li>
+            <li><strong>quantit&agrave; impegnata</strong> e <strong>quantit&agrave; ordinata</strong> = quantit&agrave; &times; variazione (aumenta = +, diminuisci = &minus;, nessuna = 0).</li>
+          </ul>
+          <p>Se una riga non riporta il codice articolo o l'unit&agrave; di misura, il sistema li ricava dall'articolo selezionato (codice e unit&agrave; predefinita). Le righe eliminate non lasciano movimenti: vengono rimossi automaticamente. Ogni riga conserva anche il <strong>codice del tipo documento</strong>, cos&igrave; i movimenti restano ricostruibili.</p>
+
+          <h3 id="micro-ricrea">12.6 Allineare i movimenti esistenti (comando da riga di comando)</h3>
+          <p>Se devi <strong>ricostruire o allineare i movimenti</strong> gi&agrave; presenti (per esempio dopo un caricamento massivo o un aggiornamento), esiste un comando da <strong>riga di comando</strong>, da eseguire dalla cartella dell'applicazione (solo console, non dal browser):</p>
+          <p><code>php yii movimenti/ricrea</code></p>
+          <p>La procedura:</p>
+          <ol>
+            <li><strong>allinea le righe documento incomplete</strong>: codice tipo dalla testata, codice articolo e unit&agrave; di misura di default dall'articolo, magazzini dal tipo documento;</li>
+            <li>esegue un <strong>backup</strong> della tabella dei movimenti in una tabella dal nome <code>mg_movimentimagazzino_backup_AAAAAMMGG_HHMMSS</code>;</li>
+            <li><strong>svuota</strong> la tabella dei movimenti e <strong>ricrea un movimento per ogni riga documento</strong>.</li>
+          </ol>
+          <div class="manual-warn">
+            <strong>Attenzione:</strong> il comando ricostruisce <strong>tutti</strong> i movimenti a partire dalle righe documento. Eseguilo solo quando richiesto dal supporto o dall'amministratore. In caso di errore i movimenti originali vengono ripristinati automaticamente e il backup resta disponibile.
+          </div>
+          <div class="manual-tip">
+            <strong>Suggerimento:</strong> a fine esecuzione il comando mostra il riepilogo (righe allineate, nome del backup, movimenti ricreati). Conserva il nome del backup indicato: serve in caso di ripristino.
+          </div>
+
+          <h3 id="micro-cancellazione">12.7 Commesse, sottocommesse e magazzini usati nei documenti</h3>
+          <p>Per evitare di perdere i collegamenti, il sistema <strong>blocca la cancellazione</strong> delle voci usate nei documenti e mostra un messaggio di errore:</p>
+          <ul>
+            <li><strong>Commessa</strong>: non &egrave; eliminabile se ha sottocommesse usate in documenti (testata o righe).</li>
+            <li><strong>Sottocommessa</strong>: non &egrave; eliminabile se &egrave; usata in una testata documento o in una riga.</li>
+            <li><strong>Magazzino</strong>: non &egrave; eliminabile se &egrave; usato da tipi documento o da righe documento.</li>
+          </ul>
+          <div class="manual-note">
+            Il messaggio ricorda il motivo (&laquo;&egrave; usata in uno o pi&ugrave; documenti&raquo;, &laquo;&egrave; utilizzato da tipi documento o righe documento&raquo;): rimuovi prima i collegamenti nei documenti, poi ripeti la cancellazione.
+          </div>
+        </div>
+      </section>
+
+      <!-- 13 GLOSSARIO -->
       <section id="glossario">
         <div class="manual-card">
-          <h2>12. Glossario</h2>
+          <h2>13. Glossario</h2>
           <table>
             <tr><th>Termine</th><th>Significato</th></tr>
             <tr><td><strong>Planning</strong></td><td>La pianificazione giornaliera delle attivit&agrave; delle squadre.</td></tr>
