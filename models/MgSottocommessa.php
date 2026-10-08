@@ -108,6 +108,29 @@ class MgSottocommessa extends \yii\db\ActiveRecord
     }
 
     /**
+     * Etichetta della sottocommessa: codice - descrizione.
+     */
+    public function getEtichetta()
+    {
+        return $this->codice . ' - ' . $this->descrizione;
+    }
+
+    /**
+     * Mappa id => etichetta per le tendine che salvano l'id (es. documenti),
+     * con il codice della commessa padre in testa.
+     */
+    public static function mapEtichette()
+    {
+        return \yii\helpers\ArrayHelper::map(
+            self::find()->with('commessa')->orderBy(['codice' => SORT_ASC])->all(),
+            'id',
+            function ($m) {
+                return $m->commessa ? $m->commessa->codice . ' / ' . $m->etichetta : $m->etichetta;
+            }
+        );
+    }
+
+    /**
      * Periodo di validità formattato per la lista.
      */
     public function getPeriodoLabel()

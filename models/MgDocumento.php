@@ -19,6 +19,7 @@ use Yii;
  * @property string|null $stato
  * @property float|null $totale
  * @property int|null $id_metodo_pagamento
+ * @property int|null $id_sottocommessa
  * @property string|null $note
  * @property string|null $created_by
  * @property string|null $created_at
@@ -35,7 +36,7 @@ class MgDocumento extends \yii\db\ActiveRecord
     {
         return [
             [['id_tipo', 'anno', 'numero', 'data'], 'required'],
-            [['id_tipo', 'anno', 'numero', 'id_anagrafica', 'id_metodo_pagamento'], 'integer'],
+            [['id_tipo', 'anno', 'numero', 'id_anagrafica', 'id_metodo_pagamento', 'id_sottocommessa'], 'integer'],
             [['data', 'created_at', 'updated_at'], 'safe'],
             [['totale'], 'number'],
             [['codice_tipo'], 'string', 'max' => 20],
@@ -63,6 +64,7 @@ class MgDocumento extends \yii\db\ActiveRecord
             'stato' => 'Stato',
             'totale' => 'Totale',
             'id_metodo_pagamento' => 'Metodo di pagamento',
+            'id_sottocommessa' => 'Sottocommessa',
             'note' => 'Note',
             'created_by' => 'Creato da',
             'created_at' => 'Creato il',
@@ -89,6 +91,11 @@ class MgDocumento extends \yii\db\ActiveRecord
     public function getMetodoPagamento()
     {
         return $this->hasOne(MgMetodoPagamento::className(), ['id' => 'id_metodo_pagamento']);
+    }
+
+    public function getSottocommessa()
+    {
+        return $this->hasOne(MgSottocommessa::className(), ['id' => 'id_sottocommessa']);
     }
 
     public function getScadenze()
@@ -300,6 +307,9 @@ class MgDocumento extends \yii\db\ActiveRecord
             }
             if ($this->id_metodo_pagamento === '') {
                 $this->id_metodo_pagamento = null;
+            }
+            if ($this->id_sottocommessa === '') {
+                $this->id_sottocommessa = null;
             }
             // Codice tipo denormalizzato
             if ($this->id_tipo) {

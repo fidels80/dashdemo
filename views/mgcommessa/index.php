@@ -18,6 +18,10 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
+    <?php if (Yii::$app->session->hasFlash('error')): ?>
+        <div class="alert alert-danger"><i class="fas fa-exclamation-triangle"></i> <?= Html::encode(Yii::$app->session->getFlash('error')) ?></div>
+    <?php endif; ?>
+
     <table id="mgcommessa-table" class="table table-striped table-bordered" style="width:100%">
         <thead>
         <tr>
@@ -44,6 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>
                     <?= Html::a('<i class="fas fa-pen"></i>', ['update', 'id' => $m->id], ['class' => 'btn btn-sm btn-warning', 'title' => 'Modifica']) ?>
+                    <?= Html::a('<i class="fas fa-copy"></i>', ['create', 'from' => $m->id], ['class' => 'btn btn-sm btn-secondary', 'title' => 'Duplica']) ?>
                     <?= Html::a('<i class="fas fa-trash"></i>', ['delete', 'id' => $m->id], [
                         'class' => 'btn btn-sm btn-danger',
                         'title' => 'Elimina',

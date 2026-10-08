@@ -13,6 +13,8 @@ use app\models\MgScadenza;
 use app\models\MgAliquotaIva;
 use app\models\MgAttributoArticolo;
 use app\models\MgUnitaMisura;
+use app\models\MgMagazzino;
+use app\models\MgMovimentoMagazzino;
 use app\models\MgSottocommessa;
 use app\models\Rapportini;
 use yii\data\ActiveDataProvider;
@@ -87,7 +89,7 @@ class MgdocumentoController extends Controller
         ]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgDocumento();
         $model->data = date('Y-m-d');
@@ -96,6 +98,19 @@ class MgdocumentoController extends Controller
         if (Yii::$app->request->get('id_tipo')) {
             $model->id_tipo = Yii::$app->request->get('id_tipo');
             $model->numero = MgDocumento::proponiNumero($model->id_tipo, $model->anno, $model->data);
+        }
+
+        $righe = [];
+        if ($from !== null && ($source = MgDocumento::findOne((int) $from)) !== null) {
+            $model = \app\components\Duplicate::copy($source);
+            $model->numero = MgDocumento::proponiNumero($model->id_tipo, $model->anno, $model->data);
+            $model->totale = 0;
+            foreach ($source->righe as $riga) {
+                $copia = \app\components\Duplicate::copy($riga);
+                $copia->id_documento = null;
+                $copia->id_rapportino = null;
+                $righe[] = $copia;
+            }
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -117,13 +132,16 @@ class MgdocumentoController extends Controller
             'metodi' => MgMetodoPagamento::mapAttivi(),
             'aliquote' => MgAliquotaIva::mapAttivi(),
             'unita' => MgUnitaMisura::mapAttivi(),
+            'sottocommesse' => MgSottocommessa::mapEtichette(),
+            'magazzini' => MgMagazzino::mapAttivi(),
+            'tipiMagazzini' => MgTipoDocumento::mapMagazzini(),
             'tipiMostraVarianti' => MgTipoDocumento::mapMostraVarianti(),
             'tipiPrelevaRapportini' => MgTipoDocumento::mapFlag('preleva_rapportini'),
             'tipiCreaArticoli' => MgTipoDocumento::mapFlag('crea_articoli'),
             'tipiCreaAnagrafiche' => MgTipoDocumento::mapFlag('crea_anagrafiche'),
             'tipiMostraMatrice' => MgTipoDocumento::mapFlag('mostra_matrice'),
             'modelliMatrice' => $this->modelliConArticoli(),
-            'righe' => [],
+            'righe' => $righe,
         ]);
     }
 
@@ -156,6 +174,9 @@ class MgdocumentoController extends Controller
             'metodi' => MgMetodoPagamento::mapAttivi(),
             'aliquote' => MgAliquotaIva::mapAttivi(),
             'unita' => MgUnitaMisura::mapAttivi(),
+            'sottocommesse' => MgSottocommessa::mapEtichette(),
+            'magazzini' => MgMagazzino::mapAttivi(),
+            'tipiMagazzini' => MgTipoDocumento::mapMagazzini(),
             'tipiMostraVarianti' => MgTipoDocumento::mapMostraVarianti(),
             'tipiPrelevaRapportini' => MgTipoDocumento::mapFlag('preleva_rapportini'),
             'tipiCreaArticoli' => MgTipoDocumento::mapFlag('crea_articoli'),
@@ -281,7 +302,9 @@ class MgdocumentoController extends Controller
     }
 
     /**
-     * Salva le righe del documento ricalcolando i totali.
+     * Salva le righe del documento ricalcolando i totali e rigenerando i
+     * movimenti di magazzino (le righe eliminate portano con sé i movimenti
+     * per cascata).
      */
     private function saveRighe($model, $righe)
     {
@@ -293,6 +316,9 @@ class MgdocumentoController extends Controller
 
         MgDocumentoRiga::deleteAll(['id_documento' => $model->id]);
 
+        $tipo = MgTipoDocumento::findOne($model->id_tipo);
+        $codiceTipo = $model->codice_tipo ?: ($tipo ? $tipo->codice : null);
+
         $ord = 0;
         $nuovi = [];
         foreach ((array) $righe as $r) {
@@ -303,7 +329,11 @@ class MgdocumentoController extends Controller
             $riga->id_documento = $model->id;
             $riga->id_articolo = !empty($r['id_articolo']) ? $r['id_articolo'] : null;
             $riga->id_rapportino = !empty($r['id_rapportino']) ? $r['id_rapportino'] : null;
+            $riga->id_sottocommessa = !empty($r['id_sottocommessa']) ? $r['id_sottocommessa'] : null;
+            $riga->id_magazzino_partenza = !empty($r['id_magazzino_partenza']) ? $r['id_magazzino_partenza'] : null;
+            $riga->id_magazzino_arrivo = !empty($r['id_magazzino_arrivo']) ? $r['id_magazzino_arrivo'] : null;
             $riga->codice_articolo = $r['codice_articolo'] ?? null;
+            $riga->codice_tipo = $codiceTipo;
             $riga->descrizione = $r['descrizione'] ?? null;
             $riga->id_unita_misura = !empty($r['id_unita_misura']) ? $r['id_unita_misura'] : null;
             $riga->um = !empty($r['um']) ? $r['um'] : null;
@@ -316,7 +346,23 @@ class MgdocumentoController extends Controller
             $riga->sconto = ($r['sconto'] ?? '') === '' ? 0 : $r['sconto'];
             $riga->iva = ($r['iva'] ?? '') === '' ? 0 : $r['iva'];
             $riga->ordine = $ord++;
+
+            // Codice articolo e unità di misura assenti: default dall'articolo.
+            if (empty($riga->codice_articolo) || empty($riga->id_unita_misura) || empty($riga->um)) {
+                $dati = MgMovimentoMagazzino::datiArticolo($riga);
+                if (empty($riga->codice_articolo)) {
+                    $riga->codice_articolo = $dati['codice_articolo'];
+                }
+                if (empty($riga->id_unita_misura)) {
+                    $riga->id_unita_misura = $dati['id_unita_misura'];
+                }
+                if (empty($riga->um)) {
+                    $riga->um = $dati['um'];
+                }
+            }
+
             $riga->save(false);
+            MgMovimentoMagazzino::creaDaRiga($riga, $tipo);
             if ($riga->id_rapportino) {
                 $nuovi[] = (string) $riga->id_rapportino;
             }

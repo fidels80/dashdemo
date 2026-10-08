@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\MgMagazzino;
 use app\models\MgTipoDocumento;
+use app\models\MgDocumentoRiga;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -42,10 +43,14 @@ class MgmagazzinoController extends Controller
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgMagazzino();
         $model->attivo = true;
+
+        if ($from !== null && ($source = MgMagazzino::findOne((int) $from)) !== null) {
+            $model = \app\components\Duplicate::copy($source);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -70,9 +75,11 @@ class MgmagazzinoController extends Controller
         $model = $this->findModel($id);
 
         if (MgTipoDocumento::find()->where(['id_magazzino_partenza' => $id])->exists()
-            || MgTipoDocumento::find()->where(['id_magazzino_arrivo' => $id])->exists()) {
+            || MgTipoDocumento::find()->where(['id_magazzino_arrivo' => $id])->exists()
+            || MgDocumentoRiga::find()->where(['id_magazzino_partenza' => $id])->exists()
+            || MgDocumentoRiga::find()->where(['id_magazzino_arrivo' => $id])->exists()) {
             Yii::$app->session->setFlash('error',
-                'Impossibile eliminare il magazzino: è utilizzato da uno o più tipi documento.');
+                'Impossibile eliminare il magazzino: è utilizzato da tipi documento o righe documento.');
             return $this->redirect(['view', 'id' => $id]);
         }
 

@@ -152,6 +152,36 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
         return $opzioni[$this->segno_movimento] ?? $this->segno_movimento;
     }
 
+    /**
+     * Coefficiente numerico del segno movimento: carico +1, scarico -1,
+     * nessuno 0.
+     */
+    public static function coefficienteSegno($valore)
+    {
+        if ($valore === self::MOV_CARICO) {
+            return 1;
+        }
+        if ($valore === self::MOV_SCARICO) {
+            return -1;
+        }
+        return 0;
+    }
+
+    /**
+     * Coefficiente numerico di una variazione: aumenta +1, diminuisci -1,
+     * nessuno 0.
+     */
+    public static function coefficienteVariazione($valore)
+    {
+        if ($valore === self::VARIA_AUMENTA) {
+            return 1;
+        }
+        if ($valore === self::VARIA_DIMINUISCI) {
+            return -1;
+        }
+        return 0;
+    }
+
     public function getVariaImpegnatoLabel()
     {
         $opzioni = self::opzioniVariazione();
@@ -230,6 +260,23 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
         $map = [];
         foreach ($rows as $t) {
             $map[(int) $t->id] = (int) $t->$campo;
+        }
+        return $map;
+    }
+
+    /**
+     * Mappa id_tipo => ['partenza' => id|null, 'arrivo' => id|null] per la
+     * form documento: i magazzini proposti di default sulle righe.
+     */
+    public static function mapMagazzini()
+    {
+        $rows = self::find()->select(['id', 'id_magazzino_partenza', 'id_magazzino_arrivo'])->all();
+        $map = [];
+        foreach ($rows as $t) {
+            $map[(int) $t->id] = [
+                'partenza' => $t->id_magazzino_partenza ? (int) $t->id_magazzino_partenza : null,
+                'arrivo' => $t->id_magazzino_arrivo ? (int) $t->id_magazzino_arrivo : null,
+            ];
         }
         return $map;
     }

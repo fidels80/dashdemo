@@ -11,6 +11,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $bloccato = $model->hasScadenzePagate();
 $mostraVarianti = $model->tipo && $model->tipo->mostra_varianti;
+$mostraMagPartenza = $model->tipo && $model->tipo->id_magazzino_partenza;
+$mostraMagArrivo = $model->tipo && $model->tipo->id_magazzino_arrivo;
+$colonneRighe = 10 + ($mostraVarianti ? 3 : 0) + ($mostraMagPartenza ? 1 : 0) + ($mostraMagArrivo ? 1 : 0);
 $stati = ['bozza' => 'Bozza', 'confermato' => 'Confermato', 'chiuso' => 'Chiuso', 'annullato' => 'Annullato'];
 
 $campo = function ($label, $valore, $col = 'col-md-3') {
@@ -74,6 +77,11 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
             </div>
             <div class="row">
                 <?php
+                $campo('Sottocommessa', $model->sottocommessa ? $model->sottocommessa->etichetta : '', 'col-md-5');
+                ?>
+            </div>
+            <div class="row">
+                <?php
                 $campo('Descrizione', $model->descrizione, 'col-md-12');
                 ?>
             </div>
@@ -96,6 +104,13 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                 <tr>
                     <th style="width:9%">Codice</th>
                     <th>Descrizione</th>
+                    <th style="width:11%">Sottocommessa</th>
+                    <?php if ($mostraMagPartenza): ?>
+                        <th style="width:11%">Mag. partenza</th>
+                    <?php endif; ?>
+                    <?php if ($mostraMagArrivo): ?>
+                        <th style="width:11%">Mag. arrivo</th>
+                    <?php endif; ?>
                     <?php if ($mostraVarianti): ?>
                         <th style="width:7%">Taglia</th>
                         <th style="width:7%">Colore</th>
@@ -115,6 +130,13 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                     <tr>
                         <td><?= Html::encode($r->codice_articolo) ?></td>
                         <td><?= Html::encode($r->descrizione) ?></td>
+                        <td><?= $r->sottocommessa ? Html::encode($r->sottocommessa->etichetta) : '' ?></td>
+                        <?php if ($mostraMagPartenza): ?>
+                            <td><?= Html::encode($r->magazzinoPartenzaLabel ?? '') ?></td>
+                        <?php endif; ?>
+                        <?php if ($mostraMagArrivo): ?>
+                            <td><?= Html::encode($r->magazzinoArrivoLabel ?? '') ?></td>
+                        <?php endif; ?>
                         <?php if ($mostraVarianti): ?>
                             <td><?= Html::encode($r->taglia) ?></td>
                             <td><?= Html::encode($r->colore) ?></td>
@@ -134,12 +156,12 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                     </tr>
                 <?php endforeach; ?>
                 <?php if (empty($model->righe)): ?>
-                    <tr><td colspan="<?= $mostraVarianti ? 12 : 9 ?>" class="text-muted">Nessuna riga.</td></tr>
+                    <tr><td colspan="<?= $colonneRighe ?>" class="text-muted">Nessuna riga.</td></tr>
                 <?php endif; ?>
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="<?= $mostraVarianti ? 10 : 7 ?>" class="text-right">Totale documento</th>
+                    <th colspan="<?= $colonneRighe - 2 ?>" class="text-right">Totale documento</th>
                     <th class="text-right"><?= number_format((float) $model->totale, 2, ',', '.') ?></th>
                     <th></th>
                 </tr>

@@ -13,6 +13,9 @@ use yii\helpers\Html;
 /* @var $metodi array */
 /* @var $aliquote array */
 /* @var $unita array */
+/* @var $sottocommesse array */
+/* @var $magazzini array */
+/* @var $tipiMagazzini array */
 /* @var $tipiMostraVarianti array */
 /* @var $modelliMatrice array */
 /* @var $righe array */
@@ -33,6 +36,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'metodi' => $metodi,
         'aliquote' => $aliquote,
         'unita' => $unita,
+        'sottocommesse' => $sottocommesse,
+        'magazzini' => $magazzini,
+        'tipiMagazzini' => $tipiMagazzini,
         'tipiMostraVarianti' => $tipiMostraVarianti,
         'modelliMatrice' => $modelliMatrice,
         'righe' => $righe,

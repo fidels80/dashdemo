@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\MgAnagrafica;
 use app\models\MgCommessa;
+use app\models\MgDocumento;
+use app\models\MgDocumentoRiga;
 use app\models\MgSottocommessa;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -45,10 +47,14 @@ class MgsottocommessaController extends Controller
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgSottocommessa();
         $model->attivo = true;
+
+        if ($from !== null && ($source = MgSottocommessa::findOne((int) $from)) !== null) {
+            $model = \app\components\Duplicate::copy($source);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect([ 'index' ]);
@@ -78,7 +84,17 @@ class MgsottocommessaController extends Controller
 
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+
+        $usata = MgDocumento::find()->where(['id_sottocommessa' => $model->id])->exists()
+            || MgDocumentoRiga::find()->where(['id_sottocommessa' => $model->id])->exists();
+        if ($usata) {
+            Yii::$app->session->setFlash('error',
+                'La sottocommessa è usata in uno o più documenti: non è possibile eliminarla.');
+            return $this->redirect(['index']);
+        }
+
+        $model->delete();
         return $this->redirect(['index']);
     }
 

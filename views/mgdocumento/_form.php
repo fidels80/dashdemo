@@ -16,6 +16,9 @@ use app\models\MgArticolo;
 /* @var $metodi array */
 /* @var $aliquote array */
 /* @var $unita array */
+/* @var $sottocommesse array */
+/* @var $magazzini array */
+/* @var $tipiMagazzini array */
 /* @var $tipiMostraVarianti array */
 /* @var $tipiPrelevaRapportini array */
 /* @var $tipiCreaArticoli array */
@@ -27,6 +30,7 @@ use app\models\MgArticolo;
 $articoliModels = MgArticolo::find()->with(['ivaVendita', 'ivaAcquisto', 'unitaMisura.unitaMisura', 'taglia', 'colore'])->orderBy(['descrizione' => SORT_ASC])->all();
 $stati = ['bozza' => 'Bozza', 'confermato' => 'Confermato', 'chiuso' => 'Chiuso', 'annullato' => 'Annullato'];
 $isNew = $model->isNewRecord;
+$tipoBloccato = !$isNew || !empty($model->id_tipo);
 
 $anaOptions = [];
 foreach ((array) $anagrafiche as $aid => $alabel) {
@@ -46,6 +50,8 @@ foreach ((array) $tipi as $tid => $tlabel) {
         'data-crea-articoli' => isset($tipiCreaArticoli[$tid]) ? (int) $tipiCreaArticoli[$tid] : 0,
         'data-crea-anagrafiche' => isset($tipiCreaAnagrafiche[$tid]) ? (int) $tipiCreaAnagrafiche[$tid] : 0,
         'data-mostra-matrice' => isset($tipiMostraMatrice[$tid]) ? (int) $tipiMostraMatrice[$tid] : 0,
+        'data-magazzino-partenza' => !empty($tipiMagazzini[$tid]['partenza']) ? (int) $tipiMagazzini[$tid]['partenza'] : '',
+        'data-magazzino-arrivo' => !empty($tipiMagazzini[$tid]['arrivo']) ? (int) $tipiMagazzini[$tid]['arrivo'] : '',
     ];
 }
 
@@ -72,7 +78,13 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4">
-                    <?= $form->field($model, 'id_tipo')->dropDownList($tipi, ['prompt' => 'Seleziona tipo...', 'options' => $tipoOptions]) ?>
+                    <?= $form->field($model, 'id_tipo')->dropDownList($tipi, [
+                        'prompt' => 'Seleziona tipo...',
+                        'options' => $tipoOptions,
+                        'disabled' => $tipoBloccato,
+                        'title' => $tipoBloccato ? 'Il tipo documento non è modificabile dopo la prima selezione' : null,
+                    ]) ?>
+                    <?= Html::hiddenInput(Html::getInputName($model, 'id_tipo'), $model->id_tipo, ['id' => 'mgdocumento-id_tipo-hidden']) ?>
                 </div>
                 <div class="col-md-2">
                     <?= $form->field($model, 'data')->textInput(['type' => 'date']) ?>
@@ -111,6 +123,11 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                 </div>
                 <div class="col-md-3">
                     <?= $form->field($model, 'id_metodo_pagamento')->dropDownList($metodi, ['prompt' => 'Nessun metodo...']) ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <?= $form->field($model, 'id_sottocommessa')->dropDownList($sottocommesse, ['prompt' => 'Nessuna sottocommessa...']) ?>
                 </div>
             </div>
             <div class="row">
@@ -158,7 +175,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
-                    <input type="text" id="righe-search" class="form-control" placeholder="Cerca righe per codice, descrizione, taglia, colore...">
+                    <input type="text" id="righe-search" class="form-control" placeholder="Cerca righe per codice, descrizione, sottocommessa, taglia, colore...">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-outline-secondary" id="righe-search-clear" title="Azzera ricerca"><i class="fas fa-times"></i></button>
                     </div>
@@ -172,6 +189,9 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                     <th class="sortable" data-sort="articolo" style="width:16%">Articolo <i class="fas fa-sort sort-ind"></i></th>
                     <th class="sortable" data-sort="codice" style="width:9%">Codice <i class="fas fa-sort sort-ind"></i></th>
                     <th class="sortable" data-sort="descrizione">Descrizione <i class="fas fa-sort sort-ind"></i></th>
+                    <th class="sortable" data-sort="sottocommessa" style="width:11%">Sottocommessa <i class="fas fa-sort sort-ind"></i></th>
+                    <th class="col-mag-partenza" style="width:11%">Mag. partenza</th>
+                    <th class="col-mag-arrivo" style="width:11%">Mag. arrivo</th>
                     <th class="sortable col-varianti" data-sort="taglia" style="width:7%">Taglia <i class="fas fa-sort sort-ind"></i></th>
                     <th class="sortable col-varianti" data-sort="colore" style="width:7%">Colore <i class="fas fa-sort sort-ind"></i></th>
                     <th class="sortable col-varianti" data-sort="tessuto" style="width:7%">Tessuto <i class="fas fa-sort sort-ind"></i></th>
@@ -186,12 +206,12 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                 </thead>
                 <tbody id="righe-body">
                 <?php foreach ($righe as $i => $r): ?>
-                    <?= $this->render('_riga', ['index' => $i, 'model' => $r, 'articoliModels' => $articoliModels]) ?>
+                    <?= $this->render('_riga', ['index' => $i, 'model' => $r, 'articoliModels' => $articoliModels, 'sottocommesse' => $sottocommesse, 'magazzini' => $magazzini]) ?>
                 <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th id="righe-totale-label" colspan="11" class="text-right">Totale documento</th>
+                    <th id="righe-totale-label" colspan="12" class="text-right">Totale documento</th>
                     <th class="text-right" id="totale-documento">0,00</th>
                     <th></th>
                 </tr>
@@ -227,7 +247,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
     <!-- template riga nascosta -->
     <table style="display:none;">
         <tbody>
-        <?= $this->render('_riga', ['index' => '__INDEX__', 'model' => null, 'articoliModels' => $articoliModels]) ?>
+        <?= $this->render('_riga', ['index' => '__INDEX__', 'model' => null, 'articoliModels' => $articoliModels, 'sottocommesse' => $sottocommesse, 'magazzini' => $magazzini]) ?>
         </tbody>
     </table>
 
@@ -451,12 +471,64 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         });
     }
 
-    // --- VISIBILITA' COLONNE TAGLIA/COLORE ---
-    function aggiornaColonneVarianti() {
-        var v = $('#mgdocumento-id_tipo option:selected').attr('data-mostra-varianti');
-        var mostra = String(v) === '1';
-        $('.col-varianti').toggle(mostra);
-        $('#righe-totale-label').attr('colspan', mostra ? 11 : 8);
+    // --- SOTTOCOMMESSA: PROPOSTA DALLA TESTATA ALLE RIGHE ---
+    function sottocommessaTestata() {
+        return $('#mgdocumento-id_sottocommessa').val() || '';
+    }
+
+    function applicaSottocommessaRiga($row) {
+        $row.find('.riga-sottocommessa').val(sottocommessaTestata());
+    }
+
+    function aggiornaSottocommessaRighe() {
+        var $testata = $('#mgdocumento-id_sottocommessa');
+        var nuovo = $testata.val() || '';
+        var precedente = $testata.data('precedente') || '';
+        $('#righe-body .riga-row').each(function () {
+            var $sel = $(this).find('.riga-sottocommessa');
+            if (($sel.val() || '') === precedente) {
+                $sel.val(nuovo);
+            }
+        });
+        $testata.data('precedente', nuovo);
+    }
+
+    // --- VISIBILITA' COLONNE TAGLIA/COLORE E MAGAZZINI ---
+    function tipoOption() {
+        return $('#mgdocumento-id_tipo option:selected');
+    }
+
+    function magazzinoTipo(campo) {
+        var v = tipoOption().attr('data-magazzino-' + campo);
+        return (v === undefined || v === null || v === '') ? '' : String(v);
+    }
+
+    function aggiornaColonneDinamiche() {
+        $('.col-varianti').toggle(String(tipoOption().attr('data-mostra-varianti')) === '1');
+        $('.col-mag-partenza').toggle(!!magazzinoTipo('partenza'));
+        $('.col-mag-arrivo').toggle(!!magazzinoTipo('arrivo'));
+        var visibili = $('#righe-table thead th:visible').length;
+        if (visibili > 0) {
+            $('#righe-totale-label').attr('colspan', visibili - 2);
+        }
+    }
+
+    // --- MAGAZZINI DI DEFAULT SULLE RIGHE ---
+    function applicaMagazziniRiga($row) {
+        var partenza = magazzinoTipo('partenza');
+        var arrivo = magazzinoTipo('arrivo');
+        if (partenza && !$row.find('.riga-mag-partenza').val()) {
+            $row.find('.riga-mag-partenza').val(partenza);
+        }
+        if (arrivo && !$row.find('.riga-mag-arrivo').val()) {
+            $row.find('.riga-mag-arrivo').val(arrivo);
+        }
+    }
+
+    function applicaMagazziniRigheVuote() {
+        $('#righe-body .riga-row').each(function () {
+            applicaMagazziniRiga($(this));
+        });
     }
 
     // --- VISIBILITA' PULSANTI IN BASE AL TIPO DOCUMENTO ---
@@ -485,6 +557,9 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                 $r.find('.riga-articolo option:selected').text(),
                 $r.find('.riga-codice').val(),
                 $r.find('.riga-desc').val(),
+                $r.find('.riga-sottocommessa option:selected').text(),
+                $r.find('.riga-mag-partenza option:selected').text(),
+                $r.find('.riga-mag-arrivo option:selected').text(),
                 $r.find('.riga-taglia').val(),
                 $r.find('.riga-colore').val(),
                 $r.find('.riga-tessuto').val(),
@@ -504,6 +579,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             case 'articolo': return ($row.find('.riga-articolo option:selected').text() || '').trim().toLowerCase();
             case 'codice': return ($row.find('.riga-codice').val() || '').toLowerCase();
             case 'descrizione': return ($row.find('.riga-desc').val() || '').toLowerCase();
+            case 'sottocommessa': return ($row.find('.riga-sottocommessa option:selected').text() || '').trim().toLowerCase();
             case 'taglia': return ($row.find('.riga-taglia').val() || '').toLowerCase();
             case 'colore': return ($row.find('.riga-colore').val() || '').toLowerCase();
             case 'tessuto': return ($row.find('.riga-tessuto').val() || '').toLowerCase();
@@ -676,12 +752,8 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
     }
 
     $('#btn-add-riga').on('click', function () {
-        var tpl = $('#righe-table').closest('.mgdocumento-form').find('table[style="display:none;"] tbody').html();
-        var idx = $('#righe-body .riga-row').length;
-        var html = tpl.replace(/__INDEX__/g, idx);
-        $('#righe-body').append(html);
+        aggiungiRiga();
         filtraRighe();
-        ricalcolaTotale();
     });
 
     $(document).on('click', '.riga-duplica', function () {
@@ -799,12 +871,17 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
     }
 
     $('#mgdocumento-id_tipo').on('change', function () {
+        var val = $(this).val();
+        $('#mgdocumento-id_tipo-hidden').val(val);
+        if (!val) { return; }
         if (isNew) { proponiNumero(); }
         loadAnagrafiche();
         applicaAliquoteRighe();
-        aggiornaColonneVarianti();
+        aggiornaColonneDinamiche();
         aggiornaPulsantiTipo();
         aggiornaScadenze();
+        applicaMagazziniRigheVuote();
+        $(this).prop('disabled', true);
     });
 
     // --- MATRICE TAGLIE ---
@@ -946,6 +1023,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
     });
     $('#mgdocumento-id_anagrafica').on('change', applicaMetodoAnagrafica);
     $('#mgdocumento-id_metodo_pagamento').on('change', aggiornaScadenze);
+    $('#mgdocumento-id_sottocommessa').on('change', aggiornaSottocommessaRighe);
 
     // --- NUOVO ARTICOLO IN LINEA ---
     var lastRiga = null;
@@ -957,8 +1035,11 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         var tpl = $('#righe-table').closest('.mgdocumento-form').find('table[style="display:none;"] tbody').html();
         var idx = $('#righe-body .riga-row').length;
         $('#righe-body').append(tpl.replace(/__INDEX__/g, idx));
+        var $row = $('#righe-body .riga-row').last();
+        applicaSottocommessaRiga($row);
+        applicaMagazziniRiga($row);
         if (!silent) { ricalcolaTotale(); }
-        return $('#righe-body .riga-row').last();
+        return $row;
     }
 
     $('#btn-nuovo-articolo').on('click', function () {
@@ -1222,9 +1303,11 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         }
     });
 
-    aggiornaColonneVarianti();
+    $('#mgdocumento-id_tipo-hidden').val($('#mgdocumento-id_tipo').val() || '');
+    aggiornaColonneDinamiche();
     aggiornaPulsantiTipo();
     initRigheUm();
+    $('#mgdocumento-id_sottocommessa').data('precedente', sottocommessaTestata());
     filtraRighe();
     ricalcolaTotale();
 })();

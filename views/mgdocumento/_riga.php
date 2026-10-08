@@ -5,6 +5,8 @@ use yii\helpers\Html;
 /* @var $index int|string */
 /* @var $model app\models\MgDocumentoRiga|null */
 /* @var $articoliModels app\models\MgArticolo[] */
+/* @var $sottocommesse array */
+/* @var $magazzini array */
 
 $val = function ($attr) use ($model) {
     return $model ? $model->$attr : '';
@@ -52,6 +54,36 @@ $unitaJson = function ($articolo) {
     </td>
     <td><input type="text" name="righe[<?= $index ?>][codice_articolo]" class="form-control form-control-sm riga-codice" value="<?= Html::encode($val('codice_articolo')) ?>"></td>
     <td><input type="text" name="righe[<?= $index ?>][descrizione]" class="form-control form-control-sm riga-desc" value="<?= Html::encode($val('descrizione')) ?>"></td>
+    <td>
+        <select name="righe[<?= $index ?>][id_sottocommessa]" class="form-control form-control-sm riga-sottocommessa">
+            <option value="">--</option>
+            <?php foreach ((array) $sottocommesse as $sid => $slabel): ?>
+                <option value="<?= (int) $sid ?>" <?= ((string) $val('id_sottocommessa') === (string) $sid) ? 'selected' : '' ?>>
+                    <?= Html::encode($slabel) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </td>
+    <td class="col-mag-partenza">
+        <select name="righe[<?= $index ?>][id_magazzino_partenza]" class="form-control form-control-sm riga-mag-partenza">
+            <option value="">--</option>
+            <?php foreach ((array) $magazzini as $mid => $mlabel): ?>
+                <option value="<?= (int) $mid ?>" <?= ((string) $val('id_magazzino_partenza') === (string) $mid) ? 'selected' : '' ?>>
+                    <?= Html::encode($mlabel) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </td>
+    <td class="col-mag-arrivo">
+        <select name="righe[<?= $index ?>][id_magazzino_arrivo]" class="form-control form-control-sm riga-mag-arrivo">
+            <option value="">--</option>
+            <?php foreach ((array) $magazzini as $mid => $mlabel): ?>
+                <option value="<?= (int) $mid ?>" <?= ((string) $val('id_magazzino_arrivo') === (string) $mid) ? 'selected' : '' ?>>
+                    <?= Html::encode($mlabel) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </td>
     <td class="col-varianti"><input type="text" name="righe[<?= $index ?>][taglia]" class="form-control form-control-sm riga-taglia" value="<?= Html::encode($val('taglia')) ?>"></td>
     <td class="col-varianti"><input type="text" name="righe[<?= $index ?>][colore]" class="form-control form-control-sm riga-colore" value="<?= Html::encode($val('colore')) ?>"></td>
     <td class="col-varianti"><input type="text" name="righe[<?= $index ?>][tessuto]" class="form-control form-control-sm riga-tessuto" value="<?= Html::encode($val('tessuto')) ?>"></td>

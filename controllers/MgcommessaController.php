@@ -5,6 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\MgAnagrafica;
 use app\models\MgCommessa;
+use app\models\MgDocumento;
+use app\models\MgDocumentoRiga;
+use app\models\MgSottocommessa;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -45,10 +48,14 @@ class MgcommessaController extends Controller
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
-    public function actionCreate()
+    public function actionCreate($from = null)
     {
         $model = new MgCommessa();
         $model->attivo = true;
+
+        if ($from !== null && ($source = MgCommessa::findOne((int) $from)) !== null) {
+            $model = \app\components\Duplicate::copy($source);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect([ 'index' ]);
@@ -76,7 +83,20 @@ class MgcommessaController extends Controller
 
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+
+        $ids = MgSottocommessa::find()->select('id')->where(['id_commessa' => $model->id])->column();
+        if (!empty($ids)) {
+            $usata = MgDocumento::find()->where(['id_sottocommessa' => $ids])->exists()
+                || MgDocumentoRiga::find()->where(['id_sottocommessa' => $ids])->exists();
+            if ($usata) {
+                Yii::$app->session->setFlash('error',
+                    'La commessa ha sottocommesse usate in documenti: non è possibile eliminarla.');
+                return $this->redirect(['index']);
+            }
+        }
+
+        $model->delete();
         return $this->redirect(['index']);
     }
 
