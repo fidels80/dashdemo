@@ -111,6 +111,7 @@ JS
         <a class="manual-l2" href="#logout">Logout</a>
         <a class="manual-l1" href="#navigazione">3. Navigazione e menu</a>
         <a class="manual-l2" href="#menu-laterale">Il menu laterale e il logo</a>
+        <a class="manual-l2" href="#tabelle-elenchi">Tabelle degli elenchi</a>
         <a class="manual-l2" href="#tema">Tema grafico e modalit&agrave; scura</a>
         <a class="manual-l2" href="#livelli">Livelli e moduli</a>
         <a class="manual-l1" href="#planning">4. Planning (pianificazione)</a>
@@ -248,6 +249,13 @@ JS
           <div class="manual-tip">
             <strong>Suggerimento:</strong> apri solo l'area che ti serve e richiudila con un secondo clic sulla stessa voce: il menu si chiude e la pagina resta leggibile.
           </div>
+
+          <h3 id="tabelle-elenchi">Tabelle degli elenchi</h3>
+          <p>In tutte le pagine di elenco con ricerca ed esportazione (Anagrafiche, ToDo, Menu, ecc.) le tabelle <strong>si adattano da sole</strong> al numero e alla larghezza delle colonne: quando lo spazio non basta, il testo delle celle si riduce progressivamente finch&eacute; tutte le colonne entrano nella pagina, senza dover scorrere a destra.</p>
+          <ul>
+            <li>Se allarghi la finestra o <strong>chiudi il menu laterale</strong> (guadagnando spazio), la tabella si adatta subito al nuovo spazio.</li>
+            <li>Se le colonne sono davvero molte, compare uno <strong>scorrimento orizzontale</strong> solo all'interno della tabella: i contenuti restano <strong>dentro la scheda</strong> e non escono dal bordo della pagina.</li>
+          </ul>
 
           <h3 id="tema">Tema grafico e modalit&agrave; scura</h3>
           <p>L'applicazione ha una veste grafica moderna in <strong>stile Apple</strong>: sfondi chiari, schede con angoli arrotondati, ombre leggere e pulsanti blu. Il nuovo aspetto vale su tutte le pagine, comprese quella di accesso, registrazione e recupero password (dove anche il logo &egrave; stato corretto e ridimensionato).</p>
