@@ -16,6 +16,7 @@ use Yii;
  * @property int $n_rate
  * @property bool $attivo
  * @property string|null $created_at
+ * @property string|null $fe_modalita_pagamento
  *
  * @property MgMetodoPagamentoRata[] $rate
  * @property MgTipoPagamento $tipoPagamento
@@ -42,6 +43,7 @@ class MgMetodoPagamento extends \yii\db\ActiveRecord
             [['codice'], 'string', 'max' => 20],
             [['descrizione'], 'string', 'max' => 200],
             [['partenza'], 'string', 'max' => 20],
+            [['fe_modalita_pagamento'], 'string', 'max' => 4],
             [['partenza'], 'in', 'range' => array_keys(self::opzioniPartenza())],
             [['codice'], 'unique'],
         ];
@@ -59,7 +61,35 @@ class MgMetodoPagamento extends \yii\db\ActiveRecord
             'n_rate' => 'Numero rate',
             'attivo' => 'Attivo',
             'created_at' => 'Creato il',
+            'fe_modalita_pagamento' => 'Modalità pagamento (SDI)',
         ];
+    }
+
+    /**
+     * Etichetta della modalità di pagamento SDI.
+     */
+    public function getFeModalitaPagamentoLabel()
+    {
+        $opzioni = \app\components\FatturaElettronica::opzioniModalitaPagamento();
+        return $opzioni[$this->fe_modalita_pagamento] ?? $this->fe_modalita_pagamento;
+    }
+
+    /**
+     * Condizioni di pagamento SDI ereditate dal tipo pagamento.
+     */
+    public function getFeCondizioniPagamento()
+    {
+        return $this->tipoPagamento ? $this->tipoPagamento->fe_condizioni_pagamento : null;
+    }
+
+    /**
+     * Etichetta delle condizioni di pagamento SDI ereditate dal tipo pagamento.
+     */
+    public function getFeCondizioniPagamentoLabel()
+    {
+        $condizioni = $this->feCondizioniPagamento;
+        $opzioni = \app\components\FatturaElettronica::opzioniCondizioniPagamento();
+        return $opzioni[$condizioni] ?? $condizioni;
     }
 
     public static function opzioniPartenza()

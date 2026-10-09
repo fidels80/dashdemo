@@ -6,6 +6,15 @@ use Yii;
 
 /**
  * This is the model class for table "mg_anagrafica".
+ *
+ * @property string|null $fe_codice_destinatario
+ * @property string|null $fe_pec
+ * @property string|null $fe_id_paese
+ * @property string|null $fe_nazione
+ * @property string|null $fe_tipo_soggetto
+ * @property string|null $fe_nome
+ * @property string|null $fe_cognome
+ * @property string|null $fe_regime_fiscale
  */
 class MgAnagrafica extends \yii\db\ActiveRecord
 {
@@ -31,6 +40,12 @@ class MgAnagrafica extends \yii\db\ActiveRecord
             [['telefono'], 'string', 'max' => 50],
             [['email'], 'string', 'max' => 100],
             [['tipo'], 'string', 'max' => 20],
+            [['fe_codice_destinatario'], 'string', 'max' => 7],
+            [['fe_pec'], 'string', 'max' => 100],
+            [['fe_id_paese', 'fe_nazione'], 'string', 'max' => 2],
+            [['fe_tipo_soggetto'], 'string', 'max' => 1],
+            [['fe_nome', 'fe_cognome'], 'string', 'max' => 100],
+            [['fe_regime_fiscale'], 'string', 'max' => 4],
             [['codice'], 'unique'],
         ];
     }
@@ -57,6 +72,14 @@ class MgAnagrafica extends \yii\db\ActiveRecord
             'perc_provvigione' => '% provvigione',
             'id_metodo_pagamento' => 'Metodo di pagamento',
             'id_aliquota_iva' => 'Aliquota IVA',
+            'fe_codice_destinatario' => 'Codice destinatario',
+            'fe_pec' => 'PEC',
+            'fe_id_paese' => 'Paese (ISO)',
+            'fe_nazione' => 'Nazione (ISO)',
+            'fe_tipo_soggetto' => 'Tipo soggetto',
+            'fe_nome' => 'Nome',
+            'fe_cognome' => 'Cognome',
+            'fe_regime_fiscale' => 'Regime fiscale',
         ];
     }
 

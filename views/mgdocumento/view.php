@@ -44,6 +44,17 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                     ],
                 ]) ?>
             <?php endif; ?>
+            <?php if ($model->tipo && $model->tipo->elettronico): ?>
+                <?= Html::a('<i class="fas fa-file-code"></i> Genera XML', ['genera-xml', 'id' => $model->id], [
+                    'class' => 'btn btn-outline-dark',
+                    'target' => '_blank',
+                    'title' => 'Anteprima XML fattura elettronica',
+                ]) ?>
+                <?= Html::a('<i class="fas fa-download"></i>', ['genera-xml', 'id' => $model->id, 'download' => 1], [
+                    'class' => 'btn btn-outline-secondary',
+                    'title' => 'Scarica XML fattura elettronica',
+                ]) ?>
+            <?php endif; ?>
         </div>
         <div class="text-muted">
             <i class="fas fa-info-circle"></i>
@@ -186,7 +197,7 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                                     <tbody>
                                     <?php foreach ($r->dettagli as $d): ?>
                                         <tr>
-                                            <?php if ($gestioneSeriali): ?><td><?= Html::encode($d->seriale) ?></td><?php endif; ?>
+                                            <?php if ($gestioneSeriali): ?><td><?= $d->matricola ? Html::encode($d->matricola->etichetta) : Html::encode($d->seriale) ?></td><?php endif; ?>
                                             <?php if ($gestioneLotti): ?><td><?= $d->lotto ? Html::encode($d->lotto->etichetta) : '' ?></td><?php endif; ?>
                                             <?php if ($gestioneDataConsegna): ?><td><?= Html::encode($d->dataConsegnaLabel) ?></td><?php endif; ?>
                                             <?php if (!$gestioneSeriali): ?><td class="text-right"><?= number_format((float) $d->qta, 2, ',', '.') ?></td><?php endif; ?>

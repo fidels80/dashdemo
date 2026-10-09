@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use app\models\MgMetodoPagamento;
+use app\components\FatturaElettronica;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\MgMetodoPagamento */
@@ -28,11 +29,20 @@ $partenze = MgMetodoPagamento::opzioniPartenza();
             <div class="row">
                 <div class="col-md-4"><?= $form->field($model, 'partenza')->dropDownList($partenze) ?></div>
                 <div class="col-md-3"><?= $form->field($model, 'giorni_partenza')->textInput(['type' => 'number']) ?></div>
+                <div class="col-md-5">
+                    <?= $form->field($model, 'fe_modalita_pagamento')->dropDownList(
+                        FatturaElettronica::opzioniModalitaPagamento(),
+                        ['prompt' => '— Nessuna —']
+                    ) ?>
+                </div>
             </div>
             <div class="alert alert-info mb-0">
                 <i class="fas fa-info-circle"></i>
                 La partenza determina da quando decorrono le rate. Ogni rata è poi spostata dei <strong>giorni</strong>
                 indicati in tabella rispetto alla data di partenza.
+                <br>
+                La <strong>modalità di pagamento (SDI)</strong> è usata nella fattura elettronica per i documenti che
+                usano questo metodo (es. <em>MP05</em> bonifico, <em>MP12</em> RIBA).
             </div>
         </div>
     </div>

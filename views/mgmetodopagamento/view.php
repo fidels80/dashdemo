@@ -49,6 +49,12 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                 $campo('Numero rate', $model->n_rate, 'col-md-4');
                 ?>
             </div>
+            <div class="row">
+                <?php
+                $campo('Condizioni pagamento (SDI, dal tipo)', $model->feCondizioniPagamentoLabel, 'col-md-6');
+                $campo('Modalità pagamento (SDI)', $model->feModalitaPagamentoLabel, 'col-md-6');
+                ?>
+            </div>
         </div>
     </div>
 

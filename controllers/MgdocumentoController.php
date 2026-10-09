@@ -8,6 +8,7 @@ use app\models\MgDocumentoRiga;
 use app\models\MgDocumentoRigaDettaglio;
 use app\models\MgTipoDocumento;
 use app\models\MgLotto;
+use app\models\MgMatricola;
 use app\models\MgAnagrafica;
 use app\models\MgArticolo;
 use app\models\MgMetodoPagamento;
@@ -19,6 +20,7 @@ use app\models\MgMagazzino;
 use app\models\MgMovimentoMagazzino;
 use app\models\MgSottocommessa;
 use app\models\Rapportini;
+use app\components\FatturaElettronica;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -229,6 +231,42 @@ class MgdocumentoController extends Controller
     }
 
     /**
+     * Genera (e restituisce) l'XML della fattura elettronica del documento.
+     * Con $download=1 il file viene proposto in download, altrimenti è
+     * mostrato inline (anteprima).
+     */
+    public function actionGeneraXml($id, $download = 0)
+    {
+        $model = $this->findModel($id);
+
+        if (!$model->tipo || !$model->tipo->elettronico) {
+            Yii::$app->session->setFlash('error',
+                'Il tipo documento non è configurato come documento elettronico.');
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        try {
+            $fe = new FatturaElettronica($model);
+            $xml = $fe->genera();
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error',
+                'Impossibile generare l\'XML: ' . $e->getMessage());
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_RAW;
+        $response->headers->set('Content-Type', 'application/xml; charset=UTF-8');
+        if ($download) {
+            $response->headers->set('Content-Disposition', 'attachment; filename="' . $fe->nomeFile() . '"');
+        } else {
+            $response->headers->set('Content-Disposition', 'inline; filename="' . $fe->nomeFile() . '"');
+        }
+
+        return $xml;
+    }
+
+    /**
      * Cambia lo stato di una scadenza tra 'aperta' e 'pagata'.
      */
     public function actionToggleScadenza($id)
@@ -359,7 +397,24 @@ class MgdocumentoController extends Controller
             $riga->qta = ($r['qta'] ?? '') === '' ? 0 : $r['qta'];
             $riga->prezzo = ($r['prezzo'] ?? '') === '' ? 0 : $r['prezzo'];
             $riga->sconto = ($r['sconto'] ?? '') === '' ? 0 : $r['sconto'];
-            $riga->iva = ($r['iva'] ?? '') === '' ? 0 : $r['iva'];
+
+            // Aliquota IVA: se indicata prevale la percentuale dell'aliquota;
+            // altrimenti si prova ad agganciare l'aliquota dalla percentuale.
+            $riga->id_aliquota_iva = !empty($r['id_aliquota_iva']) ? (int) $r['id_aliquota_iva'] : null;
+            if ($riga->id_aliquota_iva) {
+                $aliquota = MgAliquotaIva::findOne($riga->id_aliquota_iva);
+                $riga->iva = $aliquota ? (float) $aliquota->percentuale
+                    : (($r['iva'] ?? '') === '' ? 0 : $r['iva']);
+            } else {
+                $riga->iva = ($r['iva'] ?? '') === '' ? 0 : $r['iva'];
+                $aliquota = MgAliquotaIva::find()
+                    ->where(['percentuale' => (float) $riga->iva])
+                    ->orderBy(['attivo' => SORT_DESC, 'id' => SORT_ASC])
+                    ->one();
+                if ($aliquota) {
+                    $riga->id_aliquota_iva = $aliquota->id;
+                }
+            }
             $riga->ordine = $ord++;
 
             // Codice articolo e unità di misura assenti: default dall'articolo.
@@ -406,13 +461,21 @@ class MgdocumentoController extends Controller
             $seriale = trim((string) ($d['seriale'] ?? ''));
             $data = trim((string) ($d['data_consegna'] ?? ''));
             $idLotto = !empty($d['id_lotto']) ? (int) $d['id_lotto'] : null;
-            if ($seriale === '' && $data === '' && $idLotto === null) {
+            $idMatricola = !empty($d['id_matricola']) ? (int) $d['id_matricola'] : null;
+            if ($idMatricola !== null && $seriale === '') {
+                $matricola = MgMatricola::findOne($idMatricola);
+                if ($matricola) {
+                    $seriale = (string) $matricola->matricola;
+                }
+            }
+            if ($seriale === '' && $data === '' && $idLotto === null && $idMatricola === null) {
                 continue;
             }
 
             $dettaglio = new MgDocumentoRigaDettaglio();
             $dettaglio->id_documento_riga = $riga->id;
             $dettaglio->seriale = $seriale !== '' ? $seriale : null;
+            $dettaglio->id_matricola = $idMatricola;
             $dettaglio->id_lotto = $idLotto;
             $dettaglio->data_consegna = $data !== '' ? $data : null;
             $dettaglio->qta = ($d['qta'] ?? '') === '' ? 1 : $d['qta'];
@@ -775,6 +838,57 @@ class MgdocumentoController extends Controller
             'data_scadenza' => $lotto->data_scadenza ? date('d/m/Y', strtotime((string) $lotto->data_scadenza)) : '',
             'nota' => $lotto->nota,
             'etichetta' => $etichetta,
+        ];
+    }
+
+    /**
+     * Matricole disponibili per l'articolo di una riga (AJAX).
+     */
+    public function actionMatricole($id_articolo = null, $codice_articolo = null)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $out = [];
+        foreach (MgMatricola::perArticolo($id_articolo, $codice_articolo) as $matricola) {
+            $out[] = $this->matricolaJson($matricola);
+        }
+
+        return ['success' => true, 'matricole' => $out];
+    }
+
+    /**
+     * Creazione rapida di una matricola per l'articolo di una riga (AJAX).
+     */
+    public function actionCreaMatricola()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        if (!Yii::$app->request->isPost) {
+            return ['success' => false, 'error' => 'Richiesta non valida.'];
+        }
+
+        $model = new MgMatricola();
+        $model->attivo = true;
+        $model->load(Yii::$app->request->post(), '');
+
+        if ($model->save()) {
+            return ['success' => true, 'matricola' => $this->matricolaJson($model)];
+        }
+
+        return ['success' => false, 'errors' => $model->getErrors()];
+    }
+
+    /**
+     * Serializza una matricola per le risposte AJAX della form documento.
+     */
+    private function matricolaJson($matricola)
+    {
+        return [
+            'id' => (int) $matricola->id,
+            'matricola' => $matricola->matricola,
+            'descrizione' => $matricola->descrizione,
+            'nota' => $matricola->nota,
+            'etichetta' => $matricola->etichetta,
         ];
     }
 

@@ -10,12 +10,14 @@ use Yii;
  * @property int $id
  * @property int $id_documento_riga
  * @property string|null $seriale
+ * @property int|null $id_matricola
  * @property int|null $id_lotto
  * @property string|null $data_consegna
  * @property float|null $qta
  * @property int|null $ordine
  *
  * @property MgDocumentoRiga $riga
+ * @property MgMatricola|null $matricola
  * @property MgLotto|null $lotto
  */
 class MgDocumentoRigaDettaglio extends \yii\db\ActiveRecord
@@ -35,6 +37,11 @@ class MgDocumentoRigaDettaglio extends \yii\db\ActiveRecord
                 'targetClass' => MgLotto::className(),
                 'targetAttribute' => ['id_lotto' => 'id'],
                 'skipOnEmpty' => true],
+            [['id_matricola'], 'integer'],
+            [['id_matricola'], 'exist',
+                'targetClass' => MgMatricola::className(),
+                'targetAttribute' => ['id_matricola' => 'id'],
+                'skipOnEmpty' => true],
             [['data_consegna'], 'safe'],
             [['qta'], 'number'],
             [['seriale'], 'string', 'max' => 100],
@@ -47,6 +54,7 @@ class MgDocumentoRigaDettaglio extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_documento_riga' => 'Riga documento',
             'seriale' => 'Seriale / Matricola',
+            'id_matricola' => 'Matricola',
             'id_lotto' => 'Lotto',
             'data_consegna' => 'Data consegna',
             'qta' => 'Q.tà',
@@ -62,6 +70,11 @@ class MgDocumentoRigaDettaglio extends \yii\db\ActiveRecord
     public function getLotto()
     {
         return $this->hasOne(MgLotto::className(), ['id' => 'id_lotto']);
+    }
+
+    public function getMatricola()
+    {
+        return $this->hasOne(MgMatricola::className(), ['id' => 'id_matricola']);
     }
 
     public function getDataConsegnaLabel()

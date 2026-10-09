@@ -12,6 +12,7 @@ use Yii;
  * @property string $descrizione
  * @property float $percentuale
  * @property bool $attivo
+ * @property string|null $fe_natura
  */
 class MgAliquotaIva extends \yii\db\ActiveRecord
 {
@@ -28,6 +29,7 @@ class MgAliquotaIva extends \yii\db\ActiveRecord
             [['attivo'], 'boolean'],
             [['codice'], 'string', 'max' => 20],
             [['descrizione'], 'string', 'max' => 100],
+            [['fe_natura'], 'string', 'max' => 4],
             [['codice'], 'unique'],
         ];
     }
@@ -40,7 +42,34 @@ class MgAliquotaIva extends \yii\db\ActiveRecord
             'descrizione' => 'Descrizione',
             'percentuale' => '%',
             'attivo' => 'Attivo',
+            'fe_natura' => 'Natura IVA (SDI)',
         ];
+    }
+
+    /**
+     * Etichetta della natura IVA SDI.
+     */
+    public function getFeNaturaLabel()
+    {
+        $opzioni = \app\components\FatturaElettronica::opzioniNaturaIva();
+        return $opzioni[$this->fe_natura] ?? $this->fe_natura;
+    }
+
+    /**
+     * Natura IVA da usare per una riga con la percentuale indicata.
+     * Cerca l'aliquota attiva con quella percentuale e ne restituisce la
+     * natura; null se non trovata.
+     *
+     * @param float $percentuale
+     * @return string|null
+     */
+    public static function naturaPerPercentuale($percentuale)
+    {
+        $aliquota = self::find()
+            ->where(['percentuale' => $percentuale])
+            ->orderBy(['attivo' => SORT_DESC, 'id' => SORT_ASC])
+            ->one();
+        return $aliquota ? $aliquota->fe_natura : null;
     }
 
     /**

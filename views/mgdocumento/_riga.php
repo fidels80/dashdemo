@@ -7,6 +7,8 @@ use yii\helpers\Html;
 /* @var $articoliModels app\models\MgArticolo[] */
 /* @var $sottocommesse array */
 /* @var $magazzini array */
+/* @var $aliquote array id => etichetta */
+/* @var $aliquotePerc array id => percentuale */
 
 $val = function ($attr) use ($model) {
     return $model ? $model->$attr : '';
@@ -98,7 +100,20 @@ $unitaJson = function ($articolo) {
     <td><input type="number" step="any" name="righe[<?= $index ?>][qta]" class="form-control form-control-sm riga-qta text-right" value="<?= Html::encode($val('qta')) ?>"></td>
     <td><input type="number" step="any" name="righe[<?= $index ?>][prezzo]" class="form-control form-control-sm riga-prezzo text-right" value="<?= Html::encode($val('prezzo')) ?>"></td>
     <td><input type="number" step="any" name="righe[<?= $index ?>][sconto]" class="form-control form-control-sm riga-sconto text-right" value="<?= Html::encode($val('sconto')) ?>"></td>
-    <td><input type="number" step="any" name="righe[<?= $index ?>][iva]" class="form-control form-control-sm riga-iva text-right" value="<?= Html::encode($val('iva')) ?>"></td>
+    <td>
+        <select class="form-control form-control-sm riga-aliquota">
+            <option value="" data-perc="">--</option>
+            <?php foreach ((array) $aliquote as $alid => $alabel): ?>
+                <option value="<?= (int) $alid ?>"
+                        data-perc="<?= Html::encode(isset($aliquotePerc[$alid]) ? $aliquotePerc[$alid] : '') ?>"
+                    <?= ((string) $val('id_aliquota_iva') === (string) $alid) ? 'selected' : '' ?>>
+                    <?= Html::encode($alabel) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <input type="hidden" name="righe[<?= $index ?>][id_aliquota_iva]" class="riga-aliquota-id" value="<?= Html::encode($val('id_aliquota_iva')) ?>">
+        <input type="hidden" name="righe[<?= $index ?>][iva]" class="riga-iva" value="<?= Html::encode($val('iva')) ?>">
+    </td>
     <td><input type="text" class="form-control form-control-sm riga-totale text-right" value="<?= number_format($totale, 2, ',', '.') ?>" readonly></td>
     <td class="text-center text-nowrap">
         <button type="button" class="btn btn-sm btn-outline-dark riga-dettagli-btn" title="Seriali / date consegna" style="display:none;"><i class="fas fa-barcode"></i><span class="riga-dettagli-count badge badge-dark ml-1" style="<?= count($dettagli) ? '' : 'display:none;' ?>"><?= count($dettagli) ?></span></button>
@@ -108,6 +123,7 @@ $unitaJson = function ($articolo) {
         <div class="riga-dettagli-box" style="display:none;">
             <?php foreach ($dettagli as $j => $d): ?>
                 <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][seriale]" value="<?= Html::encode($d->seriale) ?>">
+                <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][id_matricola]" value="<?= Html::encode($d->id_matricola) ?>">
                 <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][id_lotto]" value="<?= Html::encode($d->id_lotto) ?>">
                 <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][data_consegna]" value="<?= Html::encode($d->data_consegna) ?>">
                 <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][qta]" value="<?= Html::encode($d->qta) ?>">

@@ -66,6 +66,8 @@ foreach ((array) $aliquote as $alid => $alabel) {
     $aliquoteHtml .= Html::tag('option', Html::encode($alabel), ['value' => $alid]);
 }
 
+$aliquotePerc = \app\models\MgAliquotaIva::mapPercentuali();
+
 $unitaHtml = Html::tag('option', 'Nessuna', ['value' => '']);
 foreach ((array) $unita as $uid => $ulabel) {
     $unitaHtml .= Html::tag('option', Html::encode($ulabel), ['value' => $uid]);
@@ -212,7 +214,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                 </thead>
                 <tbody id="righe-body">
                 <?php foreach ($righe as $i => $r): ?>
-                    <?= $this->render('_riga', ['index' => $i, 'model' => $r, 'articoliModels' => $articoliModels, 'sottocommesse' => $sottocommesse, 'magazzini' => $magazzini]) ?>
+                    <?= $this->render('_riga', ['index' => $i, 'model' => $r, 'articoliModels' => $articoliModels, 'sottocommesse' => $sottocommesse, 'magazzini' => $magazzini, 'aliquote' => $aliquote, 'aliquotePerc' => $aliquotePerc]) ?>
                 <?php endforeach; ?>
                 </tbody>
                 <tfoot>
@@ -253,7 +255,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
     <!-- template riga nascosta -->
     <table style="display:none;">
         <tbody>
-        <?= $this->render('_riga', ['index' => '__INDEX__', 'model' => null, 'articoliModels' => $articoliModels, 'sottocommesse' => $sottocommesse, 'magazzini' => $magazzini]) ?>
+        <?= $this->render('_riga', ['index' => '__INDEX__', 'model' => null, 'articoliModels' => $articoliModels, 'sottocommesse' => $sottocommesse, 'magazzini' => $magazzini, 'aliquote' => $aliquote, 'aliquotePerc' => $aliquotePerc]) ?>
         </tbody>
     </table>
 
@@ -408,6 +410,43 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
                     <button type="button" class="btn btn-dark" id="btn-nl-salva"><i class="fas fa-save"></i> Crea lotto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale nuova matricola -->
+    <div class="modal fade" id="modal-nuova-matricola" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white"><i class="fas fa-barcode"></i> Nuova matricola</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Articolo</label>
+                        <input type="text" id="nm-articolo" class="form-control" readonly>
+                        <input type="hidden" id="nm-id-articolo">
+                        <input type="hidden" id="nm-codice-articolo">
+                    </div>
+                    <div class="form-group">
+                        <label>Matricola / Seriale *</label>
+                        <input type="text" id="nm-matricola" class="form-control" maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrizione</label>
+                        <input type="text" id="nm-descrizione" class="form-control" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label>Nota</label>
+                        <textarea id="nm-nota" class="form-control" rows="2" maxlength="500"></textarea>
+                    </div>
+                    <div id="nm-error" class="text-danger small"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-dark" id="btn-nm-salva"><i class="fas fa-save"></i> Crea matricola</button>
                 </div>
             </div>
         </div>
@@ -629,6 +668,10 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
     var $lottoSelectCorrente = null;
     var lottoListUrl = '<?= Url::to(['mgdocumento/lotti']) ?>';
     var lottoCreaUrl = '<?= Url::to(['mgdocumento/crea-lotto']) ?>';
+    var matricoleRigaCorrente = [];
+    var $matricolaSelectCorrente = null;
+    var matricolaListUrl = '<?= Url::to(['mgdocumento/matricole']) ?>';
+    var matricolaCreaUrl = '<?= Url::to(['mgdocumento/crea-matricola']) ?>';
 
     function dettagliFlags() {
         return {
@@ -651,7 +694,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             if (!m) { return; }
             var j = parseInt(m[1], 10);
             var campo = m[2];
-            if (!out[j]) { out[j] = { seriale: '', id_lotto: '', data_consegna: '', qta: '' }; }
+            if (!out[j]) { out[j] = { seriale: '', id_matricola: '', id_lotto: '', data_consegna: '', qta: '' }; }
             out[j][campo] = $(this).val();
         });
         return out;
@@ -685,12 +728,26 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             + '</div>';
     }
 
+    function matricolaSelectHtml(selectedId) {
+        var opts = '';
+        $.each(matricoleRigaCorrente, function (i, m) {
+            opts += '<option value="' + escAttr(m.id) + '" data-serial="' + escAttr(m.matricola) + '"'
+                + (String(m.id) === String(selectedId) ? ' selected' : '') + '>'
+                + $('<div>').text(m.etichetta).html() + '</option>';
+        });
+        return '<div class="input-group input-group-sm">'
+            + '<select class="form-control form-control-sm det-matricola"><option value="">-- nessuna matricola --</option>' + opts + '</select>'
+            + '<div class="input-group-append"><button type="button" class="btn btn-sm btn-outline-dark det-matricola-nuovo" title="Nuova matricola"><i class="fas fa-plus"></i></button></div>'
+            + '</div>';
+    }
+
     function dettagliRowHtml(d) {
         var f = dettagliFlags();
         d = d || {};
         var h = '<tr class="dettaglio-row">';
         if (f.sn) {
-            h += '<td><input type="text" class="form-control form-control-sm det-seriale" value="' + escAttr(d.seriale) + '"></td>';
+            h += '<td>' + matricolaSelectHtml(d.id_matricola)
+                + '<input type="hidden" class="det-seriale" value="' + escAttr(d.seriale) + '"></td>';
         }
         if (f.lotti) {
             h += '<td>' + lottoSelectHtml(d.id_lotto) + '</td>';
@@ -723,17 +780,33 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             $('#modal-dettagli').modal('show');
         }
 
+        var parametri = {
+            id_articolo: $row.find('.riga-articolo').val() || '',
+            codice_articolo: $row.find('.riga-codice').val() || ''
+        };
+        var richieste = [];
+
+        if (f.sn) {
+            matricoleRigaCorrente = [];
+            richieste.push($.getJSON(matricolaListUrl, parametri, function (res) {
+                if (res && res.success) { matricoleRigaCorrente = res.matricole; }
+            }));
+        } else {
+            matricoleRigaCorrente = [];
+        }
+
         if (f.lotti) {
             lottiRigaCorrente = [];
-            $.getJSON(lottoListUrl, {
-                id_articolo: $row.find('.riga-articolo').val() || '',
-                codice_articolo: $row.find('.riga-codice').val() || ''
-            }, function (res) {
+            richieste.push($.getJSON(lottoListUrl, parametri, function (res) {
                 if (res && res.success) { lottiRigaCorrente = res.lotti; }
-                render();
-            }).fail(function () { render(); });
+            }));
         } else {
             lottiRigaCorrente = [];
+        }
+
+        if (richieste.length) {
+            $.when.apply($, richieste).always(render);
+        } else {
             render();
         }
     }
@@ -746,13 +819,23 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         var righe = [];
         $('#dettagli-body .dettaglio-row').each(function () {
             var $r = $(this);
-            var seriale = f.sn ? ($r.find('.det-seriale').val() || '').trim() : '';
+            var idMatricola = '';
+            var seriale = '';
+            if (f.sn) {
+                var $selM = $r.find('.det-matricola');
+                idMatricola = $selM.val() || '';
+                if (idMatricola !== '') {
+                    seriale = $selM.find('option:selected').attr('data-serial') || $selM.find('option:selected').text();
+                } else {
+                    seriale = ($r.find('.det-seriale').val() || '').trim();
+                }
+            }
             var idLotto = f.lotti ? ($r.find('.det-lotto').val() || '') : '';
             var data = f.dc ? ($r.find('.det-data').val() || '') : '';
             var qta = f.sn ? '1' : ($r.find('.det-qta').val() || '1');
-            if (f.sn && seriale === '' && data === '' && idLotto === '') { return; }
+            if (f.sn && seriale === '' && idMatricola === '' && data === '' && idLotto === '') { return; }
             if (!f.sn && data === '' && idLotto === '') { return; }
-            righe.push({ seriale: seriale, id_lotto: idLotto, data_consegna: data, qta: qta });
+            righe.push({ seriale: seriale, id_matricola: idMatricola, id_lotto: idLotto, data_consegna: data, qta: qta });
         });
 
         if (f.sn) {
@@ -770,6 +853,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         $.each(righe, function (ord, r) {
             var base = 'righe[__IDX__][dettagli][' + ord + ']';
             $box.append('<input type="hidden" name="' + base + '[seriale]" value="' + escAttr(r.seriale) + '">');
+            $box.append('<input type="hidden" name="' + base + '[id_matricola]" value="' + escAttr(r.id_matricola) + '">');
             $box.append('<input type="hidden" name="' + base + '[id_lotto]" value="' + escAttr(r.id_lotto) + '">');
             $box.append('<input type="hidden" name="' + base + '[data_consegna]" value="' + escAttr(r.data_consegna) + '">');
             $box.append('<input type="hidden" name="' + base + '[qta]" value="' + escAttr(r.qta) + '">');
@@ -834,6 +918,51 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         }, 'json').fail(function () {
             btn.prop('disabled', false);
             $('#nl-error').text('Errore di rete.');
+        });
+    });
+
+    // --- NUOVA MATRICOLA DALLA MODALE DETTAGLI ---
+    $(document).on('click', '.det-matricola-nuovo', function () {
+        $matricolaSelectCorrente = $(this).closest('.input-group').find('.det-matricola');
+        var $row = $dettagliRiga;
+        if (!$row) { return; }
+        $('#nm-articolo').val($row.find('.riga-articolo option:selected').text() || '');
+        $('#nm-id-articolo').val($row.find('.riga-articolo').val() || '');
+        $('#nm-codice-articolo').val($row.find('.riga-codice').val() || '');
+        $('#nm-matricola, #nm-descrizione, #nm-nota').val('');
+        $('#nm-error').text('');
+        $('#modal-nuova-matricola').modal('show');
+    });
+
+    $('#btn-nm-salva').on('click', function () {
+        var matricola = ($('#nm-matricola').val() || '').trim();
+        if (!matricola) { $('#nm-error').text('La matricola è obbligatoria.'); return; }
+        var btn = $(this).prop('disabled', true);
+        $.post(matricolaCreaUrl, {
+            id_articolo: $('#nm-id-articolo').val(),
+            codice_articolo: $('#nm-codice-articolo').val(),
+            matricola: matricola,
+            descrizione: $('#nm-descrizione').val(),
+            nota: $('#nm-nota').val(),
+            _csrf: (typeof yii !== 'undefined' ? yii.getCsrfToken() : '')
+        }, function (res) {
+            btn.prop('disabled', false);
+            if (res && res.success) {
+                var m = res.matricola;
+                matricoleRigaCorrente.push(m);
+                var opt = '<option value="' + escAttr(m.id) + '" data-serial="' + escAttr(m.matricola) + '">'
+                    + $('<div>').text(m.etichetta).html() + '</option>';
+                $('#dettagli-body .det-matricola').each(function () { $(this).append(opt); });
+                if ($matricolaSelectCorrente && $.contains(document, $matricolaSelectCorrente[0])) {
+                    $matricolaSelectCorrente.val(String(m.id));
+                }
+                $('#modal-nuova-matricola').modal('hide');
+            } else {
+                $('#nm-error').text(res && res.errors ? JSON.stringify(res.errors) : (res.error || 'Errore di creazione.'));
+            }
+        }, 'json').fail(function () {
+            btn.prop('disabled', false);
+            $('#nm-error').text('Errore di rete.');
         });
     });
 
@@ -948,6 +1077,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             if (val !== undefined && val !== '') {
                 $row.find('.riga-iva').val(val);
             }
+            syncAliquotaRiga($row);
             ricalcolaRiga($row);
         });
     }
@@ -1006,6 +1136,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             $row.find('.riga-prezzo').val(base * fattore);
             var ivaSogg = aliquotaSoggetto();
             $row.find('.riga-iva').val(ivaSogg !== null ? ivaSogg : ivaArticolo(opt));
+            syncAliquotaRiga($row);
             if (!$row.find('.riga-qta').val()) {
                 $row.find('.riga-qta').val(1);
             }
@@ -1019,6 +1150,38 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
 
     $(document).on('change', '.riga-articolo', function () {
         applicaArticoloARiga($(this).closest('.riga-row'));
+    });
+
+    // --- ALIQUOTA IVA PER RIGA ---
+    // La percentuale (input nascosto .riga-iva) e l'aliquota selezionata
+    // (.riga-aliquota) restano allineate.
+    function syncAliquotaRiga($row) {
+        var perc = parseFloat($row.find('.riga-iva').val());
+        var $sel = $row.find('.riga-aliquota');
+        var matched = '';
+        if (!isNaN(perc)) {
+            $sel.find('option').each(function () {
+                if (matched === '' && Math.abs(parseFloat($(this).attr('data-perc')) - perc) < 0.0001) {
+                    matched = $(this).val();
+                }
+            });
+        }
+        $sel.val(matched);
+        $row.find('.riga-aliquota-id').val(matched);
+    }
+
+    function syncAliquoteRighe() {
+        $('#righe-body .riga-row').each(function () {
+            syncAliquotaRiga($(this));
+        });
+    }
+
+    $(document).on('change', '.riga-aliquota', function () {
+        var $row = $(this).closest('.riga-row');
+        var $opt = $(this).find('option:selected');
+        var perc = $opt.attr('data-perc');
+        $row.find('.riga-aliquota-id').val($(this).val() || '');
+        $row.find('.riga-iva').val(perc === undefined ? '' : perc);
     });
 
     $(document).on('change', '.riga-um', function () {
@@ -1293,6 +1456,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             if (iva !== undefined && iva !== null && iva !== '') {
                 $row.find('.riga-iva').val(iva);
             }
+            syncAliquotaRiga($row);
             $row.find('.riga-qta').val(qta);
             ricalcolaRiga($row);
             creati++;
@@ -1555,6 +1719,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             $row.find('.riga-iva').val(rap.iva || 0);
             if (rap.um) { $row.find('.riga-um-codice').val(rap.um); }
         }
+        syncAliquotaRiga($row);
         $row.find('.riga-id-rap').val(rap.id);
         $row.find('.riga-rap-dettaglio').attr('data-id-rap', rap.id).show();
         ricalcolaRiga($row);
@@ -1600,6 +1765,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
     aggiornaColonneDinamiche();
     aggiornaPulsantiTipo();
     initRigheUm();
+    syncAliquoteRighe();
     $('#mgdocumento-id_sottocommessa').data('precedente', sottocommessaTestata());
     filtraRighe();
     ricalcolaTotale();

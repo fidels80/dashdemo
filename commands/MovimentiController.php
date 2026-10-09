@@ -22,7 +22,9 @@ use yii\helpers\Console;
  *    codice articolo e unità di misura (default dell'articolo) e magazzini
  *    (dal tipo documento della riga);
  * 2. esegue un backup della tabella mg_movimentimagazzino;
- * 3. svuota la tabella e ricrea un movimento per ogni riga documento.
+ * 3. svuota la tabella e ricrea i movimenti per ogni riga documento:
+ *    se la riga ha lotti genera un movimento per lotto (id_lotto), altrimenti
+ *    un unico movimento per riga.
  */
 class MovimentiController extends Controller
 {
@@ -52,10 +54,10 @@ class MovimentiController extends Controller
             MgMovimentoMagazzino::deleteAll();
 
             $creati = 0;
-            foreach (MgDocumentoRiga::find()->with('documento')->orderBy(['id' => SORT_ASC])->batch(500) as $righe) {
+            foreach (MgDocumentoRiga::find()->with('documento', 'dettagli')->orderBy(['id' => SORT_ASC])->batch(500) as $righe) {
                 foreach ($righe as $riga) {
-                    MgMovimentoMagazzino::creaDaRiga($riga, $this->tipoRiga($riga, $tipiByCodice, $tipiById));
-                    $creati++;
+                    $movimenti = MgMovimentoMagazzino::creaDaRiga($riga, $this->tipoRiga($riga, $tipiByCodice, $tipiById));
+                    $creati += count($movimenti);
                 }
             }
 

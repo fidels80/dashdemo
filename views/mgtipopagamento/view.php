@@ -36,6 +36,7 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                 $campo('ID', $model->id, 'col-md-2');
                 $campo('Codice', $model->codice, 'col-md-3');
                 $campo('Attivo', $model->attivo ? 'Sì' : 'No', 'col-md-2');
+                $campo('Condizioni pagamento (SDI)', $model->feCondizioniPagamentoLabel, 'col-md-5');
                 ?>
             </div>
             <div class="row">

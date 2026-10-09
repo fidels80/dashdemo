@@ -55,6 +55,12 @@ class MgtipodocumentoController extends Controller
         $model->congruita = true;
         $model->attivo = true;
         $model->destinazione = MgTipoDocumento::DEST_CLIENTE;
+        $model->fe_tipo_documento = 'TD01';
+        $model->fe_regime_fiscale = 'RF01';
+        $model->fe_divisa = 'EUR';
+        $model->fe_condizioni_pagamento = 'TP02';
+        $model->fe_modalita_pagamento = 'MP05';
+        $model->fe_esigibilita_iva = 'I';
 
         if ($from !== null && ($source = MgTipoDocumento::findOne((int) $from)) !== null) {
             $model = \app\components\Duplicate::copy($source);

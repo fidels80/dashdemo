@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use app\components\FatturaElettronica;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\MgTipoDocumento */
@@ -76,6 +77,35 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                 $campo('Gestione seriali / matricole', $siNo($model->gestione_seriali), 'col-md-3');
                 $campo('Gestione data consegna', $siNo($model->gestione_data_consegna), 'col-md-3');
                 $campo('Gestione lotti', $siNo($model->gestione_lotti), 'col-md-3');
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-file-invoice"></i> Documento elettronico</div>
+        <div class="card-body">
+            <div class="row">
+                <?php
+                $tipi = FatturaElettronica::opzioniTipoDocumento();
+                $regimi = FatturaElettronica::opzioniRegimeFiscale();
+                $esig = FatturaElettronica::opzioniEsigibilitaIva();
+                $campo('Documento elettronico', $siNo($model->elettronico), 'col-md-3');
+                $campo('Tipo documento SDI', $tipi[$model->fe_tipo_documento] ?? $model->fe_tipo_documento, 'col-md-5');
+                $campo('Divisa', $model->fe_divisa, 'col-md-2');
+                $campo('Codice destinatario default', $model->fe_codice_destinatario, 'col-md-2');
+                ?>
+            </div>
+            <div class="row">
+                <?php
+                $campo('Regime fiscale', $regimi[$model->fe_regime_fiscale] ?? $model->fe_regime_fiscale, 'col-md-4');
+                $campo('Causale', $model->fe_causale, 'col-md-8');
+                ?>
+            </div>
+            <div class="row">
+                <?php
+                $campo('Esigibilità IVA', $esig[$model->fe_esigibilita_iva] ?? $model->fe_esigibilita_iva, 'col-md-3');
+                $campo('Riferimento normativo', $model->fe_riferimento_normativo, 'col-md-9');
                 ?>
             </div>
         </div>

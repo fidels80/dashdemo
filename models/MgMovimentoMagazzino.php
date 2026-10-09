@@ -13,6 +13,7 @@ use Yii;
  *
  * @property int $id
  * @property int $id_documento_riga
+ * @property int|null $id_lotto
  * @property string|null $codice_articolo
  * @property float|null $qta
  * @property int|null $id_unita_misura
@@ -28,6 +29,7 @@ use Yii;
  * @property float|null $qta_ordinato
  *
  * @property MgDocumentoRiga $riga
+ * @property MgLotto|null $lotto
  * @property MgUnitaMisura|null $unitaMisura
  * @property MgMagazzino|null $magazzinoPartenza
  * @property MgMagazzino|null $magazzinoArrivo
@@ -43,7 +45,7 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
     {
         return [
             [['id_documento_riga'], 'required'],
-            [['id_documento_riga', 'id_unita_misura', 'id_magazzino_partenza', 'id_magazzino_arrivo'], 'integer'],
+            [['id_documento_riga', 'id_unita_misura', 'id_magazzino_partenza', 'id_magazzino_arrivo', 'id_lotto'], 'integer'],
             [['qta', 'fattore', 'qta_movimento', 'qta_impegnato', 'qta_ordinato'], 'number'],
             [['codice_articolo'], 'string', 'max' => 25],
             [['um'], 'string', 'max' => 10],
@@ -58,6 +60,7 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_documento_riga' => 'Riga documento',
+            'id_lotto' => 'Lotto',
             'codice_articolo' => 'Codice articolo',
             'qta' => 'Q.tà',
             'id_unita_misura' => 'Unità di misura',
@@ -75,23 +78,65 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
     }
 
     /**
-     * Crea il movimento di magazzino di una riga documento applicando la
+     * Crea i movimenti di magazzino di una riga documento applicando la
      * configurazione di movimento del tipo documento.
+     *
+     * Se la riga ha righe di dettaglio con lotto, viene creato un movimento
+     * per ogni lotto (Q.tà pari alla somma delle quantità del lotto); gli
+     * eventuali pezzi senza lotto confluiscono in un movimento con id_lotto
+     * nullo. Se la riga non ha lotti, resta un unico movimento con la
+     * quantità della riga (comportamento storico).
      *
      * @param MgDocumentoRiga $riga
      * @param MgTipoDocumento|null $tipo
-     * @return static
+     * @return static[] movimenti creati
      */
     public static function creaDaRiga($riga, $tipo = null)
     {
         $dati = self::datiArticolo($riga);
-        $qta = (float) $riga->qta;
         $segno = $tipo ? $tipo->segno_movimento : MgTipoDocumento::MOV_NESSUNO;
         $variaImpegnato = $tipo ? $tipo->varia_impegnato : MgTipoDocumento::MOV_NESSUNO;
         $variaOrdinato = $tipo ? $tipo->varia_ordinato : MgTipoDocumento::MOV_NESSUNO;
 
+        $gruppi = [];
+        $qtaSenzaLotto = 0.0;
+        foreach ($riga->dettagli as $dettaglio) {
+            if ($dettaglio->id_lotto === null) {
+                $qtaSenzaLotto += (float) $dettaglio->qta;
+                continue;
+            }
+            $id = (int) $dettaglio->id_lotto;
+            $gruppi[$id] = ($gruppi[$id] ?? 0) + (float) $dettaglio->qta;
+        }
+
+        $movimenti = [];
+
+        if (empty($gruppi)) {
+            $movimenti[] = self::salvaMovimento($riga, $dati, (float) $riga->qta, null, $segno, $variaImpegnato, $variaOrdinato);
+            return $movimenti;
+        }
+
+        foreach ($gruppi as $idLotto => $qta) {
+            $movimenti[] = self::salvaMovimento($riga, $dati, $qta, (int) $idLotto, $segno, $variaImpegnato, $variaOrdinato);
+        }
+
+        if ($qtaSenzaLotto > 0) {
+            $movimenti[] = self::salvaMovimento($riga, $dati, $qtaSenzaLotto, null, $segno, $variaImpegnato, $variaOrdinato);
+        }
+
+        return $movimenti;
+    }
+
+    /**
+     * Crea e salva un singolo movimento di magazzino.
+     *
+     * @return static
+     */
+    private static function salvaMovimento($riga, $dati, $qta, $idLotto, $segno, $variaImpegnato, $variaOrdinato)
+    {
         $movimento = new static();
         $movimento->id_documento_riga = $riga->id;
+        $movimento->id_lotto = $idLotto;
         $movimento->codice_articolo = $dati['codice_articolo'];
         $movimento->qta = $qta;
         $movimento->id_unita_misura = $dati['id_unita_misura'];
@@ -183,6 +228,11 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
     public function getRiga()
     {
         return $this->hasOne(MgDocumentoRiga::className(), ['id' => 'id_documento_riga']);
+    }
+
+    public function getLotto()
+    {
+        return $this->hasOne(MgLotto::className(), ['id' => 'id_lotto']);
     }
 
     public function getUnitaMisura()

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use app\models\MgAnagraficaContatto;
 use app\models\MgTipoContatto;
+use app\components\FatturaElettronica;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\MgAnagrafica */
@@ -95,6 +96,34 @@ $tipiContatto = MgTipoContatto::mapAttivi();
                 $campo('Aliquota IVA', $model->aliquotaIva
                     ? $model->aliquotaIva->descrizione . ' (' . number_format((float) $model->aliquotaIva->percentuale, 2, ',', '.') . '%)'
                     : '', 'col-md-6');
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-file-invoice"></i> Documenti elettronici</div>
+        <div class="card-body">
+            <div class="row">
+                <?php
+                $tipiSoggetto = FatturaElettronica::opzioniTipoSoggetto();
+                $campo('Tipo soggetto', $tipiSoggetto[$model->fe_tipo_soggetto] ?? $model->fe_tipo_soggetto, 'col-md-4');
+                $campo('Codice destinatario', $model->fe_codice_destinatario, 'col-md-4');
+                $campo('PEC', $model->fe_pec, 'col-md-4');
+                ?>
+            </div>
+            <div class="row">
+                <?php
+                $campo('Nome', $model->fe_nome, 'col-md-4');
+                $campo('Cognome', $model->fe_cognome, 'col-md-4');
+                $campo('Paese', $model->fe_id_paese, 'col-md-2');
+                $campo('Nazione', $model->fe_nazione, 'col-md-2');
+                ?>
+            </div>
+            <div class="row">
+                <?php
+                $regimi = FatturaElettronica::opzioniRegimeFiscale();
+                $campo('Regime fiscale', $model->fe_regime_fiscale ? ($regimi[$model->fe_regime_fiscale] ?? $model->fe_regime_fiscale) : '', 'col-md-6');
                 ?>
             </div>
         </div>

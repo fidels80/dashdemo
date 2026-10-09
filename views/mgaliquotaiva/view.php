@@ -40,7 +40,8 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                 ?>
             </div>
             <div class="row">
-                <?php $campo('Descrizione', $model->descrizione, 'col-md-12'); ?>
+                <?php $campo('Descrizione', $model->descrizione, 'col-md-8'); ?>
+                <?php $campo('Natura IVA (SDI)', $model->feNaturaLabel, 'col-md-4'); ?>
             </div>
         </div>
     </div>

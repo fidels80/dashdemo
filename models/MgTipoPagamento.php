@@ -11,6 +11,7 @@ use Yii;
  * @property string $codice
  * @property string $descrizione
  * @property bool $attivo
+ * @property string|null $fe_condizioni_pagamento
  */
 class MgTipoPagamento extends \yii\db\ActiveRecord
 {
@@ -26,6 +27,7 @@ class MgTipoPagamento extends \yii\db\ActiveRecord
             [['attivo'], 'boolean'],
             [['codice'], 'string', 'max' => 20],
             [['descrizione'], 'string', 'max' => 100],
+            [['fe_condizioni_pagamento'], 'string', 'max' => 4],
             [['codice'], 'unique'],
         ];
     }
@@ -37,7 +39,17 @@ class MgTipoPagamento extends \yii\db\ActiveRecord
             'codice' => 'Codice',
             'descrizione' => 'Descrizione',
             'attivo' => 'Attivo',
+            'fe_condizioni_pagamento' => 'Condizioni pagamento (SDI)',
         ];
+    }
+
+    /**
+     * Etichetta delle condizioni di pagamento SDI.
+     */
+    public function getFeCondizioniPagamentoLabel()
+    {
+        $opzioni = \app\components\FatturaElettronica::opzioniCondizioniPagamento();
+        return $opzioni[$this->fe_condizioni_pagamento] ?? $this->fe_condizioni_pagamento;
     }
 
     public static function map()

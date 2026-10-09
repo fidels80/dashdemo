@@ -6,6 +6,8 @@ use Yii;
 
 /**
  * This is the model class for table "mg_documento_riga".
+ *
+ * @property int|null $id_aliquota_iva
  */
 class MgDocumentoRiga extends \yii\db\ActiveRecord
 {
@@ -19,6 +21,11 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
         return [
             [['id_documento'], 'required'],
             [['id_documento', 'id_articolo', 'id_unita_misura', 'id_sottocommessa', 'ordine'], 'integer'],
+            [['id_aliquota_iva'], 'integer'],
+            [['id_aliquota_iva'], 'exist',
+                'targetClass' => MgAliquotaIva::className(),
+                'targetAttribute' => ['id_aliquota_iva' => 'id'],
+                'skipOnEmpty' => true],
             [['id_magazzino_partenza', 'id_magazzino_arrivo'], 'integer'],
             [['id_magazzino_partenza'], 'exist',
                 'targetClass' => MgMagazzino::className(),
@@ -49,6 +56,7 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
             'codice_tipo' => 'Codice tipo documento',
             'descrizione' => 'Descrizione',
             'id_unita_misura' => 'Unità di misura',
+            'id_aliquota_iva' => 'Aliquota IVA',
             'id_sottocommessa' => 'Sottocommessa',
             'id_magazzino_partenza' => 'Magazzino partenza',
             'id_magazzino_arrivo' => 'Magazzino arrivo',
@@ -79,6 +87,11 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
     public function getUnitaMisura()
     {
         return $this->hasOne(MgUnitaMisura::className(), ['id' => 'id_unita_misura']);
+    }
+
+    public function getAliquotaIva()
+    {
+        return $this->hasOne(MgAliquotaIva::className(), ['id' => 'id_aliquota_iva']);
     }
 
     public function getRapportino()

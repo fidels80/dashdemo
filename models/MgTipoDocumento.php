@@ -31,6 +31,14 @@ use Yii;
  * @property string $varia_impegnato
  * @property string $varia_ordinato
  * @property string|null $created_at
+ * @property bool $elettronico
+ * @property string|null $fe_tipo_documento
+ * @property string|null $fe_regime_fiscale
+ * @property string|null $fe_divisa
+ * @property string|null $fe_causale
+ * @property string|null $fe_esigibilita_iva
+ * @property string|null $fe_riferimento_normativo
+ * @property string|null $fe_codice_destinatario
  *
  * @property MgMagazzino|null $magazzinoPartenza
  * @property MgMagazzino|null $magazzinoArrivo
@@ -77,6 +85,7 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             [['preleva_rapportini', 'crea_articoli', 'crea_anagrafiche', 'mostra_matrice'], 'boolean'],
             [['gestione_seriali', 'gestione_data_consegna'], 'boolean'],
             [['gestione_lotti'], 'boolean'],
+            [['elettronico'], 'boolean'],
             [['id_magazzino_partenza', 'id_magazzino_arrivo'], 'integer'],
             [['id_magazzino_partenza'], 'exist',
                 'targetClass' => MgMagazzino::className(),
@@ -91,6 +100,12 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             [['descrizione'], 'string', 'max' => 200],
             [['destinazione'], 'string', 'max' => 20],
             [['destinazione'], 'in', 'range' => array_keys(self::opzioniDestinazione())],
+            [['fe_tipo_documento', 'fe_regime_fiscale'], 'string', 'max' => 4],
+            [['fe_divisa'], 'string', 'max' => 3],
+            [['fe_causale'], 'string', 'max' => 200],
+            [['fe_esigibilita_iva'], 'string', 'max' => 1],
+            [['fe_riferimento_normativo'], 'string', 'max' => 100],
+            [['fe_codice_destinatario'], 'string', 'max' => 7],
             [['segno_movimento', 'varia_impegnato', 'varia_ordinato'], 'string', 'max' => 10],
             [['segno_movimento'], 'in', 'range' => array_keys(self::opzioniSegnoMovimento())],
             [['varia_impegnato', 'varia_ordinato'], 'in', 'range' => array_keys(self::opzioniVariazione())],
@@ -125,6 +140,14 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             'varia_impegnato' => 'Varia impegnato',
             'varia_ordinato' => 'Varia ordinato',
             'created_at' => 'Creato il',
+            'elettronico' => 'Documento elettronico',
+            'fe_tipo_documento' => 'Tipo documento SDI',
+            'fe_regime_fiscale' => 'Regime fiscale',
+            'fe_divisa' => 'Divisa',
+            'fe_causale' => 'Causale',
+            'fe_esigibilita_iva' => 'Esigibilità IVA',
+            'fe_riferimento_normativo' => 'Riferimento normativo',
+            'fe_codice_destinatario' => 'Codice destinatario default',
         ];
     }
 

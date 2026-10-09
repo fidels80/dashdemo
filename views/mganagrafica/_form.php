@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use app\components\FatturaElettronica;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\MgAnagrafica */
@@ -54,6 +55,56 @@ use yii\bootstrap4\ActiveForm;
         è valido per clienti, fornitori e agenti e viene proposto nei documenti.
         L'<strong>aliquota IVA</strong>, se impostata, viene proposta su tutte le righe dei documenti del soggetto;
         in alternativa si usa l'aliquota dell'articolo (vendita per i clienti, acquisto per i fornitori).
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-file-invoice"></i> Documenti elettronici</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <?= $form->field($model, 'fe_tipo_soggetto')->dropDownList(FatturaElettronica::opzioniTipoSoggetto()) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $form->field($model, 'fe_codice_destinatario')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-6">
+                    <?= $form->field($model, 'fe_pec')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <?= $form->field($model, 'fe_nome')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-6">
+                    <?= $form->field($model, 'fe_cognome')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <?= $form->field($model, 'fe_id_paese')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $form->field($model, 'fe_nazione')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-6">
+                    <?= $form->field($model, 'fe_regime_fiscale')->dropDownList(
+                        FatturaElettronica::opzioniRegimeFiscale(),
+                        ['prompt' => '— Usa default documento —']
+                    ) ?>
+                </div>
+            </div>
+            <div class="alert alert-info mb-0">
+                <i class="fas fa-info-circle"></i>
+                <strong>Codice destinatario:</strong> 7 caratteri assegnati dal Sistema di Interscambio al cliente.
+                Per privati o soggetti estero usare <code>0000000</code> e indicare la <strong>PEC</strong>.
+                <br>
+                <strong>Tipo soggetto:</strong> per le persone fisiche indicare Nome e Cognome; per le aziende la
+                ragione sociale è usata come <em>Denominazione</em>.
+                <br>
+                <strong>Paese/Nazione:</strong> codice ISO (es. <code>IT</code>). Per soggetti estero va indicato anche
+                <strong>IdPaese</strong> della partita IVA.
+            </div>
+        </div>
     </div>
 
     <div class="form-group">

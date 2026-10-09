@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use app\models\MgTipoDocumento;
+use app\components\FatturaElettronica;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\MgTipoDocumento */
@@ -127,6 +128,60 @@ use app\models\MgTipoDocumento;
                 <strong>Gestione lotti:</strong> abilita, per ogni riga, la selezione dei lotti dell'articolo e la
                 creazione rapida di nuovi lotti (codice lotto, descrizione, data scadenza, nota). I lotti creati
                 dalla riga vengono associati automaticamente all'articolo.
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-file-invoice"></i> Documento elettronico</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <?= $form->field($model, 'elettronico')->checkbox() ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $form->field($model, 'fe_tipo_documento')->dropDownList(FatturaElettronica::opzioniTipoDocumento()) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $form->field($model, 'fe_divisa')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $form->field($model, 'fe_codice_destinatario')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <?= $form->field($model, 'fe_regime_fiscale')->dropDownList(FatturaElettronica::opzioniRegimeFiscale()) ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'fe_causale')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <?= $form->field($model, 'fe_esigibilita_iva')->dropDownList(FatturaElettronica::opzioniEsigibilitaIva()) ?>
+                </div>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'fe_riferimento_normativo')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+            <div class="alert alert-info mb-0">
+                <i class="fas fa-info-circle"></i>
+                <strong>Documento elettronico:</strong> se attivo, per i documenti di questo tipo è possibile generare
+                il file <strong>XML</strong> della fattura elettronica (formato <code>FPR12</code> verso privati/B2B,
+                <code>FPA12</code> verso la Pubblica Amministrazione).
+                <br>
+                <strong>Tipo documento SDI</strong> (TD01 fattura, TD04 nota di credito...), <strong>regime fiscale</strong>
+                del cedente, <strong>causale</strong> ed <strong>esigibilità IVA</strong> (I/D/S) sono i valori di
+                default usati nell'XML.
+                <br>
+                <strong>Condizioni di pagamento</strong> (TP0x) sono configurate sui <em>tipi pagamento</em>,
+                la <strong>modalità di pagamento</strong> (MP0x) sui <em>metodi pagamento</em> e la
+                <strong>natura IVA</strong> (N1..N7) sulle <em>aliquote IVA</em>: l'XML li ricava dal pagamento e
+                dall'aliquota effettivamente indicati nel documento.
+                <br>
+                <strong>Codice destinatario di default:</strong> usato se il cliente non ha un codice destinatario
+                proprio (per privati/estero usare <code>0000000</code>, con PEC obbligatoria sul cliente).
             </div>
         </div>
     </div>
