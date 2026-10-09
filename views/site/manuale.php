@@ -158,6 +158,8 @@ JS
         <a class="manual-l2" href="#micro-seriali">Seriali, date di consegna e lotti sulle righe</a>
         <a class="manual-l2" href="#micro-tipi-documento">Tipi documento: flag e colonne dell'elenco</a>
         <a class="manual-l2" href="#micro-magazzini-elenco">I magazzini disponibili</a>
+        <a class="manual-l2" href="#micro-configurazione">Configurazione (parametri azienda)</a>
+        <a class="manual-l2" href="#micro-fattura-elettronica">Fattura elettronica (XML)</a>
         <a class="manual-l1" href="#dashboard">13. Dashboard (cruscotto)</a>
         <a class="manual-l2" href="#dashboard-sezioni">Le sezioni del cruscotto</a>
         <a class="manual-l2" href="#dashboard-permessi">Sezioni e permessi</a>
@@ -944,6 +946,47 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
           </ul>
           <div class="manual-note">
             Il caricamento &egrave; <strong>idempotente</strong>: se viene eseguito di nuovo vengono creati solo i codici mancanti, senza duplicare quelli gi&agrave; presenti.
+          </div>
+
+          <h3 id="micro-configurazione">12.11 Configurazione: parametri standard dell'azienda</h3>
+          <p>Nel menu <strong>Microgestionale</strong> trovi la nuova voce <strong>Configurazione</strong> (icona ingranaggio). Qui gestisci i <strong>parametri standard</strong> dell'applicazione come coppie <em>Codice / Valore</em>, ognuna con una descrizione che ne spiega l'uso.</p>
+          <p>La pagina funziona come gli altri elenchi: <span class="manual-btn">Nuovo parametro</span>, <span class="manual-btn manual-btn-gray">Duplica</span>, <span class="manual-btn manual-btn-gray">Modifica</span> ed <span class="manual-btn manual-btn-gray">Elimina</span>.</p>
+          <p>I codici che iniziano con <code>fe.</code> sono usati per generare la <strong>fattura elettronica</strong> e contengono i dati del <strong>cedente</strong> (la tua azienda) e della <strong>trasmissione</strong>:</p>
+          <table>
+            <tr><th>Codice (esempi)</th><th>Significato</th></tr>
+            <tr><td><code>fe.cedente.denominazione</code>, <code>fe.cedente.partita_iva</code>, <code>fe.cedente.codice_fiscale</code></td><td>Dati fiscali della tua azienda.</td></tr>
+            <tr><td><code>fe.cedente.indirizzo</code>, <code>fe.cedente.cap</code>, <code>fe.cedente.comune</code>, <code>fe.cedente.provincia</code>, <code>fe.cedente.nazione</code></td><td>Sede legale del cedente.</td></tr>
+            <tr><td><code>fe.cedente.regime_fiscale</code></td><td>Codice regime fiscale (es. <code>RF01</code> ordinario).</td></tr>
+            <tr><td><code>fe.trasmissione.id_codice</code></td><td>Partita IVA / codice fiscale del soggetto trasmittente.</td></tr>
+            <tr><td><code>fe.trasmissione.formato</code></td><td><code>FPR12</code> per privati e aziende, <code>FPA12</code> per la Pubblica Amministrazione.</td></tr>
+            <tr><td><code>fe.trasmissione.codice_destinatario</code></td><td>Codice destinatario usato quando il cliente non ne ha uno proprio (di norma <code>0000000</code>).</td></tr>
+            <tr><td><code>fe.divisa</code>, <code>fe.condizioni_pagamento</code>, <code>fe.modalita_pagamento</code>, <code>fe.natura</code></td><td>Valori di default del documento.</td></tr>
+          </table>
+          <div class="manual-note">
+            Compila almeno i dati del <strong>cedente</strong> (denominazione, partita IVA, sede, regime): sono obbligatori per un XML valido.
+          </div>
+
+          <h3 id="micro-fattura-elettronica">12.12 Fattura elettronica (generazione XML)</h3>
+          <p>Per emettere la <strong>fattura elettronica</strong> in formato XML (fino alla generazione del file, senza firma n&eacute; invio al Sistema di Interscambio) configura questi punti.</p>
+          <h4>Tipi documento &ndash; card &laquo;Documento elettronico&raquo;</h4>
+          <p>Sul <strong>tipo documento</strong> attiva <strong>Documento elettronico</strong> e imposta i valori di default: <strong>Tipo documento SDI</strong> (<code>TD01</code> fattura, <code>TD04</code> nota di credito&hellip;), <strong>regime fiscale</strong>, <strong>divisa</strong>, <strong>causale</strong>, <strong>esigibilit&agrave; IVA</strong> (I/D/S), <strong>riferimento normativo</strong> e <strong>codice destinatario</strong> di default.</p>
+          <h4>Anagrafica &ndash; card &laquo;Documenti elettronici&raquo;</h4>
+          <p>Sulla scheda del cliente/fornitore imposta <strong>Codice destinatario</strong>, <strong>PEC</strong>, <strong>tipo soggetto</strong> (persona giuridica, oppure fisica con nome e cognome), <strong>paese/nazione</strong> e regime fiscale.</p>
+          <h4>Pagamenti e IVA &ndash; dove stanno le mappature SDI</h4>
+          <p>Le codifiche SDI non stanno sul tipo documento ma sulle tabelle di base, cos&igrave; l'XML segue sempre quello che indichi nel documento:</p>
+          <ul>
+            <li><strong>Tipo pagamento</strong>: <strong>condizioni di pagamento</strong> <code>TP01</code> a rate, <code>TP02</code> completo, <code>TP03</code> anticipo.</li>
+            <li><strong>Metodo pagamento</strong>: <strong>modalit&agrave; di pagamento</strong> (<code>MP05</code> bonifico, <code>MP12</code> Ri.Ba., <code>MP01</code> contanti&hellip;); le condizioni vengono ereditate dal tipo pagamento collegato.</li>
+            <li><strong>Aliquote IVA</strong>: <strong>natura IVA</strong> (<code>N1</code>&hellip;<code>N7</code>) usata per le righe con aliquota a zero (esente, non imponibile, reverse charge&hellip;).</li>
+          </ul>
+          <p>Nel documento l'<strong>IVA di ogni riga</strong> &egrave; ora un <strong>menu a tendina delle aliquote configurate</strong>, proposto automaticamente dal cliente o dall'articolo ma sempre modificabile. La riga resta collegata all'aliquota scelta, da cui l'XML ricava la <strong>natura</strong>.</p>
+          <h4>Generare l'XML</h4>
+          <p>Nella scheda di un documento di un tipo <strong>elettronico</strong> compaiono i pulsanti <span class="manual-btn">Genera XML</span> (anteprima in una nuova scheda) e <span class="manual-btn manual-btn-gray">Scarica XML</span>. Il file segue il formato e i dati configurati: cedente, cessionario, righe, riepilogo IVA e pagamenti.</p>
+          <div class="manual-warn">
+            <strong>Non incluso in questa versione:</strong> la firma digitale e l'invio al Sistema di Interscambio (SDI). Viene prodotto e validato il solo file XML.
+          </div>
+          <div class="manual-note">
+            Per privati o soggetti estero usa il codice destinatario <code>0000000</code> e indica la <strong>PEC</strong> del cliente: senza PEC l'XML non &egrave; completo.
           </div>
         </div>
       </section>
