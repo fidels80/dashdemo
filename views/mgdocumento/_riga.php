@@ -15,6 +15,7 @@ $qta = (float) $val('qta');
 $prezzo = (float) $val('prezzo');
 $sconto = (float) $val('sconto');
 $totale = round($qta * $prezzo * (1 - $sconto / 100), 2);
+$dettagli = $model ? $model->dettagli : [];
 
 $unitaJson = function ($articolo) {
     $out = [];
@@ -100,8 +101,17 @@ $unitaJson = function ($articolo) {
     <td><input type="number" step="any" name="righe[<?= $index ?>][iva]" class="form-control form-control-sm riga-iva text-right" value="<?= Html::encode($val('iva')) ?>"></td>
     <td><input type="text" class="form-control form-control-sm riga-totale text-right" value="<?= number_format($totale, 2, ',', '.') ?>" readonly></td>
     <td class="text-center text-nowrap">
+        <button type="button" class="btn btn-sm btn-outline-dark riga-dettagli-btn" title="Seriali / date consegna" style="display:none;"><i class="fas fa-barcode"></i><span class="riga-dettagli-count badge badge-dark ml-1" style="<?= count($dettagli) ? '' : 'display:none;' ?>"><?= count($dettagli) ?></span></button>
         <button type="button" class="btn btn-sm btn-outline-info riga-rap-dettaglio" data-id-rap="<?= Html::encode($val('id_rapportino')) ?>" title="Dettaglio rapportino" style="<?= $val('id_rapportino') ? '' : 'display:none;' ?>"><i class="fas fa-file-alt"></i></button>
         <button type="button" class="btn btn-sm btn-outline-primary riga-duplica" title="Duplica riga"><i class="fas fa-copy"></i></button>
         <button type="button" class="btn btn-sm btn-danger riga-remove" title="Rimuovi riga"><i class="fas fa-times"></i></button>
+        <div class="riga-dettagli-box" style="display:none;">
+            <?php foreach ($dettagli as $j => $d): ?>
+                <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][seriale]" value="<?= Html::encode($d->seriale) ?>">
+                <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][id_lotto]" value="<?= Html::encode($d->id_lotto) ?>">
+                <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][data_consegna]" value="<?= Html::encode($d->data_consegna) ?>">
+                <input type="hidden" name="righe[<?= $index ?>][dettagli][<?= $j ?>][qta]" value="<?= Html::encode($d->qta) ?>">
+            <?php endforeach; ?>
+        </div>
     </td>
 </tr>

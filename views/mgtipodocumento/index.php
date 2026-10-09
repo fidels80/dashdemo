@@ -33,7 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Congruità numeri</th>
             <th>Crea scadenze</th>
             <th>Taglia/colore</th>
+            <th>Preleva rapportini</th>
+            <th>Crea articoli</th>
+            <th>Crea anagrafiche</th>
+            <th>Matrice taglie</th>
+            <th>Gestione seriali</th>
+            <th>Gestione data consegna</th>
+            <th>Gestione lotti</th>
+            <th>Varia impegnato</th>
+            <th>Varia ordinato</th>
             <th>Attivo</th>
+            <th>Creato il</th>
             <th class="no-export">Azioni</th>
         </tr>
         </thead>
@@ -53,7 +63,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $m->congruita ? 'Sì' : 'No' ?></td>
                 <td><?= $m->crea_scadenze ? 'Sì' : 'No' ?></td>
                 <td><?= $m->mostra_varianti ? 'Sì' : 'No' ?></td>
+                <td><?= $m->preleva_rapportini ? 'Sì' : 'No' ?></td>
+                <td><?= $m->crea_articoli ? 'Sì' : 'No' ?></td>
+                <td><?= $m->crea_anagrafiche ? 'Sì' : 'No' ?></td>
+                <td><?= $m->mostra_matrice ? 'Sì' : 'No' ?></td>
+                <td><?= $m->gestione_seriali ? 'Sì' : 'No' ?></td>
+                <td><?= $m->gestione_data_consegna ? 'Sì' : 'No' ?></td>
+                <td><?= $m->gestione_lotti ? 'Sì' : 'No' ?></td>
+                <td><?= Html::encode($m->variaImpegnatoLabel) ?></td>
+                <td><?= Html::encode($m->variaOrdinatoLabel) ?></td>
                 <td><?= $m->attivo ? 'Sì' : 'No' ?></td>
+                <td><?= $m->created_at ? date('d/m/Y H:i', strtotime($m->created_at)) : '' ?></td>
                 <td class="text-center text-nowrap no-export">
                     <?= Html::a('<i class="fas fa-eye"></i>', ['view', 'id' => $m->id], ['class' => 'btn btn-sm btn-info', 'title' => 'Vedi']) ?>
                     <?= Html::a('<i class="fas fa-pen"></i>', ['update', 'id' => $m->id], ['class' => 'btn btn-sm btn-warning', 'title' => 'Modifica']) ?>

@@ -22,6 +22,9 @@ use Yii;
  * @property bool $crea_articoli
  * @property bool $crea_anagrafiche
  * @property bool $mostra_matrice
+ * @property bool $gestione_seriali
+ * @property bool $gestione_data_consegna
+ * @property bool $gestione_lotti
  * @property int|null $id_magazzino_partenza
  * @property int|null $id_magazzino_arrivo
  * @property string $segno_movimento
@@ -72,6 +75,8 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             [['crea_scadenze'], 'boolean'],
             [['mostra_varianti'], 'boolean'],
             [['preleva_rapportini', 'crea_articoli', 'crea_anagrafiche', 'mostra_matrice'], 'boolean'],
+            [['gestione_seriali', 'gestione_data_consegna'], 'boolean'],
+            [['gestione_lotti'], 'boolean'],
             [['id_magazzino_partenza', 'id_magazzino_arrivo'], 'integer'],
             [['id_magazzino_partenza'], 'exist',
                 'targetClass' => MgMagazzino::className(),
@@ -111,6 +116,9 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
             'crea_articoli' => 'Crea articoli',
             'crea_anagrafiche' => 'Crea anagrafiche',
             'mostra_matrice' => 'Matrice taglie',
+            'gestione_seriali' => 'Gestione seriali / matricole',
+            'gestione_data_consegna' => 'Gestione data consegna',
+            'gestione_lotti' => 'Gestione lotti',
             'id_magazzino_partenza' => 'Magazzino partenza',
             'id_magazzino_arrivo' => 'Magazzino arrivo',
             'segno_movimento' => 'Segno movimento',

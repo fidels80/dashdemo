@@ -17,6 +17,13 @@ use yii\helpers\Html;
 /* @var $magazzini array */
 /* @var $tipiMagazzini array */
 /* @var $tipiMostraVarianti array */
+/* @var $tipiPrelevaRapportini array */
+/* @var $tipiCreaArticoli array */
+/* @var $tipiCreaAnagrafiche array */
+/* @var $tipiMostraMatrice array */
+/* @var $tipiGestioneSeriali array */
+/* @var $tipiGestioneDataConsegna array */
+/* @var $tipiGestioneLotti array */
 /* @var $modelliMatrice array */
 /* @var $righe array */
 
@@ -40,6 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'magazzini' => $magazzini,
         'tipiMagazzini' => $tipiMagazzini,
         'tipiMostraVarianti' => $tipiMostraVarianti,
+        'tipiPrelevaRapportini' => $tipiPrelevaRapportini,
+        'tipiCreaArticoli' => $tipiCreaArticoli,
+        'tipiCreaAnagrafiche' => $tipiCreaAnagrafiche,
+        'tipiMostraMatrice' => $tipiMostraMatrice,
+        'tipiGestioneSeriali' => $tipiGestioneSeriali,
+        'tipiGestioneDataConsegna' => $tipiGestioneDataConsegna,
+        'tipiGestioneLotti' => $tipiGestioneLotti,
         'modelliMatrice' => $modelliMatrice,
         'righe' => $righe,
     ]) ?>

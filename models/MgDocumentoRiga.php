@@ -86,6 +86,12 @@ class MgDocumentoRiga extends \yii\db\ActiveRecord
         return $this->hasOne(Rapportini::className(), ['id' => 'id_rapportino']);
     }
 
+    public function getDettagli()
+    {
+        return $this->hasMany(MgDocumentoRigaDettaglio::className(), ['id_documento_riga' => 'id'])
+            ->orderBy(['ordine' => SORT_ASC, 'id' => SORT_ASC]);
+    }
+
     public function getSottocommessa()
     {
         return $this->hasOne(MgSottocommessa::className(), ['id' => 'id_sottocommessa']);

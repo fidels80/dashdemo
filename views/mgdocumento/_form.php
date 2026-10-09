@@ -24,6 +24,9 @@ use app\models\MgArticolo;
 /* @var $tipiCreaArticoli array */
 /* @var $tipiCreaAnagrafiche array */
 /* @var $tipiMostraMatrice array */
+/* @var $tipiGestioneSeriali array */
+/* @var $tipiGestioneDataConsegna array */
+/* @var $tipiGestioneLotti array */
 /* @var $modelliMatrice array */
 /* @var $righe app\models\MgDocumentoRiga[] */
 
@@ -50,6 +53,9 @@ foreach ((array) $tipi as $tid => $tlabel) {
         'data-crea-articoli' => isset($tipiCreaArticoli[$tid]) ? (int) $tipiCreaArticoli[$tid] : 0,
         'data-crea-anagrafiche' => isset($tipiCreaAnagrafiche[$tid]) ? (int) $tipiCreaAnagrafiche[$tid] : 0,
         'data-mostra-matrice' => isset($tipiMostraMatrice[$tid]) ? (int) $tipiMostraMatrice[$tid] : 0,
+        'data-gestione-seriali' => isset($tipiGestioneSeriali[$tid]) ? (int) $tipiGestioneSeriali[$tid] : 0,
+        'data-gestione-data-consegna' => isset($tipiGestioneDataConsegna[$tid]) ? (int) $tipiGestioneDataConsegna[$tid] : 0,
+        'data-gestione-lotti' => isset($tipiGestioneLotti[$tid]) ? (int) $tipiGestioneLotti[$tid] : 0,
         'data-magazzino-partenza' => !empty($tipiMagazzini[$tid]['partenza']) ? (int) $tipiMagazzini[$tid]['partenza'] : '',
         'data-magazzino-arrivo' => !empty($tipiMagazzini[$tid]['arrivo']) ? (int) $tipiMagazzini[$tid]['arrivo'] : '',
     ];
@@ -337,6 +343,76 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         </div>
     </div>
 
+    <!-- Modale seriali / date consegna -->
+    <div class="modal fade" id="modal-dettagli" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white"><i class="fas fa-barcode"></i> Seriali / date consegna</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-2 text-muted small" id="dettagli-riga-info"></div>
+                    <div class="table-responsive" style="max-height:55vh;overflow:auto;">
+                        <table class="table table-sm table-bordered mb-0" id="dettagli-table">
+                            <thead>
+                            <tr id="dettagli-head"></tr>
+                            </thead>
+                            <tbody id="dettagli-body"></tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="btn-dettagli-add"><i class="fas fa-plus"></i> Aggiungi riga</button>
+                </div>
+                <div class="modal-footer">
+                    <span class="mr-auto text-muted small" id="dettagli-info"></span>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-dark" id="btn-dettagli-salva"><i class="fas fa-save"></i> Applica</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale nuovo lotto -->
+    <div class="modal fade" id="modal-nuovo-lotto" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white"><i class="fas fa-boxes"></i> Nuovo lotto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Articolo</label>
+                        <input type="text" id="nl-articolo" class="form-control" readonly>
+                        <input type="hidden" id="nl-id-articolo">
+                        <input type="hidden" id="nl-codice-articolo">
+                    </div>
+                    <div class="form-group">
+                        <label>Codice lotto *</label>
+                        <input type="text" id="nl-codice" class="form-control" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrizione</label>
+                        <input type="text" id="nl-descrizione" class="form-control" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label>Data scadenza</label>
+                        <input type="date" id="nl-scadenza" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Nota</label>
+                        <textarea id="nl-nota" class="form-control" rows="2" maxlength="500"></textarea>
+                    </div>
+                    <div id="nl-error" class="text-danger small"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-dark" id="btn-nl-salva"><i class="fas fa-save"></i> Crea lotto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modale preleva rapportini -->
     <div class="modal fade" id="modal-preleva-rapportini" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -507,6 +583,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         $('.col-varianti').toggle(String(tipoOption().attr('data-mostra-varianti')) === '1');
         $('.col-mag-partenza').toggle(!!magazzinoTipo('partenza'));
         $('.col-mag-arrivo').toggle(!!magazzinoTipo('arrivo'));
+        aggiornaDettagliBtn();
         var visibili = $('#righe-table thead th:visible').length;
         if (visibili > 0) {
             $('#righe-totale-label').attr('colspan', visibili - 2);
@@ -545,6 +622,220 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             $('#btn-preleva-rapportini').toggle(tipoFlag('preleva-rapportini'));
         }
     }
+
+    // --- SERIALI / DATE CONSEGNA / LOTTI ---
+    var $dettagliRiga = null;
+    var lottiRigaCorrente = [];
+    var $lottoSelectCorrente = null;
+    var lottoListUrl = '<?= Url::to(['mgdocumento/lotti']) ?>';
+    var lottoCreaUrl = '<?= Url::to(['mgdocumento/crea-lotto']) ?>';
+
+    function dettagliFlags() {
+        return {
+            sn: tipoFlag('gestione-seriali'),
+            dc: tipoFlag('gestione-data-consegna'),
+            lotti: tipoFlag('gestione-lotti')
+        };
+    }
+
+    function aggiornaDettagliBtn() {
+        var f = dettagliFlags();
+        $('#righe-body .riga-dettagli-btn').toggle(f.sn || f.dc || f.lotti);
+    }
+
+    function dettagliRigaDaInputs($row) {
+        var out = [];
+        $row.find('.riga-dettagli-box input').each(function () {
+            var name = $(this).attr('name') || '';
+            var m = name.match(/\[dettagli\]\[(\d+)\]\[([a-z_]+)\]/);
+            if (!m) { return; }
+            var j = parseInt(m[1], 10);
+            var campo = m[2];
+            if (!out[j]) { out[j] = { seriale: '', id_lotto: '', data_consegna: '', qta: '' }; }
+            out[j][campo] = $(this).val();
+        });
+        return out;
+    }
+
+    function aggiornaCountDettagli($row) {
+        var n = $row.find('.riga-dettagli-box input[name$="[seriale]"]').length;
+        $row.find('.riga-dettagli-count').text(n).toggle(n > 0);
+    }
+
+    function dettagliHeadHtml() {
+        var f = dettagliFlags();
+        var h = '';
+        if (f.sn) { h += '<th>Seriale / Matricola</th>'; }
+        if (f.lotti) { h += '<th style="min-width:200px;">Lotto</th>'; }
+        if (f.dc) { h += '<th style="width:150px;">Data consegna</th>'; }
+        if (!f.sn) { h += '<th class="text-right" style="width:100px;">Q.tà</th>'; }
+        h += '<th style="width:50px;"></th>';
+        return h;
+    }
+
+    function lottoSelectHtml(selectedId) {
+        var opts = '';
+        $.each(lottiRigaCorrente, function (i, l) {
+            opts += '<option value="' + escAttr(l.id) + '"' + (String(l.id) === String(selectedId) ? ' selected' : '') + '>'
+                + $('<div>').text(l.etichetta).html() + '</option>';
+        });
+        return '<div class="input-group input-group-sm">'
+            + '<select class="form-control form-control-sm det-lotto"><option value="">-- nessun lotto --</option>' + opts + '</select>'
+            + '<div class="input-group-append"><button type="button" class="btn btn-sm btn-outline-dark det-lotto-nuovo" title="Nuovo lotto"><i class="fas fa-plus"></i></button></div>'
+            + '</div>';
+    }
+
+    function dettagliRowHtml(d) {
+        var f = dettagliFlags();
+        d = d || {};
+        var h = '<tr class="dettaglio-row">';
+        if (f.sn) {
+            h += '<td><input type="text" class="form-control form-control-sm det-seriale" value="' + escAttr(d.seriale) + '"></td>';
+        }
+        if (f.lotti) {
+            h += '<td>' + lottoSelectHtml(d.id_lotto) + '</td>';
+        }
+        if (f.dc) {
+            h += '<td><input type="date" class="form-control form-control-sm det-data" value="' + escAttr(d.data_consegna) + '"></td>';
+        }
+        if (!f.sn) {
+            var q = (d.qta === '' || d.qta === undefined || d.qta === null) ? 1 : d.qta;
+            h += '<td><input type="number" step="any" class="form-control form-control-sm text-right det-qta" value="' + escAttr(q) + '"></td>';
+        }
+        h += '<td class="text-center"><button type="button" class="btn btn-sm btn-outline-danger det-remove"><i class="fas fa-times"></i></button></td>';
+        h += '</tr>';
+        return h;
+    }
+
+    function apriDettagli($row) {
+        $dettagliRiga = $row;
+        var f = dettagliFlags();
+        var list = dettagliRigaDaInputs($row);
+        if (!list.length) { list = [{}]; }
+
+        function render() {
+            $('#dettagli-head').html(dettagliHeadHtml());
+            var $b = $('#dettagli-body').empty();
+            $.each(list, function (i, d) { $b.append(dettagliRowHtml(d || {})); });
+            var desc = $row.find('.riga-desc').val() || $row.find('.riga-codice').val() || '';
+            $('#dettagli-riga-info').text(desc ? ('Riga: ' + desc) : '');
+            $('#btn-dettagli-add').toggle(f.sn || f.dc || f.lotti);
+            $('#modal-dettagli').modal('show');
+        }
+
+        if (f.lotti) {
+            lottiRigaCorrente = [];
+            $.getJSON(lottoListUrl, {
+                id_articolo: $row.find('.riga-articolo').val() || '',
+                codice_articolo: $row.find('.riga-codice').val() || ''
+            }, function (res) {
+                if (res && res.success) { lottiRigaCorrente = res.lotti; }
+                render();
+            }).fail(function () { render(); });
+        } else {
+            lottiRigaCorrente = [];
+            render();
+        }
+    }
+
+    function salvaDettagli() {
+        if (!$dettagliRiga) { return; }
+        var f = dettagliFlags();
+        if (!f.sn && !f.dc && !f.lotti) { $('#modal-dettagli').modal('hide'); return; }
+
+        var righe = [];
+        $('#dettagli-body .dettaglio-row').each(function () {
+            var $r = $(this);
+            var seriale = f.sn ? ($r.find('.det-seriale').val() || '').trim() : '';
+            var idLotto = f.lotti ? ($r.find('.det-lotto').val() || '') : '';
+            var data = f.dc ? ($r.find('.det-data').val() || '') : '';
+            var qta = f.sn ? '1' : ($r.find('.det-qta').val() || '1');
+            if (f.sn && seriale === '' && data === '' && idLotto === '') { return; }
+            if (!f.sn && data === '' && idLotto === '') { return; }
+            righe.push({ seriale: seriale, id_lotto: idLotto, data_consegna: data, qta: qta });
+        });
+
+        if (f.sn) {
+            var qtaRiga = parseFloat($dettagliRiga.find('.riga-qta').val()) || 0;
+            if (righe.length > qtaRiga) {
+                var ok = window.confirm('Sono state inserite ' + righe.length + ' matricole ma la quantità della riga è '
+                    + qtaRiga + '.\nAggiornare la quantità della riga a ' + righe.length + '?');
+                if (!ok) { return; }
+                $dettagliRiga.find('.riga-qta').val(righe.length);
+                ricalcolaRiga($dettagliRiga);
+            }
+        }
+
+        var $box = $dettagliRiga.find('.riga-dettagli-box').empty();
+        $.each(righe, function (ord, r) {
+            var base = 'righe[__IDX__][dettagli][' + ord + ']';
+            $box.append('<input type="hidden" name="' + base + '[seriale]" value="' + escAttr(r.seriale) + '">');
+            $box.append('<input type="hidden" name="' + base + '[id_lotto]" value="' + escAttr(r.id_lotto) + '">');
+            $box.append('<input type="hidden" name="' + base + '[data_consegna]" value="' + escAttr(r.data_consegna) + '">');
+            $box.append('<input type="hidden" name="' + base + '[qta]" value="' + escAttr(r.qta) + '">');
+        });
+        aggiornaIndici();
+        aggiornaCountDettagli($dettagliRiga);
+        $('#modal-dettagli').modal('hide');
+    }
+
+    $(document).on('click', '.riga-dettagli-btn', function () {
+        apriDettagli($(this).closest('.riga-row'));
+    });
+    $('#btn-dettagli-add').on('click', function () {
+        $('#dettagli-body').append(dettagliRowHtml({}));
+    });
+    $(document).on('click', '.det-remove', function () {
+        $(this).closest('.dettaglio-row').remove();
+    });
+    $('#btn-dettagli-salva').on('click', salvaDettagli);
+
+    // --- NUOVO LOTTO DALLA MODALE DETTAGLI ---
+    $(document).on('click', '.det-lotto-nuovo', function () {
+        $lottoSelectCorrente = $(this).closest('.input-group').find('.det-lotto');
+        var $row = $dettagliRiga;
+        if (!$row) { return; }
+        var testoArt = $row.find('.riga-articolo option:selected').text() || '';
+        $('#nl-articolo').val(testoArt);
+        $('#nl-id-articolo').val($row.find('.riga-articolo').val() || '');
+        $('#nl-codice-articolo').val($row.find('.riga-codice').val() || '');
+        $('#nl-codice, #nl-descrizione, #nl-nota').val('');
+        $('#nl-scadenza').val('');
+        $('#nl-error').text('');
+        $('#modal-nuovo-lotto').modal('show');
+    });
+
+    $('#btn-nl-salva').on('click', function () {
+        var codice = ($('#nl-codice').val() || '').trim();
+        if (!codice) { $('#nl-error').text('Il codice lotto è obbligatorio.'); return; }
+        var btn = $(this).prop('disabled', true);
+        $.post(lottoCreaUrl, {
+            id_articolo: $('#nl-id-articolo').val(),
+            codice_articolo: $('#nl-codice-articolo').val(),
+            codice_lotto: codice,
+            descrizione: $('#nl-descrizione').val(),
+            data_scadenza: $('#nl-scadenza').val(),
+            nota: $('#nl-nota').val(),
+            _csrf: (typeof yii !== 'undefined' ? yii.getCsrfToken() : '')
+        }, function (res) {
+            btn.prop('disabled', false);
+            if (res && res.success) {
+                var l = res.lotto;
+                lottiRigaCorrente.push(l);
+                var opt = '<option value="' + escAttr(l.id) + '">' + $('<div>').text(l.etichetta).html() + '</option>';
+                $('#dettagli-body .det-lotto').each(function () { $(this).append(opt); });
+                if ($lottoSelectCorrente && $.contains(document, $lottoSelectCorrente[0])) {
+                    $lottoSelectCorrente.val(String(l.id));
+                }
+                $('#modal-nuovo-lotto').modal('hide');
+            } else {
+                $('#nl-error').text(res && res.errors ? JSON.stringify(res.errors) : (res.error || 'Errore di creazione.'));
+            }
+        }, 'json').fail(function () {
+            btn.prop('disabled', false);
+            $('#nl-error').text('Errore di rete.');
+        });
+    });
 
     // --- RICERCA RIGHE ---
     function filtraRighe() {
@@ -762,6 +1053,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         $clone.find('.riga-rap-dettaglio').attr('data-id-rap', '').hide();
         $('#righe-body').append($clone);
         aggiornaIndici();
+        aggiornaDettagliBtn();
         filtraRighe();
         ricalcolaTotale();
     });
@@ -1038,6 +1330,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         var $row = $('#righe-body .riga-row').last();
         applicaSottocommessaRiga($row);
         applicaMagazziniRiga($row);
+        aggiornaDettagliBtn();
         if (!silent) { ricalcolaTotale(); }
         return $row;
     }

@@ -90,6 +90,17 @@ use app\models\MgTipoDocumento;
                     <?= $form->field($model, 'crea_anagrafiche')->checkbox() ?>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <?= $form->field($model, 'gestione_seriali')->checkbox() ?>
+                </div>
+                <div class="col-md-4">
+                    <?= $form->field($model, 'gestione_data_consegna')->checkbox() ?>
+                </div>
+                <div class="col-md-4">
+                    <?= $form->field($model, 'gestione_lotti')->checkbox() ?>
+                </div>
+            </div>
             <div class="alert alert-info mb-0">
                 <i class="fas fa-info-circle"></i>
                 <strong>Crea scadenze:</strong> alla creazione del documento vengono generate le scadenze in base al
@@ -106,6 +117,16 @@ use app\models\MgTipoDocumento;
                 <br>
                 <strong>Crea articoli / Crea anagrafiche:</strong> rendono disponibile la creazione rapida di un
                 nuovo articolo o di un nuovo cliente/fornitore.
+                <br>
+                <strong>Gestione seriali / matricole:</strong> abilita, per ogni riga, l'inserimento del numero di
+                serie dei singoli pezzi (una riga di dettaglio per pezzo).
+                <br>
+                <strong>Gestione data consegna:</strong> abilita, per ogni riga, la gestione delle date di consegna
+                anche diverse all'interno della stessa riga (es. 5 pezzi domani e 5 la settimana successiva).
+                <br>
+                <strong>Gestione lotti:</strong> abilita, per ogni riga, la selezione dei lotti dell'articolo e la
+                creazione rapida di nuovi lotti (codice lotto, descrizione, data scadenza, nota). I lotti creati
+                dalla riga vengono associati automaticamente all'articolo.
             </div>
         </div>
     </div>

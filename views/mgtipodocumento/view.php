@@ -73,6 +73,9 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                 $campo('Crea articoli', $siNo($model->crea_articoli), 'col-md-3');
                 $campo('Crea anagrafiche', $siNo($model->crea_anagrafiche), 'col-md-3');
                 $campo('Matrice taglie', $siNo($model->mostra_matrice), 'col-md-3');
+                $campo('Gestione seriali / matricole', $siNo($model->gestione_seriali), 'col-md-3');
+                $campo('Gestione data consegna', $siNo($model->gestione_data_consegna), 'col-md-3');
+                $campo('Gestione lotti', $siNo($model->gestione_lotti), 'col-md-3');
                 ?>
             </div>
         </div>

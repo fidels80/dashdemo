@@ -13,7 +13,11 @@ $bloccato = $model->hasScadenzePagate();
 $mostraVarianti = $model->tipo && $model->tipo->mostra_varianti;
 $mostraMagPartenza = $model->tipo && $model->tipo->id_magazzino_partenza;
 $mostraMagArrivo = $model->tipo && $model->tipo->id_magazzino_arrivo;
-$colonneRighe = 10 + ($mostraVarianti ? 3 : 0) + ($mostraMagPartenza ? 1 : 0) + ($mostraMagArrivo ? 1 : 0);
+$gestioneSeriali = $model->tipo && $model->tipo->gestione_seriali;
+$gestioneDataConsegna = $model->tipo && $model->tipo->gestione_data_consegna;
+$gestioneLotti = $model->tipo && $model->tipo->gestione_lotti;
+$mostraDettagli = $gestioneSeriali || $gestioneDataConsegna || $gestioneLotti;
+$colonneRighe = 10 + ($mostraVarianti ? 3 : 0) + ($mostraMagPartenza ? 1 : 0) + ($mostraMagArrivo ? 1 : 0) + ($mostraDettagli ? 1 : 0);
 $stati = ['bozza' => 'Bozza', 'confermato' => 'Confermato', 'chiuso' => 'Chiuso', 'annullato' => 'Annullato'];
 
 $campo = function ($label, $valore, $col = 'col-md-3') {
@@ -122,6 +126,9 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                     <th class="text-right" style="width:6%">Sc. %</th>
                     <th class="text-right" style="width:6%">IVA %</th>
                     <th class="text-right" style="width:8%">Totale</th>
+                    <?php if ($mostraDettagli): ?>
+                        <th class="text-center" style="width:8%">Seriali</th>
+                    <?php endif; ?>
                     <th style="width:8%"></th>
                 </tr>
                 </thead>
@@ -148,12 +155,48 @@ $campo = function ($label, $valore, $col = 'col-md-3') {
                         <td class="text-right"><?= number_format((float) $r->sconto, 2, ',', '.') ?></td>
                         <td class="text-right"><?= number_format((float) $r->iva, 2, ',', '.') ?></td>
                         <td class="text-right"><?= number_format((float) $r->totale, 2, ',', '.') ?></td>
+                        <?php if ($mostraDettagli): ?>
+                            <td class="text-center">
+                                <?php if (!empty($r->dettagli)): ?>
+                                    <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="collapse"
+                                            data-target="#det-riga-<?= (int) $r->id ?>" title="Mostra seriali / date consegna">
+                                        <i class="fas fa-barcode"></i> <?= count($r->dettagli) ?>
+                                    </button>
+                                <?php endif; ?>
+                            </td>
+                        <?php endif; ?>
                         <td class="text-center text-nowrap">
                             <?php if ($r->id_rapportino): ?>
                                 <button type="button" class="btn btn-sm btn-outline-info riga-rap-dettaglio" data-id-rap="<?= Html::encode($r->id_rapportino) ?>" title="Dettaglio rapportino"><i class="fas fa-file-alt"></i></button>
                             <?php endif; ?>
                         </td>
                     </tr>
+                    <?php if ($mostraDettagli && !empty($r->dettagli)): ?>
+                        <tr class="collapse" id="det-riga-<?= (int) $r->id ?>">
+                            <td colspan="<?= $colonneRighe ?>" class="bg-light">
+                                <table class="table table-sm table-bordered mb-0">
+                                    <thead>
+                                    <tr>
+                                        <?php if ($gestioneSeriali): ?><th style="width:30%">Seriale / Matricola</th><?php endif; ?>
+                                        <?php if ($gestioneLotti): ?><th style="width:30%">Lotto</th><?php endif; ?>
+                                        <?php if ($gestioneDataConsegna): ?><th style="width:20%">Data consegna</th><?php endif; ?>
+                                        <?php if (!$gestioneSeriali): ?><th class="text-right" style="width:15%">Q.tà</th><?php endif; ?>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($r->dettagli as $d): ?>
+                                        <tr>
+                                            <?php if ($gestioneSeriali): ?><td><?= Html::encode($d->seriale) ?></td><?php endif; ?>
+                                            <?php if ($gestioneLotti): ?><td><?= $d->lotto ? Html::encode($d->lotto->etichetta) : '' ?></td><?php endif; ?>
+                                            <?php if ($gestioneDataConsegna): ?><td><?= Html::encode($d->dataConsegnaLabel) ?></td><?php endif; ?>
+                                            <?php if (!$gestioneSeriali): ?><td class="text-right"><?= number_format((float) $d->qta, 2, ',', '.') ?></td><?php endif; ?>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                 <?php endforeach; ?>
                 <?php if (empty($model->righe)): ?>
                     <tr><td colspan="<?= $colonneRighe ?>" class="text-muted">Nessuna riga.</td></tr>

@@ -5,7 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\MgDocumento;
 use app\models\MgDocumentoRiga;
+use app\models\MgDocumentoRigaDettaglio;
 use app\models\MgTipoDocumento;
+use app\models\MgLotto;
 use app\models\MgAnagrafica;
 use app\models\MgArticolo;
 use app\models\MgMetodoPagamento;
@@ -109,6 +111,13 @@ class MgdocumentoController extends Controller
                 $copia = \app\components\Duplicate::copy($riga);
                 $copia->id_documento = null;
                 $copia->id_rapportino = null;
+                $copieDettagli = [];
+                foreach ($riga->dettagli as $dettaglio) {
+                    $copiaDettaglio = \app\components\Duplicate::copy($dettaglio);
+                    $copiaDettaglio->id_documento_riga = null;
+                    $copieDettagli[] = $copiaDettaglio;
+                }
+                $copia->populateRelation('dettagli', $copieDettagli);
                 $righe[] = $copia;
             }
         }
@@ -140,6 +149,9 @@ class MgdocumentoController extends Controller
             'tipiCreaArticoli' => MgTipoDocumento::mapFlag('crea_articoli'),
             'tipiCreaAnagrafiche' => MgTipoDocumento::mapFlag('crea_anagrafiche'),
             'tipiMostraMatrice' => MgTipoDocumento::mapFlag('mostra_matrice'),
+            'tipiGestioneSeriali' => MgTipoDocumento::mapFlag('gestione_seriali'),
+            'tipiGestioneDataConsegna' => MgTipoDocumento::mapFlag('gestione_data_consegna'),
+            'tipiGestioneLotti' => MgTipoDocumento::mapFlag('gestione_lotti'),
             'modelliMatrice' => $this->modelliConArticoli(),
             'righe' => $righe,
         ]);
@@ -182,6 +194,9 @@ class MgdocumentoController extends Controller
             'tipiCreaArticoli' => MgTipoDocumento::mapFlag('crea_articoli'),
             'tipiCreaAnagrafiche' => MgTipoDocumento::mapFlag('crea_anagrafiche'),
             'tipiMostraMatrice' => MgTipoDocumento::mapFlag('mostra_matrice'),
+            'tipiGestioneSeriali' => MgTipoDocumento::mapFlag('gestione_seriali'),
+            'tipiGestioneDataConsegna' => MgTipoDocumento::mapFlag('gestione_data_consegna'),
+            'tipiGestioneLotti' => MgTipoDocumento::mapFlag('gestione_lotti'),
             'modelliMatrice' => $this->modelliConArticoli(),
             'righe' => $model->righe,
         ]);
@@ -362,6 +377,7 @@ class MgdocumentoController extends Controller
             }
 
             $riga->save(false);
+            $this->saveDettagli($riga, $r['dettagli'] ?? [], $tipo);
             MgMovimentoMagazzino::creaDaRiga($riga, $tipo);
             if ($riga->id_rapportino) {
                 $nuovi[] = (string) $riga->id_rapportino;
@@ -370,6 +386,39 @@ class MgdocumentoController extends Controller
 
         $model->calcolaTotale();
         $this->allineaEvasione($precedenti, $nuovi);
+    }
+
+    /**
+     * Salva i dettagli (seriali / date consegna) di una riga documento.
+     * Vengono gestiti solo se il tipo documento ha almeno uno dei due flag
+     * attivi; le righe vuote vengono scartate.
+     */
+    private function saveDettagli($riga, $dettagli, $tipo)
+    {
+        if (!$tipo || (!$tipo->gestione_seriali && !$tipo->gestione_data_consegna && !$tipo->gestione_lotti)) {
+            return;
+        }
+
+        MgDocumentoRigaDettaglio::deleteAll(['id_documento_riga' => $riga->id]);
+
+        $ord = 0;
+        foreach ((array) $dettagli as $d) {
+            $seriale = trim((string) ($d['seriale'] ?? ''));
+            $data = trim((string) ($d['data_consegna'] ?? ''));
+            $idLotto = !empty($d['id_lotto']) ? (int) $d['id_lotto'] : null;
+            if ($seriale === '' && $data === '' && $idLotto === null) {
+                continue;
+            }
+
+            $dettaglio = new MgDocumentoRigaDettaglio();
+            $dettaglio->id_documento_riga = $riga->id;
+            $dettaglio->seriale = $seriale !== '' ? $seriale : null;
+            $dettaglio->id_lotto = $idLotto;
+            $dettaglio->data_consegna = $data !== '' ? $data : null;
+            $dettaglio->qta = ($d['qta'] ?? '') === '' ? 1 : $d['qta'];
+            $dettaglio->ordine = $ord++;
+            $dettaglio->save(false);
+        }
     }
 
     /**
@@ -668,6 +717,65 @@ class MgdocumentoController extends Controller
                 return $m->etichetta;
             }
         );
+    }
+
+    /**
+     * Lotti disponibili per l'articolo di una riga (AJAX).
+     */
+    public function actionLotti($id_articolo = null, $codice_articolo = null)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $out = [];
+        foreach (MgLotto::perArticolo($id_articolo, $codice_articolo) as $lotto) {
+            $out[] = $this->lottoJson($lotto);
+        }
+
+        return ['success' => true, 'lotti' => $out];
+    }
+
+    /**
+     * Creazione rapida di un lotto per l'articolo di una riga (AJAX).
+     */
+    public function actionCreaLotto()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        if (!Yii::$app->request->isPost) {
+            return ['success' => false, 'error' => 'Richiesta non valida.'];
+        }
+
+        $model = new MgLotto();
+        $model->load(Yii::$app->request->post(), '');
+
+        if ($model->save()) {
+            return ['success' => true, 'lotto' => $this->lottoJson($model)];
+        }
+
+        return ['success' => false, 'errors' => $model->getErrors()];
+    }
+
+    /**
+     * Serializza un lotto per le risposte AJAX della form documento.
+     */
+    private function lottoJson($lotto)
+    {
+        $etichetta = $lotto->codice_lotto;
+        if (!empty($lotto->descrizione)) {
+            $etichetta .= ' - ' . $lotto->descrizione;
+        }
+        if (!empty($lotto->data_scadenza)) {
+            $etichetta .= ' (scad. ' . date('d/m/Y', strtotime((string) $lotto->data_scadenza)) . ')';
+        }
+
+        return [
+            'id' => (int) $lotto->id,
+            'codice_lotto' => $lotto->codice_lotto,
+            'descrizione' => $lotto->descrizione,
+            'data_scadenza' => $lotto->data_scadenza ? date('d/m/Y', strtotime((string) $lotto->data_scadenza)) : '',
+            'nota' => $lotto->nota,
+            'etichetta' => $etichetta,
+        ];
     }
 
     protected function findModel($id)
