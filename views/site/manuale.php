@@ -155,6 +155,9 @@ JS
         <a class="manual-l2" href="#micro-movimenti">Movimenti di magazzino</a>
         <a class="manual-l2" href="#micro-ricrea">Allineare i movimenti (comando console)</a>
         <a class="manual-l2" href="#micro-cancellazione">Commesse, sottocommesse e magazzini protetti</a>
+        <a class="manual-l2" href="#micro-seriali">Seriali, date di consegna e lotti sulle righe</a>
+        <a class="manual-l2" href="#micro-tipi-documento">Tipi documento: flag e colonne dell'elenco</a>
+        <a class="manual-l2" href="#micro-magazzini-elenco">I magazzini disponibili</a>
         <a class="manual-l1" href="#dashboard">13. Dashboard (cruscotto)</a>
         <a class="manual-l2" href="#dashboard-sezioni">Le sezioni del cruscotto</a>
         <a class="manual-l2" href="#dashboard-permessi">Sezioni e permessi</a>
@@ -828,7 +831,7 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
       <section id="microgestionale">
         <div class="manual-card">
           <h2>12. Microgestionale: documenti e magazzino</h2>
-          <p>L'area <strong>Microgestionale</strong> del menu raccoglie le anagrafiche di base, i documenti e i prodotti. In questa sezione trovi le novit&agrave; di uso quotidiano: il pulsante <strong>Duplica</strong>, la <strong>sottocommessa</strong> e i <strong>magazzini</strong> nelle righe dei documenti e i <strong>movimenti di magazzino</strong> generati automaticamente.</p>
+          <p>L'area <strong>Microgestionale</strong> del menu raccoglie le anagrafiche di base, i documenti e i prodotti. In questa sezione trovi le novit&agrave; di uso quotidiano: il pulsante <strong>Duplica</strong>, la <strong>sottocommessa</strong> e i <strong>magazzini</strong> nelle righe dei documenti, il dettaglio di <strong>seriali/matricole, date di consegna e lotti</strong> attivabile per tipo documento e i <strong>movimenti di magazzino</strong> generati automaticamente.</p>
 
           <h3 id="micro-duplica">12.1 Duplicare una voce da un elenco (pulsante Duplica)</h3>
           <p>In molte tabelle del Microgestionale, nella colonna delle azioni a destra della riga, accanto a <span class="manual-btn manual-btn-gray">Vedi</span> e <span class="manual-btn manual-btn-gray">Modifica</span> trovi anche il pulsante <span class="manual-btn manual-btn-gray">Duplica</span> (icona con due fogli sovrapposti).</p>
@@ -904,6 +907,43 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
           </ul>
           <div class="manual-note">
             Il messaggio ricorda il motivo (&laquo;&egrave; usata in uno o pi&ugrave; documenti&raquo;, &laquo;&egrave; utilizzato da tipi documento o righe documento&raquo;): rimuovi prima i collegamenti nei documenti, poi ripeti la cancellazione.
+          </div>
+
+          <h3 id="micro-seriali">12.8 Seriali/matricole, date di consegna e lotti sulle righe</h3>
+          <p>Le righe di un documento possono avere un <strong>dettaglio aggiuntivo</strong> per gestire i <strong>numeri di serie</strong>, le <strong>date di consegna</strong> e i <strong>lotti</strong>. Queste funzioni non sono sempre attive: si abilitano <strong>per tipo documento</strong> (vedi 12.9).</p>
+          <p>Nella <strong>form del documento</strong>, quando sul tipo &egrave; attivo almeno uno di questi flag, per ogni riga compare un pulsante con l'icona del <strong>codice a barre</strong>: premendolo si apre la modale <em>Seriali / date consegna / lotti</em>.</p>
+          <ul>
+            <li>Nella modale aggiungi una <strong>riga di dettaglio</strong> per ogni pezzo o consegna. Le colonne mostrate dipendono dai flag attivi sul tipo documento: <strong>Seriale/Matricola</strong>, <strong>Lotto</strong>, <strong>Data consegna</strong> e <strong>Q.t&agrave;</strong>.</li>
+            <li><strong>Seriale/Matricola:</strong> una riga di dettaglio per ogni singolo pezzo, con il suo numero di serie.</li>
+            <li><strong>Data consegna:</strong> puoi gestire date diverse anche nella stessa riga (es. 5 pezzi domani e 5 la settimana successiva), una per riga di dettaglio.</li>
+            <li><strong>Lotto:</strong> puoi scegliere <strong>solo i lotti dell'articolo della riga</strong>. Con il pulsante <span class="manual-btn">+</span> crei al volo un <strong>nuovo lotto</strong> (codice lotto, descrizione, data scadenza, nota): il lotto viene associato automaticamente all'articolo della riga e selezionato.</li>
+          </ul>
+          <div class="manual-warn">
+            <strong>Attenzione alla quantit&agrave;:</strong> se il numero di matricole inserite supera la Q.t&agrave; della riga, compare un avviso. Se confermi, la Q.t&agrave; della riga viene aggiornata automaticamente al numero di matricole.
+          </div>
+          <p>Nella <strong>vista del documento</strong> (<span class="manual-btn manual-btn-gray">Vedi</span>), se il tipo prevede queste gestioni, nella tabella delle righe &egrave; presente una colonna <strong>Seriali</strong>: il pulsante con il codice a barre mostra il numero di dettagli e, premendolo, <strong>espande</strong> la lista di seriali, lotti e date di consegna di quella riga.</p>
+          <div class="manual-note">
+            Se non vedi il pulsante sulla riga n&eacute; la colonna <em>Seriali</em>, il tipo documento selezionato non prevede queste gestioni: non &egrave; un errore.
+          </div>
+
+          <h3 id="micro-tipi-documento">12.9 Tipi documento: flag di funzionalit&agrave; e colonne dell'elenco</h3>
+          <p>Sul <strong>tipo documento</strong> (form e dettaglio) trovi il riquadro <em>Funzionalit&agrave; nella form documento</em> con tre nuovi flag:</p>
+          <table>
+            <tr><th>Flag</th><th>Cosa abilita sulle righe del documento</th></tr>
+            <tr><td><strong>Gestione seriali / matricole</strong></td><td>L'inserimento dei numeri di serie dei singoli pezzi (una riga di dettaglio per pezzo).</td></tr>
+            <tr><td><strong>Gestione data consegna</strong></td><td>Le date di consegna, anche diverse nella stessa riga.</td></tr>
+            <tr><td><strong>Gestione lotti</strong></td><td>La selezione dei lotti dell'articolo e la creazione rapida di nuovi lotti.</td></tr>
+          </table>
+          <p>Nell'<strong>elenco dei Tipi documento</strong> sono state aggiunte tutte le colonne di configurazione finora mancanti, cos&igrave; puoi controllare a colpo d'occhio come &egrave; impostato ogni tipo: <strong>Preleva rapportini</strong>, <strong>Crea articoli</strong>, <strong>Crea anagrafiche</strong>, <strong>Matrice taglie</strong>, <strong>Gestione seriali</strong>, <strong>Gestione data consegna</strong>, <strong>Gestione lotti</strong>, <strong>Varia impegnato</strong>, <strong>Varia ordinato</strong> e la data di creazione (<strong>Creato il</strong>).</p>
+
+          <h3 id="micro-magazzini-elenco">12.10 I magazzini disponibili</h3>
+          <p>Oltre al magazzino principale gi&agrave; esistente, l'applicazione &egrave; precaricata con <strong>20 magazzini aggiuntivi</strong>, con codici <strong>MAG02</strong> &hellip; <strong>MAG21</strong> e descrizioni <em>&laquo;Magazzino 02&raquo;</em> &hellip; <em>&laquo;Magazzino 21&raquo;</em>.</p>
+          <ul>
+            <li>Sono tutti <strong>attivi</strong> e <strong>senza anagrafica associata</strong>.</li>
+            <li>Vengono proposti nelle <strong>tendine dei magazzini</strong>: nelle righe documento e sul tipo documento.</li>
+          </ul>
+          <div class="manual-note">
+            Il caricamento &egrave; <strong>idempotente</strong>: se viene eseguito di nuovo vengono creati solo i codici mancanti, senza duplicare quelli gi&agrave; presenti.
           </div>
         </div>
       </section>
@@ -992,6 +1032,8 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
             <tr><td><strong>Moduli</strong></td><td>Le aree dell'applicazione abilitate per un utente.</td></tr>
             <tr><td><strong>Segnala Anomalia</strong></td><td>Il pulsante (icona bug) per inviare al supporto la descrizione di un problema.</td></tr>
             <tr><td><strong>Modalit&agrave; scura</strong></td><td>Aspetto con sfondo scuro attivabile con l'icona luna/sole in alto a destra; la scelta viene ricordata dal browser.</td></tr>
+            <tr><td><strong>Seriale / Matricola</strong></td><td>Il numero di serie che identifica un singolo pezzo di un articolo; si gestisce sul dettaglio delle righe documento.</td></tr>
+            <tr><td><strong>Lotto</strong></td><td>Il raggruppamento di pezzi di un articolo (codice lotto, descrizione, data scadenza, nota) selezionabile sulle righe documento.</td></tr>
           </table>
         </div>
       </section>
