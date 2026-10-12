@@ -163,7 +163,11 @@ JS
         <a class="manual-l1" href="#dashboard">13. Dashboard (cruscotto)</a>
         <a class="manual-l2" href="#dashboard-sezioni">Le sezioni del cruscotto</a>
         <a class="manual-l2" href="#dashboard-permessi">Sezioni e permessi</a>
-        <a class="manual-l1" href="#glossario">14. Glossario</a>
+        <a class="manual-l1" href="#licenza">14. Licenza e aggiornamenti</a>
+        <a class="manual-l2" href="#licenza-attivazione">Attivare la licenza</a>
+        <a class="manual-l2" href="#licenza-moduli">Moduli abilitati</a>
+        <a class="manual-l2" href="#licenza-aggiornamenti">Aggiornamenti</a>
+        <a class="manual-l1" href="#glossario">15. Glossario</a>
       </div>
     </nav>
 
@@ -1060,10 +1064,60 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
         </div>
       </section>
 
+      <!-- 14 LICENZA -->
+      <section id="licenza">
+        <div class="manual-card">
+          <h2>14. Licenza e aggiornamenti</h2>
+          <p>L'applicazione funziona con una <strong>licenza</strong> fornita dal produttore. La licenza stabilisce <strong>quali moduli sono abilitati</strong> e consente di ricevere gli <strong>aggiornamenti</strong>. La gestione &egrave; riservata agli <strong>amministratori</strong> (supervisori): gli altri utenti non vedono questa voce.</p>
+          <p>Si apre dal menu laterale, voce <strong>Licenza e aggiornamenti</strong> (icona chiave), oppure dalla graffetta chiave nella barra in alto. La pagina mostra lo <strong>stato della licenza</strong>: chiave, prodotto, piano (<em>tier</em>), stato, scadenza, ultimo controllo e l'elenco dei <strong>moduli abilitati</strong>.</p>
+
+          <h3 id="licenza-attivazione">14.1 Attivare la licenza</h3>
+          <p>Nella scheda <em>Attiva / aggiorna licenza</em> inserisci la <strong>chiave</strong> ricevuta e premi <span class="manual-btn">Attiva</span>. L'applicazione contatta il server di licenza, verifica la chiave e memorizza i moduli abilitati. Da quel momento la licenza si aggiorna da sola: <strong>ogni 12 ore</strong> l'app invia un <em>heartbeat</em> e controlla se ci sono novit&agrave; (non devi fare nulla).</p>
+          <table>
+            <tr><th>Campo</th><th>Cosa indica</th></tr>
+            <tr><td><strong>Chiave</strong></td><td>Il codice della licenza (formato <code>XXXX-XXXX-XXXX-XXXX</code>).</td></tr>
+            <tr><td><strong>Prodotto</strong></td><td>Il prodotto licenziato (questa Dashboard).</td></tr>
+            <tr><td><strong>Piano (tier)</strong></td><td>Base / Standard / Advanced: un preset dei moduli inclusi.</td></tr>
+            <tr><td><strong>Stato</strong></td><td><em>Attiva</em>, oppure in errore/scaduta/revocata.</td></tr>
+            <tr><td><strong>Scadenza</strong></td><td>La data di scadenza, oppure &laquo;permanente&raquo;.</td></tr>
+            <tr><td><strong>Machine ID</strong></td><td>Identificativo del server su cui gira l'app (per l'attivazione).</td></tr>
+          </table>
+          <div class="manual-note">
+            &Egrave; disponibile anche il comando da riga di comando <code>php yii license/activate CHIAVE</code>, oltre a <code>license/status</code>, <code>license/heartbeat</code>, <code>license/check-update</code> e <code>license/download</code>.
+          </div>
+
+          <h3 id="licenza-moduli">14.2 Moduli abilitati</h3>
+          <p>La licenza pu&ograve; abilitare o disabilitare singoli moduli. Quando un modulo <strong>non &egrave; licenziato</strong>:</p>
+          <ul>
+            <li>la sua voce <strong>sparisce dal menu laterale</strong>;</li>
+            <li>anche digitando l'indirizzo diretto, la pagina <strong>non &egrave; accessibile</strong> (l'app mostra un avviso e riporta alla Dashboard).</li>
+          </ul>
+          <p>I moduli che possono essere controllati dalla licenza sono:</p>
+          <table>
+            <tr><th>Modulo</th><th>Dove si trova</th></tr>
+            <tr><td><strong>Documenti</strong></td><td>Microgestionale &ndash; Documenti.</td></tr>
+            <tr><td><strong>Agenti</strong></td><td>Anagrafiche &ndash; Agenti.</td></tr>
+            <tr><td><strong>Matricole</strong></td><td>Microgestionale &ndash; Matricole.</td></tr>
+            <tr><td><strong>Lotti</strong></td><td>Microgestionale &ndash; Lotti.</td></tr>
+            <tr><td><strong>Taglie</strong>, <strong>Colori</strong>, <strong>Tessuti</strong></td><td>Prodotti &ndash; Attributi articolo.</td></tr>
+          </table>
+          <div class="manual-note">
+            Se il server di licenza non &egrave; raggiungibile o la licenza non &egrave; ancora stata inserita, l'app resta pienamente utilizzabile per <strong>14 giorni</strong> (periodo di tolleranza). Trascorsi i 14 giorni senza un controllo valido, i moduli non licenziati vengono bloccati.
+          </div>
+
+          <h3 id="licenza-aggiornamenti">14.3 Aggiornamenti</h3>
+          <p>Quando il produttore pubblica una <strong>nuova versione</strong>, compare un avviso (icona di download nella barra in alto e riquadro <em>Aggiornamenti</em> nella pagina Licenza). Il pulsante <span class="manual-btn">Controlla aggiornamenti</span> verifica subito la disponibilit&agrave;.</p>
+          <p>Il pulsante <span class="manual-btn">Scarica qui</span> salva il <strong>pacchetto</strong> dell'aggiornamento in <code>runtime/updates/</code>. L'<strong>applicazione vera e propria resta manuale</strong>: dopo aver scaricato e verificato il contenuto, l'amministratore (o il supporto) applica i file. In questo modo non c'&egrave; rischio di sovrascritture automatiche sul server in produzione.</p>
+          <div class="manual-warn">
+            Il solo download <strong>non</strong> aggiorna l'applicazione: serve sempre l'intervento manuale per applicare i file del pacchetto.
+          </div>
+        </div>
+      </section>
+
       <!-- 13 GLOSSARIO -->
       <section id="glossario">
         <div class="manual-card">
-          <h2>14. Glossario</h2>
+          <h2>15. Glossario</h2>
           <table>
             <tr><th>Termine</th><th>Significato</th></tr>
             <tr><td><strong>Planning</strong></td><td>La pianificazione giornaliera delle attivit&agrave; delle squadre.</td></tr>
