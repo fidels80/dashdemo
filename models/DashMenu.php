@@ -134,18 +134,27 @@ class DashMenu extends \yii\db\ActiveRecord
         }
 
         foreach ($byParent[$key] as $it) {
+            // Licenza: nasconde le voci relative a moduli non abilitati.
+            $feature = \app\components\Licensing::featureForMenuUrl($it->url);
+            if ($feature !== null && !\app\components\Licensing::hasFeature($feature)) {
+                continue;
+            }
+
+            $children = self::buildBranch($byParent, $it->id);
+
+            $hasUrl = !empty($it->url);
+            // Gruppo senza voce propria e senza figli visibili: non mostrarlo.
+            if (!$hasUrl && empty($children)) {
+                continue;
+            }
+
             $node = [
                 'label' => $it->label,
                 'icon' => $it->icona ?: 'circle',
             ];
 
-            if (!empty($it->url)) {
-                $node['url'] = self::urlMenu($it->url);
-            } else {
-                $node['url'] = '#';
-            }
+            $node['url'] = $hasUrl ? self::urlMenu($it->url) : '#';
 
-            $children = self::buildBranch($byParent, $it->id);
             if (!empty($children)) {
                 $node['items'] = $children;
             }

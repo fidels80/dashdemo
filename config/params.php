@@ -37,4 +37,20 @@ return [
         'cardinale.marco@gmail.com',
         'marco.cardinale@ilvbc.it',
     ],
+
+    // ------------------------------------------------------------------
+    // Sistema di licenza e aggiornamenti (license-server).
+    // ------------------------------------------------------------------
+    // URL base del license-server (senza index.php: usa URL pulite /web/api/...).
+    'licenseServerUrl' => 'http://localhost:8081/i3qtv/aivora/license-server/web',
+    // Prodotto licenziato richiesto a questo server.
+    'licenseProduct' => 'dashdemo',
+    // Segreto HMAC condiviso col license-server (params.licenseSecret del server).
+    'licenseSecret' => 'CHANGE_ME_in_production_use_random_64_chars',
+    // Versione corrente dell'applicazione (confrontata con gli artifact).
+    'appVersion' => '0.0.1',
+    // Giorni di tolleranza senza server raggiungibile/licenza attiva.
+    'licenseGraceDays' => 14,
+    // Se false disattiva completamente il blocco moduli (utile in sviluppo).
+    'licenseEnforce' => true,
     ];

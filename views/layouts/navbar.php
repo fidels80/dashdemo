@@ -41,6 +41,12 @@ $praticheRecenti = (new \yii\db\Query())
 $totaleNotifiche = $praticheRecenti + $nuoviMessaggi;
 // ------------------------------
 
+// Aggiornamento applicativo disponibile (cache da dash_licenza, nessuna chiamata di rete)
+$licenzaUpdate = null;
+if ($usrid !== null && \app\components\AccessControl::isSuper(Yii::$app->user->identity)) {
+    $licenzaUpdate = \app\models\DashLicenza::current()->update_version;
+}
+
 ?>
 
 <script>
@@ -143,6 +149,15 @@ $totaleNotifiche = $praticheRecenti + $nuoviMessaggi;
                 <i class="fas fa-book"></i>
             </a>
         </li>
+
+        <?php if (!empty($licenzaUpdate)): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= \yii\helpers\Url::to(['/licenza/index']) ?>" title="Aggiornamento disponibile: v<?= Html::encode($licenzaUpdate) ?>">
+                <i class="fas fa-cloud-download-alt text-success"></i>
+                <span class="badge badge-success navbar-badge">NEW</span>
+            </a>
+        </li>
+        <?php endif; ?>
 
         <li class="nav-item">
             <a class="nav-link" href="<?= \yii\helpers\Url::to(['/two-factor/setup']) ?>" title="Autenticazione a Due Fattori (2FA)">

@@ -21,6 +21,7 @@ class AccessControl
         'site/',
         'dashboard/',
         'two-factor/',
+        'licenza/',
         'user/update',
         'user/view',
         'user/cf',

@@ -202,6 +202,21 @@ $config = [
             Yii::$app->session->setFlash('error', 'Non sei autorizzato ad accedere a questa funzione.');
             Yii::$app->response->redirect(['site/index'])->send();
             $event->isValid = false;
+            return;
+        }
+
+        // Controllo licenza: i moduli non abilitati dalla licenza sono bloccati.
+        if (!Yii::$app->user->isGuest
+            && \app\components\Licensing::isBlocked($controller->id, $action->id)) {
+            Yii::$app->session->setFlash('error', 'Modulo non abilitato dalla licenza.');
+            Yii::$app->response->redirect(['site/index'])->send();
+            $event->isValid = false;
+            return;
+        }
+
+        // Aggiornamento periodico della licenza (heartbeat + check-update), best-effort.
+        if (!Yii::$app->user->isGuest) {
+            \app\components\Licensing::autoRefresh();
         }
     },
 
