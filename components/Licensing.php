@@ -68,6 +68,16 @@ class Licensing
     public static function featureForRoute($controllerId, $actionId = null, $params = [])
     {
         $controllerId = strtolower((string) $controllerId);
+        $actionId = strtolower((string) $actionId);
+
+        if ($controllerId === 'mgdocumento') {
+            if ($actionId === 'crea-lotto') {
+                return 'lotti';
+            }
+            if ($actionId === 'crea-matricola') {
+                return 'matricole';
+            }
+        }
 
         if (isset(self::$controllerFeature[$controllerId])) {
             return self::$controllerFeature[$controllerId];
@@ -125,6 +135,10 @@ class Licensing
 
         self::resolve();
 
+        if (self::$readOnly) {
+            return true;
+        }
+
         if (!self::$withinGrace) {
             return false;
         }
@@ -136,9 +150,66 @@ class Licensing
         return in_array($code, self::$featuresCache, true);
     }
 
+    /**
+     * True se la licenza e' scaduta o revocata: applicazione in sola lettura.
+     */
+    public static function isReadOnly()
+    {
+        if (!self::enforced()) {
+            return false;
+        }
+
+        self::resolve();
+        return self::$readOnly;
+    }
+
+    /**
+     * Rotte consentite anche in sola lettura (riattivazione licenza e accesso).
+     */
+    public static function isReadOnlyAllowed($controllerId, $actionId)
+    {
+        $controllerId = strtolower((string) $controllerId);
+        $actionId = strtolower((string) $actionId);
+
+        if ($controllerId === 'licenza') {
+            return true;
+        }
+
+        if ($controllerId === 'site') {
+            if (in_array($actionId, ['login', 'logout', 'error'], true)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * True se la rotta scrive dati: azione create/update/delete o metodo non-GET.
+     */
+    public static function isWriteRoute($controllerId, $actionId)
+    {
+        $actionId = strtolower((string) $actionId);
+        if (in_array($actionId, ['create', 'update', 'delete'], true)) {
+            return true;
+        }
+
+        $request = (Yii::$app instanceof \yii\web\Application) ? Yii::$app->request : null;
+        if ($request === null) {
+            return false;
+        }
+
+        if (!$request->isGet && !$request->isHead) {
+            return true;
+        }
+
+        return false;
+    }
+
     /** Cache dello stato licenza nella singola richiesta. */
     private static $resolved = false;
     private static $withinGrace = false;
+    private static $readOnly = false;
     private static $featuresCache = [];
 
     private static function resolve()
@@ -152,6 +223,17 @@ class Licensing
         $base = $state->last_check_ok ?: $state->first_run_at;
         self::$withinGrace = $base && (time() - strtotime($base)) < (self::graceDays() * 86400);
         self::$featuresCache = $state->getFeatureArray();
+
+        self::$readOnly = false;
+        if ($state->status === 'error') {
+            self::$readOnly = true;
+        }
+        if (!empty($state->expires_at)) {
+            $expTs = strtotime($state->expires_at);
+            if ($expTs !== false && $expTs < time()) {
+                self::$readOnly = true;
+            }
+        }
     }
 
     public static function isConfigured()
@@ -370,6 +452,9 @@ class Licensing
         if (empty($data['ok'])) {
             $state->status = 'error';
             $state->last_error = $data['error'] ?? 'Heartbeat rifiutato';
+            if (isset($data['features']) && is_array($data['features'])) {
+                $state->features = json_encode($data['features'], JSON_UNESCAPED_UNICODE);
+            }
             $state->updated_at = $now;
             $state->save(false);
             DashLicenzaLog::log('heartbeat_failed', $state->last_error);

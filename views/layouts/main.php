@@ -284,6 +284,65 @@ JS;
 })();
 JS;
     $this->registerJs($collapseSidebarJs, \yii\web\View::POS_READY);
+
+    if (\app\components\Licensing::isReadOnly()) {
+        $readOnlyJs = <<<JS
+(function () {
+    var blocked = ['create', 'update', 'delete'];
+
+    function routeOf(url) {
+        try {
+            var u = new URL(url, window.location.href);
+            var r = u.searchParams.get('r');
+            if (!r) { return null; }
+            return r.toLowerCase();
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function isAllowed(route) {
+        var parts = route.split('/');
+        var ctrl = parts[0] || '';
+        var act = parts[parts.length - 1] || '';
+        if (ctrl === 'licenza') { return true; }
+        if (ctrl === 'site' && (act === 'login' || act === 'logout' || act === 'error')) { return true; }
+        return false;
+    }
+
+    function hideWriteActions() {
+        var links = document.querySelectorAll('a[href]');
+        for (var i = 0; i < links.length; i++) {
+            var a = links[i];
+            var route = routeOf(a.getAttribute('href'));
+            if (!route) { continue; }
+            var parts = route.split('/');
+            var act = parts[parts.length - 1] || '';
+            if (blocked.indexOf(act) === -1) { continue; }
+            if (isAllowed(route)) { continue; }
+            a.style.display = 'none';
+        }
+    }
+
+    var pending = false;
+    function schedule() {
+        if (pending) { return; }
+        pending = true;
+        window.requestAnimationFrame(function () {
+            pending = false;
+            hideWriteActions();
+        });
+    }
+
+    hideWriteActions();
+    document.addEventListener('DOMContentLoaded', schedule);
+    window.addEventListener('load', schedule);
+    var mo = new MutationObserver(schedule);
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+})();
+JS;
+        $this->registerJs($readOnlyJs, \yii\web\View::POS_END);
+    }
     ?>
     <?php $this->endBody() ?>
 </body>

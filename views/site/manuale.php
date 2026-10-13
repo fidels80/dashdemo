@@ -166,6 +166,7 @@ JS
         <a class="manual-l1" href="#licenza">14. Licenza e aggiornamenti</a>
         <a class="manual-l2" href="#licenza-attivazione">Attivare la licenza</a>
         <a class="manual-l2" href="#licenza-moduli">Moduli abilitati</a>
+        <a class="manual-l2" href="#licenza-sola-lettura">Licenza scaduta: sola lettura</a>
         <a class="manual-l2" href="#licenza-aggiornamenti">Aggiornamenti</a>
         <a class="manual-l1" href="#glossario">15. Glossario</a>
       </div>
@@ -1090,7 +1091,8 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
           <p>La licenza pu&ograve; abilitare o disabilitare singoli moduli. Quando un modulo <strong>non &egrave; licenziato</strong>:</p>
           <ul>
             <li>la sua voce <strong>sparisce dal menu laterale</strong>;</li>
-            <li>anche digitando l'indirizzo diretto, la pagina <strong>non &egrave; accessibile</strong> (l'app mostra un avviso e riporta alla Dashboard).</li>
+            <li>anche digitando l'indirizzo diretto, la pagina <strong>non &egrave; accessibile</strong> (l'app mostra un avviso e riporta alla Dashboard);</li>
+            <li>anche le funzioni collegate dentro altri moduli (ad esempio la creazione di <strong>matricole</strong> o <strong>lotti</strong> dalle righe di un documento) vengono bloccate e i relativi pulsanti non sono mostrati.</li>
           </ul>
           <p>I moduli che possono essere controllati dalla licenza sono:</p>
           <table>
@@ -1105,7 +1107,17 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
             Se il server di licenza non &egrave; raggiungibile o la licenza non &egrave; ancora stata inserita, l'app resta pienamente utilizzabile per <strong>14 giorni</strong> (periodo di tolleranza). Trascorsi i 14 giorni senza un controllo valido, i moduli non licenziati vengono bloccati.
           </div>
 
-          <h3 id="licenza-aggiornamenti">14.3 Aggiornamenti</h3>
+          <h3 id="licenza-sola-lettura">14.3 Licenza scaduta o revocata: sola lettura</h3>
+          <p>Se la licenza risulta <strong>scaduta o revocata</strong> (il server di licenza risponde con un errore), l'applicazione passa automaticamente in <strong>sola lettura</strong>: puoi continuare a consultare tutti i dati, ma non &egrave; pi&ugrave; possibile creare, modificare o eliminare record.</p>
+          <ul>
+            <li>nelle liste <strong>spariscono i pulsanti</strong> Nuovo, Modifica ed Elimina;</li>
+            <li>nelle schede di dettaglio spariscono i pulsanti Modifica ed Elimina;</li>
+            <li>anche digitando a mano l'indirizzo di creazione o modifica, l'app mostra un avviso e riporta all'elenco del modulo;</li>
+            <li>la pagina <strong>Licenza e aggiornamenti</strong> resta accessibile agli amministratori per riattivare o rinnovare la licenza.</li>
+          </ul>
+          <p>Appena la licenza viene rinnovata (o il server torna a rispondere positivamente all'<em>heartbeat</em>), l'applicazione torna scrivibile senza altri interventi.</p>
+
+          <h3 id="licenza-aggiornamenti">14.4 Aggiornamenti</h3>
           <p>Quando il produttore pubblica una <strong>nuova versione</strong>, compare un avviso (icona di download nella barra in alto e riquadro <em>Aggiornamenti</em> nella pagina Licenza). Il pulsante <span class="manual-btn">Controlla aggiornamenti</span> verifica subito la disponibilit&agrave;.</p>
           <p>Il pulsante <span class="manual-btn">Scarica qui</span> salva il <strong>pacchetto</strong> dell'aggiornamento in <code>runtime/updates/</code>. L'<strong>applicazione vera e propria resta manuale</strong>: dopo aver scaricato e verificato il contenuto, l'amministratore (o il supporto) applica i file. In questo modo non c'&egrave; rischio di sovrascritture automatiche sul server in produzione.</p>
           <div class="manual-warn">

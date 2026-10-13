@@ -374,6 +374,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
         </div>
     </div>
 
+    <?php if (\app\components\Licensing::hasFeature('lotti')): ?>
     <!-- Modale nuovo lotto -->
     <div class="modal fade" id="modal-nuovo-lotto" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -414,7 +415,9 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             </div>
         </div>
     </div>
+    <?php endif; ?>
 
+    <?php if (\app\components\Licensing::hasFeature('matricole')): ?>
     <!-- Modale nuova matricola -->
     <div class="modal fade" id="modal-nuova-matricola" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -451,6 +454,7 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
             </div>
         </div>
     </div>
+    <?php endif; ?>
 
     <!-- Modale preleva rapportini -->
     <div class="modal fade" id="modal-preleva-rapportini" tabindex="-1" aria-hidden="true">
@@ -672,6 +676,8 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
     var $matricolaSelectCorrente = null;
     var matricolaListUrl = '<?= Url::to(['mgdocumento/matricole']) ?>';
     var matricolaCreaUrl = '<?= Url::to(['mgdocumento/crea-matricola']) ?>';
+    var licLotti = <?= \app\components\Licensing::hasFeature('lotti') ? 'true' : 'false' ?>;
+    var licMatricole = <?= \app\components\Licensing::hasFeature('matricole') ? 'true' : 'false' ?>;
 
     function dettagliFlags() {
         return {
@@ -723,8 +729,10 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                 + $('<div>').text(l.etichetta).html() + '</option>';
         });
         return '<div class="input-group input-group-sm">'
-            + '<select class="form-control form-control-sm det-lotto"><option value="">-- nessun lotto --</option>' + opts + '</select>'
-            + '<div class="input-group-append"><button type="button" class="btn btn-sm btn-outline-dark det-lotto-nuovo" title="Nuovo lotto"><i class="fas fa-plus"></i></button></div>'
+            + '<select class="form-control form-control-sm det-lotto"' + (licLotti ? '' : ' disabled') + '><option value="">-- nessun lotto --</option>' + opts + '</select>'
+            + (licLotti
+                ? '<div class="input-group-append"><button type="button" class="btn btn-sm btn-outline-dark det-lotto-nuovo" title="Nuovo lotto"><i class="fas fa-plus"></i></button></div>'
+                : '')
             + '</div>';
     }
 
@@ -736,8 +744,10 @@ $idDocumento = $model->isNewRecord ? null : (int) $model->id;
                 + $('<div>').text(m.etichetta).html() + '</option>';
         });
         return '<div class="input-group input-group-sm">'
-            + '<select class="form-control form-control-sm det-matricola"><option value="">-- nessuna matricola --</option>' + opts + '</select>'
-            + '<div class="input-group-append"><button type="button" class="btn btn-sm btn-outline-dark det-matricola-nuovo" title="Nuova matricola"><i class="fas fa-plus"></i></button></div>'
+            + '<select class="form-control form-control-sm det-matricola"' + (licMatricole ? '' : ' disabled') + '><option value="">-- nessuna matricola --</option>' + opts + '</select>'
+            + (licMatricole
+                ? '<div class="input-group-append"><button type="button" class="btn btn-sm btn-outline-dark det-matricola-nuovo" title="Nuova matricola"><i class="fas fa-plus"></i></button></div>'
+                : '')
             + '</div>';
     }
 

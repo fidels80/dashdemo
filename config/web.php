@@ -214,6 +214,22 @@ $config = [
             return;
         }
 
+        // Licenza scaduta o revocata: applicazione in sola lettura (blocco modifiche).
+        // Anche un URL di create/update/delete scritto a mano riporta all'index.
+        if (!Yii::$app->user->isGuest
+            && \app\components\Licensing::isReadOnly()
+            && \app\components\Licensing::isWriteRoute($controller->id, $action->id)
+            && !\app\components\Licensing::isReadOnlyAllowed($controller->id, $action->id)) {
+            Yii::$app->session->setFlash('error', 'Licenza scaduta: applicazione in sola lettura.');
+            $target = ['site/index'];
+            if ($controller->hasMethod('actionIndex')) {
+                $target = ['/' . $controller->uniqueId . '/index'];
+            }
+            Yii::$app->response->redirect($target)->send();
+            $event->isValid = false;
+            return;
+        }
+
         // Aggiornamento periodico della licenza (heartbeat + check-update), best-effort.
         if (!Yii::$app->user->isGuest) {
             \app\components\Licensing::autoRefresh();
