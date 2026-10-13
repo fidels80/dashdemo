@@ -42,7 +42,7 @@ return [
     // Sistema di licenza e aggiornamenti (license-server).
     // ------------------------------------------------------------------
     // URL base del license-server (senza index.php: usa URL pulite /web/api/...).
-    'licenseServerUrl' => 'http://localhost:8081/i3qtv/aivora/license-server/web',
+    'licenseServerUrl' => 'https://fidels.synology.me/license-server/web',
     // Prodotto licenziato richiesto a questo server.
     'licenseProduct' => 'dashdemo',
     // Segreto HMAC condiviso col license-server (params.licenseSecret del server).

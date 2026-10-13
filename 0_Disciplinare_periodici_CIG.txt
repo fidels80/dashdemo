@@ -1,0 +1,1260 @@
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 1 a 58
+DISCIPLINARE DI GARA
+PROCEDURA APERTA PER L'AFFIDAMENTO MEDIANTE ACCORDO QUADRO DELLA FORNITURA DI PUBBLICAZIONI SCIENTIFICHE PERIODICHE IN ABBONAMENTO, EDITE DA CASE EDITRICI ITALIANE (LOTTO 1) E STRANIERE (LOTTO 2), PER LE ESIGENZE DEL SISTEMA BIBLIOTECARIO DELL'UNIVERSITÀ DEGLI STUDI DI MACERATA - ANNI 2027-2028-2029.
+DISCIPLINARE DI GARA ............................................................................................................................................................ 1
+PREMESSE .......................................................................................................................................................................................... 4
+1. PIATTAFORMA TELEMATICA ...................................................................................................................................... 5
+1.1 LA PIATTAFORMA DI APPROVVIGIONAMENTO DIGITALE (PAD) ........................................ 5
+1.2 DOTAZIONI TECNICHE ................................................................................................................................... 6
+1.3 IDENTIFICAZIONE ............................................................................................................................................. 7
+2. DOCUMENTAZIONE DI GARA, CHIARIMENTI E COMUNICAZIONI .................................................. 7
+2.1 DOCUMENTI DI GARA ....................................................................................................................................... 7
+2.2 CHIARIMENTI ........................................................................................................................................................ 7
+2.3 COMUNICAZIONI ................................................................................................................................................. 8
+3. OGGETTO DELL’APPALTO, DURATA, IMPORTO E SUDDIVISIONE IN LOTTI ............................. 8
+3.1 DURATA ................................................................................................................................................................... 12
+3.2 REVISIONE PREZZI E VARIAZIONE DEI LISTINI EDITORIALI ........................................... 12
+3.3 MODIFICA DEL CONTRATTO IN FASE DI ESECUZIONE ......................................................... 12
+4. SOGGETTI AMMESSI IN FORMA SINGOLA E ASSOCIATA E CONDIZIONI DI PARTECIPAZIONE ..................................................................................................................................................................... 13
+5. REQUISITI DI ORDINE GENERALE E ALTRE CAUSE DI ESCLUSIONE .......................................... 14
+6. REQUISITI DI ORDINE SPECIALE E MEZZI DI PROVA ............................................................................ 16
+6.1 REQUISITI DI IDONEITÀ PROFESSIONALE ..................................................................................... 16
+6.2 REQUISITI DI CAPACITÀ ECONOMICA-FINANZIARIA .............................................................. 16
+6.3 REQUISITI DI CAPACITÀ TECNICA-PROFESSIONALE ............................................................... 17
+6.4 INDICAZIONI PER I RAGGRUPPAMENTI TEMPORANEI, CONSORZI ORDINARI, AGGREGAZIONI DI IMPRESE DI RETE, GEIE ................................................................................................ 18
+6.5 INDICAZIONI SUI REQUISITI SPECIALI NEI CONSORZI DI COOPERATIVE, CONSORZI DI IMPRESE ARTIGIANE E I CONSORZI STABILI............................................................... 18
+7. AVVALIMENTO .................................................................................................................................................................. 19
+8. SUBAPPALTO....................................................................................................................................................................... 21
+9. REQUISITI DI PARTECIPAZIONE E/O CONDIZIONI DI ESECUZIONE. ........................................ 21
+10. GARANZIA PROVVISORIA ........................................................................................................................................... 22
+11. SOPRALLUOGO .................................................................................................................................................................. 24
+12. PAGAMENTO DEL CONTRIBUTO A FAVORE DELL’ANAC ..................................................................... 24
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 2 a 58
+13. MODALITÀ DI PRESENTAZIONE DELL’OFFERTA E SOTTOSCRIZIONE DEI DOCUMENTI DI GARA ............................................................................................................................................................................................ 24
+13.1 REGOLE PER LA PRESENTAZIONE DELL’OFFERTA .................................................................. 25
+14. SOCCORSO ISTRUTTORIO .......................................................................................................................................... 27
+15. DOMANDA DI PARTECIPAZIONE E DOCUMENTAZIONE AMMINISTRATIVA .......................... 28
+15.1 DOMANDA DI PARTECIPAZIONE ED EVENTUALE PROCURA ............................................. 29
+15.2 DICHIARAZIONI DA RENDERE A CURA DEGLI OPERATORI ECONOMICI AMMESSI AL CONCORDATO PREVENTIVO CON CONTINUITÀ AZIENDALE DI CUI ALL’ARTICOLO 372 del DECRETO LEGISLATIVO 12 GENNAIO 2019, n. 14 ............................................................................ 31
+15.3 DICHIARAZIONI DA RENDERE NEL DGUE ..................................................................................... 31
+15.4 DOCUMENTAZIONE IN CASO DI AVVALIMENTO ........................................................................ 32
+15.5 DOCUMENTAZIONE ULTERIORE PER I SOGGETTI ASSOCIATI ......................................... 32
+16. OFFERTA TECNICA ........................................................................................................................................................ 35
+17. OFFERTA ECONOMICA ................................................................................................................................................ 41
+18. CRITERIO DI AGGIUDICAZIONE ........................................................................................................................... 42
+18.1 CRITERI DI VALUTAZIONE DELL’OFFERTA TECNICA ............................................................. 43
+18.2 METODO DI ATTRIBUZIONE DEL COEFFICIENTE PER IL CALCOLO DEL PUNTEGGIO DELL’OFFERTA TECNICA ............................................................................................................ 45
+18.3 METODO DI ATTRIBUZIONE DEL COEFFICIENTE PER IL CALCOLO DEL PUNTEGGIO DELL’OFFERTA ECONOMICA .................................................................................................... 47
+18.4 METODO PER IL CALCOLO COMPLESSIVO DEI PUNTEGGI .................................................. 50
+19. COMMISSIONE GIUDICATRICE .............................................................................................................................. 50
+20. SVOLGIMENTO DELLE OPERAZIONI DI GARA ........................................................................................ 50
+21. VERIFICA DOCUMENTAZIONE AMMINISTRATIVA ................................................................................... 51
+22. VALUTAZIONE DELLE OFFERTE TECNICHE ED ECONOMICHE ............................................... 51
+23. VERIFICA DI ANOMALIA DELLE OFFERTE ................................................................................................ 52
+24. AGGIUDICAZIONE DELL’APPALTO E STIPULA DEL CONTRATTO .............................................. 53
+25. OBBLIGHI RELATIVI ALLA TRACCIABILITÀ DEI FLUSSI FINANZIARI ...................................... 55
+26. CODICE DI COMPORTAMENTO ......................................................................................................................... 56
+27. ACCESSO AGLI ATTI ................................................................................................................................................... 56
+28. DEFINIZIONE DELLE CONTROVERSIE ....................................................................................................... 57
+29. TRATTAMENTO DEI DATI PERSONALI......................................................................................................... 58
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 3 a 58
+ALLEGATI:
+1 Capitolato speciale d’appalto.
+2 Schema di contratto e suoi allegati.
+3 Protocollo di legalità e sicurezza.
+4 Protocollo di legalità Unimc – o.e.
+5 Patto di integrità.
+6 Domanda di partecipazione e dichiarazioni integrative.
+7 Modello offerta economica.
+8 Responsabile esterno del trattamento dei dati.
+9 Schema di ordinativo di spesa.
+10 Schema di lettera di accettazione ordinativo di spesa.
+11 Elenco riviste italiane.
+12 Elenco riviste straniere.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 4 a 58
+PREMESSE
+Con Determinazione del Direttore Generale a contrarre del 29/09/2026 (Rep. n. 212/2026 – Prot. n. 124148/2026), questa Amministrazione ha deliberato di affidare, per gli anni 2027-2028-2029, la fornitura di pubblicazioni scientifiche periodiche in abbonamento, edite da case editrici italiane (lotto 1) e straniere (lotto 2), per le esigenze del sistema bibliotecario dell'Università degli Studi di Macerata (in seguito anche solo “Università” o “Stazione appaltante”) nella forma dell’accordo quadro, ai sensi dell’art. 59 del D.Lgs. 36/2023 (in seguito anche solo “Codice”).
+Ove applicabile, la fornitura viene affidata nel rispetto dei Criteri Ambientali Minimi (CAM) vigenti ai sensi dell’art. 57, co. 2 del D.Lgs. 36/2023, richiamati espressamente nella documentazione tecnica ed in particolare nel Capitolato Speciale d’Appalto e/o Schema di contratto, ove sono puntualmente previste le specifiche tecniche e le clausole contrattuali applicabili.
+La presente procedura di gara aperta è interamente svolta tramite la Piattaforma di Approvvigionamento Digitale in uso all’Ateneo accessibile all’indirizzo https://unimc.regione.marche.it dal quale si accede alla procedura, nonché alla documentazione di gara.
+L’affidamento avviene mediante procedura aperta ex art. 71 del Codice, con applicazione del criterio dell’offerta economicamente più vantaggiosa individuata sulla base del miglior rapporto qualità prezzo ai sensi dell’art. 108, co. 1, del D.Lgs. n. 36/2023.
+La durata del procedimento prevista è pari a nove mesi (OEPV) dalla pubblicazione del bando, salvo il verificarsi delle ipotesi di proroga previste all’art. 1, commi 4 e 5, dell’allegato I.3 del D.Lgs. n. 36/2023 (in seguito anche solo “Codice”).
+Il luogo principale di svolgimento del servizio è il Comune di Macerata.
+CUI: F00177050432202600005
+CIG lotto 1: BD3324DDE3
+CIG lotto 2: BD3324EEB6
+Il Responsabile Unico del Progetto (in seguito anche solo “RUP”) è la Dott.ssa Clementina Fraticelli, Responsabile dell’Area Servizi Bibliotecari e editoriali (E-mail: clementina.fraticelli@unimc.it).
+Il Responsabile dell’Ufficio Contratti, acquisti e appalti è la Dott.ssa: Marica Torresi (E-mail: marica.torresi@unimc.it).
+Si rende noto che ai sensi dell’art. 36 del D.Lgs. n. 36/2023, l’accesso agli atti della presente procedura avviene mediante interoperabilità attraverso la Piattaforma di Approvvigionamento Digitale (PAD). Le offerte dei concorrenti collocati nei primi cinque posti della graduatoria saranno rese reciprocamente visibili e scaricabili in modo automatico al momento della comunicazione dell’aggiudicazione. Saranno costantemente garantiti l’oscuramento e la tutela
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 5 a 58
+dei dati personali ai sensi del Regolamento UE n. 679/2016 e del D.Lgs. 196/2003, nonché la protezione dei segreti tecnici e commerciali validamente motivati e comprovati dagli operatori economici in sede di offerta, ai sensi dell’art. 35, comma 4, lett. a) del D.Lgs. 36/2023.
+1. PIATTAFORMA TELEMATICA
+1.1 LA PIATTAFORMA DI APPROVVIGIONAMENTO DIGITALE (PAD)
+L’utilizzo della Piattaforma di Approvvigionamento Digitale (in seguito anche solo “PAD” o “Piattaforma”) comporta l’accettazione tacita ed incondizionata di tutti i termini, le condizioni di utilizzo e le avvertenze contenute nei documenti di gara - ivi comprese le Regole del sistema di e-procurement della pubblica amministrazione (di seguito “Regole della PAD”) - in particolare, del Regolamento UE n. 910/2014 (di seguito Regolamento eIDAS - electronic IDentification Authentication and Signature), del decreto legislativo n. 82/2005 recante Codice dell’amministrazione digitale (CAD) e delle Linee guida dell’AGID, nonché di quanto portato a conoscenza degli utenti tramite le comunicazioni sulla PAD.
+L’utilizzo della PAD avviene nel rispetto dei principi di auto responsabilità e di diligenza professionale, secondo quanto previsto dall’articolo 1176, c. 2 del codice civile.
+La stazione appaltante non assume alcuna responsabilità per perdita di documenti e dati, danneggiamento di file e documenti, ritardi nell’inserimento di dati, documenti e/o nella presentazione della domanda, malfunzionamento, danni, pregiudizi derivanti all’operatore economico, da:
+• difetti di funzionamento delle apparecchiature e dei sistemi di collegamento e programmi impiegati dal singolo operatore economico per il collegamento alla PAD;
+• utilizzo della PAD da parte dell’operatore economico in maniera non conforme al Disciplinare e a quanto previsto dalle Regole della PAD di cui all’Area Informazioni della stessa.
+In caso di mancato funzionamento della PAD o di malfunzionamento della stessa, non dovuti alle predette circostanze, che impediscono la corretta presentazione delle offerte, al fine di assicurare la massima partecipazione, la stazione appaltante può disporre la sospensione del termine di presentazione delle offerte per un periodo di tempo necessario a ripristinare il normale funzionamento della PAD e la proroga dello stesso per una durata proporzionale alla durata del mancato o non corretto funzionamento, tenuto conto della gravità dello stesso.
+La stazione appaltante si riserva di agire in tal modo anche quando, esclusa la negligenza dell’operatore economico, non sia possibile accertare la causa del mancato funzionamento o del malfunzionamento.
+Le attività e le operazioni effettuate nell'ambito della PAD sono registrate e attribuite all’operatore economico e si intendono compiute nell’ora e nel giorno risultanti dalle registrazioni di sistema. Il sistema operativo della Piattaforma è sincronizzato sulla scala di tempo nazionale di cui al decreto del Ministro dell'industria, del commercio e dell'artigianato 30 novembre 1993, n. 591, tramite protocollo NTP o standard superiore. L’acquisto,
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 6 a 58
+l’installazione e la configurazione dell’hardware, del software, dei certificati digitali di firma, della casella di PEC o comunque di un indirizzo di servizio elettronico di recapito certificato qualificato, nonché dei collegamenti per l’accesso alla rete Internet, restano a esclusivo carico dell’operatore economico. La PAD è accessibile in qualsiasi orario dalla data di pubblicazione del bando alla data di scadenza del termine di presentazione delle offerte.
+1.2 DOTAZIONI TECNICHE
+Ai fini della partecipazione alla presente procedura, ogni operatore economico deve dotarsi, a propria cura, spesa e responsabilità della strumentazione tecnica ed informatica conforme a quella indicata nel presente disciplinare e dalle regole della PAD.
+In ogni caso è indispensabile:
+a) disporre almeno di un personal computer conforme agli standard aggiornati di mercato, con connessione internet e dotato di un comune browser idoneo ad operare in modo corretto sulla PAD;
+b) disporre di un sistema pubblico per la gestione dell’identità digitale (SPID) di cui all’articolo 64 del decreto legislativo 7 marzo 2005, n. 82, di altri mezzi di identificazione elettronica per il riconoscimento reciproco transfrontaliero ai sensi del Regolamento eIDAS, di carta di identità elettronica (CIE) di cui all’articolo 66 del decreto legislativo 7 marzo 2005, n. 82;
+c) avere un domicilio digitale presente negli indici di cui agli articoli 6-bis e 6 ter del decreto legislativo 7 marzo 2005, n. 82 o, per l’operatore economico transfrontaliero, un indirizzo di servizio elettronico di recapito certificato qualificato ai sensi del Regolamento eIDAS;
+d) avere da parte del legale rappresentante dell’operatore economico (o da persona munita di idonei poteri di firma) un certificato di firma digitale, in corso di validità, rilasciato da:
+- un organismo incluso nell’elenco pubblico dei certificatori tenuto dall’Agenzia per l’Italia Digita le (previsto dall’articolo 29 del decreto legislativo n. 82 / 05);
+- un certificatore operante in base a una licenza o autorizzazione rilasciata da uno Stato membro dell’Unione europea e in possesso dei requisiti previsti dal Regolamento n. 910/14;
+- un certificatore stabilito in uno Stato non facente parte dell’Unione europea quando ricorre una delle seguenti condizioni:
+I. il certificatore possiede i requisiti previsti dal Regolamento n. 910/14 ed è qualificato in uno stato membro;
+II. il certificato qualificato è garantito da un certificatore stabilito nell’Unione Europea, in possesso dei requisiti di cui al regolamento n. 910/ 1 4;
+III. il certificato qualificato, o il certificatore, è riconosciuto in forza di un accordo bilaterale o multilaterale tra l’Unione Europea e paesi terzi o organizzazioni internazionali.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 7 a 58
+1.3 IDENTIFICAZIONE
+Per poter presentare offerta è necessario accedere alla Piattaforma. L’accesso è gratuito ed è consentito a seguito dell’identificazione dell’operatore economico.
+L’identificazione avviene o mediante identità digitale SPID, o mediante carta d’identità elettronica (CIE) oppure carta nazionale dei servizi (CNS), secondo quanto previsto dal Codice dell'Amministrazione Digitale (decreto legislativo 7 marzo 2005, n. 82 e successive modificazioni) o attraverso gli altri mezzi di identificazione elettronica per il riconoscimento reciproco transfrontaliero ai sensi del Regolamento eIDAS. In caso di operatore economico extra-UE, l’identificazione avviene attraverso una identità digitale compatibile con il framework di autenticazione stabilito dalla PAD di riferimento e caratterizzata da un Level of Assurance (LoA) pari o superiore a 3, in conformità allo standard ISO/IEC 29115 (e r elative evoluzioni).
+Una volta completata la procedura di identificazione, ad ogni operatore economico identificato viene attribuito un profilo da utilizzare nella procedura di gara.
+Eventuali richieste di assistenza di tipo informatico riguardanti l’identificazione e l’accesso alla Piattaforma devono essere rivolte direttamente al gestore della PAD.
+2. DOCUMENTAZIONE DI GARA, CHIARIMENTI E COMUNICAZIONI
+2.1 DOCUMENTI DI GARA
+La documentazione di gara comprende:
+a) bando di gara GUUE (generato tramite PAD);
+b) disciplinare di gara e suoi allegati (v. sopra a pag. 3);
+c) documento di gara unico europeo – DGUE (generato tramite PAD).
+La documentazione di gara è accessibile gratuitamente, per via elettronica, sul profilo della stazione appaltante, nella sezione “Amministrazione trasparente” al seguente link (gare telematiche): https://unimc.regione.marche.it
+2.2 CHIARIMENTI
+É possibile ottenere chiarimenti sulla presente procedura mediante la proposizione di quesiti scritti da inoltrare almeno 10 giorni prima della scadenza del termine fissato per la presentazione delle offerte in via telematica attraverso la sezione della PAD riservata alle richieste di chiarimenti, previa registrazione alla medesima.
+Le richieste di chiarimenti e le relative risposte sono formulate esclusivamente in lingua italiana.
+Le risposte alle richieste di chiarimenti presentate in tempo utile sono fornite in formato elettronico almeno 6 giorni prima della scadenza del termine fissato per la presentazione delle offerte, mediante pubblicazione delle richieste in forma anonima e delle relative risposte sulla PAD. Si invitano i concorrenti a visionare costantemente tale sezione della PAD.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 8 a 58
+Nel rispetto dei principi di fiducia, risultato e leale collaborazione del codice, prima di presentare un quesito l’operatore economico deve:
+- consultare i quesiti già pubblicati e accertarsi che la soluzione non sia già disponibile;
+- accertarsi che la soluzione non sia reperibile direttamente e inequivocabilmente nelle disposizioni di legge, nel bando o nel disciplinare di gara in modo tale da essere immediatamente comprensibile e applicabile senza alcuno spazio interpretativo o applicativo; - prendere atto che la Stazione appaltante non è tenuta a rispondere a quesiti ricadenti in una delle condizioni che precedono.
+Non viene fornita risposta alle richieste presentate con modalità diverse da quelle sopra indicate.
+2.3 COMUNICAZIONI
+Tutte le comunicazioni e gli scambi di informazioni tra stazione appaltante e operatori economici sono eseguiti in conformità con quanto disposto dal D.Lgs. n. 82/05, tramite la PAD, per quanto non previsto dalle stesse, mediante utilizzo del domicilio digitale estratto da uno degli indici di cui agli articoli 6-bis, 6-ter, 6-quater, del decreto legislativo n. 82/05 o, per gli operatori economici transfrontalieri, attraverso un indirizzo di servizio elettronico di recapito certificato qualificato ai sensi del Regolamento eIDAS.
+Le comunicazioni sono accessibili nell’area “Comunicazioni” della PAD, nel dettaglio della presente procedura. È onere esclusivo dell’operatore economico prenderne visione.
+In caso di raggruppamenti temporanei, GEIE, aggregazioni di rete o consorzi ordinari, anche se non ancora costituiti formalmente, gli operatori economici raggruppati, aggregati o consorziati eleggono domicilio digitale presso il mandatario/capofila al fine della ricezione delle comunicazioni relative alla presente procedura.
+In caso di consorzi di cui all’art. 65 lett. b), c), d) del Codice, la comunicazione recapitata nei modi sopra indicati al consorzio si intende validamente resa a tutte le consorziate.
+In caso di avvalimento, la comunicazione recapitata all’offerente nei modi sopra indicati si intende validamente resa a tutti gli operatori economici ausiliari.
+3. OGGETTO DELL’APPALTO, DURATA, IMPORTO E SUDDIVISIONE IN LOTTI
+Il presente affidamento ha per oggetto la fornitura in abbonamento alle biblioteche dell’Università di Macerata delle annate 2027, 2028 e 2029 di periodici pubblicati da editori italiani (Allegato 11) e stranieri (Allegato 12) su qualsiasi supporto, nonché l'erogazione dei servizi gestionali connessi e l'eventuale fornitura di numeri arretrati, back file, supplementi e altri materiali periodici, ove richiesti dall'Unità Ordinante, come più compiutamente indicato all’art. 1. OGGETTO DELL'APPALTO del Capitolato Speciale d’Appalto (Allegato 1), cui si rimanda.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 9 a 58
+La fornitura comprende le pubblicazioni scientifiche periodiche in formato cartaceo, elettronico o combinato, le licenze d’uso e condizioni editoriali applicabili, i servizi di attivazione degli accessi elettronici, l’assistenza cliente, il servizio informazioni, il servizio reclami, la reportistica, la consegna dei fascicoli print, il servizio diretto e l’eventuale servizio consolidato.
+Ai fini dell’esecuzione, il Capitolato Speciale d’Appalto disciplina un insieme di servizi minimi essenziali e servizi accessori alla fornitura, funzionali alla corretta gestione degli abbonamenti e alla continuità della fruizione delle risorse.
+Il CPV principale associato al presente appalto è: 22212000-2 “Periodici”.1
+La fornitura è articolata nei seguenti lotti:
+- LOTTO 1: periodici pubblicati da editori italiani.
+- LOTTO 2: periodici pubblicati da editori stranieri.
+La fornitura e i servizi connessi non sono affidati all’appaltatore in via esclusiva. L'Università si riserva la facoltà di procedere direttamente o tramite soggetti terzi qualificati per titoli, pacchetti, banche dati, contratti consortili o nazionali, abbonamenti imposti dagli editori in sottoscrizione diretta o mediante agenti esclusivi, arretrati da biblioteche o imprese specializzate e, in generale, per ogni acquisizione che risulti più conveniente o debba essere effettuata con modalità diverse.
+Si tratta di forniture a richiesta di quantità e tipologia variabile, come meglio descritti nel Capitolato Speciale d’Appalto e nello Schema di contratto e relativi allegati (Allegato 2) da intendersi qui integralmente richiamati, più facilmente gestibili con la modalità dell'accordo quadro che a fronte di esigenze di beni rispetto alle quali non vi è certezza in termini di tipologia e quantità delle prestazioni, sebbene all’interno dell’accordo normativo, non obbliga fin da principio alla realizzazione completa del programma negoziale, ma consente la facoltà di valutare discrezionalmente se procedere alla stipula dei successivi ordinativi di spesa/fornitura, in base alle disponibilità finanziarie ed alle concrete esigenze.
+La gara è un accordo quadro che sarà concluso con un unico operatore economico per ciascun lotto, quello che avrà prodotto la migliore offerta. Pertanto, a conclusione dell’iter di gara si definirà la graduatoria definitiva per ciascun lotto, per l’affidamento della fornitura de quo, con specifico provvedimento.
+Gli operatori economici possono presentare offerta per uno o per entrambi i lotti. Non è previsto alcun limite al numero di lotti aggiudicabili al medesimo operatore economico; conseguentemente, qualora un operatore economico risulti primo in graduatoria per ciascuno dei due lotti, potrà essere aggiudicatario di entrambi.
+Il valore globale stimato dell’appalto è pari ad € 295.000,00 oltre oneri fiscali ove dovuti, suddiviso come appresso indicato: Lotto Oggetto Importo massimo stimato
+LOTTO 1
+Periodici pubblicati da editori italiani
+€ 130.000,00
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 10 a 58
+LOTTO 2
+Periodici pubblicati da editori stranieri
+€ 165.000,00
+Totale
+€ 295.000,00
+La ripartizione annuale ha valore programmatorio e può essere rimodulata dall’Unità Ordinante, fermo restando il limite massimo complessivo per ciascun lotto: Anno Lotto 1 - editori italiani Lotto 2 - editori stranieri Totale annuo
+2027
+€ 40.000,00
+€ 51.000,00
+€ 91.000,00
+2028
+€ 43.000,00
+€ 54.000,00
+€ 97.000,00
+2029
+€ 47.000,00
+€ 60.000,00
+€ 107.000,00
+Totale
+€ 130.000,00
+€ 165.000,00
+€ 295.000,00
+Il Quadro Economico dell’appalto, che non prevede opzioni di rinnovo, proroghe contrattuali o proroghe tecniche, in quanto l'affidamento è destinato a coprire esclusivamente le annate 2027, 2028 e 2029, coerentemente con la cadenza prevalentemente annuale dei rinnovi degli abbonamenti ai periodici, è così suddiviso:
+(Tabella 1) QUADRO ECONOMICO
+A1
+Importo massimo stimato dell'Accordo Quadro
+€ 295.000,00
+A2
+Costi per la sicurezza da interferenze non soggetti a ribasso
+€ 0,00
+A
+Totale importo stimato
+€ 295.000,00
+B
+Opzioni ex art. 120 D.Lgs. n. 36/2023 - proroghe / rinnovi
+€ 0,00
+A+B
+Valore complessivo dell'Accordo Quadro
+€ 295.000,00
+C1
+Incentivi art. 45 D.Lgs. n. 36/2023, pari al 2% del valore complessivo dell'Accordo Quadro
+Quota IRAP sugli incentivi, calcolata al 6,8%, ove da esporre secondo lo schema contabile dell'Ateneo
+€ 5.900,00
+€ 401,20
+C2
+Contributo ANAC a carico della Stazione appaltante
+€ 250,00
+C
+Totale somme a disposizione dell'Amministrazione
+€ 6.551,20
+D
+Pubblicazioni a stampa: IVA assolta dall’editore ai sensi dell’art. 74 del DPR 26 ottobre 1972 n. 633 e art. 3 comma 7 del D.L.27 aprile 1990, n.90 convertito in L 26 giugno 1990, n. 165.
+€ 0,00
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 11 a 58
+Pubblicazioni editoriali in formato digitale, identificate da codice ISBN o ISSN: IVA al 4% di cui al numero 18 della tabella A, allegata al DPR 26 ottobre 1972 n. 633.(massimo teorico 10% della fornitura - fino a € 1.180,00)
+Prodotti editoriali digitali privi dei codici ISBN e ISSN IVA 22%.
+A+B+C+D
+Importo totale quadro economico
+€ 301.551,20
+L’importo a base d’asta è stato determinato tenendo conto del fabbisogno stimato per il mantenimento e lo sviluppo delle collezioni periodiche, della spesa storica necessaria al rinnovo degli abbonamenti, delle esigenze delle Biblioteche, dell’andamento dei prezzi editoriali e della necessità di garantire continuità e completezza delle annate.
+In considerazione della natura dell’appalto, avente ad oggetto una fornitura senza posa in opera, non sussiste, ai sensi dell’articolo 108, comma 9, del d.lgs. n. 36/2023, l’obbligo per gli operatori economici di indicare nell’offerta economica i costi della manodopera e gli oneri aziendali concernenti l’adempimento delle disposizioni in materia di salute e sicurezza sui luoghi di lavoro. Le prestazioni accessorie amministrative, informative, tecnologiche o di supporto previste dagli atti di gara sono strumentali e connaturali alla fornitura di periodici e non ne mutano la qualificazione.
+In relazione alle modalità di esecuzione previste, non sono stati rilevati rischi da interferenza ai sensi dell’articolo 26 del d.lgs. n. 81/2008. Non è pertanto necessaria la predisposizione del DUVRI e i relativi costi della sicurezza da interferenze, non soggetti a ribasso, sono pari a € 0,00.
+Ai fini di cui all’art. 11, commi 1 e 2 del D.lgs. 36/2023 e all’art. 2 dell’All. I.01 del D.lgs. 36/2023, introdotto dal D.lgs. 209/2024, il CCNL applicabile al personale impiegato nella fornitura oggetto dell’appalto è Terziario, Distribuzione e Servizi - Confcommercio, codice CNEL: H011, ferme restando le disposizioni del medesimo articolo in materia di applicazione di un diverso contratto collettivo e di equivalenza delle tutele.
+L’affidamento dell’Accordo Quadro non è fonte di immediata obbligazione per la Stazione appaltante. Gli impegni di spesa saranno assunti in relazione ai singoli ordinativi o contratti attuativi (allegati 9 e 10), sulla base delle effettive esigenze e delle disponibilità di bilancio. L’appalto è finanziato con i singoli progetti contabili individuati con successivi atti di impegno, discendenti dal contratto normativo, adottati ai sensi del comma 2 dell’articolo 34 della legge di contabilità e finanza pubblica (L. 31 dicembre 2009, n. 196).
+I corrispettivi saranno determinati applicando la percentuale di commissione o di sconto offerta dall’aggiudicatario ai prezzi di listino/catalogo previsti per i periodici print, print + online o solo online, secondo quanto previsto dal Capitolato. Per i titoli quotati in valuta diversa dall’euro è prevista la conversione applicando il cambio di riferimento “Euro - Rilevazioni BCE” pubblicato sul quotidiano “Il Sole 24 Ore” del giorno di emissione della fattura.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 12 a 58
+3.1 DURATA
+La durata dell’accordo quadro, per entrambi i Lotti, è di anni tre (2027-2028-2029), decorrenti dalla data di sottoscrizione del relativo contratto o dalla diversa data indicata nel contratto, ferma restando la necessità di assicurare la continuità degli abbonamenti e degli accessi elettronici relativi alle annate di riferimento.
+3.2 REVISIONE PREZZI E VARIAZIONE DEI LISTINI EDITORIALI
+Il prezzo delle pubblicazioni è determinato sulla base del listino ufficiale dell’editore o del distributore autorizzato vigente alla data di emissione dell’ordinativo o di rinnovo dell’abbonamento, applicando la percentuale di sconto ovvero la percentuale di commissione offerta per il relativo lotto.
+Per le pubblicazioni quotate in valuta diversa dall’euro, la conversione è effettuata applicando il tasso di cambio di riferimento pubblicato dalla Banca centrale europea vigente alla data della fattura emessa dall’editore o dal distributore nei confronti dell’Appaltatore.
+Le variazioni dei listini editoriali e dei tassi di cambio non costituiscono revisione dei prezzi ai sensi dell’articolo 60 del Codice, ma rappresentano modalità ordinarie di determinazione del prezzo del materiale bibliografico.
+La revisione prevista dall’articolo 60 del Codice e dalla Sezione III dell’Allegato II.2-bis riguarda esclusivamente la componente economica riferibile ai servizi di intermediazione e agli altri servizi accessori, con esclusione del prezzo editoriale delle pubblicazioni, degli effetti della conversione valutaria e degli oneri determinati direttamente dalla legge.
+Ai fini della revisione si applica l’indice ISTAT, assumendo quale valore iniziale quello relativo al mese del provvedimento di aggiudicazione.
+La clausola è attivata automaticamente quando la variazione dell’indice, in aumento o in diminuzione, supera il 5%. La revisione opera nella misura dell’80% del valore eccedente la soglia del 5% e si applica esclusivamente alle prestazioni da eseguire successivamente alla sua attivazione, senza effetto retroattivo. Restano ferme le percentuali di sconto e di commissione offerte in gara per la parte non interessata dalla revisione.
+3.3 MODIFICA DEL CONTRATTO IN FASE DI ESECUZIONE
+Le modifiche al contratto, relativamente a ciascun Lotto, verranno disposte, ricorrendone i presupposti, ai sensi e nei limiti di quanto previsto dall’art. 120 del Codice nonché nel rispetto degli obblighi di pubblicazione e comunicazione applicabili.
+Qualora dovessero sopraggiungere circostanze straordinarie e imprevedibili, estranee alla normale alea, all’ordinaria fluttuazione economica e al rischio di mercato, tali da alterare in
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 13 a 58
+maniera rilevante l’equilibrio originario del contratto, la parte svantaggiata, che non abbia volontariamente assunto il relativo rischio, avrà diritto alla rinegoziazione delle condizioni contrattuali secondo buona fede, nei limiti e alle condizioni previste dagli artt. 9 e 120, co. 8 e art. 59 del Codice.
+4. SOGGETTI AMMESSI IN FORMA SINGOLA E ASSOCIATA E CONDIZIONI DI PARTECIPAZIONE
+Gli operatori economici possono presentare offerta per uno o per entrambi i lotti. Non è previsto alcun limite al numero di lotti aggiudicabili al medesimo operatore economico; conseguentemente, qualora un operatore economico risulti primo in graduatoria per ciascuno dei due lotti, potrà essere aggiudicatario di entrambi.
+Gli operatori economici possono partecipare alla presente gara e presentare offerta in forma singola o associata.
+Ai soggetti costituiti in forma associata si applicano le disposizioni di cui agli artt. 67 e 68 del Codice.
+I consorzi di cui agli artt. 65, co. 2, lett. b), c) e d) indicano in sede di offerta per quali consorziate il consorzio concorre. Quando la consorziata designata è, a sua volta, un consorzio di cui all'art. 65, co. 2, lett. b) e c), è tenuto anch'esso a indicare, in sede di offerta, le consorziate per le quali concorre.
+Quando la consorziata designata è, a sua volta, un consorzio di cui all'art. 65, co. 2, lett. b) e c), è tenuto anch'esso a indicare, in sede di offerta, le consorziate per le quali concorre.
+È fatto divieto di partecipare a più di un consorzio stabile.
+Il concorrente che partecipa alla gara in una delle forme di seguito indicate è escluso nel caso in cui la stazione appaltante accerti la sussistenza di rilevanti indizi tali da far ritenere che le offerte degli operatori economici siano imputabili ad un unico centro decisionale a cagione di accordi intercorsi con altri operatori economici partecipanti alla stessa gara:
+- partecipazione in più di un raggruppamento temporaneo o consorzio ordinario di concorrenti o aggregazione di operatori economici aderenti al contratto di rete (nel prosieguo, aggregazione di retisti);
+- partecipazione sia in raggruppamento o consorzio ordinario di concorrenti sia in forma individuale:
+- partecipazione sia in aggregazione di retisti sia in forma individuale. Tale esclusione non si applica alle retiste non partecipanti all’aggregazione, le quali possono presentare offerta, per singolo lotto, in forma singola o associata;
+- partecipazione di un consorzio che ha designato un consorziato esecutore il quale, a sua volta, partecipa in una qualsiasi altra forma.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 14 a 58
+Nel caso venga accertato quanto sopra, si provvede ad informare gli operatori economici coinvolti i quali possono, entro 7 giorni, dimostrare che la circostanza non ha influito sulla gara, né è idonea a incidere sulla capacità di rispettare gli obblighi contrattuali.
+Le aggregazioni di retisti di cui all’articolo 65, comma 2, lettera g) del Codice, rispettano la disciplina prevista per i raggruppamenti temporanei in quanto compatibile. In particolare:
+a) nel caso in cui la rete sia dotata di organo comune con potere di rappresentanza e soggettività giuridica (cd. rete - soggetto), l’aggregazione di retisti partecipa a mezzo dell’organo comune, che assume il ruolo del mandatario, qualora in possesso dei relativi requisiti. L’organo comune può indicare anche solo alcuni tra i retisti per la partecipazione alla gara ma deve obbligatoriamente far parte di questi;
+b) nel caso in cui la rete sia dotata di organo comune con potere di rappresentanza ma priva di soggettività giuridica (cd. rete - contratto), l’aggregazione di retisti partecipa a mezzo dell’organo comune, che assume il ruolo del mandatario, qualora in possesso dei requisiti previsti per la mandataria e qualora il contratto di rete rechi mandato allo stesso a presentare domanda di partecipazione o offerta per determinate tipologie di procedure di gara. L’organo comune può indicare anche solo alcuni tra i retisti per la partecipazione alla gara ma deve obbligatoriamente far parte di questi;
+c) nel caso in cui la rete sia dotata di organo comune privo di potere di rappresentanza ovvero sia sprovvista di organo comune, oppure se l’organo comune è privo dei requisiti di qualificazione, l’aggregazione di retisti partecipa nella forma del raggruppamento costituito o costituendo, con applicazione integrale delle relative regole.
+Per tutte le tipologie di rete, la partecipazione congiunta alle gare deve risultare individuata nel contratto di rete come uno degli scopi strategici inclusi nel programma comune, mentre la durata dello stesso dovrà essere commisurata ai tempi di realizzazione dell’appalto.
+Ad un raggruppamento temporaneo può partecipare anche un consorzio di cui all’articolo 65, comma 2, lettera b), c), d).
+L’impresa in concordato preventivo può concorrere anche riunita in raggruppamento temporaneo di imprese purché non rivesta la qualità di mandataria e sempre che le altre imprese aderenti al raggruppamento temporaneo di imprese non siano assoggettate ad una procedura concorsuale.
+5. REQUISITI DI ORDINE GENERALE E ALTRE CAUSE DI ESCLUSIONE
+I concorrenti devono essere in possesso, a pena di esclusione, dei requisiti di ordine generale previsti dal Codice nonché degli ulteriori requisiti indicati nel presente articolo.
+La stazione appaltante verifica il possesso dei requisiti di ordine generale accedendo al fascicolo virtuale dell’operatore economico (di seguito: FVOE 2.0) fatto salvo quanto previsto al successivo paragrafo.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 15 a 58
+Nella domanda di partecipazione, gli operatori economici acconsentono al trattamento dei dati tramite il FVOE, nel rispetto di quanto previsto dal codice in materia di protezione dei dati personali, di cui al decreto legislativo 30 giugno 2003, n. 196.
+Le circostanze di cui all’articolo 94 del Codice sono cause di esclusione automatica. La sussistenza delle circostanze di cui all’articolo 95 del Codice è accertata previo contraddittorio con l’operatore economico.
+In caso di partecipazione dei soggetti di cui all’articolo 65, comma 2, lettera e), f) g) e h) del Codice, i requisiti di cui al presente paragrafo sono posseduti da ciascun componente del raggruppamento/consorzio/GEIE anche da costituire, nonché dal GEIE medesimo, e da ciascun componente dell’aggregazione di rete che partecipa alla gara nonché dall’organo comune nel caso in cui questi abbia soggettività giuridica.
+In caso di partecipazione di consorzi di cui all’articolo 65, comma 2, lettere b) e c) e d) del Codice, i requisiti di cui al presente paragrafo sono posseduti dal consorzio, dalle consorziate indicate quali esecutrici e dalle consorziate che prestano i requisiti.
+Self cleaning
+Un operatore economico che si trovi in una delle situazioni di cui agli articoli 94 e 95 del Codice, ad eccezione delle irregolarità contributive e fiscali definitivamente e non definitivamente accertate, può fornire prova di aver adottato misure (c.d. self cleaning) sufficienti a dimostrare la sua affidabilità.
+Se la causa di esclusione si è verificata prima della presentazione dell’offerta, l’operatore economico indica nel DGUE la causa ostativa e, alternativamente:
+- descrive le misure adottate ai sensi dell’articolo 96, comma 6 del Codice;
+- motiva l’impossibilità ad adottare dette misure e si impegna a provvedere successivamente. L’adozione delle misure è comunicata alla stazione appaltante.
+Se la causa di esclusione si è verificata successivamente alla presentazione dell’offerta, l’operatore economico adotta le misure di cui al comma 6 dell’articolo 96 del Codice dandone comunicazione alla stazione appaltante.
+Sono considerate misure sufficienti il risarcimento o l’impegno a risarcire qualunque danno causato dal reato o dall’illecito, la dimostrazione di aver chiarito i fatti e le circostanze in modo globale collaborando attivamente con le autorità investigative e di aver adottato provvedimenti concreti, di carattere tecnico, organizzativo o relativi al personale idonei a prevenire ulteriori reati o illeciti
+Se le misure adottate sono ritenute sufficienti e tempestive, l’operatore economico non è escluso. Se dette misure sono ritenute insufficienti e intempestive, la stazione appaltante ne comunica le ragioni all’operatore economico.
+Non può avvalersi del self-cleaning l’operatore economico escluso con sentenza definitiva dalla partecipazione alle procedure di affidamento o di concessione, nel corso del periodo di esclusione derivante da tale sentenza.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 16 a 58
+Nel caso in cui un raggruppamento/consorzio abbia estromesso o sostituito un partecipante/esecutore interessato da una clausola di esclusione di cui agli articoli 94 e 95 del Codice, si valutano le misure adottate ai sensi dell’articolo 97 del Codice al fine di decidere sull’esclusione.
+Altre cause di esclusione
+Sono esclusi gli operatori economici che abbiano affidato incarichi in violazione dell’articolo 53, comma 16-ter, del decreto legislativo del 2001 n. 165 a soggetti che hanno esercitato, in qualità di dipendenti, poteri autoritativi o negoziali presso l’amministrazione affidante negli ultimi tre anni.
+La mancata accettazione delle clausole contenute nel Protocollo di legalità e sicurezza, nel Protocollo di legalità Unimc – o.e. e nel Patto di integrità (Allegati nn. 3, 4 e 5) e il mancato rispetto degli stessi costituiscono causa di esclusione dalla gara, anche ai sensi dell’articolo 83-bis del decreto legislativo n. 159/2011.
+6. REQUISITI DI ORDINE SPECIALE E MEZZI DI PROVA
+I concorrenti devono essere in possesso, a pena di esclusione, dei requisiti previsti nei commi seguenti.
+La stazione appaltante verifica il possesso dei requisiti di ordine speciale accedendo al fascicolo virtuale dell’operatore economico (FVOE) fatto salvo quanto previsto nel paragrafo 24. L’operatore economico è tenuto ad inserire nel FVOE i dati e le informazioni richiesti per la comprova del requisito, qualora questi non siano già presenti nel fascicolo o non siano già in possesso della stazione appaltante e non possano essere acquisiti d’ufficio da quest’ultima.
+6.1 REQUISITI DI IDONEITÀ PROFESSIONALE
+Costituiscono requisiti di idoneità professionale:
+a) Iscrizione nel registro delle Imprese tenuto dalla Camera di commercio industria, artigianato e agricoltura oppure nel registro delle commissioni provinciali per l’artigianato per attività coerenti con l’oggetto del lotto o dei lotti per i quali si partecipa. Il concorrente non stabilito in Italia ma in altro Stato Membro o in uno dei Paesi di cui all’art. 100, co. 3 del Codice, presenta dichiarazione giurata o secondo le modalità vigenti nello Stato nel quale è stabilito
+Ai fini della comprova, l’iscrizione nel Registro è acquisita d’ufficio dalla stazione appaltante tramite il FVOE. Gli operatori stabiliti in altri Stati membri caricano nel fascicolo virtuale i dati e le informazioni utili alla comprova del requisito, se disponibili.
+Tale requisito non può essere oggetto di avvalimento ai sensi dell’art. 104 c. 10 D.Lgs. 36/2023.
+6.2 REQUISITI DI CAPACITÀ ECONOMICA-FINANZIARIA
+Costituiscono requisiti di capacità economica-finanziaria:
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 17 a 58
+a) Fatturato globale maturato nei migliori tre anni degli ultimi cinque anni precedenti a quello in cui è pubblicato il bando di gara, IVA esclusa, almeno pari a:
+
+• euro 130.000,00, in caso di partecipazione al solo Lotto 1;
+
+• euro 165.000,00, in caso di partecipazione al solo Lotto 2;
+
+• euro 295.000,00, in caso di partecipazione a entrambi i lotti.
+La comprova del requisito è fornita mediante uno dei seguenti documenti:
+
+− per le società di capitali mediante bilanci, o estratti di essi, approvati alla data di scadenza del termine per la presentazione delle offerte corredati della nota integrativa;
+
+− per gli operatori economici costituiti in forma d’impresa individuale ovvero di società di persone mediante copia del Modello Unico o la Dichiarazione IVA;
+
+− dichiarazione resa, ai sensi e per gli effetti dell’articolo 47 del decreto del Presidente della Repubblica n. 445/2000, dal soggetto o organo preposto al controllo contabile della società ove presente (sia esso il Collegio sindacale, il revisore contabile o la società di revisione), attestante la misura (importo) del fatturato dichiarato in sede di partecipazione.
+Per gli operatori economici che partecipano in forma di R.T.I./G.E.I.E./Consorzio ordinario di concorrenti, il requisito deve essere posseduto cumulativamente dal raggruppamento o dal consorzio nel suo complesso. In caso di raggruppamento temporaneo di imprese il requisito potrà essere soddisfatto dal raggruppamento nel suo complesso. (Vd. Sentenza Corte di Giustizia 28.4.2022 – Causa C – 642/2020). Per le imprese costituite da meno di tre anni, il requisito è rapportato al periodo di attività effettivamente svolto.
+6.3 REQUISITI DI CAPACITÀ TECNICA-PROFESSIONALE
+Costituiscono requisiti di capacità tecnica-professionale:
+a) avere regolarmente eseguito, o avere in corso di esecuzione, nei dieci anni antecedenti la data di pubblicazione del bando di gara, contratti aventi ad oggetto forniture analoghe a quelle del lotto per il quale presenta offerta, per un importo complessivo, iva esclusa, almeno pari a:
+
+• euro 86.666,67, in caso di partecipazione al Lotto 1;
+
+• euro 110.000,00, in caso di partecipazione al Lotto 2;
+• in caso di partecipazione a entrambi i lotti, il concorrente deve possedere il requisito richiesto per ciascun lotto, per un importo complessivo pari a euro 196.666,67.
+Almeno due contratti devono essere stati eseguiti in favore di PP.AA. o Organismo di diritto pubblico.
+Per ciascun contratto il concorrente deve indicare il committente, l’oggetto, la data, l'importo, la durata e dati necessari all’acquisizione d’ufficio della relativa documentazione.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 18 a 58
+Per i contratti ancora in corso alla data di pubblicazione del bando è computabile esclusivamente la parte regolarmente eseguita nel periodo di riferimento, purché il relativo importo e la regolare esecuzione siano documentabili.
+Per forniture analoghe si intendono contratti aventi ad oggetto la gestione e la fornitura in abbonamento di pubblicazioni periodiche, in formato cartaceo, elettronico o combinato, comprensive dei servizi connessi di gestione degli ordini, attivazione e mantenimento degli accessi elettronici, assistenza, gestione dei reclami e reportistica.
+La comprova del requisito è fornita mediante uno o più dei seguenti documenti:
+
+− certificati rilasciati dall’amministrazione/ente contraente, con l’indicazione dell’oggetto, dell’importo e del periodo di esecuzione;
+
+− contratti stipulati con le amministrazioni pubbliche, completi di copia delle fatture quietanzate ovvero dei documenti bancari attestanti il pagamento delle stesse;
+
+− attestazioni rilasciate dal committente privato, con l’indicazione dell’oggetto, dell’importo e del periodo di esecuzione;
+
+− contratti stipulati con privati, completi di copia delle fatture quietanzate ovvero dei documenti bancari attestanti il pagamento delle stesse.
+6.4 INDICAZIONI PER I RAGGRUPPAMENTI TEMPORANEI, CONSORZI ORDINARI, AGGREGAZIONI DI IMPRESE DI RETE, GEIE
+I soggetti di cui all’articolo 65 comma 2, lettere e), f), g) e h) del Codice devono possedere i requisiti di ordine speciale nei termini di seguito indicati.
+Alle aggregazioni di retisti, ai consorzi ordinari ed ai GEIE si applica la disciplina prevista per i raggruppamenti temporanei.
+Requisiti di idoneità professionale
+I requisiti di idoneità professionale di cui al paragrafo 6.1 devono essere posseduti:
+a. da ciascun componente del raggruppamento/consorzio/GEIE anche da costituire, nonché dal GEIE medesimo;
+b. da ciascun componente dell’aggregazione di rete nonché dall’organo comune nel caso in cui questi abbia soggettività giuridica.
+Requisiti di capacità economico finanziaria e tecnico-professionale
+I requisiti di capacità economica-finanziaria e tecnica-professionale di cui ai paragrafi 6.2 e 6.3 devono essere posseduti dal raggruppamento nel complesso.
+6.5 INDICAZIONI SUI REQUISITI SPECIALI NEI CONSORZI DI COOPERATIVE, CONSORZI DI IMPRESE ARTIGIANE E I CONSORZI STABILI
+Requisiti di idoneità professionale
+I requisiti di idoneità professionale di cui al paragrafo 6.1 devono essere posseduti dal consorzio e dai consorziati indicati come esecutori.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 19 a 58
+Requisiti di capacità economica e finanziaria e tecnica e professionale
+I consorzi di cui all’articolo 65, comma 2 lettere b) e c) del Codice utilizzano i requisiti propri e, nel novero di questi, fanno valere i mezzi nella disponibilità delle consorziate che li costituiscono.
+Per i consorzi di cui all’articolo 65, comma 2, lettera d) del Codice, i requisiti di capacità tecnica e finanziaria sono computati cumulativamente in capo al consorzio ancorché posseduti dalle singole consorziate.
+Nel caso in cui un consorzio abbia estromesso o sostituito una consorziata poiché priva di un requisito di ordine speciale di cui all’articolo 100 del Codice, si valutano le misure adottate ai sensi dell’articolo 97 del Codice al fine di decidere sull’esclusione.
+7. AVVALIMENTO
+Il concorrente può avvalersi di dotazioni tecniche, risorse umane e strumentali messe a disposizione da uno o più operatori economici ausiliari per dimostrare il possesso dei requisiti di ordine speciale di cui al paragrafo 6 e/o per migliorare la propria offerta.
+Non è ammesso l’avvalimento per i requisiti di cui al precedente art. 6.1.
+Nel caso in cui il concorrente ricorra all’istituto dell’avvalimento, sia per acquisire un requisito di partecipazione sia per migliorare l’offerta, è tenuto a produrre, per ciascun Lotto cui si partecipa, due separati contratti di avvalimento da allegare rispettivamente, nella busta amministrativa e nella busta tecnica.
+Nei suddetti contratti, il concorrente dovrà riportare le parti che specificano le risorse strumentali e umane che l’ausiliario mette a sua disposizione del concorrente e indicano se l’avvalimento è finalizzato ad acquisire un requisito di partecipazione o a migliorare l’offerta del concorrente, o se serve ad entrambe le finalità.
+Nel caso di avvalimento finalizzato a migliorare l’offerta, l’impresa ausiliata e l’impresa ausiliaria non possono partecipare alla stessa gara, pena l’esclusione di entrambi i soggetti, salvo che l’impresa ausiliaria non dimostri, facendo ricorso ad idoneo supporto documentale, che non sussistono collegamenti con l‘impresa ausiliata tali da ricondurre entrambe le imprese ad uno stesso centro decisionale.
+Il concorrente e l’impresa ausiliaria sono responsabili in solido nei confronti della stazione appaltante in relazione alle prestazioni oggetto del contratto.
+Non è consentito l’avvalimento per soddisfare i requisiti di ordine generale e dell’iscrizione alla Camera di commercio.
+L’ausiliario deve:
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 20 a 58
+a) possedere i requisiti previsti dall’art. 5 e dichiararli presentando un proprio DGUE e un proprio modulo delle dichiarazioni integrative, da compilare entrambi nelle parti pertinenti;
+b) possedere i requisiti di cui all’art. 6 oggetto di avvalimento e dichiararli nel proprio DGUE, da compilare nelle parti pertinenti;
+c) impegnarsi, verso il concorrente che si avvale e verso la stazione appaltante, a mettere a disposizione, per tutta la durata dell’appalto, le risorse (riferite a requisiti di partecipazione e/o premiali) oggetto di avvalimento.
+Il concorrente allega alla domanda di partecipazione il contratto di avvalimento, che deve essere nativo digitale e firmato digitalmente dalle parti, nonché le dichiarazioni dell’ausiliario.
+Ai sensi dell’articolo 372, comma 4 del codice della crisi di impresa e dell’insolvenza, per la partecipazione alla presente procedura tra il momento del deposito della domanda di cui all’art. 40 del succitato codice e il momento del deposito del decreto previsto dall'art. 47 del codice medesimo è sempre necessario l'avvalimento dei requisiti di un altro soggetto. L’avvalimento non è necessario in caso di ammissione al concordato preventivo.
+Il concorrente e l’ausiliario sono responsabili in solido nei confronti della stazione appaltante in relazione alle prestazioni oggetto del contratto.
+È sanabile, mediante soccorso istruttorio, la mancata produzione delle dichiarazioni dell’ausiliaria.
+È sanabile, mediante soccorso istruttorio, la mancata produzione del contratto di avvalimento o dei contratti di avvalimento a condizione che gli stessi siano stati stipulati prima del termine di presentazione dell’offerta e che tale circostanza sia comprovabile con data certa.
+Non è sanabile la mancata indicazione delle risorse messe a disposizione dall’ausiliario in quanto causa di nullità del contratto di avvalimento.
+Qualora per l’ausiliario sussistano motivi di esclusione o laddove esso non soddisfi i requisiti di ordine speciale, il concorrente sostituisce l’ausiliario entro 15 giorni decorrenti dal ricevimento della richiesta da parte della stazione appaltante. Contestualmente il concorrente produce i documenti richiesti per l’avvalimento.
+Nel caso in cui l’ausiliario si sia reso responsabile di una falsa dichiarazione sul possesso dei requisiti, la stazione appaltante procede a segnalare all’Autorità nazionale anticorruzione il comportamento tenuto dall’ausiliario per consentire le valutazioni di cui all’articolo 96, comma 15, del Codice. L’operatore economico può indicare un altro ausiliario nel termine di dieci giorni, pena l’esclusione dalla gara. La sostituzione può essere effettuata soltanto nel caso in cui non conduca a una modifica sostanziale dell’offerta. Il mancato rispetto del termine assegnato per la sostituzione comporta l’esclusione del concorrente.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 21 a 58
+8. SUBAPPALTO
+Il subappalto è disciplinato dall’articolo 119 del Codice. Il concorrente indica nell’offerta, distintamente per ciascun lotto, le prestazioni o le parti di prestazioni che intende affidare in subappalto. In mancanza di tale indicazione, il successivo subappalto non può essere autorizzato.
+Non può essere affidata a terzi l’integrale esecuzione delle prestazioni oggetto dell’Accordo Quadro. Non sono previste ulteriori prestazioni da eseguire obbligatoriamente a cura dell’aggiudicatario, ferme restando la responsabilità di quest’ultimo nei confronti della Stazione Appaltante e le disposizioni dell’articolo 119 del Codice.
+I contratti di subappalto sono stipulati, in misura non inferiore al 20% delle prestazioni subappaltabili, con piccole e medie imprese, come definite dall’articolo 1, comma 1, lettera o), dell’Allegato I.1 al Codice.
+Il concorrente può indicare nell’offerta una percentuale inferiore, motivandola in relazione all’oggetto o alle caratteristiche delle prestazioni da subappaltare oppure alle caratteristiche del mercato di riferimento. La Stazione Appaltante valuta l’adeguatezza e la pertinenza delle ragioni indicate.
+Il subappalto è subordinato alla preventiva autorizzazione dell’Università e può essere autorizzato a condizione che:
+a) il concorrente abbia indicato nell’offerta le prestazioni che intende subappaltare;
+b) il subappaltatore sia qualificato in relazione alle prestazioni affidategli;
+c) non sussistano a carico del subappaltatore le cause di esclusione previste dal Capo II del Titolo IV della Parte V del Libro II del Codice.
+Il subappaltatore deve possedere i requisiti di idoneità professionale e, ove pertinenti in relazione all’oggetto e all’importo delle prestazioni affidate, i requisiti di capacità economico-finanziaria e tecnico-professionale necessari per la loro esecuzione.
+Il contraente principale e il subappaltatore sono responsabili in solido nei confronti della Stazione Appaltante per l’esecuzione delle prestazioni oggetto del contratto di subappalto, secondo quanto previsto dall’articolo 119, comma 6, del Codice.
+È ammesso l’ulteriore subappalto delle prestazioni affidate al subappaltatore, nel rispetto delle condizioni e degli adempimenti previsti dall’articolo 119 del Codice. Anche l’ulteriore subappalto è soggetto alla preventiva autorizzazione della Stazione Appaltante.
+Per la disciplina applicabile in fase di esecuzione si rinvia all’articolo 12 del Capitolato speciale.
+9. REQUISITI DI PARTECIPAZIONE E/O CONDIZIONI DI ESECUZIONE.
+Non sono previsti ulteriori specifici requisiti di partecipazione e/o condizioni di esecuzione.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 22 a 58
+10. GARANZIA PROVVISORIA
+L’offerta è corredata, a pena di esclusione, da una garanzia provvisoria pari al 2% dell’importo complessivo dell’appalto e precisamente di importo pari a € 5.900,00, come appresso suddiviso:
+- Lotto 1: € 2.600,00;
+- Lotto 2: € 3.300,00.
+In caso di partecipazione a più lotti l’operatore economico può alternativamente:
+- prestare tante distinte ed autonome garanzie provvisorie quanti sono i lotti cui si intende partecipare;
+- prestare un’unica garanzia di importo pari alla somma degli importi stabiliti per i lotti cui intende partecipare. Nella garanzia sono indicati espressamente i singoli lotti per i quali la stessa viene prestata, nonché gli importi di dettaglio delle singole cauzioni riferite a ciascun lotto.
+La garanzia provvisoria deve essere costituita in data certa anteriore al termine di presentazione delle offerte, resa a favore della presente stazione appaltante e sottoscritta da un soggetto legittimato a rilasciare la garanzia e ad impegnare il concorrente.
+Si applicano le riduzioni di cui all’articolo 106, comma 8 del Codice, da intendersi qui integralmente richiamato. Per fruire delle riduzioni di cui all’articolo 106, comma 8 del Codice, il concorrente dichiara nella domanda di partecipazione il possesso delle certificazioni e inserisce copia delle certificazioni possedute qualora non già presenti nel fascicolo virtuale.
+La garanzia provvisoria può essere costituita sotto forma di cauzione oppure di fideiussione.
+Qualora la modalità prescelta per la costituzione della garanzia provvisoria sia quella del bonifico bancario, il versamento dell’importo richiesto dovrà essere effettuato sul conto corrente intestato all’Università degli Studi di Macerata presso la Tesoreria utilizzando le coordinate bancarie riportate al seguente indirizzo: https://www.unimc.it/it/ateneo/amministrazione/area-ragioneria/ragioneria/coordinate-bancarie-unimc
+La copia della distinta del bonifico effettuato dovrà essere inserita nella busta amministrativa nel campo dedicato.
+La fideiussione può essere rilasciata:
+- da imprese bancarie o assicurative che rispondono ai requisiti di solvibilità previsti dalle leggi che ne disciplinano le rispettive attività;
+- da un intermediario finanziario iscritto nell'albo di cui all'articolo 106 del decreto legislativo 1 settembre 1993, n. 385, che svolge in via esclusiva o prevalente attività di rilascio di garanzie, che è sottoposto a revisione contabile da parte di una società di revisione iscritta nell'albo previsto dall'articolo 161 del decreto legislativo 24 febbraio 1998, n. 58; e che abbia i requisiti minimi di solvibilità richiesti dalla vigente normativa bancaria assicurativa.
+Gli operatori economici, prima di procedere alla sottoscrizione della garanzia, sono tenuti a verificare che il soggetto garante sia in possesso dell’autorizzazione al rilascio di garanzie,
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 23 a 58
+seguendo le indicazioni fornite nella Comunicazione congiunta della Banca D’Italia, dell’Istituto per la vigilanza sulle assicurazioni e dell’Autorità Nazionale Anticorruzione pubblicata il 18 luglio 2025 e consultabile al seguente link: https://www.anticorruzione.it/-/news.garanzie.finanziarie.18.07.2025
+La garanzia fideiussoria deve essere emessa e firmata digitalmente da un soggetto in possesso dei poteri necessari per impegnare il garante. L’operatore economico può, alternativamente:
+- presentare una garanzia fideiussoria gestita in tutte le fasi mediante ricorso ad una piattaforma, operante con tecnologie basate su registri distribuiti o su registri elettronici, conforme alle caratteristiche stabilite dall’AgID;
+- presentare una garanzia fideiussoria verificabile telematicamente presso l’emittente;
+indicando nella domanda le modalità di verifica messe a disposizione dall’emittente medesimo.
+La fideiussione deve contenere le clausole indicate nell’art. 106 D. Lgs. 36/2023 ed avere validità per 180 giorni dalla data di presentazione dell’offerta nonché essere corredata dall’impegno del garante a rinnovare la garanzia ai sensi dell’articolo 106, comma 5 del Codice, su richiesta della stazione appaltante per ulteriori 180 giorni, nel caso in cui al momento della sua scadenza non sia ancora intervenuta l’aggiudicazione.
+La fideiussione deve essere emessa e firmata digitalmente da un soggetto in possesso dei poteri necessari per impegnare il garante ed essere verificabile telematicamente presso l’emittente.
+Non è sanabile - e quindi è causa di esclusione - la sottoscrizione della garanzia provvisoria da parte di un soggetto non legittimato a rilasciare la garanzia o non autorizzato ad impegnare il garante.
+L'importo della garanzia e del suo eventuale rinnovo è ridotto del 10 per cento, cumulabile con la riduzione di cui al primo e secondo periodo del comma 8 dell’art. 106 del d.lgs. 36/2023, quando l'operatore economico presenti una fideiussione, emessa e firmata digitalmente, che sia gestita in tutte le fasi mediante ricorso a piattaforme operanti con tecnologie basate su registri distribuiti ai sensi del comma 3 ovvero mediante verifica telematica sul sito internet dell'emittente.
+In tale ultimo caso, l’operatore economico, all’atto della sottoscrizione della garanzia acquisisce dal garante l’indirizzo internet cui è possibile accedere per effettuare la verifica telematica della garanzia in tempo reale e lo comunica alla stazione appaltante.
+Nel caso in cui il garante non disponga di un sito internet con le caratteristiche suindicate, fornisce un indirizzo PEC italiano dedicato cui le stazioni appaltanti e gli enti concedenti inviano la polizza presentata in gara, in formato pdf, per il riscontro di autenticità e veridicità. L’indirizzo PEC dovrà essere comunicato alla stazione appaltante.
+La mancata indicazione è sanabile con la procedura di soccorso istruttorio, purché la garanzia sia stata emessa prima della scadenza del termine per la presentazione delle offerte.
+Nel caso di utilizzo della verifica a mezzo PEC, l’operatore economico acquisisce l’impegno del garante a riscontrare le richieste pervenute dalla stazione appaltante nel termine massimo di
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 24 a 58
+cinque giorni lavorativi. Le stazioni appaltanti e gli enti concedenti segnalano all’IVASS i casi di perduranti ritardi/mancate risposte da parte delle imprese di assicurazione alle richieste di verifica.
+11. SOPRALLUOGO
+Non è previsto il sopralluogo.
+12. PAGAMENTO DEL CONTRIBUTO A FAVORE DELL’ANAC
+I concorrenti effettuano il pagamento del contributo previsto dalla legge in favore dell’Autorità Nazionale Anticorruzione per il seguente importo:
+- Lotto 1: esente;
+- Lotto 2: € 18,00.
+Il contributo è dovuto per ciascun lotto per il quale si presenta offerta secondo gli importi sopra indicati.
+Le indicazioni operative sulle modalità di pagamento del contributo sono disponibili sul sito dell’Autorità Nazionale Anticorruzione https://www.anticorruzione.it/-/gestione-contributi-gara.
+Il pagamento del contributo è condizione di ammissibilità dell’offerta.
+Il pagamento è verificato prima della valutazione dell’offerta, anche in caso di inversione procedimentale. Qualora il pagamento non risulti dal sistema, la stazione appaltante può richiedere, mediante soccorso istruttorio, la regolarizzazione del pagamento. In caso di mancata regolarizzazione nel termine assegnato, l’offerta è dichiarata inammissibile.
+N.B. Indicazioni operative sulle modalità di pagamento del contributo sono disponibili sul sito dell’Autorità Nazionale Anticorruzione al seguente link: https://www.anticorruzione.it/-/portale-dei-pagamenti-di-anac
+L'importo del contributo è calcolato sul valore stimato d'appalto comprensivo delle eventuali opzioni contrattuali previste nella documentazione di gara.
+13. MODALITÀ DI PRESENTAZIONE DELL’OFFERTA E SOTTOSCRIZIONE DEI DOCUMENTI DI GARA
+L’offerta e la documentazione relativa alla procedura devono essere presentate esclusivamente attraverso la PAD.
+Gli operatori economici possono presentare offerta per uno o per entrambi i lotti. Non è previsto alcun limite al numero di lotti aggiudicabili al medesimo operatore economico;
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 25 a 58
+conseguentemente, qualora un operatore economico risulti primo in graduatoria per ciascuno dei due lotti, potrà essere aggiudicatario di entrambi.
+Non sono considerate valide le offerte presentate attraverso modalità diverse da quelle previste nel presente disciplinare. L’offerta e la documentazione devono essere sottoscritta con firma digitale o altra firma elettronica qualificata o firma elettronica avanzata.
+Le dichiarazioni sostitutive si redigono ai sensi degli articoli 19, 46 e 47 del decreto del Presidente della Repubblica n. 445/2000.
+La documentazione presentata in copia viene prodotta ai sensi del decreto legislativo n. 82/05.
+La PAD non accetta:
+- offerte presentate dopo la data e l’orario stabiliti come termine ultimo di presentazione dell’offerta;
+- offerte carenti di uno o più documenti la cui presenza è obbligatoria per la PAD.
+Della data e dell’ora di arrivo dell’offerta fa fede l’orario registrato dalla PAD.
+A conclusione del processo, l’Operatore economico riceverà la notifica dell’esito dell’operazione di “Invio offerta” con evidenza della data e ora registrata al momento della conferma (e, nel caso sia previsto, anche con il riferimento al numero di protocollo assegnato al “plico telematico” dalla Stazione Appaltante). La notifica di trasmissione verrà inviata all’Operatore economico anche tramite e-mail/PEC.
+Le operazioni di inserimento sulla PAD di tutta la documentazione richiesta rimangono ad esclusivo rischio del concorrente. Si invitano pertanto i concorrenti ad avviare tali attività con congruo anticipo rispetto alla scadenza prevista onde evitare la non completa e quindi mancata trasmissione dell’offerta entro il termine previsto.
+Qualora si verifichi un mancato funzionamento o un malfunzionamento della PAD si applica quanto previsto al paragrafo 1.1.
+Ogni operatore economico, per la presentazione dell’offerta, ha a disposizione una capacità pari alla dimensione massima di 30 MB per singolo file, oltre la quale non è garantita la tempestiva ricezione. Nel caso fosse necessario l’invio di file di dimensioni maggiori si suggerisce il frazionamento degli stessi in più file, per un massimo di 100 MB totale file inseriti (per singola busta).
+Per quanto concerne, invece, l’area comunicazioni della PAD, ciascun operatore ha a disposizione una capacità pari alla dimensione massima di 100 MB totale file inseriti per comunicazione e di 30 MB per singolo file. Nel caso fosse necessario inviare comunicazioni con allegati file di dimensioni superiori si suggerisce l’invio di più comunicazioni.
+13.1 REGOLE PER LA PRESENTAZIONE DELL’OFFERTA
+L’offerta è composta da:
+A. Documentazione amministrativa;
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 26 a 58
+B. Offerta tecnica (una per ogni Lotto per il quale si intende partecipare);
+C. Offerta economica (una per ogni Lotto per il quale si intende partecipare).
+L’operatore economico ha facoltà di inserire nella Piattaforma offerte successive che sostituiscono la precedente, ovvero ritirare l’offerta presentata, nel periodo di tempo compreso tra la data e ora di inizio e la data e ora di chiusura della fase di presentazione delle offerte. La stazione appaltante considera esclusivamente l’ultima offerta presentata. Si precisa inoltre che: - l’offerta è vincolante per il concorrente;
+- con la trasmissione dell’offerta, il concorrente accetta tutta la documentazione di gara, allegati e chiarimenti inclusi.
+La Piattaforma consente al concorrente di visualizzare l’avvenuta trasmissione della domanda. Il concorrente che intenda partecipare in forma associata (per esempio raggruppamento temporaneo di imprese/Consorzi, sia costituiti che costituendi) in sede di presentazione dell’offerta indica la forma di partecipazione e indica gli operatori economici riuniti o consorziati.
+Le dichiarazioni sono redatte sui modelli predisposti e messi a disposizione nella Piattaforma. Tutta la documentazione da produrre mediante inserimento nel Fascicolo virtuale deve essere in lingua italiana. In caso di mancanza, incompletezza o irregolarità della traduzione della documentazione amministrativa, si applica il soccorso istruttorio.
+L’offerta vincola il concorrente per 180 giorni dalla scadenza del termine indicato per la presentazione dell’offerta. Nel caso in cui alla data di scadenza della validità delle offerte le operazioni di gara siano ancora in corso, sarà richiesto agli offerenti di confermare la validità dell’offerta fino alla data indicata e di produrre un apposito documento attestante la validità della garanzia prestata in sede di gara fino alla medesima data.
+Il mancato riscontro alla richiesta della stazione appaltante entro il termine fissato da quest’ultima o comunque in tempo utile alla celere prosecuzione della procedura è considerato come rinuncia del concorrente alla partecipazione alla gara.
+Fino al giorno fissato per l’apertura delle offerte tecniche o economiche, l’operatore economico può effettuare, tramite la PAD, la richiesta di rettifica di un errore materiale contenuto rispettivamente nell’offerta tecnica o nell’offerta economica, di cui si sia avveduto dopo la scadenza del termine per la loro presentazione. A tal fine, richiede di potersi avvalere di tale facoltà.
+A seguito della richiesta, sono comunicate all’operatore economico le modalità e i tempi con cui procedere all’indicazione degli elementi che consentono l’individuazione dell’errore materiale e la sua correzione. La rettifica è operata nel rispetto della segretezza dell’offerta e non può comportare la presentazione di una nuova offerta, né la sua modifica sostanziale.
+Se la rettifica è ritenuta non accoglibile perché sostanziale, è valutata la possibilità di dichiarare l’offerta inammissibile.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 27 a 58
+14. SOCCORSO ISTRUTTORIO
+Con la procedura di soccorso istruttorio di cui all’articolo 101 del Codice, possono essere sanate le carenze della documentazione trasmessa con la domanda di partecipazione ma non quelle della documentazione che compone l’offerta tecnica e l’offerta economica.
+Con la medesima procedura può essere sanata ogni omissione, inesattezza o irregolarità della domanda di partecipazione e di ogni altro documento richiesto per la partecipazione alla procedura di gara, con esclusione della documentazione che compone l’offerta tecnica e l’offerta economica. Non sono sanabili le omissioni, le inesattezze e irregolarità che rendono assolutamente incerta l’identità del concorrente.
+A titolo esemplificativo, si chiarisce che sono sanabili:
+- il mancato o parziale pagamento del contributo ANAC anche laddove non effettuato entro la scadenza del termine di presentazione delle offerte;
+- l’omessa o incompleta nonché irregolare presentazione delle dichiarazioni sul possesso dei requisiti di partecipazione e ogni altra mancanza, incompletezza o irregolarità della domanda;
+- la mancata produzione del contratto di avvalimento anche premiale o misto, della dichiarazione di impegno dell’impresa ausiliaria, della garanzia provvisoria, del mandato collettivo speciale o dell’impegno a conferire mandato collettivo, solo se i citati documenti sono preesistenti e comprovabili con data certa anteriore al termine di presentazione dell’offerta risultante dall’apposizione della marca temporale o da ulteriori riferimenti temporali equivalenti ai sensi della vigente normativa;
+- il non corretto ammontare della garanzia provvisoria;
+- l’erronea indicazione del beneficiario della garanzia provvisoria che non comporti la costituzione di una nuova polizza;
+- l’intestazione della garanzia provvisoria non a tutti i componenti del costituendo RTI;
+- la mancata produzione delle dichiarazioni dell’impresa ausiliaria;
+- il difetto di sottoscrizione della domanda di partecipazione, delle dichiarazioni richieste e dell’offerta, a condizione che la mancanza della sottoscrizione non precluda la riconoscibilità della provenienza dell’offerta e non comporti un’incertezza assoluta sulla stessa;
+- la mancata, incompleta o irregolare traduzione in italiano della documentazione di gara, quando richiesta ai sensi del paragrafo 13.1.
+Non sono sanabili:
+- il mancato possesso dei prescritti requisiti di partecipazione;
+- le false dichiarazioni circa il possesso dei prescritti requisiti di partecipazione;
+- la mancata indicazione nel contratto di avvalimento delle risorse messe a disposizione dell’ausiliario, in quanto causa di nullità del contratto di avvalimento;
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 28 a 58
+- la sottoscrizione della garanzia provvisoria da parte di un soggetto non legittimato a rilasciare la garanzia o non autorizzato ad impegnare il garante.
+Inoltre, si rappresenta che:
+- sono sanabili l’omessa dichiarazione sull’assolvimento degli obblighi di cui alla legge 68/1999 e, per i concorrenti che occupano oltre cinquanta dipendenti, l’omessa presentazione di copia dell’ultimo rapporto periodico sulla situazione del personale maschile e femminile, redatto ai sensi dell’articolo 46 decreto legislativo n. 198 del 2006, e la trasmissione dello stesso alle rappresentanze sindacali e ai consiglieri regionali di parità, purché il rapporto sia stato redatto e trasmesso in data anteriore al termine per la presentazione delle offerte;
+- non è sanabile mediante soccorso istruttorio l’omesso impegno ad assicurare, in caso di aggiudicazione del contratto, l’assunzione di una quota di occupazione giovanile e femminile di cui al paragrafo 9 del presente Disciplinare.
+Ai fini del soccorso istruttorio è assegnato al concorrente un termine di 7 giorni affinché siano rese, integrate o regolarizzate le dichiarazioni necessarie, indicando il contenuto e i soggetti che le devono rendere nonché la sezione della PAD dove deve essere inserita la documentazione richiesta.
+In caso di inutile decorso del termine, la stazione appaltante procede all’esclusione del concorrente dalla procedura.
+Restano salvi i casi, che non riguardano un requisito necessario ai fini della partecipazione, come la mancata produzione del contratto di avvalimento premiale, che non comporta l’esclusione ma la mancata attribuzione del corrispondente punteggio premiale.
+Ove il concorrente produca dichiarazioni o documenti non perfettamente coerenti con la richiesta, la stazione appaltante può chiedere ulteriori precisazioni o chiarimenti, limitati alla documentazione presentata in fase di soccorso istruttorio, fissando un termine a pena di esclusione.
+La stazione appaltante può sempre chiedere chiarimenti sui contenuti dell’offerta tecnica e dell’offerta economica e su ogni loro allegato. L’operatore economico è tenuto a fornire risposta nel termine di 7 giorni.
+I chiarimenti resi dall’operatore economico non possono modificare il contenuto dell’offerta.
+15. DOMANDA DI PARTECIPAZIONE E DOCUMENTAZIONE AMMINISTRATIVA
+L’operatore economico inserisce a PAD, nella busta amministrativa, la documentazione indicata nella tabella seguente:
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 29 a 58
+Documentazione amministrativa da inserire nella busta documentazione amministrativa.
+1
+Domanda di partecipazione in bollo e dichiarazioni integrative.
+2
+Ricevuta di avvenuto pagamento del bollo di € 16,00.
+3
+(Eventuale) procura.
+4
+(Eventuale) Documentazione per i soggetti associati (dichiarazione integrativa ausiliaria; contratto di avvalimento e relative dichiarazioni; atto costitutivo di RTI/Consorzio ordinario; ecc…).
+5
+DGUE concorrente.
+6
+(Eventuale) DGUE dell’ausiliaria/consorziate/altri soggetti.
+7
+(Eventuali) provvedimenti dichiarati ai sensi degli artt. 94 e 95 D.Lgs. 36/2023 e nel DGUE.
+8
+Ricevuta di avvenuto pagamento del contributo all’ANAC.
+9
+Garanzia provvisoria e impegno.
+10
+(Eventuali) Certificazioni e documenti per la riduzione della garanzia provvisoria.
+11
+(Eventuale) Documento di identità del sottoscrittore.
+12
+(Eventuale) Rapporto sulla situazione del personale e relativa attestazione (art. 46 del D.Lgs. 198/2006 - Codice Pari Opportunità).
+13
+Iscrizione nel registro delle Imprese della CCIAA o nel registro delle commissioni provinciali per l’artigianato.
+14
+Protocollo di legalità e sicurezza
+15
+Protocollo di legalità UNIMC – operatore economico
+16
+Patto di integrità
+17
+(Eventuale) Altra documentazione ritenuta utile.
+15.1 DOMANDA DI PARTECIPAZIONE ED EVENTUALE PROCURA
+La domanda di partecipazione è redatta secondo il modello Domanda di partecipazione e dichiarazioni integrative (Allegato n. 6).
+In conformità alla vigente normativa in tema di utilizzo di sistemi di intelligenza artificiale, nella domanda il concorrente è tenuto a dichiarare:
+• se nell’elaborazione dell’offerta tecnica si è avvalso dei sistemi di intelligenza artificiale, garantendo che l’uso di tali sistemi è avvenuto nel pieno rispetto del Regolamento UE 2024/1689, della legge n. 132 del 2025 e della vigente normativa sul trattamento e protezione dei dati (Regolamento UE 2016/679, decreto legislativo 196/2003);
+• se, in caso di aggiudicazione dell’appalto, si avvarrà di sistemi di intelligenza artificiale ai fini dell’esecuzione della prestazione impegnandosi ad assicurare il rispetto delle medesime
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 30 a 58
+condizioni e garantendo l’osservanza del medesimo Regolamento UE 2024/1689, della legge n. 132 del 2025 e della normativa sul trattamento e protezione dei dati.
+La domanda e le relative dichiarazioni sono sottoscritte secondo le modalità di cui al precedente paragrafo 13:
+- dal concorrente che partecipa in forma singola;
+- nel caso di raggruppamento temporaneo o consorzio ordinario o GEIE costituiti, dalla mandataria/capofila;
+- nel caso di raggruppamento temporaneo o consorzio ordinario o GEIE non ancora costituiti, da tutti i soggetti che costituiranno il raggruppamento o il consorzio o il gruppo;
+- nel caso di aggregazioni di retisti:
+a. se la rete è dotata di un organo comune con potere di rappresentanza e con soggettività giuridica, ai sensi dell’articolo 3, comma 4 -quater, del decreto-legge 10 febbraio 2009, n. 5, la domanda di partecipazione deve essere sottoscritta dal solo operatore economico che riveste la funzione di organo comune;
+b. se la rete è dotata di un organo comune con potere di rappresentanza ma è priva di soggettività giuridica, ai sensi dell’articolo 3, comma 4 -quater, del decreto-legge 10 febbraio 2009, n. 5, la domanda di partecipazione deve essere sottoscritta dall’impresa che riveste le funzioni di organo comune nonché da ognuno dei retisti che partecipa alla gara;
+c. se la rete è dotata di un organo comune privo del potere di rappresentanza o se la rete è sprovvista di organo comune, oppure se l’organo comune è privo dei requisiti di qualificazione richiesti per assumere la veste di mandataria, la domanda di partecipazione deve essere sottoscritta dal retista che riveste la qualifica di mandatario, ovvero, in caso di partecipazione nelle forme del raggruppamento da costituirsi, da ognuno dei retisti che partecipa alla gara.
+- nel caso di consorzio di cooperative e imprese artigiane o di consorzio stabile di cui all’articolo 65, comma 2, lettera b), c) e d) del Codice, la domanda è sottoscritta digitalmente dal consorzio medesimo.
+La domanda e le relative dichiarazioni sono firmate dal legale rappresentante del concorrente o da un suo procuratore munito della relativa procura. In tal caso, il concorrente allega alla domanda copia conforme all’originale della procura. Non è necessario allegare la procura se dalla visura camerale del concorrente risulti l’indicazione espressa dei poteri rappresentativi conferiti al procuratore.
+La domanda di partecipazione deve essere presentata nel rispetto di quanto stabilito dal Decreto del Presidente della Repubblica n. 642/72 in ordine all’assolvimento dell’imposta di bollo. Il pagamento della suddetta imposta del valore di € 16,00 viene effettuato tramite F24, bollo virtuale previa autorizzazione rilasciata dall’Agenzia delle Entrate o tramite il servizio @e.bollo dell'Agenzia delle Entrate o per gli operatori economici esteri tramite il pagamento del tributo con bonifico utilizzando il codice IBAN IT07Y0100003245348008120501 e
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 31 a 58
+specificando nella causale la propria denominazione, codice fiscale (se presente) e gli estremi dell'atto a cui si riferisce il pagamento.
+A comprova del pagamento, il concorrente allega la ricevuta di pagamento elettronico ovvero del bonifico bancario. In alternativa il concorrente può acquistare la marca da bollo da € 16,00 ed inserire il suo numero seriale all'interno della dichiarazione contenuta nell'istanza telematica e allegare, obbligatoriamente copia del contrassegno in formato.pdf. Il concorrente si assume ogni responsabilità in caso di utilizzo plurimo dei contrassegni.
+15.2 DICHIARAZIONI DA RENDERE A CURA DEGLI OPERATORI ECONOMICI AMMESSI AL CONCORDATO PREVENTIVO CON CONTINUITÀ AZIENDALE DI CUI ALL’ARTICOLO 372 del DECRETO LEGISLATIVO 12 GENNAIO 2019, n. 14
+Nella domanda di partecipazione, il concorrente dichiara ai sensi degli articoli 46 e 47 del decreto del Presidente della Repubblica n. 445/2000 gli estremi del provvedimento di ammissione al concordato e del provvedimento di autorizzazione a partecipare alle gare, nonché dichiara che le altre imprese aderenti al raggruppamento non sono assoggettate ad una procedura concorsuale, ai sensi dell’articolo 95, commi 4 e 5, del decreto legislativo n. 14/2019. Il concorrente presenta una relazione di un professionista in possesso dei requisiti di cui all'articolo 2, comma 1, lettera o) del decreto legislativo succitato che attesta la conformità al piano e la ragionevole capacità di adempimento del contratto.
+15.3 DICHIARAZIONI DA RENDERE NEL DGUE
+Le dichiarazioni in ordine all’insussistenza delle cause automatiche di esclusione di cui all’articolo 94, commi 1 e 2, del Codice sono rese dall’operatore economico nel DGUE, redatto digitalmente a sistema, in relazione a tutti i soggetti indicati al comma 3.
+Le dichiarazioni in ordine all’insussistenza delle cause non automatiche di esclusione di cui all’articolo 98, comma 3, lettere g) ed h) del Codice sono rese dall’operatore economico in relazione ai soggetti di cui al punto precedente.
+Le dichiarazioni in ordine all’insussistenza delle altre cause di esclusione sono rese in relazione all’operatore economico.
+Con riferimento alle cause di esclusione di cui all’articolo 95 del Codice, il concorrente dichiara:
+- le gravi infrazioni di cui all’articolo 95, comma 1, lettera a) del Codice commesse nei tre anni antecedenti la data di pubblicazione del bando di gara;
+- gli atti e i provvedimenti indicati all’articolo 98 comma 6 del codice emessi nei tre anni antecedenti la data di pubblicazione del bando di gara;
+- tutti gli altri comportamenti di cui all’articolo 98 del Codice, commessi nei tre anni antecedenti la data di pubblicazione del bando di gara.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 32 a 58
+La dichiarazione di cui sopra deve essere resa anche nel caso di impugnazione in giudizio dei relativi provvedimenti, fatta eccezione per la fattispecie di cui all’ articolo 98, comma 3, lett. e), per la quale va resa soltanto in caso di accertamento definitivo della violazione.
+L’operatore economico dichiara la sussistenza delle cause di esclusione che si sono verificate prima della presentazione dell’offerta e indica le misure di self-cleaning adottate, oppure dimostra l’impossibilità di adottare tali misure prima della presentazione dell’offerta.
+L’operatore economico adotta le misure di self-cleaning che è stato impossibilitato ad adottare prima della presentazione dell’offerta e quelle relative a cause di esclusione che si sono verificate dopo tale momento.
+Se l’operatore economico omette di comunicare alla stazione appaltante la sussistenza dei fatti e dei provvedimenti che possono costituire una causa di esclusione ai sensi degli articoli 94 e 95 del Codice e detti fatti o provvedimenti non risultino nel FVOE, il triennio inizia a decorrere dalla data in cui la stazione appaltante ha acquisito gli stessi, anziché dalla commissione del fatto o dall’adozione del provvedimento.
+15.4 DOCUMENTAZIONE IN CASO DI AVVALIMENTO
+L’impresa ausiliaria rende le dichiarazioni sul possesso dei requisiti di ordine generale mediante compilazione dell’apposita sezione del DGUE.
+Il concorrente, per ciascuna impresa ausiliaria, allega:
+1) il consenso al trattamento dei dati tramite il fascicolo virtuale, nel rispetto di quanto previsto dal codice in materia di protezione dei dati personali, di cui al decreto legislativo 30 giugno 2003, n. 196, ai fini della verifica del possesso dei requisiti dichiarati;
+2) la dichiarazione di avvalimento;
+3) il contratto di avvalimento, qualora finalizzato alla dimostrazione del possesso dei requisiti di partecipazione.
+15.5 DOCUMENTAZIONE ULTERIORE PER I SOGGETTI ASSOCIATI
+Per i raggruppamenti temporanei già costituiti:
+- copia del mandato collettivo irrevocabile con rappresentanza conferito alla mandataria per atto pubblico o scrittura privata autenticata;
+- dichiarazione delle parti del servizio/fornitura, ovvero della percentuale in caso di servizio/forniture indivisibili, che saranno eseguite dai singoli operatori economici riuniti o consorziati.
+Per i consorzi ordinari o GEIE già costituiti:
+- copia dell’atto costitutivo e dello statuto del consorzio o GEIE, con indicazione del soggetto designato quale capofila;
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 33 a 58
+- dichiarazione sottoscritta delle parti del servizio/fornitura, ovvero la percentuale in caso di servizi/forniture indivisibili, che saranno eseguite dai singoli operatori economici consorziati. Per i raggruppamenti temporanei o consorzi ordinari o GEIE non ancora costituiti
+- dichiarazione rese da ciascun concorrente, attestante:
+a. a quale operatore economico, in caso di aggiudicazione, sarà conferito mandato speciale con rappresentanza o funzioni di capogruppo;
+b. l’impegno, in caso di aggiudicazione, ad uniformarsi alla disciplina vigente con riguardo ai raggruppamenti temporanei o consorzi o GEIE ai sensi dell’articolo 68 del Codice conferendo mandato collettivo speciale con rappresentanza all’impresa qualificata come mandataria che stipulerà il contratto in nome e per conto delle mandanti/consorziate;
+c. le parti del servizio/fornitura, ovvero la percentuale in caso di servizio/forniture indivisibili, che saranno eseguite dai singoli operatori economici riuniti o consorziati.
+Per le aggregazioni di retisti: se la rete è dotata di un organo comune con potere di rappresentanza e soggettività giuridica,
+- copia del contratto di rete, con indicazione dell’organo comune che agisce in rappresentanza della rete.
+- dichiarazione che indichi per quali imprese la rete concorre;
+- dichiarazione sottoscritta con firma digitale delle parti del servizio o della fornitura, ovvero la percentuale in caso di servizio/forniture indivisibili, che saranno eseguite dai singoli operatori economici aggregati in rete.
+Per le aggregazioni di retisti: se la rete è dotata di un organo comune con potere di rappresentanza ma è priva di soggettività giuridica,
+- copia del contratto di rete;
+- copia del mandato collettivo irrevocabile con rappresentanza conferito all’organo comune;
+- dichiarazione delle parti del servizio o della fornitura, ovvero la percentuale in caso di servizio/forniture indivisibili, che saranno eseguite dai singoli operatori economici aggregati in rete.
+Per le aggregazioni di imprese aderenti al contratto di rete: se la rete è dotata di un organo comune privo del potere di rappresentanza o se la rete è sprovvista di organo comune, ovvero, se l’organo comune è privo dei requisiti di qualificazione richiesti, partecipa nelle forme del raggruppamento temporaneo di imprese costituito o costituendo in caso di raggruppamento temporaneo di imprese costituito:
+- copia del contratto di rete;
+- copia del mandato collettivo irrevocabile con rappresentanza conferito alla mandataria;
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 34 a 58
+- dichiarazione delle parti del servizio o della fornitura, ovvero la percentuale in caso di servizio/forniture indivisibili, eseguite dai singoli operatori economici aggregati in rete;
+in caso di raggruppamento temporaneo di imprese costituendo:
+- copia del contratto di rete;
+- dichiarazioni, rese da ciascun concorrente aderente all’aggregazione di rete, attestanti:
+a. a quale concorrente, in caso di aggiudicazione, sarà conferito mandato speciale con rappresentanza o funzioni di capogruppo;
+b. l’impegno, in caso di aggiudicazione, ad uniformarsi alla disciplina vigente in materia di raggruppamenti temporanei;
+c. le parti del servizio o della fornitura, ovvero la percentuale in caso di servizio/forniture indivisibili, eseguite dai singoli operatori economici aggregati in rete.
+Per i consorzi di cui all’art. 65, comma 2, lett. b), c) e d) del Codice
+- DGUE compilato e sottoscritto da ciascuna consorziata esecutrice e da ciascuna consorziata che presta i requisiti;
+- dichiarazione resa da ciascuna consorziata esecutrice e da ciascuna consorziata che presta i requisiti, attestante:
+a) [Eventuale, in caso di servizi o forniture rientranti in una delle attività a maggior rischio di infiltrazione mafiosa di cui al comma 53, dell’art. 1, della legge 6 novembre 2012, n. 190]:
+a.1 di essere iscritto nell’elenco dei fornitori, prestatori di servizi non soggetti a tentativo di infiltrazione mafiosa (c.d. White List), indicando la Prefettura presso cui l’elenco è istituito;
+(o, in alternativa,)
+a.2 di aver presentato la domanda di iscrizione o di rinnovo nell’elenco dei fornitori, prestatori di servizi non soggetti a tentativi di infiltrazione mafiosa, indicando la Prefettura presso cui l’elenco è istituito;
+b) [Eventuale in caso di adozione di misure di self-cleaning]:
+b.1 di avere inserito nel FVOE la relazione che illustra le misure di self cleaning adottate in relazione alle cause di esclusione verificate prima della presentazione della presente domanda e di aver indicato nel DGUE, il riferimento al documento caricato nel FVOE;
+(o, in alternativa)
+b.2 di essere stato impossibilitato ad adottare misure di self cleaning per i seguenti motivi ……………. [indicare le motivazioni] e si impegna ad adottare misure idonee e a comunicare le stesse tempestivamente e comunque prima dell’aggiudicazione;
+c) [Eventuale, in caso di sottoposizione a concordato preventivo con continuità aziendale]:
+▪ che il provvedimento di ammissione al concordato è stato emesso il ……………. da ………………;
+▪ che il provvedimento di autorizzazione a partecipare alle gare è stato emesso il ………. da …….;
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 35 a 58
+d) [Eventuale, in caso di sottoposizione a sequestro o confisca ai sensi dell'articolo 240-bis del codice penale o degli articoli 20 e 24 del decreto legislativo 6 settembre 2011, n. 159, e affidamento a custode o amministratore giudiziario o finanziario. La dichiarazione è resa per gli effetti dell’articolo 96, comma 13, del codice]:
+▪ che è stato emesso il provvedimento …. (indicare il tipo di provvedimento: sottoposizione a sequestro o confisca ai sensi dell'articolo 240-bis del codice penale o degli articoli 20 e 24 del decreto legislativo 6 settembre 2011, n. 159, e affidamento a custode o amministratore giudiziario o finanziario) in data … da parte di ….;
+e) [solo per i consorzi stabili] di non partecipare a più di un consorzio stabile;
+f) di non partecipare alla medesima gara contemporaneamente in forme diverse (singola/associata, in più forme associate, in forma singola e quale consorziato esecutore di un consorzio) e come impresa ausiliaria di altro concorrente che sia ricorso all’avvalimento per migliorare la propria offerta;
+(o, in alternativa)
+g) di partecipare in più di una forma, ………………… [indicare quali] e inserisce nel FVOE idonea documentazione atta a dimostrare che la circostanza non ha influito sulla gara, né è idonea a incidere sulla capacità di rispettare gli obblighi contrattuali;
+(o, in alternativa)
+h) di avere prestato risorse, in qualità di impresa ausiliaria, al concorrente …. [indicare il nominativo], che se ne è avvalso ai fini del miglioramento dell’offerta, e inserisce nel FVOE idonea documentazione atta a dimostrare che non sussistono collegamenti tali da ricondurre entrambe le imprese allo stesso centro decisionale;
+i) di prestare il consenso al trattamento dei dati tramite il FVOE, nel rispetto di quanto previsto dal D.lgs. 196 del 30 giugno 2003, ai fini della verifica da parte della stazione appaltante del possesso dei requisiti dichiarati.
+16. OFFERTA TECNICA
+Il concorrente inserisce nella PAD, per ogni Lotto al quale partecipa, nella Busta tecnica la documentazione indicata nella tabella che segue: Documentazione da inserire nella busta contenente l’offerta tecnica
+1
+Relazione tecnica.
+2
+(Eventuale) Dichiarazione firmata contenente i dettagli dell’offerta coperti da riservatezza, con le motivazioni della richiesta di riservatezza.
+3
+(Eventuale) Copia aggiuntiva dell’offerta tecnica (relazione tecnica) oscurata per motivi di segretezza.
+4
+(Solo) In caso di avvalimento premiale: contratto di avvalimento premiale, dichiarazioni dell'impresa ausiliaria e relativa documentazione.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 36 a 58
+Il concorrente dovrà produrre la l’offerta tecnica secondo le modalità indicate nella relativa guida della PAD “Guida alla presentazione delle offerte Telematiche”, disponibile nella sezione “Istruzioni e manuali” al link: https://unimc.regione.marche.it/PortaleAppalti/it/ppgare_doc_istruzioni.wp a pena di inammissibilità dell’offerta.
+L’offerta tecnica deve rispettare le seguenti caratteristiche minime, nel rispetto del principio di equivalenza:
+1) Relazione tecnica.
+Il punteggio dell’offerta tecnica è attribuito sulla base dei criteri di valutazione della “Relazione Tecnica” per il lotto cui si partecipa, resa in formato PDF/A e sottoscritta digitalmente dal legale rappresentante dell’offerente è articolata nei seguenti paragrafi (che si chiede di rispettare). Questi ultimi devono essere obbligatoriamente tutti adeguatamente affrontati, a prescindere dalla rilevanza ai fini dell’attribuzione dei punteggi, fatta eccezione per il paragrafo F, richiesto esclusivamente ai concorrenti che presentano offerta per il Lotto 2.
+A. Flusso gestionale del servizio
+Gestione del servizio in favore dell’Ateneo, in particolare degli ordini, dei flussi comunicativi, dell’assistenza clienti e della gestione reclami.
+Descrizione del modo in cui la Commissionaria intende strutturare il servizio in relazione alla gestione della fornitura oggetto di affidamento. In particolare, devono essere descritte:
+A.1 Le modalità organizzative che la Commissionaria intende porre in essere per l’esecuzione delle prestazioni oggetto di affidamento e la struttura organizzativa dedicata alla gestione della fornitura nei confronti dell’Ateneo; la tipologia e il numero di personale addetto complessivamente per l’esecuzione della fornitura. In particolare, le modalità organizzative che la Commissionaria intende mettere in atto in occasione dei periodi di massima concentrazione delle attività e di emergenze determinate da assenze del personale dedicato e/o da periodi di chiusura.
+A.2 Le procedure tecniche (es. l’utilizzo di posta elettronica, software di telefonia, piattaforme di comunicazione, risponditori automatici, ecc.) e il flusso gestionale rispetto alle varie tipologie di assistenza richiesta:
+o assistenza su preventivi di spesa;
+o attivazione di periodici online;
+o assistenza amministrativo contabile;
+o segnalazione di disguidi e anomalie dei servizi o della fornitura;
+o ricezioni rinnovi;
+o attivazione di nuovi titoli.
+A.3 La gestione del flusso di lavoro per il trasferimento di informazioni al sistema di automazione dell’Università tramite il protocollo EDI (UN/EDIFACT D96.A – EANCOM, secondo il profilo EDItEUR). Ulteriori messaggi EDI conformi al protocollo gestiti rispetto a quelli previsti nei servizi minimi obbligatori.
+A.4 Le procedure di elaborazione e distribuzione dei report:
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 37 a 58
+• Fornitura cartacea: descrizione delle procedure tecniche, dei formati e delle modalità di messa a disposizione della reportistica all’Unità Ordinante (d’ora in poi U.O.) In particolare, la modalità di realizzazione del report dei reclami per il servizio diretto.
+• Fornitura online: descrizione della reportistica specifica messa a disposizione per la fornitura online. In particolare, la modalità di realizzazione del report dei reclami.
+• Indicazione di ulteriori tipologie di reportistica disponibili oltre a quelle richieste (art. 25.7, Capitolato Speciale d’Appalto).
+Dovranno essere elencati tutti i report disponibili, le modalità di invio (periodicità, modalità tecniche di invio ecc.), l’indicazione della possibilità e delle modalità di recupero dell'informazione direttamente sul sistema gestionale della Commissionaria. Dovrà essere allegato un esempio per ciascuno dei report disponibili.
+La proposta relativa alla presente lettera A dovrà essere illustrata in massimo 3 pagine formato A4, carattere Times New Roman, punti 12, interlinea 1,5, margini destra e sinistra di 2,5, esclusi gli esempi di reportistica.
+B. Servizio informazioni
+Descrizione della tipologia, metodologia e modalità operativa con cui la Commissionaria intende effettuare il servizio come descritto all’art. 25.5 del Capitolato Speciale d’Appalto. Dovranno essere descritte le modalità con cui la Commissionaria reperisce e verifica le informazioni richieste. Dovranno inoltre essere elencati tutti i documenti informativi disponibili, le modalità di invio (periodicità, modalità tecniche di invio ecc.), la possibilità del loro recupero direttamente sul sistema gestionale della Commissionaria.
+Dovrà essere allegato un esempio per ciascuno dei documenti informativi disponibili. Detti esempi non verranno computati nel numero complessivo di pagine stabilito per la Relazione Tecnica.
+C. Servizio periodici elettronici
+Descrizione delle procedure tecniche e delle modalità di erogazione del servizio in favore dell’Ateneo. In particolare, devono essere descritti:
+C.1 Le modalità operative che la Commissionaria utilizza per l’attivazione degli accessi, prioritariamente sul sito dell’editore, indicando le procedure seguite:
+• nel caso che l’attivazione possa essere effettuata direttamente dalla Commissionaria.
+• nel caso in cui l’editore richieda che l’attivazione e la registrazione venga fatta dall’U.O.
+C.2 Le modalità adottate per garantire la continuità dell’accesso alle versioni elettroniche sul sito dell’Editore/Aggregatore:
+• per tutta la durata dell’abbonamento negli anni della vigenza contrattuale;
+• nel periodo di rinnovo annuale della fornitura;
+• per le annate pregresse eventualmente già sottoscritte dall’Unità Ordinante.
+C.3 La possibilità di ricavare dal database bibliografico-amministrativo della Commissionaria statistiche d'uso standardizzate riferite ai periodici sottoscritti e le relative modalità tecniche, con particolare attenzione alla semplicità, flessibilità e interoperabilità delle procedure di accesso a tali dati.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 38 a 58
+C. 4 Eventuali servizi aggiuntivi gratuiti.
+La proposta relativa alla presente lettera C dovrà essere illustrata in massimo 3 pagine formato A4, carattere Times New Roman, punti 12, interlinea 1,5, margini destra e sinistra di 2,5, esclusi gli esempi di reportistica.
+D. Gestione problemi relativi alla fornitura dei fascicoli in formato cartaceo e degli accessi alla versione elettronica
+• Servizio sostituzione gratuita: descrizione delle modalità e delle tempistiche con cui viene effettuato il servizio di sostituzione dei fascicoli pervenuti con difetti di stampa o danneggiati durante la spedizione e il trasporto;
+• Servizio reperimento fascicoli arretrati: descrizione delle modalità messe in atto dalla Commissionaria per fornire informazioni circa la reperibilità ed il costo di fascicoli o di intere annate arretrate dei periodici;
+• Merce non pervenuta: descrizione delle modalità messe in atto e delle tempistiche per la fornitura gratuita, preferenzialmente in originale o solo secondariamente in copia, di quei fascicoli pubblicati e normalmente distribuiti che non siano giunti a destinazione;
+• Abbonamenti con decorrenza anomala: descrizione delle modalità messe in atto e delle tempistiche per la fornitura gratuita dei fascicoli di cui all'art. 26.4 del Capitolato;
+• Fornitura di periodici irregolari o in ritardo di pubblicazione: descrizione delle modalità organizzative messe in atto per fornire alle U.O. informazioni tempestive sulla pubblicazione dei numeri di periodici irregolari o in ritardo di pubblicazione, per sottoporre i relativi preventivi e per gestirne gli ordini solo dopo l'avvenuta conferma (come previsto all’art. 5 del Capitolato);
+• Mancato accesso alla versione elettronica: descrizione delle modalità di gestione delle anomalie del servizio, quali interruzioni o sospensioni del servizio da parte degli editori, ecc. e dei metodi e degli strumenti da adottare per la soluzione dei problemi.
+E. Accesso online al database bibliografico - amministrativo
+Descrizione delle caratteristiche del database bibliografico-amministrativo ed in particolare:
+E.1 Database bibliografico: quantità dei dati bibliografici disponibili, tipologia delle informazioni editoriali disponibili (es. toc, abstract, ecc.), fonte dei dati bibliografici e delle informazioni editoriali, frequenza di aggiornamento, possibilità di scarico di singoli record bibliografici in formati standard, indicazione dei fascicoli già pubblicati nell’annata corrente, modalità di interazione con il database amministrativo. In particolare, verrà valutata:
+• la presenza di prezzi in valuta originale per i diversi formati disponibili;
+• l'indicazione della data di distribuzione dei fascicoli già pubblicati nell’annata corrente;
+• la completezza delle informazioni su licenze e modalità di accesso per le versioni elettroniche.
+E.2 Database amministrativo e interazione delle U.O.: possibilità di visualizzare i dati gestionali, quali, a titolo esemplificativo, stato degli abbonamenti, storico degli ordini, stato della fatturazione, stato dei solleciti effettuati e risposte da parte degli editori; possibilità di
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 39 a 58
+articolazione in base alle biblioteche del Sistema e di creazione di budget a più livelli gerarchici. Verranno valutate, inoltre: le modalità di interazione e, in particolare:
+• la possibilità di inoltro diretto dei solleciti;
+• aggiornamento dello stato dei reclami;
+• rinnovo degli abbonamenti direttamente dal database.
+La proposta relativa alla presente lettera E dovrà essere illustrata in massimo 3 pagine formato A4, carattere Times New Roman, punti 12, interlinea 1,5, margini destra e sinistra di 2,5, esclusi gli esempi di reportistica.
+L’offerente dovrà attivare e mettere a disposizione della Commissione giudicatrice un accesso di prova al proprio database bibliografico-amministrativo, configurando un profilo di test che consenta di operare nella modalità di cliente istituzionale.
+F. Espletamento del servizio sdoganamento e dichiarazione Intrastat
+F.1 Descrizione delle procedure seguite dalla Commissionaria per l’effettuazione delle operazioni di sdoganamento delle riviste extra UE e delle procedure fiscali inerenti i periodici editi nei paesi appartenenti alla Unione Europea.
+La presente sezione è richiesta esclusivamente ai concorrenti che presentano offerta per il Lotto 2.
+G. Servizi aggiuntivi (gratuiti)
+G.1 Descrizione di eventuali servizi aggiuntivi gratuiti, che verranno valutati in riferimento alla loro utilità per l’Ateneo, in termini di efficacia e efficienza nella gestione delle esigenze di approvvigionamento, alla complementarietà rispetto alle attività e alle necessità legate alla fornitura per le biblioteche dell’Ateneo.
+La proposta relativa alla presente lettera G dovrà essere illustrata in massimo 3 pagine formato A4, carattere Times New Roman, punti 12, interlinea 1,5, margini destra e sinistra di 2,5, esclusi gli esempi di reportistica.
+H. Servizio di consolidamento
+H.1 Descrizione delle modalità di espletamento del servizio: luogo di consolidamento, eventuali procedure di sdoganamento, ove applicabili, tecnologie adottate per la gestione, gestione dei ritardi, dei mancati arrivi, degli errori da parte degli editori, controllo qualità sui fascicoli, modalità di spedizione, tempi di reclamo agli editori, tempi di lavorazione e spedizione dei fascicoli ricevuti, interazioni dell’U.O. con il gestionale della Commissionaria.
+I. Certificazione parità di genere
+I.1 Ai sensi dell’art. 108, comma 7 del d.lgs. 36/2023 va attribuito un maggior punteggio alle imprese che attestano il possesso della certificazione della parità di genere.
+Ai fini dell’attribuzione del punteggio relativo alla presente lettera “I” il concorrente fornisce gli estremi della Certificazione in corso di validità.
+Il requisito deve essere posseduto da:
+a) ciascuna delle imprese raggruppate/raggruppande, consorziate/consorziande o GEIE;
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 40 a 58
+b) ciascuna delle imprese aderenti al contratto di rete indicate come esecutrici e dalla rete medesima nel caso in cui questa abbia soggettività giuridica.
+Le prestazioni offerte in relazione agli ambiti applicabili di cui alle lettere da A a H, pur definite servizi, costituiscono, tecnicamente, attività connaturali, nonché funzionali e indispensabili per la fornitura delle riviste. Gli stessi servizi gratuiti aggiuntivi costituiranno oggetto di valutazione da parte della Commissione Giudicatrice nella misura in cui siano connaturali e funzionali alla fornitura. In nessun caso l’oggetto delle prestazioni dedotte in contratto può essere qualificato come misto, trattandosi di mera prestazione di fornitura.
+La Relazione Tecnica dovrà essere contenuta, per ciascun lotto, in non più di 16 pagine complessive, in formato A4, carattere Times New Roman, corpo 12, interlinea 1,5, margini destra e sinistra di 2,5. Nel limite delle 16 pagine non sono computati la copertina, l’indice e gli esempi espressamente richiesti, che potranno essere prodotti in aggiunta. Le eventuali pagine eccedenti il limite complessivo non saranno prese in considerazione dalla Commissione giudicatrice ai fini della valutazione.
+Si rappresenta che la Commissione procederà alla valutazione della Relazione Tecnica e delle sole evidenze e documentazioni espressamente richieste o ammesse dal presente disciplinare; eventuale documentazione ulteriore, diversa da quella richiesta, non sarà sottoposta a valutazione.
+La relazione è unica per ciascun lotto e per ciascun concorrente, intendendo come tale il soggetto che, sia in forma singola che in raggruppamento temporaneo, presenti offerta per l’affidamento del servizio in oggetto; ciò in quanto è rilevante l’illustrazione delle modalità con cui saranno svolte le prestazioni da affidare, riferite complessivamente all’offerente.
+La presenza nella documentazione che compone l’Offerta Tecnica di indicazioni di carattere economico relative all'offerta che consentano di ricostruire la complessiva offerta economica costituisce causa di esclusione dalla gara.
+2) (Eventuale) Dichiarazione firmata contenente i dettagli dell’offerta coperti da riservatezza, con le motivazioni della richiesta di riservatezza.
+L’operatore economico allega (eventuale) una dichiarazione firmata contenente i dettagli dell’offerta coperti da riservatezza, argomentando in modo congruo le ragioni per le quali eventuali parti dell’offerta sono da segretare.
+3) (Eventuale) Copia aggiuntiva dell’offerta tecnica (relazione tecnica) oscurata per motivi di segretezza.
+Il concorrente a tal fine allega (eventuale) anche una copia firmata della relazione tecnica adeguatamente oscurata nelle parti ritenute costituenti segreti tecnici e commerciali, anche risultanti da scoperte, innovazioni, progetti tutelati da titoli di proprietà industriale, nonché di contenuto altamente tecnologico. Resta ferma, la facoltà della stazione appaltante di valutare
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 41 a 58
+la fondatezza delle motivazioni addotte e di chiedere al concorrente di dimostrare la tangibile sussistenza di eventuali segreti tecnici e commerciali.
+4) (Solo) In caso di avvalimento premiale: contratto di avvalimento premiale, dichiarazioni dell'impresa ausiliaria e relativa documentazione.
+(Eventuale) solo in caso di avvalimento premiale, l’operatore economico allega in questa busta, il contratto di avvalimento, le relative dichiarazioni e i suoi allegati (come previsto nell’art. 104 del Codice).
+17. OFFERTA ECONOMICA
+Il concorrente inserisce nella PAD, per ogni Lotto al quale partecipa, nella Busta economica, la documentazione indicata nella tabella che segue:
+Documentazione da inserire nella busta contenente l’offerta economica
+1
+Offerta economica (percentuali offerte) e (eventuale) dichiarazione di equivalenze CCNL e (eventuale) documentazione probatoria.
+2
+(Eventuale) Giustificativi del ribasso.
+Il concorrente dovrà produrre l’offerta economica secondo le modalità indicate nella relativa guida della PAD “Guida alla presentazione delle offerte Telematiche”, disponibile nella sezione “Istruzioni e manuali” al link: https://unimc.regione.marche.it/PortaleAppalti/it/ppgare_doc_istruzioni.wp
+L’offerta è firmata secondo le modalità previste come in precedenza. L’offerta economica deve rispettare le seguenti caratteristiche minime, nel rispetto del principio di equivalenza.
+L’operatore economico inserisce la documentazione economica nella Piattaforma, inserendo il modello offerta predisposto dalla stazione appaltante (Allegato 7).
+1) Offerta economica (percentuali offerte) e (eventuale) dichiarazione di equivalenze CCNL e (eventuale) documentazione probatoria.
+L’Offerta Economica, per ogni lotto cui si partecipa, dovrà contenere l’indicazione:
+
+− della percentuale offerta, che determinerà l’ammontare dello sconto/commissione contrattualmente vincolante, offerta per gli abbonamenti ai periodici cartacei e i servizi e le prestazioni minime;
+
+− della percentuale offerta, che determinerà l’ammontare dello sconto/commissione contrattualmente vincolante, per gli abbonamenti esclusivamente in formato elettronico;
+
+− della percentuale offerta, che determinerà l’ammontare dello sconto/commissione contrattualmente vincolante, per la fornitura compresa del servizio di consolidamento;
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 42 a 58
+Le percentuali offerte ai punti 1) e 2) dovranno essere comprese tra -1,00% e +2,49%. La percentuale offerta al punto 3) dovrà essere compresa tra 0,00% e +4,99%. Non sono ammesse percentuali al di fuori dei predetti intervalli.
+Le percentuali offerte dovranno essere espresse con un massimo di due cifre decimali. Qualora siano indicate ulteriori cifre decimali, queste non saranno considerate, senza arrotondamento, né ai fini della verifica dei limiti né ai fini dell’attribuzione del punteggio. I prezzi risultanti dall’applicazione delle percentuali saranno arrotondati per difetto al centesimo.
+Non saranno ammesse offerte parziali o incomplete, a pena di esclusione.
+Non potranno essere apposte in calce a tale offerta frasi aggiunte, riserve o condizioni, pena l'esclusione dalla gara.
+L’offerta vincola l’offerente per 180 (centoottanta) giorni dalla data di scadenza per la presentazione delle offerte.
+L’operatore economico che (eventualmente) adotta un CCNL diverso da quello indicato all’art. 3 inserisce la dichiarazione di equivalenze delle tutele di cui all’art. 11, co. 4 del Codice e l’eventuale documentazione probatoria sulla equivalenza del proprio CCNL nella sezione della piattaforma relativa all’offerta tecnica;
+2) (Eventuale) Giustificativi del ribasso.
+Il concorrente può allegare (eventuale), in sede di presentazione dell’offerta economica, le giustificazioni relative alle voci di prezzo e di costo. La mancata presentazione anticipata delle giustificazioni non è causa di esclusione.
+Verranno prese in considerazione fino a due cifre decimali.
+Resta inteso che il valore complessivo risultante dalla compilazione del modulo offerta economica verrà utilizzato unicamente al fine della valutazione delle offerte da parte della Commissione giudicatrice, restando il valore dell’accordo quadro fisso e invariato nell’importo per la durata contrattuale.
+Sono inammissibili le offerte economiche che superino l’importo a base d’asta o che non siano formulate nel rispetto dei prezzi di riferimento indicati al punto 3 del presente disciplinare.
+18. CRITERIO DI AGGIUDICAZIONE
+L’appalto è aggiudicato in base al criterio dell’offerta economicamente più vantaggiosa individuata sulla base del miglior rapporto qualità/prezzo.
+La valutazione dell’offerta tecnica e dell’offerta economica è effettuata in base ai seguenti punteggi:
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 43 a 58
+PUNTEGGIO MASSIMO
+Offerta tecnica
+70
+Offerta economica
+30 TOTALE 100
+18.1 CRITERI DI VALUTAZIONE DELL’OFFERTA TECNICA
+Il punteggio massimo attribuibile all’offerta tecnica è pari a 70 punti, per ciascun Lotto, attribuito sulla base dei criteri di valutazione elencati nella sottostante tabella con la relativa ripartizione dei punteggi.
+Nella colonna identificata con la lettera D vengono indicati i “Punteggi discrezionali”, vale a dire i punteggi il cui coefficiente è attribuito in ragione dell’esercizio della discrezionalità spettante alla commissione giudicatrice.
+Nella colonna identificata dalla lettera T vengono indicati i “Punteggi tabellari”, vale a dire i punteggi fissi e predefiniti che saranno attribuiti o non attribuiti in ragione dell’offerta o mancata offerta di quanto specificamente richiesto.
+Non sono previsti “punteggi quantitativi” nella colonna identificata dalla lettera Q.
+La valutazione sarà effettuata sulla base dei seguenti criteri:
+• Livello di dettaglio, completezza e chiarezza della descrizione dei servizi offerti.
+• Realizzabilità, economicità e flessibilità delle soluzioni e delle procedure proposte.
+• Funzionalità, fruibilità e adeguatezza dei servizi offerti, in relazione alle esigenze di approvvigionamento dell’Ateneo.
+Saranno oggetto di specifica valutazione premiante le proposte capaci di introdurre un oggettivo vantaggio per l’Unità Ordinante, con particolare riferimento al miglioramento e alla semplificazione della gestione dei flussi di approvvigionamento.
+I punti saranno attribuiti in regione della discrezionalità spettante alla Commissione giudicatrice sugli elementi forniti, con riferimento ai punti di articolazione della Relazione Tecnica, che indicano i contenuti significativi che i progetti dei concorrenti dovranno avere, come segue:
+Macro-Criterio
+Sotto-Criterio
+Descrizione / Dettaglio
+Punteggio Massimo
+Tipologia Punteggio
+A. Flusso gestionale servizio
+Punteggio totale macro-criterio
+22 punti
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 44 a 58
+A.1
+9 punti
+D
+A.3
+6 punti
+D
+A.4
+7 punti
+D
+C. Servizio periodici elettronici
+Punteggio totale macro-criterio
+23 punti
+C.1
+7 punti
+D
+C.2
+9 punti
+D
+C.3
+5 punti
+D
+C.4
+(Assegnazione di n. 1 punto per ogni servizio aggiuntivo relativo alla lettera C e fino ad un massimo di n. 2 punti).
+2 punti
+T
+E. Accesso online al database
+Punteggio totale macro-criterio
+18 punti
+E.1
+Database bibliografico/amministrativo
+9 punti
+D
+E.2
+Database bibliografico/amministrativo
+9 punti
+D
+G. Servizi aggiuntivi (gratuiti)
+Unico livello
+6 punti
+D
+I. Certificazione parità di genere
+Art. 46-bis D.Lgs. 198/2006
+(Assegnazione di un punto in caso di riscontro positivo – attribuzione di punteggio pari a 0 in caso di non dimostrazione del criterio).
+1 punto
+T
+TOTALE MASSIMO
+70 punti
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 45 a 58
+18.2 METODO DI ATTRIBUZIONE DEL COEFFICIENTE PER IL CALCOLO DEL PUNTEGGIO DELL’OFFERTA TECNICA
+I criteri di valutazione dell’offerta tecnica hanno natura premiale e sono diretti a valutare la qualità, l’efficacia, l’efficienza e il valore migliorativo delle soluzioni proposte rispetto alle prestazioni e ai livelli minimi obbligatori stabiliti dal Capitolato Speciale d’Appalto.
+A ciascun criterio o sub-criterio qualitativo della griglia di valutazione è attribuito un coefficiente compreso tra zero e uno.
+Il punteggio tecnico è determinato mediante il metodo aggregativo-compensatore.
+Per ciascun criterio o subcriterio qualitativo, la media aritmetica dei coefficienti attribuiti dai commissari è moltiplicata per il relativo punteggio massimo. I punteggi così ottenuti sono sommati per determinare il punteggio tecnico originario dell’offerta. Non si procede alla riparametrazione dei coefficienti o dei punteggi relativi ai singoli criteri o subcriteri. Resta ferma l’eventuale riparametrazione del solo punteggio tecnico complessivo, effettuata secondo quanto previsto nel presente paragrafo.
+Per ciascun criterio o sub-criterio, ogni commissario attribuisce all’offerta, sulla base degli elementi concretamente rilevati e mediante una valutazione tecnico-discrezionale motivata, uno dei coefficienti indicati nella seguente scala:
+Coefficiente Giudizio Motivazione 1,00 Eccellente Il concorrente ha trattato in maniera pienamente esauriente tutti gli elementi oggetto di valutazione, proponendo procedure, metodologie e soluzioni dettagliate, concrete, pienamente coerenti e realizzabili, dalle quali emerge un rilevante e chiaramente dimostrato valore migliorativo per l’Ateneo. 0,90 Ottimo Il concorrente ha trattato in maniera completa e approfondita tutti gli elementi oggetto di valutazione, proponendo procedure, metodologie e soluzioni ben definite, coerenti e realizzabili, dalle quali emerge un apprezzabile valore migliorativo, pur in presenza di aspetti marginali suscettibili di ulteriore perfezionamento. 0,80 Buono Il concorrente ha trattato in maniera adeguata e completa gli elementi oggetto di valutazione, descrivendo con buon livello di dettaglio procedure, metodologie e soluzioni complessivamente coerenti e realizzabili, con limitati profili suscettibili di miglioramento. 0,70 Discreto Il concorrente ha trattato in maniera complessivamente adeguata gli elementi oggetto di valutazione, fornendo una descrizione sufficientemente chiara delle procedure, delle metodologie e delle soluzioni proposte, pur in presenza di alcuni profili suscettibili di maggiore approfondimento o migliore definizione. 0,60 Sufficiente Il concorrente ha trattato gli elementi essenziali oggetto di valutazione, fornendo indicazioni sufficientemente pertinenti e
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 46 a 58
+idonee a consentire la valutazione delle procedure, delle metodologie e delle soluzioni proposte, sebbene con un livello di dettaglio o un valore migliorativo contenuti. 0,40 Scarso Il concorrente ha trattato in maniera parziale o poco approfondita gli elementi oggetto di valutazione, mediante indicazioni generiche, scarsamente dettagliate o debolmente motivate, dalle quali emerge un valore migliorativo limitato. 0,00 Insufficiente o non valutabile La trattazione risulta assente, non pertinente, non sufficientemente sviluppata oppure priva di elementi idonei a consentire una valutazione positiva o a evidenziare un miglioramento apprezzabile rispetto alle prestazioni minime previste dal Capitolato Speciale d’Appalto.
+I commissari utilizzano esclusivamente i coefficienti indicati nella scala di valutazione.
+Non possono essere attribuiti coefficienti intermedi diversi da quelli espressamente previsti. Gli eventuali valori intermedi derivano esclusivamente dal calcolo della media dei coefficienti attribuiti dai commissari.
+Ciascun commissario attribuisce il coefficiente sulla base della qualità della proposta e della sua pertinenza rispetto agli elementi indicati nel criterio o sub-criterio. Le valutazioni attribuite e le relative motivazioni sono riportate nei verbali della Commissione giudicatrice.
+Per ciascuna offerta e per ogni criterio o sub-criterio, la Commissione calcola la media aritmetica dei coefficienti attribuiti dai singoli commissari.
+Il coefficiente medio così ottenuto è moltiplicato per il punteggio massimo previsto per il relativo criterio o sub-criterio nella griglia di valutazione. Il risultato costituisce il punteggio conseguito dall’offerta per il singolo criterio o sub-criterio.
+I calcoli relativi ai coefficienti medi e ai punteggi dei singoli criteri e sub-criteri sono effettuati mantenendo la massima precisione disponibile e senza arrotondamenti intermedi.
+Il punteggio tecnico originario dell’offerta è determinato sommando i punteggi conseguiti in tutti i criteri e sub-criteri oggetto di valutazione, fino a un massimo di 70 punti.
+Il punteggio tecnico originario è arrotondato alla seconda cifra decimale secondo la regola matematica ordinaria: se la terza cifra decimale è pari o superiore a cinque, la seconda cifra decimale è aumentata di una unità; se la terza cifra decimale è inferiore a cinque, la seconda cifra decimale resta invariata.
+Soglia di sbarramento
+È ammesso alla fase successiva il concorrente che consegue un punteggio tecnico originario, come sopra arrotondato, pari o superiore a 42 punti su 70.
+Il concorrente che consegue un punteggio tecnico originario inferiore a 42 punti su 70 non è ammesso alla fase successiva della procedura.
+La verifica del superamento della soglia di sbarramento è effettuata prima di qualsiasi riparametrazione.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 47 a 58
+L’assenza di elementi migliorativi in relazione a uno o più criteri premiali non rende, di per sé, l’offerta parziale o incompleta, ma comporta l’attribuzione del coefficiente corrispondente alla valutazione formulata dalla Commissione, fino al coefficiente zero.
+Restano ferme le conseguenze previste dalla documentazione di gara per il mancato rispetto delle prestazioni, delle caratteristiche e dei livelli minimi obbligatori stabiliti dal Capitolato Speciale d’Appalto, nonché per la presentazione di un’offerta che non comprenda l’intero oggetto del lotto.
+RIPARAMETRAZIONE DEL PUNTEGGIO TECNICO COMPLESSIVO
+Al fine di mantenere il peso massimo di 70 punti attribuito all’offerta tecnica, qualora nessuna delle offerte ammesse abbia conseguito il punteggio tecnico originario massimo di 70 punti, si procede a un’unica riparametrazione del punteggio tecnico complessivo.
+La riparametrazione è effettuata esclusivamente tra le offerte che hanno raggiunto la soglia di sbarramento di 42 punti su 70.
+All’offerta ammessa che ha conseguito il punteggio tecnico originario più elevato sono attribuiti 70 punti. Alle altre offerte ammesse è attribuito un punteggio tecnico riparametrato proporzionalmente inferiore, mediante l’applicazione della seguente formula:
+PTRᵢ = 70 × (PTOᵢ / PTOmax)
+dove:
+• PTRᵢ è il punteggio tecnico riparametrato dell’offerta considerata;
+• PTOᵢ è il punteggio tecnico originario, arrotondato alla seconda cifra decimale, conseguito dall’offerta considerata;
+• PTOmax è il punteggio tecnico originario più elevato, arrotondato alla seconda cifra decimale, tra quelli conseguiti dalle offerte che hanno superato la soglia di sbarramento.
+Il punteggio tecnico riparametrato è arrotondato alla seconda cifra decimale secondo la regola matematica ordinaria ed è utilizzato ai fini della formazione della graduatoria finale.
+Non si effettua alcuna riparametrazione dei punteggi relativi ai singoli criteri o sub-criteri.
+In presenza di una sola offerta che abbia raggiunto la soglia di sbarramento non si procede alla riparametrazione e il punteggio tecnico utilizzato ai fini della graduatoria coincide con il punteggio tecnico originario conseguito dall’offerta.
+Qualora nessuna offerta raggiunga la soglia di sbarramento di 42 punti su 70, nessun concorrente è ammesso alla fase successiva della procedura.
+18.3 METODO DI ATTRIBUZIONE DEL COEFFICIENTE PER IL CALCOLO DEL PUNTEGGIO DELL’OFFERTA ECONOMICA
+Il punteggio massimo attribuibile all’Offerta Economica è pari, per ciascun lotto, a 30 punti.
+Il punteggio è attribuito separatamente alle tre componenti dell’Offerta Economica indicate nel presente punto e successivamente sommato ai fini della determinazione del punteggio economico complessivo.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 48 a 58
+Ripartizione dei punteggi
+Componente dell’Offerta Economica
+Lotto 1
+Lotto 2
+a) Percentuale offerta per gli abbonamenti ai periodici cartacei e per i servizi e le prestazioni minime
+23 punti
+21 punti
+b) Percentuale offerta per gli abbonamenti esclusivamente in formato elettronico
+4 punti
+6 punti
+c) Percentuale offerta per la fornitura comprensiva del servizio di consolidamento
+3 punti
+3 punti
+TOTALE
+30 punti
+30 punti
+Per ciascun lotto e per ciascuna delle tre componenti dell’Offerta Economica, il punteggio massimo previsto è attribuito all’offerta che presenta la percentuale economicamente più conveniente, intendendosi per tale la percentuale avente il valore numericamente più basso.
+Alle altre offerte è attribuito un punteggio proporzionale mediante la seguente formula:
+Pᵢ = PEmax × (VH − VAᵢ) / (VH − VC)
+con:
+VL ≤ VC ≤ VAᵢ < VH
+dove:
+Pᵢ = punteggio attribuito all’offerta i per la componente economica considerata;
+PEmax = punteggio massimo attribuibile alla componente economica considerata;
+VH = limite superiore dell’intervallo percentuale previsto per la componente economica considerata;
+VL = limite inferiore dell’intervallo percentuale previsto per la componente economica considerata;
+VAᵢ = percentuale offerta dal concorrente i per la componente economica considerata;
+VC = percentuale economicamente più conveniente, corrispondente al valore percentuale numericamente più basso tra quelli validamente offerti dai concorrenti ammessi alla valutazione dell’Offerta Economica.
+La formula è applicata separatamente per ciascun lotto e per ciascuna delle tre componenti a), b) e c).
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 49 a 58
+Parametri da utilizzare
+Lotto
+Componente
+PEmax
+VL
+VH
+Intervallo dell’offerta
+Lotto 1
+a) Cartacei + servizi/prestazioni minime
+23
+-1%
++2,50%
+da -1,00% a +2,49%
+Lotto 1
+b) Esclusivamente elettronici
+4
+-1%
++2,50%
+da -1,00% a +2,49%
+Lotto 1
+c) Consolidamento
+3
+0%
++5,00%
+da 0,00% a +4,99%
+Lotto 2
+a) Cartacei + servizi/prestazioni minime
+21
+-1%
++2,50%
+da -1,00% a +2,49%
+Lotto 2
+b) Esclusivamente elettronici
+6
+-1%
++2,50%
+da -1,00% a +2,49%
+Lotto 2
+c) Consolidamento
+3
+0%
++5,00%
+da 0,00% a +4,99%
+Modalità operative di calcolo
+Per ciascun lotto, la Commissione procede secondo la seguente sequenza:
+1. individua, per ciascuna delle tre componenti a), b) e c), le percentuali offerte dai concorrenti ammessi alla valutazione economica;
+2. individua, per ciascuna componente, la percentuale economicamente più conveniente (VC), corrispondente al valore numericamente più basso;
+3. attribuisce all’offerta migliore il punteggio massimo previsto per la relativa componente;
+4. applica alle altre offerte la formula sopra indicata;
+5. somma i punteggi conseguiti nelle tre componenti.
+In caso di più offerte recanti la medesima percentuale economicamente più conveniente, a ciascuna di esse è attribuito il punteggio massimo previsto per la relativa componente.
+Qualora, per un lotto, sia ammessa alla valutazione economica una sola offerta, alla stessa è attribuito, per ciascuna componente, il relativo punteggio massimo previsto.
+Il punteggio economico complessivo attribuito a ciascuna offerta è dato dalla somma:
+PE = Pa + Pb + Pc
+dove:
+Pa = punteggio conseguito per la componente a);
+Pb = punteggio conseguito per la componente b);
+Pc = punteggio conseguito per la componente c).
+Il punteggio economico complessivo massimo attribuibile è pari a 30 punti per ciascun lotto.
+I calcoli sono effettuati senza arrotondamenti intermedi, utilizzando i valori risultanti dalle operazioni con la massima precisione consentita dallo strumento di calcolo utilizzato.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 50 a 58
+18.4 METODO PER IL CALCOLO COMPLESSIVO DEI PUNTEGGI
+Il punteggio complessivo attribuito a ciascuna offerta, per ciascun lotto, è determinato dalla somma del punteggio tecnico definitivo, fino a un massimo di 70 punti, e del punteggio economico, fino a un massimo di 30 punti, per un totale massimo di 100 punti.
+L’attribuzione dei punteggi tecnici ed economici sarà effettuata prevedendo un numero massimo di 2 cifre decimali.
+19. COMMISSIONE GIUDICATRICE
+La commissione giudicatrice è nominata dopo la scadenza del termine per la presentazione delle offerte ed è composta da un numero dispari pari a n. 3 membri, esperti nello specifico settore cui si riferisce l’oggetto del contratto. In capo ai commissari non devono sussistere cause ostative alla nomina ai sensi dell’articolo 93, comma 5 del Codice. A tal fine viene richiesta, prima del conferimento dell’incarico, apposita dichiarazione.
+La composizione della commissione giudicatrice e i curricula dei componenti sono pubblicati sul profilo del committente nella sezione “Amministrazione trasparente”.
+La commissione giudicatrice è responsabile della valutazione delle offerte tecniche ed economiche dei concorrenti, può riunirsi con modalità telematiche che salvaguardino la riservatezza delle comunicazioni ed opera attraverso la piattaforma di approvvigionamento digitale.
+Il RUP può avvalersi dell’ausilio della commissione giudicatrice ai fini della verifica della documentazione amministrativa e dell’anomalia delle offerte.
+20. SVOLGIMENTO DELLE OPERAZIONI DI GARA
+La prima seduta ha luogo il giorno 6 novembre 2026, alle ore 9:30.
+Tale seduta, se necessario, è aggiornata ad altra ora o a giorni successivi, nella data e negli orari comunicati ai concorrenti tramite la PAD.
+La PAD consente la pubblicità delle sedute di gara preordinate all’apertura:
+• della documentazione amministrativa;
+• delle offerte tecniche;
+• delle offerte economiche.
+La PAD garantisce il rispetto delle disposizioni del codice in materia di riservatezza delle operazioni e delle informazioni relative alla procedura di gara, nonché il rispetto dei principi di trasparenza.
+Si precisa che alle sedute di cui sopra i concorrenti potranno assistere collegandosi da remoto alla PAD nei giorni e orari che saranno comunicati (ad eccezione delle date già indicate in Bando di gara).
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 51 a 58
+La stazione appaltante si riserva la facoltà di ricorrere all’inversione procedimentale e di esercitare tale facoltà dopo la scadenza del termine per la presentazione delle offerte nel caso in cui le offerte pervenute siano superiori a n. 3.
+Con l’inversione procedimentale, si procede preliminarmente, nei confronti di tutti i concorrenti, alla verifica del pagamento del contributo ANAC. Successivamente, si procede alla valutazione dell’offerta tecnica, poi alla valutazione dell’offerta economica.
+La verifica completa della documentazione amministrativa sarà effettuata, per ciascun lotto, sul primo e sul secondo concorrente in graduatoria.
+La verifica dell’anomalia avviene dopo le operazioni della commissione di gara.
+21. VERIFICA DOCUMENTAZIONE AMMINISTRATIVA
+Il RUP o il RDP accede alla documentazione amministrativa, mentre l’offerta tecnica e l’offerta economica restano, chiuse, segrete e bloccate dalla PAD e procede a:
+a) controllare la completezza della documentazione amministrativa presentata;
+b) verificare la conformità della documentazione amministrativa a quanto richiesto nel presente disciplinare;
+c) attivare la procedura di soccorso istruttorio ove necessario.
+Ad esito delle verifiche di cui sopra il RUP provvede a adottare il provvedimento che determina le esclusioni e le ammissioni dalla procedura di gara, provvedendo altresì alla sua pubblicazione sul sito della stazione appaltante, nella sezione “Amministrazione trasparente” e alla sua comunicazione immediata e comunque entro un termine non superiore a cinque giorni.
+Gli eventuali provvedimenti di esclusione dalla procedura di gara sono comunicati entro cinque giorni dalla loro adozione. È fatta salva la possibilità di chiedere agli offerenti, in qualsiasi momento nel corso della procedura, di presentare tutti i documenti complementari o parte di essi, qualora questo sia necessario per assicurare il corretto svolgimento della procedura.
+22. VALUTAZIONE DELLE OFFERTE TECNICHE ED ECONOMICHE
+La data e l’ora della seduta pubblica in cui si procede all’apertura delle offerte tecniche, relativamente a ciascun singolo Lotto, sono comunicate tramite la PAD ai concorrenti ammessi alla presente fase di gara.
+Per ogni singolo Lotto, il RUP o il RDP procederà all’apertura, esame e valutazione delle offerte presentate dai predetti concorrenti e trasmetterà le stesse, ove non aperte in presenza della Commissione, alla Commissione giudicatrice stessa per l’assegnazione dei relativi punteggi, applicando i criteri e le formule indicati nel bando e nel presente disciplinare. Gli esiti della valutazione sono registrati dalla PAD.
+La commissione giudicatrice rende visibile ai concorrenti:
+a) i “punteggi tecnici” (PT) attribuiti alle singole offerte tecniche;
+b) le eventuali esclusioni dalla gara dei concorrenti.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 52 a 58
+Al termine delle operazioni di cui sopra la PAD consente la prosecuzione della procedura ai soli concorrenti ammessi alla valutazione delle offerte economiche.
+La commissione giudicatrice, assieme al RUP e/o al RDP, procede, relativamente a ciascun singolo Lotto, all’apertura delle offerte economiche e, quindi, alla valutazione delle offerte economiche, secondo i criteri e le modalità descritte nel Disciplinare e, successivamente, all’individuazione dell’unico parametro numerico finale per la formulazione della graduatoria.
+Nel caso in cui le offerte di due o più concorrenti ottengano lo stesso punteggio complessivo, ma punteggi differenti per il prezzo e per tutti gli altri elementi di valutazione, è collocato primo in graduatoria il concorrente che ha ottenuto il miglior punteggio sull’offerta tecnica.
+Nel caso in cui le offerte di due o più concorrenti ottengano lo stesso punteggio complessivo e gli stessi punteggi parziali per il prezzo e per l’offerta tecnica, i predetti concorrenti, su richiesta della stazione appaltante, presentano un’offerta migliorativa sul prezzo entro 10 giorni.
+La richiesta è effettuata secondo le modalità previste al paragrafo 2.3.
+È collocato primo in graduatoria il concorrente che ha presentato la migliore offerta. Ove permanga l’ex aequo la commissione procede mediante al sorteggio ad individuare il concorrente che verrà collocato primo nella graduatoria. La stazione appaltante comunica il giorno e l’ora del sorteggio secondo le modalità previste al paragrafo 2.3.
+La commissione giudicatrice rende visibile ai concorrenti, con le modalità di cui al paragrafo 17 i prezzi offerti.
+All’esito delle operazioni di cui sopra, la commissione redige la graduatoria.
+L’Offerta è esclusa in caso di:
+- mancata separazione dell’offerta economica dall’offerta tecnica, ovvero inserimento di elementi concernenti il prezzo nella documentazione amministrativa o nell’offerta tecnica;
+- presentazione di offerte parziali, plurime, condizionate, alternative oppure irregolari in quanto non rispettano i documenti di gara, ivi comprese le specifiche tecniche, o anormalmente basse;
+- presentazione di offerte inammissibili in quanto la commissione giudicatrice ha ritenuto sussistenti gli estremi per l’informativa alla Procura della Repubblica per reati di corruzione o fenomeni collusivi o ha verificato essere in aumento rispetto all’importo a base di gara.
+23. VERIFICA DI ANOMALIA DELLE OFFERTE
+Sono considerate anormalmente basse le offerte che presentano sia i punti relativi al prezzo, si la somma dei punti relativi agli elementi di valutazione, entrambi pari o superiori ai quattro quinti dei corrispondenti punti massimi previsti nel bando di gara.
+Il numero minimo di concorrenti (ammessi), per l’applicazione della soglia di anomalia, è pari a 3 (tre).
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 53 a 58
+La stazione appaltante si riserva la facoltà di sottoporre a verifica un’offerta che, in base anche ad altri ad elementi, ivi inclusi i costi della manodopera, appaia anormalmente bassa.
+Nel caso in cui la prima migliore offerta appaia anormalmente bassa, il RUP avvalendosi eventualmente della commissione giudicatrice ne valuta la congruità, serietà, sostenibilità e realizzabilità. Qualora tale offerta risulti anomala, si procede con le stesse modalità nei confronti delle successive offerte ritenute anormalmente basse, fino ad individuare la migliore offerta ritenuta non anomala.
+Il concorrente allega, in sede di presentazione dell’offerta economica, le giustificazioni relative alle voci di prezzo e di costo. La mancata presentazione anticipata delle giustificazioni non è causa di esclusione.
+Il RUP richiede al concorrente la presentazione delle spiegazioni, se del caso, indicando le componenti specifiche dell’offerta ritenute anomale.
+A tal fine, assegna un termine non superiore a quindici giorni dal ricevimento della richiesta.
+Il RUP, esaminate le spiegazioni fornite dall’offerente, ove le ritenga non sufficienti ad escludere l’anomalia, può chiedere, anche mediante audizione orale, ulteriori chiarimenti, assegnando un termine perentorio per il riscontro.
+Il RUP esclude le offerte che, in base all’esame degli elementi forniti con le spiegazioni risultino, nel complesso, inaffidabili.
+24. AGGIUDICAZIONE DELL’APPALTO E STIPULA DEL CONTRATTO
+La proposta di aggiudicazione, per ciascun Lotto, è formulata in favore del concorrente che ha presentato la migliore offerta.
+Qualora nessuna offerta risulti conveniente o idonea in relazione all’oggetto del contratto, la stazione appaltante può decidere, entro 30 giorni dalla conclusione delle valutazioni delle offerte, di non procedere all’aggiudicazione.
+La stazione appaltante si riserva di procedere all’aggiudicazione anche in caso di presentazione di una sola offerta.
+Non si procede all’aggiudicazione dell’appalto all’offerente che ha presentato l’offerta economicamente più vantaggiosa qualora venga accertato che tale offerta non soddisfa gli obblighi in materia ambientale, sociale e del lavoro stabiliti dalla normativa europea e nazionale, dai contratti collettivi o dalle disposizioni internazionali elencate nell’allegato X della direttiva 2014/24/UE.
+Il RUP procede, laddove non effettuata in sede di verifica di congruità dell’offerta, a verificare ai sensi dell’Allegato I.01 del Codice:
+- l’equivalenza delle tutele, con le modalità di cui all'articolo 110, in conformità all'allegato I.01, nel caso in cui l’aggiudicatario abbia dichiarato di applicare un contratto collettivo nazionale diverso rispetto a quello indicato dalla stazione appaltante e il rispetto di quanto
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 54 a 58
+indicato nella clausola sociale per l’applicazione dei contratti collettivi nazionali e territoriali di cui al punto 9;
+- l’attendibilità degli impegni assunti dall’appaltatore in relazione a quanto richiesto dal punto 9 e riguardante la stabilità occupazionale e le pari opportunità generazionali, di genere e di inclusione lavorativa per le persone con disabilità o svantaggiate.
+L’aggiudicazione è disposta all’esito positivo della verifica del possesso dei requisiti prescritti dal presente disciplinare ed è immediatamente efficace.
+Come evidenziato anche nel parere n. 3942 del 11/12/2025 del MIT, ai sensi di quanto previsto dall’articolo 83 del decreto legislativo n.159 del 2011, l’acquisizione della documentazione antimafia non è condizione necessaria ex ante per disporre l’aggiudicazione, essendo funzionale alla fase di stipula/conclusione del contratto.
+Sono sottoposti alla verifica dell’assenza dei motivi di esclusione e del rispetto dei criteri di selezione, oltre al concorrente risultato primo, il secondo in graduatoria, ai sensi dell’articolo 71 del decreto del Presidente della Repubblica n. 445/2000.
+È fatta salva la possibilità di chiedere agli offerenti, in qualsiasi momento nel corso della procedura, di presentare tutti i documenti complementari o parte di essi, qualora questo sia necessario per assicurare il corretto svolgimento della procedura.
+La verifica è effettuata tramite il FVOE. In caso di malfunzionamento, anche parziale, del fascicolo virtuale dell’operatore economico o delle piattaforme, banche dati o sistemi di interoperabilità ad esso connessi, la stazione appaltante si riserva di aggiudicare dopo che sono trascorsi trenta giorni dalla proposta di aggiudicazione. In tal caso richiede un’autocertificazione all’offerente, resa ai sensi del D.P.R. 28 dicembre 2000, n. 445, che attesti il possesso dei requisiti e l’assenza delle cause di esclusione che, a causa del predetto malfunzionamento, non è stato possibile verificare.
+Per le certificazioni che, allo stato, non sono ancora verificabili tramite il fascicolo virtuale dell’operatore economico, la stazione appaltante procede direttamente alla verifica presso gli Enti certificatori e, decorsi inutilmente 30 giorni dalla richiesta, si riserva di aggiudicare previa acquisizione di un’autocertificazione dall’operatore economico, resa ai sensi del D.P.R. 28 dicembre 2000, n. 445, che attesti il possesso dei requisiti e l’assenza delle cause di esclusione che non è stato possibile verificare.
+In caso di esito negativo delle verifiche, si procede all’esclusione e all’eventuale segnalazione all’ANAC in presenza delle condizioni di cui all’articolo 96, comma 15.
+Ove ne ricorrono le condizioni, si procede altresì all’incameramento della garanzia provvisoria.
+Successivamente si procede a ricalcolare i punteggi e a riformulare la graduatoria procedendo altresì, alle verifiche nei termini sopra indicati. Nell’ipotesi di ulteriore esito negativo delle verifiche si procede nei termini sopra detti.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 55 a 58
+Il contratto è stipulato non prima di 32 giorni dall’invio dell’ultima delle comunicazioni del provvedimento di aggiudicazione e comunque entro 60 giorni dall’aggiudicazione, salvo quanto previsto dall’art. 18, co. 2 del Codice.
+La garanzia provvisoria dell’aggiudicatario è svincolata automaticamente al momento della stipula del contratto; la garanzia provvisoria degli altri concorrenti è svincolata con il provvedimento di aggiudicazione e perde, in ogni caso, efficacia entro 30 giorni dall’aggiudicazione.
+All’atto della stipulazione dell’Accordo Quadro, l’aggiudicatario di ciascun lotto deve presentare una garanzia definitiva pari al 2% dell’importo massimo dell’Accordo Quadro relativo al lotto aggiudicato, secondo le modalità e le condizioni previste dall’articolo 117 del Codice e dall’art. 19 del Capitolato speciale.
+Se la stipula del contratto non avviene nel termine per fatto della stazione appaltante, l’aggiudicatario può farne constatare il silenzio inadempimento o, in alternativa, può sciogliersi da ogni vincolo mediante atto notificato. All’aggiudicatario non spetta alcun indennizzo, salvo il rimborso delle spese contrattuali.
+Se la stipula del contratto non avviene nel termine fissato per fatto dell’aggiudicatario può costituire motivo di revoca dell’aggiudicazione.
+La mancata o tardiva stipula del contratto al di fuori delle ipotesi predette, costituisce violazione del dovere di buona fede, anche in pendenza di contenzioso.
+L’aggiudicatario deposita, prima o contestualmente alla sottoscrizione del contratto di appalto, i contratti continuativi di cooperazione, servizio e/o fornitura di cui all’articolo 119, comma 3, lett. d) del Codice.
+L’affidatario comunica, per ogni subcontratto che non costituisce subappalto, l’importo e l’oggetto del medesimo, nonché il nome del sub-contraente, prima dell’inizio della prestazione.
+Il contratto è stipulato mediante scrittura privata con le modalità individuate dall’art. 18 del Codice.
+Sono a carico dell’aggiudicatario tutte le spese contrattuali, gli oneri fiscali quali imposte e tasse - ivi comprese quelle di registro ove dovute - relative alla stipulazione del contratto.
+In caso di interpello a seguito di risoluzione, recesso o dichiarazione giudiziale di inefficacia del contratto in corso di esecuzione, il nuovo affidamento avviene alle medesime condizioni già proposte dall’originario aggiudicatario in sede di offerta, ai sensi dell’art. 124, comma 2 del Codice.
+25. OBBLIGHI RELATIVI ALLA TRACCIABILITÀ DEI FLUSSI FINANZIARI
+Il contratto d’appalto è soggetto agli obblighi in tema di tracciabilità dei flussi finanziari di cui alla l. 13 agosto 2010, n. 136.
+L’affidatario deve comunicare alla stazione appaltante:
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 56 a 58
+- gli estremi identificativi dei conti correnti bancari o postali dedicati, con l'indicazione dell'opera/servizio/fornitura alla quale sono dedicati;
+- le generalità e il codice fiscale delle persone delegate ad operare sugli stessi;
+- ogni modifica relativa ai dati trasmessi.
+La comunicazione deve essere effettuata entro sette giorni dall'accensione del conto corrente ovvero, nel caso di conti correnti già esistenti, dalla loro prima utilizzazione in operazioni finanziarie relative ad una commessa pubblica. In caso di persone giuridiche, la comunicazione de quo deve essere sottoscritta da un legale rappresentante ovvero da un soggetto munito di apposita procura. L'omessa, tardiva o incompleta comunicazione degli elementi informativi comporta, a carico del soggetto inadempiente, l'applicazione di una sanzione amministrativa pecuniaria da 500,00 a 3.000,00 euro.
+Il mancato adempimento agli obblighi previsti per la tracciabilità dei flussi finanziari relativi all’appalto comporta la risoluzione di diritto del contratto.
+In occasione di ogni pagamento all’appaltatore o di interventi di controllo ulteriori si procede alla verifica dell’assolvimento degli obblighi relativi alla tracciabilità dei flussi finanziari.
+Il contratto è sottoposto alla condizione risolutiva in tutti i casi in cui le transazioni siano state eseguite senza avvalersi di banche o di Società Poste Italiane S.p.a. o anche senza strumenti diversi dal bonifico bancario o postale che siano idonei a garantire la piena tracciabilità delle operazioni per il corrispettivo dovuto in dipendenza del presente contratto.
+26. CODICE DI COMPORTAMENTO
+Nello svolgimento delle attività oggetto del contratto di appalto, l’aggiudicatario di ciascun Lotto, deve uniformarsi ai principi e, per quanto compatibili, ai doveri di condotta richiamati nel Decreto del Presidente della Repubblica 16 aprile 2013 n. 62 e nel codice di comportamento di questa stazione appaltante e nel Piano Triennale di Prevenzione della Corruzione e della Trasparenza nonché nella sottosezione Rischi corruttivi e trasparenza del PIAO.
+In seguito alla comunicazione di aggiudicazione e prima della stipula del contratto, l’aggiudicatario di ciascun Lotto, ha l’onere di prendere visione dei predetti documenti pubblicati sul sito della stazione appaltante.
+27. ACCESSO AGLI ATTI
+L’accesso agli atti della procedura è assicurato in modalità digitale mediante acquisizione diretta dei dati e delle informazioni inseriti nelle PAD a decorrere dalla comunicazione digitale dell’aggiudicazione.
+A tutti i partecipanti non esclusi in via definitiva sono messi a disposizione, mediante la PAD, l’offerta dell’operatore economico risultato aggiudicatario, i verbali di gara e gli atti, i dati e le informazioni che sono stati valutati ai fini dell’aggiudicazione. La disponibilità dei documenti è garantita dalle modalità utilizzate dalla PAD e comunicata agli interessati tramite PAD.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 57 a 58
+Ai partecipanti collocatisi nei primi cinque posti della graduatoria sono rese disponibili, reciprocamente, le offerte presentate dagli stessi mediante PAD. La disponibilità della documentazione è comunicata agli interessati sempre tramite PAD.
+I partecipanti collocatisi oltre il quinto posto della graduatoria possono accedere alle offerte dei concorrenti diversi dal primo presentando apposita istanza ai sensi degli articoli 3 bis e 22 della legge n. 241/90. In caso di inversione procedimentale ai partecipanti collocatisi nei primi cinque posti della graduatoria sono rese disponibili, reciprocamente, le offerte presentate dagli stessi, ad eccezione della documentazione amministrativa degli offerenti collocati dal secondo al quinto posto della graduatoria che non sia stata verificata dalla stazione appaltante. La disponibilità dei documenti è garantita mediante PAD. La disponibilità della documentazione è comunicata agli interessati tramite PAD.
+Nei confronti della documentazione amministrativa che non è stata resa reciprocamente disponibile in quanto non verificata dalla stazione appaltante, i primi cinque classificati possono avanzare richiesta di accesso ai sensi degli articoli 3 bis e 22 della legge n. 241/90.
+La stessa modalità di accesso ai sensi dei richiamati articoli della legge n. 241/90 è utilizzata dai partecipanti collocatisi oltre il quinto posto ai fini dell’acquisizione delle offerte dei concorrenti diversi dal primo. L’accesso è consentito tramite PAD.
+Nel caso in cui sia richiesto l’oscuramento di parti delle offerte e dei giustificativi, le decisioni in ordine all’accoglimento o al rigetto della richiesta sono rese note dal Responsabile unico di progetto al momento della comunicazione digitale dell’aggiudicazione. Le decisioni di cui sopra possono essere impugnate innanzi al Tribunale amministrativo di competenza nel termine di dieci giorni dalla comunicazione. Prima del decorso di tale termine, le offerte e i giustificativi dei primi cinque classificati sono messi reciprocamente a disposizione, con le modalità suindicate, nella versione oscurata.
+Fatti salvi i casi di esclusione di cui all’articolo 35, comma 4, del codice, gli atti della procedura sono resi accessibili ai soggetti che presentino apposita istanza di accesso civico ai sensi dell’articolo 5 del decreto legislativo 14/3/2013, n. 33. L’ esercizio del diritto di accesso è differito nei casi indicati al comma 2 dell’articolo 35 del codice.
+28. DEFINIZIONE DELLE CONTROVERSIE
+Per le controversie derivanti dalla presente procedura di gara è competente il Tribunale Amministrativo Regionale delle Marche nei termini e secondo le modalità previsti dal codice del processo amministrativo.
+Le controversie relative all’interpretazione, all’esecuzione, all’inadempimento, alla risoluzione o alla cessazione dell’Accordo Quadro e dei contratti attuativi sono devolute alla giurisdizione del giudice ordinario. Per tali controversie è competente in via esclusiva il Foro di Macerata, fatte salve le ipotesi di competenza o giurisdizione inderogabilmente stabilite dalla legge, secondo quanto previsto dal Capitolato speciale.
+Università degli Studi di Macerata (Partita IVA: 00177050432)
+(62100) Macerata (MC), Via Crescimbeni n. 30/32
+Tel. (+39) 0733 2581 PEC: ateneo@pec.unimc.it - Sito internet: https://www.unimc.it/it
+Pag. 58 a 58
+29. TRATTAMENTO DEI DATI PERSONALI
+Per quanto concerne il trattamento dei dati personali raccolti, ivi inclusi quelli acquisiti tramite il FVOE, si rinvia all’informativa privacy ex art. 13 del Reg. (UE) 2016/679 pubblicata sul sito della stazione appaltante: https://www.unimc.it/it/privacy-policy/informativa-terzi.pdf
+Ciascun concorrente riconosce e accetta di poter essere designato, in caso di aggiudicazione, qualora l’oggetto contrattuale comporti il trattamento di dati personali per conto della Stazione Appaltante, quale Responsabile esterno del Trattamento dei dati nel rispetto dei principi e degli obblighi previsti dal Regolamento UE n. 679/2016 (GDPR) e dalla vigente normativa nazionale in materia di protezione dei dati personali, specialmente in riferimento alle disposizioni di cui all’art. 28 del GDPR. Ciascun partecipante si impegna a rispettare quanto previsto dal Regolamento UE n. 679/2016 e dal Decreto Legislativo 30 giugno 2003, n. 196 s.m.i., avendo l’obbligo di mantenere riservati i dati e le informazioni di cui venga in possesso e, comunque, a conoscenza, di non divulgarli in alcun modo e in qualsiasi forma e di non farne oggetto di utilizzazione a qualsiasi titolo per scopi diversi da quelli strettamente necessari all’esecuzione del contratto.
+In tale ultimo caso, unitamente al contratto da firmare, all’aggiudicatario sarà richiesto di sottoscrivere anche l’atto di designazione a Responsabile esterno del Trattamento dati personali (Allegato n. 8).

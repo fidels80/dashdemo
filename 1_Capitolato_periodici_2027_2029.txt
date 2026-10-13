@@ -1,0 +1,429 @@
+1
+CAPITOLATO SPECIALE D'APPALTO
+PROCEDURA APERTA PER L'AFFIDAMENTO MEDIANTE ACCORDO QUADRO DELLA FORNITURA DI PUBBLICAZIONI SCIENTIFICHE PERIODICHE IN ABBONAMENTO, EDITE DA CASE EDITRICI ITALIANE (LOTTO 1) E STRANIERE (LOTTO 2), PER LE ESIGENZE DEL SISTEMA BIBLIOTECARIO DELL'UNIVERSITÀ DEGLI STUDI DI MACERATA - ANNI 2027-2028-2029
+INDICE
+I. PREMESSA ................................................................................................................................................... 3
+II. DEFINIZIONI ............................................................................................................................................... 3
+III. STRUTTURA ORGANIZZATIVA ................................................................................................................... 4
+PARTE I - DISPOSIZIONI GIURIDICO-AMMINISTRATIVE ................................................................................. 4
+1. OGGETTO DELL'APPALTO ........................................................................................................................... 4
+2. DOCUMENTI DEL CONTRATTO ................................................................................................................... 5
+3. DURATA E IMPORTO DELL'ACCORDO QUADRO ........................................................................................ 5
+4. REVISIONE DEI PREZZI ................................................................................................................................ 6
+5. TEMPI DI ESECUZIONE ............................................................................................................................... 7
+6. SPEDIZIONE E TRASPORTO ......................................................................................................................... 7
+7. APPLICAZIONE DELLA PERCENTUALE DI COMMISSIONE O SCONTO ......................................................... 8
+8. FATTURAZIONE E PAGAMENTI................................................................................................................... 8
+8.1 Corrispettivi ................................................................................................................................ 8
+8.2 Modalità di fatturazione............................................................................................................. 9
+8.3 Pagamenti e tracciabilità .......................................................................................................... 10
+9. PENALI ...................................................................................................................................................... 10
+10. FORZA MAGGIORE ................................................................................................................................. 11
+11. PERSONALE ADDETTO E SICUREZZA ...................................................................................................... 11
+12. SUBAPPALTO .......................................................................................................................................... 12
+13. DIVIETO DI CESSIONE DEL CONTRATTO ................................................................................................. 13
+14. RISOLUZIONE DEL CONTRATTO ............................................................................................................. 13
+15. RECESSO ................................................................................................................................................. 13
+16. ESECUZIONE O COMPLETAMENTO DELLA FORNITURA IN CASO DI INSOLVENZA O IMPEDIMENTO .... 14
+17. OBBLIGHI A CARICO DELLA COMMISSIONARIA ..................................................................................... 14
+18. GARANZIA PER EVIZIONE E VIZI ............................................................................................................. 15
+19. GARANZIA DEFINITIVA ........................................................................................................................... 15
+20. VERIFICA DI CONFORMITÀ ..................................................................................................................... 16
+21. TUTELA DELLA PRIVACY E TRATTAMENTO DEI DATI .............................................................................. 16
+22. CONTROVERSIE E FORO COMPETENTE .................................................................................................. 17
+PARTE II - CARATTERISTICHE DELLE FORNITURE ......................................................................................... 17
+23. DESCRIZIONE DELLE FORNITURE............................................................................................................ 17
+23.1 Periodici in formato Print e Print+online ............................................................................... 18
+23.2 Periodici in formato e-only ..................................................................................................... 18
+23.3 Licenze d'uso e condizioni editoriali ....................................................................................... 19
+24. INFRASTRUTTURA E SERVIZI TECNOLOGICI: PORTALE BIBLIOGRAFICO-AMMINISTRATIVO E EDI ........ 19
+2
+25. SERVIZI RICHIESTI PER TUTTI GLI ABBONAMENTI .................................................................................. 19
+25.1 Assistenza cliente ................................................................................................................... 19
+25.2 Preventivi ............................................................................................................................... 20
+25.3 Ordini ...................................................................................................................................... 20
+25.4 Fatturazione EDI e interoperabilità ........................................................................................ 21
+25.5 Servizio informazioni .............................................................................................................. 21
+25.6 Servizio reclami ...................................................................................................................... 21
+25.7 Reportistica ............................................................................................................................ 21
+26. SERVIZI RICHIESTI PER ABBONAMENTI PRINT ....................................................................................... 22
+26.1 Consegna ................................................................................................................................ 22
+26.2 Sostituzione gratuita………………………………………………………………………………………………………….22
+26.3 Merce non pervenuta o fornitura non erogata………………………………………………………………….22
+26.4 Abbonamenti con decorrenza anomala……………………………………………………………………………..23
+26.5 Servizio consolidato................................................................................................................ 23
+26.6 Servizio diretto ....................................................................................................................... 23
+26.7 Intrastat, sdoganamento, servizi bancari ............................................................................... 23
+27. SERVIZI ACCESSORI ................................................................................................................................ 23
+27.1 Servizio arretrati ..................................................................................................................... 23
+27.2 Statistiche periodici elettronici .............................................................................................. 24
+27.3 Fornitura di materiale bibliografico o documentale a carattere periodico………………………… 24
+3
+I. PREMESSA
+Il presente Capitolato Speciale d'Appalto disciplina, quale parte integrante e sostanziale della documentazione di gara, le condizioni giuridico-amministrative, tecniche, gestionali ed economiche dell'Accordo Quadro per la fornitura in abbonamento di riviste scientifiche periodiche, pubblicate da editori italiani e stranieri, su supporto cartaceo, elettronico o in formato combinato, nonché dei servizi gestionali strettamente connessi alla fornitura per le esigenze delle Biblioteche dell'Università degli Studi di Macerata.
+L'Accordo Quadro non determina, di per sé, alcun obbligo di acquisto di quantitativi minimi o di specifici titoli in capo all'Università. Gli ordinativi o contratti attuativi saranno emessi in funzione delle effettive esigenze bibliografiche e gestionali delle Biblioteche, nei limiti dell'importo massimo stimato, secondo le disponibilità di bilancio, le priorità scientifiche e didattiche definite dall'Ateneo e le condizioni di mercato vigenti al momento del rinnovo o della nuova sottoscrizione.
+Le prestazioni e i servizi accessori previsti dal presente Capitolato sono strumentali e connaturali alla fornitura di periodici. Anche quando comportano attività amministrative, informative, tecnologiche o di supporto, essi non mutano la qualificazione dell'affidamento, da considerarsi fornitura con servizi connessi.
+Per quanto non espressamente previsto dal presente Capitolato si applicano il d.lgs. 31 marzo 2023, n. 36 gli atti di gara, lo schema di Accordo Quadro e le disposizioni vigenti in materia di contratti pubblici, contabilità pubblica, tracciabilità dei flussi finanziari, protezione dei dati personali, diritto d'autore e sicurezza sul lavoro.
+II. DEFINIZIONI
+Stazione Appaltante: Università degli Studi di Macerata.
+Ateneo o Università: Università degli Studi di Macerata.
+Area Servizi Bibliotecari e Editoriali - ASBE: la struttura dell'Ateneo competente per il coordinamento dei servizi bibliotecari e editoriali e, ai fini del presente appalto, per la gestione operativa degli ordinativi, delle comunicazioni, dei controlli e della reportistica.
+Unità Ordinante: l'ASBE, quale struttura abilitata a richiedere preventivi, emettere ordini, ricevere report, gestire reclami e coordinare le comunicazioni operative per conto delle Biblioteche interessate.
+Accordo Quadro: l'accordo concluso con l'operatore economico aggiudicatario del lotto di riferimento, volto a stabilire le condizioni economiche e tecnico-gestionali per i successivi ordinativi o contratti attuativi.
+Contratto attuativo o ordinativo di fornitura: il singolo ordine emesso dall'Unità Ordinante sulla base dell'Accordo Quadro, contenente l'elenco dei titoli, il formato, l'annata o volume, l'eventuale servizio di consolidamento, la biblioteca destinataria, il prezzo di listino, la commissione o lo sconto applicati e ogni altra informazione utile all'esecuzione.
+Commissionaria, Affidataria o Fornitore: l'operatore economico aggiudicatario del lotto di riferimento, responsabile dell'esecuzione della fornitura e dei servizi connessi, anche quando l'attività coinvolga editori, distributori, aggregatori, piattaforme o altri soggetti terzi.
+RUP: il Responsabile Unico di Progetto nominato dalla Stazione Appaltante.
+DEC: il Direttore dell'Esecuzione del Contratto, ove nominato, incaricato del controllo tecnico-contabile e della regolare esecuzione.
+Periodici: le riviste, pubblicazioni seriali e risorse in abbonamento, italiane o straniere, su supporto cartaceo, elettronico, combinato o altro formato reso disponibile dagli editori.
+Fascicolo: il singolo numero, volume, supplemento, numero speciale, monografico o altro elemento compreso nell'abbonamento ordinario.
+4
+Pacchetto editoriale cumulativo: l'offerta editoriale che comprende più titoli o più abbonamenti in una combinazione economicamente più favorevole rispetto alla sottoscrizione separata dei singoli titoli.
+Accesso elettronico: la fruizione online di periodici, piattaforme o contenuti digitali mediante autenticazione IP, credenziali amministrative, codici di attivazione, federazione di identità o altre modalità previste dagli editori e accettate dall'Unità Ordinante.
+Decorrenze: salvo diversa specifica indicazione, i termini indicati nel presente Capitolato sono espressi in giorni naturali e consecutivi; quando il termine è indicato in giorni lavorativi, sono esclusi sabati, domeniche e giorni festivi.
+III. STRUTTURA ORGANIZZATIVA
+Il Sistema bibliotecario di Ateneo, coordinato dall'ASBE, cura l'acquisizione, la gestione e la fruizione delle risorse bibliografiche e documentali in formato cartaceo, elettronico e digitale, assicurando il supporto alle attività didattiche, scientifiche, di ricerca e istituzionali dell'Ateneo.
+L’Unità Ordinante opera quale riferimento unico per la Commissionaria ferma restando la possibilità di indicare, per singole attività, referenti tecnici o amministrativi competenti per preventivi, consegne, accessi elettronici, contabilità e gestione dei reclami.
+Alla data di predisposizione del presente Capitolato, i riferimenti operativi interni sono i seguenti, salvo successive modifiche comunicate dall'Ateneo:
+− Referente periodici cartacei, preventivi, comunicazioni, acquisti e contabilità: sig.ra Loiola Ciccioli - e-mail loiola.ciccioli@unimc.it - tel. 0733 258 3979.
+− Referente del servizio contabilità: dott.ssa Elvira Crema - e-mail elvira.crema@unimc.it - tel. 0733 258 3921.
+− Referente periodici elettronici: dott.ssa Concetta Lovascio - e-mail concetta.lovascio@unimc.it - tel. 0733 258 3991.
+− Orari ordinari di apertura degli uffici: lunedì-venerdì ore 9.00-13.30; martedì e giovedì ore 15.00-17.30.
+PARTE I - DISPOSIZIONI GIURIDICO-AMMINISTRATIVE
+1. OGGETTO DELL'APPALTO
+Il presente Capitolato ha per oggetto la fornitura in abbonamento delle annate 2027, 2028 e 2029 di periodici pubblicati da editori italiani e stranieri su qualsiasi supporto, nonché l'erogazione dei servizi gestionali connessi e l'eventuale fornitura di numeri arretrati, back file, supplementi e altri materiali periodici, ove richiesti dall'Unità Ordinante.
+La fornitura è articolata nei seguenti lotti:
+− LOTTO 1: periodici pubblicati da editori italiani.
+− LOTTO 2: periodici pubblicati da editori stranieri.
+La Commissionaria aggiudicataria si impegna a stipulare, entro termini utili a garantire il tempestivo rinnovo, contratti di abbonamento ai periodici con i singoli editori, distributori o aggregatori per conto dell'Università e a uso delle Biblioteche, provvedendo altresì al pagamento delle quote di abbonamento secondo le modalità e nei termini pattuiti con gli editori, o da essi stabiliti, al fine di garantire completezza, regolarità e continuità della fornitura.
+5
+La fornitura e i servizi connessi non sono affidati alla Commissionaria in via esclusiva. L'Università si riserva la facoltà di procedere direttamente o tramite soggetti terzi qualificati per titoli, pacchetti, banche dati, contratti consortili o nazionali, abbonamenti imposti dagli editori in sottoscrizione diretta o mediante agenti esclusivi, arretrati da biblioteche o imprese specializzate e, in generale, per ogni acquisizione che risulti più conveniente o debba essere effettuata con modalità diverse.
+La Commissionaria non potrà vantare pretese, indennizzi o compensi per abbonamenti che l'Ateneo decida di non rinnovare, escludere, sostituire, sottoscrivere direttamente o acquisire mediante canali alternativi.
+Gli elenchi dei periodici eventualmente allegati agli atti di gara o trasmessi in sede di ordinativo hanno natura presuntiva e non vincolante. L'Unità Ordinante può modificare, integrare, ridurre, sospendere o sostituire i titoli richiesti in relazione a cessazioni, fusioni, passaggi al solo formato elettronico, adesioni a contratti consortili o nazionali, indisponibilità editoriali, variazioni di prezzo, mutamenti di modello economico o sopravvenute esigenze delle Biblioteche.
+2. DOCUMENTI DEL CONTRATTO
+Formano parte integrante e sostanziale dell'Accordo Quadro e dei contratti attuativi, ancorché non materialmente allegati:
+− il bando, il disciplinare di gara, il presente Capitolato Speciale d'Appalto e gli eventuali allegati tecnici;
+− lo schema di Accordo Quadro e gli eventuali schemi di contratto attuativo o ordinativo;
+− l'offerta economica e l'eventuale offerta tecnica dell'aggiudicatario, nei limiti in cui non contrastino con gli atti di gara;
+− gli elenchi indicativi dei periodici, le richieste di preventivo, i preventivi approvati, gli ordinativi e le comunicazioni dell'Unità Ordinante;
+− le risposte ai chiarimenti, ove pubblicate, e ogni ulteriore documento richiamato negli atti di gara.
+In caso di contrasto tra i documenti, prevalgono le disposizioni imperative di legge, quindi il bando e il disciplinare di gara, lo schema di Accordo Quadro, il presente Capitolato, l'offerta dell'aggiudicatario e, infine, gli ordinativi, salvo diversa indicazione espressa negli atti di gara.
+3. DURATA E IMPORTO DELL'ACCORDO QUADRO
+L'Accordo Quadro ha ad oggetto le annate 2027, 2028 e 2029. La durata decorre dalla data di stipula dell'Accordo Quadro o dalla diversa data indicata nel contratto, ferma restando la necessità di assicurare la continuità degli abbonamenti e degli accessi elettronici relativi alle annate di riferimento.
+La Commissionaria dovrà espletare, senza oneri aggiuntivi, ogni adempimento anche successivo alla scadenza dell'Accordo Quadro, inclusi consegna dei fascicoli, attivazione o ripristino degli accessi, chiusura dei reclami, note di credito, report finali e completamento delle forniture ordinate durante la vigenza contrattuale.
+L'importo complessivo massimo stimato dell'affidamento, per gli abbonamenti riferibili agli anni 2027-2028-2029 e per le esigenze delle Biblioteche dell'Università degli Studi di Macerata, ammonta presuntivamente a Euro 295.000,00 al netto degli oneri fiscali, così articolato:
+Lotto
+Oggetto
+Importo massimo stimato
+LOTTO 1
+Periodici pubblicati da editori italiani
+Euro 130.000,00
+LOTTO 2
+Periodici pubblicati da editori stranieri
+Euro 165.000,00
+Totale
+Euro 295.000,00
+6
+La seguente ripartizione annuale ha valore programmatorio e potrà essere rimodulata dall'Unità Ordinante, fermo restando il limite massimo complessivo per ciascun lotto:
+Anno
+Lotto 1 - editori italiani
+Lotto 2 - editori stranieri
+Totale annuo
+2027
+Euro 40.000,00
+Euro 51.000,00
+Euro 91.000,00
+2028
+Euro 43.000,00
+Euro 54.000,00
+Euro 97.000,00
+2029
+Euro 47.000,00
+Euro 60.000,00
+Euro 107.000,00
+Totale
+Euro 130.000,00
+Euro 165.000,00
+Euro 295.000,00
+Gli importi sono presunti, indicativi e non vincolanti ai fini contrattuali. Essi rappresentano il limite massimo degli ordinativi attivabili per ciascun lotto, al netto degli oneri fiscali, senza obbligo di integrale utilizzo da parte dell'Università. Il raggiungimento dell'importo massimo stimato determina l'esaurimento dell'Accordo Quadro per il lotto interessato, senza che la Commissionaria possa vantare pretese per ordinativi non emessi. La mancata integrale utilizzazione dell'importo massimo non attribuisce alcun diritto a compensi, indennizzi o risarcimenti.
+La fornitura sarà attivata mediante singoli ordinativi o contratti attuativi emessi dall'Unità Ordinante. Ciascun ordinativo indicherà, ove disponibili, titolo, ISSN, editore, annata o volume, formato, biblioteca destinataria, indirizzo di consegna o modalità di accesso, eventuale servizio di consolidamento, prezzo di listino, percentuale di commissione o sconto applicata, CIG e ogni altro dato necessario.
+La Stazione Appaltante si riserva la facoltà di disporre l'avvio dell'esecuzione in via anticipata nei casi e nei limiti consentiti dalla normativa vigente e dagli atti di gara, quando ciò sia necessario per evitare interruzioni negli abbonamenti o negli accessi elettronici.
+In considerazione della natura della fornitura senza posa in opera e salvo diversa valutazione del RUP, non sono previsti costi della sicurezza da interferenze non soggetti a ribasso, come previsto dall’art. 108 comma 9 del d.lgs. 31 marzo 2023, n. 36. Qualora in fase esecutiva emergano attività da svolgersi presso sedi universitarie con rischi interferenziali, la Commissionaria dovrà collaborare alla predisposizione della documentazione necessaria e rispettare le misure di coordinamento stabilite dall'Università.
+4. REVISIONE DEI PREZZI
+Qualora nel corso di esecuzione dell’Appalto al verificarsi di particolari condizioni di natura oggettiva, si determini una variazione, in aumento o in diminuzione, del costo dei servizi accessori superiore al 5% (ad esclusione del prezzo del materiale bibliografico), su richiesta del Fornitore, le percentuali di sconto determinate in sede di gara sono aggiornate, nella misura dell’80% della variazione (solo per la parte eccedente il 5%), in relazione alle prestazioni da eseguire. Ai fini del calcolo della variazione delle percentuali di commissione la revisione è effettuata in misura non superiore alla differenza tra l’indice Istat [0951] Libri disponibile al momento della richiesta e quello corrispondente al mese/anno di sottoscrizione del contratto/ultima revisione.
+I nuovi prezzi saranno applicati alle forniture erogate successivamente all’accoglimento della revisione, non sono ammesse revisioni con effetto retroattivo.
+Nel caso di variazione in diminuzione in misura superiore al 5% dell’importo complessivo, il Responsabile Unico di Progetto attiverà automaticamente la clausola di revisione dandone comunicazione all’impresa, rivolgendosi alla sede legale o al domicilio eletto da quest’ultimo.
+7
+Entro il limite di cinque giorni successivi alla data di detta comunicazione, l’impresa potrà presentare eventuali osservazioni; decorso il suddetto termine l’Università, nel caso non abbia ricevuto alcuna controdeduzione oppure anche nel caso le avesse ricevute e non le ritenesse fondate procederà all’applicazione dei nuovi prezzi e nella misura dell’80 percento della variazione medesima, alle parti di fornitura consegnate successivamente alla definizione della revisione.
+5. TEMPI DI ESECUZIONE
+Al fine di garantire la tempestiva e utile attivazione degli abbonamenti e la regolarità della fornitura, dal ricevimento dell’ordine da parte dell’Unità Ordinante la Commissionaria si impegna ad effettuare gli ordini agli editori nel più breve termine possibile, in ogni caso entro e non oltre 20 (venti) giorni naturali e consecutivi dalla richiesta. Salvo diversa indicazione, la Commissionaria dovrà fornire tutti gli abbonamenti a partire dal primo numero dell’annata/volume di riferimento, anche in caso di emissione tardiva degli ordini da parte dell’Unità Ordinante. In tutti i casi in cui non sia possibile quanto appena detto, la Commissionaria è tenuta a segnalare preliminarmente (astenendosi in questa fase dall’ordine verso l’editore) all’Unità Ordinante il fascicolo da cui l’editore intende far decorrere l’abbonamento. Per tale ipotesi, la Commissionaria procederà all’effettiva trasmissione dell’ordine all’editore solo dopo aver ottenuto espressa conferma dell’ordine medesimo da parte dell’Unità Ordinante. Limitatamente ai periodici irregolari o in ritardo di pubblicazione (inclusi a titolo esemplificativo e non esclusivo i cosiddetti standing order), la Commissionaria si impegna a sottoscrivere gli abbonamenti entro 15 (quindici) giorni naturali e consecutivi dalla data di effettiva pubblicazione, esclusivamente dopo aver ottenuto ulteriore conferma dell’ordine da parte dell’Unità Ordinante sulla base di un preventivo aggiornato e preventivamente comunicato. Gli ordini inoltrati dalla Commissionaria agli editori in violazione della specifica procedura di controllo e approvazione appena descritta, non saranno vincolanti per l’Unità Ordinante che, pertanto, non sarà tenuta al pagamento di qualsivoglia eventuale relativa fatturazione.
+L’attivazione o il rinnovo degli abbonamenti dovrà comunque avvenire in modo tale da escludere ritardi o disguidi nella regolare consegna dei periodici all’Unità Ordinante, nonché da escludere la mancata attivazione, l’interruzione o lacune negli accessi alle versioni elettroniche.
+6. SPEDIZIONE E TRASPORTO
+I periodici saranno spediti direttamente dagli editori o, ove richiesto, dalla Commissionaria attraverso la prestazione di Consolidamento, franco trasporto, imballo compreso, consegnati presso la sede dell’Unità Ordinante all’indirizzo specificato.
+Nel caso di consegna di fascicoli ad indirizzo errato, la Commissionaria ha l’obbligo di ritirarli e di effettuare la consegna corretta a sue spese entro e non oltre 15 (quindici) giorni naturali e consecutivi decorrenti dalla comunicazione dell’errore; parimenti nel caso di consegna di fascicoli non oggetto di ordine (esclusi quelli ricevuti a titolo di copia saggio), la Commissionaria ha l’obbligo di provvedere a sue spese al ritiro.
+8
+7. APPLICAZIONE DELLA PERCENTUALE DI COMMISSIONE O SCONTO
+Per gli abbonamenti ai periodici cartacei, i servizi e le prestazioni minime, la commissione di agenzia (o l’eventuale sconto) offerta dalla Commissionaria ed espressa in termini di percentuale sarà applicata sul prezzo di listino previsto per la spedizione dei periodici in Italia.
+Per gli abbonamenti esclusivamente in formato elettronico la commissione di agenzia (o l’eventuale sconto) offerti dalla Commissionaria ed espressi in termini di percentuale saranno applicati sul prezzo previsto per il collegamento Internet relativo al dominio dell’Ente richiedente, salvo diversa richiesta dell’U.O.
+Per la prestazione aggiuntiva di Consolidamento è richiesto alla Commissionaria di presentare offerta specifica, espressa in termini percentuali da calcolarsi sul prezzo di listino.
+8. FATTURAZIONE E PAGAMENTI
+8.1 Corrispettivi
+I corrispettivi contrattuali sono determinati:
+− Periodici print e print + online: dal prezzo di catalogo/listino valido per l’Italia aumentato/diminuito della percentuale di provvigione/sconto offerta;
+− Periodici solo online: dal prezzo di catalogo/listino previsto per l’accesso secondo le modalità specificate dalle Unità Ordinanti caso per caso, aumentato/diminuito della percentuale di provvigione/sconto offerta;
+− Per i titoli proposti dagli editori all’interno delle cosiddette offerte “a pacchetto” il Fornitore è tenuto ad applicare il prezzo più vantaggioso previsto dalla combinazione degli abbonamenti richiesti dalle Unità Ordinanti. Anche per questi titoli la percentuale di commissione/sconto offerta dall’aggiudicatario resterà invariata e sarà applicata all’eventuale prezzo di pacchetto.
+Per i titoli originariamente quotati dall’editore in valuta diversa dall’euro, il Fornitore procederà alla conversione in euro applicando il cambio di riferimento “Euro - Rilevazioni BCE” pubblicato sul quotidiano “Il Sole 24 Ore” del giorno di emissione della fattura.
+I predetti corrispettivi contrattuali si riferiscono all’esecuzione delle forniture e dei servizi connessi a perfetta regola d’arte e nel pieno adempimento delle modalità e prescrizioni contrattuali.
+Sono a carico del Fornitore, intendendosi remunerati con il corrispettivo contrattuale, tutti gli oneri derivanti all’impresa dall’esecuzione del contratto e dall’osservanza di leggi e regolamenti, ivi compresi gli oneri doganali, le commissioni bancarie o altra spesa dovuta inerente al trasferimento del pagamento del corrispettivo contrattuale, i rischi e le spese relative alle forniture e i servizi in oggetto, nonché ad ogni attività che si rendesse necessaria per la prestazione degli stessi o comunque opportuna per un corretto e completo adempimento delle obbligazioni previste, ivi compresi quelli relativi ad eventuali spese di trasporto, di viaggio, di missione per il personale addetto all’esecuzione contrattuale.
+Nessun onere aggiuntivo, salvo ove espressamente previsto nel presente capitolato, può essere richiesto dal Fornitore all’Ateneo per imballaggio, spedizione, cambio o altro.
+I corrispettivi contrattuali sono determinati a proprio rischio dal fornitore in base ai propri calcoli, alle proprie indagini, alle proprie stime, e sono, pertanto, fissi ed invariabili indipendentemente da qualsiasi imprevisto o eventualità, fatto salvo quanto previsto all’art. 4 – Revisione dei prezzi, facendosi carico il fornitore medesimo di ogni relativo rischio e/o alea.
+9
+8.2 Modalità di fatturazione
+La Commissionaria potrà emettere fattura solo successivamente all'effettivo inoltro dell'ordine di apertura o rinnovo della sottoscrizione all'editore e, per i titoli irregolari o in ritardo di pubblicazione, solo successivamente all'effettiva pubblicazione o all'accertamento della medesima da parte dell'editore e all'approvazione dell'Unità Ordinante.
+Alla fattura dovrà essere allegata o resa disponibile la documentazione idonea a dimostrare l'avvenuto invio dell'ordine all'editore o distributore, la regolare attivazione del titolo o dell'accesso, nonché ogni specifica richiesta dall'Unità Ordinante per la verifica della prestazione.
+La fatturazione dovrà essere effettuata in euro e, ove possibile, in modo cumulativo per più titoli riconducibili al medesimo ordinativo, codice contabile o riferimento interno dell'Ateneo. La Commissionaria si obbliga a procedere con fatturazione distinta per abbonamenti e servizi relativi a periodici cartacei e per abbonamenti e servizi relativi a periodici elettronici, ove richiesto dall'Unità Ordinante.
+Le fatture elettroniche dovranno essere trasmesse secondo il formato vigente per la fattura elettronica verso la Pubblica Amministrazione, indicando il codice univoco ufficio comunicato nell'ordine, il CIG, il numero d'ordine, il riferimento contabile e ogni ulteriore dato richiesto dall'Ateneo. Non saranno accettate fatture prive degli elementi essenziali per la contabilizzazione e il pagamento.
+Le fatture dovranno contenere, per ciascun titolo o pacchetto, almeno le seguenti indicazioni:
+− titolo della rivista, ISSN, editore, annata, volume, numero dei fascicoli e periodicità;
+− tipologia di abbonamento: print, print + free online, print + online, online only, banca dati, CD-ROM o altro formato;
+− eventuali sezioni, supplementi, numeri speciali o contenuti inclusi nel canone ordinario;
+− prezzo di listino per l'Italia o per il dominio istituzionale, in euro o in valuta originale;
+− tasso di cambio applicato e importo convertito in euro, se il prezzo originario è in valuta diversa dall'euro;
+− percentuale di commissione o sconto applicata e relativo importo;
+− importo totale per titolo e importo totale fattura, con IVA se dovuta;
+− data di inoltro dell'ordine all'editore, data di attivazione o rinnovo e piattaforma di accesso per le risorse elettroniche;
+− eventuali note di credito, rimborsi, servizi aggiuntivi o rettifiche collegate.
+Fatto salvo quanto richiesto dall'Unità Ordinante, la Commissionaria non potrà emettere fattura nel periodo compreso tra il 1° dicembre e il 31 gennaio di ciascun anno di fornitura, in occasione delle operazioni di chiusura del bilancio. L'eventuale violazione comporta la decorrenza dei termini di pagamento dal 1° febbraio successivo.
+Ai sensi dell'art. 3, comma 7, del d.l. 27 aprile 1990, n. 90, convertito dalla l. 26 giugno 1990, n. 165, non sono soggette a IVA le cessioni di pubblicazioni estere effettuate nei confronti delle biblioteche universitarie, nonché le importazioni dei medesimi beni effettuate dagli stessi organismi, ove ricorrano i presupposti di legge. Per le pubblicazioni editoriali digitali identificate da codice ISBN o ISSN si applica l'aliquota IVA prevista dalla normativa vigente; per gli altri prodotti digitali si applica la disciplina fiscale vigente.
+8.3 Pagamenti e tracciabilità
+I pagamenti saranno effettuati entro 30 (trenta) giorni naturali e consecutivi dalla data di ricevimento della fattura, previa verifica della regolarità della fattura, della regolare esecuzione delle prestazioni fatturate, della corrispondenza con l'ordinativo, della insussistenza di irregolarità o inadempimenti e della regolarità contributiva dell'affidatario ove richiesta.
+10
+Le fatture devono fare riferimento al seguente Codice univoco ufficio così come censito su www.indicepa.it:
+AREA SERVIZI BIBLIOTECARI E EDITORIALI – CODICE UNIVOCO UFFICIO - 5GZQCZ
+Ai sensi del DM del 23 gennaio 2015 attuativo delle disposizioni in materia di scissione dei pagamenti “Split payment” previste dall’art. 1, comma 629, lettera b) della Legge 190/2014 (Legge di stabilità 2015), l’IVA dovuta sarà trattenuta e versata direttamente dall’Ateneo all’Amministrazione finanziaria. Non saranno pertanto accettate fatture sprovviste della dicitura “Scissione dei pagamenti”.
+L’Affidatario sarà tenuto a pagare i propri dipendenti, consulenti, fornitori di beni e servizi rientranti tra le spese generali, nonché gli acquisti di immobilizzazioni tecniche, tramite conto corrente dedicato, indicando il codice CIG della procedura aggiudicata. Gli estremi del conto corrente dedicato e le generalità dei soggetti delegati a operare su di esso dovranno essere comunicati alla Stazione Appaltante prima della stipula del contratto e tempestivamente aggiornati in caso di variazione. Il mancato utilizzo del conto corrente dedicato o di strumenti tracciabili comporta la risoluzione di diritto nei casi previsti dalla legge.
+La decorrenza dei termini di pagamento resta sospesa in presenza di omissioni, incongruenze, errori formali o sostanziali della fattura, documentazione insufficiente, mancata attivazione, mancata consegna, irregolarità contributiva, inadempimenti o contestazioni relative alle prestazioni fatturate. La sospensione perdura sino alla completa regolarizzazione.
+Dagli importi comunque dovuti saranno detratte le somme dovute dalla Commissionaria a titolo di penali, note di credito, rimborsi, ripristini, danni, forniture non erogate o altri importi precedentemente contestati e notificati.
+Ai sensi della normativa vigente, sull'importo netto progressivo delle prestazioni sarà operata la ritenuta dello 0,50 per cento, svincolabile in sede di liquidazione finale previa verifica di conformità e acquisizione della documentazione di regolarità contributiva.
+La Commissionaria assume tutti gli obblighi di tracciabilità dei flussi finanziari previsti dall'art. 3 della l. 13 agosto 2010, n. 136, impegnandosi a utilizzare conti correnti dedicati, anche non in via esclusiva, e strumenti di pagamento idonei a consentire la piena tracciabilità delle operazioni.
+La Commissionaria è tenuta a inserire nei contratti con subappaltatori e subcontraenti, ove presenti, apposita clausola di assunzione degli obblighi di tracciabilità finanziaria, dandone immediata comunicazione alla Stazione Appaltante e alla Prefettura competente in caso di inadempimento della controparte.
+9. PENALI
+In caso di inadempimento contrattuale, il RUP, sentito il DEC ove nominato e acquisiti gli elementi dall'Unità Ordinante, potrà applicare le penali di seguito indicate, fatto salvo il risarcimento del maggior danno e la possibilità di risoluzione nei casi previsti dal presente Capitolato o dalla legge.
+a) Ritardo nella consegna dei fascicoli print in servizio diretto. In caso di mancata consegna di fascicoli già pubblicati, la Commissionaria dovrà sollecitare l'editore entro 3 (tre) giorni lavorativi dalla comunicazione del reclamo. Se il disservizio permane per 30 (trenta) giorni naturali e consecutivi dalla comunicazione, potrà essere applicata una penale pari allo 0,3 per mille dell'ammontare netto del contratto attuativo per ogni giorno naturale successivo di ritardo riferito al titolo interessato.
+b) Ritardata attivazione degli abbonamenti online. Per ritardo nell'attivazione presso il sito dell'editore o della piattaforma nei termini del presente Capitolato, potrà essere applicata una penale pari allo 0,3 per mille dell'ammontare netto contrattuale per ogni giorno naturale di ritardo, con riferimento al titolo interessato.
+11
+c) Mancata consegna dei fascicoli print. Qualora al termine dell'anno di fornitura non risultino pervenuti tutti i fascicoli pubblicati, anche per inadempienza imputabile a editori o distributori, la Commissionaria dovrà rimborsare la quota di abbonamento fatturata e non fornita; nei casi più gravi potrà essere applicata un'ulteriore penale pari al valore della quota non fornita, salvo valutazione del RUP.
+d) Interruzioni o sospensioni dell'accesso online. Se il disservizio permane per almeno 20 (venti) giorni naturali e consecutivi dalla segnalazione, potrà essere applicata una penale proporzionata al valore del singolo abbonamento e ai giorni di indisponibilità, oltre al rimborso della quota non fruita. Resta onere della Commissionaria far valere eventuali ragioni verso editori, aggregatori o piattaforme.
+L’Amministrazione, inoltre, si riserva di applicare le penalità, anche cumulativamente, nei seguenti casi, da intendersi a titolo esemplificativo e non esaustivo:
+e) 1,2% (uno virgola due per cento) dell’ammontare netto contrattuale in caso di reiterata emissione di bolle di consegna/DDT ovvero fatture non conformi a quanto richiesto. Per “reiterata emissione” si intende il ripetersi dell’emissione di 10 bolle e/o fatture prive di uno o più degli elementi fondamentali indicati dall’Ateneo, dopo che questa mancanza sia stata segnalata dal Direttore dell’esecuzione del contratto e dopo che sia stato concesso un tempo congruo per l’adeguamento di detti documenti.
+f) 1% (uno per cento) dell’ammontare netto contrattuale dell’Accordo quadro nel caso di reiterata consegna di fascicoli erroneamente recapitati ad altre strutture.
+g) 1% (uno virgola cinque per cento) dell’ammontare netto contrattuale dell’Accordo quadro nel caso di reiterate inadempienze relative a solleciti per attivazioni online, annate non pervenute e/o non fatturate:
+Per l'applicazione delle penali si procederà alla contestazione scritta dell'inadempimento alla Commissionaria, mediante PEC o altro mezzo idoneo. Entro 3 (tre) giorni dalla ricezione della contestazione, la Commissionaria potrà presentare osservazioni e documentazione giustificativa. Decorso il termine, o valutate le controdeduzioni, il RUP adotterà le determinazioni ritenute opportune.
+L’ammontare delle penalità è addebitato sui crediti del Fornitore nei confronti dell’Ateneo; ovvero tramite emissione di note di credito da parte del Fornitore; ovvero tramite riaccredito diretto in conto corrente ovvero potrà essere detratto dalla cauzione a “garanzia definitiva”.
+10. FORZA MAGGIORE
+Nel caso di sospensione, ritardo o impossibilità temporanea della fornitura determinata da causa di forza maggiore non imputabile, direttamente o indirettamente, alla Commissionaria, e purché tale causa sia comunicata tempestivamente, documentata e gestita con la massima diligenza, non si procederà all'applicazione di penali per il periodo strettamente interessato dall'evento.
+Resta in ogni caso fermo che l'Università non è tenuta a pagare quanto corrisponde al valore della fornitura o del servizio non erogato, né sono dovuti corrispettivi per prestazioni non rese. La Commissionaria dovrà adoperarsi per ridurre gli effetti dell'evento e proporre soluzioni alternative ove disponibili.
+11. PERSONALE ADDETTO E SICUREZZA
+Ogni attività relativa al presente appalto deve essere svolta da personale professionalmente adeguato, qualificato e formato, con mezzi, attrezzature e materiali idonei e nel rispetto delle norme vigenti.
+La Commissionaria deve osservare le norme derivanti dal contratto collettivo nazionale di lavoro applicabile, dalle disposizioni in materia di sicurezza, igiene del lavoro, assicurazione contro infortuni e malattie
+12
+professionali, previdenza, assistenza e ogni altra norma vigente o sopravvenuta a tutela dei lavoratori. L'Università è esplicitamente sollevata da ogni obbligo o responsabilità nei confronti del personale impiegato dalla Commissionaria.
+La Commissionaria dovrà assumere a proprio carico tutti gli oneri per l'osservanza del d.lgs. 9 aprile 2008 , n. 81, formare il proprio personale anche in materia di primo soccorso e antincendio ove necessario, e mantenere aggiornata la documentazione relativa alle posizioni previdenziali e assicurative.
+In considerazione della natura della fornitura senza posa in opera e salvo diversa valutazione del RUP, non sono previsti costi della sicurezza da interferenze non soggetti a ribasso. Qualora in fase esecutiva emergano attività da svolgersi presso sedi universitarie con rischi interferenziali, la Commissionaria dovrà cooperare alla predisposizione o aggiornamento del DUVRI e rispettare le indicazioni dell'Ateneo.
+In caso di inottemperanza agli obblighi in materia di personale, sicurezza o regolarità contributiva, l'Università potrà sospendere i pagamenti, applicare penali, richiedere la regolarizzazione o procedere alla risoluzione nei casi previsti.
+12. SUBAPPALTO
+È ammesso il subappalto purché espressamente autorizzato dall’Università, ai sensi dell’art. 119, comma 4, del d.lgs. 31 marzo 2023, n. 36.
+È nullo l’accordo con cui a terzi sia affidata l’integrale esecuzione delle prestazioni o lavorazioni appaltate, nonché la prevalente esecuzione delle lavorazioni relative alla categoria prevalente e dei contratti ad alta intensità di manodopera, come previsto dal comma 1 dell’art. 119 del d.lgs. 31 marzo 2023, n. 36.
+L’appaltatore provvede a sostituire, previa autorizzazione della stazione appaltante, i subappaltatori relativamente ai quali, all’esito di apposita verifica, sia stata accertata la sussistenza di cause di esclusione di cui al Capo II (I requisiti di ordine generale) del Titolo IV (I requisiti di partecipazione e la selezione dei partecipanti) della Parte V (Dello svolgimento delle procedure) del Libro II (dell’appalto), ai sensi dell’art. 119, comma 10, del d.lgs. 31 marzo 2023, n. 36.
+Il contraente principale e il subappaltatore sono responsabili in solido nei confronti della stazione appaltante per le prestazioni oggetto del contratto di subappalto.
+L’aggiudicatario è responsabile in solido con il subappaltatore per gli obblighi retributivi e contributivi, ai sensi dell’art. 29 d.lgs. 10 settembre 2003, n. 276. Nelle ipotesi di cui al comma 11, lettere a) e c), dell’art. 119 del Codice, l’appaltatore è liberato dalla responsabilità solidale di cui al primo periodo.
+Il subappalto non autorizzato comporta le sanzioni penali ed amministrative previste per legge.
+Per quanto riguarda il pagamento dei subappaltatori si rinvia a quanto previsto dall’art. 119, comma 11 del d.lgs. 31 marzo 2023, n. 36.
+13. DIVIETO DI CESSIONE DEL CONTRATTO
+Non è ammessa la cessione del contratto, in tutto o in parte, a pena di nullità, ai sensi dell’art. 119, comma 1, d.lgs. 31 marzo 2023, n. 36, salvo quanto previsto dall'art. 120, comma 1, lettera d), del d.lgs. 31 marzo 2023, n. 36 e dalle altre disposizioni applicabili in materia di modifiche soggettive dell'operatore economico.
+La Commissionaria dovrà comunicare tempestivamente alla Stazione Appaltante ogni vicenda soggettiva, societaria, organizzativa o contrattuale idonea a incidere sull'esecuzione dell'Accordo Quadro, sui requisiti dichiarati, sulla continuità della fornitura o sui rapporti con editori, distributori e aggregatori.
+13
+14. RISOLUZIONE DEL CONTRATTO
+Si applica l’art. 122 del d.lgs. 31 marzo 2023, n. 36. In particolare, nel caso in cui sia rilevata una situazione di grave inadempimento, l’Amministrazione invierà all’affidatario, a mezzo PEC, diffida ad adempiere o a presentare le proprie controdeduzioni al Responsabile Unico di Progetto/DEC entro il termine di quindici giorni dalla ricezione.
+Se l’affidatario non provvederà all’adempimento nel termine predetto ovvero il Responsabile del Progetto valuti negativamente le controdeduzioni, la Stazione appaltante procederà alla risoluzione di diritto del contratto, ai sensi dell’art. 1454 c.c., fatta salva l’azione per il risarcimento del maggior danno subito, compresa la maggior spesa sostenuta per affidare ad altra impresa il contratto ed ogni altra azione che l’Amministrazione ritenesse opportuno intraprendere a tutela dei propri interessi.
+L’Università ha il diritto di risolvere il contratto ex art. 1456 c.c., mediante semplice PEC, senza bisogno di messa in mora o di intervento dell’Autorità Giudiziaria, nei seguenti casi:
+− emanazione di un provvedimento definitivo che dispone l’applicazione di una o più misure di prevenzione di cui all’art. 6 del d.lgs. 6 settembre 2011, n. 159, ovvero sia intervenuta sentenza di condanna passata in giudicato per i reati di cui al Capo II del Titolo IV della Parte V del Libro II del d.lgs. 31 marzo 2023, n. 36;
+− sentenza di condanna passata in giudicato per frodi nei riguardi della stazione appaltante, di subappaltatori, di fornitori, di lavoratori o di altri soggetti comunque interessati al contratto;
+− violazione degli obblighi attinenti alla sicurezza sul lavoro;
+− fornitura eseguita con personale non regolarmente assunto o contrattualizzato;
+− il mancato utilizzo da parte del Fornitore del conto corrente comunicato per i movimenti finanziari relativi al presente contratto, secondo quanto disposto dall’art. 3, comma 9-bis, della legge n. 136/2010;
+− applicazione delle penali, di cui all’art. 9, in misura superiore al 10%.
+In caso di successivo accertamento del difetto del possesso dei requisiti generali o speciali dichiarati dall’operatore economico, verrà disposta la risoluzione del contratto, l’escussione dell’eventuale garanzia definitiva, la comunicazione all’ANAC e la sospensione dell’operatore economico dalla partecipazione alle procedure di affidamento indette dalla medesima stazione appaltante per un periodo da uno a dodici mesi decorrenti dall’adozione del provvedimento.
+15. RECESSO
+Ai sensi dell'art. 123 del d.lgs. 31 marzo 2023, n. 36, l'Amministrazione potrà recedere in qualunque momento dal contratto, anche se è stata iniziata l'esecuzione della fornitura, tenendo indenne l'Appaltatore delle spese sostenute, delle prestazioni eseguite, oltre al decimo dell'importo della fornitura non eseguita, calcolato secondo quanto previsto dall'Allegato II.14 del medesimo decreto.
+L'esercizio del diritto di recesso è manifestato dalla Stazione Appaltante mediante formale comunicazione scritta all'Appaltatore, con preavviso non inferiore a 20 (venti) giorni, decorsi i quali la Stazione Appaltante prende in consegna la fornitura e verifica la regolarità della medesima.
+Ai sensi dell'art. 1, comma 13, del d.l. n. 95 del 6 luglio 2012, convertito con modificazioni dalla l. n. 135 del 7 agosto 2012, l'Università ha diritto di recedere in qualsiasi tempo dal contratto, previa formale comunicazione all'Appaltatore con preavviso non inferiore a 15 (quindici) giorni e previo pagamento delle
+14
+prestazioni già eseguite, oltre al decimo delle prestazioni non ancora eseguite, qualora, tenuto conto anche dell'importo dovuto per le prestazioni non ancora eseguite, i parametri delle convenzioni stipulate da Consip S.p.A. ai sensi dell'art. 26, comma 1, della l. 423 dicembre 1999, n. 488, successivamente alla stipula del contratto, siano migliorativi e l'Appaltatore non acconsenta a una modifica delle condizioni economiche tale da rispettare il limite di cui all'art. 26, comma 3, della medesima legge.
+16. ESECUZIONE O COMPLETAMENTO DELLA FORNITURA IN CASO DI INSOLVENZA O IMPEDIMENTO
+In caso di liquidazione giudiziale, di liquidazione coatta e concordato preventivo, oppure di risoluzione del contratto ai sensi dell’articolo 122 del d.lgs. 31 marzo 2023, n. 36 o di recesso dal contratto ai sensi dell’articolo 88, comma 4-ter, del codice delle leggi antimafia e delle misure di prevenzione, di cui al decreto legislativo 6 settembre 2011, n. 159, oppure in caso di dichiarazione giudiziale di inefficacia del contratto, la stazione appaltante interpella progressivamente i soggetti che hanno partecipato all’originaria procedura di gara, risultanti dalla relativa graduatoria, per stipulare un nuovo contratto per l’affidamento dell’esecuzione o del completamento dei servizi, se tecnicamente ed economicamente possibile, come previsto dall’art. 124 del d.lgs. 31 marzo 2023, n. 36.
+L’affidamento avviene alle condizioni proposte dall’operatore economico interpellato.
+17. OBBLIGHI A CARICO DELLA COMMISSIONARIA
+La Commissionaria deve:
+− assumere su di sé ogni e qualsiasi responsabilità, sia in sede civile che penale, per danni che dovessero derivare per qualsiasi motivo a persone e/o cose dalle prestazioni inerenti al presente contratto, tenendo sollevata l’Amministrazione da ogni conseguenza diretta o indiretta.
+− erogare la fornitura e i servizi connessi nei tempi, con le modalità e, in generale, in conformità a quanto stabilito nel presente Capitolato. Il contraente non può introdurre varianti ai servizi oggetto del contratto, salvo previo accordo scritto con l’Ente. Ogni contravvenzione a questa disposizione sarà a completa responsabilità dello stesso.
+− predisporre tutti gli strumenti e le metodologie atti a garantire i requisiti ed i livelli di prestazioni indicati nel Capitolato, ivi compresi quelli relativi alla sicurezza.
+− far osservare in modo scrupoloso al personale addetto ai servizi cui gli stessi sono assegnati il rispetto delle modalità di svolgimento della fornitura di cui alla II parte del presente Capitolato.
+− informare gli operatori addetti circa eventuali doveri di riservatezza nell’espletamento della fornitura.
+− ottemperare a tutti gli obblighi verso i propri dipendenti derivanti da disposizioni legislative e regolamentari vigenti in materia di contratti di lavoro ed eventuali integrativi, ivi compresi quelli in tema di igiene e sicurezza sui luoghi di lavoro, tutela dei lavoratori, nonché previdenza, assistenza e disciplina infortunistica, assumendo a proprio carico tutti i relativi oneri.
+− applicare la normativa in materia di tutela della salute e della sicurezza nei luoghi di lavoro di cui al d.lgs. 9 aprile 2008 , n. 81 e preventivamente formare il proprio personale anche in materia di primo soccorso aziendale e di lotta antincendi.
+L’inosservanza degli obblighi previsti dal presente articolo è causa di risoluzione del contratto a insindacabile giudizio dell’Amministrazione e fa sorgere il diritto per l’Ente al risarcimento di ogni conseguente maggiore danno.
+15
+18. GARANZIA PER EVIZIONE E VIZI
+Nel caso in cui i prodotti forniti risultino non corrispondenti all'ordine, non idonei all'uso, danneggiati, incompleti o difettosi, l'Università potrà contestare formalmente le anomalie. La Commissionaria dovrà provvedere al ritiro e alla sostituzione a propria cura e spese entro 20 (venti) giorni dalla contestazione, salvo termini più brevi necessari a preservare i diritti di reclamo verso l'editore.
+La Commissionaria garantisce che i periodici, i fascicoli, gli accessi elettronici e i servizi connessi siano conformi agli ordini, ai listini editoriali, alle licenze d'uso accettate, al presente Capitolato e alla documentazione di gara. Sono a carico della Commissionaria la sostituzione, il reintegro o il rimborso di materiale difettoso, danneggiato, incompleto, errato, non ordinato o non conforme.
+La Commissionaria garantisce l'Università contro pretese di terzi derivanti da evizione, violazione di diritti editoriali, licenze, diritti d'autore o diritti di proprietà intellettuale, per fatti imputabili alla Commissionaria o ai soggetti dei quali essa si avvale. Resta fermo l'obbligo della Commissionaria di manlevare e tenere indenne l'Università da conseguenze, costi, danni o pretese derivanti da tali violazioni.
+19. GARANZIA DEFINITIVA
+Prima della stipula dell’Accordo Quadro l’Appaltatore dovrà prestare una cauzione definitiva a garanzia dell’adempimento di tutte le obbligazioni del contratto e del risarcimento di danni derivati dall’eventuale inadempimento delle obbligazioni stesse, nonché per il rimborso delle somme pagate in più all’esecutore rispetto alle risultanze della liquidazione finale, salva comunque la risarcibilità del maggior danno verso l’appaltatore.
+La cauzione definitiva è stabilita in ragione del 2% (due per cento) dell’importo contrattuale. La garanzia cessa di avere effetto solo alla data di emissione del certificato di verifica di conformità.
+La stazione appaltante può richiedere all’aggiudicatario la reintegrazione della garanzia ove questa sia venuta meno in tutto o in parte; in caso di inottemperanza, la reintegrazione si effettua a valere sui ratei di prezzo da corrispondere.
+La garanzia copre l’intera durata dell’Accordo Quadro e l’esecuzione di tutti gli ordinativi o contratti attuativi emessi in sua esecuzione, senza necessità di costituzione di ulteriori garanzie definitive per i singoli ordinativi, salvo diversa motivata richiesta della Stazione Appaltante nei casi consentiti dalla normativa vigente.
+La cauzione definitiva dovrà essere prestata sotto forma di cauzione o fideiussione con le modalità previste dall’articolo 106 del d.lgs. 31 marzo 2023, n. 36.
+Lo svincolo della cauzione è automatico, senza necessità di nulla osta del committente, con la sola condizione della preventiva consegna all’istituto garante, da parte dell’appaltatore, del documento in originale o in copia autentica, attestante l’avvenuta esecuzione e, comunque, non prima dell’emissione del certificato di regolare esecuzione della fornitura.
+La mancata costituzione della garanzia definitiva determina la decadenza dell’affidamento e l’acquisizione della garanzia provvisoria presentata in sede di offerta da parte della stazione appaltante, che aggiudica l’appalto al concorrente che segue nella graduatoria, ai sensi dell’art. 117, comma 6, del d.lgs. 31 marzo 2023, n. 36.
+16
+20. VERIFICA DI CONFORMITÀ
+La Commissionaria dovrà eseguire la fornitura con la diligenza professionale richiesta dalla natura delle prestazioni, nel rispetto dei tempi, delle modalità, dei livelli qualitativi e degli obblighi informativi previsti dal presente Capitolato e dagli ordinativi.
+Il RUP, il DEC ove nominato, e l'Unità Ordinante possono effettuare controlli in ogni momento sulla regolare esecuzione, richiedere chiarimenti, documentazione, report, evidenze di ordine agli editori, prove di consegna, prove di attivazione, licenze, statistiche e ogni ulteriore elemento necessario.
+Il contratto è soggetto a verifica di conformità ai sensi dell'art. 116 del d.lgs. 31 marzo 2023, n. 36 e dell'Allegato II.14, ove applicabili, al fine di certificare il rispetto delle caratteristiche tecniche, economiche e qualitative delle prestazioni, nonché degli obiettivi e dei tempi contrattuali.
+La verifica finale dovrà tenere conto, in particolare, della completezza delle annate, della chiusura dei reclami, dell'attivazione e continuità degli accessi elettronici, della regolarità della reportistica, della correttezza della fatturazione e dell'emissione di eventuali note di credito o rimborsi.
+La verifica di conformità deve essere completata entro 6 mesi dall'ultimazione delle prestazioni.
+Eventuali omissioni o ritardi nella richiesta di adempimento da parte dell'Università non costituiscono rinuncia ai diritti spettanti, che potranno essere fatti valere nei limiti di legge.
+21. TUTELA DELLA PRIVACY E TRATTAMENTO DEI DATI
+Nell’ambito dei loro rapporti contrattuali, le parti si impegnano a improntare il trattamento dei dati a principi di correttezza, liceità e trasparenza, nel pieno rispetto di quanto definito dai regolamenti in vigore applicabili al trattamento dei dati personali e, in particolare, il Regolamento (UE) 2016/679 del Parlamento europeo e del Consiglio, del 27 aprile 2016, applicabile dal 25 maggio 2018, di seguito “Regolamento europeo sulla protezione dei dati”, e normativa nazionale di riferimento laddove applicabile.
+Il Titolare del trattamento dei dati personali delle persone fisiche, c.d. interessati, effettuato nell’espletamento delle procedure di appalto e della successiva fase di stipula del contratto, è l’Università degli Studi di Macerata, con sede legale in Macerata, Via Crescimbeni, n. 30-32, nella persona del Magnifico Rettore. L’Ateneo ha nominato il Responsabile della protezione dei dati contattabile a questi riferimenti: dpo@unimc.it. L’Università tratta i dati ad essa forniti esclusivamente per la gestione dell’appalto e per la sua esecuzione – base giuridica art. 6, comma 1, lett. b) del Regolamento 2016/679, per l’adempimento degli obblighi legali ad esso connessi cui è soggetto il titolare del trattamento – base giuridica art. 6, comma 1, lett. c) del Regolamento 2016/679.
+I dati personali potranno essere trattati da dipendenti o collaboratori del Titolare che, operando sotto la diretta autorità di quest’ultimo, sono autorizzati al trattamento e ricevono al riguardo adeguata formazione ed istruzioni operative, ai sensi dell’art. 29 del Regolamento (UE) 2016/679, da soggetti che, operando per conto del Titolare, garantiscono l’adozione di misure tecniche ed organizzative adeguate in forza di un contratto o di altro atto giuridico vincolante ai sensi dell’art. 28 del Regolamento (UE) 2016/679, o da titolari autonomi cui saranno comunicati i dati solo per il raggiungimento delle suddette finalità.
+I dati raccolti saranno conservati per i tempi stabiliti dalla normativa vigente o dai regolamenti d’Ateneo, anche per gestire eventuali contenziosi.
+Il conferimento dei dati è obbligatorio; pertanto, l’eventuale rifiuto a fornirli comporta l’impossibilità di ammettere l’Impresa alla procedura di gara.
+17
+L’interessato ha diritto di ottenere l’accesso ai dati personali e la loro rettifica. L’interessato, ove previsto dalla normativa, ha diritto di ottenere la cancellazione degli stessi o la limitazione del trattamento che lo riguardano o di opporsi al loro trattamento. L’interessato ha il diritto alla portabilità dei dati effettuati con mezzi automatizzati. Non vi sono trattamenti che si basano sul consenso dell’interessato; laddove vi fossero, l’interessato avrebbe diritto a revocarlo in qualsiasi momento, fatta salva la liceità del trattamento basato sul consenso successivamente revocato.
+Infine, l’interessato ha il diritto di proporre reclamo all’autorità di controllo – Garante per la protezione dei dati personali – e di agire per ottenere il risarcimento dell’eventuale danno subito nei confronti del titolare o del responsabile. Per l’esercizio di tali diritti l’interessato potrà rivolgersi via PEC ateneo@pec.unimc.it al titolare del trattamento.
+22. CONTROVERSIE E FORO COMPETENTE
+Qualunque contestazione dovesse sorgere nel corso dell'esecuzione del contratto non attribuisce alla Commissionaria il diritto di sospendere unilateralmente la fornitura, ridurre le prestazioni, modificare gli abbonamenti o trattenere documentazione, accessi, report, fascicoli o dati.
+La definizione delle controversie derivanti dall'esecuzione del contratto è devoluta all'autorità giudiziaria competente presso il Foro di Macerata, salvo diversa previsione inderogabile di legge. È esclusa la competenza arbitrale e il contratto non conterrà clausola compromissoria, salvo diversa determinazione della Stazione Appaltante nei limiti di legge.
+Per tutto quanto non espressamente previsto dal presente Capitolato si rinvia al d.lgs. 31 marzo 2023, n. 36, agli atti di gara, al Codice civile, alla normativa in materia di contabilità pubblica, tracciabilità finanziaria, protezione dei dati personali, diritto d'autore, sicurezza sul lavoro e alle altre disposizioni vigenti applicabili.
+PARTE II - CARATTERISTICHE DELLE FORNITURE
+23. DESCRIZIONE DELLE FORNITURE
+La fornitura comprende, a titolo esemplificativo e non esaustivo: abbonamenti print, print + free online, print + online, online only, pacchetti editoriali, banche dati seriali, eventuali CD-ROM o supporti equivalenti, accessi tramite piattaforme editoriali o aggregatori, supplementi e numeri speciali compresi nel canone ordinario, nonché ogni altro formato o modello economico proposto dagli editori e accettato dall'Unità Ordinante.
+I contratti di abbonamento dovranno comprendere tutti i fascicoli, numeri, volumi, supplementi, numeri speciali, numeri monografici, allegati, omaggi, accessi online e servizi inclusi nel canone ordinario di abbonamento, salvo diversa indicazione dell'editore documentata e preventivamente comunicata.
+La Commissionaria deve operare con propria organizzazione di mezzi e personale, con gestione a proprio rischio, secondo le condizioni del presente Capitolato, degli atti di gara e degli ordinativi. Tutti gli obblighi e oneri necessari all'espletamento della fornitura e dei servizi connessi sono a completo carico della Commissionaria.
+In fase di rinnovo e per tutta la durata contrattuale, eventuali mutamenti editoriali delle testate, con particolare riferimento ad assorbimenti, fusioni, cessazioni, scissioni, passaggi di editore, passaggi a formato elettronico, cambi di modello economico, tier o condizioni di licenza, dovranno essere comunicati tempestivamente all'Unità Ordinante, che potrà decidere di non procedere al rinnovo o di modificare l'ordine.
+18
+23.1 Periodici in formato Print e Print+online
+I periodici cartacei dovranno essere fatti pervenire all'indirizzo dell'Unità Ordinante o delle Biblioteche destinatarie indicato nell'ordine. La sottoscrizione degli abbonamenti, su richiesta dell'Unità Ordinante, dovrà essere documentata mediante conferma dell'editore, ricevuta d'ordine, customer number, documento di spedizione o evidenza equivalente.
+Nel caso di abbonamenti cartacei con versione elettronica inclusa o richiesta, la Commissionaria dovrà provvedere contestualmente all'attivazione dell'accesso presso il sito dell'editore o la piattaforma indicata, gestendo la corrispondenza con l'editore e inoltrando all'Unità Ordinante tutte le informazioni relative a piattaforma, licenza, modalità di accesso, IP, codici, credenziali amministrative, URL e statistiche d'uso.
+La Commissionaria dovrà attivare, previa verifica e comunicazione all'Unità Ordinante, anche le versioni online gratuite dei periodici cartacei, ove disponibili o rese disponibili nel corso del contratto. Qualora mutino le condizioni di accesso alla versione elettronica gratuita, la Commissionaria dovrà darne immediata comunicazione documentata.
+Per le versioni elettroniche a pagamento collegate a periodici cartacei, la Commissionaria dovrà reperire e comunicare tutte le informazioni necessarie e procedere all'attivazione solo su richiesta e previa approvazione dell'Unità Ordinante.
+23.2 Periodici in formato e-only
+Per i periodici esclusivamente elettronici, la Commissionaria dovrà provvedere all'attivazione direttamente presso il sito dell'editore, dell'aggregatore o della piattaforma, gestendo la corrispondenza anche in merito a eventuali problematiche, in tempo utile a garantire l'accesso dalla data di pubblicazione del primo fascicolo o dalla decorrenza dell'annata di riferimento.
+Qualora l'editore non consenta ad alcun intermediario di completare l'attivazione, la Commissionaria dovrà comunicarlo tempestivamente all'Unità Ordinante e trasmettere istruzioni, credenziali, codici, modalità di registrazione, customer number e ogni informazione ricevuta dall'editore, garantendo pronta assistenza durante la procedura di attivazione.
+L'accesso ai periodici elettronici deve avvenire, di norma, tramite riconoscimento IP con abilitazione del dominio istituzionale dell'Ateneo, salvo diversa modalità accettata dall'Unità Ordinante. La Commissionaria dovrà comunicare agli editori gli indirizzi IP forniti dall'Ateneo e curarne l'aggiornamento in caso di modifiche.
+Qualora l'editore preveda piattaforme alternative o aggregatori per l'accesso, la Commissionaria dovrà darne comunicazione all'Unità Ordinante, che si riserva di scegliere la piattaforma o di non attivare l'abbonamento qualora la soluzione non sia ritenuta idonea.
+La Commissionaria si impegna a garantire la continuità dell'accesso alle versioni elettroniche per tutta la durata dell'abbonamento e, ove previsto, anche in relazione ad annate pregresse già sottoscritte dall'Università. Ogni sospensione, restrizione o perdita di accesso dovrà essere oggetto di immediato reclamo all'editore e di comunicazione all'Unità Ordinante.
+Entro 20 (venti) giorni dalla data di attivazione di ciascun abbonamento elettronico, incluso l'accesso online compreso in un abbonamento cartaceo, la Commissionaria dovrà trasmettere all'Unità Ordinante, ove disponibili:
+− copia della licenza d'uso e delle condizioni poste dall'editore;
+− codici di attivazione, credenziali amministrative, customer number e istruzioni operative;
+− URL del titolo, piattaforma di accesso, modalità di autenticazione e intervallo di copertura;
+− elenco dei codici, credenziali o istruzioni per ricavare le statistiche d'uso;
+− indicazione degli IP autorizzati e delle eventuali limitazioni di accesso;
+19
+− data di attivazione e conferma del buon esito dell'accesso.
+23.3 Licenze d'uso e condizioni editoriali
+Le licenze d'uso dei periodici elettronici dovranno essere trasmesse all'Unità Ordinante prima della sottoscrizione o attivazione quando richiedano accettazione dell'Università, e comunque entro i termini previsti dal presente Capitolato. La Commissionaria dovrà evidenziare clausole restrittive, limitazioni di accesso, divieti di uso didattico, data mining, ILL, accesso remoto, walk-in users, perpetual access, post-cancellation access, archiviazione, text and data mining o ogni altra condizione rilevante.
+È vietata l'accettazione da parte della Commissionaria, per conto dell'Università, di condizioni di licenza che comportino oneri, limitazioni o responsabilità ulteriori rispetto a quelle preventivamente approvate dall'Unità Ordinante.
+L'Unità Ordinante si riserva di non autorizzare o non rinnovare abbonamenti le cui condizioni di licenza non siano compatibili con le esigenze istituzionali, didattiche e di ricerca dell'Ateneo o con la normativa applicabile.
+24. INFRASTRUTTURA E SERVIZI TECNOLOGICI: PORTALE BIBLIOGRAFICO-AMMINISTRATIVO E EDI
+La Commissionaria dovrà mettere a disposizione dell'Unità Ordinante, senza oneri aggiuntivi, un sito web o portale costantemente aggiornato, contenente informazioni bibliografiche, editoriali, amministrative e gestionali relative agli abbonamenti.
+Il portale dovrà consentire almeno:
+− ricerca dei dati bibliografici per titolo, ISSN, editore, periodicità, formato, annata, ordine, biblioteca destinataria e stato dell'abbonamento;
+− visualizzazione, esportazione e download dei dati bibliografici in formati leggibili dai principali fogli di calcolo;
+− accesso a informazioni aggiuntive per ciascun titolo, quali classificazione, subject, link al sito editoriale, supporto, piattaforma e condizioni di disponibilità;
+− gestione di preventivi, ordini e loro stato di avanzamento;
+− visualizzazione dello stato di attivazione degli accessi online e dello stato delle consegne dei fascicoli;
+− inserimento, ricerca, monitoraggio ed estrazione dei solleciti e reclami, con indicazione di date, esiti e risposte degli editori;
+− visualizzazione dello stato di fatture, note di credito, pagamenti e documenti contabili;
+− disponibilità di elenchi delle risorse elettroniche sottoscritte, con stato di attivazione, URL, copertura e link ai contenuti online;
+− accesso alla reportistica prevista dal presente Capitolato.
+25. SERVIZI RICHIESTI PER TUTTI GLI ABBONAMENTI
+La Commissionaria si impegna a erogare obbligatoriamente, in favore dell'Università degli Studi di Macerata, i seguenti servizi minimi essenziali e i relativi servizi accessori alla fornitura, senza oneri aggiuntivi salvo diversa previsione degli atti di gara o dell'offerta accettata.
+25.1 Assistenza cliente
+La Commissionaria dovrà garantire un referente della fornitura, in grado di parlare e scrivere correttamente in lingua italiana, a conoscenza delle regole contrattuali e munito dei necessari poteri per l'esecuzione della
+20
+fornitura. Le comunicazioni potranno avvenire via e-mail, telefono, sistemi di messaggistica istantanea o portale, e, per le comunicazioni formali, via PEC.
+La Commissionaria dovrà fornire conferma di ricezione e risposta scritta entro 5 (cinque) giorni lavorativi da richieste, segnalazioni o comunicazioni diverse dai reclami urgenti.
+25.2 Preventivi
+In fase di avvio della fornitura la Commissionaria dovrà restituire all'Unità Ordinante un preventivo dettagliato entro 20 (venti) giorni naturali e consecutivi dal ricevimento delle liste di titoli richiesti, o entro il minor termine eventualmente necessario a garantire il tempestivo rinnovo e l'assenza di interruzioni della fornitura.
+Per gli anni successivi, ai fini della corretta gestione dei rinnovi, la Commissionaria dovrà far pervenire all'Unità Ordinante entro il 15 ottobre, o il giorno lavorativo immediatamente successivo se festivo o prefestivo, le nuove quotazioni degli abbonamenti in essere. I preventivi dovranno indicare espressamente se il prezzo è fissato dall'editore o stimato; in caso di stima dovrà essere indicato il metodo utilizzato.
+I preventivi per nuovi abbonamenti, arretrati, back file, pacchetti o variazioni di formato dovranno essere forniti entro 15 (quindici) giorni naturali e consecutivi dalla richiesta, salvo urgenze motivate dall'Unità Ordinante. Se il preventivo è richiesto attraverso il portale gestionale del Fornitore, il sistema dovrà consentire la produzione immediata o, in caso di indisponibilità, indicare chiaramente lo stato della richiesta.
+Ogni preventivo dovrà indicare almeno: titolo, ISSN, editore, formato, annata o volume, periodicità, prezzo di listino per l'Italia o per il dominio dell'Ateneo, prezzo in valuta originale ed euro, cambio applicato, commissione o sconto, eventuale prezzo di pacchetto, eventuali supplementi inclusi, condizioni di licenza, piattaforma, modalità di accesso, tempi di attivazione e note su variazioni editoriali o di modello economico.
+25.3 Ordini
+Gli ordini potranno essere trasmessi in formato elettronico mediante e-mail, file in formati leggibili dai principali fogli di calcolo, portale del Fornitore, sistemi gestionali bibliotecari o amministrativi, eventuale EDI, o altra modalità concordata con l'Unità Ordinante.
+La Commissionaria dovrà confermare la ricezione degli ordini entro 3 (tre) giorni lavorativi, indicando eventuali anomalie, indisponibilità o informazioni mancanti. In assenza di tempestiva contestazione, l'ordine si intende ricevuto e preso in carico.
+La Commissionaria dovrà inoltrare gli ordini agli editori o distributori entro 20 (venti) giorni lavorativi dal ricevimento dell'ordine dell'Unità Ordinante, e comunque in tempo utile a garantire l'attivazione o il rinnovo degli abbonamenti senza ritardi o disguidi. Per gli abbonamenti cartacei, la Commissionaria si impegna ad attivare i rinnovi entro il 31 dicembre di ogni anno, salvo diversa tempistica editoriale o ordine ricevuto successivamente.
+La Commissionaria non può procedere alla sottoscrizione di titoli, pacchetti, servizi, supplementi o variazioni onerose non espressamente approvati dall'Unità Ordinante.
+La Commissionaria è tenuta a segnalare contestualmente al preventivo gli abbonamenti la cui decorrenza non coincida con l'anno solare, gli abbonamenti attivabili solo dopo pagamento, i titoli irregolari, i titoli in ritardo di pubblicazione, gli standing order e ogni altra situazione che possa incidere su tempi, fatturazione o completezza della fornitura.
+Nel caso di lacune, ritardi o mancata fornitura imputabili a negligenza della Commissionaria, la stessa dovrà garantire a proprie spese il recupero del materiale non consegnato, preferibilmente in originale e solo in via subordinata in copia, nel rispetto della normativa sul diritto d'autore.
+21
+25.4 Fatturazione EDI e interoperabilità
+La Commissionaria dovrà collaborare, senza oneri aggiuntivi, all'attivazione di eventuali procedure EDI o forme di interoperabilità con i sistemi gestionali bibliotecari e amministrativi dell'Ateneo, ove tecnicamente disponibili e compatibili con le esigenze dell'Unità Ordinante.
+25.5 Servizio informazioni
+Il Fornitore dovrà provvedere all’invio tempestivo di informazioni, in formato elettronico leggibile dai più comuni fogli di calcolo, relative a:
+− gli abbonamenti sottoscritti, periodicità, numero di riferimento, dati di pubblicazione necessari a conseguire un indispensabile supporto per la gestione del servizio;
+− segnalazione della pubblicazione di documenti, supplementi, numeri speciali o monografici, non compresi nel canone di abbonamento ordinario; le Biblioteche decideranno se emettere eventualmente i relativi ordini di acquisto;
+− cambi titolo, periodicità ed editore, ritardi o sospensione nella pubblicazione, fusioni, scissioni o cessazioni;
+− eventuali mutamenti delle condizioni di accesso alle versioni elettroniche attivate su richiesta dell’Ateneo;
+− comunicazioni sull’esistenza delle versioni elettroniche gratuite dei periodici in abbonamento;
+− i modelli economici e contrattuali di accesso alla versione online dei periodici in abbonamento e la loro eventuale variazione nel tempo.
+25.6 Servizio reclami
+Per il servizio diretto, la Commissionaria dovrà inoltrare agli editori i solleciti dei fascicoli in ritardo o non pervenuti entro 5 (cinque) giorni lavorativi dalla comunicazione del reclamo da parte dell'Unità Ordinante, salvo obbligo di rispettare termini editoriali più brevi. Per il servizio consolidato, la Commissionaria dovrà procedere direttamente ai reclami automatici entro i termini utili stabiliti dagli editori e rendicontarne lo stato.
+La Commissionaria dovrà fornire riscontro scritto dell'esito dei reclami, indicare la data di sollecito all'editore, l'eventuale risposta, la data presunta o effettiva di spedizione del fascicolo sostitutivo e le ulteriori azioni intraprese. All'inizio della fornitura e in caso di variazioni dovrà comunicare i tempi minimi e massimi di reclamo accettati dagli editori per ciascun titolo.
+In caso di interruzione, sospensione, malfunzionamento o limitazione dell'accesso online, la Commissionaria dovrà sollecitare l'editore, aggregatore o gestore della piattaforma entro 3 (tre) giorni lavorativi dalla comunicazione del reclamo e aggiornare l'Unità Ordinante sino al completo ripristino del servizio.
+Qualora il disservizio permanga per un periodo pari o superiore a 20 (venti) giorni naturali e consecutivi dalla segnalazione, per qualsiasi inadempienza anche imputabile a editori, aggregatori o soggetti terzi, e sia impossibile assicurare una fornitura completa e regolare, la Commissionaria è tenuta alla restituzione proporzionale delle somme fatturate. Per abbonamenti online only il rimborso è calcolato in base ai giorni di mancato servizio; per abbonamenti combinati carta + online il rimborso proporzionale è calcolato, salvo diversa evidenza, sul 50% del prezzo addebitato in fattura.
+25.7 Reportistica
+La reportistica dovrà essere fornita o resa scaricabile dal portale della Commissionaria in formato elettronico leggibile dai principali fogli di calcolo, con dati ordinati, completi, aggiornati, incrementali e riconciliabili con ordini, fatture, note di credito e reclami.
+La Commissionaria dovrà produrre almeno i seguenti report:
+22
+a) Report di conferma d'ordine, successivamente all'inoltro degli ordini agli editori e prima della fatturazione, contenente l'elenco completo dei periodici sottoscritti, con numero d'ordine, titolo, ISSN, editore, formato, annata, periodicità, fascicoli attesi, nazione di edizione, prezzo di listino in valuta, corrispettivo in euro, commissione o sconto, data di ordine all'editore, servizi aggiuntivi e stato dell'attivazione.
+b) Report in corso di fornitura per abbonamenti print, con stato ordini, fascicoli attesi e ricevuti, fascicoli mancanti, reclami effettuati, risposte degli editori, fatture, note di credito, importi e date rilevanti.
+c) Report in corso di fornitura per abbonamenti online, con titolo, ISSN, editore, piattaforma, customer number, URL, modalità di accesso, data di attivazione, copertura, stato del servizio, reclami, risposte dell'editore, fatture, note di credito e importi.
+d) Report sui reclami print, almeno trimestrale, con dati per ogni titolo, fascicoli reclamati, data del sollecito, risposta dell'editore, stato della procedura e data di eventuale consegna.
+e) Report sui reclami online, almeno mensile su richiesta dell'Unità Ordinante, con data del reclamo, data del sollecito, risposta, azioni intraprese e data di ripristino.
+f) Report annuale al RUP, con importi fatturati per anno, lotto, biblioteca destinataria, formato, editore e tipologia di servizio, nonché elenco di rimborsi, note di credito, penali e reclami pendenti.
+Su richiesta dell'Unità Ordinante, la Commissionaria dovrà fornire report ad hoc su titoli non attivati, titoli cessati, variazioni di prezzo, pacchetti editoriali, condizioni di accesso, licenze, statistiche, arretrati, supplementi e ogni dato necessario al controllo della fornitura.
+26. SERVIZI RICHIESTI PER ABBONAMENTI PRINT
+26.1 Consegna
+La Commissionaria è responsabile della corretta consegna sino al ricevimento del materiale presso l'indirizzo indicato nell'ordine. Eventuali costi di giacenza, riconsegna, reindirizzamento, ritiro di materiale non ordinato o sostituzione di materiale danneggiato sono a carico della Commissionaria, salvo causa imputabile esclusivamente all'Università.
+L'Unità Ordinante potrà richiedere prova dell'avvenuta spedizione o consegna mediante tracciamento del corriere, distinta di spedizione, documento di trasporto o evidenza equivalente.
+26. 2 Sostituzione gratuita
+La Commissionaria si obbliga a garantire, curando gli adempimenti necessari e a proprie spese, la tempestiva sostituzione dei fascicoli pervenuti all’indirizzo dell’Unità Ordinante con difetti di stampa o danneggiati, anche per motivi legati alle modalità utilizzate per la consegna.
+26.3 Merce non pervenuta o fornitura non erogata
+La Commissionaria dovrà garantire, in favore dell’Unità Ordinante, la fornitura gratuita dei fascicoli pubblicati e normalmente distribuiti che non siano giunti a destinazione per qualsiasi motivo; tali fascicoli dovranno essere garantiti, dunque consegnati all’Unità Ordinante, in originale. Qualora non sia possibile reperire gli originali della merce non consegnata, dovrà essere in ogni caso garantita la consegna dei fascicoli in copia. Il recupero dei fascicoli non consegnati dovrà avvenire anche nel caso in cui non fossero stati rispettati da parte dell’Unità Ordinante i tempi di sollecito fissati dagli editori, qualora questi non siano stati debitamente comunicati da parte della Commissionaria, come previsto al precedente punto a). Nel caso di fornitura del fascicolo in copia e nel formato da concordare con l’Unità Ordinante, la Commissionaria si obbliga ad assolvere tutti gli adempimenti legati al rispetto della normativa sul diritto d'autore, sollevando l’Ateno da qualsiasi responsabilità a tale riguardo.
+23
+Al termine di ciascun anno di fornitura, accertata dalla Commissione di verifica delle prestazioni l’impossibilità per l’Unità Ordinante di conseguire una fornitura completa e regolare, la Commissionaria è obbligata a emettere in favore della stessa, entro e non oltre 3 (tre) mesi dalla richiesta inoltrata dal RUP, nota di credito o rimborso diretto in conto corrente per l’importo corrispondente al corrispettivo di tutti i fascicoli regolarmente sollecitati ma non consegnati.
+26.4 Abbonamenti con decorrenza anomala
+La Commissionaria è tenuta a segnalare all’Unità Ordinante, contestualmente al preventivo, gli abbonamenti la cui decorrenza non coincida con l’inizio dell’anno solare, ma inizi in qualunque periodo dell’anno solo successivamente al pagamento. La Commissionaria si impegna a inoltrare l’ordine, effettuare il pagamento e comunque compiere tempestivamente tutte le procedure necessarie al fine di garantire l’integrità e la continuità della fornitura.
+26.5 Servizio consolidato
+È richiesto alla Commissionaria di presentare specifica offerta per il servizio accessorio di consolidamento, eventualmente attivabile dall'Unità Ordinante in relazione a tutti o ad alcuni titoli.
+Il consolidamento comprende almeno: ricevimento dei fascicoli presso la Commissionaria; controllo di continuità e completezza; registrazione dei fascicoli ricevuti; controllo di difetti, duplicazioni o consegne errate; reclamo automatico dei fascicoli non pervenuti nei termini editoriali; rendicontazione dello stato dei solleciti; predisposizione di lista analitica di accompagnamento; imballaggio idoneo; spedizione con cadenza settimanale tramite corriere tracciabile o con diversa cadenza concordata; consegna all'indirizzo indicato dall'Unità Ordinante.
+Resta a carico della Commissionaria il rispetto dei tempi di sollecito previsti dagli editori e ogni azione utile a garantire una fornitura completa e regolare.
+26.6 Servizio diretto
+Il servizio diretto consiste nell'invio dei fascicoli dei periodici in abbonamento presso le sedi indicate dall'Unità Ordinante, franco trasporto e imballo compreso. Qualora l'editore consenta la scelta tra posta ordinaria, posta aerea, corriere o altra modalità, la Commissionaria dovrà informare l'Unità Ordinante mediante preventivo e attendere la scelta prima di sottoscrivere l'abbonamento.
+26.7 Intrastat, sdoganamento, servizi bancari
+Qualora ricorrano le condizioni di legge, la Commissionaria, senza addebito a carico dell'Università, dovrà assolvere le pratiche Intrastat per i periodici editi in Paesi dell'Unione europea e ogni adempimento relativo allo sdoganamento dei periodici cartacei extra UE, in nome proprio o in nome e per conto dell'Unità Ordinante, secondo la modalità richiesta dalla normativa e dagli uffici competenti.
+Qualora le pratiche debbano essere effettuate dall'Unità Ordinante, la Commissionaria dovrà fornire tempestivamente i dati e la documentazione necessari, nonché l'originale della documentazione di sdoganamento, entro termini utili e comunque entro la fine dell'anno solare di fornitura. La Commissionaria dovrà indicare per i pagamenti un conto corrente presso banca italiana o comunque idoneo a garantire tracciabilità e assenza di oneri aggiuntivi per l'Ateneo.
+27. SERVIZI ACCESSORI
+27.1 Servizio arretrati
+La Commissionaria dovrà fornire, su richiesta dell'Unità Ordinante, informazioni circa reperibilità e costo di fascicoli o intere annate arretrate, back file, completamenti di collezione, supplementi, numeri speciali,
+24
+numeri monografici e materiali bibliografici o documentali a carattere periodico, in formato cartaceo, digitale o online.
+Se disponibili e specificamente ordinati, tali materiali dovranno essere forniti al prezzo di listino o catalogo pubblicato. Qualora non sia disponibile un prezzo di listino, saranno forniti al prezzo praticato dall'editore o distributore, con applicazione delle condizioni di commissione o sconto previste per analogo formato, salvo diversa indicazione degli atti di gara o del preventivo approvato.
+La Commissionaria dovrà informare l'Unità Ordinante quando supplementi, numeri speciali o monografici non siano compresi nel canone ordinario. L'Unità Ordinante deciderà caso per caso se procedere all'ordine, senza obbligo di acquisto.
+27.2 Statistiche periodici elettronici
+La Commissionaria si impegna a trasmettere all'Unità Ordinante, entro il 15 febbraio di ogni anno a partire dal secondo anno di fornitura, il report riassuntivo delle statistiche d'uso relative agli abbonamenti in formato elettronico, secondo lo standard COUNTER ove disponibile.
+Qualora l'editore non consenta ad alcun intermediario di recuperare le statistiche d'uso, la Commissionaria dovrà comunicarlo e trasmettere istruzioni e informazioni necessarie affinché l'Unità Ordinante possa procedere direttamente.
+27.3 Fornitura di materiale bibliografico o documentale a carattere periodico
+Su richiesta dell'Unità Ordinante, la Commissionaria dovrà fornire o reperire materiale bibliografico o documentale a carattere periodico in qualsiasi formato, incluse pubblicazioni seriali, fascicoli singoli, annate, supplementi, numeri speciali, numeri monografici, back file, archivi elettronici, banche dati seriali o altre risorse editoriali riconducibili all'oggetto dell'Accordo Quadro. La fornitura avverrà alle condizioni economiche applicabili al formato e al lotto di riferimento, previa presentazione di preventivo e specifico ordinativo dell'Unità Ordinante.
