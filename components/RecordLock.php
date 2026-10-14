@@ -4,6 +4,8 @@ namespace app\components;
 
 use app\models\DashRecordLock;
 use Yii;
+use yii\db\Expression;
+use yii\db\Query;
 
 /**
  * Gestione dei blocchi temporanei "record in uso" tra utenti.
@@ -11,6 +13,10 @@ use Yii;
  * Il blocco e' identificato dalla coppia (tabella, id_record) e registra
  * l'utente che sta modificando il record e la scadenza. Alla scadenza il
  * blocco decade automaticamente e il record torna disponibile.
+ *
+ * NOTA: le date vengono gestite interamente lato SQL Server
+ * (GETDATE / DATEADD) e mai come stringhe PHP, per essere indipendenti
+ * dal DATEFORMAT della connessione (che su questo server e' italiano/dmy).
  */
 class RecordLock
 {
@@ -43,36 +49,26 @@ class RecordLock
     }
 
     /**
-     * Verifica se un blocco e' scaduto.
-     */
-    public static function isExpired($lock, $now = null)
-    {
-        $now = $now === null ? time() : $now;
-        $scadenza = strtotime((string) $lock->scadenza);
-        return $scadenza === false || $scadenza <= $now;
-    }
-
-    /**
      * True se il record e' bloccato da un utente diverso da quello corrente.
      */
     public static function isHeldByOther($tabella, $idRecord)
     {
-        $lock = static::find($tabella, $idRecord);
-        return $lock !== null
-            && $lock->utente !== static::currentUser()
-            && !static::isExpired($lock);
+        $holder = static::holder($tabella, $idRecord);
+        return $holder !== null && $holder !== static::currentUser();
     }
 
     /**
      * Username dell'utente che detiene un blocco attivo (o null se libero/scaduto).
+     * La scadenza e' valutata dalla stessa query con GETDATE().
      */
     public static function holder($tabella, $idRecord)
     {
-        $lock = static::find($tabella, $idRecord);
-        if ($lock === null || static::isExpired($lock)) {
-            return null;
-        }
-        return $lock->utente;
+        return (new Query())
+            ->select(['utente'])
+            ->from('{{%dash_record_lock}}')
+            ->where(['tabella' => (string) $tabella, 'id_record' => (string) $idRecord])
+            ->andWhere(['>', 'scadenza', new Expression('GETDATE()')])
+            ->scalar();
     }
 
     /**
@@ -88,38 +84,53 @@ class RecordLock
 
         $tabella = (string) $tabella;
         $idRecord = (string) $idRecord;
-        $now = time();
         $timeout = $timeout !== null ? (int) $timeout : static::defaultTimeout();
         $utente = static::currentUser();
-        $scadenza = date('Y-m-d H:i:s', $now + $timeout);
+        $db = Yii::$app->db;
 
-        $lock = static::find($tabella, $idRecord);
+        $dati = [
+            'utente' => $utente,
+            'utente_id' => Yii::$app->user->id,
+            'creato_il' => new Expression('GETDATE()'),
+            'scadenza' => new Expression('DATEADD(SECOND, ' . $timeout . ', GETDATE())'),
+        ];
 
-        if ($lock === null) {
-            $lock = new DashRecordLock();
-            $lock->tabella = $tabella;
-            $lock->id_record = $idRecord;
-            $lock->utente = $utente;
-            $lock->utente_id = Yii::$app->user->id;
-            $lock->creato_il = date('Y-m-d H:i:s', $now);
-            $lock->scadenza = $scadenza;
-            try {
-                return (bool) $lock->save(false);
-            } catch (\Exception $e) {
-                // Un altro utente ha inserito il blocco nello stesso istante.
-                $lock = static::find($tabella, $idRecord);
-                return $lock !== null && $lock->utente === $utente;
-            }
+        // 1) Rinnova un blocco esistente se e' dell'utente corrente o e' scaduto.
+        $aggiornate = $db->createCommand()->update(
+            '{{%dash_record_lock}}',
+            $dati,
+            [
+                'and',
+                ['tabella' => $tabella, 'id_record' => $idRecord],
+                ['or',
+                    ['utente' => $utente],
+                    ['<=', 'scadenza', new Expression('GETDATE()')],
+                ],
+            ]
+        )->execute();
+
+        if ($aggiornate > 0) {
+            return true;
         }
 
-        if ($lock->utente !== $utente && !static::isExpired($lock, $now)) {
+        // 2) Nessuna riga aggiornata: o e' di un altro utente (non scaduta), o non esiste.
+        $esiste = (new Query())
+            ->from('{{%dash_record_lock}}')
+            ->where(['tabella' => $tabella, 'id_record' => $idRecord])
+            ->exists($db);
+
+        if ($esiste) {
             return false;
         }
 
-        $lock->utente = $utente;
-        $lock->utente_id = Yii::$app->user->id;
-        $lock->scadenza = $scadenza;
-        return (bool) $lock->save(false);
+        // 3) Inserimento: il record era libero.
+        try {
+            $db->createCommand()->insert('{{%dash_record_lock}}', $dati)->execute();
+            return true;
+        } catch (\Exception $e) {
+            // Un altro utente ha inserito il blocco nello stesso istante.
+            return !static::isHeldByOther($tabella, $idRecord);
+        }
     }
 
     /**
@@ -154,6 +165,6 @@ class RecordLock
      */
     public static function releaseExpired()
     {
-        DashRecordLock::deleteAll(['<', 'scadenza', date('Y-m-d H:i:s')]);
+        DashRecordLock::deleteAll(['<=', 'scadenza', new Expression('GETDATE()')]);
     }
 }
