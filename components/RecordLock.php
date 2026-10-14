@@ -60,15 +60,21 @@ class RecordLock
     /**
      * Username dell'utente che detiene un blocco attivo (o null se libero/scaduto).
      * La scadenza e' valutata dalla stessa query con GETDATE().
+     *
+     * NOTA: Query::scalar() restituisce false (non null) quando non c'e' alcuna
+     * riga: senza questa normalizzazione un record libero verrebbe considerato
+     * "in uso da un altro utente".
      */
     public static function holder($tabella, $idRecord)
     {
-        return (new Query())
+        $utente = (new Query())
             ->select(['utente'])
             ->from('{{%dash_record_lock}}')
             ->where(['tabella' => (string) $tabella, 'id_record' => (string) $idRecord])
             ->andWhere(['>', 'scadenza', new Expression('GETDATE()')])
             ->scalar();
+
+        return $utente === false || $utente === null ? null : (string) $utente;
     }
 
     /**
@@ -113,23 +119,32 @@ class RecordLock
             return true;
         }
 
-        // 2) Nessuna riga aggiornata: o e' di un altro utente (non scaduta), o non esiste.
-        $esiste = (new Query())
-            ->from('{{%dash_record_lock}}')
-            ->where(['tabella' => $tabella, 'id_record' => $idRecord])
-            ->exists($db);
-
-        if ($esiste) {
+        // 2) Nessuna riga aggiornata: se qualcun altro ha un blocco ATTIVO
+        //    (non scaduto) il record e' davvero in uso. Una riga scaduta o
+        //    dell'utente corrente non deve bloccare.
+        if (static::isHeldByOther($tabella, $idRecord)) {
             return false;
         }
 
-        // 3) Inserimento: il record era libero.
+        // 3) Inserimento: il record era libero (o la riga era scaduta).
         try {
             $db->createCommand()->insert('{{%dash_record_lock}}', $dati)->execute();
             return true;
         } catch (\Exception $e) {
-            // Un altro utente ha inserito il blocco nello stesso istante.
-            return !static::isHeldByOther($tabella, $idRecord);
+            // Riga gia' esistente (blocco scaduto o inserimento concorrente):
+            // se non e' di un altro utente la rinnoviamo per l'utente corrente.
+            if (static::isHeldByOther($tabella, $idRecord)) {
+                return false;
+            }
+            try {
+                $db->createCommand()->update(
+                    '{{%dash_record_lock}}',
+                    $dati,
+                    ['tabella' => $tabella, 'id_record' => $idRecord]
+                )->execute();
+            } catch (\Exception $e2) {
+            }
+            return true;
         }
     }
 

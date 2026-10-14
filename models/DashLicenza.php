@@ -42,11 +42,18 @@ class DashLicenza extends ActiveRecord
         ];
     }
 
+    /** Cache della riga di stato nella singola richiesta (evita decine di query). */
+    private static $current;
+
     /**
      * Restituisce la riga di stato, creandola se assente.
      */
     public static function current()
     {
+        if (self::$current !== null) {
+            return self::$current;
+        }
+
         $model = static::find()->orderBy(['id' => SORT_ASC])->one();
         if (!$model) {
             $model = new self();
@@ -54,7 +61,7 @@ class DashLicenza extends ActiveRecord
             $model->first_run_at = date('Ymd H:i:s');
             $model->save(false);
         }
-        return $model;
+        return self::$current = $model;
     }
 
     public function getFeatureArray()
