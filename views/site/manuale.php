@@ -996,7 +996,7 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
           </div>
 
           <h3 id="micro-record-in-uso">12.13 Record in uso: un solo utente per volta in modifica</h3>
-          <p>Per evitare che due persone modifichino contemporaneamente la stessa scheda, sovrascrivendosi a vicenda, il Microgestionale usa il blocco <strong>&laquo;record in uso&raquo;</strong>. Quando apri la modifica di un record, quel record viene <strong>bloccato per te</strong> finch&eacute; non hai finito.</p>
+          <p>Per evitare che due persone modifichino contemporaneamente la stessa scheda, sovrascrivendosi a vicenda, il Microgestionale usa il blocco <strong>&laquo;record in uso&raquo;</strong>. Quando apri la modifica di un record, quel record viene <strong>bloccato per te</strong> finch&eacute; non hai finito. Il record risulta bloccato <strong>solo se &egrave; realmente in uso da un altro utente</strong> (un blocco scaduto o gi&agrave; tuo non impedisce la modifica) e l'avviso riporta il <strong>nome del collega</strong> che lo sta usando.</p>
           <p>Se un secondo utente prova ad aprire la modifica dello <strong>stesso record</strong>, non vede la form: viene portato automaticamente alla pagina di <strong>sola lettura</strong> (<span class="manual-btn manual-btn-gray">Vedi</span>) con un avviso in cima alla pagina, del tipo:</p>
           <div class="manual-note">
             &laquo;Il record &egrave; in uso da <em>utente</em>: &egrave; visualizzabile in sola lettura.&raquo;
