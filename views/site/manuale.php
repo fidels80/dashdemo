@@ -160,6 +160,7 @@ JS
         <a class="manual-l2" href="#micro-magazzini-elenco">I magazzini disponibili</a>
         <a class="manual-l2" href="#micro-configurazione">Configurazione (parametri azienda)</a>
         <a class="manual-l2" href="#micro-fattura-elettronica">Fattura elettronica (XML)</a>
+        <a class="manual-l2" href="#micro-record-in-uso">Record in uso durante la modifica</a>
         <a class="manual-l1" href="#dashboard">13. Dashboard (cruscotto)</a>
         <a class="manual-l2" href="#dashboard-sezioni">Le sezioni del cruscotto</a>
         <a class="manual-l2" href="#dashboard-permessi">Sezioni e permessi</a>
@@ -838,7 +839,7 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
       <section id="microgestionale">
         <div class="manual-card">
           <h2>12. Microgestionale: documenti e magazzino</h2>
-          <p>L'area <strong>Microgestionale</strong> del menu raccoglie le anagrafiche di base, i documenti e i prodotti. In questa sezione trovi le novit&agrave; di uso quotidiano: il pulsante <strong>Duplica</strong>, la <strong>sottocommessa</strong> e i <strong>magazzini</strong> nelle righe dei documenti, il dettaglio di <strong>seriali/matricole, date di consegna e lotti</strong> attivabile per tipo documento e i <strong>movimenti di magazzino</strong> generati automaticamente.</p>
+          <p>L'area <strong>Microgestionale</strong> del menu raccoglie le anagrafiche di base, i documenti e i prodotti. In questa sezione trovi le novit&agrave; di uso quotidiano: il pulsante <strong>Duplica</strong>, la <strong>sottocommessa</strong> e i <strong>magazzini</strong> nelle righe dei documenti, il dettaglio di <strong>seriali/matricole, date di consegna e lotti</strong> attivabile per tipo documento, i <strong>movimenti di magazzino</strong> generati automaticamente e il blocco <strong>&laquo;record in uso&raquo;</strong> che evita modifiche contemporanee sullo stesso dato.</p>
 
           <h3 id="micro-duplica">12.1 Duplicare una voce da un elenco (pulsante Duplica)</h3>
           <p>In molte tabelle del Microgestionale, nella colonna delle azioni a destra della riga, accanto a <span class="manual-btn manual-btn-gray">Vedi</span> e <span class="manual-btn manual-btn-gray">Modifica</span> trovi anche il pulsante <span class="manual-btn manual-btn-gray">Duplica</span> (icona con due fogli sovrapposti).</p>
@@ -992,6 +993,23 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
           </div>
           <div class="manual-note">
             Per privati o soggetti estero usa il codice destinatario <code>0000000</code> e indica la <strong>PEC</strong> del cliente: senza PEC l'XML non &egrave; completo.
+          </div>
+
+          <h3 id="micro-record-in-uso">12.13 Record in uso: un solo utente per volta in modifica</h3>
+          <p>Per evitare che due persone modifichino contemporaneamente la stessa scheda, sovrascrivendosi a vicenda, il Microgestionale usa il blocco <strong>&laquo;record in uso&raquo;</strong>. Quando apri la modifica di un record, quel record viene <strong>bloccato per te</strong> finch&eacute; non hai finito.</p>
+          <p>Se un secondo utente prova ad aprire la modifica dello <strong>stesso record</strong>, non vede la form: viene portato automaticamente alla pagina di <strong>sola lettura</strong> (<span class="manual-btn manual-btn-gray">Vedi</span>) con un avviso in cima alla pagina, del tipo:</p>
+          <div class="manual-note">
+            &laquo;Il record &egrave; in uso da <em>utente</em>: &egrave; visualizzabile in sola lettura.&raquo;
+          </div>
+          <p>Il blocco si <strong>rilascia da solo</strong>, senza bisogno di alcuna operazione manuale, in tre casi:</p>
+          <ul>
+            <li>quando <strong>salvi</strong> la modifica: il record torna subito libero per gli altri utenti;</li>
+            <li>quando <strong>esci</strong> dall'applicazione (logout);</li>
+            <li>dopo <strong>15 minuti di inattivit&agrave;</strong>: se lasci la modifica aperta senza lavorarci, allo scadere il record torna disponibile (il tempo di attesa &egrave; un parametro di configurazione dell'applicazione).</li>
+          </ul>
+          <p>Il controllo &egrave; attivo in tutti i moduli del Microgestionale che hanno una pagina di modifica, per esempio <strong>Anagrafica</strong>, <strong>Documenti</strong>, <strong>Articoli</strong>, <strong>Magazzini</strong>, <strong>Tipi documento</strong> e <strong>Aliquote IVA</strong>. Il meccanismo &egrave; centralizzato, quindi potr&agrave; essere esteso in futuro anche ad altre aree.</p>
+          <div class="manual-tip">
+            <strong>Suggerimento:</strong> se devi sistemare pi&ugrave; volte lo stesso record, fallo in una sola volta. Se chiudi la modifica senza salvare, il blocco si libera automaticamente allo scadere del tempo di inattivit&agrave;: nel frattempo i colleghi vedono il record in sola lettura. Se ti serve modificare un record gi&agrave; in uso da un collega, chiedi a lui di salvare o di uscire, oppure attendi qualche minuto.
           </div>
         </div>
       </section>
