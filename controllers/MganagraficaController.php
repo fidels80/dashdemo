@@ -26,6 +26,10 @@ class MganagraficaController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'recordLock' => [
+                'class' => \app\components\RecordLockBehavior::class,
+                'modelClass' => MgAnagrafica::class,
+            ],
         ];
     }
 

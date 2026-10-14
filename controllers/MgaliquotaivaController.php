@@ -25,6 +25,10 @@ class MgaliquotaivaController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'recordLock' => [
+                'class' => \app\components\RecordLockBehavior::class,
+                'modelClass' => MgAliquotaIva::class,
+            ],
         ];
     }
 

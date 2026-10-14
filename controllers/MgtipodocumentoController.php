@@ -23,6 +23,10 @@ class MgtipodocumentoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'recordLock' => [
+                'class' => \app\components\RecordLockBehavior::class,
+                'modelClass' => MgTipoDocumento::class,
+            ],
         ];
     }
 

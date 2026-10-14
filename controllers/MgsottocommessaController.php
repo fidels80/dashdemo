@@ -27,6 +27,10 @@ class MgsottocommessaController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'recordLock' => [
+                'class' => \app\components\RecordLockBehavior::class,
+                'modelClass' => MgSottocommessa::class,
+            ],
         ];
     }
 

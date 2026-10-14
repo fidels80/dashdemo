@@ -24,6 +24,10 @@ class MgtipocontattoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'recordLock' => [
+                'class' => \app\components\RecordLockBehavior::class,
+                'modelClass' => MgTipoContatto::class,
+            ],
         ];
     }
 

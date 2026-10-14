@@ -25,6 +25,10 @@ class MgconfigurazioneController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'recordLock' => [
+                'class' => \app\components\RecordLockBehavior::class,
+                'modelClass' => MgConfigurazione::class,
+            ],
         ];
     }
 

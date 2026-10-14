@@ -131,6 +131,9 @@ update gac_sottoprv set is_locked=null,locked_by=null where locked_by=:usr "
     )->bindValues([':usr' => Yii::$app->user->identity->username]);
 $query2->execute();
 
+// Rilascia i blocchi "record in uso" detenuti dall'utente che esce.
+\app\components\RecordLock::releaseAllForUser(Yii::$app->user->identity->username);
+
         Yii::$app->user->logout();
 
         return $this->goHome();

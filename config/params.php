@@ -53,4 +53,11 @@ return [
     'licenseGraceDays' => 14,
     // Se false disattiva completamente il blocco moduli (utile in sviluppo).
     'licenseEnforce' => true,
+
+    // ------------------------------------------------------------------
+    // Blocco "record in uso" durante la modifica.
+    // ------------------------------------------------------------------
+    // Durata in secondi del blocco: dopo questo tempo il record torna
+    // libero e puo' essere modificato da un altro utente.
+    'recordLockTimeout' => 900,
     ];

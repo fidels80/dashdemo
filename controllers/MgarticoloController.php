@@ -27,6 +27,10 @@ class MgarticoloController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'recordLock' => [
+                'class' => \app\components\RecordLockBehavior::class,
+                'modelClass' => MgArticolo::class,
+            ],
         ];
     }
 

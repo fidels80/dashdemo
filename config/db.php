@@ -24,7 +24,7 @@ return [
     // ------------------------------------------------------------------
     'db' => [
         'class' => 'yii\db\Connection',
-        'dsn' => 'sqlsrv:Server=rog;Database=web_frontier;app=Arca Evolution',
+        'dsn' => 'sqlsrv:Server=AMD\AMD2025;Database=web_frontier;app=Arca Evolution',
         'username' => 'yii',
         'password' => 'missorif.p.26',
         'charset' => $charset,
@@ -38,7 +38,7 @@ return [
     // ------------------------------------------------------------------
     'db2' => [
         'class' => 'yii\db\Connection',
-        'dsn' => 'sqlsrv:Server=P2K-SVIL\web;Database=ADB_VIVENDASRL',
+        'dsn' => 'sqlsrv:Server=AMD\AMD2025;Database=ADB_VIVENDASRL',
         'username' => 'sa',
         'password' => 'missorif.p.26',
         'charset' => $charset,
@@ -50,7 +50,7 @@ return [
     // ------------------------------------------------------------------
     'db3' => [
         'class' => 'yii\db\Connection',
-        'dsn' => 'sqlsrv:Server=P2K-SVIL\web;Database=rest_frontier',
+        'dsn' => 'sqlsrv:Server=AMD\AMD2025;Database=rest_frontier',
         'username' => 'sa',
         'password' => 'missorif.p.26',
         'charset' => $charset,
@@ -62,7 +62,7 @@ return [
     // ------------------------------------------------------------------
     'db4' => [
         'class' => 'yii\db\Connection',
-        'dsn' => 'sqlsrv:Server=P2K-SVIL\web;Database=ADB_WINNER_ITALIA',
+        'dsn' => 'sqlsrv:Server=AMD\AMD2025;Database=ADB_WINNER_ITALIA',
         'username' => 'sa',
         'password' => 'missorif.p.26',
         'charset' => $charset,
@@ -74,7 +74,7 @@ return [
     // ------------------------------------------------------------------
     'db5' => [
         'class' => 'yii\db\Connection',
-        'dsn' => 'sqlsrv:Server=rog;Database=ADB_UFFICIO2000',
+        'dsn' => 'sqlsrv:Server=AMD\AMD2025;Database=ADB_UFFICIO2000',
         'username' => 'yii',
         'password' => 'missorif.p.26',
         'charset' => $charset,

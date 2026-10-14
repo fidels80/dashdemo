@@ -25,6 +25,10 @@ class MglottoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'recordLock' => [
+                'class' => \app\components\RecordLockBehavior::class,
+                'modelClass' => MgLotto::class,
+            ],
         ];
     }
 
