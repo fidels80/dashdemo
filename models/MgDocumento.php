@@ -104,6 +104,11 @@ class MgDocumento extends \yii\db\ActiveRecord
             ->orderBy(['progressivo' => SORT_ASC]);
     }
 
+    public function getDcfControllo()
+    {
+        return $this->hasOne(MgDcfControllo::className(), ['id_documento' => 'id']);
+    }
+
     /**
      * Rigenera le scadenze del documento in base al metodo di pagamento.
      * Il flag "crea scadenze" è definito sul tipo documento; se spento o
