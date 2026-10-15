@@ -56,10 +56,13 @@ $renderSelect = function ($name, $options, $selected) {
                 ) ?></div>
             </div>
             <div class="row">
-                <div class="col-md-6"><?= $form->field($model, 'descrizione')->textInput(['maxlength' => true]) ?></div>
+                <div class="col-md-4"><?= $form->field($model, 'descrizione')->textInput(['maxlength' => true]) ?></div>
                 <div class="col-md-2"><?= $form->field($model, 'tipo')->dropDownList(
                     ['tabella' => 'Tabella', 'raggruppato' => 'Raggruppato', 'pivot' => 'Pivot']
                 ) ?></div>
+                <div class="col-md-2"><?= $form->field($model, 'icona')->textInput([
+                    'maxlength' => true, 'list' => 'icone-report', 'placeholder' => 'es. file-invoice',
+                ])->hint('Icona Font Awesome') ?></div>
                 <div class="col-md-2"><?= $form->field($model, 'ordine')->input('number') ?></div>
                 <div class="col-md-2"><?= $form->field($model, 'attivo')->checkbox() ?></div>
             </div>
@@ -99,7 +102,7 @@ $renderSelect = function ($name, $options, $selected) {
         <div class="tab-content border border-top-0 p-3 bg-white">
             <!-- COLONNE -->
             <div class="tab-pane fade show active" id="tab-colonne">
-                <p class="text-muted small">Per i report "Tabella": le colonne da mostrare.</p>
+                <p class="text-muted small">Colonne da mostrare. Nei report "Raggruppato" sono il dettaglio espandibile di ogni gruppo (vuoto = solo riepilogo).</p>
                 <table class="table table-sm" id="tbl-colonne">
                     <thead><tr><th>Campo (alias.col)</th><th>Alias</th><th>Etichetta</th><th>Tipo</th><th>Formato</th><th>Totale</th><th></th></tr></thead>
                     <tbody>
@@ -162,7 +165,7 @@ $renderSelect = function ($name, $options, $selected) {
 
             <!-- RAGGRUPPAMENTI -->
             <div class="tab-pane fade" id="tab-rag">
-                <p class="text-muted small">Campi di raggruppamento (per report raggruppati/pivot).</p>
+                <p class="text-muted small">Campi di raggruppamento. Nei report "Raggruppato" con colonne di dettaglio ogni gruppo diventa espandibile (tasto nella prima colonna) con i subtotali calcolati dalle Aggregazioni.</p>
                 <table class="table table-sm" id="tbl-rag">
                     <thead><tr><th>Campo</th><th>Alias</th><th>Etichetta</th><th></th></tr></thead>
                     <tbody>
@@ -181,7 +184,7 @@ $renderSelect = function ($name, $options, $selected) {
 
             <!-- AGGREGAZIONI -->
             <div class="tab-pane fade" id="tab-agg">
-                <p class="text-muted small">Misure. Per il conteggio righe usare Conteggio con campo vuoto e alias impostato.</p>
+                <p class="text-muted small">Misure. Per il conteggio righe usare Conteggio con campo vuoto e alias impostato. Nei report raggruppati con dettaglio diventano i totali/subtotali mostrati per gruppo.</p>
                 <table class="table table-sm" id="tbl-agg">
                     <thead><tr><th>Campo</th><th>Funzione</th><th>Alias</th><th>Etichetta</th><th>Tipo</th><th>Formato</th><th></th></tr></thead>
                     <tbody>
@@ -267,6 +270,11 @@ $renderSelect = function ($name, $options, $selected) {
     <datalist id="licenza-features">
         <?php foreach ($features as $f): ?>
             <option value="<?= Html::encode($f) ?>"></option>
+        <?php endforeach; ?>
+    </datalist>
+    <datalist id="icone-report">
+        <?php foreach (\app\components\Icone::fontAwesome() as $icona): ?>
+            <option value="<?= Html::encode($icona) ?>"></option>
         <?php endforeach; ?>
     </datalist>
 </div>

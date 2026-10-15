@@ -19,6 +19,7 @@ use Yii;
  * @property string $nome
  * @property string|null $descrizione
  * @property string|null $categoria
+ * @property string|null $icona
  * @property int|null $fonte_id
  * @property string $tipo
  * @property string|null $definizione
@@ -49,6 +50,7 @@ class DashReport extends \yii\db\ActiveRecord
             [['nome'], 'string', 'max' => 150],
             [['descrizione'], 'string', 'max' => 500],
             [['categoria', 'licenza_feature'], 'string', 'max' => 50],
+            [['icona'], 'string', 'max' => 50],
             [['tipo'], 'string', 'max' => 20],
             [['codice'], 'unique'],
             [['tipo'], 'in', 'range' => ['tabella', 'raggruppato', 'pivot']],
@@ -63,6 +65,7 @@ class DashReport extends \yii\db\ActiveRecord
             'nome' => 'Nome',
             'descrizione' => 'Descrizione',
             'categoria' => 'Categoria',
+            'icona' => 'Icona',
             'fonte_id' => 'Fonte dati',
             'tipo' => 'Tipo',
             'definizione' => 'Definizione (JSON)',

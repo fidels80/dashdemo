@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <tr>
                 <td><?= (int) $m->id ?></td>
                 <td><?= Html::encode($m->codice) ?></td>
-                <td><?= Html::encode($m->nome) ?></td>
+                <td><?= $m->icona ? '<i class="fas fa-' . Html::encode($m->icona) . ' text-secondary mr-1"></i>' : '' ?><?= Html::encode($m->nome) ?></td>
                 <td><?= Html::encode($m->categoria) ?></td>
                 <td><?= Html::encode($m->tipo) ?></td>
                 <td><?= Html::encode($fonte ? $fonte->nome : '—') ?></td>

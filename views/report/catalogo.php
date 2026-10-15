@@ -25,7 +25,10 @@ $this->title = 'Report';
                     <a href="<?= Url::to(['report/esegui', 'codice' => $r->codice]) ?>" class="text-decoration-none text-dark">
                         <div class="card shadow-sm h-100">
                             <div class="card-body">
-                                <h5 class="card-title mb-1"><?= Html::encode($r->nome) ?></h5>
+                                <h5 class="card-title mb-1">
+                                    <?php if ($r->icona): ?><i class="fas fa-<?= Html::encode($r->icona) ?> text-primary mr-1"></i><?php endif; ?>
+                                    <?= Html::encode($r->nome) ?>
+                                </h5>
                                 <?php if ($r->categoria): ?>
                                     <span class="badge badge-secondary mb-2"><?= Html::encode($r->categoria) ?></span>
                                 <?php endif; ?>

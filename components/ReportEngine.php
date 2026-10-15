@@ -61,6 +61,10 @@ class ReportEngine
 
         list($fromSql, $bind) = self::buildFrom($fonte, $fonteDef, $connessione);
 
+        if (!empty($def['raggruppamenti']) && !empty($def['colonne'])) {
+            return self::runGrouped($def, $fromSql, $bind, $connessione, $effParams, $limit);
+        }
+
         $usedAlias = [];
         $colonne = [];
         $selectParts = [];
@@ -183,6 +187,221 @@ class ReportEngine
             'sql' => $sql,
             'parametri' => $effParams,
         ];
+    }
+
+    /**
+     * Esegue un report con raggruppamento e dettaglio (report "raggruppato"
+     * con colonne di dettaglio definite): recupera le righe di dettaglio,
+     * le raggruppa per i campi indicati e calcola per ogni gruppo i subtotali
+     * (aggregazioni) e le colonne calcolate, oltre ai totali complessivi.
+     */
+    private static function runGrouped(array $def, $fromSql, array $bind, $connessione, array $effParams, $limit)
+    {
+        $usedAlias = [];
+        $selectParts = [];
+        $orderBy = [];
+
+        $ragCols = [];
+        foreach (($def['raggruppamenti'] ?? []) as $g) {
+            $alias = self::aliasFor($g['alias'] ?? null, $g['campo'], $usedAlias);
+            $selectParts[] = self::qcol($g['campo']) . ' AS ' . self::q($alias);
+            $orderBy[] = self::qcol($g['campo']);
+            $ragCols[] = [
+                'alias' => $alias,
+                'label' => $g['label'] ?? $alias,
+                'tipo' => $g['tipo'] ?? 'testo',
+                'formato' => $g['formato'] ?? null,
+            ];
+        }
+
+        $detailCols = [];
+        foreach (($def['colonne'] ?? []) as $c) {
+            $alias = self::aliasFor($c['alias'] ?? null, $c['campo'], $usedAlias);
+            $selectParts[] = self::qcol($c['campo']) . ' AS ' . self::q($alias);
+            $detailCols[] = [
+                'alias' => $alias,
+                'label' => $c['label'] ?? $alias,
+                'tipo' => $c['tipo'] ?? 'testo',
+                'formato' => $c['formato'] ?? null,
+                'tot' => ($c['totale'] ?? true) !== false,
+            ];
+        }
+
+        $measureCols = [];
+        $rawMap = [];
+        foreach (($def['aggregazioni'] ?? []) as $a) {
+            $func = strtoupper($a['funzione'] ?? 'SUM');
+            if (!in_array($func, ['SUM', 'AVG', 'COUNT', 'MIN', 'MAX'], true)) {
+                throw new \RuntimeException('Funzione di aggregazione non supportata: ' . $func);
+            }
+            $campo = $a['campo'] ?? '';
+            $alias = self::aliasFor($a['alias'] ?? null, $campo . '_' . strtolower($func), $usedAlias);
+            if ($func === 'COUNT' && $campo === '') {
+                $rawMap[$alias] = null;
+            } else {
+                if ($campo === '') {
+                    throw new \RuntimeException('Aggregazione "' . $func . '" senza campo.');
+                }
+                $rawAlias = self::aliasFor(null, $alias . '_raw', $usedAlias);
+                $selectParts[] = self::qcol($campo) . ' AS ' . self::q($rawAlias);
+                $rawMap[$alias] = $rawAlias;
+            }
+            $measureCols[] = [
+                'alias' => $alias,
+                'label' => $a['label'] ?? $alias,
+                'tipo' => $a['tipo'] ?? 'numero',
+                'formato' => $a['formato'] ?? null,
+                'funzione' => $func,
+            ];
+        }
+
+        $calcolatiMeta = [];
+        foreach (($def['calcolati'] ?? []) as $c) {
+            $nome = self::aliasFor($c['nome'] ?? null, 'calc', $usedAlias);
+            $calcolatiMeta[] = [
+                'nome' => $nome,
+                'label' => $c['label'] ?? $nome,
+                'tipo' => $c['tipo'] ?? 'numero',
+                'formato' => $c['formato'] ?? null,
+                'formula' => $c['formula'] ?? '',
+            ];
+        }
+
+        list($whereSql, $whereBind) = self::buildWhere($def['filtri'] ?? [], $effParams);
+        $bind = array_merge($bind, $whereBind);
+
+        $sql = 'SELECT ' . implode(', ', $selectParts) . ' FROM ' . $fromSql;
+        if ($whereSql !== '') {
+            $sql .= ' WHERE ' . $whereSql;
+        }
+        if (!empty($orderBy)) {
+            $sql .= ' ORDER BY ' . implode(', ', $orderBy);
+        }
+
+        $db = Yii::$app->get($connessione);
+        if (!$db instanceof \yii\db\Connection) {
+            throw new \RuntimeException('Connessione "' . $connessione . '" non trovata.');
+        }
+        $command = $db->createCommand($sql);
+        foreach ($bind as $name => $value) {
+            $command->bindValue($name, $value);
+        }
+        $rows = $command->queryAll();
+        if ($limit > 0 && count($rows) > $limit) {
+            $rows = array_slice($rows, 0, $limit);
+        }
+
+        $groups = [];
+        $groupIndex = [];
+        $allValues = [];
+        foreach ($measureCols as $m) {
+            $allValues[$m['alias']] = [];
+        }
+
+        foreach ($rows as $row) {
+            $keyParts = [];
+            foreach ($ragCols as $rg) {
+                $keyParts[] = $row[$rg['alias']] ?? null;
+            }
+            $key = json_encode($keyParts, JSON_UNESCAPED_UNICODE);
+            if (!array_key_exists($key, $groupIndex)) {
+                $groupIndex[$key] = count($groups);
+                $groups[] = [
+                    'chiavi' => array_combine(array_column($ragCols, 'alias'), $keyParts),
+                    'righe' => [],
+                ];
+            }
+            $gi = $groupIndex[$key];
+            $groups[$gi]['righe'][] = $row;
+
+            foreach ($measureCols as $m) {
+                if ($rawMap[$m['alias']] === null) {
+                    $allValues[$m['alias']][] = 1;
+                } else {
+                    $allValues[$m['alias']][] = $row[$rawMap[$m['alias']]] ?? null;
+                }
+            }
+        }
+
+        foreach ($groups as &$g) {
+            $subtotali = [];
+            foreach ($measureCols as $m) {
+                if ($rawMap[$m['alias']] === null) {
+                    $subtotali[$m['alias']] = count($g['righe']);
+                } else {
+                    $vals = array_column($g['righe'], $rawMap[$m['alias']]);
+                    $subtotali[$m['alias']] = self::aggregateValues($m['funzione'], $vals);
+                }
+            }
+            $g['subtotali'] = $subtotali;
+            $vars = array_merge($subtotali, $g['chiavi']);
+            $calc = [];
+            foreach ($calcolatiMeta as $c) {
+                $calc[$c['nome']] = self::evalFormula($c['formula'], $vars);
+            }
+            $g['calcolati'] = $calc;
+            $g['num_righe'] = count($g['righe']);
+            if (!empty($def['ordinamento'])) {
+                self::sortRows($g['righe'], $def['ordinamento']);
+            }
+        }
+        unset($g);
+
+        $totali = [];
+        foreach ($measureCols as $m) {
+            $totali[$m['alias']] = self::aggregateValues($m['funzione'], $allValues[$m['alias']]);
+        }
+        foreach ($detailCols as $c) {
+            if (($c['tot'] ?? true) === false) {
+                continue;
+            }
+            if (!in_array($c['tipo'], ['numero', 'valuta', 'intero'], true)) {
+                continue;
+            }
+            $totali[$c['alias']] = array_sum(array_map(function ($r) use ($c) {
+                return (float) ($r[$c['alias']] ?? 0);
+            }, $rows));
+        }
+
+        return [
+            'colonne' => $detailCols,
+            'raggruppamenti' => $ragCols,
+            'misure' => $measureCols,
+            'calcolati' => $calcolatiMeta,
+            'gruppi' => $groups,
+            'totali' => $totali,
+            'righe_totali' => count($rows),
+            'sql' => $sql,
+            'parametri' => $effParams,
+        ];
+    }
+
+    /**
+     * Applica una funzione di aggregazione (SUM/AVG/COUNT/MIN/MAX) a un
+     * insieme di valori, ignorando null e stringhe vuote.
+     */
+    private static function aggregateValues($func, array $values)
+    {
+        $nums = [];
+        foreach ($values as $v) {
+            if ($v === null || $v === '') {
+                continue;
+            }
+            $nums[] = (float) $v;
+        }
+        switch ($func) {
+            case 'COUNT':
+                return count($nums);
+            case 'SUM':
+                return array_sum($nums);
+            case 'AVG':
+                return count($nums) ? array_sum($nums) / count($nums) : 0.0;
+            case 'MIN':
+                return count($nums) ? min($nums) : 0.0;
+            case 'MAX':
+                return count($nums) ? max($nums) : 0.0;
+        }
+        return 0.0;
     }
 
     /**
