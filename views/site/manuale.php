@@ -140,6 +140,8 @@ JS
         <a class="manual-l2" href="#report-flotta">Report Attivit&agrave; Flotta</a>
         <a class="manual-l2" href="#report-consuntivo">Consuntivo Ditta Esterna</a>
         <a class="manual-l2" href="#report-squadra">Rapporto per Squadra</a>
+        <a class="manual-l2" href="#report-dinamici">Report dinamici (catalogo)</a>
+        <a class="manual-l2" href="#report-designer">Report Designer</a>
         <a class="manual-l1" href="#amministrazione">9. Amministrazione</a>
         <a class="manual-l2" href="#admin-utenti">Gestione utenti</a>
         <a class="manual-l2" href="#admin-menu">Menu e permessi</a>
@@ -161,6 +163,8 @@ JS
         <a class="manual-l2" href="#micro-configurazione">Configurazione (parametri azienda)</a>
         <a class="manual-l2" href="#micro-fattura-elettronica">Fattura elettronica (XML)</a>
         <a class="manual-l2" href="#micro-record-in-uso">Record in uso durante la modifica</a>
+        <a class="manual-l2" href="#micro-fatture-fornitore">Fatture fornitori (blocco scadenze e reclami)</a>
+        <a class="manual-l2" href="#micro-dcf">Controllo quantit&agrave; documenti fornitore (DCF)</a>
         <a class="manual-l1" href="#dashboard">13. Dashboard (cruscotto)</a>
         <a class="manual-l2" href="#dashboard-sezioni">Le sezioni del cruscotto</a>
         <a class="manual-l2" href="#dashboard-permessi">Sezioni e permessi</a>
@@ -169,7 +173,14 @@ JS
         <a class="manual-l2" href="#licenza-moduli">Moduli abilitati</a>
         <a class="manual-l2" href="#licenza-sola-lettura">Licenza scaduta: sola lettura</a>
         <a class="manual-l2" href="#licenza-aggiornamenti">Aggiornamenti</a>
-        <a class="manual-l1" href="#glossario">15. Glossario</a>
+        <a class="manual-l1" href="#comandi">15. Comandi da console</a>
+        <a class="manual-l2" href="#comandi-uso">Come si eseguono</a>
+        <a class="manual-l2" href="#comandi-dati">Dati di prova e popolamento</a>
+        <a class="manual-l2" href="#comandi-manutenzione">Manutenzione</a>
+        <a class="manual-l2" href="#comandi-api">API, licenza e changelog</a>
+        <a class="manual-l2" href="#comandi-export">Export e import di file</a>
+        <a class="manual-l2" href="#comandi-sistema">Sistema e migrazioni</a>
+        <a class="manual-l1" href="#glossario">16. Glossario</a>
       </div>
     </nav>
 
@@ -694,6 +705,45 @@ JS
           <p><strong>Indicatori in alto:</strong> <em>Squadre</em>, <em>Attivit&agrave;</em> e <em>Clienti</em> coinvolti.</p>
           <p><strong>Come si legge:</strong> le attivit&agrave; sono raggruppate per squadra in pannelli <strong>espandibili/collassabili</strong> (pulsanti <span class="manual-btn manual-btn-gray">Espandi Tutti</span> / <span class="manual-btn manual-btn-gray">Comprimi Tutti</span>). Ogni pannello si apre e si chiude con un clic sulla sua intestazione, che mostra i <strong>dipendenti della squadra</strong>, i <strong>mezzi assegnati</strong> (targhe) e il numero di attivit&agrave;. C'&egrave; anche un campo di <strong>ricerca rapida</strong> (indirizzo, cliente, targa, nominativo) e il pulsante <span class="manual-btn manual-btn-gray">Stampa</span>.</p>
           <p><strong>Colonne della tabella:</strong> Giro · Data · Orario · Cliente · Indirizzo · Note · Stato (con colore).</p>
+
+          <h3 id="report-dinamici">8.5 Report dinamici (catalogo)</h3>
+          <p>Oltre ai report fissi, l'applicazione ha un <strong>motore di reportistica</strong> che permette di creare <strong>report personalizzati</strong> senza scrivere codice. La voce <strong>Report</strong> del menu apre il <strong>catalogo dei report disponibili</strong>: ogni scheda apre il report, che ha una barra di <strong>filtri</strong> in cima (periodo, ricerca, tipo...) e una tabella esportabile (Copia, Excel, PDF, CSV) e stampabile.</p>
+          <p>I report dinamici si comportano come quelli fissi: scegli la scheda, imposta i filtri e premi <span class="manual-btn">Applica</span>. Compaiono solo i report a cui hai accesso.</p>
+          <div class="manual-note">
+            <strong>Chi vede cosa:</strong> un report pu&ograve; essere <strong>abilitato per licenza</strong> (se la funzione non &egrave; prevista dalla licenza, il report non compare) e, quando serve, <strong>attivato per singoli operatori</strong>. In pi&ugrave;, un report pu&ograve; essere <strong>disattivato</strong> temporaneamente: in quel caso non compare nel catalogo.
+          </div>
+
+          <h3 id="report-designer">8.6 Report Designer</h3>
+          <p>Il <strong>Report Designer</strong> &egrave; lo strumento con cui si creano e modificano i report. Si apre dalla voce <strong>Report Designer</strong> del menu laterale oppure dal pulsante <span class="manual-btn manual-btn-gray">Report Designer</span> in alto nel catalogo dei report (visibile solo a chi ha il permesso).</p>
+
+          <h4>Elenco report e fonti dati</h4>
+          <p>La pagina principale elenca i report con il loro stato: <strong>Attivo</strong> (s&igrave;/no) e <strong>Licenza</strong> (la funzione di licenza associata). Da qui puoi <strong>creare</strong> un nuovo report, <strong>modificare</strong> quelli esistenti, <strong>eseguirli</strong> o <strong>eliminarli</strong>. Con il pulsante <span class="manual-btn manual-btn-gray">Fonti dati</span> si gestiscono le <strong>fonti</strong> (i "dataset" su cui si basano i report).</p>
+
+          <h4>Fonti dati (da dove arrivano i dati)</h4>
+          <p>Una fonte pu&ograve; essere:</p>
+          <ul>
+            <li><strong>Tabella + join</strong> &mdash; scegli la <strong>tabella base</strong> da una tendina (l'elenco delle tabelle viene letto direttamente dal database della connessione scelta), poi aggiungi i <strong>join</strong> verso altre tabelle. Ogni join ha tipo (LEFT/INNER/RIGHT), database, schema, tabella, alias e le <strong>condizioni</strong> (una per riga, nel formato <code>alias.campo = altro_alias.campo</code>).</li>
+            <li><strong>SQL tecnico</strong> &mdash; una query scritta a mano, per i casi avanzati (riservata ai tecnici).</li>
+          </ul>
+          <div class="manual-note">
+            <strong>Join tra database diversi:</strong> scegliendo database diversi per la tabella base e per un join, il report pu&ograve; unire tabelle di archivi diversi presenti sulla stessa istanza SQL Server (ad esempio il gestionale e l'anagrafica clienti).
+          </div>
+
+          <h4>Creare un report (procedura guidata)</h4>
+          <p>Premendo <span class="manual-btn">Nuovo report</span> si apre la procedura guidata, organizzata in schede:</p>
+          <ul>
+            <li><strong>Generale</strong> &mdash; codice, nome, descrizione, categoria, <strong>fonte dati</strong>, tipo (tabella / raggruppato / pivot), ordine, attivo e <strong>funzione di licenza</strong> (facoltativa: se indicata, il report &egrave; attivo solo se la licenza la abilita).</li>
+            <li><strong>Colonne</strong> &mdash; quali campi mostrare (per i report a tabella). I campi disponibili sono proposti in automatico in base alla fonte scelta.</li>
+            <li><strong>Parametri</strong> &mdash; i filtri che l'utente compiler&agrave; (es. <em>Dal</em> / <em>Al</em> come date).</li>
+            <li><strong>Filtri</strong> &mdash; come i parametri agiscono sui dati (uguale, compreso tra, contiene...).</li>
+            <li><strong>Raggruppamenti</strong> e <strong>Aggregazioni</strong> &mdash; per raggruppare i dati e calcolare somme, medie, conteggi, minimi e massimi.</li>
+            <li><strong>Calcolati</strong> &mdash; colonne calcolate con una formula sugli altri campi (es. <code>ore * tariffa</code>).</li>
+            <li><strong>Ordinamento</strong> &mdash; l'ordine di visualizzazione.</li>
+          </ul>
+          <p>Con il pulsante <span class="manual-btn">Anteprima</span> vedi subito il risultato senza salvare; <span class="manual-btn">Salva</span> memorizza il report. Chi &egrave; esperto pu&ograve; scegliere la modalit&agrave; <strong>JSON avanzato</strong> e modificare direttamente la definizione del report.</p>
+          <div class="manual-note">
+            <strong>Licenza e operatore:</strong> il campo <em>funzione di licenza</em> del report decide se il report &egrave; disponibile in base alla licenza; il flag <em>attivo</em> lo disattiva temporaneamente. L'accesso al designer stesso &egrave; riservato ai supervisori o agli operatori a cui viene assegnato il relativo permesso.
+          </div>
         </div>
       </section>
 
@@ -1011,6 +1061,32 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
           <div class="manual-tip">
             <strong>Suggerimento:</strong> se devi sistemare pi&ugrave; volte lo stesso record, fallo in una sola volta. Se chiudi la modifica senza salvare, il blocco si libera automaticamente allo scadere del tempo di inattivit&agrave;: nel frattempo i colleghi vedono il record in sola lettura. Se ti serve modificare un record gi&agrave; in uso da un collega, chiedi a lui di salvare o di uscire, oppure attendi qualche minuto.
           </div>
+          <h3 id="micro-fatture-fornitore">12.14 Fatture fornitori: blocco scadenze e reclami</h3>
+          <p>La voce <strong>Fatture fornitori</strong> (area Documentale del Microgestionale, icona fattura) elenca le <strong>fatture ricevute dai fornitori</strong> (tipo documento <code>FAF</code>) e offre due operazioni per ogni fattura: <strong>bloccare le scadenze</strong> e <strong>inviare un reclamo</strong> al fornitore, con lo storico dei reclami inviati.</p>
+          <p>La tabella mostra per ogni fattura documento, data, fornitore, descrizione, importo, numero di righe e pezzi, scadenze (con la prossima in scadenza), stato del blocco e numero di reclami. In alto puoi filtrare per <strong>fornitore</strong>, cercare per numero, data o descrizione e mostrare <strong>solo le fatture con scadenze bloccate</strong>.</p>
+
+          <h4>Bloccare o sbloccare le scadenze</h4>
+          <p>Con il pulsante <span class="manual-btn manual-btn-gray">lucchetto</span> nella colonna Azioni puoi <strong>bloccare</strong> tutte le scadenze della fattura, per sospenderle quando la merce &egrave; contestata; un secondo clic le <strong>sblocca</strong>. La colonna <em>Blocco</em> riassume lo stato: <strong>libere</strong> (verde), <strong>parziali</strong> (giallo, con il conteggio) o <strong>bloccate</strong> (rosso). Il pulsante &egrave; disattivato se la fattura non ha scadenze.</p>
+
+          <h4>Inviare un reclamo</h4>
+          <p>Con il pulsante <span class="manual-btn manual-btn-gray">busta</span> si apre la finestra <strong>Invia reclamo</strong>: i destinatari sono precompilati con l'email del fornitore (puoi aggiungerne altri, separati da virgola), l'oggetto &egrave; proposto in automatico (&laquo;Reclamo per vostro documento &hellip;&raquo;) e il <strong>testo &egrave; obbligatorio</strong>. All'invio il sistema manda l'email e <strong>memorizza il reclamo</strong> nello storico; per la stessa fattura puoi inviare <strong>pi&ugrave; reclami</strong>.</p>
+          <p>Il pulsante <span class="manual-btn manual-btn-gray">orologio</span> apre lo <strong>storico reclami</strong> della fattura (data, esito, oggetto, destinatari, utente e testo); passando il mouse sul numero dei reclami compare un riepilogo rapido degli invii.</p>
+          <div class="manual-note">
+            Anche se l'invio dell'email non riesce, il tentativo resta registrato nello storico con esito <strong>errore</strong> e la relativa descrizione.
+          </div>
+
+          <h3 id="micro-dcf">12.15 Controllo quantit&agrave; dei documenti fornitore (DCF)</h3>
+          <p>L'area <strong>DCF</strong> guida il <strong>riscontro delle quantit&agrave;</strong> dei documenti ricevuti dai fornitori in tre passi: scelta dei documenti, inserimento delle quantit&agrave; realmente riscontrate e riepilogo con eventuale <strong>segnalazione</strong> al fornitore via email.</p>
+
+          <h4>Riscontro delle quantit&agrave;</h4>
+          <p>Oltre a inserire la quantit&agrave; riga per riga, hai dei pulsanti rapidi: su ogni documento <span class="manual-btn manual-btn-gray">Tutte conformi</span> (copia la quantit&agrave; del documento) e <span class="manual-btn manual-btn-gray">Azzera</span> (imposta 0,00); in alto <span class="manual-btn manual-btn-gray">Tutte conformi</span> e <span class="manual-btn manual-btn-gray">Azzera tutte a 0</span> li applicano a <strong>tutti</strong> i documenti in una volta.</p>
+
+          <h4>Riepilogo, segnalazione e chiusura</h4>
+          <p>Il riepilogo raggruppa le differenze per fornitore e segnala con un avviso quante righe sono <strong>ancora da riscontrare</strong>. Puoi procedere anche con un controllo <strong>parziale</strong>: le righe non riscontrate semplicemente non entrano nella segnalazione. Se non ci sono differenze, la segnalazione al fornitore non &egrave; necessaria.</p>
+          <p>Il pulsante <span class="manual-btn">Chiudi e contrassegna come controllati</span> chiude il controllo corrente e segna i documenti come controllati, anche quando alcune righe non sono state riscontrate (senza inviare email).</p>
+          <div class="manual-note">
+            Chiudendo il controllo o inviando la segnalazione, le quantit&agrave; riscontrate aggiornano i <strong>movimenti di magazzino</strong> del documento; per le righe non riscontrate resta la quantit&agrave; del documento.
+          </div>
         </div>
       </section>
 
@@ -1144,10 +1220,100 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
         </div>
       </section>
 
-      <!-- 13 GLOSSARIO -->
+      <!-- 15 COMANDI CONSOLE -->
+      <section id="comandi">
+        <div class="manual-card">
+          <h2>15. Comandi da console</h2>
+          <p>Alcune operazioni di servizio non si fanno dal browser, ma dalla <strong>riga di comando</strong> del server. Sono riservate a <strong>chi amministra il sistema</strong> o al supporto tecnico: servono a caricare dati di prova, allineare archivi e gestire le funzioni tecniche. Questa sezione raccoglie tutti i comandi disponibili, con la spiegazione semplice di cosa fanno.</p>
+
+          <h3 id="comandi-uso">15.1 Come si eseguono</h3>
+          <p>I comandi si eseguono <strong>sulla macchina dove gira l'applicazione</strong> (di norma il server XAMPP), non dal browser. Si apre una finestra di comando nella <strong>cartella principale dell'applicazione</strong> e si digita <code>php yii</code> seguito dal nome del comando:</p>
+          <pre><code>php yii nome-comando/azione --opzione=valore</code></pre>
+          <ul>
+            <li>Il nome del comando &egrave; la parte <strong>prima</strong> della barra; l'<strong>azione</strong> &egrave; la parte <strong>dopo</strong>.</li>
+            <li>Le <strong>opzioni</strong> iniziano con due trattini (es. <code>--dry=1</code>).</li>
+            <li>Serve un accesso al database con i permessi adeguati: se non li hai, chiedi all'amministratore o al supporto di eseguirlo.</li>
+          </ul>
+          <div class="manual-warn">
+            <strong>Attenzione:</strong> i comandi agiscono direttamente sui dati e alcuni <strong>cancellano</strong> record o file. Dove &egrave; disponibile l'anteprima (<code>--dry=1</code>), usala sempre prima di eseguire davvero.
+          </div>
+
+          <h3 id="comandi-dati">15.2 Dati di prova e popolamento</h3>
+          <p>Creano dati dimostrativi o riempiono gli archivi per prove, demo e ambienti di test.</p>
+          <table>
+            <tr><th>Comando</th><th>Cosa fa</th></tr>
+            <tr><td><code>php yii planning-dati/seed --da=AAAA-MM-GG --a=AAAA-MM-GG --min=5 --max=8</code></td><td>Genera attivit&agrave; di planning di prova nei giorni lavorativi del periodo (vedi 4.7).</td></tr>
+            <tr><td><code>php yii planning-dati/pulisci --da=AAAA-MM-GG --a=AAAA-MM-GG --dry=1</code></td><td><strong>Cancella</strong> attivit&agrave;, legami, presenze automatiche e log del periodo (vedi 4.7).</td></tr>
+            <tr><td><code>php yii seed/rapportini --count=100 --reset=1</code></td><td>Genera rapportini di esempio. Con <code>--reset=1</code> cancella prima quelli esistenti (tranne quelli collegati a documenti).</td></tr>
+            <tr><td><code>php yii popola-contatti --count=600 --reset=1</code></td><td>Popola i contatti delle anagrafiche (email, PEC, telefoni&hellip;). Con <code>--reset=1</code> li azzera prima.</td></tr>
+            <tr><td><code>php yii fatturafornitore/seed --count=50 --min=20 --max=30</code></td><td>Crea fatture fornitore di prova (tipo <code>FAF</code>) con righe e scadenze.</td></tr>
+            <tr><td><code>php yii dcf/seed --count=50 --min=35 --max=40</code></td><td>Crea documenti di trasporto a fornitore di prova (tipo <code>DCF</code>) per il controllo quantit&agrave;.</td></tr>
+            <tr><td><code>php yii popola-commesse</code></td><td>Genera 20 commesse e 60 sottocommesse di esempio.</td></tr>
+            <tr><td><code>php yii hello [messaggio]</code></td><td>Comando di esempio: restituisce il messaggio scritto (serve solo a verificare che la console funzioni).</td></tr>
+          </table>
+          <div class="manual-warn">
+            <strong>Attenzione:</strong> <code>popola-commesse</code> <strong>cancella prima</strong> tutte le commesse e le sottocommesse esistenti, poi le ricrea: usalo solo su ambienti di prova, mai in produzione.
+          </div>
+
+          <h3 id="comandi-manutenzione">15.3 Manutenzione</h3>
+          <table>
+            <tr><th>Comando</th><th>Cosa fa</th></tr>
+            <tr><td><code>php yii movimenti/ricrea</code></td><td>Ricostruisce tutti i movimenti di magazzino dalle righe documento, con backup automatico (vedi 12.6).</td></tr>
+            <tr><td><code>php yii record-lock</code></td><td>Elenca i blocchi &laquo;record in uso&raquo; attivi (vedi 12.13).</td></tr>
+            <tr><td><code>php yii record-lock/index mg_documento</code></td><td>Elenca i blocchi di una sola tabella.</td></tr>
+            <tr><td><code>php yii record-lock/clear</code></td><td><strong>Elimina tutti</strong> i blocchi &laquo;record in uso&raquo;.</td></tr>
+            <tr><td><code>php yii record-lock/clear mg_documento 257</code></td><td>Elimina il blocco di un singolo record.</td></tr>
+            <tr><td><code>php yii background-export/cleanup-old-files</code></td><td>Cancella i file Excel di export pi&ugrave; vecchi di 7 giorni.</td></tr>
+          </table>
+          <div class="manual-warn">
+            <strong>Attenzione:</strong> <code>record-lock/clear</code> sblocca le modifiche in corso di altri utenti e <code>background-export/cleanup-old-files</code> cancella definitivamente i file. Usali con criterio.
+          </div>
+
+          <h3 id="comandi-api">15.4 API, licenza e changelog</h3>
+          <table>
+            <tr><th>Comando</th><th>Cosa fa</th></tr>
+            <tr><td><code>php yii api/sync</code></td><td>Registra le tabelle nuove (<code>mg_*</code>) nel servizio REST e ne deriva i vincoli dalle chiavi esterne (vedi 10.2).</td></tr>
+            <tr><td><code>php yii api/sync --dry=1</code></td><td>Mostra cosa verrebbe registrato senza scrivere nulla.</td></tr>
+            <tr><td><code>php yii license/status</code></td><td>Mostra lo stato della licenza (chiave, piano, scadenza, moduli).</td></tr>
+            <tr><td><code>php yii license/activate XXXX-XXXX-XXXX-XXXX</code></td><td>Attiva o aggiorna la licenza con la chiave indicata (vedi 14.1).</td></tr>
+            <tr><td><code>php yii license/heartbeat</code></td><td>Invia il controllo periodico al server di licenza e aggiorna i moduli abilitati.</td></tr>
+            <tr><td><code>php yii license/check-update</code></td><td>Verifica se &egrave; disponibile una nuova versione.</td></tr>
+            <tr><td><code>php yii license/download [versione]</code></td><td>Scarica il pacchetto dell'aggiornamento in <code>runtime/updates/</code>, senza applicarlo.</td></tr>
+            <tr><td><code>php yii changelog/git [n]</code></td><td>Importa nel changelog gli ultimi <code>n</code> commit git (predefinito 1; <code>all</code> per tutti).</td></tr>
+            <tr><td><code>php yii changelog/add "Titolo" --tipo=feat --versione=1.36.0</code></td><td>Inserisce a mano una voce di changelog.</td></tr>
+            <tr><td><code>php yii changelog/set-dettaglio &lt;id&gt; "descrizione"</code></td><td>Arricchisce il dettaglio di una voce di changelog esistente.</td></tr>
+          </table>
+
+          <h3 id="comandi-export">15.5 Export e import di file</h3>
+          <table>
+            <tr><th>Comando</th><th>Cosa fa</th></tr>
+            <tr><td><code>php yii background-export/process-excel &lt;jobId&gt; &lt;dataId&gt; &lt;utente&gt; &lt;email&gt; [tipoExport]</code></td><td>Genera un export Excel in background e invia l'email con il collegamento al file.</td></tr>
+            <tr><td><code>php yii export-job-runner/run</code></td><td>Elabora la coda di export in attesa e avvia i relativi processi.</td></tr>
+            <tr><td><code>php yii bustepaga/import</code></td><td>Importa le buste paga in PDF dalla cartella <code>web/uploads/buste_paga</code>, collegandole all'agente e spostando i file elaborati.</td></tr>
+            <tr><td><code>php yii agentifiles/create-structure &lt;codiceAgente&gt;</code></td><td>Crea la struttura di cartelle standard (Retribuzioni, Documenti Personali, Documentazione) per un agente.</td></tr>
+          </table>
+
+          <h3 id="comandi-sistema">15.6 Sistema e migrazioni</h3>
+          <p>Comandi standard di Yii, usati per aggiornare la <strong>struttura del database</strong>.</p>
+          <table>
+            <tr><th>Comando</th><th>Cosa fa</th></tr>
+            <tr><td><code>php yii migrate</code></td><td>Applica al database le migrazioni non ancora eseguite.</td></tr>
+            <tr><td><code>php yii migrate/create &lt;nome&gt;</code></td><td>Crea un nuovo file di migrazione (per gli sviluppatori).</td></tr>
+            <tr><td><code>php yii migrate/down &lt;n&gt;</code></td><td>Annulla le ultime <code>n</code> migrazioni applicate.</td></tr>
+          </table>
+          <div class="manual-note">
+            Per ogni migrazione Yii esiste anche lo <strong>script SQL</strong> corrispondente, da eseguire manualmente su SQL Server quando serve.
+          </div>
+          <div class="manual-tip">
+            <strong>Suggerimento:</strong> se un comando non &egrave; chiaro o non &egrave; elencato qui, chiedi al supporto tecnico prima di eseguirlo: molti comandi modificano i dati in modo permanente.
+          </div>
+        </div>
+      </section>
+
+      <!-- 16 GLOSSARIO -->
       <section id="glossario">
         <div class="manual-card">
-          <h2>15. Glossario</h2>
+          <h2>16. Glossario</h2>
           <table>
             <tr><th>Termine</th><th>Significato</th></tr>
             <tr><td><strong>Planning</strong></td><td>La pianificazione giornaliera delle attivit&agrave; delle squadre.</td></tr>
