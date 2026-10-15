@@ -151,6 +151,16 @@ class Licensing
     }
 
     /**
+     * Elenco dei codici feature abilitati dalla licenza corrente
+     * (usato dal report designer per proporre le feature disponibili).
+     */
+    public static function features()
+    {
+        self::resolve();
+        return self::$featuresCache;
+    }
+
+    /**
      * True se la licenza e' scaduta o revocata: applicazione in sola lettura.
      */
     public static function isReadOnly()

@@ -4,8 +4,15 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use app\models\Personale;
 use app\models\Tipologiapresenza;
+use app\models\DashReport;
+use app\models\DashReportUtente;
+use app\models\DashReportEsecuzione;
+use app\components\ReportEngine;
+use app\components\AccessControl;
 use yii\helpers\ArrayHelper;
 
 
@@ -29,6 +36,83 @@ class ReportController extends Controller
     {
         return $this->render('index');
     }
+
+    /**
+     * Catalogo dei report definiti con il report designer e abilitati
+     * all'utente corrente (licenza + eventuale abilitazione per operatore).
+     */
+    public function actionCatalogo()
+    {
+        $user = Yii::$app->user->identity;
+
+        $query = DashReport::find()
+            ->where(['attivo' => 1])
+            ->orderBy(['ordine' => SORT_ASC, 'nome' => SORT_ASC]);
+
+        if (!AccessControl::isSuper($user)) {
+            $ids = DashReportUtente::getReportIdsForUser($user->id, false);
+            $query->andWhere(['id' => $ids ?: [-1]]);
+        }
+
+        $reports = array_values(array_filter($query->all(), function ($r) {
+            return $r->licenzaOk();
+        }));
+
+        return $this->render('catalogo', ['reports' => $reports]);
+    }
+
+    /**
+     * Esegue un report del designer e ne mostra il risultato.
+     */
+    public function actionEsegui($codice = null)
+    {
+        $user = Yii::$app->user->identity;
+
+        if (empty($codice)) {
+            return $this->actionCatalogo();
+        }
+
+        $report = DashReport::findOne(['codice' => $codice, 'attivo' => 1]);
+        if (!$report) {
+            throw new NotFoundHttpException('Report non trovato: ' . $codice);
+        }
+
+        if (!AccessControl::isSuper($user) && !$report->isAbilitatoUtente($user->id)) {
+            throw new ForbiddenHttpException('Report non abilitato per l\'utente corrente.');
+        }
+
+        if (!$report->licenzaOk()) {
+            Yii::$app->session->setFlash('error', 'Report non abilitato dalla licenza.');
+            return $this->redirect(['report/catalogo']);
+        }
+
+        $params = Yii::$app->request->queryParams;
+        $def = $report->getDefinizioneArray();
+        $result = null;
+        $error = null;
+        $started = microtime(true);
+
+        try {
+            $result = ReportEngine::run($report, $params);
+        } catch (\Throwable $e) {
+            $error = $e->getMessage();
+            DashReportEsecuzione::log($report->id, $user->id, $params, 'error', $error);
+        }
+
+        if ($result !== null) {
+            $durata = (int) round((microtime(true) - $started) * 1000);
+            DashReportEsecuzione::log($report->id, $user->id, $params, 'ok', null, $result['righe_totali'], $durata, 'html');
+        }
+
+        return $this->render('esegui', [
+            'report' => $report,
+            'def' => $def,
+            'result' => $result,
+            'error' => $error,
+            'params' => $params,
+        ]);
+    }
+
     /**
      * Genera il Report dettagliato delle Presenze e dei relativi Costi.
      * Estrae i dati incrociando le ore lavorate con le tariffe orarie personalizzate dei dipendenti.
