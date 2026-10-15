@@ -109,6 +109,12 @@ class MgDocumento extends \yii\db\ActiveRecord
         return $this->hasOne(MgDcfControllo::className(), ['id_documento' => 'id']);
     }
 
+    public function getFfReclami()
+    {
+        return $this->hasMany(MgFfReclamo::className(), ['id_documento' => 'id'])
+            ->orderBy(['created_at' => SORT_DESC, 'id' => SORT_DESC]);
+    }
+
     /**
      * Rigenera le scadenze del documento in base al metodo di pagamento.
      * Il flag "crea scadenze" è definito sul tipo documento; se spento o

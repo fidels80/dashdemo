@@ -10,6 +10,7 @@ use app\models\MgDcfControlloRiga;
 use app\models\MgTipoDocumento;
 use app\models\MgAnagrafica;
 use app\models\MgMatricola;
+use app\models\MgMovimentoMagazzino;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -42,6 +43,7 @@ class DcfController extends Controller
                     'selezione' => ['POST'],
                     'salva' => ['POST'],
                     'invia-email' => ['POST'],
+                    'chiudi' => ['POST'],
                     'annulla' => ['POST'],
                 ],
             ],
@@ -161,6 +163,9 @@ class DcfController extends Controller
 
             $controllo->id_utente = Yii::$app->user->id;
             $controllo->aggiornaTotali();
+
+            // Rigenera i movimenti di magazzino del documento sulle q.ta reali.
+            $this->rigeneraMovimenti($doc, $controllo);
         }
 
         if ($azione === 'riepilogo' || $this->batchCompleto($ids)) {
@@ -206,6 +211,7 @@ class DcfController extends Controller
                     'documenti' => [],
                     'completo' => true,
                     'differenze' => 0,
+                    'non_riscontrate' => 0,
                     'email_inviata' => true,
                 ];
             }
@@ -233,6 +239,7 @@ class DcfController extends Controller
             ];
             $gruppi[$chiave]['completo'] = $gruppi[$chiave]['completo'] && $controllo->isCompleto();
             $gruppi[$chiave]['differenze'] += count($righeDiff);
+            $gruppi[$chiave]['non_riscontrate'] += max(0, (int) $controllo->righe_totali - (int) $controllo->righe_riscontrate);
             $gruppi[$chiave]['email_inviata'] = $gruppi[$chiave]['email_inviata'] && (bool) $controllo->email_inviata;
         }
 
@@ -267,12 +274,6 @@ class DcfController extends Controller
         $blocchi = [];
         $totDifferenza = 0.0;
         foreach ($documenti as $doc) {
-            $controllo = MgDcfControllo::perDocumento($doc->id);
-            if (!$controllo->isCompleto()) {
-                Yii::$app->session->setFlash('error',
-                    "Il controllo non e' completo per il documento " . $doc->etichetta . ': riscontrare tutte le righe prima di inviare.');
-                return $this->redirect(['controlla']);
-            }
             $righe = [];
             foreach ($doc->righe as $r) {
                 $cr = $riscontri[$doc->id][$r->id] ?? null;
@@ -295,7 +296,7 @@ class DcfController extends Controller
         }
 
         if (empty($blocchi)) {
-            Yii::$app->session->setFlash('info', 'Nessuna differenza da segnalare per questo fornitore.');
+            Yii::$app->session->setFlash('info', 'Nessuna differenza da segnalare per questo fornitore. Puoi chiudere il controllo.');
             return $this->redirect(['riepilogo']);
         }
 
@@ -315,17 +316,13 @@ class DcfController extends Controller
         $messaggio = trim((string) Yii::$app->request->post('messaggio'));
 
         try {
-            Yii::$app->mailer->compose('dcf/_email_mancanti', [
+            $this->inviaMail('dcf/_email_mancanti', [
                 'fornitore' => $fornitore,
                 'blocchi' => $blocchi,
                 'messaggio' => $messaggio,
                 'mittente' => Yii::$app->user->identity->username ?? '',
-            ])
-                ->setTo($destinatari)
-                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
-                ->setSubject($oggetto)
-                ->send();
-        } catch (\Exception $e) {
+            ], $destinatari, [Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']], $oggetto);
+        } catch (\Throwable $e) {
             Yii::$app->session->setFlash('error', "Errore nell'invio dell'email: " . $e->getMessage());
             return $this->redirect(['riepilogo']);
         }
@@ -340,8 +337,40 @@ class DcfController extends Controller
             $controllo->save(false);
         }
 
-        Yii::$app->session->setFlash('success', 'Segnalazione inviata a ' . implode(', ', $destinatari) . '.');
+        Yii::$app->session->setFlash('success', 'Segnalazione inviata a ' . implode(', ', $destinatari) . '. Documenti contrassegnati come controllati.');
         return $this->redirect(['riepilogo']);
+    }
+
+    /**
+     * Chiude il controllo corrente contrassegnando i documenti come controllati,
+     * anche se alcune righe non sono state riscontrate (nessuna email inviata).
+     */
+    public function actionChiudi()
+    {
+        $ids = $this->batchIds();
+        if (empty($ids)) {
+            return $this->redirect(['index']);
+        }
+
+        $documenti = $this->caricaDocumenti($ids);
+        $n = 0;
+        foreach ($documenti as $doc) {
+            $controllo = MgDcfControllo::perDocumento($doc->id);
+            if ($controllo->isNewRecord) {
+                $controllo->created_at = new \yii\db\Expression('GETDATE()');
+                $controllo->save(false);
+            }
+            $controllo->aggiornaTotali();
+            if ($controllo->stato !== MgDcfControllo::STATO_INVIATO) {
+                $controllo->stato = MgDcfControllo::STATO_COMPLETATO;
+                $controllo->save(false);
+            }
+            $n++;
+        }
+
+        $this->clearBatch();
+        Yii::$app->session->setFlash('success', $n . ' documenti contrassegnati come controllati.');
+        return $this->redirect(['index']);
     }
 
     /**
@@ -554,6 +583,78 @@ class DcfController extends Controller
             }
         }
         return array_values(array_unique($out));
+    }
+
+    /**
+     * Rigenera i movimenti di magazzino di un documento usando le quantita'
+     * riscontrate (per le righe non ancora riscontrate resta la q.ta documento).
+     * Non fa nulla se il tipo documento non movimenta il magazzino.
+     *
+     * @return int numero di movimenti creati
+     */
+    private function rigeneraMovimenti($doc, MgDcfControllo $controllo)
+    {
+        $tipo = MgTipoDocumento::findOne($doc->id_tipo);
+        if ($tipo === null || $tipo->segno_movimento === MgTipoDocumento::MOV_NESSUNO) {
+            return 0;
+        }
+
+        $map = [];
+        foreach ($controllo->righe as $cr) {
+            if ($cr->qta_riscontrata !== null && $cr->qta_riscontrata !== '') {
+                $map[(int) $cr->id_riga] = (float) $cr->qta_riscontrata;
+            }
+        }
+
+        $rigaIds = [];
+        foreach ($doc->righe as $r) {
+            $rigaIds[] = (int) $r->id;
+        }
+        if (empty($rigaIds)) {
+            return 0;
+        }
+
+        MgMovimentoMagazzino::deleteAll(['id_documento_riga' => $rigaIds]);
+
+        $creati = 0;
+        foreach ($doc->righe as $r) {
+            $qtaOriginale = (float) $r->qta;
+            if (isset($map[(int) $r->id])) {
+                $r->qta = $map[(int) $r->id];
+            }
+            $creati += count(MgMovimentoMagazzino::creaDaRiga($r, $tipo));
+            $r->qta = $qtaOriginale;
+        }
+
+        return $creati;
+    }
+
+    /**
+     * Invia un'email usando il mailer applicativo. Le deprecazioni di Swift
+     * Mailer su PHP 8.2 (E_DEPRECATED) vengono ignorate per non far fallire
+     * l'invio quando l'ambiente e' in debug.
+     */
+    private function inviaMail($view, array $params, array $to, array $from, $subject)
+    {
+        set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+            if ($errno === E_DEPRECATED || $errno === E_USER_DEPRECATED) {
+                return true;
+            }
+            if (Yii::$app->errorHandler !== null) {
+                Yii::$app->errorHandler->handleError($errno, $errstr, $errfile, $errline);
+            }
+            return true;
+        });
+
+        try {
+            return Yii::$app->mailer->compose($view, $params)
+                ->setTo($to)
+                ->setFrom($from)
+                ->setSubject($subject)
+                ->send();
+        } finally {
+            restore_error_handler();
+        }
     }
 
     private function batchIds()

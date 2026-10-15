@@ -15,6 +15,9 @@ use Yii;
  * @property float $percentuale
  * @property float $importo
  * @property string $stato
+ * @property bool $bloccata
+ * @property string|null $bloccata_at
+ * @property int|null $bloccata_by
  * @property string|null $created_at
  *
  * @property MgDocumento $documento
@@ -31,9 +34,10 @@ class MgScadenza extends \yii\db\ActiveRecord
     {
         return [
             [['id_documento', 'data_scadenza'], 'required'],
-            [['id_documento', 'id_metodo_pagamento', 'progressivo'], 'integer'],
-            [['data_scadenza', 'created_at'], 'safe'],
+            [['id_documento', 'id_metodo_pagamento', 'progressivo', 'bloccata_by'], 'integer'],
+            [['data_scadenza', 'created_at', 'bloccata_at'], 'safe'],
             [['percentuale', 'importo'], 'number'],
+            [['bloccata'], 'boolean'],
             [['stato'], 'string', 'max' => 20],
         ];
     }
@@ -49,6 +53,9 @@ class MgScadenza extends \yii\db\ActiveRecord
             'percentuale' => '%',
             'importo' => 'Importo',
             'stato' => 'Stato',
+            'bloccata' => 'Bloccata',
+            'bloccata_at' => 'Bloccata il',
+            'bloccata_by' => 'Bloccata da',
             'created_at' => 'Creata il',
         ];
     }

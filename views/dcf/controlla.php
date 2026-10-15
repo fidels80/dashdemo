@@ -73,6 +73,16 @@ foreach ($documenti as $doc) {
         </div>
     </div>
 
+    <!-- Azioni rapide -->
+    <div class="d-flex justify-content-end mb-3 flex-wrap">
+        <button type="button" class="btn btn-outline-secondary btn-sm mr-2" id="dcf-conformi-all">
+            <i class="fas fa-equals"></i> Tutte conformi
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" id="dcf-azzera-all">
+            <i class="fas fa-ban"></i> Azzera tutte a 0
+        </button>
+    </div>
+
     <!-- Import da file TXT -->
     <div class="card shadow-sm mb-3">
         <div class="card-header py-2">
@@ -133,6 +143,9 @@ foreach ($documenti as $doc) {
                         <span>Diff.: <span class="font-weight-bold doc-diff">0,00</span></span>
                         <button type="button" class="btn btn-outline-secondary btn-sm ml-2 dcf-conformi">
                             <i class="fas fa-equals"></i> Tutte conformi
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm ml-1 dcf-azzera">
+                            <i class="fas fa-ban"></i> Azzera
                         </button>
                     </div>
                 </div>
@@ -316,6 +329,37 @@ foreach ($documenti as $doc) {
             ricalcola();
         });
     });
+
+    document.querySelectorAll('.dcf-azzera').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var card = btn.closest('[data-doc-card]');
+            if (!card) return;
+            card.querySelectorAll('input.qta-riscontrata').forEach(function (inp) {
+                inp.value = '0,00';
+            });
+            ricalcola();
+        });
+    });
+
+    var confAll = document.getElementById('dcf-conformi-all');
+    if (confAll) {
+        confAll.addEventListener('click', function () {
+            document.querySelectorAll('input.qta-riscontrata').forEach(function (inp) {
+                inp.value = fmt(parseFloat(inp.dataset.qtaDoc) || 0);
+            });
+            ricalcola();
+        });
+    }
+
+    var azzAll = document.getElementById('dcf-azzera-all');
+    if (azzAll) {
+        azzAll.addEventListener('click', function () {
+            document.querySelectorAll('input.qta-riscontrata').forEach(function (inp) {
+                inp.value = '0,00';
+            });
+            ricalcola();
+        });
+    }
 
     // ---- Import da file / testo ----
     function rowsByCode() {
