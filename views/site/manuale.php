@@ -732,14 +732,18 @@ JS
           <h4>Creare un report (procedura guidata)</h4>
           <p>Premendo <span class="manual-btn">Nuovo report</span> si apre la procedura guidata, organizzata in schede:</p>
           <ul>
-            <li><strong>Generale</strong> &mdash; codice, nome, descrizione, categoria, <strong>fonte dati</strong>, tipo (tabella / raggruppato / pivot), ordine, attivo e <strong>funzione di licenza</strong> (facoltativa: se indicata, il report &egrave; attivo solo se la licenza la abilita).</li>
-            <li><strong>Colonne</strong> &mdash; quali campi mostrare (per i report a tabella). I campi disponibili sono proposti in automatico in base alla fonte scelta.</li>
+            <li><strong>Generale</strong> &mdash; codice, nome, descrizione, categoria, <strong>icona</strong> (facoltativa, mostrata nel catalogo), <strong>fonte dati</strong>, tipo (tabella / raggruppato / pivot), ordine, attivo e <strong>funzione di licenza</strong> (facoltativa: se indicata, il report &egrave; attivo solo se la licenza la abilita).</li>
+            <li><strong>Colonne</strong> &mdash; quali campi mostrare. Per i report a <strong>tabella</strong> sono le colonne dell'elenco; per i report <strong>raggruppati</strong> rappresentano il <strong>dettaglio espandibile</strong> di ogni gruppo (vedi sotto). I campi disponibili sono proposti in automatico in base alla fonte scelta.</li>
             <li><strong>Parametri</strong> &mdash; i filtri che l'utente compiler&agrave; (es. <em>Dal</em> / <em>Al</em> come date).</li>
             <li><strong>Filtri</strong> &mdash; come i parametri agiscono sui dati (uguale, compreso tra, contiene...).</li>
             <li><strong>Raggruppamenti</strong> e <strong>Aggregazioni</strong> &mdash; per raggruppare i dati e calcolare somme, medie, conteggi, minimi e massimi.</li>
             <li><strong>Calcolati</strong> &mdash; colonne calcolate con una formula sugli altri campi (es. <code>ore * tariffa</code>).</li>
             <li><strong>Ordinamento</strong> &mdash; l'ordine di visualizzazione.</li>
           </ul>
+          <p>I report <strong>raggruppati</strong> che hanno anche delle <strong>colonne di dettaglio</strong> vengono mostrati come <strong>elenco a gruppi espandibili</strong>: la prima colonna contiene un pulsante che apre/chiude il dettaglio di ogni gruppo, e sulla riga di intestazione compaiono i <strong>subtotali</strong> (somme, conteggi, medie, minimi, massimi) calcolati dalle aggregazioni, pi&ugrave; le eventuali <strong>colonne calcolate</strong> (ad esempio il <em>valore medio</em>). In fondo alla tabella restano i <strong>totali complessivi</strong>; i pulsanti <span class="manual-btn manual-btn-gray">Espandi tutti</span> e <span class="manual-btn manual-btn-gray">Comprimi tutti</span> aprono o chiudono tutti i gruppi in un colpo solo. Se un report raggruppato non ha colonne di dettaglio, resta il riepilogo aggregato classico.
+          <div class="manual-note">
+            <strong>Esempio:</strong> un report <em>&laquo;Elenco documenti con righe&raquo;</em> raggruppa per tipo/anno/numero documento e, con il tasto nella prima colonna, espande le righe del documento mostrando per ciascun gruppo la <strong>quantit&agrave; totale</strong>, l'<strong>importo totale</strong> e il <strong>prezzo medio</strong>.
+          </div>
           <p>Con il pulsante <span class="manual-btn">Anteprima</span> vedi subito il risultato senza salvare; <span class="manual-btn">Salva</span> memorizza il report. Chi &egrave; esperto pu&ograve; scegliere la modalit&agrave; <strong>JSON avanzato</strong> e modificare direttamente la definizione del report.</p>
           <div class="manual-note">
             <strong>Licenza e operatore:</strong> il campo <em>funzione di licenza</em> del report decide se il report &egrave; disponibile in base alla licenza; il flag <em>attivo</em> lo disattiva temporaneamente. L'accesso al designer stesso &egrave; riservato ai supervisori o agli operatori a cui viene assegnato il relativo permesso.
