@@ -239,7 +239,7 @@ $renderAllegati = function ($lista) {
                             </div>
                             <div class="form-group">
                                 <label>Sottocommessa</label>
-                                <?= Html::dropDownList('commessa', null, $sottocommesse, ['class' => 'form-control', 'prompt' => 'Seleziona...']) ?>
+                                <?= Html::dropDownList('commessa', $commessaDefault ?? null, $sottocommesse, ['class' => 'form-control', 'prompt' => 'Seleziona...']) ?>
                             </div>
                             <div class="form-group">
                                 <label>Tempo (ore)</label>

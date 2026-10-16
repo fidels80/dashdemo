@@ -118,6 +118,7 @@ class CrmticketController extends Controller
             'messaggio' => new MgCrmTicketMessaggio(),
             'articoli' => MgArticolo::map(),
             'sottocommesse' => $this->mappaSottocommesse(),
+            'commessaDefault' => $this->primaSottocommessa(),
         ]);
     }
 
@@ -374,15 +375,24 @@ class CrmticketController extends Controller
     {
         $model = $this->findModel($id);
 
-        $codiceArticolo = Yii::$app->request->post('cd_art');
-        $articolo = null;
-        if (Yii::$app->request->post('id_articolo')) {
-            $articolo = MgArticolo::findOne((int) Yii::$app->request->post('id_articolo'));
-        } elseif ($model->articolo) {
+        if ($model->evaso || !empty($model->id_rapportino)) {
+            Yii::$app->session->setFlash('error', 'Il ticket è già stato evaso in un rapportino.');
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        $articolo = MgArticolo::findOne((int) Yii::$app->request->post('id_articolo'));
+        if ($articolo === null && $model->articolo) {
             $articolo = $model->articolo;
         }
-        if ($articolo) {
-            $codiceArticolo = $articolo->codice;
+        if ($articolo === null) {
+            Yii::$app->session->setFlash('error', 'Seleziona un articolo: è obbligatorio per generare il rapportino.');
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        $commessa = trim((string) Yii::$app->request->post('commessa'));
+        if ($commessa === '') {
+            Yii::$app->session->setFlash('error', 'Seleziona una sottocommessa: è obbligatoria per generare il rapportino.');
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         $tempo = Yii::$app->request->post('tempo_impiegato_ore', $model->tempo_impiegato_ore);
@@ -390,17 +400,13 @@ class CrmticketController extends Controller
             Yii::$app->session->setFlash('error', 'Indica il tempo impiegato (in ore) per evadere il rapportino.');
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        if (empty($codiceArticolo)) {
-            Yii::$app->session->setFlash('error', 'Indica l\'articolo per il rapportino.');
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
 
         $rapportino = $this->creaRapportino(
             $model,
             $articolo,
-            $codiceArticolo,
+            $articolo->codice,
             (float) $tempo,
-            Yii::$app->request->post('commessa'),
+            $commessa,
             Yii::$app->request->post('data')
         );
 

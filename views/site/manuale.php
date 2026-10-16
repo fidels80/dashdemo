@@ -1386,6 +1386,9 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
             l'<strong>articolo</strong>, la <strong>sottocommessa</strong>, il <strong>tempo impiegato</strong> e la
             <strong>data</strong>. Il sistema crea un rapportino con, come dettaglio, l'articolo e il tempo di
             risoluzione, e collega il ticket al rapportino generato (che poi si evaderà nei documenti come di consueto).</p>
+          <p>La <strong>sottocommessa</strong> è proposta in automatico (di norma la prima disponibile). Se mancano
+            <strong>articolo</strong>, <strong>sottocommessa</strong> o <strong>tempo</strong>, il sistema avvisa con un
+            messaggio e non genera il rapportino.</p>
           <div class="manual-warn">
             Un ticket <strong>evaso in un rapportino non può essere eliminato</strong>. In generale, un record non
             viene eliminato se è utilizzato altrove (articoli presenti in documenti, anagrafiche usate in documenti o

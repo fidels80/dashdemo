@@ -4,16 +4,16 @@ namespace app\components;
 
 use Yii;
 use yii\web\View;
-use hail812\adminlte3\assets\PluginAsset;
 
 /**
  * SweetAlert2 come standard di progetto per conferme e avvisi.
  *
- * - Carica il file web/js/dash-swal.js che intercetta qualsiasi elemento
- *   [data-confirm] mostrando la conferma con Swal (al posto del confirm()
- *   nativo di Yii) e mostra i messaggi flash.
- * - I messaggi flash di sessione (success/error/warning/info) vengono passati
- *   alla pagina tramite window.dashSwalFlashes.
+ * - Carica il plugin sweetalert2 pubblicandolo direttamente (l'asset bundle
+ *   di AdminLTE puo' avere una copia pubblicata obsoleta che non lo include).
+ * - Carica web/js/dash-swal.js che intercetta qualsiasi elemento
+ *   [data-confirm] e sostituisce yii.confirm, mostrando la conferma con Swal.
+ * - Passa i messaggi flash (success/error/warning/info) alla pagina tramite
+ *   window.dashSwalFlashes, mostrati come popup Swal.
  *
  * Da chiamare una sola volta per pagina, nei layout (main.php / portale.php).
  */
@@ -46,15 +46,26 @@ class Swal
     }
 
     /**
-     * Registra l'asset di SweetAlert2, il gestore conferme e i flash.
+     * Registra SweetAlert2, il gestore conferme e i flash.
      */
     public static function registerAssets(View $view)
     {
-        PluginAsset::register($view)->add(['sweetalert2']);
+        $am = $view->getAssetManager();
 
+        // sweetalert2 pubblicato direttamente dal vendor.
+        $dir = $am->publish('@vendor/almasaeed2010/adminlte/plugins/sweetalert2');
+        if ($dir !== false) {
+            $view->registerJsFile($dir[1] . '/sweetalert2.min.js', ['position' => View::POS_END]);
+        }
+        $tema = $am->publish('@vendor/almasaeed2010/adminlte/plugins/sweetalert2-theme-bootstrap-4');
+        if ($tema !== false) {
+            $view->registerCssFile($tema[1] . '/bootstrap-4.min.css');
+        }
+
+        // Gestore conferme/flash (dopo sweetalert2).
         $view->registerJsFile(
             Yii::$app->request->baseUrl . '/js/dash-swal.js',
-            ['depends' => [PluginAsset::class]]
+            ['position' => View::POS_END]
         );
 
         $flashes = json_encode(self::flashes(),
