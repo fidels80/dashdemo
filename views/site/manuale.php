@@ -180,7 +180,14 @@ JS
         <a class="manual-l2" href="#comandi-api">API, licenza e changelog</a>
         <a class="manual-l2" href="#comandi-export">Export e import di file</a>
         <a class="manual-l2" href="#comandi-sistema">Sistema e migrazioni</a>
-        <a class="manual-l1" href="#glossario">16. Glossario</a>
+        <a class="manual-l1" href="#crm">16. CRM e Portale clienti</a>
+        <a class="manual-l2" href="#crm-ticket">Ticket (area operativa)</a>
+        <a class="manual-l2" href="#crm-portale">Portale clienti (utenti esterni)</a>
+        <a class="manual-l2" href="#crm-allegati">Allegati, tempo impiegato e soluzione</a>
+        <a class="manual-l2" href="#crm-rapportino">Evasione in rapportino</a>
+        <a class="manual-l2" href="#crm-faq">FAQ dai ticket</a>
+        <a class="manual-l2" href="#crm-config">Configurazione del CRM</a>
+        <a class="manual-l1" href="#glossario">17. Glossario</a>
       </div>
     </nav>
 
@@ -1314,10 +1321,101 @@ class MgMovimentoMagazzino extends \yii\db\ActiveRecord
         </div>
       </section>
 
-      <!-- 16 GLOSSARIO -->
+      <!-- 16 CRM -->
+      <section id="crm">
+        <div class="manual-card">
+          <h2>16. CRM e Portale clienti</h2>
+          <p>Il modulo <strong>CRM</strong> gestisce le <strong>richieste dei clienti</strong> (ticket): assistenza sui
+            prodotti acquistati, richieste amministrative su documenti/fatture/DDT/scadenze e richieste di preventivo.
+            Le richieste possono essere aperte dagli <strong>operatori interni</strong> oppure direttamente dai
+            <strong>clienti</strong> dalla propria area riservata (il <em>Portale clienti</em>).</p>
+          <div class="manual-note">
+            Ogni conferma e ogni avviso del CRM (e dell'applicazione in generale) viene mostrato con una finestra
+            <strong>SweetAlert</strong>, al posto delle finestre native del browser.
+          </div>
+
+          <h3 id="crm-ticket">Ticket (area operativa)</h3>
+          <p>La voce <strong>CRM &rarr; Ticket</strong> elenca tutte le richieste. In alto trovi i filtri per
+            <em>stato</em>, <em>tipo</em>, <em>priorità</em>, <em>assegnatario</em> e per <em>aperte/chiuse</em>, oltre
+            alla ricerca testuale. Ogni riga mostra numero (es. <code>CRM 2026/0001</code>), data, tipo, cliente,
+            oggetto, stato e priorità (con colori).</p>
+          <p>Aprendo un ticket trovi:</p>
+          <ul>
+            <li><strong>Dettagli</strong> della richiesta (tipo, cliente, chi l'ha aperta, articolo, matricola,
+              documento collegato, date, tempo impiegato e descrizione).</li>
+            <li><strong>Allegati</strong> del ticket (vedi sotto).</li>
+            <li><strong>Conversazione</strong>: lo scambio di messaggi tra cliente e operatori. I messaggi
+              contrassegnati come <strong>nota interna</strong> sono visibili solo agli operatori.</li>
+            <li><strong>Assegnazione</strong>: assegni il ticket a un operatore o lo prendi in carico tu.</li>
+            <li><strong>Stato</strong>: aggiorni lo stato del ticket tra quelli configurati.</li>
+            <li><strong>Chiusura</strong>, <strong>Evasione in rapportino</strong> e <strong>FAQ</strong> (vedi sotto).</li>
+          </ul>
+          <p>Il flusso tipico degli stati è: <em>Nuovo &rarr; Aperto &rarr; Preso in carico &rarr; In lavorazione &rarr;
+            In attesa del cliente &rarr; Risolto &rarr; Chiuso</em> (oppure <em>Annullato</em>). Gli stati di chiusura
+            sono due: <strong>Chiuso</strong> e <strong>Annullato</strong>.</p>
+
+          <h3 id="crm-portale">Portale clienti (utenti esterni)</h3>
+          <p>Alcuni utenti possono essere marcati come <strong>esterni</strong> (contatti dei clienti). Un utente
+            esterno è collegato a <strong>una o più aziende</strong>; una stessa azienda può avere <strong>più utenti</strong>.
+            Quando un utente esterno effettua l'accesso viene portato <strong>direttamente al Portale clienti</strong> e
+            vede <strong>solo</strong> le funzioni del portale.</p>
+          <p>Nel portale il cliente può:</p>
+          <ul>
+            <li>vedere l'elenco delle <strong>proprie richieste</strong> e aprirne di nuove (assistenza, amministrative, preventivi);</li>
+            <li>rispondere nella conversazione e allegare file;</li>
+            <li>consultare, in <strong>sola lettura</strong>, i <strong>documenti</strong> (fatture, DDT, ecc.) e le
+              <strong>scadenze</strong> di tutte le aziende a cui è collegato.</li>
+          </ul>
+          <div class="manual-tip">
+            Il cliente vede solo le note <strong>pubbliche</strong>: le note interne degli operatori restano riservate.
+          </div>
+
+          <h3 id="crm-allegati">Allegati, tempo impiegato e soluzione</h3>
+          <p>Si possono allegare file <strong>sia al ticket</strong> (sezione "Allegati del ticket") <strong>sia ai
+            singoli commenti</strong> durante una risposta: si selezionano uno o più file e si invia. Gli allegati si
+            scaricano o si antepongono (immagini) dal loro link e si possono eliminare.</p>
+          <p>La conversazione permette di <strong>marcare un commento come soluzione</strong> (pulsante
+            <span class="manual-btn manual-btn-green">Segna come soluzione</span>, visibile solo agli operatori
+            interni). Il commento scelto viene evidenziato e il suo testo diventa la soluzione del ticket.</p>
+          <p>Alla <strong>chiusura</strong> del ticket l'operatore deve indicare il <strong>tempo impiegato</strong>
+            (in ore) e la <strong>soluzione</strong> (proposta automaticamente dall'ultimo commento marcato come
+            soluzione). Il tempo impiegato resta memorizzato sul ticket.</p>
+
+          <h3 id="crm-rapportino">Evasione in rapportino</h3>
+          <p>Un ticket può essere <strong>evaso in un rapportino</strong>: dal pannello "Evadi in rapportino" scegli
+            l'<strong>articolo</strong>, la <strong>sottocommessa</strong>, il <strong>tempo impiegato</strong> e la
+            <strong>data</strong>. Il sistema crea un rapportino con, come dettaglio, l'articolo e il tempo di
+            risoluzione, e collega il ticket al rapportino generato (che poi si evaderà nei documenti come di consueto).</p>
+          <div class="manual-warn">
+            Un ticket <strong>evaso in un rapportino non può essere eliminato</strong>. In generale, un record non
+            viene eliminato se è utilizzato altrove (articoli presenti in documenti, anagrafiche usate in documenti o
+            ticket, ecc.): il sistema lo impedisce e te ne spiega il motivo.
+          </div>
+
+          <h3 id="crm-faq">FAQ dai ticket</h3>
+          <p>Alla chiusura (o in seguito) puoi <strong>trasformare il ticket in una FAQ</strong>. La FAQ è composta da
+            <strong>articolo</strong>, <strong>domanda</strong> (presa dalla descrizione della richiesta) e
+            <strong>soluzione</strong>. Le FAQ sono raccolte nella voce <strong>CRM &rarr; FAQ</strong>, dove si
+            possono cercare e modificare. Alla chiusura di un ticket il sistema propone con un avviso la creazione
+            della FAQ, e lo stesso si può fare dal pannello del ticket.</p>
+
+          <h3 id="crm-config">Configurazione del CRM</h3>
+          <p>La voce <strong>CRM &rarr; Configurazione</strong> permette di gestire <strong>tipi di richiesta</strong>,
+            <strong>stati del workflow</strong> (con indicazione di quali chiudono il ticket) e <strong>priorità</strong>,
+            ciascuno con descrizione, ordine e colore. Le voci in uso non si eliminano: si possono
+            <strong>disattivare</strong> e riattivare.</p>
+          <div class="manual-note">
+            I ticket e gli utenti esterni di esempio si possono generare da console con
+            <code>php yii crmdemo</code> (per la dimostrazione). Per gli utenti demo la password è
+            <code>Cliente2026!</code>.
+          </div>
+        </div>
+      </section>
+
+      <!-- 17 GLOSSARIO -->
       <section id="glossario">
         <div class="manual-card">
-          <h2>16. Glossario</h2>
+          <h2>17. Glossario</h2>
           <table>
             <tr><th>Termine</th><th>Significato</th></tr>
             <tr><td><strong>Planning</strong></td><td>La pianificazione giornaliera delle attivit&agrave; delle squadre.</td></tr>
