@@ -119,6 +119,19 @@ L'hook `post-commit` (`.githooks/post-commit`, attivato con
 - Le pagine riservate ai livelli elevati vanno protette sia nel menu
   (`livello_min = 100`, `per_tutti = 0`) sia nel controller
   (`AccessControl::isSuper`).
+- **SweetAlert2 per ogni conferma/avviso.** Nel CRM (e in generale) ogni
+  conferma o messaggio va mostrato con SweetAlert2, mai con `confirm()`/`alert()`
+  nativi. Per le conferme usare `data-confirm` (intercettato globalmente da
+  `app\components\Swal`, registrato nei layout); per gli esiti usare i flash di
+  sessione `success`/`error`/`warning`/`info`, mostrati automaticamente come
+  popup Swal. Non introdurre nuove librerie di dialogo.
+- **Controllo di congruità prima di ogni cancellazione.** Un record non va mai
+  eliminato se è referenziato altrove. Implementare `riferimentiBloccanti()` sul
+  model tramite il trait `app\components\EliminazioneProtetta` (che aggiunge
+  `puoEliminare(&$motivo)` e blocca `beforeDelete`), e nel controller verificare
+  `puoEliminare()` mostrando un flash `error` con il motivo. Esempi: articolo in
+  documenti/movimenti/matricole, anagrafica in documenti/commesse/ticket,
+  ticket evaso in rapportino, tipo documento/metodo pagamento/aliquota in uso.
 - Non committare/pushare senza richiesta esplicita.
 - **Non cancellare mai dati** (righe in database, file, branch locali o remoti,
   tag, commit) se non richiesto esplicitamente dall'utente. Vale per qualsiasi

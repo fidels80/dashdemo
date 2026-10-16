@@ -23,6 +23,8 @@ use Yii;
  */
 class MgMetodoPagamento extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     const PARTENZA_EMISSIONE = 'emissione';
     const PARTENZA_GIORNI_DOPO = 'giorni_dopo';
     const PARTENZA_INIZIO_MESE = 'inizio_mese';
@@ -31,6 +33,21 @@ class MgMetodoPagamento extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'mg_metodo_pagamento';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_anagrafica', ['id_metodo_pagamento' => $this->id])) {
+            $rif[] = 'anagrafiche';
+        }
+        if ($this->esisteRiferimento('mg_documento', ['id_metodo_pagamento' => $this->id])) {
+            $rif[] = 'documenti';
+        }
+        if ($this->esisteRiferimento('mg_scadenza', ['id_metodo_pagamento' => $this->id])) {
+            $rif[] = 'scadenze';
+        }
+        return $rif;
     }
 
     public function rules()

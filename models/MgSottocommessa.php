@@ -22,9 +22,26 @@ use Yii;
  */
 class MgSottocommessa extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_sottocommessa';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_documento', ['id_sottocommessa' => $this->id])) {
+            $rif[] = 'documenti';
+        }
+        if ($this->esisteRiferimento('mg_documento_riga', ['id_sottocommessa' => $this->id])) {
+            $rif[] = 'righe documento';
+        }
+        if ($this->codice && $this->esisteRiferimento('rapportini', ['commessa' => $this->codice])) {
+            $rif[] = 'rapportini';
+        }
+        return $rif;
     }
 
     public function rules()

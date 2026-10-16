@@ -18,6 +18,8 @@ use Yii;
  */
 class MgAttributoArticolo extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     const TIPO_MARCA = 'marca';
     const TIPO_MODELLO = 'modello';
     const TIPO_TESSUTO = 'tessuto';
@@ -27,6 +29,17 @@ class MgAttributoArticolo extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'mg_attributo_articolo';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_articolo', ['or',
+            ['id_marca' => $this->id], ['id_modello' => $this->id], ['id_tessuto' => $this->id],
+            ['id_taglia' => $this->id], ['id_colore' => $this->id]])) {
+            $rif[] = 'articoli';
+        }
+        return $rif;
     }
 
     public function rules()

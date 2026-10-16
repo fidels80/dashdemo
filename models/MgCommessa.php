@@ -21,9 +21,36 @@ use Yii;
  */
 class MgCommessa extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_commessa';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        // La commessa e' eliminabile solo se nessuna delle sue sottocommesse
+        // e' usata in documenti, righe documento o rapportini.
+        $ids = \yii\helpers\ArrayHelper::getColumn(
+            MgSottocommessa::find()->select('id')->where(['id_commessa' => $this->id])->asArray()->all(),
+            'id'
+        );
+        if (!empty($ids)) {
+            if ($this->esisteRiferimento('mg_documento', ['id_sottocommessa' => $ids])
+                || $this->esisteRiferimento('mg_documento_riga', ['id_sottocommessa' => $ids])) {
+                $rif[] = 'documenti';
+            }
+            $codici = \yii\helpers\ArrayHelper::getColumn(
+                MgSottocommessa::find()->select('codice')->where(['id' => $ids])->asArray()->all(),
+                'codice'
+            );
+            if (!empty($codici) && $this->esisteRiferimento('rapportini', ['commessa' => $codici])) {
+                $rif[] = 'rapportini';
+            }
+        }
+        return $rif;
     }
 
     public function rules()

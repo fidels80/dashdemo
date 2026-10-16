@@ -218,6 +218,12 @@ class MgdocumentoController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        if (\app\models\MgCrmTicket::find()->where(['id_documento' => $model->id])->exists()) {
+            Yii::$app->session->setFlash('error',
+                'Il documento non è eliminabile: è collegato a una o più richieste CRM.');
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
         // Il numero torna libero: eliminando la testata le righe/scadenze seguono (CASCADE).
         $rapportini = MgDocumentoRiga::find()
             ->select('id_rapportino')

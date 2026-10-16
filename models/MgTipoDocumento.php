@@ -45,6 +45,8 @@ use Yii;
  */
 class MgTipoDocumento extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     const DEST_CLIENTE = 'cliente';
     const DEST_FORNITORE = 'fornitore';
 
@@ -58,6 +60,15 @@ class MgTipoDocumento extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'mg_tipo_documento';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_documento', ['id_tipo' => $this->id])) {
+            $rif[] = 'documenti';
+        }
+        return $rif;
     }
 
     public function init()

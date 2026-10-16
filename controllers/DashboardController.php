@@ -26,6 +26,11 @@ class DashboardController extends Controller
      */
     public function actionIndex()
     {
+        $identity = Yii::$app->user->identity;
+        if ($identity && method_exists($identity, 'isEsterno') && $identity->isEsterno()) {
+            return $this->redirect(['portale/index']);
+        }
+
         $vis = $this->visibilitaSezioni();
 
         return $this->render('index', [

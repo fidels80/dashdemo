@@ -73,6 +73,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isEsterno()) {
+            return $this->redirect(['portale/index']);
+        }
+
         return $this->render('index');
     }
 
@@ -103,6 +107,9 @@ class SiteController extends Controller
             }
 
             if ($result) {
+                if (Yii::$app->user->identity->isEsterno()) {
+                    return $this->redirect(['portale/index']);
+                }
                 return $this->redirect(['dashboard/index']);
             }
         }

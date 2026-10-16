@@ -18,9 +18,20 @@ namespace app\models;
  */
 class MgTipoContatto extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_tipo_contatto';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_anagrafica_contatto', ['id_tipo_contatto' => $this->id])) {
+            $rif[] = 'contatti';
+        }
+        return $rif;
     }
 
     public function rules()

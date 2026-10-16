@@ -34,6 +34,8 @@ if ($usrid !== null) {
 \app\assets\FontAwesomeAsset::register($this);
 \hail812\adminlte3\assets\AdminLteAsset::register($this);
 \hail812\adminlte3\assets\PluginAsset::register($this)->add(['sweetalert2']);
+// SweetAlert2 come standard per conferme ([data-confirm]) e messaggi flash.
+\app\components\Swal::registerAssets($this);
 $this->registerCssFile(Yii::getAlias('@web/css/apple-theme.css'), ['depends' => [\hail812\adminlte3\assets\AdminLteAsset::class]]);
 //$this->registerJsFile('https://code.jquery.com/jquery-3.6.0.min.js', ['position' => \yii\web\View::POS_HEAD]);
 

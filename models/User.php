@@ -65,6 +65,7 @@ class User extends ActiveRecord implements IdentityInterface
             [ ['file'],'file'],
             ['lastlogin','safe'],
             [['ischief' ,'istourmanager'],'integer'],
+            [['is_esterno'], 'boolean'],
             [['cd_agente'],'string','max'=>3],
             [['two_factor_secret'], 'string'],
             [['two_factor_enabled'], 'boolean'],
@@ -282,6 +283,18 @@ class User extends ActiveRecord implements IdentityInterface
         if ($this->hasAttribute('two_factor_enabled') && $this->two_factor_enabled !== null) {
             $this->two_factor_enabled = (int) $this->two_factor_enabled;
         }
+
+        if ($this->hasAttribute('is_esterno') && $this->is_esterno !== null) {
+            $this->is_esterno = (int) $this->is_esterno;
+        }
+    }
+
+    /**
+     * True se l'utente e' un contatto esterno (portale clienti).
+     */
+    public function isEsterno()
+    {
+        return $this->hasAttribute('is_esterno') && (int) $this->is_esterno === 1;
     }
 
     /**
@@ -297,6 +310,10 @@ class User extends ActiveRecord implements IdentityInterface
 
             if ($this->hasAttribute('two_factor_enabled')) {
                 $this->two_factor_enabled = $this->two_factor_enabled ? 1 : 0;
+            }
+
+            if ($this->hasAttribute('is_esterno')) {
+                $this->is_esterno = $this->is_esterno ? 1 : 0;
             }
 
             return true;

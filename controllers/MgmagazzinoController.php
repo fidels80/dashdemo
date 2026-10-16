@@ -87,7 +87,10 @@ class MgmagazzinoController extends Controller
             return $this->redirect(['view', 'id' => $id]);
         }
 
-        $model->delete();
+        if ($model->delete() === false) {
+            Yii::$app->session->setFlash('error', 'Impossibile eliminare: il record è utilizzato in altri dati.');
+            return $this->redirect(['view', 'id' => $id]);
+        }
         return $this->redirect(['index']);
     }
 

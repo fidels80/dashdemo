@@ -17,9 +17,27 @@ use Yii;
  */
 class MgMagazzino extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_magazzino';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        $posizioni = ['or', ['id_magazzino_partenza' => $this->id], ['id_magazzino_arrivo' => $this->id]];
+        if ($this->esisteRiferimento('mg_documento_riga', $posizioni)) {
+            $rif[] = 'righe documento';
+        }
+        if ($this->esisteRiferimento('mg_movimentimagazzino', $posizioni)) {
+            $rif[] = 'movimenti di magazzino';
+        }
+        if ($this->esisteRiferimento('mg_tipo_documento', $posizioni)) {
+            $rif[] = 'tipi documento';
+        }
+        return $rif;
     }
 
     public function rules()

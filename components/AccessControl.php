@@ -20,6 +20,7 @@ class AccessControl
     public static $exemptPrefixes = [
         'site/',
         'dashboard/',
+        'portale/',
         'two-factor/',
         'licenza/',
         'user/update',

@@ -100,7 +100,10 @@ class MgcommessaController extends Controller
             }
         }
 
-        $model->delete();
+        if ($model->delete() === false) {
+            Yii::$app->session->setFlash('error', 'Impossibile eliminare: il record è utilizzato in altri dati.');
+            return $this->redirect(['index']);
+        }
         return $this->redirect(['index']);
     }
 

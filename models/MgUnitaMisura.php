@@ -14,9 +14,26 @@ use Yii;
  */
 class MgUnitaMisura extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_unita_misura';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_articolo_um', ['id_unita_misura' => $this->id])) {
+            $rif[] = 'articoli';
+        }
+        if ($this->esisteRiferimento('mg_documento_riga', ['id_unita_misura' => $this->id])) {
+            $rif[] = 'righe documento';
+        }
+        if ($this->esisteRiferimento('mg_movimentimagazzino', ['id_unita_misura' => $this->id])) {
+            $rif[] = 'movimenti di magazzino';
+        }
+        return $rif;
     }
 
     public function rules()

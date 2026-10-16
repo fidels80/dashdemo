@@ -20,9 +20,23 @@ use Yii;
  */
 class MgMatricola extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_matricola';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_documento_riga_dettaglio', ['id_matricola' => $this->id])) {
+            $rif[] = 'documenti';
+        }
+        if ($this->esisteRiferimento('mg_crm_ticket', ['id_matricola' => $this->id])) {
+            $rif[] = 'ticket CRM';
+        }
+        return $rif;
     }
 
     public function rules()

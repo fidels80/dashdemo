@@ -43,13 +43,13 @@ class TwoFactorController extends Controller
         }
 
         if (!Yii::$app->user->isGuest) {
-            return $this->redirect(['dashboard/index']);
+            return $this->redirect($this->postLoginRoute());
         }
 
         $model = new TwoFactorForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->verify()) {
-            return $this->redirect(['dashboard/index']);
+            return $this->redirect($this->postLoginRoute());
         }
 
         return $this->render('verify', [
@@ -141,5 +141,18 @@ class TwoFactorController extends Controller
         Yii::$app->session->setFlash('success',
             'Tutti i dispositivi fidati sono stati revocati.');
         return $this->redirect(['two-factor/setup']);
+    }
+
+    /**
+     * Destinazione dopo il login: il portale per gli utenti esterni,
+     * la dashboard per gli operatori interni.
+     */
+    private function postLoginRoute()
+    {
+        $identity = Yii::$app->user->identity;
+        if ($identity && method_exists($identity, 'isEsterno') && $identity->isEsterno()) {
+            return ['portale/index'];
+        }
+        return ['dashboard/index'];
     }
 }

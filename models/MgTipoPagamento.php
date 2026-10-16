@@ -15,9 +15,20 @@ use Yii;
  */
 class MgTipoPagamento extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_tipo_pagamento';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_metodo_pagamento', ['id_tipo_pagamento' => $this->id])) {
+            $rif[] = 'metodi di pagamento';
+        }
+        return $rif;
     }
 
     public function rules()

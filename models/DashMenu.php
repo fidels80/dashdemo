@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Query;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -114,9 +115,23 @@ class DashMenu extends \yii\db\ActiveRecord
             ->column();
         $assigned = array_map('intval', $assigned);
 
+        // Gli utenti esterni (portale clienti) vedono solo il ramo "Portale cliente".
+        $isEsterno = false;
+        if ($userId) {
+            $isEsterno = (int) (new Query())
+                ->select('is_esterno')
+                ->from('{{%user}}')
+                ->where(['id' => (int) $userId])
+                ->scalar() === 1;
+        }
+
         $byParent = [];
         foreach ($items as $it) {
             if (!$isSuper && !$it->per_tutti && !in_array((int) $it->id, $assigned, true)) {
+                continue;
+            }
+            // Esterno: dal livello radice tieni solo la voce "portale".
+            if ($isEsterno && $it->genitore_id === null && $it->codice !== 'portale') {
                 continue;
             }
             $byParent[(int) $it->genitore_id][] = $it;

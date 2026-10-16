@@ -93,7 +93,13 @@ class MgtipodocumentoController extends Controller
 
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $motivo = null;
+        if (!$model->puoEliminare($motivo)) {
+            Yii::$app->session->setFlash('error', $motivo);
+            return $this->redirect(['index']);
+        }
+        $model->delete();
 
         return $this->redirect(['index']);
     }

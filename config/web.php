@@ -195,6 +195,24 @@ $config = [
             return;
         }
 
+        // Gli utenti esterni (portale clienti) accedono solo all'area Portale:
+        // qualsiasi altra rotta li riporta al portale.
+        if (!Yii::$app->user->isGuest) {
+            $identity = Yii::$app->user->identity;
+            $isEsterno = $identity && method_exists($identity, 'isEsterno') && $identity->isEsterno();
+            if ($isEsterno) {
+                $routeEsternoOk = (strpos($route, 'portale/') === 0)
+                    || (strpos($route, 'site/') === 0)
+                    || (strpos($route, 'two-factor/') === 0)
+                    || in_array($route, ['user/update', 'user/view', 'user/cf', 'user/rp'], true);
+                if (!$routeEsternoOk) {
+                    Yii::$app->response->redirect(['portale/index'])->send();
+                    $event->isValid = false;
+                    return;
+                }
+            }
+        }
+
         // Controllo permessi ACL (vista/crea/modifica/elimina) per gli utenti autenticati.
         // Il livello 100 ha sempre accesso; senza configurazione l'accesso e' negato.
         if (!Yii::$app->user->isGuest

@@ -16,9 +16,27 @@ use Yii;
  */
 class MgAliquotaIva extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_aliquota_iva';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_articolo', ['or',
+            ['id_iva_vendita' => $this->id], ['id_iva_acquisto' => $this->id]])) {
+            $rif[] = 'articoli';
+        }
+        if ($this->esisteRiferimento('mg_anagrafica', ['id_aliquota_iva' => $this->id])) {
+            $rif[] = 'anagrafiche';
+        }
+        if ($this->esisteRiferimento('mg_documento_riga', ['id_aliquota_iva' => $this->id])) {
+            $rif[] = 'righe documento';
+        }
+        return $rif;
     }
 
     public function rules()

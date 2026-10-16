@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\components\EliminazioneProtetta;
 
 /**
  * This is the model class for table "mg_articolo".
@@ -34,9 +35,35 @@ use Yii;
  */
 class MgArticolo extends \yii\db\ActiveRecord
 {
+    use EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_articolo';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_documento_riga', ['id_articolo' => $this->id])) {
+            $rif[] = 'documenti';
+        }
+        if ($this->esisteRiferimento('mg_movimentimagazzino', ['codice_articolo' => $this->codice])) {
+            $rif[] = 'movimenti di magazzino';
+        }
+        if ($this->esisteRiferimento('mg_matricola', ['id_articolo' => $this->id])) {
+            $rif[] = 'matricole';
+        }
+        if ($this->esisteRiferimento('mg_lotto', ['id_articolo' => $this->id])) {
+            $rif[] = 'lotti';
+        }
+        if ($this->esisteRiferimento('mg_crm_ticket', ['id_articolo' => $this->id])) {
+            $rif[] = 'ticket CRM';
+        }
+        if ($this->esisteRiferimento('mg_crm_faq', ['id_articolo' => $this->id])) {
+            $rif[] = 'FAQ CRM';
+        }
+        return $rif;
     }
 
     public function rules()

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\components\EliminazioneProtetta;
 
 /**
  * This is the model class for table "mg_anagrafica".
@@ -18,9 +19,35 @@ use Yii;
  */
 class MgAnagrafica extends \yii\db\ActiveRecord
 {
+    use EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_anagrafica';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_documento', ['id_anagrafica' => $this->id])) {
+            $rif[] = 'documenti';
+        }
+        if ($this->esisteRiferimento('mg_commessa', ['id_anagrafica' => $this->id])) {
+            $rif[] = 'commesse';
+        }
+        if ($this->esisteRiferimento('mg_sottocommessa', ['id_anagrafica' => $this->id])) {
+            $rif[] = 'sottocommesse';
+        }
+        if ($this->esisteRiferimento('mg_magazzino', ['id_anagrafica' => $this->id])) {
+            $rif[] = 'magazzini';
+        }
+        if ($this->esisteRiferimento('mg_crm_ticket', ['id_anagrafica' => $this->id])) {
+            $rif[] = 'ticket CRM';
+        }
+        if ($this->esisteRiferimento('mg_crm_utente_anagrafica', ['id_anagrafica' => $this->id])) {
+            $rif[] = 'utenti del portale';
+        }
+        return $rif;
     }
 
     public function rules()

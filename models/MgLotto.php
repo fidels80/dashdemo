@@ -20,9 +20,23 @@ use Yii;
  */
 class MgLotto extends \yii\db\ActiveRecord
 {
+    use \app\components\EliminazioneProtetta;
+
     public static function tableName()
     {
         return 'mg_lotto';
+    }
+
+    protected function riferimentiBloccanti()
+    {
+        $rif = [];
+        if ($this->esisteRiferimento('mg_documento_riga_dettaglio', ['id_lotto' => $this->id])) {
+            $rif[] = 'documenti';
+        }
+        if ($this->esisteRiferimento('mg_movimentimagazzino', ['id_lotto' => $this->id])) {
+            $rif[] = 'movimenti di magazzino';
+        }
+        return $rif;
     }
 
     public function rules()
